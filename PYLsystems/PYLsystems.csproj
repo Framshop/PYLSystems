@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B65DAE8C-9332-4817-87AE-951AFA97E339}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PYLsystems</RootNamespace>
+    <AssemblyName>PYLsystems</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.10.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EmployeeManagement\addEmpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeManagement\addEmpForm.Designer.cs">
+      <DependentUpon>addEmpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\addEmployeeInstance.cs" />
+    <Compile Include="EmployeeManagement\addUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeManagement\addUserForm.Designer.cs">
+      <DependentUpon>addUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\confirmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeManagement\confirmForm.Designer.cs">
+      <DependentUpon>confirmForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\EmployeeList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EmployeeManagement\EmployeeList.Designer.cs">
+      <DependentUpon>EmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManagement\EmpManControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EmployeeManagement\EmpManControl.Designer.cs">
+      <DependentUpon>EmpManControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFrameDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFrameDetails.Designer.cs">
+      <DependentUpon>frmFrameDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFrameList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFrameList.Designer.cs">
+      <DependentUpon>frmFrameList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStockInSupplyEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStockInSupplyEdit.Designer.cs">
+      <DependentUpon>frmStockInSupplyEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSupplier.Designer.cs">
+      <DependentUpon>frmSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSupplyStockIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSupplyStockIn.Designer.cs">
+      <DependentUpon>frmSupplyStockIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HomeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HomeControl.Designer.cs">
+      <DependentUpon>HomeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EmployeeManagement\addEmpForm.resx">
+      <DependentUpon>addEmpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeManagement\addUserForm.resx">
+      <DependentUpon>addUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeManagement\confirmForm.resx">
+      <DependentUpon>confirmForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeManagement\EmployeeList.resx">
+      <DependentUpon>EmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeManagement\EmpManControl.resx">
+      <DependentUpon>EmpManControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFrameList.resx">
+      <DependentUpon>frmFrameList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStockInSupplyEdit.resx">
+      <DependentUpon>frmStockInSupplyEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSupplier.resx">
+      <DependentUpon>frmSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSupplyStockIn.resx">
+      <DependentUpon>frmSupplyStockIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HomeControl.resx">
+      <DependentUpon>HomeControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSupplyItems.resx">
+      <DependentUpon>frmSupplyItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="frmSupplyItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSupplyItems.Designer.cs">
+      <DependentUpon>frmSupplyItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
