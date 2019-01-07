@@ -12,6 +12,7 @@ namespace PYLsystems
 {
     public partial class addSales : Form
     {
+        private int sample;
         checkSales checkSalesPForm;
         DataTable addSalesDT;
         public addSales()
