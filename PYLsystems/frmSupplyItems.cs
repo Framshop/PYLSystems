@@ -112,6 +112,7 @@ namespace PYLsystems
             supplyItemsGrid.Columns["supplierDetails"].HeaderText = "Details";
             supplyItemsGrid.Columns["contactDetails"].HeaderText = "Contact";
             supplyItemsGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+           
         }
     }
 }

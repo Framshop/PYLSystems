@@ -46,6 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addSales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addSales.designer.cs">
+      <DependentUpon>addSales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cancelSalesConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cancelSalesConfirm.designer.cs">
+      <DependentUpon>cancelSalesConfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="checkSales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="checkSales.designer.cs">
+      <DependentUpon>checkSales.cs</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeManagement\addEmpForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +145,27 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="viewProductsSold.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="viewProductsSold.designer.cs">
+      <DependentUpon>viewProductsSold.cs</DependentUpon>
+    </Compile>
+    <Compile Include="viewTotalProfit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="viewTotalProfit.designer.cs">
+      <DependentUpon>viewTotalProfit.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="addSales.resx">
+      <DependentUpon>addSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cancelSalesConfirm.resx">
+      <DependentUpon>cancelSalesConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="checkSales.resx">
+      <DependentUpon>checkSales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmployeeManagement\addEmpForm.resx">
       <DependentUpon>addEmpForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -181,6 +220,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="viewProductsSold.resx">
+      <DependentUpon>viewProductsSold.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="viewTotalProfit.resx">
+      <DependentUpon>viewTotalProfit.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
