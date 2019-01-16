@@ -32,7 +32,8 @@ namespace PYLsystems
             
             this.salesOrdersGrid.DataSource = null;
             this.salesOrdersGrid.Rows.Clear();
-            String salesOrderString = "SELECT sOrd_Num AS \"Receipt Number\", sOrd_Date AS \"Date\", DATE(sOrd_Date) AS \"datePick\", sOrd_status from salesOrder";
+            String salesOrderString = "SELECT sOrd_Num AS \"Receipt Number\", sOrd_Date AS \"Date\", " +
+                "DATE(sOrd_Date) AS \"datePick\", sOrd_status from salesOrder";
 
             MySqlConnection my_conn = new MySqlConnection(connString);
             MySqlCommand salesOrdList_command = new MySqlCommand(salesOrderString, my_conn);
@@ -213,12 +214,9 @@ namespace PYLsystems
             //Datagridview load
             int rawTotal = 0;
             int discountTotal = 0;
-            String salesOrderDetails = "SELECT frameName AS Item, Dimension, sOrd_Quantity AS Quantity, sOrd_UnitPrice AS \"Unit Price\", " +
-                                            "sOrdDet.inventoryID, sOrdDet.sOrd_DetailsID " +
-                                            "FROM sOrder_Details as sOrdDet " +
-                                            "LEFT JOIN Stock_Out AS SO ON sOrdDet.inventoryID = SO.inventoryID " +
-                                            "LEFT JOIN frame_stockin AS FSI ON SO.frameID = FSI.frame_stockinID " +
-                                            "LEFT JOIN frame_list AS FL ON FSI.frame_listID = FL.frameItemID WHERE sOrd_Num = @sOrd_Num; ";
+            String salesOrderDetails = "SELECT FL.frameName AS Item, FL.Dimension, SOD.sOrd_Quantity AS Quantity, SOD.sOrd_UnitPrice AS 'Unit Price', SOD.frameItemID, SOD.sOrd_DetailsID FROM sOrder_Details as SOD " +
+                "LEFT JOIN frame_list AS FL ON SOD.frameItemID = FL.frameItemID " +
+                "WHERE sOrd_Num = @sOrd_Num; ";
 
             MySqlConnection my_conn = new MySqlConnection(connString);
             MySqlCommand salesOrdDet_command = new MySqlCommand(salesOrderDetails, my_conn);
@@ -232,7 +230,7 @@ namespace PYLsystems
             sOrdDetGrid.Columns["Dimension"].ReadOnly = true;
             sOrdDetGrid.Columns["Quantity"].ReadOnly = true;
             sOrdDetGrid.Columns["Unit Price"].ReadOnly = true;
-            sOrdDetGrid.Columns["inventoryID"].Visible = false;
+            sOrdDetGrid.Columns["frameItemID"].Visible = false;
             sOrdDetGrid.Columns["sOrd_DetailsID"].Visible = false;
             //Totals
             for (int i = 0; i < salesOrdDet_dt.Rows.Count; i++)
@@ -240,11 +238,11 @@ namespace PYLsystems
                 DataRow salesOrdDet_dRows = salesOrdDet_dt.Rows[i];
                 rawTotal += Int32.Parse(salesOrdDet_dRows["Quantity"].ToString()) * Int32.Parse(salesOrdDet_dRows["Unit Price"].ToString());
             }
-            String totalsString = "SELECT sOrd.sOrd_Num,sOrd.sOrd_Date,sOrd.sOrd_totalPaid,sOrd.discount,sOrd.employeeID," +
+            String totalsString = "SELECT SO.sOrd_Num,SO.sOrd_Date,SO.sOrd_totalPaid,SO.discount,SO.employeeID," +
                                     "CONCAT(emp.lastName,', ',emp.firstName) AS EmpName " +
-                                    "FROM salesOrder AS sOrd " +
-                                    "LEFT JOIN Employee AS emp ON sOrd.employeeID = emp.employeeID " +
-                                    "WHERE sOrd.sOrd_Num = @sOrd_Num; ";
+                                    "FROM salesOrder AS SO " +
+                                    "LEFT JOIN Employee AS emp ON SO.employeeID = emp.employeeID " +
+                                    "WHERE SO.sOrd_Num = @sOrd_Num; ";
             MySqlCommand totalsString_command = new MySqlCommand(totalsString, my_conn);
             totalsString_command.Parameters.AddWithValue("@sOrd_Num", sOrd_Num);
 
@@ -298,6 +296,23 @@ namespace PYLsystems
                     cancelBtn.Enabled = false;
                 }
             }
+        }
+        //getFrameID
+        private int getFrameID(String frameName, String dimension) {
+            int frameItemID;
+            String getfiIDString = "SELECT FL.frameItemID FROM frame_list AS FL WHERE frameName=@frameName AND dimension=@dimension";
+            MySqlConnection my_conn = new MySqlConnection(connString);
+            MySqlCommand framelistID_command = new MySqlCommand(getfiIDString, my_conn);
+            framelistID_command.Parameters.AddWithValue("@frameName", frameName);
+            framelistID_command.Parameters.AddWithValue("@dimension",dimension);
+
+            MySqlDataAdapter framelistID_adapter = new MySqlDataAdapter(framelistID_command);
+            DataTable framelistID_dt = new DataTable();
+            framelistID_adapter.Fill(framelistID_dt);
+            frameItemID = Int32.Parse(framelistID_dt.Rows[0][0].ToString());
+            //frameItemID = (int) framelistID_command.ExecuteScalar();
+
+            return frameItemID;
         }
         //----------------Event Methods-----------------
         private void salesOrdersGrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -397,17 +412,17 @@ namespace PYLsystems
                 }
             }
         }
-
+        /*Update sales order. Can only update type of frame used but must be same price as old. Otherwise, make a new sales order.*/
         private void sOrdDetGrid_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             int sOrdDet_unitPrice = Int32.Parse(sOrdDetGrid["Unit Price", sOrdDetGrid.CurrentCell.RowIndex].Value.ToString());
 
             DataGridViewComboBoxCell sOrdDetGrid_CBCell = new DataGridViewComboBoxCell();
             sOrdDetGrid[e.ColumnIndex, e.RowIndex] = sOrdDetGrid_CBCell;
-            String sOrdDet_CBCellString = "SELECT FL.frameName AS \"Item\" FROM frame_list AS FL " +
-                "INNER JOIN frame_stockin AS FS ON FS.frame_listID=FL.frameItemID " +
-                "LEFT JOIN Stock_Out AS SO ON SO.frameID=FS.frame_stockinID " +
-                "WHERE FL.unitPrice=@sOrdDet_unitPrice;";
+            String sOrdDet_CBCellString = "SELECT FL.frameName \"Item\" FROM frame_list AS FL " +
+                "LEFT JOIN(SELECT FS.frameItemID, SUM(FS.stockinQuantity) AS 'Stockin' FROM framestock_in AS FS GROUP BY FS.frameItemID) AS FS ON FL.frameItemID = FS.frameItemID " +
+                "LEFT JOIN(SELECT SOD.frameItemID, SUM(SOD.sOrd_Quantity) AS 'Stockout' FROM sorder_details AS SOD GROUP BY SOD.frameItemID) AS SOD ON FL.frameItemID = SOD.frameItemID " +
+                "WHERE(FS.Stockin - SOD.stockout) > 0 AND FL.unitPrice = @sOrdDet_unitPrice; ";
             MySqlConnection my_conn = new MySqlConnection(connString);
             MySqlCommand salesOrdDet_CBCellcommand = new MySqlCommand(sOrdDet_CBCellString, my_conn);
             salesOrdDet_CBCellcommand.Parameters.AddWithValue("@sOrdDet_unitPrice", sOrdDet_unitPrice);
@@ -436,26 +451,27 @@ namespace PYLsystems
             updateBtn.Enabled = false;
             resetBtn.Enabled = false;
         }
-
+        
         private void updateBtn_Click(object sender, EventArgs e)
         {
-            String[] updateItemsArray = new String[sOrdDetGrid.Rows.Count];
+           // String[] updateItemsArray = new String[sOrdDetGrid.Rows.Count];
             String[] sOrdDetailsID = new String[sOrdDetGrid.Rows.Count];
+            int[] frameItemID = new int[sOrdDetGrid.Rows.Count];
             for (int i = 0; i < sOrdDetGrid.Rows.Count; i++)
             {
-                updateItemsArray[i] = sOrdDetGrid.Rows[i].Cells["Item"].Value.ToString();
+                //MessageBox.Show(i.ToString());
+                frameItemID[i] = getFrameID(sOrdDetGrid.Rows[i].Cells["Item"].Value.ToString(), sOrdDetGrid.Rows[i].Cells["Dimension"].Value.ToString());
+                //updateItemsArray[i] = sOrdDetGrid.Rows[i].Cells["Item"].Value.ToString();
                 sOrdDetailsID[i] = sOrdDetGrid.Rows[i].Cells["sOrd_DetailsID"].Value.ToString();
             }
             for (int i = 0; i < sOrdDetGrid.Rows.Count; i++) {
-                String sOrdDet_UpdateString = "UPDATE sOrder_Details AS sOrdDet " +
-                    "SET sOrdDet.inventoryID = (SELECT SO.inventoryID FROM frame_list AS FL " +
-                    "INNER JOIN frame_stockin AS FS ON FS.frame_listID = FL.frameItemID " +
-                    "LEFT JOIN Stock_Out AS SO ON SO.frameID = FS.frame_stockinID " +
-                    "WHERE frameName = @Items) " +
-                    "WHERE sOrdDet.sOrd_DetailsID = @sOrd_DetailsID; ";
+                String sOrdDet_UpdateString = "UPDATE sOrder_Details AS SOD " +
+                    "SET SOD.frameItemID = @frameItemID " +
+                    "WHERE SOD.sOrd_DetailsID = @sOrd_DetailsID; ";
                 MySqlConnection my_conn = new MySqlConnection(connString);
                 MySqlCommand sOrdDet_Updatecommand = new MySqlCommand(sOrdDet_UpdateString, my_conn);
-                sOrdDet_Updatecommand.Parameters.AddWithValue("@Items", updateItemsArray[i]);
+                //sOrdDet_Updatecommand.Parameters.AddWithValue("@Items", updateItemsArray[i]);
+                sOrdDet_Updatecommand.Parameters.AddWithValue("@frameItemID", frameItemID[i]);
                 sOrdDet_Updatecommand.Parameters.AddWithValue("@sOrd_DetailsID", sOrdDetailsID[i]);
                 MySqlDataReader dataReader;
                 my_conn.Open();

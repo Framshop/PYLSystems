@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PYLsystems.EmployeeManagement
+namespace PYLsystems
 {
-    public partial class confirmForm : Form
+    public partial class addSalesAvailability : Form
     {
-        public confirmForm()
+        public addSalesAvailability()
         {
             InitializeComponent();
         }

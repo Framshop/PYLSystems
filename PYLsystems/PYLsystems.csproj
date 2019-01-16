@@ -52,6 +52,12 @@
     <Compile Include="addSales.designer.cs">
       <DependentUpon>addSales.cs</DependentUpon>
     </Compile>
+    <Compile Include="addSalesAvailability.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addSalesAvailability.Designer.cs">
+      <DependentUpon>addSalesAvailability.cs</DependentUpon>
+    </Compile>
     <Compile Include="cancelSalesConfirm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,37 +69,6 @@
     </Compile>
     <Compile Include="checkSales.designer.cs">
       <DependentUpon>checkSales.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EmployeeManagement\addEmpForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EmployeeManagement\addEmpForm.Designer.cs">
-      <DependentUpon>addEmpForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EmployeeManagement\addEmployeeInstance.cs" />
-    <Compile Include="EmployeeManagement\addUserForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EmployeeManagement\addUserForm.Designer.cs">
-      <DependentUpon>addUserForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EmployeeManagement\confirmForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EmployeeManagement\confirmForm.Designer.cs">
-      <DependentUpon>confirmForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EmployeeManagement\EmployeeList.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="EmployeeManagement\EmployeeList.Designer.cs">
-      <DependentUpon>EmployeeList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EmployeeManagement\EmpManControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="EmployeeManagement\EmpManControl.Designer.cs">
-      <DependentUpon>EmpManControl.cs</DependentUpon>
     </Compile>
     <Compile Include="frmFrameDetails.cs">
       <SubType>Form</SubType>
@@ -125,23 +100,11 @@
     <Compile Include="frmSupplyStockIn.Designer.cs">
       <DependentUpon>frmSupplyStockIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="HomeControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="HomeControl.Designer.cs">
-      <DependentUpon>HomeControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -166,21 +129,6 @@
     <EmbeddedResource Include="checkSales.resx">
       <DependentUpon>checkSales.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmployeeManagement\addEmpForm.resx">
-      <DependentUpon>addEmpForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmployeeManagement\addUserForm.resx">
-      <DependentUpon>addUserForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmployeeManagement\confirmForm.resx">
-      <DependentUpon>confirmForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmployeeManagement\EmployeeList.resx">
-      <DependentUpon>EmployeeList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmployeeManagement\EmpManControl.resx">
-      <DependentUpon>EmpManControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmFrameList.resx">
       <DependentUpon>frmFrameList.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,14 +141,8 @@
     <EmbeddedResource Include="frmSupplyStockIn.resx">
       <DependentUpon>frmSupplyStockIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HomeControl.resx">
-      <DependentUpon>HomeControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSupplyItems.resx">
       <DependentUpon>frmSupplyItems.cs</DependentUpon>
