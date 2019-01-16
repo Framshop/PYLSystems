@@ -16,7 +16,7 @@ namespace PYLsystems
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new checkSales());
+            Application.Run(new addSales());
         }
     }
 }

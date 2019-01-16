@@ -222,12 +222,13 @@
             this.addSalesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addSalesGrid.Location = new System.Drawing.Point(3, 22);
             this.addSalesGrid.Name = "addSalesGrid";
+            this.addSalesGrid.ReadOnly = true;
             this.addSalesGrid.RowHeadersVisible = false;
             this.addSalesGrid.RowTemplate.Height = 28;
+            this.addSalesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.addSalesGrid.Size = new System.Drawing.Size(1043, 521);
             this.addSalesGrid.TabIndex = 0;
-            this.addSalesGrid.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.addSalesGrid_CellBeginEdit);
-            this.addSalesGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.addSalesGrid_CellEndEdit);
+            this.addSalesGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.addSalesGrid_CellDoubleClick);
             // 
             // addSales
             // 

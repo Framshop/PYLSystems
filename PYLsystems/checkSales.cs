@@ -15,11 +15,11 @@ namespace PYLsystems
         String connString = "server=localhost;uid=root;pwd=root;database=frameshopdb;";
         DataTable salesOrderdt;
         DataView sOrdDefaultFilter;
+        //--------------Initial Load--------------
         public checkSales()
         {
             InitializeComponent();
-        }
-        //--------------Initial Load--------------
+        }       
         private void checkSales_Load(object sender, EventArgs e)
         {
             checkSales_Loader();

@@ -123,6 +123,9 @@
     <EmbeddedResource Include="addSales.resx">
       <DependentUpon>addSales.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="addSalesAvailability.resx">
+      <DependentUpon>addSalesAvailability.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cancelSalesConfirm.resx">
       <DependentUpon>cancelSalesConfirm.cs</DependentUpon>
     </EmbeddedResource>
