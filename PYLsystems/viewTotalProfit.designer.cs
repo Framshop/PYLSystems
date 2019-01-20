@@ -31,27 +31,26 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.datePickerGB = new System.Windows.Forms.GroupBox();
-            this.buttonsGB = new System.Windows.Forms.GroupBox();
-            this.profitListGB = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.calcGB = new System.Windows.Forms.GroupBox();
             this.endCheck = new System.Windows.Forms.CheckBox();
             this.startCheck = new System.Windows.Forms.CheckBox();
             this.endDatePicker = new System.Windows.Forms.DateTimePicker();
             this.startDatePicker = new System.Windows.Forms.DateTimePicker();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.rawTotalLabel = new System.Windows.Forms.Label();
-            this.rawTotalTextBox = new System.Windows.Forms.TextBox();
-            this.productsSoldBtn = new System.Windows.Forms.Button();
+            this.buttonsGB = new System.Windows.Forms.GroupBox();
             this.closeBtn = new System.Windows.Forms.Button();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.profitListGB = new System.Windows.Forms.GroupBox();
+            this.viewTotalProfitGrid = new System.Windows.Forms.DataGridView();
+            this.calcGB = new System.Windows.Forms.GroupBox();
+            this.TotalLabel = new System.Windows.Forms.Label();
+            this.totalTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.datePickerGB.SuspendLayout();
             this.buttonsGB.SuspendLayout();
-            this.profitListGB.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.profitListGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.viewTotalProfitGrid)).BeginInit();
             this.calcGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -100,10 +99,68 @@
             this.datePickerGB.TabStop = false;
             this.datePickerGB.Text = "Select Dates";
             // 
+            // endCheck
+            // 
+            this.endCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.endCheck.AutoSize = true;
+            this.endCheck.Location = new System.Drawing.Point(5, 88);
+            this.endCheck.Name = "endCheck";
+            this.endCheck.Size = new System.Drawing.Size(103, 24);
+            this.endCheck.TabIndex = 7;
+            this.endCheck.Text = "End Date";
+            this.endCheck.UseVisualStyleBackColor = true;
+            this.endCheck.CheckedChanged += new System.EventHandler(this.endCheck_CheckedChanged);
+            // 
+            // startCheck
+            // 
+            this.startCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.startCheck.AutoSize = true;
+            this.startCheck.Checked = true;
+            this.startCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.startCheck.Location = new System.Drawing.Point(5, 48);
+            this.startCheck.Name = "startCheck";
+            this.startCheck.Size = new System.Drawing.Size(109, 24);
+            this.startCheck.TabIndex = 6;
+            this.startCheck.Text = "Start Date";
+            this.startCheck.UseVisualStyleBackColor = true;
+            this.startCheck.CheckedChanged += new System.EventHandler(this.startCheck_CheckedChanged);
+            // 
+            // endDatePicker
+            // 
+            this.endDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.endDatePicker.CustomFormat = "yyyy/MM/dd";
+            this.endDatePicker.Enabled = false;
+            this.endDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.endDatePicker.Location = new System.Drawing.Point(117, 84);
+            this.endDatePicker.Name = "endDatePicker";
+            this.endDatePicker.Size = new System.Drawing.Size(200, 26);
+            this.endDatePicker.TabIndex = 5;
+            this.endDatePicker.Value = new System.DateTime(2019, 1, 5, 0, 0, 0, 0);
+            this.endDatePicker.ValueChanged += new System.EventHandler(this.endDatePicker_ValueChanged);
+            // 
+            // startDatePicker
+            // 
+            this.startDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.startDatePicker.CustomFormat = "yyyy/MM/dd";
+            this.startDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.startDatePicker.Location = new System.Drawing.Point(117, 49);
+            this.startDatePicker.Name = "startDatePicker";
+            this.startDatePicker.Size = new System.Drawing.Size(200, 26);
+            this.startDatePicker.TabIndex = 4;
+            this.startDatePicker.Value = new System.DateTime(2019, 1, 4, 0, 0, 0, 0);
+            this.startDatePicker.ValueChanged += new System.EventHandler(this.startDatePicker_ValueChanged);
+            // 
             // buttonsGB
             // 
             this.buttonsGB.Controls.Add(this.closeBtn);
-            this.buttonsGB.Controls.Add(this.productsSoldBtn);
             this.buttonsGB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonsGB.Location = new System.Drawing.Point(3, 593);
             this.buttonsGB.Name = "buttonsGB";
@@ -111,16 +168,15 @@
             this.buttonsGB.TabIndex = 1;
             this.buttonsGB.TabStop = false;
             // 
-            // profitListGB
+            // closeBtn
             // 
-            this.profitListGB.Controls.Add(this.dataGridView1);
-            this.profitListGB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.profitListGB.Location = new System.Drawing.Point(3, 3);
-            this.profitListGB.Name = "profitListGB";
-            this.profitListGB.Size = new System.Drawing.Size(708, 473);
-            this.profitListGB.TabIndex = 1;
-            this.profitListGB.TabStop = false;
-            this.profitListGB.Text = "List";
+            this.closeBtn.Location = new System.Drawing.Point(94, 68);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.Size = new System.Drawing.Size(130, 37);
+            this.closeBtn.TabIndex = 2;
+            this.closeBtn.Text = "Close";
+            this.closeBtn.UseVisualStyleBackColor = true;
+            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -137,10 +193,36 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(714, 739);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
+            // profitListGB
+            // 
+            this.profitListGB.Controls.Add(this.viewTotalProfitGrid);
+            this.profitListGB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.profitListGB.Location = new System.Drawing.Point(3, 3);
+            this.profitListGB.Name = "profitListGB";
+            this.profitListGB.Size = new System.Drawing.Size(708, 473);
+            this.profitListGB.TabIndex = 1;
+            this.profitListGB.TabStop = false;
+            this.profitListGB.Text = "List";
+            // 
+            // viewTotalProfitGrid
+            // 
+            this.viewTotalProfitGrid.AllowUserToAddRows = false;
+            this.viewTotalProfitGrid.AllowUserToDeleteRows = false;
+            this.viewTotalProfitGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.viewTotalProfitGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.viewTotalProfitGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewTotalProfitGrid.Location = new System.Drawing.Point(3, 22);
+            this.viewTotalProfitGrid.Name = "viewTotalProfitGrid";
+            this.viewTotalProfitGrid.ReadOnly = true;
+            this.viewTotalProfitGrid.RowHeadersVisible = false;
+            this.viewTotalProfitGrid.RowTemplate.Height = 28;
+            this.viewTotalProfitGrid.Size = new System.Drawing.Size(702, 448);
+            this.viewTotalProfitGrid.TabIndex = 0;
+            // 
             // calcGB
             // 
-            this.calcGB.Controls.Add(this.rawTotalLabel);
-            this.calcGB.Controls.Add(this.rawTotalTextBox);
+            this.calcGB.Controls.Add(this.TotalLabel);
+            this.calcGB.Controls.Add(this.totalTextBox);
             this.calcGB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.calcGB.Location = new System.Drawing.Point(3, 482);
             this.calcGB.Name = "calcGB";
@@ -149,109 +231,22 @@
             this.calcGB.TabStop = false;
             this.calcGB.Text = "Summary";
             // 
-            // endCheck
+            // TotalLabel
             // 
-            this.endCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.endCheck.AutoSize = true;
-            this.endCheck.Location = new System.Drawing.Point(5, 88);
-            this.endCheck.Name = "endCheck";
-            this.endCheck.Size = new System.Drawing.Size(103, 24);
-            this.endCheck.TabIndex = 7;
-            this.endCheck.Text = "End Date";
-            this.endCheck.UseVisualStyleBackColor = true;
+            this.TotalLabel.AutoSize = true;
+            this.TotalLabel.Location = new System.Drawing.Point(35, 73);
+            this.TotalLabel.Name = "TotalLabel";
+            this.TotalLabel.Size = new System.Drawing.Size(48, 20);
+            this.TotalLabel.TabIndex = 9;
+            this.TotalLabel.Text = "Total:";
             // 
-            // startCheck
+            // totalTextBox
             // 
-            this.startCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.startCheck.AutoSize = true;
-            this.startCheck.Location = new System.Drawing.Point(5, 48);
-            this.startCheck.Name = "startCheck";
-            this.startCheck.Size = new System.Drawing.Size(109, 24);
-            this.startCheck.TabIndex = 6;
-            this.startCheck.Text = "Start Date";
-            this.startCheck.UseVisualStyleBackColor = true;
-            // 
-            // endDatePicker
-            // 
-            this.endDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.endDatePicker.CustomFormat = "yyyy/MM/dd";
-            this.endDatePicker.Enabled = false;
-            this.endDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.endDatePicker.Location = new System.Drawing.Point(117, 84);
-            this.endDatePicker.Name = "endDatePicker";
-            this.endDatePicker.Size = new System.Drawing.Size(200, 26);
-            this.endDatePicker.TabIndex = 5;
-            this.endDatePicker.Value = new System.DateTime(2019, 1, 5, 0, 0, 0, 0);
-            // 
-            // startDatePicker
-            // 
-            this.startDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.startDatePicker.CustomFormat = "yyyy/MM/dd";
-            this.startDatePicker.Enabled = false;
-            this.startDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.startDatePicker.Location = new System.Drawing.Point(117, 49);
-            this.startDatePicker.Name = "startDatePicker";
-            this.startDatePicker.Size = new System.Drawing.Size(200, 26);
-            this.startDatePicker.TabIndex = 4;
-            this.startDatePicker.Value = new System.DateTime(2019, 1, 4, 0, 0, 0, 0);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 22);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(702, 448);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // rawTotalLabel
-            // 
-            this.rawTotalLabel.AutoSize = true;
-            this.rawTotalLabel.Location = new System.Drawing.Point(35, 73);
-            this.rawTotalLabel.Name = "rawTotalLabel";
-            this.rawTotalLabel.Size = new System.Drawing.Size(48, 20);
-            this.rawTotalLabel.TabIndex = 9;
-            this.rawTotalLabel.Text = "Total:";
-            // 
-            // rawTotalTextBox
-            // 
-            this.rawTotalTextBox.Enabled = false;
-            this.rawTotalTextBox.Location = new System.Drawing.Point(102, 73);
-            this.rawTotalTextBox.Name = "rawTotalTextBox";
-            this.rawTotalTextBox.Size = new System.Drawing.Size(170, 26);
-            this.rawTotalTextBox.TabIndex = 8;
-            // 
-            // productsSoldBtn
-            // 
-            this.productsSoldBtn.Enabled = false;
-            this.productsSoldBtn.Location = new System.Drawing.Point(94, 25);
-            this.productsSoldBtn.Name = "productsSoldBtn";
-            this.productsSoldBtn.Size = new System.Drawing.Size(130, 37);
-            this.productsSoldBtn.TabIndex = 1;
-            this.productsSoldBtn.Text = "Products Sold";
-            this.productsSoldBtn.UseVisualStyleBackColor = true;
-            // 
-            // closeBtn
-            // 
-            this.closeBtn.Enabled = false;
-            this.closeBtn.Location = new System.Drawing.Point(94, 68);
-            this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(130, 37);
-            this.closeBtn.TabIndex = 2;
-            this.closeBtn.Text = "Close";
-            this.closeBtn.UseVisualStyleBackColor = true;
+            this.totalTextBox.Location = new System.Drawing.Point(102, 73);
+            this.totalTextBox.Name = "totalTextBox";
+            this.totalTextBox.ReadOnly = true;
+            this.totalTextBox.Size = new System.Drawing.Size(170, 26);
+            this.totalTextBox.TabIndex = 8;
             // 
             // viewTotalProfit
             // 
@@ -261,16 +256,17 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "viewTotalProfit";
             this.Text = "viewTotalProfit";
+            this.Load += new System.EventHandler(this.viewTotalProfit_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.datePickerGB.ResumeLayout(false);
             this.datePickerGB.PerformLayout();
             this.buttonsGB.ResumeLayout(false);
-            this.profitListGB.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.profitListGB.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.viewTotalProfitGrid)).EndInit();
             this.calcGB.ResumeLayout(false);
             this.calcGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -288,10 +284,9 @@
         private System.Windows.Forms.CheckBox startCheck;
         private System.Windows.Forms.DateTimePicker endDatePicker;
         private System.Windows.Forms.DateTimePicker startDatePicker;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label rawTotalLabel;
-        private System.Windows.Forms.TextBox rawTotalTextBox;
+        private System.Windows.Forms.DataGridView viewTotalProfitGrid;
+        private System.Windows.Forms.Label TotalLabel;
+        private System.Windows.Forms.TextBox totalTextBox;
         private System.Windows.Forms.Button closeBtn;
-        private System.Windows.Forms.Button productsSoldBtn;
     }
 }

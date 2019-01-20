@@ -61,3 +61,5 @@ C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYL
 C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLSystems.viewProductsSold.resources
 C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLSystems.viewTotalProfit.resources
 C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.addSales.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.addSalesAvailability.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLsystems.addSalesConfirm.resources

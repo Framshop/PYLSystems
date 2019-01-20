@@ -1,6 +1,6 @@
 ﻿namespace PYLsystems
 {
-    partial class cancelSalesConfirm
+    partial class addSalesConfirm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,43 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cancelTextLabel = new System.Windows.Forms.Label();
-            this.confirmBtn = new System.Windows.Forms.Button();
             this.backBtn = new System.Windows.Forms.Button();
+            this.confirmBtn = new System.Windows.Forms.Button();
+            this.cancelTextLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // cancelTextLabel
-            // 
-            this.cancelTextLabel.AutoSize = true;
-            this.cancelTextLabel.Location = new System.Drawing.Point(63, 56);
-            this.cancelTextLabel.Name = "cancelTextLabel";
-            this.cancelTextLabel.Size = new System.Drawing.Size(330, 40);
-            this.cancelTextLabel.TabIndex = 0;
-            this.cancelTextLabel.Text = "Cancelled Sales Order cannot be undone.\r\nAre you sure you want to cancel Sales Or" +
-    "der?";
-            this.cancelTextLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // confirmBtn
-            // 
-            this.confirmBtn.Location = new System.Drawing.Point(51, 161);
-            this.confirmBtn.Name = "confirmBtn";
-            this.confirmBtn.Size = new System.Drawing.Size(130, 37);
-            this.confirmBtn.TabIndex = 2;
-            this.confirmBtn.Text = "Confirm";
-            this.confirmBtn.UseVisualStyleBackColor = true;
-            this.confirmBtn.Click += new System.EventHandler(this.confirmBtn_Click);
             // 
             // backBtn
             // 
             this.backBtn.Location = new System.Drawing.Point(263, 161);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(130, 37);
-            this.backBtn.TabIndex = 3;
+            this.backBtn.TabIndex = 6;
             this.backBtn.Text = "Back";
             this.backBtn.UseVisualStyleBackColor = true;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
-            // cancelSalesConfirm
+            // confirmBtn
+            // 
+            this.confirmBtn.Location = new System.Drawing.Point(51, 161);
+            this.confirmBtn.Name = "confirmBtn";
+            this.confirmBtn.Size = new System.Drawing.Size(130, 37);
+            this.confirmBtn.TabIndex = 5;
+            this.confirmBtn.Text = "Confirm";
+            this.confirmBtn.UseVisualStyleBackColor = true;
+            this.confirmBtn.Click += new System.EventHandler(this.confirmBtn_Click);
+            // 
+            // cancelTextLabel
+            // 
+            this.cancelTextLabel.AutoSize = true;
+            this.cancelTextLabel.Location = new System.Drawing.Point(135, 90);
+            this.cancelTextLabel.Name = "cancelTextLabel";
+            this.cancelTextLabel.Size = new System.Drawing.Size(161, 20);
+            this.cancelTextLabel.TabIndex = 4;
+            this.cancelTextLabel.Text = "Confirm Sales Order?";
+            this.cancelTextLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // addSalesConfirm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -74,8 +73,8 @@
             this.Controls.Add(this.confirmBtn);
             this.Controls.Add(this.cancelTextLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "cancelSalesConfirm";
-            this.Text = "Cancel Sales Order";
+            this.Name = "addSalesConfirm";
+            this.Text = "addSalesConfirm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -83,8 +82,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label cancelTextLabel;
-        private System.Windows.Forms.Button confirmBtn;
         private System.Windows.Forms.Button backBtn;
+        private System.Windows.Forms.Button confirmBtn;
+        private System.Windows.Forms.Label cancelTextLabel;
     }
 }

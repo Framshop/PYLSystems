@@ -58,6 +58,12 @@
     <Compile Include="addSalesAvailability.Designer.cs">
       <DependentUpon>addSalesAvailability.cs</DependentUpon>
     </Compile>
+    <Compile Include="addSalesConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addSalesConfirm.Designer.cs">
+      <DependentUpon>addSalesConfirm.cs</DependentUpon>
+    </Compile>
     <Compile Include="cancelSalesConfirm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,12 @@
     </Compile>
     <EmbeddedResource Include="addSales.resx">
       <DependentUpon>addSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addSalesAvailability.resx">
+      <DependentUpon>addSalesAvailability.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addSalesConfirm.resx">
+      <DependentUpon>addSalesConfirm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cancelSalesConfirm.resx">
       <DependentUpon>cancelSalesConfirm.cs</DependentUpon>
