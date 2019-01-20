@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.productsSoldBtn = new System.Windows.Forms.Button();
@@ -63,7 +63,7 @@
             this.trueTotalLabel = new System.Windows.Forms.Label();
             this.trueTotalTextBox = new System.Windows.Forms.TextBox();
             this.infoOthers = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.statusTextBox = new System.Windows.Forms.TextBox();
             this.statusLabel = new System.Windows.Forms.Label();
             this.receiptDateTextBox = new System.Windows.Forms.TextBox();
             this.receiptDate = new System.Windows.Forms.Label();
@@ -151,6 +151,7 @@
             this.productsSoldBtn.TabIndex = 5;
             this.productsSoldBtn.Text = "Products Sold";
             this.productsSoldBtn.UseVisualStyleBackColor = true;
+            this.productsSoldBtn.Click += new System.EventHandler(this.productsSoldBtn_Click);
             // 
             // totalProfitBtn
             // 
@@ -160,6 +161,7 @@
             this.totalProfitBtn.TabIndex = 4;
             this.totalProfitBtn.Text = "Total Profit";
             this.totalProfitBtn.UseVisualStyleBackColor = true;
+            this.totalProfitBtn.Click += new System.EventHandler(this.totalProfitBtn_Click);
             // 
             // salesOrderGB
             // 
@@ -177,35 +179,35 @@
             this.salesOrdersGrid.AllowUserToAddRows = false;
             this.salesOrdersGrid.AllowUserToDeleteRows = false;
             this.salesOrdersGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.salesOrdersGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.salesOrdersGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.salesOrdersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.salesOrdersGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.salesOrdersGrid.DefaultCellStyle = dataGridViewCellStyle8;
             this.salesOrdersGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.salesOrdersGrid.Location = new System.Drawing.Point(3, 22);
             this.salesOrdersGrid.Name = "salesOrdersGrid";
             this.salesOrdersGrid.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.salesOrdersGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.salesOrdersGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.salesOrdersGrid.RowHeadersVisible = false;
             this.salesOrdersGrid.RowTemplate.Height = 28;
             this.salesOrdersGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -368,34 +370,34 @@
             this.sOrdDetGrid.AllowUserToAddRows = false;
             this.sOrdDetGrid.AllowUserToDeleteRows = false;
             this.sOrdDetGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.sOrdDetGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.sOrdDetGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.sOrdDetGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.sOrdDetGrid.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.sOrdDetGrid.DefaultCellStyle = dataGridViewCellStyle11;
             this.sOrdDetGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sOrdDetGrid.Location = new System.Drawing.Point(3, 22);
             this.sOrdDetGrid.Name = "sOrdDetGrid";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.sOrdDetGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.sOrdDetGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.sOrdDetGrid.RowHeadersVisible = false;
             this.sOrdDetGrid.RowTemplate.Height = 28;
             this.sOrdDetGrid.Size = new System.Drawing.Size(832, 357);
@@ -453,9 +455,9 @@
             // 
             // discountTextBox
             // 
-            this.discountTextBox.Enabled = false;
             this.discountTextBox.Location = new System.Drawing.Point(176, 64);
             this.discountTextBox.Name = "discountTextBox";
+            this.discountTextBox.ReadOnly = true;
             this.discountTextBox.Size = new System.Drawing.Size(170, 26);
             this.discountTextBox.TabIndex = 10;
             // 
@@ -470,9 +472,9 @@
             // 
             // totalPaidTextBox
             // 
-            this.totalPaidTextBox.Enabled = false;
             this.totalPaidTextBox.Location = new System.Drawing.Point(176, 145);
             this.totalPaidTextBox.Name = "totalPaidTextBox";
+            this.totalPaidTextBox.ReadOnly = true;
             this.totalPaidTextBox.Size = new System.Drawing.Size(170, 26);
             this.totalPaidTextBox.TabIndex = 8;
             // 
@@ -487,9 +489,9 @@
             // 
             // rawTotalTextBox
             // 
-            this.rawTotalTextBox.Enabled = false;
             this.rawTotalTextBox.Location = new System.Drawing.Point(176, 25);
             this.rawTotalTextBox.Name = "rawTotalTextBox";
+            this.rawTotalTextBox.ReadOnly = true;
             this.rawTotalTextBox.Size = new System.Drawing.Size(170, 26);
             this.rawTotalTextBox.TabIndex = 6;
             // 
@@ -504,15 +506,15 @@
             // 
             // trueTotalTextBox
             // 
-            this.trueTotalTextBox.Enabled = false;
             this.trueTotalTextBox.Location = new System.Drawing.Point(176, 102);
             this.trueTotalTextBox.Name = "trueTotalTextBox";
+            this.trueTotalTextBox.ReadOnly = true;
             this.trueTotalTextBox.Size = new System.Drawing.Size(170, 26);
             this.trueTotalTextBox.TabIndex = 2;
             // 
             // infoOthers
             // 
-            this.infoOthers.Controls.Add(this.textBox1);
+            this.infoOthers.Controls.Add(this.statusTextBox);
             this.infoOthers.Controls.Add(this.statusLabel);
             this.infoOthers.Controls.Add(this.receiptDateTextBox);
             this.infoOthers.Controls.Add(this.receiptDate);
@@ -530,13 +532,13 @@
             this.infoOthers.TabStop = false;
             this.infoOthers.Text = "Info";
             // 
-            // textBox1
+            // statusTextBox
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(156, 131);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(170, 26);
-            this.textBox1.TabIndex = 10;
+            this.statusTextBox.Location = new System.Drawing.Point(156, 131);
+            this.statusTextBox.Name = "statusTextBox";
+            this.statusTextBox.ReadOnly = true;
+            this.statusTextBox.Size = new System.Drawing.Size(228, 26);
+            this.statusTextBox.TabIndex = 10;
             // 
             // statusLabel
             // 
@@ -549,10 +551,10 @@
             // 
             // receiptDateTextBox
             // 
-            this.receiptDateTextBox.Enabled = false;
             this.receiptDateTextBox.Location = new System.Drawing.Point(156, 64);
             this.receiptDateTextBox.Name = "receiptDateTextBox";
-            this.receiptDateTextBox.Size = new System.Drawing.Size(170, 26);
+            this.receiptDateTextBox.ReadOnly = true;
+            this.receiptDateTextBox.Size = new System.Drawing.Size(228, 26);
             this.receiptDateTextBox.TabIndex = 8;
             // 
             // receiptDate
@@ -566,10 +568,10 @@
             // 
             // receiptNoTextBox
             // 
-            this.receiptNoTextBox.Enabled = false;
             this.receiptNoTextBox.Location = new System.Drawing.Point(156, 28);
             this.receiptNoTextBox.Name = "receiptNoTextBox";
-            this.receiptNoTextBox.Size = new System.Drawing.Size(170, 26);
+            this.receiptNoTextBox.ReadOnly = true;
+            this.receiptNoTextBox.Size = new System.Drawing.Size(228, 26);
             this.receiptNoTextBox.TabIndex = 6;
             // 
             // receiptNoLabel
@@ -583,10 +585,10 @@
             // 
             // employeeTextBox
             // 
-            this.employeeTextBox.Enabled = false;
             this.employeeTextBox.Location = new System.Drawing.Point(156, 99);
             this.employeeTextBox.Name = "employeeTextBox";
-            this.employeeTextBox.Size = new System.Drawing.Size(170, 26);
+            this.employeeTextBox.ReadOnly = true;
+            this.employeeTextBox.Size = new System.Drawing.Size(228, 26);
             this.employeeTextBox.TabIndex = 4;
             // 
             // empLabel
@@ -616,10 +618,10 @@
             // 
             // dateModTextBox
             // 
-            this.dateModTextBox.Enabled = false;
             this.dateModTextBox.Location = new System.Drawing.Point(156, 25);
             this.dateModTextBox.Name = "dateModTextBox";
-            this.dateModTextBox.Size = new System.Drawing.Size(170, 26);
+            this.dateModTextBox.ReadOnly = true;
+            this.dateModTextBox.Size = new System.Drawing.Size(232, 26);
             this.dateModTextBox.TabIndex = 8;
             // 
             // dateModLabel
@@ -633,10 +635,10 @@
             // 
             // modEmployeeTextBox
             // 
-            this.modEmployeeTextBox.Enabled = false;
             this.modEmployeeTextBox.Location = new System.Drawing.Point(156, 67);
             this.modEmployeeTextBox.Name = "modEmployeeTextBox";
-            this.modEmployeeTextBox.Size = new System.Drawing.Size(170, 26);
+            this.modEmployeeTextBox.ReadOnly = true;
+            this.modEmployeeTextBox.Size = new System.Drawing.Size(232, 26);
             this.modEmployeeTextBox.TabIndex = 4;
             // 
             // modEmpLabel
@@ -778,7 +780,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.CheckBox shCancelSOCheckB;
         private System.Windows.Forms.Button cancelBtn;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox statusTextBox;
         private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.CheckBox hideActiveSOCheckB;
         private System.Windows.Forms.Button addSalesOrder;
