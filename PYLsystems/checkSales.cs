@@ -26,12 +26,14 @@ namespace PYLsystems
             InitializeComponent();
             this.employeeId = 1;// 1 is Admin - programmer. To be removed once connected to Employee Mgmt Subsystem.
             this.employeeStatus = 1; // Same with above line. To be removed once connected to Employee Mgmt Subsystem
+            DefaultDatesInitializer();
         }
         public checkSales(int employeeId, int employeeStatus)
         {
             InitializeComponent();
             this.employeeId = employeeId;
             this.employeeStatus = employeeStatus;
+            DefaultDatesInitializer();
         }       
         private void checkSales_Load(object sender, EventArgs e)
         {
@@ -45,11 +47,14 @@ namespace PYLsystems
             
             this.salesOrdersGrid.DataSource = null;
             this.salesOrdersGrid.Rows.Clear();
-            String salesOrderString = "SELECT sOrd_Num AS \"Receipt Number\", sOrd_Date AS \"Date\", " +
-                "DATE(sOrd_Date) AS \"datePick\", sOrd_status FROM salesOrder ORDER BY sOrd_Date desc, sOrd_Num desc;";
+            String salesOrderString = "SELECT sOrd_Num AS 'Receipt Number', sOrd_Date AS 'Date', " +
+                "DATE(sOrd_Date) AS 'datePick', sOrd_status FROM salesOrder  WHERE sOrd_Date BETWEEN @DateStart AND @DateEnd ORDER BY sOrd_Date desc, sOrd_Num desc;";
 
             MySqlConnection my_conn = new MySqlConnection(connString);
             MySqlCommand salesOrdList_command = new MySqlCommand(salesOrderString, my_conn);
+            salesOrdList_command.Parameters.AddWithValue("@DateStart", DateStart);
+            salesOrdList_command.Parameters.AddWithValue("@DateEnd", DateEnd);
+
             MySqlDataAdapter my_adapter = new MySqlDataAdapter(salesOrdList_command);
 
             salesOrderdt = new DataTable();
@@ -62,8 +67,19 @@ namespace PYLsystems
             salesOrdersGrid.Columns["datePick"].Visible = false;
             salesOrdersGrid.Columns["Receipt Number"].DefaultCellStyle.Format = "0000000";
         }
+        private void DefaultDatesInitializer()
+        {
+            String DefaultStartDate = DateTime.Today.AddDays(-(int)DateTime.Now.DayOfWeek - 6).ToString("yyyy-MM-dd") + " 00:00:00";
+            String DefaultEndDate = DateTime.Today.ToString("yyyy-MM-dd") + " 23:59:59";
+            DateStart = DefaultStartDate;
+            DateEnd = DefaultEndDate;
+            startDatePicker.Value = DateTime.Today.AddDays(-(int)DateTime.Now.DayOfWeek - 6).AddHours(0).AddMinutes(0).AddSeconds(0);
+            endDatePicker.Value = DateTime.Today.AddHours(23).AddMinutes(59).AddSeconds(59);
+            //MessageBox.Show(endDatePicker.Value.ToString());
+
+        }
         //DateFilters
-        private void checkSalesFilterDate_Loader(String date, int startOrEnd){
+        /*private void checkSalesFilterDate_Loader(String date, int startOrEnd){
             String FilterStringComparison;
             if (startOrEnd == 0)
             {
@@ -137,7 +153,7 @@ namespace PYLsystems
             }
             salesOrdersGrid.Update();
             salesOrdersGrid.Refresh();
-        }
+        }*/
         //Check Cancelled Sales Orders
         private void checkSalesCancelled() {
             String FilterStringComparison; 
@@ -190,7 +206,7 @@ namespace PYLsystems
                 Datetime = endDatePicker.Value.ToString("yyyy/MM/dd H:mm:ss");
             }
             return Datetime;
-        }*/
+        }
         private String getDateTimePicker(int startOrEnd)
         {
             String Datetime = "";
@@ -203,9 +219,22 @@ namespace PYLsystems
                 Datetime = endDatePicker.Value.ToString("yyyy/MM/dd");
             }
             return Datetime;
+        }*/
+        private String getDateTimePicker(int startOrEnd)
+        {
+            String Datetime = "";
+            if (startOrEnd == 0)
+            {
+                Datetime = startDatePicker.Value.ToString("yyyy-MM-dd") + " 00:00:00";
+            }
+            else if (startOrEnd == 1)
+            {
+                Datetime = endDatePicker.Value.ToString("yyyy-MM-dd") + " 23:59:59";
+            }
+            return Datetime;
         }
         //DateStringRemover
-        private void dateStringRemover(int startOrEnd) {
+        /*private void dateStringRemover(int startOrEnd) {
             String FilterStringComparison;
             if (startOrEnd == 0)
             {
@@ -222,7 +251,7 @@ namespace PYLsystems
                 sOrdDefaultFilter.RowFilter = sOrdDefaultFilter.RowFilter.Remove(indexOfDateFilter,
                     FilterStringComparison.Length + 11);
             }
-        }
+        }*/
         //Sales Orders Details Loader
         private void salesOrderDetGrid_Loader(int sOrd_Num)
         {
@@ -381,7 +410,7 @@ namespace PYLsystems
 
         private void startDatePicker_EnabledChanged(object sender, EventArgs e)
         {
-            if (startDatePicker.Enabled && !endDatePicker.Enabled)
+            /*if (startDatePicker.Enabled && !endDatePicker.Enabled)
             {
                 if (sOrdDefaultFilter.RowFilter.Contains(" AND datePick<= #"))
                 {
@@ -410,43 +439,47 @@ namespace PYLsystems
                 {
                     hideActiveSalesOrders();
                 }
-            }
+            }*/
+            DateStart = getDateTimePicker(0);
+            checkSales_Loader();
         }
 
         private void endDatePicker_EnabledChanged(object sender, EventArgs e)
         {
-            if (endDatePicker.Enabled && !startDatePicker.Enabled)
-            {
-                if (sOrdDefaultFilter.RowFilter.Contains(" AND datePick>= #"))
-                {
-                    dateStringRemover(1);
-                }
-                checkSalesFilterDate_Loader(getDateTimePicker(1), 1);
-            }
-            else if (startDatePicker.Enabled && !endDatePicker.Enabled)
-            {
-                if (sOrdDefaultFilter.RowFilter.Contains(" AND datePick<= #"))
-                {
-                    dateStringRemover(0);
-                }
-                checkSalesFilterDate_Loader(getDateTimePicker(0), 0);
-            }
-            else if (startDatePicker.Enabled && endDatePicker.Enabled)
-            {
-                checkSalesFilterDate_Loader(getDateTimePicker(0), getDateTimePicker(1), 0);
-            }
-            else if (!(startDatePicker.Enabled || endDatePicker.Enabled))
-            {
-                checkSales_Loader();
-                if (shCancelSOCheckB.Checked)
-                {
-                    checkSalesCancelled();
-                }
-                if (hideActiveSOCheckB.Checked)
-                {
-                    hideActiveSalesOrders();
-                }
-            }
+            DateEnd = getDateTimePicker(1);
+            checkSales_Loader();
+            /* if (endDatePicker.Enabled && !startDatePicker.Enabled)
+             {
+                 if (sOrdDefaultFilter.RowFilter.Contains(" AND datePick>= #"))
+                 {
+                     dateStringRemover(1);
+                 }
+                 checkSalesFilterDate_Loader(getDateTimePicker(1), 1);
+             }
+             else if (startDatePicker.Enabled && !endDatePicker.Enabled)
+             {
+                 if (sOrdDefaultFilter.RowFilter.Contains(" AND datePick<= #"))
+                 {
+                     dateStringRemover(0);
+                 }
+                 checkSalesFilterDate_Loader(getDateTimePicker(0), 0);
+             }
+             else if (startDatePicker.Enabled && endDatePicker.Enabled)
+             {
+                 checkSalesFilterDate_Loader(getDateTimePicker(0), getDateTimePicker(1), 0);
+             }
+             else if (!(startDatePicker.Enabled || endDatePicker.Enabled))
+             {
+                 checkSales_Loader();
+                 if (shCancelSOCheckB.Checked)
+                 {
+                     checkSalesCancelled();
+                 }
+                 if (hideActiveSOCheckB.Checked)
+                 {
+                     hideActiveSalesOrders();
+                 }
+             }*/
         }
         /*Update sales order. Can only update type of frame used but must be same price as old. Otherwise, make a new sales order.*/
         private void sOrdDetGrid_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)

@@ -98,11 +98,11 @@ namespace PYLsystems
         }
         private void DefaultDatesInitializer()
         {
-            String DefaultStartDate = DateTime.Today.AddDays(-(int)DateTime.Now.DayOfWeek + 1).ToString("yyyy-MM-dd") + " 00:00:00";
+            String DefaultStartDate = DateTime.Today.AddDays(-(int)DateTime.Now.DayOfWeek - 6).ToString("yyyy-MM-dd") + " 00:00:00";
             String DefaultEndDate = DateTime.Today.ToString("yyyy-MM-dd") + " 23:59:59";
             DateStart = DefaultStartDate;
             DateEnd = DefaultEndDate;
-            startDatePicker.Value = DateTime.Today.AddDays(-(int)DateTime.Now.DayOfWeek + 1).AddHours(0).AddMinutes(0).AddSeconds(0);
+            startDatePicker.Value = DateTime.Today.AddDays(-(int)DateTime.Now.DayOfWeek - 6).AddHours(0).AddMinutes(0).AddSeconds(0);
             endDatePicker.Value = DateTime.Today.AddHours(23).AddMinutes(59).AddSeconds(59);
             //MessageBox.Show(endDatePicker.Value.ToString());
 
