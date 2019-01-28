@@ -86,7 +86,7 @@ namespace PYLsystems
                 "FL.frameItemID FROM frame_list AS FL " +
                 "LEFT JOIN(SELECT FS.frameItemID, SUM(FS.stockinQuantity) AS Stockin FROM framestock_in AS FS GROUP BY FS.frameItemID) " +
                 "AS FS ON FL.frameItemID = FS.frameItemID " +
-                "LEFT JOIN(SELECT SOD.frameItemID, SUM(SOD.sOrd_Quantity) AS Stockout FROM sOrder_details AS SOD GROUP BY SOD.frameItemID) " +
+                "LEFT JOIN(SELECT SOD.frameItemID, SUM(SOD.sOrd_Quantity) AS Stockout FROM sOrder_details AS SOD LEFT JOIN salesOrder AS SO ON SOD.sOrd_Num=SO.sOrd_Num WHERE SO.sOrd_status>0 GROUP BY SOD.frameItemID) " +
                 "AS SOD ON FL.frameItemID = SOD.frameItemID " +
                 "WHERE FL.active = 'active'; ";
 
@@ -97,9 +97,9 @@ namespace PYLsystems
             frameAvail_dt = new DataTable();
             frameAvail_adapter.Fill(frameAvail_dt);
             int rowIndex = 0;          
-            frameAvailDefaultFilter = new DataView(frameAvail_dt);
+            //frameAvailDefaultFilter = new DataView(frameAvail_dt);
             //frameAvailDefaultFilter.RowFilter = "sOrd_status = 0";
-            frameInvGrid.DataSource = frameAvailDefaultFilter;
+            frameInvGrid.DataSource = frameAvail_dt;
 
             for (int i = 0; i < frameInvGrid.Rows.Count; i++)
             {

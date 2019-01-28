@@ -485,7 +485,7 @@ namespace PYLsystems
         private void sOrdDetGrid_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             int curRowIndex = salesOrdersGrid.SelectedRows[0].Index;
-            double sOrdDet_unitPrice = Double.Parse(sOrdDetGrid["Unit Price", curRowIndex].Value.ToString());
+            double sOrdDet_unitPrice = Double.Parse(sOrdDetGrid["Unit Price", e.RowIndex].Value.ToString());
 
             DataGridViewComboBoxCell sOrdDetGrid_CBCell = new DataGridViewComboBoxCell();
             sOrdDetGrid[e.ColumnIndex, e.RowIndex] = sOrdDetGrid_CBCell;
