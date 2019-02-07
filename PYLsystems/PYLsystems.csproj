@@ -76,6 +76,18 @@
     <Compile Include="checkSales.designer.cs">
       <DependentUpon>checkSales.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCustomerAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCustomerAccount.Designer.cs">
+      <DependentUpon>frmCustomerAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDamageItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDamageItems.Designer.cs">
+      <DependentUpon>frmDamageItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFrameDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +99,42 @@
     </Compile>
     <Compile Include="frmFrameList.Designer.cs">
       <DependentUpon>frmFrameList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFrameStockInSupplyStockOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFrameStockInSupplyStockOut.Designer.cs">
+      <DependentUpon>frmFrameStockInSupplyStockOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFrameStockInUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFrameStockInUpdate.Designer.cs">
+      <DependentUpon>frmFrameStockInUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInventoryHomePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInventoryHomePage.Designer.cs">
+      <DependentUpon>frmInventoryHomePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmJobOrderDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmJobOrderDetails.Designer.cs">
+      <DependentUpon>frmJobOrderDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmJobOrderTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmJobOrderTransaction.Designer.cs">
+      <DependentUpon>frmJobOrderTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRemainingSupplyFrames.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRemainingSupplyFrames.Designer.cs">
+      <DependentUpon>frmRemainingSupplyFrames.cs</DependentUpon>
     </Compile>
     <Compile Include="frmStockInSupplyEdit.cs">
       <SubType>Form</SubType>
@@ -141,8 +189,32 @@
     <EmbeddedResource Include="checkSales.resx">
       <DependentUpon>checkSales.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCustomerAccount.resx">
+      <DependentUpon>frmCustomerAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDamageItems.resx">
+      <DependentUpon>frmDamageItems.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFrameList.resx">
       <DependentUpon>frmFrameList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFrameStockInSupplyStockOut.resx">
+      <DependentUpon>frmFrameStockInSupplyStockOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFrameStockInUpdate.resx">
+      <DependentUpon>frmFrameStockInUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInventoryHomePage.resx">
+      <DependentUpon>frmInventoryHomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmJobOrderDetails.resx">
+      <DependentUpon>frmJobOrderDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmJobOrderTransaction.resx">
+      <DependentUpon>frmJobOrderTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRemainingSupplyFrames.resx">
+      <DependentUpon>frmRemainingSupplyFrames.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStockInSupplyEdit.resx">
       <DependentUpon>frmStockInSupplyEdit.cs</DependentUpon>
