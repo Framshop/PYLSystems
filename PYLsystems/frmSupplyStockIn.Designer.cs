@@ -54,45 +54,50 @@
             this.lblsupplyStockInQuantityUpdate = new System.Windows.Forms.Label();
             this.lblUnitPriceUpdate = new System.Windows.Forms.Label();
             this.lblActiveUpdate = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.lblSearch = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.lbelsupplyID = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSupplyStockIn)).BeginInit();
             this.SuspendLayout();
             // 
             // txtContactDetails
             // 
             this.txtContactDetails.Enabled = false;
-            this.txtContactDetails.Location = new System.Drawing.Point(36, 163);
+            this.txtContactDetails.Location = new System.Drawing.Point(6, 91);
             this.txtContactDetails.Name = "txtContactDetails";
-            this.txtContactDetails.Size = new System.Drawing.Size(100, 20);
-            this.txtContactDetails.TabIndex = 1;
+            this.txtContactDetails.Size = new System.Drawing.Size(237, 20);
+            this.txtContactDetails.TabIndex = 4;
             // 
             // txtSupplierDetails
             // 
             this.txtSupplierDetails.Enabled = false;
-            this.txtSupplierDetails.Location = new System.Drawing.Point(36, 137);
+            this.txtSupplierDetails.Location = new System.Drawing.Point(6, 65);
             this.txtSupplierDetails.Name = "txtSupplierDetails";
-            this.txtSupplierDetails.Size = new System.Drawing.Size(100, 20);
-            this.txtSupplierDetails.TabIndex = 2;
+            this.txtSupplierDetails.Size = new System.Drawing.Size(237, 20);
+            this.txtSupplierDetails.TabIndex = 3;
             // 
             // txtSupplyDescription
             // 
             this.txtSupplyDescription.Enabled = false;
-            this.txtSupplyDescription.Location = new System.Drawing.Point(39, 287);
+            this.txtSupplyDescription.Location = new System.Drawing.Point(6, 191);
             this.txtSupplyDescription.Name = "txtSupplyDescription";
-            this.txtSupplyDescription.Size = new System.Drawing.Size(100, 20);
-            this.txtSupplyDescription.TabIndex = 5;
+            this.txtSupplyDescription.Size = new System.Drawing.Size(237, 20);
+            this.txtSupplyDescription.TabIndex = 7;
             // 
             // txtUnitMeasure
             // 
             this.txtUnitMeasure.Enabled = false;
-            this.txtUnitMeasure.Location = new System.Drawing.Point(39, 313);
+            this.txtUnitMeasure.Location = new System.Drawing.Point(6, 217);
             this.txtUnitMeasure.Name = "txtUnitMeasure";
-            this.txtUnitMeasure.Size = new System.Drawing.Size(100, 20);
-            this.txtUnitMeasure.TabIndex = 4;
+            this.txtUnitMeasure.Size = new System.Drawing.Size(237, 20);
+            this.txtUnitMeasure.TabIndex = 8;
             // 
             // lblsupplierID
             // 
             this.lblsupplierID.AutoSize = true;
-            this.lblsupplierID.Location = new System.Drawing.Point(93, 643);
+            this.lblsupplierID.Location = new System.Drawing.Point(218, 483);
             this.lblsupplierID.Name = "lblsupplierID";
             this.lblsupplierID.Size = new System.Drawing.Size(35, 13);
             this.lblsupplierID.TabIndex = 6;
@@ -101,7 +106,7 @@
             // lbl_supply_itemsID
             // 
             this.lbl_supply_itemsID.AutoSize = true;
-            this.lbl_supply_itemsID.Location = new System.Drawing.Point(93, 615);
+            this.lbl_supply_itemsID.Location = new System.Drawing.Point(218, 455);
             this.lbl_supply_itemsID.Name = "lbl_supply_itemsID";
             this.lbl_supply_itemsID.Size = new System.Drawing.Size(35, 13);
             this.lbl_supply_itemsID.TabIndex = 7;
@@ -109,9 +114,10 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(28, 489);
+            this.btnAdd.Enabled = false;
+            this.btnAdd.Location = new System.Drawing.Point(6, 466);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(131, 23);
             this.btnAdd.TabIndex = 8;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -120,52 +126,57 @@
             // lblSupplier
             // 
             this.lblSupplier.AutoSize = true;
-            this.lblSupplier.Location = new System.Drawing.Point(36, 64);
+            this.lblSupplier.Location = new System.Drawing.Point(6, 21);
             this.lblSupplier.Name = "lblSupplier";
             this.lblSupplier.Size = new System.Drawing.Size(45, 13);
-            this.lblSupplier.TabIndex = 9;
+            this.lblSupplier.TabIndex = 1;
             this.lblSupplier.Text = "Supplier";
             // 
             // lblSupply_Items
             // 
             this.lblSupply_Items.AutoSize = true;
-            this.lblSupply_Items.Location = new System.Drawing.Point(36, 214);
+            this.lblSupply_Items.Location = new System.Drawing.Point(3, 148);
             this.lblSupply_Items.Name = "lblSupply_Items";
             this.lblSupply_Items.Size = new System.Drawing.Size(67, 13);
-            this.lblSupply_Items.TabIndex = 10;
+            this.lblSupply_Items.TabIndex = 5;
             this.lblSupply_Items.Text = "Supply Items";
             // 
             // msktxtDeliveryDate
             // 
-            this.msktxtDeliveryDate.Location = new System.Drawing.Point(118, 369);
+            this.msktxtDeliveryDate.Location = new System.Drawing.Point(9, 292);
             this.msktxtDeliveryDate.Mask = "0000-00-00 90:00";
             this.msktxtDeliveryDate.Name = "msktxtDeliveryDate";
             this.msktxtDeliveryDate.PromptChar = ' ';
-            this.msktxtDeliveryDate.Size = new System.Drawing.Size(98, 20);
-            this.msktxtDeliveryDate.TabIndex = 11;
+            this.msktxtDeliveryDate.Size = new System.Drawing.Size(235, 20);
+            this.msktxtDeliveryDate.TabIndex = 10;
             this.msktxtDeliveryDate.ValidatingType = typeof(System.DateTime);
             this.msktxtDeliveryDate.TextChanged += new System.EventHandler(this.msktxtDeliveryDate_TextChanged);
             // 
             // txtDeliveryDate
             // 
-            this.txtDeliveryDate.Location = new System.Drawing.Point(96, 582);
+            this.txtDeliveryDate.Location = new System.Drawing.Point(374, 466);
             this.txtDeliveryDate.Name = "txtDeliveryDate";
             this.txtDeliveryDate.Size = new System.Drawing.Size(100, 20);
             this.txtDeliveryDate.TabIndex = 12;
+            this.txtDeliveryDate.Visible = false;
+            this.txtDeliveryDate.TextChanged += new System.EventHandler(this.txtDeliveryDate_TextChanged);
             // 
             // txtStockInQuantity
             // 
-            this.txtStockInQuantity.Location = new System.Drawing.Point(118, 422);
+            this.txtStockInQuantity.Location = new System.Drawing.Point(9, 376);
             this.txtStockInQuantity.Name = "txtStockInQuantity";
-            this.txtStockInQuantity.Size = new System.Drawing.Size(98, 20);
-            this.txtStockInQuantity.TabIndex = 13;
+            this.txtStockInQuantity.Size = new System.Drawing.Size(235, 20);
+            this.txtStockInQuantity.TabIndex = 14;
+            this.txtStockInQuantity.TextChanged += new System.EventHandler(this.txtStockInQuantity_TextChanged);
+            this.txtStockInQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStockInQuantity_KeyPress);
             // 
             // txtSupplyPrice
             // 
-            this.txtSupplyPrice.Location = new System.Drawing.Point(118, 449);
+            this.txtSupplyPrice.Location = new System.Drawing.Point(9, 415);
             this.txtSupplyPrice.Name = "txtSupplyPrice";
-            this.txtSupplyPrice.Size = new System.Drawing.Size(98, 20);
-            this.txtSupplyPrice.TabIndex = 14;
+            this.txtSupplyPrice.Size = new System.Drawing.Size(235, 20);
+            this.txtSupplyPrice.TabIndex = 16;
+            this.txtSupplyPrice.TextChanged += new System.EventHandler(this.txtSupplyPrice_TextChanged);
             // 
             // cboActive
             // 
@@ -174,91 +185,101 @@
             this.cboActive.Items.AddRange(new object[] {
             "Active",
             "Inactive"});
-            this.cboActive.Location = new System.Drawing.Point(118, 395);
+            this.cboActive.Location = new System.Drawing.Point(9, 331);
             this.cboActive.Name = "cboActive";
-            this.cboActive.Size = new System.Drawing.Size(98, 21);
-            this.cboActive.TabIndex = 15;
+            this.cboActive.Size = new System.Drawing.Size(235, 21);
+            this.cboActive.TabIndex = 12;
+            this.cboActive.SelectedIndexChanged += new System.EventHandler(this.cboActive_SelectedIndexChanged);
             // 
             // cboSupplierName
             // 
             this.cboSupplierName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSupplierName.FormattingEnabled = true;
-            this.cboSupplierName.Location = new System.Drawing.Point(36, 109);
+            this.cboSupplierName.Location = new System.Drawing.Point(6, 37);
             this.cboSupplierName.Name = "cboSupplierName";
-            this.cboSupplierName.Size = new System.Drawing.Size(100, 21);
-            this.cboSupplierName.TabIndex = 16;
+            this.cboSupplierName.Size = new System.Drawing.Size(237, 21);
+            this.cboSupplierName.TabIndex = 2;
             this.cboSupplierName.SelectedIndexChanged += new System.EventHandler(this.cboSupplierName_SelectedIndexChanged);
             // 
             // cboSupplyName
             // 
             this.cboSupplyName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSupplyName.FormattingEnabled = true;
-            this.cboSupplyName.Location = new System.Drawing.Point(39, 260);
+            this.cboSupplyName.Location = new System.Drawing.Point(6, 164);
             this.cboSupplyName.Name = "cboSupplyName";
-            this.cboSupplyName.Size = new System.Drawing.Size(102, 21);
-            this.cboSupplyName.TabIndex = 17;
+            this.cboSupplyName.Size = new System.Drawing.Size(239, 21);
+            this.cboSupplyName.TabIndex = 6;
             this.cboSupplyName.SelectedIndexChanged += new System.EventHandler(this.cboSupplyName_SelectedIndexChanged);
             // 
             // lblActive
             // 
             this.lblActive.AutoSize = true;
-            this.lblActive.Location = new System.Drawing.Point(5, 402);
+            this.lblActive.Location = new System.Drawing.Point(6, 315);
             this.lblActive.Name = "lblActive";
             this.lblActive.Size = new System.Drawing.Size(37, 13);
-            this.lblActive.TabIndex = 18;
+            this.lblActive.TabIndex = 11;
             this.lblActive.Text = "Active";
             // 
             // lblStockInQuantity
             // 
             this.lblStockInQuantity.AutoSize = true;
-            this.lblStockInQuantity.Location = new System.Drawing.Point(5, 429);
+            this.lblStockInQuantity.Location = new System.Drawing.Point(6, 360);
             this.lblStockInQuantity.Name = "lblStockInQuantity";
             this.lblStockInQuantity.Size = new System.Drawing.Size(88, 13);
-            this.lblStockInQuantity.TabIndex = 19;
+            this.lblStockInQuantity.TabIndex = 13;
             this.lblStockInQuantity.Text = "Stock in Quantity";
             // 
             // lblUnitPrice
             // 
             this.lblUnitPrice.AutoSize = true;
-            this.lblUnitPrice.Location = new System.Drawing.Point(5, 456);
+            this.lblUnitPrice.Location = new System.Drawing.Point(6, 399);
             this.lblUnitPrice.Name = "lblUnitPrice";
             this.lblUnitPrice.Size = new System.Drawing.Size(53, 13);
-            this.lblUnitPrice.TabIndex = 20;
+            this.lblUnitPrice.TabIndex = 15;
             this.lblUnitPrice.Text = "Unit Price";
             this.lblUnitPrice.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(109, 489);
+            this.btnEdit.Enabled = false;
+            this.btnEdit.Location = new System.Drawing.Point(6, 495);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.Size = new System.Drawing.Size(131, 23);
             this.btnEdit.TabIndex = 21;
-            this.btnEdit.Text = "Edit";
+            this.btnEdit.Text = "Stock In";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // dataGridSupplyStockIn
             // 
+            this.dataGridSupplyStockIn.AllowUserToAddRows = false;
+            this.dataGridSupplyStockIn.AllowUserToDeleteRows = false;
+            this.dataGridSupplyStockIn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridSupplyStockIn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridSupplyStockIn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridSupplyStockIn.Location = new System.Drawing.Point(257, 12);
+            this.dataGridSupplyStockIn.Location = new System.Drawing.Point(259, 65);
             this.dataGridSupplyStockIn.Name = "dataGridSupplyStockIn";
-            this.dataGridSupplyStockIn.Size = new System.Drawing.Size(560, 725);
-            this.dataGridSupplyStockIn.TabIndex = 22;
+            this.dataGridSupplyStockIn.ReadOnly = true;
+            this.dataGridSupplyStockIn.Size = new System.Drawing.Size(704, 529);
+            this.dataGridSupplyStockIn.TabIndex = 19;
             this.dataGridSupplyStockIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridSupplyStockIn_CellClick);
+            this.dataGridSupplyStockIn.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridSupplyStockIn_CellContentClick);
             // 
             // lblDeliveryDate
             // 
             this.lblDeliveryDate.AutoSize = true;
-            this.lblDeliveryDate.Location = new System.Drawing.Point(2, 376);
+            this.lblDeliveryDate.Location = new System.Drawing.Point(6, 276);
             this.lblDeliveryDate.Name = "lblDeliveryDate";
             this.lblDeliveryDate.Size = new System.Drawing.Size(71, 13);
-            this.lblDeliveryDate.TabIndex = 23;
+            this.lblDeliveryDate.TabIndex = 9;
             this.lblDeliveryDate.Text = "Delivery Date";
             // 
             // lblSupplyID
             // 
             this.lblSupplyID.AutoSize = true;
-            this.lblSupplyID.Location = new System.Drawing.Point(25, 600);
+            this.lblSupplyID.Location = new System.Drawing.Point(150, 440);
             this.lblSupplyID.Name = "lblSupplyID";
             this.lblSupplyID.Size = new System.Drawing.Size(35, 13);
             this.lblSupplyID.TabIndex = 24;
@@ -267,7 +288,7 @@
             // lblsupplyStockInQuantityUpdate
             // 
             this.lblsupplyStockInQuantityUpdate.AutoSize = true;
-            this.lblsupplyStockInQuantityUpdate.Location = new System.Drawing.Point(25, 621);
+            this.lblsupplyStockInQuantityUpdate.Location = new System.Drawing.Point(150, 461);
             this.lblsupplyStockInQuantityUpdate.Name = "lblsupplyStockInQuantityUpdate";
             this.lblsupplyStockInQuantityUpdate.Size = new System.Drawing.Size(35, 13);
             this.lblsupplyStockInQuantityUpdate.TabIndex = 25;
@@ -276,7 +297,7 @@
             // lblUnitPriceUpdate
             // 
             this.lblUnitPriceUpdate.AutoSize = true;
-            this.lblUnitPriceUpdate.Location = new System.Drawing.Point(25, 643);
+            this.lblUnitPriceUpdate.Location = new System.Drawing.Point(150, 483);
             this.lblUnitPriceUpdate.Name = "lblUnitPriceUpdate";
             this.lblUnitPriceUpdate.Size = new System.Drawing.Size(35, 13);
             this.lblUnitPriceUpdate.TabIndex = 26;
@@ -285,21 +306,70 @@
             // lblActiveUpdate
             // 
             this.lblActiveUpdate.AutoSize = true;
-            this.lblActiveUpdate.Location = new System.Drawing.Point(25, 665);
+            this.lblActiveUpdate.Location = new System.Drawing.Point(150, 505);
             this.lblActiveUpdate.Name = "lblActiveUpdate";
             this.lblActiveUpdate.Size = new System.Drawing.Size(35, 13);
             this.lblActiveUpdate.TabIndex = 27;
             this.lblActiveUpdate.Text = "label1";
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(6, 524);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(131, 23);
+            this.btnCancel.TabIndex = 28;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Location = new System.Drawing.Point(254, 37);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(41, 13);
+            this.lblSearch.TabIndex = 17;
+            this.lblSearch.Text = "Search";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(310, 30);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(291, 20);
+            this.txtSearch.TabIndex = 18;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // lbelsupplyID
+            // 
+            this.lbelsupplyID.AutoSize = true;
+            this.lbelsupplyID.Location = new System.Drawing.Point(59, 569);
+            this.lbelsupplyID.Name = "lbelsupplyID";
+            this.lbelsupplyID.Size = new System.Drawing.Size(0, 13);
+            this.lbelsupplyID.TabIndex = 29;
+            this.lbelsupplyID.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(83, 276);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(102, 13);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "yyyy/mm/dd time";
+            // 
             // frmSupplyStockIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(829, 749);
-            this.Controls.Add(this.lblActiveUpdate);
-            this.Controls.Add(this.lblUnitPriceUpdate);
-            this.Controls.Add(this.lblsupplyStockInQuantityUpdate);
-            this.Controls.Add(this.lblSupplyID);
+            this.ClientSize = new System.Drawing.Size(973, 606);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbelsupplyID);
+            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.lblSearch);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lblDeliveryDate);
             this.Controls.Add(this.dataGridSupplyStockIn);
             this.Controls.Add(this.btnEdit);
@@ -322,6 +392,10 @@
             this.Controls.Add(this.txtUnitMeasure);
             this.Controls.Add(this.txtSupplierDetails);
             this.Controls.Add(this.txtContactDetails);
+            this.Controls.Add(this.lblActiveUpdate);
+            this.Controls.Add(this.lblUnitPriceUpdate);
+            this.Controls.Add(this.lblsupplyStockInQuantityUpdate);
+            this.Controls.Add(this.lblSupplyID);
             this.Name = "frmSupplyStockIn";
             this.Text = "Supply Stock In";
             this.Load += new System.EventHandler(this.frmSupplyStockIn_Load);
@@ -358,5 +432,10 @@
         public System.Windows.Forms.Label lblsupplyStockInQuantityUpdate;
         public System.Windows.Forms.Label lblUnitPriceUpdate;
         public System.Windows.Forms.Label lblActiveUpdate;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label lblSearch;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Label lbelsupplyID;
+        private System.Windows.Forms.Label label1;
     }
 }

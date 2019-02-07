@@ -23,17 +23,35 @@ namespace PYLsystems
         {
             // ADD Supplier
             myConn.Open();
-            string myQuery = "INSERT INTO supplier (supplierName, supplierDetails, contactDetails) values('" + txtName.Text + "','" + txtDetails.Text + "','" + txtContact.Text + "')";
-            MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
-            MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
-            DataTable myDt = new DataTable();
-            myAdp.Fill(myDt);
+            MySqlDataAdapter myAd;
+            DataTable myD = new DataTable();
+            MySqlCommand myCom = new MySqlCommand("SELECT * FROM supplier WHERE supplierName = '" + txtName.Text + "'", myConn);
+            myAd = new MySqlDataAdapter(myCom);
+            //ADD ----------
+            MySqlDataReader myReader;
+            myAd.Fill(myD);
+            //ADD
+            myReader = myCom.ExecuteReader();
             myConn.Close();
-            MessageBox.Show("Insert Successful!");
-            RefreshDatabase();
-            txtDetails.Text = "";
-            txtName.Text = "";
-            txtContact.Text = "";
+            if (myD.Rows.Count == 0)
+            {
+                myConn.Open();
+                string myQuery = "INSERT INTO supplier (supplierName, supplierDetails, contactDetails) values('" + txtName.Text + "','" + txtDetails.Text + "','" + txtContact.Text + "')";
+                MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
+                MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
+                DataTable myDt = new DataTable();
+                myAdp.Fill(myDt);
+                myConn.Close();
+                MessageBox.Show("Insert Successful!");
+                RefreshDatabase();
+                txtDetails.Text = "";
+                txtName.Text = "";
+                txtContact.Text = "";
+            }
+            else
+            {
+                lblValidate.Text = "Supplier Name already exists!";
+            }
         }
 
         public void RefreshDatabase()
@@ -52,7 +70,6 @@ namespace PYLsystems
             supplierGrid.Columns["supplierName"].HeaderText = "Name";
             supplierGrid.Columns["supplierDetails"].HeaderText = "Details";
             supplierGrid.Columns["contactDetails"].HeaderText = "Contact";
-            supplierGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
         private void supplierGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -68,14 +85,13 @@ namespace PYLsystems
 
         private void supplierGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            lblSupplierID.Text = supplierGrid.CurrentRow.Cells[0].Value.ToString();
             lblNameUpdate.Text = supplierGrid.CurrentRow.Cells[1].Value.ToString();
             lblDetailsUpdate.Text = supplierGrid.CurrentRow.Cells[2].Value.ToString();
             lblContactUpdate.Text = supplierGrid.CurrentRow.Cells[3].Value.ToString();
-
             txtName.Text = supplierGrid.CurrentRow.Cells[1].Value.ToString();
             txtDetails.Text = supplierGrid.CurrentRow.Cells[2].Value.ToString();
-            txtContact.Text = supplierGrid.CurrentRow.Cells[3].Value.ToString();
-            
+            msktxtContactNumber.Text = supplierGrid.CurrentRow.Cells[3].Value.ToString();
             lblIDUpdate.Text = supplierGrid.CurrentRow.Cells[0].Value.ToString();
         }
 
@@ -95,7 +111,6 @@ namespace PYLsystems
             supplierGrid.Columns["supplierName"].HeaderText = "Name";
             supplierGrid.Columns["supplierDetails"].HeaderText = "Details";
             supplierGrid.Columns["contactDetails"].HeaderText = "Contact";
-            supplierGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -113,8 +128,61 @@ namespace PYLsystems
             RefreshDatabase();
             txtDetails.Text = "";
             txtName.Text = "";
-            txtContact.Text = "";
+            msktxtContactNumber.Text = "";
+            btnUpdate.Enabled = false;
+        }
 
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        public void functionAdd()
+        {
+            int name = txtName.TextLength;
+            int details = txtDetails.TextLength;
+            int contactnumber = txtContact.TextLength;
+            if (name > 0 && details > 0 && contactnumber==11)
+            {
+                addBtn.Enabled = true;
+            }
+            else
+            {
+                addBtn.Enabled = false;
+            }
+        }
+        public void functionUpdate()
+        {
+            if (lblSupplierID.Text != "")
+            {
+                btnUpdate.Enabled = true;
+            }
+            else
+            {
+                btnUpdate.Enabled = false;
+            }
+        }
+
+        private void msktxtContactNumber_TextChanged(object sender, EventArgs e)
+        {
+            txtContact.Text = msktxtContactNumber.Text;
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            functionAdd();
+            functionUpdate();
+        }
+
+        private void txtDetails_TextAlignChanged(object sender, EventArgs e)
+        {
+            functionAdd();
+            functionUpdate();
+        }
+
+        private void txtContact_TextChanged(object sender, EventArgs e)
+        {
+            functionAdd();
+            functionUpdate();
         }
     }
 }

@@ -89,6 +89,7 @@ namespace PYLsystems
 
         private void cboSupplierName_SelectedIndexChanged(object sender, EventArgs e)
         {
+            functionAdd();
             string myQuery = "SELECT * FROM supplier WHERE supplierName = '" + cboSupplierName.Text + "'";
             MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
             MySqlDataReader myReader;
@@ -119,6 +120,7 @@ namespace PYLsystems
 
         private void cboSupplyName_SelectedIndexChanged(object sender, EventArgs e)
         {
+            functionAdd();
             string myQuery = "SELECT * FROM supply_items WHERE supplyName = '" + cboSupplyName.Text + "'";
             MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
             MySqlDataReader myReader;
@@ -154,7 +156,7 @@ namespace PYLsystems
         public void RefreshDatabase()
         {
             myConn.Open();
-            string query = "SELECT supplyID,if(sd.active=1,'Active','Inactive') as active,sd.delivery_date,sd.stockin_quantity,sd.supply_price,si.supplyName,s.supplierName FROM supply_details sd LEFT JOIN supply_items si ON sd.supply_itemsID = si.supply_itemsID LEFT JOIN supplier s ON s.supplierID=sd.supplierID";
+            string query = "SELECT supplyID,si.supplyName,s.supplierName,sd.supply_price,sd.stockin_quantity,if(sd.active=1,'Active','Inactive') as active,sd.delivery_date FROM supply_details sd LEFT JOIN supply_items si ON sd.supply_itemsID = si.supply_itemsID LEFT JOIN supplier s ON s.supplierID=sd.supplierID";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter Adp = new MySqlDataAdapter(comm);
             DataTable Dt = new DataTable();
@@ -172,7 +174,7 @@ namespace PYLsystems
             dataGridSupplyStockIn.Columns["supplyName"].HeaderText = "Supply Name";
             dataGridSupplyStockIn.Columns["supplierName"].HeaderText = "Supplier Name";
            
-            dataGridSupplyStockIn.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+          
         }
 
         private void frmSupplyStockIn_Load(object sender, EventArgs e)
@@ -183,7 +185,10 @@ namespace PYLsystems
         private void btnEdit_Click(object sender, EventArgs e)
         {
             frmStockInSupplyEdit myStockInSupplyEdit = new frmStockInSupplyEdit();
-            myStockInSupplyEdit.txtStockInQuantity.Text = dataGridSupplyStockIn.CurrentRow.Cells[4].Value.ToString();
+            myStockInSupplyEdit.txtSupplierName.Text = dataGridSupplyStockIn.CurrentRow.Cells[1].Value.ToString();
+            myStockInSupplyEdit.txtSupplyName.Text = dataGridSupplyStockIn.CurrentRow.Cells[2].Value.ToString();
+            myStockInSupplyEdit.txtCurrentQuantity.Text = dataGridSupplyStockIn.CurrentRow.Cells[4].Value.ToString();
+            myStockInSupplyEdit.txtDeliveryDate.Text = dataGridSupplyStockIn.CurrentRow.Cells[6].Value.ToString();
             myStockInSupplyEdit.txtUnitPrice.Text = dataGridSupplyStockIn.CurrentRow.Cells[3].Value.ToString();
             myStockInSupplyEdit.lblSupplyID.Text = dataGridSupplyStockIn.CurrentRow.Cells[0].Value.ToString();
             myStockInSupplyEdit.ShowDialog();
@@ -192,9 +197,105 @@ namespace PYLsystems
 
         private void dataGridSupplyStockIn_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            functionUpdate();
+            lbelsupplyID.Text = dataGridSupplyStockIn.CurrentRow.Cells[0].Value.ToString();
             lblSupplyID.Text = dataGridSupplyStockIn.CurrentRow.Cells[0].Value.ToString();
             lblsupplyStockInQuantityUpdate.Text = dataGridSupplyStockIn.CurrentRow.Cells[3].Value.ToString();
             lblUnitPriceUpdate.Text = dataGridSupplyStockIn.CurrentRow.Cells[4].Value.ToString();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dataGridSupplyStockIn_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        public void functionAdd()
+        {
+            int suppliername = cboSupplierName.SelectedIndex;
+            int supplyname = cboSupplyName.SelectedIndex;
+            int deliverydate = txtDeliveryDate.TextLength;
+            int txtunitprice = txtSupplyPrice.TextLength;
+            int stock_in_quantity = txtStockInQuantity.TextLength;
+            int active = cboActive.SelectedIndex;
+            if (suppliername > -1 && supplyname > -1 && deliverydate == 16 && txtunitprice > 0 && stock_in_quantity > 0 && active > -1)
+            {
+                btnAdd.Enabled = true;
+            }
+            else
+            {
+                btnAdd.Enabled = false;
+            }
+        }
+        public void functionUpdate()
+        {
+            if (lbelsupplyID.Text != "")
+            {
+                btnEdit.Enabled = true;
+            }
+            else
+            {
+                btnEdit.Enabled = false;
+            }
+        }
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            myConn.Open();
+            string query = "SELECT supplyID,si.supplyName,s.supplierName,sd.supply_price,sd.stockin_quantity,if(sd.active=1,'Active','Inactive') as active,sd.delivery_date FROM supply_details sd LEFT JOIN supply_items si ON sd.supply_itemsID = si.supply_itemsID LEFT JOIN supplier s ON s.supplierID=sd.supplierID WHERE si.supplyName LIKE '%" + txtSearch.Text + "%' OR s.supplierName LIKE '%" + txtSearch.Text + "%' OR sd.supply_price LIKE '%" + txtSearch.Text + "%' OR  sd.stockin_quantity LIKE '%" + txtSearch.Text + "%' OR sd.active LIKE '%" + txtSearch.Text + "%'";
+            MySqlCommand comm = new MySqlCommand(query, myConn);
+            MySqlDataAdapter Adp = new MySqlDataAdapter(comm);
+            DataTable Dt = new DataTable();
+            Adp.Fill(Dt);
+
+            dataGridSupplyStockIn.DataSource = Dt;
+            myConn.Close();
+
+            dataGridSupplyStockIn.Columns["supplyID"].HeaderText = "Supply ID";
+            dataGridSupplyStockIn.Columns["supplyID"].Visible = false;
+            dataGridSupplyStockIn.Columns["active"].HeaderText = "Active";
+            dataGridSupplyStockIn.Columns["delivery_date"].HeaderText = "Delivery Date";
+            dataGridSupplyStockIn.Columns["stockin_quantity"].HeaderText = "Stock In Quantity";
+            dataGridSupplyStockIn.Columns["supply_price"].HeaderText = "Price";
+            dataGridSupplyStockIn.Columns["supplyName"].HeaderText = "Supply Name";
+            dataGridSupplyStockIn.Columns["supplierName"].HeaderText = "Supplier Name";
+        }
+
+        private void txtDeliveryDate_TextChanged(object sender, EventArgs e)
+        {
+            functionAdd();
+        }
+
+        private void cboActive_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            functionAdd();
+        }
+
+        private void txtStockInQuantity_TextChanged(object sender, EventArgs e)
+        {
+            functionAdd();
+        }
+
+        private void txtSupplyPrice_TextChanged(object sender, EventArgs e)
+        {
+            functionAdd();
+        }
+
+        private void txtStockInQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+            (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

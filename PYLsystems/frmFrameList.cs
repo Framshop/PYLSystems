@@ -13,39 +13,31 @@ namespace PYLsystems
 {
     public partial class frmFrameList : Form
     {
+<<<<<<< HEAD
+        public static string frameItemID = "";
+        MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=");
+=======
         MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
+>>>>>>> 2a35d6346ce744ba12b6a5176ba4bc789e62444e
         public frmFrameList()
         {
             InitializeComponent();
-            FillSupplyItems();
-        }
-        private void FillSupplyItems()
-        {
-            
-            string myQuery = "SELECT * FROM supply_items";
-            MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
-            MySqlDataReader myReader;
-            try
-            {
-                myConn.Open();
-                myReader = myComm.ExecuteReader();
-                while (myReader.Read())
-                {
-                    string name = myReader.GetString(1);
-                    cboSupplyName.Items.Add(name);
-                }
-                myConn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
         private void btbAdd_Click(object sender, EventArgs e)
         {
-            try
-            {
+            myConn.Open();
+            MySqlDataAdapter myAd;
+            DataTable myD = new DataTable();
+            MySqlCommand myCom = new MySqlCommand("SELECT * FROM frame_list WHERE frameName = '" + txtName.Text + "'", myConn);
+            myAd = new MySqlDataAdapter(myCom);
+            //ADD ----------
+            MySqlDataReader myReader;
+            myAd.Fill(myD);
+            //ADD
+            myReader = myCom.ExecuteReader();
+            myConn.Close();
+            if (myD.Rows.Count==0) {
                 myConn.Open();
                 string myQuery = "INSERT INTO frame_list (frameName, frameDescription, active,dimension,unitPrice) values('" + txtName.Text + "','" + txtDescription.Text + "','" + cboActive.Text + "','" + txtDimension.Text + "','" + txtUnitPrice.Text + "')";
                 MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
@@ -53,60 +45,14 @@ namespace PYLsystems
                 DataTable myDt = new DataTable();
                 myAdp.Fill(myDt);
                 myConn.Close();
-
-                string myQue = "SELECT MAX(frameItemID) FROM frame_list";
-                MySqlCommand myCo = new MySqlCommand(myQue, myConn);
-                MySqlDataReader myReader;
-
-                myConn.Open();
-                myReader = myComm.ExecuteReader();
-                while (myReader.Read())
-                {
-                    string frameItemID = myReader.GetString(1);
-                    lblFrameItemID.Text = frameItemID;
-                }
-                myConn.Close();
-
-
-                int index, MAX;
-                ListViewItem item = new ListViewItem();
-                MAX = lvwFrameList.Items.Count;
-                for (index = 0; index < MAX; index++)
-                {
-                    myConn.Open();
-                    string myQuer = "INSERT INTO frame_details (supply_itemsID,framesID) values('" + lvwFrameList.Items[index].Text + "','" + lblFrameItemID.Text + "')";
-                    MySqlCommand myCom = new MySqlCommand(myQuery, myConn);
-                    MySqlDataAdapter myAd = new MySqlDataAdapter(myCom);
-                    DataTable myD = new DataTable();
-                    myAd.Fill(myD);
-                    myConn.Close();
-                }
                 MessageBox.Show("Insert Successful!");
                 RefreshDatabase();
-                for (index = 0; index <= MAX; index++)
-                {
-
-                    lvwFrameList.Items.Remove(lvwFrameList.Items[index]);
-                    lvwFrameList.Items[index].SubItems.Remove(item.SubItems[index]);
-                    lvwFrameList.Items[index].SubItems.Remove(item.SubItems[index]);
-                    lvwFrameList.Items[index].SubItems.Remove(item.SubItems[index]);
-
-
-
-
-
-                }
-                txtDescription.Text = "";
-                txtName.Text = "";
-                txtDimension.Text = "";
-                txtUnitPrice.Text = "";
-                cboActive.Text = "";
             }
-            catch (Exception ex)
+            else
             {
-            } 
+                lblValidate.Text = "Frame Name already exists!";
+            }
         }
-
         public void RefreshDatabase()
         {
             myConn.Open();
@@ -114,6 +60,7 @@ namespace PYLsystems
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter Adp = new MySqlDataAdapter(comm);
             DataTable Dt = new DataTable();
+
             Adp.Fill(Dt);
 
             frameItemsGrid.DataSource = Dt;
@@ -125,13 +72,12 @@ namespace PYLsystems
             frameItemsGrid.Columns["active"].HeaderText = "Active";
             frameItemsGrid.Columns["dimension"].HeaderText = "Dimension";
             frameItemsGrid.Columns["unitPrice"].HeaderText = "Unit Price";
-            frameItemsGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
         private void frameItemsGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            lblFrameID.Text = frameItemsGrid.CurrentRow.Cells[0].Value.ToString();
             lblIDUpdate.Text = frameItemsGrid.CurrentRow.Cells[0].Value.ToString();
-
             txtName.Text = frameItemsGrid.CurrentRow.Cells[1].Value.ToString();
             txtDescription.Text = frameItemsGrid.CurrentRow.Cells[2].Value.ToString();
             cboActive.Text = frameItemsGrid.CurrentRow.Cells[3].Value.ToString();
@@ -156,6 +102,7 @@ namespace PYLsystems
             txtDimension.Text = "";
             txtUnitPrice.Text = "";
             cboActive.Text = "";
+            btnUpdate.Enabled = false;
         }
 
         private void frmFrameList_Load(object sender, EventArgs e)
@@ -181,82 +128,103 @@ namespace PYLsystems
             frameItemsGrid.Columns["active"].HeaderText = "Active";
             frameItemsGrid.Columns["dimension"].HeaderText = "Dimension";
             frameItemsGrid.Columns["unitPrice"].HeaderText = "Unit Price";
-            frameItemsGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
         private void btnAddSupply_Click(object sender, EventArgs e)
         {
 
-            try
-            {
-                ListViewItem item = new ListViewItem();
-                ListViewItem id;
-                int max, index;
-                max = lvwFrameList.Items.Count;
-
-                item = lvwFrameList.Items.Add(cboSupplyName.Text);
-                item.SubItems.Add(txtSupplyDescription.Text);
-                item.SubItems.Add(txtSupplyUnitMeasure.Text);
-                item.SubItems.Add(lblSupplyID.Text);
-
-                for (index = 0; index < max; index++)
-                {
-                    if (lvwFrameList.Items[index].Text == cboSupplyName.Text)
-                    {
-                        lvwFrameList.Items.Remove(lvwFrameList.Items[index]);
-                        lvwFrameList.Items[index].SubItems.Remove(item.SubItems[index]);
-                        lvwFrameList.Items[index].SubItems.Remove(item.SubItems[index]);
-                        lvwFrameList.Items[index].SubItems.Remove(item.SubItems[index]);
-
-
-
-                    }
-                    item.SubItems.Add(cboSupplyName.Text);
-                    item.SubItems.Add(txtSupplyDescription.Text);
-                    item.SubItems.Add(txtSupplyUnitMeasure.Text);
-                    item.SubItems.Add(lblSupplyID.Text);
-
-                }
-
-            }
-            catch
-            {
-
-            }
         }
 
         private void cboSupplyName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string myQuery = "SELECT * FROM supply_items WHERE supplyName = '" + cboSupplyName.Text + "'";
-            MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
-            MySqlDataReader myReader;
-            try
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        public void functionAdd()
+        {
+            int name = txtName.TextLength;
+            int description = txtDescription.TextLength;
+            int active = cboActive.SelectedIndex;
+            int dimension = txtDimension.TextLength;
+            int unitprice = txtUnitPrice.TextLength;
+            if (name == 0 && description == 0 && active < 0 && dimension == 0 && unitprice == 0)
             {
-
-           
-                myConn.Open();
-                myReader = myComm.ExecuteReader();
-                while (myReader.Read())
-                {
-          
-
-                    string myUnitmeasure = myReader.GetString(3);
-                    txtSupplyUnitMeasure.Text = myUnitmeasure;
-                    
-                    string myDescription = myReader.GetString(2);
-                    txtSupplyDescription.Text = myDescription;
-
-                    string mySupplyID = myReader.GetString(0);
-                    lblSupplyID.Text = mySupplyID;
-
-                }
-                myConn.Close();
+                MessageBox.Show("Please Input the required fields");
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+            
+              
+                    if (name > 0 && description > 0 && active >= 0 && dimension > 0 && unitprice > 0)
+                    {
+                        btbAdd.Enabled = true;
+                    }
+                    else
+                    {
+                        btbAdd.Enabled = false;
+                    }
             }
 
+        }
+        public void functionUpdate()
+        {
+           string frameID = lblFrameID.Text;
+            if (frameID != "")
+            {
+                btnUpdate.Enabled = true;
+            }
+            else
+            {
+                btnUpdate.Enabled = false;
+            }
+        }
+
+        private void txtUnitPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            functionUpdate();
+            functionAdd(); 
+        }
+
+        private void txtDescription_TextChanged(object sender, EventArgs e)
+        {
+            functionUpdate();
+            functionAdd();
+        }
+
+        private void cboActive_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            functionUpdate();
+            functionAdd();
+        }
+
+        private void txtDimension_TextChanged(object sender, EventArgs e)
+        {
+            functionUpdate();
+            functionAdd();
+        }
+
+        private void txtUnitPrice_TextChanged(object sender, EventArgs e)
+        {
+            functionUpdate();
+            functionAdd();
         }
     }
 }
