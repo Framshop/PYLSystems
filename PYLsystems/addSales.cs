@@ -56,6 +56,7 @@ namespace PYLsystems
             this.receiptTextBox.Text =receiptNum.ToString("0000000");
             //frameAvailDefaultFilter = new DataView(frameAvail_dt);
             //frameAvailDefaultFilter.RowFilter = "sOrd_status = 0";
+            discountTextBox.Text = "0.00";
 
         }
         /*private void addSales_dtColumns() {
@@ -260,6 +261,10 @@ namespace PYLsystems
             double trueTotal = rawTotal - Discount;
             trueTotalTextBox.Text = trueTotal.ToString("0.00");
             this.trueTotal = trueTotal;
+            if (!string.IsNullOrEmpty(totalPaidTextBox.Text))
+            {
+                totalPaidTextBox_TextChanged(sender,e);
+            }
         }
 
         private void discountTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -299,15 +304,22 @@ namespace PYLsystems
         private void confirmBtn_Click(object sender, EventArgs e)
         {
             if (addSalesGrid.Rows[0].Cells[0].Value == null && addSalesGrid.Rows[0].Cells[1].Value == null
-               && addSalesGrid.Rows[0].Cells[2].Value == null && addSalesGrid.Rows[0].Cells[3].Value == null) {
+               && addSalesGrid.Rows[0].Cells[2].Value == null && addSalesGrid.Rows[0].Cells[3].Value == null)
+            {
                 MessageBox.Show("Item List cannot be empty.");
                 return;
             }
-            else if (totalPaidTextBox.Text=="") {
+            else if (totalPaidTextBox.Text == "")
+            {
                 MessageBox.Show("Must input Customer payment.");
                 return;
             }
-            else {
+            else if (Double.Parse(totalPaidTextBox.Text) < Double.Parse(trueTotalTextBox.Text)) {
+                MessageBox.Show("Must pay the exact amount or over.");
+                return;
+            }
+            else
+            {
                 addSalesConfirm ConfirmWin = new addSalesConfirm(this);
                 ConfirmWin.ShowDialog();
                 checkSalesPForm.checkSales_Loader();
@@ -332,7 +344,7 @@ namespace PYLsystems
             {
                 Paid = Double.Parse(totalPaidTextBox.Text.ToString());
             }
-            change = Paid - this.trueTotal;
+            change = Paid - Double.Parse(trueTotalTextBox.Text);
             changeTextBox.Text = change.ToString("0.00");
         }
     }

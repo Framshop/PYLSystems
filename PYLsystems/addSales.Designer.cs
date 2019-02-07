@@ -31,7 +31,9 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnsGB = new System.Windows.Forms.GroupBox();
+            this.receiptLabel = new System.Windows.Forms.Label();
             this.cancelBtn = new System.Windows.Forms.Button();
+            this.receiptTextBox = new System.Windows.Forms.TextBox();
             this.confirmBtn = new System.Windows.Forms.Button();
             this.TotalGB = new System.Windows.Forms.GroupBox();
             this.changeLabel = new System.Windows.Forms.Label();
@@ -49,8 +51,6 @@
             this.rawTotalTextBox = new System.Windows.Forms.TextBox();
             this.AddSalesGB = new System.Windows.Forms.GroupBox();
             this.addSalesGrid = new System.Windows.Forms.DataGridView();
-            this.receiptLabel = new System.Windows.Forms.Label();
-            this.receiptTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.btnsGB.SuspendLayout();
@@ -102,6 +102,16 @@
             this.btnsGB.TabIndex = 0;
             this.btnsGB.TabStop = false;
             // 
+            // receiptLabel
+            // 
+            this.receiptLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.receiptLabel.AutoSize = true;
+            this.receiptLabel.Location = new System.Drawing.Point(46, 25);
+            this.receiptLabel.Name = "receiptLabel";
+            this.receiptLabel.Size = new System.Drawing.Size(96, 20);
+            this.receiptLabel.TabIndex = 23;
+            this.receiptLabel.Text = "Receipt No.:";
+            // 
             // cancelBtn
             // 
             this.cancelBtn.Location = new System.Drawing.Point(40, 78);
@@ -111,6 +121,15 @@
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            // 
+            // receiptTextBox
+            // 
+            this.receiptTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.receiptTextBox.Location = new System.Drawing.Point(161, 22);
+            this.receiptTextBox.Name = "receiptTextBox";
+            this.receiptTextBox.ReadOnly = true;
+            this.receiptTextBox.Size = new System.Drawing.Size(170, 26);
+            this.receiptTextBox.TabIndex = 22;
             // 
             // confirmBtn
             // 
@@ -300,25 +319,6 @@
             this.addSalesGrid.TabIndex = 0;
             this.addSalesGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.addSalesGrid_CellDoubleClick);
             // 
-            // receiptLabel
-            // 
-            this.receiptLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.receiptLabel.AutoSize = true;
-            this.receiptLabel.Location = new System.Drawing.Point(46, 25);
-            this.receiptLabel.Name = "receiptLabel";
-            this.receiptLabel.Size = new System.Drawing.Size(96, 20);
-            this.receiptLabel.TabIndex = 23;
-            this.receiptLabel.Text = "Receipt No.:";
-            // 
-            // receiptTextBox
-            // 
-            this.receiptTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.receiptTextBox.Location = new System.Drawing.Point(161, 22);
-            this.receiptTextBox.Name = "receiptTextBox";
-            this.receiptTextBox.ReadOnly = true;
-            this.receiptTextBox.Size = new System.Drawing.Size(170, 26);
-            this.receiptTextBox.TabIndex = 22;
-            // 
             // addSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -351,18 +351,18 @@
         private System.Windows.Forms.Button confirmBtn;
         private System.Windows.Forms.GroupBox TotalGB;
         private System.Windows.Forms.Label rawTotalLabel;
-        private System.Windows.Forms.TextBox rawTotalTextBox;
+        internal System.Windows.Forms.TextBox rawTotalTextBox;
         private System.Windows.Forms.Label discountLabel;
-        private System.Windows.Forms.TextBox discountTextBox;
+        internal System.Windows.Forms.TextBox discountTextBox;
         private System.Windows.Forms.Label trueTotalLabel;
-        private System.Windows.Forms.TextBox trueTotalTextBox;
+        internal System.Windows.Forms.TextBox trueTotalTextBox;
         private System.Windows.Forms.Label totalPaidLabel;
-        private System.Windows.Forms.TextBox totalPaidTextBox;
+        internal System.Windows.Forms.TextBox totalPaidTextBox;
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Button editBtn;
         private System.Windows.Forms.Button addItemBtn;
         private System.Windows.Forms.Label changeLabel;
-        private System.Windows.Forms.TextBox changeTextBox;
+        internal System.Windows.Forms.TextBox changeTextBox;
         private System.Windows.Forms.Label receiptLabel;
         private System.Windows.Forms.TextBox receiptTextBox;
     }

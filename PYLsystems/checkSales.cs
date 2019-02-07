@@ -24,7 +24,7 @@ namespace PYLsystems
         public checkSales()
         {
             InitializeComponent();
-            this.employeeId = 1;// 1 is Admin - programmer. To be removed once connected to Employee Mgmt Subsystem.
+            this.employeeId = 2;// 1 is Admin - programmer. To be removed once connected to Employee Mgmt Subsystem.
             this.employeeStatus = 1; // Same with above line. To be removed once connected to Employee Mgmt Subsystem
             DefaultDatesInitializer();
         }

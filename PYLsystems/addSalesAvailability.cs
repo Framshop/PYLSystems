@@ -62,7 +62,7 @@ namespace PYLsystems
                 "AS FS ON FL.frameItemID = FS.frameItemID " +
                 "LEFT JOIN(SELECT SOD.frameItemID, SUM(SOD.sOrd_Quantity) AS Stockout FROM sOrder_details AS SOD LEFT JOIN salesOrder AS SO ON SOD.sOrd_Num=SO.sOrd_Num WHERE SO.sOrd_status>0 GROUP BY SOD.frameItemID) " +
                 "AS SOD ON FL.frameItemID = SOD.frameItemID " +
-                "WHERE FL.active = 'active'; ";
+                "WHERE FL.active = 'active' ORDER BY FL.frameName; ";
 
             MySqlConnection my_conn = new MySqlConnection(connString);
             MySqlCommand frameAvail_command = new MySqlCommand(frameAvailString, my_conn);
@@ -168,6 +168,10 @@ namespace PYLsystems
                 }
                 //MessageBox.Show(addSalesPForm.frameItemsList[0].frameName + " " + addSalesPForm.frameItemsList[0].dimension + " " + addSalesPForm.frameItemsList[0].unitPrice + " " + addSalesPForm.frameItemsList[0].frameItemID);
                 addSalesPForm.addSales_Refresher();
+                //update textbox check if empty  recalculate everything if not empty January 31, 2019
+                if (!string.IsNullOrEmpty(addSalesPForm.totalPaidTextBox.Text)) {
+
+                }
                 this.Close();
             }
         }
