@@ -63,3 +63,12 @@ C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYL
 C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.addSales.resources
 C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.addSalesAvailability.resources
 C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLsystems.addSalesConfirm.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmCustomerAccount.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmDamageItems.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmFrameStockInSupplyStockOut.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmFrameStockInUpdate.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmInventoryHomePage.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmJobOrderDetails.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmJobOrderTransaction.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmRemainingSupplyFrames.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.Home.resources
