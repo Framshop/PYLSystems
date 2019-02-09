@@ -493,5 +493,12 @@ namespace PYLsystems
                 e.Handled = false;
             }
         }
+
+        private void addCustomerAcc_Click(object sender, EventArgs e)
+        {
+            frmCustomerAccount addCustomerAcc = new frmCustomerAccount();
+            addCustomerAcc.ShowDialog();
+            this.Close();
+        }
     }
 }

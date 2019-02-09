@@ -35,7 +35,7 @@ namespace PYLsystems
 
         private void jOrderBtn_Click(object sender, EventArgs e)
         {
-            frmJobOrderDetails jOrderDlg = new frmJobOrderDetails();
+            frmJobOrderTransaction jOrderDlg = new frmJobOrderTransaction();
             jOrderDlg.ShowDialog();
         }
 
