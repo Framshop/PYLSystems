@@ -14,7 +14,7 @@ namespace PYLsystems
     public partial class frmCustomerAccount : Form
     {
         public static string customerID = "";
-        MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=");
+        MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
         public frmCustomerAccount()
         {
             InitializeComponent();

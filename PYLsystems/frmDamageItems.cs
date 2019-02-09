@@ -15,7 +15,7 @@ namespace PYLsystems
     {
         public static string lastname = "";
         public static string firstname = "";
-        MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=");
+        MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
         public frmDamageItems()
         {
             InitializeComponent();

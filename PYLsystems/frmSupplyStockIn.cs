@@ -13,7 +13,7 @@ namespace PYLsystems
 {
     public partial class frmSupplyStockIn : Form
     {
-        MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=");
+        MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
         public frmSupplyStockIn()
         {
             InitializeComponent();

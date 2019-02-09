@@ -14,7 +14,7 @@ namespace PYLsystems
     public partial class frmFrameDetails : Form
     {
         public static string frameItemID = "";
-        MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=");
+        MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
         public frmFrameDetails()
         {
             InitializeComponent();

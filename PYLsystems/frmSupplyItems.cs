@@ -14,7 +14,7 @@ namespace PYLsystems
     public partial class frmSupplyItems : Form
     {
         public static string supply_itemsID = "";
-        MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=");
+        MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
         public frmSupplyItems()
         {
             InitializeComponent();
