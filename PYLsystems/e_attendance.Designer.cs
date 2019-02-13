@@ -30,28 +30,28 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.infoGB = new System.Windows.Forms.GroupBox();
             this.dateSelectionGB = new System.Windows.Forms.GroupBox();
-            this.timeInOutGB = new System.Windows.Forms.GroupBox();
-            this.othersGB = new System.Windows.Forms.GroupBox();
+            this.endLabel = new System.Windows.Forms.Label();
+            this.startLabel = new System.Windows.Forms.Label();
             this.endDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.empNameLabel = new System.Windows.Forms.Label();
             this.startDatePicker = new System.Windows.Forms.DateTimePicker();
-            this.dateNowTextBox = new System.Windows.Forms.TextBox();
+            this.empNameTextBox = new System.Windows.Forms.TextBox();
+            this.timeInOutGB = new System.Windows.Forms.GroupBox();
             this.timeInBtn = new System.Windows.Forms.Button();
             this.timeOutBtn = new System.Windows.Forms.Button();
+            this.infoGB = new System.Windows.Forms.GroupBox();
+            this.dateTodayLabel = new System.Windows.Forms.Label();
+            this.dateNowTextBox = new System.Windows.Forms.TextBox();
+            this.othersGB = new System.Windows.Forms.GroupBox();
             this.closeBtn = new System.Windows.Forms.Button();
             this.attendanceDatesGB = new System.Windows.Forms.GroupBox();
             this.attendanceGridView = new System.Windows.Forms.DataGridView();
-            this.empNameTextBox = new System.Windows.Forms.TextBox();
-            this.dateTodayLabel = new System.Windows.Forms.Label();
-            this.empNameLabel = new System.Windows.Forms.Label();
-            this.startLabel = new System.Windows.Forms.Label();
-            this.endLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.infoGB.SuspendLayout();
             this.dateSelectionGB.SuspendLayout();
             this.timeInOutGB.SuspendLayout();
+            this.infoGB.SuspendLayout();
             this.othersGB.SuspendLayout();
             this.attendanceDatesGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.attendanceGridView)).BeginInit();
@@ -91,17 +91,6 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(386, 737);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // infoGB
-            // 
-            this.infoGB.Controls.Add(this.dateTodayLabel);
-            this.infoGB.Controls.Add(this.dateNowTextBox);
-            this.infoGB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.infoGB.Location = new System.Drawing.Point(3, 187);
-            this.infoGB.Name = "infoGB";
-            this.infoGB.Size = new System.Drawing.Size(380, 178);
-            this.infoGB.TabIndex = 0;
-            this.infoGB.TabStop = false;
-            // 
             // dateSelectionGB
             // 
             this.dateSelectionGB.Controls.Add(this.endLabel);
@@ -118,26 +107,29 @@
             this.dateSelectionGB.TabStop = false;
             this.dateSelectionGB.Text = "Information";
             // 
-            // timeInOutGB
+            // endLabel
             // 
-            this.timeInOutGB.Controls.Add(this.timeInBtn);
-            this.timeInOutGB.Controls.Add(this.timeOutBtn);
-            this.timeInOutGB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.timeInOutGB.Location = new System.Drawing.Point(3, 371);
-            this.timeInOutGB.Name = "timeInOutGB";
-            this.timeInOutGB.Size = new System.Drawing.Size(380, 178);
-            this.timeInOutGB.TabIndex = 2;
-            this.timeInOutGB.TabStop = false;
+            this.endLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.endLabel.AutoSize = true;
+            this.endLabel.Location = new System.Drawing.Point(14, 125);
+            this.endLabel.Name = "endLabel";
+            this.endLabel.Size = new System.Drawing.Size(81, 20);
+            this.endLabel.TabIndex = 14;
+            this.endLabel.Text = "End Date:";
             // 
-            // othersGB
+            // startLabel
             // 
-            this.othersGB.Controls.Add(this.closeBtn);
-            this.othersGB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.othersGB.Location = new System.Drawing.Point(3, 555);
-            this.othersGB.Name = "othersGB";
-            this.othersGB.Size = new System.Drawing.Size(380, 179);
-            this.othersGB.TabIndex = 3;
-            this.othersGB.TabStop = false;
+            this.startLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.startLabel.AutoSize = true;
+            this.startLabel.Location = new System.Drawing.Point(14, 90);
+            this.startLabel.Name = "startLabel";
+            this.startLabel.Size = new System.Drawing.Size(87, 20);
+            this.startLabel.TabIndex = 13;
+            this.startLabel.Text = "Start Date:";
             // 
             // endDatePicker
             // 
@@ -152,6 +144,18 @@
             this.endDatePicker.TabIndex = 7;
             this.endDatePicker.Value = new System.DateTime(2019, 1, 5, 0, 0, 0, 0);
             // 
+            // empNameLabel
+            // 
+            this.empNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.empNameLabel.AutoSize = true;
+            this.empNameLabel.Location = new System.Drawing.Point(14, 42);
+            this.empNameLabel.Name = "empNameLabel";
+            this.empNameLabel.Size = new System.Drawing.Size(83, 20);
+            this.empNameLabel.TabIndex = 12;
+            this.empNameLabel.Text = "Employee:";
+            // 
             // startDatePicker
             // 
             this.startDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -165,21 +169,31 @@
             this.startDatePicker.TabIndex = 6;
             this.startDatePicker.Value = new System.DateTime(2019, 1, 4, 0, 0, 0, 0);
             // 
-            // dateNowTextBox
+            // empNameTextBox
             // 
-            this.dateNowTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.empNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateNowTextBox.Location = new System.Drawing.Point(103, 44);
-            this.dateNowTextBox.Name = "dateNowTextBox";
-            this.dateNowTextBox.ReadOnly = true;
-            this.dateNowTextBox.Size = new System.Drawing.Size(258, 26);
-            this.dateNowTextBox.TabIndex = 7;
+            this.empNameTextBox.Location = new System.Drawing.Point(103, 39);
+            this.empNameTextBox.Name = "empNameTextBox";
+            this.empNameTextBox.ReadOnly = true;
+            this.empNameTextBox.Size = new System.Drawing.Size(258, 26);
+            this.empNameTextBox.TabIndex = 8;
+            // 
+            // timeInOutGB
+            // 
+            this.timeInOutGB.Controls.Add(this.timeInBtn);
+            this.timeInOutGB.Controls.Add(this.timeOutBtn);
+            this.timeInOutGB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.timeInOutGB.Location = new System.Drawing.Point(3, 371);
+            this.timeInOutGB.Name = "timeInOutGB";
+            this.timeInOutGB.Size = new System.Drawing.Size(380, 178);
+            this.timeInOutGB.TabIndex = 2;
+            this.timeInOutGB.TabStop = false;
             // 
             // timeInBtn
             // 
-            this.timeInBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.timeInBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.timeInBtn.Enabled = false;
             this.timeInBtn.Location = new System.Drawing.Point(72, 45);
@@ -191,8 +205,7 @@
             // 
             // timeOutBtn
             // 
-            this.timeOutBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.timeOutBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.timeOutBtn.Enabled = false;
             this.timeOutBtn.Location = new System.Drawing.Point(72, 105);
@@ -202,10 +215,53 @@
             this.timeOutBtn.Text = "Time Out";
             this.timeOutBtn.UseVisualStyleBackColor = true;
             // 
+            // infoGB
+            // 
+            this.infoGB.Controls.Add(this.dateTodayLabel);
+            this.infoGB.Controls.Add(this.dateNowTextBox);
+            this.infoGB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.infoGB.Location = new System.Drawing.Point(3, 187);
+            this.infoGB.Name = "infoGB";
+            this.infoGB.Size = new System.Drawing.Size(380, 178);
+            this.infoGB.TabIndex = 0;
+            this.infoGB.TabStop = false;
+            // 
+            // dateTodayLabel
+            // 
+            this.dateTodayLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTodayLabel.AutoSize = true;
+            this.dateTodayLabel.Location = new System.Drawing.Point(2, 47);
+            this.dateTodayLabel.Name = "dateTodayLabel";
+            this.dateTodayLabel.Size = new System.Drawing.Size(95, 20);
+            this.dateTodayLabel.TabIndex = 13;
+            this.dateTodayLabel.Text = "Date Today:";
+            // 
+            // dateNowTextBox
+            // 
+            this.dateNowTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateNowTextBox.Location = new System.Drawing.Point(103, 44);
+            this.dateNowTextBox.Name = "dateNowTextBox";
+            this.dateNowTextBox.ReadOnly = true;
+            this.dateNowTextBox.Size = new System.Drawing.Size(258, 26);
+            this.dateNowTextBox.TabIndex = 7;
+            // 
+            // othersGB
+            // 
+            this.othersGB.Controls.Add(this.closeBtn);
+            this.othersGB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.othersGB.Location = new System.Drawing.Point(3, 555);
+            this.othersGB.Name = "othersGB";
+            this.othersGB.Size = new System.Drawing.Size(380, 179);
+            this.othersGB.TabIndex = 3;
+            this.othersGB.TabStop = false;
+            // 
             // closeBtn
             // 
-            this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.closeBtn.Enabled = false;
             this.closeBtn.Location = new System.Drawing.Point(72, 65);
@@ -228,72 +284,17 @@
             // 
             // attendanceGridView
             // 
+            this.attendanceGridView.AllowUserToAddRows = false;
+            this.attendanceGridView.AllowUserToDeleteRows = false;
+            this.attendanceGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.attendanceGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.attendanceGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.attendanceGridView.Location = new System.Drawing.Point(3, 22);
             this.attendanceGridView.Name = "attendanceGridView";
+            this.attendanceGridView.RowHeadersVisible = false;
             this.attendanceGridView.RowTemplate.Height = 28;
             this.attendanceGridView.Size = new System.Drawing.Size(622, 712);
             this.attendanceGridView.TabIndex = 2;
-            // 
-            // empNameTextBox
-            // 
-            this.empNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.empNameTextBox.Location = new System.Drawing.Point(103, 39);
-            this.empNameTextBox.Name = "empNameTextBox";
-            this.empNameTextBox.ReadOnly = true;
-            this.empNameTextBox.Size = new System.Drawing.Size(258, 26);
-            this.empNameTextBox.TabIndex = 8;
-            // 
-            // dateTodayLabel
-            // 
-            this.dateTodayLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTodayLabel.AutoSize = true;
-            this.dateTodayLabel.Location = new System.Drawing.Point(2, 47);
-            this.dateTodayLabel.Name = "dateTodayLabel";
-            this.dateTodayLabel.Size = new System.Drawing.Size(95, 20);
-            this.dateTodayLabel.TabIndex = 13;
-            this.dateTodayLabel.Text = "Date Today:";
-            // 
-            // empNameLabel
-            // 
-            this.empNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.empNameLabel.AutoSize = true;
-            this.empNameLabel.Location = new System.Drawing.Point(14, 42);
-            this.empNameLabel.Name = "empNameLabel";
-            this.empNameLabel.Size = new System.Drawing.Size(83, 20);
-            this.empNameLabel.TabIndex = 12;
-            this.empNameLabel.Text = "Employee:";
-            // 
-            // startLabel
-            // 
-            this.startLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.startLabel.AutoSize = true;
-            this.startLabel.Location = new System.Drawing.Point(14, 90);
-            this.startLabel.Name = "startLabel";
-            this.startLabel.Size = new System.Drawing.Size(87, 20);
-            this.startLabel.TabIndex = 13;
-            this.startLabel.Text = "Start Date:";
-            // 
-            // endLabel
-            // 
-            this.endLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.endLabel.AutoSize = true;
-            this.endLabel.Location = new System.Drawing.Point(14, 125);
-            this.endLabel.Name = "endLabel";
-            this.endLabel.Size = new System.Drawing.Size(81, 20);
-            this.endLabel.TabIndex = 14;
-            this.endLabel.Text = "End Date:";
             // 
             // e_attendance
             // 
@@ -303,13 +304,14 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "e_attendance";
             this.Text = "Attendance";
+            this.Load += new System.EventHandler(this.e_attendance_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.infoGB.ResumeLayout(false);
-            this.infoGB.PerformLayout();
             this.dateSelectionGB.ResumeLayout(false);
             this.dateSelectionGB.PerformLayout();
             this.timeInOutGB.ResumeLayout(false);
+            this.infoGB.ResumeLayout(false);
+            this.infoGB.PerformLayout();
             this.othersGB.ResumeLayout(false);
             this.attendanceDatesGB.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.attendanceGridView)).EndInit();
