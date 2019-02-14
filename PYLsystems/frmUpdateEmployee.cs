@@ -23,6 +23,22 @@ namespace Employee_Management
         {
 
             reload();
+            try
+            {
+                conn.Open();
+                MySqlCommand sc = new MySqlCommand("select employeeposition from accessworkdesc", conn);
+                MySqlDataReader reader;
+                reader = sc.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Columns.Add("employeeposition ", typeof(string));
+                dt.Load(reader);
+                cbEmpStatus.ValueMember = "employeeposition";
+                cbEmpStatus.DataSource = dt;
+                conn.Close();
+
+            }
+
+            catch (Exception) { }
 
 
         }
@@ -76,7 +92,7 @@ namespace Employee_Management
 
             // string myQuery = "UPDATE product SET code = '" + txtEditCode.Text + "',name =  '" + txtEditName.Text + "', description = '" + txtEditDescription.Text + "', unitprice = '" + txtEditUnitPrice.Text + "',quantity =  '" + txtEditQuantity.Text + "',active = '" + cboEditActive.Text + "',unitmeasure = '" + txtEditUnitmeasure.Text + "' WHERE code = '" + code.Text + "'AND name = '" + name.Text + "'AND description = '" + description.Text + "'AND unitprice = '" + unitprice.Text + "'";
 
-            string myQuery = "UPDATE employee set startofEmployment = '" + dtpStartofEmp.Value.Date.ToString("yyyy-MM-dd") + "', firstName ='" + txtFirstName.Text + "',lastName ='" + txtLastName.Text + "', gender= '" + cbGender.Text + "', birthDate= '" + dtpBirthDate.Value.Date.ToString("yyyy-MM-dd ") + "', homeAddress= '" + txtHomeAddress.Text + "', salaryRate= " + txtSalaryRate.Text + ", contactNumber= '" + txtContactNumber.Text + "' WHERE employeeid ='" + empid.Text + "'";
+            string myQuery = "UPDATE employee set employeeStatus ='" + status.Text + "', startofEmployment = '" + dtpStartofEmp.Value.Date.ToString("yyyy-MM-dd") + "', firstName ='" + txtFirstName.Text + "',lastName ='" + txtLastName.Text + "', gender= '" + cbGender.Text + "', birthDate= '" + dtpBirthDate.Value.Date.ToString("yyyy-MM-dd ") + "', homeAddress= '" + txtHomeAddress.Text + "', salaryRate= " + txtSalaryRate.Text + ", contactNumber= '" + txtContactNumber.Text + "' WHERE employeeid ='" + empid.Text + "'";
             MySqlCommand myComm = new MySqlCommand(myQuery, conn);
             MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
             DataTable myDt = new DataTable();
@@ -95,12 +111,28 @@ namespace Employee_Management
 
         private void cbEmpStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
+            conn.Close();
+            conn.Open();
+            string query = "SELECT  employeestatus FROM accessworkdesc WHERE employeeposition = '" + cbEmpStatus.Text + "'";
+            MySqlCommand myComm = new MySqlCommand(query, conn);
+            MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
+            MySqlDataReader reader;
+            reader = myComm.ExecuteReader();
+
+            while (reader.Read())
+            {
+                status.Text = reader.GetString(0);
+
+            }
+
+            conn.Close();
+
 
         }
 
         private void txtContactNumber_TextChanged(object sender, EventArgs e)
         {
-           
+            
         }
     }
 }

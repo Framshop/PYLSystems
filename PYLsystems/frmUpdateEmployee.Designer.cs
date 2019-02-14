@@ -58,6 +58,7 @@
             this.cbGender = new System.Windows.Forms.ComboBox();
             this.dtpStartofEmp = new System.Windows.Forms.DateTimePicker();
             this.dtpBirthDate = new System.Windows.Forms.DateTimePicker();
+            this.status = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // empid
@@ -347,11 +348,21 @@
             this.dtpBirthDate.Size = new System.Drawing.Size(216, 20);
             this.dtpBirthDate.TabIndex = 52;
             // 
+            // status
+            // 
+            this.status.AutoSize = true;
+            this.status.Location = new System.Drawing.Point(512, 452);
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(41, 13);
+            this.status.TabIndex = 53;
+            this.status.Text = "label10";
+            // 
             // frmUpdateEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 484);
+            this.ClientSize = new System.Drawing.Size(390, 476);
+            this.Controls.Add(this.status);
             this.Controls.Add(this.dtpBirthDate);
             this.Controls.Add(this.dtpStartofEmp);
             this.Controls.Add(this.cbGender);
@@ -423,5 +434,6 @@
         private System.Windows.Forms.ComboBox cbGender;
         public System.Windows.Forms.DateTimePicker dtpStartofEmp;
         public System.Windows.Forms.DateTimePicker dtpBirthDate;
+        private System.Windows.Forms.Label status;
     }
 }
