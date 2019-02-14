@@ -1,0 +1,7 @@
+frmEmloyeeList
+frmEmployeeMgt
+frmNewEmployee
+frmSetWorkDetails
+frmUpdateEmployee
+frmViewEmployee
+frmWorkDetails
