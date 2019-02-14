@@ -100,7 +100,7 @@ namespace PYLsystems
         private void cboCustomerName_SelectedIndexChanged(object sender, EventArgs e)
         {
             AddJobOrder();
-            string myQuery = "SELECT customerID,balance FROM customer_account WHERE customerfullname = '" + cboCustomerName.Text + "'";
+            string myQuery = "SELECT customerID FROM customer_account WHERE customerfullname = '" + cboCustomerName.Text + "'";
             MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
             MySqlDataReader myReader;
 
@@ -111,7 +111,6 @@ namespace PYLsystems
 
                 string myId = myReader.GetString(0);
                 lblCustomerID.Text = myId;
-                txtBalance.Text = myReader.GetString(1);
             }
             myConn.Close();
 
@@ -350,7 +349,8 @@ namespace PYLsystems
             int employeename = cboEmployeeLastName.SelectedIndex;
             int paymenttype = cboPaymentType.SelectedIndex;
             int totalamount = txtTotalAmount.TextLength;
-            if (joborderdate > 15 && customername > -1 && employeename > -1 && paymenttype > -1 && totalamount > 0)
+            int customer_payment = txtCustomerPayment.TextLength;
+            if (joborderdate > 15 && customername > -1 && employeename > -1 && paymenttype > -1 && totalamount > 0 && customer_payment > 0)
             {
                 btnAddJobOrderDetails.Enabled = true;
             }
@@ -364,24 +364,21 @@ namespace PYLsystems
         {
 
             myConn.Open();
-            string balance = float.Parse(txtBalance.Text).ToString();
-            float balanceTransaction = float.Parse(balance);
-            if (balanceTransaction > -10000)
+            if (lvwJobDetails.Items.Count > 0)
             {
                 if (txtDiscount.Text == "")
                 {
                     //UPDATE customer_account SET balance = balance - 20 WHERE customerID = 2
-                    string myQuery = "INSERT INTO jobOrder (jobOrderDate,customerID,employeeID,paymentType,totalAmount) values('" + msktxtJobOrderDate.Text + "'," + lblCustomerID.Text + "," + lblEmployeeID.Text + ",'" + cboPaymentType.SelectedIndex + "'," + txtTotalAmount.Text + ")";
+                    string myQuery = "INSERT INTO jobOrder (jobOrderDate,employeeID,paymentType,totalAmount) values('" + msktxtJobOrderDate.Text + "'," + lblEmployeeID.Text + ",'" + cboPaymentType.SelectedIndex + "'," + txtTotalAmount.Text + ")";
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
                     myAdp.Fill(myDt);
-
                 }
                 else
                 {
 
-                    string myQuery = "INSERT INTO jobOrder (jobOrderDate,customerID,employeeID,paymentType,totalAmount,discount) values('" + msktxtJobOrderDate.Text + "', " + lblCustomerID.Text + "," + lblEmployeeID.Text + "," + cboPaymentType.SelectedIndex + "," + txtDiscountedTotalAmount.Text + "," + txtDiscount.Text + ")";
+                    string myQuery = "INSERT INTO jobOrder (jobOrderDate,employeeID,paymentType,totalAmount,discount) values('" + msktxtJobOrderDate.Text + "'," + lblEmployeeID.Text + "," + cboPaymentType.SelectedIndex + "," + txtDiscountedTotalAmount.Text + "," + txtDiscount.Text + ")";
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
@@ -427,9 +424,10 @@ namespace PYLsystems
 
                     }
                 }
+
                 if (txtDiscount.Text == "")
                 {
-                    string myQuery = "UPDATE customer_account SET balance = balance - " + txtTotalAmount.Text + " WHERE customerID = " + lblCustomerID.Text;
+                    string myQuery = "INSERT INTO customer_payment(jOrd_num,customerID,date_payed,customer_payment) VALUES(" + jOrdID + "," + lblCustomerID.Text + ",NOW()," + txtCustomerPayment.Text + ")";
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
@@ -438,7 +436,7 @@ namespace PYLsystems
 
                 else
                 {
-                    string myQuery = "UPDATE customer_account SET balance = balance - " + txtDiscountedTotalAmount.Text + " WHERE customerID = " + lblCustomerID.Text;
+                    string myQuery = "INSERT INTO customer_payment(jOrd_num,customerID,date_payed,customer_payment) VALUES(" + jOrdID + "," + lblCustomerID.Text + ",NOW()," + txtCustomerPayment.Text + ")";
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
@@ -494,6 +492,25 @@ namespace PYLsystems
             }
         }
 
+        private void txtCustomerPayment_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+            (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCustomerPayment_TextChanged(object sender, EventArgs e)
+        {
+            AddJobOrder();
+        }
         private void addCustomerAcc_Click(object sender, EventArgs e)
         {
             frmCustomerAccount addCustomerAcc = new frmCustomerAccount();

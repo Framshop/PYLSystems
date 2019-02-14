@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.txtFullName = new System.Windows.Forms.TextBox();
-            this.txtBalance = new System.Windows.Forms.TextBox();
             this.txtHomeAddress = new System.Windows.Forms.TextBox();
             this.txtEmailAddress = new System.Windows.Forms.TextBox();
             this.cboGender = new System.Windows.Forms.ComboBox();
@@ -37,7 +36,6 @@
             this.lblContactPerson = new System.Windows.Forms.Label();
             this.lblEmailAddress = new System.Windows.Forms.Label();
             this.lblHomeAddress = new System.Windows.Forms.Label();
-            this.lblBalance = new System.Windows.Forms.Label();
             this.lblGender = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -45,11 +43,11 @@
             this.msktxtContactPerson = new System.Windows.Forms.MaskedTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.grpInfo = new System.Windows.Forms.GroupBox();
+            this.lblCustomerAccountID = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.lblValidate = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.lblCustomerAccountID = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerAccount)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.grpInfo.SuspendLayout();
@@ -62,15 +60,6 @@
             this.txtFullName.Size = new System.Drawing.Size(148, 20);
             this.txtFullName.TabIndex = 0;
             this.txtFullName.TextChanged += new System.EventHandler(this.txtFullName_TextChanged);
-            // 
-            // txtBalance
-            // 
-            this.txtBalance.Location = new System.Drawing.Point(149, 176);
-            this.txtBalance.Name = "txtBalance";
-            this.txtBalance.Size = new System.Drawing.Size(148, 20);
-            this.txtBalance.TabIndex = 8;
-            this.txtBalance.TextChanged += new System.EventHandler(this.txtBalance_TextChanged);
-            this.txtBalance.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBalance_KeyPress);
             // 
             // txtHomeAddress
             // 
@@ -96,7 +85,7 @@
             this.cboGender.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.cboGender.Location = new System.Drawing.Point(149, 202);
+            this.cboGender.Location = new System.Drawing.Point(149, 176);
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(148, 21);
             this.cboGender.TabIndex = 10;
@@ -138,19 +127,10 @@
             this.lblHomeAddress.TabIndex = 7;
             this.lblHomeAddress.Text = "Home Address";
             // 
-            // lblBalance
-            // 
-            this.lblBalance.AutoSize = true;
-            this.lblBalance.Location = new System.Drawing.Point(22, 183);
-            this.lblBalance.Name = "lblBalance";
-            this.lblBalance.Size = new System.Drawing.Size(43, 13);
-            this.lblBalance.TabIndex = 9;
-            this.lblBalance.Text = "Deposit";
-            // 
             // lblGender
             // 
             this.lblGender.AutoSize = true;
-            this.lblGender.Location = new System.Drawing.Point(22, 210);
+            this.lblGender.Location = new System.Drawing.Point(22, 184);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(42, 13);
             this.lblGender.TabIndex = 11;
@@ -159,7 +139,7 @@
             // btnAdd
             // 
             this.btnAdd.Enabled = false;
-            this.btnAdd.Location = new System.Drawing.Point(25, 243);
+            this.btnAdd.Location = new System.Drawing.Point(25, 225);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 12;
@@ -170,7 +150,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Enabled = false;
-            this.btnUpdate.Location = new System.Drawing.Point(106, 243);
+            this.btnUpdate.Location = new System.Drawing.Point(106, 225);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 13;
@@ -185,9 +165,10 @@
             this.dgvCustomerAccount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCustomerAccount.Location = new System.Drawing.Point(344, 3);
             this.dgvCustomerAccount.Name = "dgvCustomerAccount";
-            this.dgvCustomerAccount.Size = new System.Drawing.Size(681, 331);
+            this.dgvCustomerAccount.Size = new System.Drawing.Size(681, 311);
             this.dgvCustomerAccount.TabIndex = 17;
             this.dgvCustomerAccount.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomerAccount_CellClick);
+            this.dgvCustomerAccount.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomerAccount_CellDoubleClick);
             // 
             // msktxtContactPerson
             // 
@@ -211,7 +192,7 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1028, 337);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1028, 317);
             this.tableLayoutPanel1.TabIndex = 16;
             // 
             // grpInfo
@@ -226,10 +207,8 @@
             this.grpInfo.Controls.Add(this.btnUpdate);
             this.grpInfo.Controls.Add(this.txtFullName);
             this.grpInfo.Controls.Add(this.btnAdd);
-            this.grpInfo.Controls.Add(this.txtBalance);
             this.grpInfo.Controls.Add(this.lblGender);
             this.grpInfo.Controls.Add(this.txtHomeAddress);
-            this.grpInfo.Controls.Add(this.lblBalance);
             this.grpInfo.Controls.Add(this.txtEmailAddress);
             this.grpInfo.Controls.Add(this.lblHomeAddress);
             this.grpInfo.Controls.Add(this.cboGender);
@@ -238,9 +217,18 @@
             this.grpInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpInfo.Location = new System.Drawing.Point(3, 3);
             this.grpInfo.Name = "grpInfo";
-            this.grpInfo.Size = new System.Drawing.Size(335, 331);
+            this.grpInfo.Size = new System.Drawing.Size(335, 311);
             this.grpInfo.TabIndex = 15;
             this.grpInfo.TabStop = false;
+            // 
+            // lblCustomerAccountID
+            // 
+            this.lblCustomerAccountID.AutoSize = true;
+            this.lblCustomerAccountID.Location = new System.Drawing.Point(32, 47);
+            this.lblCustomerAccountID.Name = "lblCustomerAccountID";
+            this.lblCustomerAccountID.Size = new System.Drawing.Size(0, 13);
+            this.lblCustomerAccountID.TabIndex = 17;
+            this.lblCustomerAccountID.Visible = false;
             // 
             // txtSearch
             // 
@@ -270,7 +258,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(25, 290);
+            this.btnCancel.Location = new System.Drawing.Point(25, 272);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 14;
@@ -278,20 +266,11 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // lblCustomerAccountID
-            // 
-            this.lblCustomerAccountID.AutoSize = true;
-            this.lblCustomerAccountID.Location = new System.Drawing.Point(32, 47);
-            this.lblCustomerAccountID.Name = "lblCustomerAccountID";
-            this.lblCustomerAccountID.Size = new System.Drawing.Size(0, 13);
-            this.lblCustomerAccountID.TabIndex = 17;
-            this.lblCustomerAccountID.Visible = false;
-            // 
             // frmCustomerAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 337);
+            this.ClientSize = new System.Drawing.Size(1028, 317);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmCustomerAccount";
@@ -308,7 +287,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtFullName;
-        private System.Windows.Forms.TextBox txtBalance;
         private System.Windows.Forms.TextBox txtHomeAddress;
         private System.Windows.Forms.TextBox txtEmailAddress;
         private System.Windows.Forms.ComboBox cboGender;
@@ -316,7 +294,6 @@
         private System.Windows.Forms.Label lblContactPerson;
         private System.Windows.Forms.Label lblEmailAddress;
         private System.Windows.Forms.Label lblHomeAddress;
-        private System.Windows.Forms.Label lblBalance;
         private System.Windows.Forms.Label lblGender;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
