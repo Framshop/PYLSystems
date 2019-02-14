@@ -511,5 +511,11 @@ namespace PYLsystems
         {
             AddJobOrder();
         }
+        private void addCustomerAcc_Click(object sender, EventArgs e)
+        {
+            frmCustomerAccount addCustomerAcc = new frmCustomerAccount();
+            addCustomerAcc.ShowDialog();
+            this.Close();
+        }
     }
 }
