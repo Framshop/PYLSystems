@@ -27,7 +27,7 @@ namespace PYLsystems
         public void RefreshDatabase()
         {
             myConn.Open();
-            string query = "SELECT customerID,customerFullName,contactPerson,if(gender=1,'Female','Male') as 'gender',emailAddress,homeAddress,balance FROM customer_account";
+            string query = "SELECT customerID,customerFullName,contactPerson,if(gender=1,'Female','Male') as 'gender',emailAddress,homeAddress FROM customer_account";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter Adp = new MySqlDataAdapter(comm);
             DataTable Dt = new DataTable();
@@ -62,7 +62,7 @@ namespace PYLsystems
             if (myD.Rows.Count == 0)
             {
                 myConn.Open();
-                string myQuery = "INSERT INTO customer_account (customerFullName, contactPerson, emailAddress, homeAddress, gender, balance) values('" + txtFullName.Text + "','" + msktxtContactPerson.Text + "','" + txtEmailAddress.Text + "','" + txtHomeAddress.Text + "','" + cboGender.SelectedIndex + "'," + txtBalance.Text + ")";
+                string myQuery = "INSERT INTO customer_account (customerFullName, contactPerson, emailAddress, homeAddress, gender) values('" + txtFullName.Text + "','" + msktxtContactPerson.Text + "','" + txtEmailAddress.Text + "','" + txtHomeAddress.Text + "','" + cboGender.SelectedIndex + "')";
                 MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                 MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                 DataTable myDt = new DataTable();
@@ -70,7 +70,6 @@ namespace PYLsystems
                 myConn.Close();
                 MessageBox.Show("Insert Successful!");
                 RefreshDatabase();
-                txtBalance.Text = "";
                 txtEmailAddress.Text = "";
                 txtHomeAddress.Text = "";
                 txtFullName.Text = "";
@@ -89,7 +88,7 @@ namespace PYLsystems
             functionEmailValidation();
             myConn.Open();
             string myQuery = "UPDATE customer_account SET customerFullName = '" + txtFullName.Text + "', contactPerson =  " +
-                "'" + msktxtContactPerson.Text + "', emailAddress = '" + txtEmailAddress.Text + "', homeAddress = '" + txtHomeAddress.Text + "', gender = '" + cboGender.SelectedIndex + "', balance = " + txtBalance.Text + " WHERE customerID = " + customerID;
+                "'" + msktxtContactPerson.Text + "', emailAddress = '" + txtEmailAddress.Text + "', homeAddress = '" + txtHomeAddress.Text + "', gender = '" + cboGender.SelectedIndex + "' WHERE customerID = " + customerID;
             MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
             MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
             DataTable myDt = new DataTable();
@@ -97,7 +96,7 @@ namespace PYLsystems
             myConn.Close();
             MessageBox.Show("Update Successful!");
             RefreshDatabase();
-            txtBalance.Text = "";
+
             txtEmailAddress.Text = "";
             txtHomeAddress.Text = "";
             txtFullName.Text = "";
@@ -116,7 +115,7 @@ namespace PYLsystems
             txtEmailAddress.Text = dgvCustomerAccount.CurrentRow.Cells[4].Value.ToString();
             txtHomeAddress.Text = dgvCustomerAccount.CurrentRow.Cells[5].Value.ToString();
             cboGender.Text = dgvCustomerAccount.CurrentRow.Cells[3].Value.ToString();
-            txtBalance.Text = dgvCustomerAccount.CurrentRow.Cells[6].Value.ToString();
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -129,9 +128,8 @@ namespace PYLsystems
             int contactperson = msktxtContactPerson.TextLength;
             int emailaddress = txtEmailAddress.TextLength;
             int homeaddress = txtHomeAddress.TextLength;
-            int balance = txtBalance.TextLength;
             int gender = cboGender.SelectedIndex;
-            if (fullname > 0 && contactperson > 10 && emailaddress > 5 && homeaddress > 0 && balance > 0 && gender > -1)
+            if (fullname > 0 && contactperson > 10 && emailaddress > 5 && homeaddress > 0 && gender > -1)
             {
                 btnAdd.Enabled = true;
             }
@@ -209,7 +207,7 @@ namespace PYLsystems
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             myConn.Open();
-            string query = "SELECT customerID,customerFullName,contactPerson,if(gender=1,'Female','Male') as 'gender',emailAddress,homeAddress,balance FROM customer_account WHERE customerFullName LIKE '%" + txtSearch.Text + "%' || contactPerson LIKE '%" + txtSearch.Text + "%' || gender LIKE '%" + txtSearch.Text + "%' || homeAddress LIKE '%" + txtSearch.Text + "%' || balance LIKE '%" + txtSearch.Text + "%'";
+            string query = "SELECT customerID,customerFullName,contactPerson,if(gender=1,'Female','Male') as 'gender',emailAddress,homeAddress FROM customer_account WHERE customerFullName LIKE '%" + txtSearch.Text + "%' || contactPerson LIKE '%" + txtSearch.Text + "%' || gender LIKE '%" + txtSearch.Text + "%' || homeAddress LIKE '%" + txtSearch.Text + "%' || balance LIKE '%" + txtSearch.Text + "%'";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter Adp = new MySqlDataAdapter(comm);
             DataTable Dt = new DataTable();
@@ -224,7 +222,6 @@ namespace PYLsystems
             dgvCustomerAccount.Columns["emailAddress"].HeaderText = "Email Address";
             dgvCustomerAccount.Columns["homeAddress"].HeaderText = "Home Address";
             dgvCustomerAccount.Columns["gender"].HeaderText = "Gender";
-            dgvCustomerAccount.Columns["balance"].HeaderText = "Balance";
         }
 
         private void txtEmailAddress_KeyPress(object sender, KeyPressEventArgs e)
@@ -238,6 +235,12 @@ namespace PYLsystems
             {
                 e.Handled = true;
             }
+        }
+        private void dgvCustomerAccount_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            frmCustomerPayment frmCustomerPayment = new frmCustomerPayment();
+            frmCustomerPayment.customerID = dgvCustomerAccount.CurrentRow.Cells[0].Value.ToString();
+            frmCustomerPayment.ShowDialog();
         }
     }
 }

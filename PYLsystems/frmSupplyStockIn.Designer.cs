@@ -102,6 +102,7 @@
             this.lblsupplierID.Size = new System.Drawing.Size(35, 13);
             this.lblsupplierID.TabIndex = 6;
             this.lblsupplierID.Text = "label1";
+            this.lblsupplierID.Visible = false;
             // 
             // lbl_supply_itemsID
             // 
@@ -111,6 +112,7 @@
             this.lbl_supply_itemsID.Size = new System.Drawing.Size(35, 13);
             this.lbl_supply_itemsID.TabIndex = 7;
             this.lbl_supply_itemsID.Text = "label2";
+            this.lbl_supply_itemsID.Visible = false;
             // 
             // btnAdd
             // 
@@ -284,6 +286,7 @@
             this.lblSupplyID.Size = new System.Drawing.Size(35, 13);
             this.lblSupplyID.TabIndex = 24;
             this.lblSupplyID.Text = "label1";
+            this.lblSupplyID.Visible = false;
             // 
             // lblsupplyStockInQuantityUpdate
             // 
@@ -293,6 +296,7 @@
             this.lblsupplyStockInQuantityUpdate.Size = new System.Drawing.Size(35, 13);
             this.lblsupplyStockInQuantityUpdate.TabIndex = 25;
             this.lblsupplyStockInQuantityUpdate.Text = "label1";
+            this.lblsupplyStockInQuantityUpdate.Visible = false;
             // 
             // lblUnitPriceUpdate
             // 
@@ -302,6 +306,7 @@
             this.lblUnitPriceUpdate.Size = new System.Drawing.Size(35, 13);
             this.lblUnitPriceUpdate.TabIndex = 26;
             this.lblUnitPriceUpdate.Text = "label2";
+            this.lblUnitPriceUpdate.Visible = false;
             // 
             // lblActiveUpdate
             // 
@@ -311,6 +316,7 @@
             this.lblActiveUpdate.Size = new System.Drawing.Size(35, 13);
             this.lblActiveUpdate.TabIndex = 27;
             this.lblActiveUpdate.Text = "label1";
+            this.lblActiveUpdate.Visible = false;
             // 
             // btnCancel
             // 

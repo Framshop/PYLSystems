@@ -39,7 +39,7 @@ namespace PYLsystems
             myConn.Open();
             string myQuery = "UPDATE supply_details SET stockin_quantity =  stockin_quantity + " + txtStockInQuantity.Text + ",supply_price =  " +
                 "" + txtUnitPrice.Text + ",active =  " +
-                "" + cboActive.SelectedIndex + " WHERE supplyID = " + lblSupplyID.Text;
+                "" + cboActive.SelectedIndex + ",dateModified = NOW() WHERE supplyID = " + lblSupplyID.Text;
             MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
 
             MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
