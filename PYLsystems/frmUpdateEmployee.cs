@@ -1,0 +1,108 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+
+namespace Employee_Management
+{
+    public partial class frmUpdateEmployee : Form
+    {
+        MySqlConnection conn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=");
+        public frmUpdateEmployee()
+        {
+            InitializeComponent();
+        }
+
+        private void frmUpdateEmployee_Load(object sender, EventArgs e)
+        {
+
+            reload();
+
+
+        }
+
+
+        public void reload()
+        {
+            conn.Close();
+            conn.Open();
+            string query = "SELECT  * FROM employee emp left join accessworkdesc ac on ac.employeeStatus = emp.employeeStatus WHERE employeeid = '" + empid.Text + "'";
+            MySqlCommand myComm = new MySqlCommand(query, conn);
+            MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
+            MySqlDataReader reader;
+            reader = myComm.ExecuteReader();
+
+
+            while (reader.Read())
+            {
+                string position = reader.GetString(13);
+                string startofEmp = reader.GetString(2);
+                string firstname = reader.GetString(3);
+                string lastname = reader.GetString(4);
+                string gender = reader.GetString(5);
+                string birthdate = reader.GetString(6);
+                string homeaddress = reader.GetString(7);
+                string salaryrate = reader.GetString(8);
+                string contactnumber = reader.GetString(9);
+
+
+                cbEmpStatus.Text = position;
+                dtpStartofEmp.Text = startofEmp;
+                txtFirstName.Text = firstname;
+                txtLastName.Text = lastname;
+                cbGender.Text = gender;
+                dtpBirthDate.Text = birthdate;
+                txtHomeAddress.Text = homeaddress;
+                txtSalaryRate.Text = salaryrate;
+                txtContactNumber.Text = contactnumber;
+
+                empid.Text = reader.GetString(0);
+
+            }
+
+            conn.Close();
+
+        }
+
+        private void btnUpdateEmp_Click(object sender, EventArgs e)
+        {
+            conn.Open();
+
+            // string myQuery = "UPDATE product SET code = '" + txtEditCode.Text + "',name =  '" + txtEditName.Text + "', description = '" + txtEditDescription.Text + "', unitprice = '" + txtEditUnitPrice.Text + "',quantity =  '" + txtEditQuantity.Text + "',active = '" + cboEditActive.Text + "',unitmeasure = '" + txtEditUnitmeasure.Text + "' WHERE code = '" + code.Text + "'AND name = '" + name.Text + "'AND description = '" + description.Text + "'AND unitprice = '" + unitprice.Text + "'";
+
+            string myQuery = "UPDATE employee set startofEmployment = '" + dtpStartofEmp.Value.Date.ToString("yyyy-MM-dd") + "', firstName ='" + txtFirstName.Text + "',lastName ='" + txtLastName.Text + "', gender= '" + cbGender.Text + "', birthDate= '" + dtpBirthDate.Value.Date.ToString("yyyy-MM-dd ") + "', homeAddress= '" + txtHomeAddress.Text + "', salaryRate= " + txtSalaryRate.Text + ", contactNumber= '" + txtContactNumber.Text + "' WHERE employeeid ='" + empid.Text + "'";
+            MySqlCommand myComm = new MySqlCommand(myQuery, conn);
+            MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
+            DataTable myDt = new DataTable();
+            myAdp.Fill(myDt);
+            conn.Close();
+            MessageBox.Show("Update Success");
+            this.Close();
+
+
+        }
+
+        private void btCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void cbEmpStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtContactNumber_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+    }
+}
+    
+
