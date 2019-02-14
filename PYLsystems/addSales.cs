@@ -348,6 +348,7 @@ namespace PYLsystems
             changeTextBox.Text = change.ToString("0.00");
         }
     }
+    //------CLASS FOR LIST--------
     class frame_ItemsforList
     {
         internal String frameName { get; set; }
