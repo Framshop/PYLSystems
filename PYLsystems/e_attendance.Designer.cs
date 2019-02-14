@@ -204,6 +204,7 @@
             this.timeInBtn.TabIndex = 3;
             this.timeInBtn.Text = "Time In";
             this.timeInBtn.UseVisualStyleBackColor = true;
+            this.timeInBtn.Click += new System.EventHandler(this.timeInBtn_Click);
             // 
             // timeOutBtn
             // 
@@ -216,6 +217,7 @@
             this.timeOutBtn.TabIndex = 4;
             this.timeOutBtn.Text = "Time Out";
             this.timeOutBtn.UseVisualStyleBackColor = true;
+            this.timeOutBtn.Click += new System.EventHandler(this.timeOutBtn_Click);
             // 
             // infoGB
             // 
@@ -272,6 +274,7 @@
             this.closeBtn.TabIndex = 5;
             this.closeBtn.Text = "Close";
             this.closeBtn.UseVisualStyleBackColor = true;
+            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
             // attendanceDatesGB
             // 

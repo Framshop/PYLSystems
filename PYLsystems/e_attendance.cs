@@ -154,6 +154,11 @@ namespace PYLsystems
                 timeOutBtn.Enabled = true;
             }
         }
+        private void insertTimeIn() {
+        }
+        private void insertTimeOut() {
+            String attendanceTOString = "INSERT INTO attendance (employeeID,date,timeOut) values(1,NOW(),'2019-02-09 17:00:32');";
+        }
         //----------------Special [foreach] statements------------
         public IEnumerable<DateTime> EachDay(DateTime from, DateTime thru)
         {
@@ -177,6 +182,21 @@ namespace PYLsystems
                 att_gridviewLoader();
             this.DateEnd = getDateTimePicker(1);
             attendanceSorter(this.DateStart, this.DateEnd);
+        }
+
+        private void timeInBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timeOutBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void closeBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
