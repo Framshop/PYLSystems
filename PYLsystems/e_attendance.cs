@@ -40,6 +40,7 @@ namespace PYLsystems
             DefaultDatesInitializer();
             attendanceSorter(DateStart, DateEnd);
             enableTimeInOutBtn();
+            getEmployeeName();
 
         }
         //-------------Process and Calculation Methods--------------
@@ -54,6 +55,20 @@ namespace PYLsystems
             this.attendanceDT.Columns.Add("Time OUT");
             this.attendanceDT.Columns.Add("Total Hours");
             this.attendanceGridView.DataSource = this.attendanceDT;
+        }
+        private void getEmployeeName() {
+            String getEmployeeNameString = "SELECT concat(lastName,', ',firstName) AS empName FROM employee WHERE employeeID=@employeeID;";
+            MySqlConnection my_conn = new MySqlConnection(connString);
+            MySqlCommand getEmployeeName_command = new MySqlCommand(getEmployeeNameString, my_conn);
+            getEmployeeName_command.Parameters.AddWithValue("@employeeID", this.employeeID);
+            MySqlDataAdapter my_adapter = new MySqlDataAdapter(getEmployeeName_command);
+
+            DataTable empname_dt = new DataTable();
+            my_adapter.Fill(empname_dt);
+
+            empNameTextBox.Text = empname_dt.Rows[0][0].ToString();
+
+
         }
         private void DefaultDatesInitializer()
         {
@@ -146,15 +161,35 @@ namespace PYLsystems
             attendanceView_command.Parameters.AddWithValue("@employeeID", this.employeeID);
             my_conn.Open();
             MySqlDataReader readCheckRows = attendanceView_command.ExecuteReader();
-            if (!readCheckRows.Read())
+            MySqlDataAdapter my_adapter = new MySqlDataAdapter(attendanceView_command);
+
+            DataTable checkTimeOut = new DataTable();
+            bool checkRowsExist = readCheckRows.Read();
+            my_conn.Close();
+            my_adapter.Fill(checkTimeOut);
+            if (!checkRowsExist)
             {
-                timeInBtn.Enabled = true;
-            }
-            else {
+                timeInBtn.Enabled = true;              
+            }           
+            else if (checkTimeOut.Rows[0][4].ToString() == "") {
                 timeOutBtn.Enabled = true;
             }
         }
         private void insertTimeIn() {
+            String attendanceTOString = "INSERT INTO attendance (employeeID,date,timeIn) values(@employeeID,NOW(),NOW());";
+            MySqlConnection my_conn = new MySqlConnection(connString);
+            MySqlCommand attendanceTO_command = new MySqlCommand(attendanceTOString, my_conn);
+            attendanceTO_command.Parameters.AddWithValue("@employeeID", this.employeeID);
+            MySqlDataReader dataReader;
+            my_conn.Open();
+            dataReader = attendanceTO_command.ExecuteReader();
+            while (dataReader.Read())
+            {
+            }
+            my_conn.Close();
+            timeInBtn.Enabled = false;
+            timeOutBtn.Enabled = true;
+            attendanceSorter(this.DateStart, this.DateEnd);
         }
         private void insertTimeOut() {
             String attendanceTOString = "INSERT INTO attendance (employeeID,date,timeOut) values(@employeeID,NOW(),NOW());";
@@ -198,12 +233,12 @@ namespace PYLsystems
 
         private void timeInBtn_Click(object sender, EventArgs e)
         {
-
+            insertTimeIn();
         }
 
         private void timeOutBtn_Click(object sender, EventArgs e)
         {
-
+            insertTimeOut();
         }
 
         private void closeBtn_Click(object sender, EventArgs e)

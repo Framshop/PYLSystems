@@ -267,7 +267,6 @@
             // 
             this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeBtn.Enabled = false;
             this.closeBtn.Location = new System.Drawing.Point(72, 65);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Size = new System.Drawing.Size(229, 37);
