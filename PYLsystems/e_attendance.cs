@@ -157,7 +157,19 @@ namespace PYLsystems
         private void insertTimeIn() {
         }
         private void insertTimeOut() {
-            String attendanceTOString = "INSERT INTO attendance (employeeID,date,timeOut) values(1,NOW(),'2019-02-09 17:00:32');";
+            String attendanceTOString = "INSERT INTO attendance (employeeID,date,timeOut) values(@employeeID,NOW(),NOW());";
+            MySqlConnection my_conn = new MySqlConnection(connString);
+            MySqlCommand attendanceTO_command = new MySqlCommand(attendanceTOString, my_conn);
+            attendanceTO_command.Parameters.AddWithValue("@employeeID", this.employeeID);
+            MySqlDataReader dataReader;
+            my_conn.Open();
+            dataReader = attendanceTO_command.ExecuteReader();
+            while (dataReader.Read())
+            {
+            }
+            my_conn.Close();
+            timeOutBtn.Enabled = false;
+            attendanceSorter(this.DateStart,this.DateEnd);
         }
         //----------------Special [foreach] statements------------
         public IEnumerable<DateTime> EachDay(DateTime from, DateTime thru)
