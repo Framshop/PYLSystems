@@ -41,6 +41,7 @@ namespace PYLsystems
             attendanceSorter(DateStart, DateEnd);
             enableTimeInOutBtn();
             getEmployeeName();
+            getTimeInOutTextBox();
 
         }
         //-------------Process and Calculation Methods--------------
@@ -68,7 +69,28 @@ namespace PYLsystems
 
             empNameTextBox.Text = empname_dt.Rows[0][0].ToString();
 
+        }
+        private void getTimeInOutTextBox() {
+            String attendanceViewString = "SELECT attIN.employeeID, DAYNAME(attIn.date), attIn.date, attIn.TimeIn,attOut.TimeOut, " +
+             "concat(MOD(HOUR(TIMEDIFF(attIn.TimeIn, attOut.TimeOut)), 24), ' hours ', MINUTE(timediff(attIn.TimeIn, attOut.TimeOut)), ' min ') AS 'Total Hours' " +
+             "FROM(SELECT employeeID, date, timeIn from attendance GROUP BY employeeID, date) as attIn " +
+             "LEFT JOIN(SELECT employeeID, date, timeOut from attendance WHERE timeOut IS NOT NULL GROUP BY employeeID, date) as attOut " +
+             "on attIn.employeeID = attOut.employeeID AND attIn.date = attOut.date " +
+             "WHERE attIn.employeeID = @employeeID AND attIn.date=CURDATE();";
+            MySqlConnection my_conn = new MySqlConnection(connString);
+            MySqlCommand attendanceView_command = new MySqlCommand(attendanceViewString, my_conn);
+            attendanceView_command.Parameters.AddWithValue("@employeeID", this.employeeID);
+            MySqlDataAdapter my_adapter = new MySqlDataAdapter(attendanceView_command);
 
+            DataTable checkTimeOut = new DataTable();
+            my_adapter.Fill(checkTimeOut);
+            //MessageBox.Show(checkTimeOut.Rows.Count.ToString());
+            if (checkTimeOut.Rows.Count >0) { 
+                timeInTextBox.Text = checkTimeOut.Rows[0][3].ToString();
+            }
+            if (checkTimeOut.Rows.Count > 0 && checkTimeOut.Rows[0][4] != null) { 
+                timeOutTextBox.Text = checkTimeOut.Rows[0][4].ToString();
+            }
         }
         private void DefaultDatesInitializer()
         {
@@ -174,6 +196,8 @@ namespace PYLsystems
             else if (checkTimeOut.Rows[0][4].ToString() == "") {
                 timeOutBtn.Enabled = true;
             }
+
+
         }
         private void insertTimeIn() {
             String attendanceTOString = "INSERT INTO attendance (employeeID,date,timeIn) values(@employeeID,NOW(),NOW());";
@@ -190,6 +214,7 @@ namespace PYLsystems
             timeInBtn.Enabled = false;
             timeOutBtn.Enabled = true;
             attendanceSorter(this.DateStart, this.DateEnd);
+            getTimeInOutTextBox();
         }
         private void insertTimeOut() {
             String attendanceTOString = "INSERT INTO attendance (employeeID,date,timeOut) values(@employeeID,NOW(),NOW());";
@@ -205,6 +230,7 @@ namespace PYLsystems
             my_conn.Close();
             timeOutBtn.Enabled = false;
             attendanceSorter(this.DateStart,this.DateEnd);
+            getTimeInOutTextBox();
         }
         //----------------Special [foreach] statements------------
         public IEnumerable<DateTime> EachDay(DateTime from, DateTime thru)

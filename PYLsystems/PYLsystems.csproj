@@ -100,6 +100,18 @@
     <Compile Include="frmDamageItems.Designer.cs">
       <DependentUpon>frmDamageItems.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEmployeeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmployeeList.designer.cs">
+      <DependentUpon>frmEmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmployeeMgt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmployeeMgt.Designer.cs">
+      <DependentUpon>frmEmployeeMgt.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFrameDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,11 +154,23 @@
     <Compile Include="frmJobOrderTransaction.Designer.cs">
       <DependentUpon>frmJobOrderTransaction.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNewEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewEmployee.Designer.cs">
+      <DependentUpon>frmNewEmployee.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRemainingSupplyFrames.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmRemainingSupplyFrames.Designer.cs">
       <DependentUpon>frmRemainingSupplyFrames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetWorkDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetWorkDetails.Designer.cs">
+      <DependentUpon>frmSetWorkDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="frmStockInSupplyEdit.cs">
       <SubType>Form</SubType>
@@ -165,6 +189,24 @@
     </Compile>
     <Compile Include="frmSupplyStockIn.Designer.cs">
       <DependentUpon>frmSupplyStockIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpdateEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdateEmployee.Designer.cs">
+      <DependentUpon>frmUpdateEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewEmployee.Designer.cs">
+      <DependentUpon>frmViewEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWorkDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWorkDetails.Designer.cs">
+      <DependentUpon>frmWorkDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
@@ -225,6 +267,12 @@
     <EmbeddedResource Include="frmDamageItems.resx">
       <DependentUpon>frmDamageItems.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEmployeeList.resx">
+      <DependentUpon>frmEmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmployeeMgt.resx">
+      <DependentUpon>frmEmployeeMgt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFrameList.resx">
       <DependentUpon>frmFrameList.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,8 +291,14 @@
     <EmbeddedResource Include="frmJobOrderTransaction.resx">
       <DependentUpon>frmJobOrderTransaction.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmNewEmployee.resx">
+      <DependentUpon>frmNewEmployee.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmRemainingSupplyFrames.resx">
       <DependentUpon>frmRemainingSupplyFrames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetWorkDetails.resx">
+      <DependentUpon>frmSetWorkDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStockInSupplyEdit.resx">
       <DependentUpon>frmStockInSupplyEdit.cs</DependentUpon>
@@ -254,6 +308,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSupplyStockIn.resx">
       <DependentUpon>frmSupplyStockIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdateEmployee.resx">
+      <DependentUpon>frmUpdateEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewEmployee.resx">
+      <DependentUpon>frmViewEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWorkDetails.resx">
+      <DependentUpon>frmWorkDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>

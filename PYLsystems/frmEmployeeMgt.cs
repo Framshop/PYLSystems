@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 
-namespace Employee_Management
+namespace PYLsystems
 {
     public partial class frmEmployeeMgt : Form
     {

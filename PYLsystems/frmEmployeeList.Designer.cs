@@ -1,4 +1,4 @@
-﻿namespace Employee_Management
+﻿namespace PYLsystems
 {
     partial class frmEmployeeList
     {
