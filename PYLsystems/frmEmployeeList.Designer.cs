@@ -36,6 +36,7 @@
             this.btnEmpList = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.viewAttendance = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgEmpList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,18 +44,19 @@
             // 
             this.dgEmpList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgEmpList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgEmpList.Location = new System.Drawing.Point(25, 50);
+            this.dgEmpList.Location = new System.Drawing.Point(38, 77);
+            this.dgEmpList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgEmpList.Name = "dgEmpList";
             this.dgEmpList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgEmpList.Size = new System.Drawing.Size(495, 254);
+            this.dgEmpList.Size = new System.Drawing.Size(742, 391);
             this.dgEmpList.TabIndex = 0;
-            this.dgEmpList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgEmpList_CellClick);
             // 
             // btnNewEmp
             // 
-            this.btnNewEmp.Location = new System.Drawing.Point(25, 319);
+            this.btnNewEmp.Location = new System.Drawing.Point(38, 491);
+            this.btnNewEmp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnNewEmp.Name = "btnNewEmp";
-            this.btnNewEmp.Size = new System.Drawing.Size(101, 43);
+            this.btnNewEmp.Size = new System.Drawing.Size(152, 66);
             this.btnNewEmp.TabIndex = 1;
             this.btnNewEmp.Text = "New Employee";
             this.btnNewEmp.UseVisualStyleBackColor = true;
@@ -62,9 +64,10 @@
             // 
             // btnUpdateEmp
             // 
-            this.btnUpdateEmp.Location = new System.Drawing.Point(292, 319);
+            this.btnUpdateEmp.Location = new System.Drawing.Point(438, 491);
+            this.btnUpdateEmp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnUpdateEmp.Name = "btnUpdateEmp";
-            this.btnUpdateEmp.Size = new System.Drawing.Size(101, 43);
+            this.btnUpdateEmp.Size = new System.Drawing.Size(152, 66);
             this.btnUpdateEmp.TabIndex = 2;
             this.btnUpdateEmp.Text = "Update Employee";
             this.btnUpdateEmp.UseVisualStyleBackColor = true;
@@ -72,9 +75,10 @@
             // 
             // btnViewEmp
             // 
-            this.btnViewEmp.Location = new System.Drawing.Point(159, 319);
+            this.btnViewEmp.Location = new System.Drawing.Point(238, 491);
+            this.btnViewEmp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnViewEmp.Name = "btnViewEmp";
-            this.btnViewEmp.Size = new System.Drawing.Size(101, 43);
+            this.btnViewEmp.Size = new System.Drawing.Size(152, 66);
             this.btnViewEmp.TabIndex = 4;
             this.btnViewEmp.Text = "View Employee";
             this.btnViewEmp.UseVisualStyleBackColor = true;
@@ -83,43 +87,59 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(251, 9);
+            this.label1.Location = new System.Drawing.Point(376, 14);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.Size = new System.Drawing.Size(108, 20);
             this.label1.TabIndex = 5;
             this.label1.Text = "Employee List";
             // 
             // btnEmpList
             // 
-            this.btnEmpList.Location = new System.Drawing.Point(418, 319);
+            this.btnEmpList.Location = new System.Drawing.Point(38, 567);
+            this.btnEmpList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEmpList.Name = "btnEmpList";
-            this.btnEmpList.Size = new System.Drawing.Size(101, 43);
+            this.btnEmpList.Size = new System.Drawing.Size(152, 66);
             this.btnEmpList.TabIndex = 3;
-            this.btnEmpList.Text = "Employee Management";
+            this.btnEmpList.Text = "Close";
             this.btnEmpList.UseVisualStyleBackColor = true;
             this.btnEmpList.Click += new System.EventHandler(this.btnEmpList_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(69, 24);
+            this.textBox1.Location = new System.Drawing.Point(104, 37);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(130, 20);
+            this.textBox1.Size = new System.Drawing.Size(193, 26);
             this.textBox1.TabIndex = 6;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 27);
+            this.label2.Location = new System.Drawing.Point(33, 42);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.Size = new System.Drawing.Size(60, 20);
             this.label2.TabIndex = 7;
             this.label2.Text = "Search";
             // 
+            // viewAttendance
+            // 
+            this.viewAttendance.Location = new System.Drawing.Point(628, 491);
+            this.viewAttendance.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.viewAttendance.Name = "viewAttendance";
+            this.viewAttendance.Size = new System.Drawing.Size(152, 66);
+            this.viewAttendance.TabIndex = 8;
+            this.viewAttendance.Text = "View Attendance";
+            this.viewAttendance.UseVisualStyleBackColor = true;
+            this.viewAttendance.Click += new System.EventHandler(this.viewAttendance_Click);
+            // 
             // frmEmployeeList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 397);
+            this.ClientSize = new System.Drawing.Size(813, 653);
+            this.Controls.Add(this.viewAttendance);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
@@ -129,6 +149,7 @@
             this.Controls.Add(this.btnNewEmp);
             this.Controls.Add(this.dgEmpList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmEmployeeList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmEmployeeList";
@@ -149,5 +170,6 @@
         private System.Windows.Forms.Button btnEmpList;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button viewAttendance;
     }
 }

@@ -17,23 +17,26 @@ namespace PYLsystems
         String DateStart;
         String DateEnd;
         private DataTable attendanceDT;
-        int employeeID;
+        int selectedEmpID;
         int employeeStatus;
+        int employeeID;
         //--------------Initial Load--------------
         //----for programming initializer
         public e_attendance()
         {
             InitializeComponent();
             //DefaultDatesInitializer();
-            this.employeeID = 1; //To be removed once connected to employee management subsystem
+            this.selectedEmpID = 1; //To be removed once connected to employee management subsystem
             this.employeeStatus = 1; //To be removed once connected to employee management subsystem
+            this.employeeID = 1;
         }
-        public e_attendance(int employeeID, int employeeStatus)
+        public e_attendance(int employeeID, int employeeStatus, int selectedEmpID)
         {
             InitializeComponent();
             DefaultDatesInitializer();
-            this.employeeID = employeeID; //To be removed once connected to employee management subsystem
+            this.selectedEmpID = selectedEmpID; //To be removed once connected to employee management subsystem
             this.employeeStatus = employeeStatus; //To be removed once connected to employee management subsystem
+            this.employeeID = employeeID;
         }
         private void e_attendance_Load(object sender, EventArgs e)
         {
@@ -58,10 +61,10 @@ namespace PYLsystems
             this.attendanceGridView.DataSource = this.attendanceDT;
         }
         private void getEmployeeName() {
-            String getEmployeeNameString = "SELECT concat(lastName,', ',firstName) AS empName FROM employee WHERE employeeID=@employeeID;";
+            String getEmployeeNameString = "SELECT concat(lastName,', ',firstName) AS empName FROM employee WHERE employeeID=@selectedEmpID;";
             MySqlConnection my_conn = new MySqlConnection(connString);
             MySqlCommand getEmployeeName_command = new MySqlCommand(getEmployeeNameString, my_conn);
-            getEmployeeName_command.Parameters.AddWithValue("@employeeID", this.employeeID);
+            getEmployeeName_command.Parameters.AddWithValue("@selectedEmpID", this.selectedEmpID);
             MySqlDataAdapter my_adapter = new MySqlDataAdapter(getEmployeeName_command);
 
             DataTable empname_dt = new DataTable();
@@ -76,10 +79,10 @@ namespace PYLsystems
              "FROM(SELECT employeeID, date, timeIn from attendance GROUP BY employeeID, date) as attIn " +
              "LEFT JOIN(SELECT employeeID, date, timeOut from attendance WHERE timeOut IS NOT NULL GROUP BY employeeID, date) as attOut " +
              "on attIn.employeeID = attOut.employeeID AND attIn.date = attOut.date " +
-             "WHERE attIn.employeeID = @employeeID AND attIn.date=CURDATE();";
+             "WHERE attIn.employeeID = @selectedEmpID AND attIn.date=CURDATE();";
             MySqlConnection my_conn = new MySqlConnection(connString);
             MySqlCommand attendanceView_command = new MySqlCommand(attendanceViewString, my_conn);
-            attendanceView_command.Parameters.AddWithValue("@employeeID", this.employeeID);
+            attendanceView_command.Parameters.AddWithValue("@selectedEmpID", this.selectedEmpID);
             MySqlDataAdapter my_adapter = new MySqlDataAdapter(attendanceView_command);
 
             DataTable checkTimeOut = new DataTable();
@@ -115,12 +118,12 @@ namespace PYLsystems
                 "FROM(SELECT employeeID, date, timeIn from attendance GROUP BY employeeID, date) as attIn " +
                 "LEFT JOIN(SELECT employeeID, date, timeOut from attendance WHERE timeOut IS NOT NULL GROUP BY employeeID, date) as attOut " +
                 "on attIn.employeeID = attOut.employeeID AND attIn.date = attOut.date " +
-                "WHERE attIn.employeeID = @employeeID AND attIn.date BETWEEN @atten_DateStart AND @atten_DateEnd; ";
+                "WHERE attIn.employeeID = @selectedEmpID AND attIn.date BETWEEN @atten_DateStart AND @atten_DateEnd; ";
             MySqlConnection my_conn = new MySqlConnection(connString);
             MySqlCommand attendanceView_command = new MySqlCommand(attendanceViewString, my_conn);
             attendanceView_command.Parameters.AddWithValue("@atten_DateStart", DateStart);
             attendanceView_command.Parameters.AddWithValue("@atten_DateEnd", DateEnd);
-            attendanceView_command.Parameters.AddWithValue("@employeeID", this.employeeID);
+            attendanceView_command.Parameters.AddWithValue("@selectedEmpID", this.selectedEmpID);
             MySqlDataAdapter my_adapter = new MySqlDataAdapter(attendanceView_command);
 
             DataTable attendanceSQLTable = new DataTable();
@@ -177,10 +180,10 @@ namespace PYLsystems
               "FROM(SELECT employeeID, date, timeIn from attendance GROUP BY employeeID, date) as attIn " +
               "LEFT JOIN(SELECT employeeID, date, timeOut from attendance WHERE timeOut IS NOT NULL GROUP BY employeeID, date) as attOut " +
               "on attIn.employeeID = attOut.employeeID AND attIn.date = attOut.date " +
-              "WHERE attIn.employeeID = @employeeID AND attIn.date=CURDATE();";
+              "WHERE attIn.employeeID = @selectedEmpID AND attIn.date=CURDATE();";
             MySqlConnection my_conn = new MySqlConnection(connString);
             MySqlCommand attendanceView_command = new MySqlCommand(attendanceViewString, my_conn);
-            attendanceView_command.Parameters.AddWithValue("@employeeID", this.employeeID);
+            attendanceView_command.Parameters.AddWithValue("@selectedEmpID", this.selectedEmpID);
             my_conn.Open();
             MySqlDataReader readCheckRows = attendanceView_command.ExecuteReader();
             MySqlDataAdapter my_adapter = new MySqlDataAdapter(attendanceView_command);
@@ -200,10 +203,10 @@ namespace PYLsystems
 
         }
         private void insertTimeIn() {
-            String attendanceTOString = "INSERT INTO attendance (employeeID,date,timeIn) values(@employeeID,NOW(),NOW());";
+            String attendanceTOString = "INSERT INTO attendance (employeeID,date,timeIn) values(@selectedEmpID,NOW(),NOW());";
             MySqlConnection my_conn = new MySqlConnection(connString);
             MySqlCommand attendanceTO_command = new MySqlCommand(attendanceTOString, my_conn);
-            attendanceTO_command.Parameters.AddWithValue("@employeeID", this.employeeID);
+            attendanceTO_command.Parameters.AddWithValue("@selectedEmpID", this.selectedEmpID);
             MySqlDataReader dataReader;
             my_conn.Open();
             dataReader = attendanceTO_command.ExecuteReader();
@@ -217,10 +220,10 @@ namespace PYLsystems
             getTimeInOutTextBox();
         }
         private void insertTimeOut() {
-            String attendanceTOString = "INSERT INTO attendance (employeeID,date,timeOut) values(@employeeID,NOW(),NOW());";
+            String attendanceTOString = "INSERT INTO attendance (employeeID,date,timeOut) values(@selectedEmpID,NOW(),NOW());";
             MySqlConnection my_conn = new MySqlConnection(connString);
             MySqlCommand attendanceTO_command = new MySqlCommand(attendanceTOString, my_conn);
-            attendanceTO_command.Parameters.AddWithValue("@employeeID", this.employeeID);
+            attendanceTO_command.Parameters.AddWithValue("@selectedEmpID", this.selectedEmpID);
             MySqlDataReader dataReader;
             my_conn.Open();
             dataReader = attendanceTO_command.ExecuteReader();
