@@ -37,6 +37,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.viewAttendance = new System.Windows.Forms.Button();
+            this.payrollBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgEmpList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,7 +97,7 @@
             // 
             // btnEmpList
             // 
-            this.btnEmpList.Location = new System.Drawing.Point(38, 567);
+            this.btnEmpList.Location = new System.Drawing.Point(628, 573);
             this.btnEmpList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEmpList.Name = "btnEmpList";
             this.btnEmpList.Size = new System.Drawing.Size(152, 66);
@@ -130,15 +131,26 @@
             this.viewAttendance.Name = "viewAttendance";
             this.viewAttendance.Size = new System.Drawing.Size(152, 66);
             this.viewAttendance.TabIndex = 8;
-            this.viewAttendance.Text = "View Attendance";
+            this.viewAttendance.Text = "Attendance";
             this.viewAttendance.UseVisualStyleBackColor = true;
             this.viewAttendance.Click += new System.EventHandler(this.viewAttendance_Click);
+            // 
+            // payrollBtn
+            // 
+            this.payrollBtn.Location = new System.Drawing.Point(37, 573);
+            this.payrollBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.payrollBtn.Name = "payrollBtn";
+            this.payrollBtn.Size = new System.Drawing.Size(152, 66);
+            this.payrollBtn.TabIndex = 9;
+            this.payrollBtn.Text = "Payroll";
+            this.payrollBtn.UseVisualStyleBackColor = true;
             // 
             // frmEmployeeList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(813, 653);
+            this.Controls.Add(this.payrollBtn);
             this.Controls.Add(this.viewAttendance);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
@@ -171,5 +183,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button viewAttendance;
+        private System.Windows.Forms.Button payrollBtn;
     }
 }

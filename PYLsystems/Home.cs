@@ -47,7 +47,7 @@ namespace PYLsystems
 
         private void empManBtn_Click(object sender, EventArgs e)
         {
-            frmEmployeeMgt empMgt = new frmEmployeeMgt();
+            frmEmployeeList empMgt = new frmEmployeeList();
             empMgt.ShowDialog();
         }
     }
