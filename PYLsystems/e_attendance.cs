@@ -114,7 +114,7 @@ namespace PYLsystems
             if(attendanceDT!=null)
                 this.attendanceDT.Clear();
             String attendanceViewString = "SELECT attIN.employeeID, DAYNAME(attIn.date), attIn.date, attIn.TimeIn,attOut.TimeOut, " +
-                "concat(MOD(HOUR(TIMEDIFF(attIn.TimeIn, attOut.TimeOut)), 24), ' hours ', MINUTE(timediff(attIn.TimeIn, attOut.TimeOut)), ' min ') AS 'Total Hours' " +
+                "concat(MOD(HOUR(TIMEDIFF(attIn.TimeIn, attOut.TimeOut)), 24), ' hours ') AS 'Total Hours' " +
                 "FROM(SELECT employeeID, date, timeIn from attendance GROUP BY employeeID, date) as attIn " +
                 "LEFT JOIN(SELECT employeeID, date, timeOut from attendance WHERE timeOut IS NOT NULL GROUP BY employeeID, date) as attOut " +
                 "on attIn.employeeID = attOut.employeeID AND attIn.date = attOut.date " +
