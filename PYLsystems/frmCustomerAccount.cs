@@ -42,7 +42,7 @@ namespace PYLsystems
             dgvCustomerAccount.Columns["emailAddress"].HeaderText = "Email Address";
             dgvCustomerAccount.Columns["homeAddress"].HeaderText = "Home Address";
             dgvCustomerAccount.Columns["gender"].HeaderText = "Gender";
-            dgvCustomerAccount.Columns["balance"].HeaderText = "Balance";
+            //dgvCustomerAccount.Columns["balance"].HeaderText = "Balance";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

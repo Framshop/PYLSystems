@@ -517,5 +517,13 @@ namespace PYLsystems
             addCustomerAcc.ShowDialog();
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmCustomerAccount custAccount = new frmCustomerAccount();
+            custAccount.ShowDialog();
+            fillCustomerName();
+            
+        }
     }
 }

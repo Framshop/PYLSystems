@@ -25,11 +25,11 @@ namespace PYLsystems
             frmSupplyStockIn mySupplyStockIn = new frmSupplyStockIn();
             if (mySupplyStockIn.lblActiveUpdate.Text == "Active")
             {
-                cboActive.SelectedIndex = 0;
+                cboActive.SelectedIndex = 1;
             }
             else
             {
-                cboActive.SelectedIndex = 1;
+                cboActive.SelectedIndex = 0;
             }
         }
 

@@ -21,6 +21,12 @@ namespace PYLsystems
             this.employeeId = 1;
             this.employeeStatus = 1;
         }
+        public Home(int employeeId, int employeeStatus) {
+            InitializeComponent();
+            this.employeeId = employeeId;
+            this.employeeStatus = employeeStatus;
+        }
+
         private void Home_Load(object sender, EventArgs e)
         {
            /*For employee Status check from Login. 1-admin programmer, 2-Business Owner, 3-Admin staff, 4-Cashier, 5-Framers.
