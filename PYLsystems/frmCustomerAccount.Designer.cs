@@ -48,6 +48,7 @@
             this.lblSearch = new System.Windows.Forms.Label();
             this.lblValidate = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerAccount)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.grpInfo.SuspendLayout();
@@ -63,7 +64,7 @@
             // 
             // txtHomeAddress
             // 
-            this.txtHomeAddress.Location = new System.Drawing.Point(149, 150);
+            this.txtHomeAddress.Location = new System.Drawing.Point(149, 171);
             this.txtHomeAddress.Name = "txtHomeAddress";
             this.txtHomeAddress.Size = new System.Drawing.Size(148, 20);
             this.txtHomeAddress.TabIndex = 6;
@@ -71,7 +72,7 @@
             // 
             // txtEmailAddress
             // 
-            this.txtEmailAddress.Location = new System.Drawing.Point(149, 124);
+            this.txtEmailAddress.Location = new System.Drawing.Point(149, 145);
             this.txtEmailAddress.Name = "txtEmailAddress";
             this.txtEmailAddress.Size = new System.Drawing.Size(148, 20);
             this.txtEmailAddress.TabIndex = 4;
@@ -85,7 +86,7 @@
             this.cboGender.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.cboGender.Location = new System.Drawing.Point(149, 176);
+            this.cboGender.Location = new System.Drawing.Point(149, 197);
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(148, 21);
             this.cboGender.TabIndex = 10;
@@ -105,14 +106,14 @@
             this.lblContactPerson.AutoSize = true;
             this.lblContactPerson.Location = new System.Drawing.Point(22, 105);
             this.lblContactPerson.Name = "lblContactPerson";
-            this.lblContactPerson.Size = new System.Drawing.Size(80, 13);
+            this.lblContactPerson.Size = new System.Drawing.Size(84, 13);
             this.lblContactPerson.TabIndex = 3;
-            this.lblContactPerson.Text = "Contact Person";
+            this.lblContactPerson.Text = "Contact Number";
             // 
             // lblEmailAddress
             // 
             this.lblEmailAddress.AutoSize = true;
-            this.lblEmailAddress.Location = new System.Drawing.Point(22, 131);
+            this.lblEmailAddress.Location = new System.Drawing.Point(22, 152);
             this.lblEmailAddress.Name = "lblEmailAddress";
             this.lblEmailAddress.Size = new System.Drawing.Size(73, 13);
             this.lblEmailAddress.TabIndex = 5;
@@ -121,7 +122,7 @@
             // lblHomeAddress
             // 
             this.lblHomeAddress.AutoSize = true;
-            this.lblHomeAddress.Location = new System.Drawing.Point(22, 157);
+            this.lblHomeAddress.Location = new System.Drawing.Point(22, 178);
             this.lblHomeAddress.Name = "lblHomeAddress";
             this.lblHomeAddress.Size = new System.Drawing.Size(76, 13);
             this.lblHomeAddress.TabIndex = 7;
@@ -130,7 +131,7 @@
             // lblGender
             // 
             this.lblGender.AutoSize = true;
-            this.lblGender.Location = new System.Drawing.Point(22, 184);
+            this.lblGender.Location = new System.Drawing.Point(22, 205);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(42, 13);
             this.lblGender.TabIndex = 11;
@@ -139,7 +140,7 @@
             // btnAdd
             // 
             this.btnAdd.Enabled = false;
-            this.btnAdd.Location = new System.Drawing.Point(25, 225);
+            this.btnAdd.Location = new System.Drawing.Point(25, 248);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 12;
@@ -150,7 +151,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Enabled = false;
-            this.btnUpdate.Location = new System.Drawing.Point(106, 225);
+            this.btnUpdate.Location = new System.Drawing.Point(106, 248);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 13;
@@ -165,7 +166,7 @@
             this.dgvCustomerAccount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCustomerAccount.Location = new System.Drawing.Point(344, 3);
             this.dgvCustomerAccount.Name = "dgvCustomerAccount";
-            this.dgvCustomerAccount.Size = new System.Drawing.Size(681, 311);
+            this.dgvCustomerAccount.Size = new System.Drawing.Size(681, 419);
             this.dgvCustomerAccount.TabIndex = 17;
             this.dgvCustomerAccount.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomerAccount_CellClick);
             this.dgvCustomerAccount.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomerAccount_CellDoubleClick);
@@ -192,11 +193,12 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1028, 317);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1028, 425);
             this.tableLayoutPanel1.TabIndex = 16;
             // 
             // grpInfo
             // 
+            this.grpInfo.Controls.Add(this.label1);
             this.grpInfo.Controls.Add(this.lblCustomerAccountID);
             this.grpInfo.Controls.Add(this.txtSearch);
             this.grpInfo.Controls.Add(this.lblSearch);
@@ -217,9 +219,10 @@
             this.grpInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpInfo.Location = new System.Drawing.Point(3, 3);
             this.grpInfo.Name = "grpInfo";
-            this.grpInfo.Size = new System.Drawing.Size(335, 311);
+            this.grpInfo.Size = new System.Drawing.Size(335, 419);
             this.grpInfo.TabIndex = 15;
             this.grpInfo.TabStop = false;
+            this.grpInfo.Text = " ";
             // 
             // lblCustomerAccountID
             // 
@@ -258,7 +261,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(25, 272);
+            this.btnCancel.Location = new System.Drawing.Point(25, 295);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 14;
@@ -266,11 +269,22 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(149, 126);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Optional";
+            // 
             // frmCustomerAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 317);
+            this.ClientSize = new System.Drawing.Size(1028, 425);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmCustomerAccount";
@@ -306,5 +320,6 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.Label lblCustomerAccountID;
+        private System.Windows.Forms.Label label1;
     }
 }
