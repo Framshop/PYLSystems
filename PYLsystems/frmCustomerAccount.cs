@@ -72,10 +72,12 @@ namespace PYLsystems
                 RefreshDatabase();
                 txtEmailAddress.Text = "";
                 txtHomeAddress.Text = "";
+                msktxtContactPerson.Text = "";
                 txtFullName.Text = "";
                 cboGender.SelectedIndex = -1;
                 msktxtContactPerson.Text = "";
                 lblValidate.Text = "";
+
             }
             else
             {
@@ -129,7 +131,7 @@ namespace PYLsystems
             int emailaddress = txtEmailAddress.TextLength;
             int homeaddress = txtHomeAddress.TextLength;
             int gender = cboGender.SelectedIndex;
-            if (fullname > 0 && contactperson > 10 && emailaddress > 5 && homeaddress > 0 && gender > -1)
+            if (fullname > 0 && contactperson > 10 && homeaddress > 0 && gender > -1)
             {
                 btnAdd.Enabled = true;
             }
@@ -167,8 +169,6 @@ namespace PYLsystems
 
         private void txtEmailAddress_TextChanged(object sender, EventArgs e)
         {
-            functionAdd();
-            functionUpdate();
         }
 
         private void txtHomeAddress_TextChanged(object sender, EventArgs e)
