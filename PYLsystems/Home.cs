@@ -27,6 +27,7 @@ namespace PYLsystems
               */
             LoginForm frmLogin = new LoginForm(this);
             frmLogin.ShowDialog();
+            frmInventoryHomePage inventoryHomePage = new frmInventoryHomePage();
             MessageBox.Show(employeeId.ToString()+" "+employeeStatus.ToString());
             if (employeeStatus == 1) {
                 salesOrderBtn.Enabled = true;
@@ -38,10 +39,10 @@ namespace PYLsystems
                 empManBtn.Enabled = true;
                 empManBtn.Visible = true;
             }
-            if (employeeStatus == 2) {
+            if (employeeStatus == 2)
+            {
                 salesOrderBtn.Enabled = true;
                 salesOrderBtn.Visible = true;
-                jOrderBtn.Enabled = true;
                 jOrderBtn.Visible = true;
                 inventoryBtn.Enabled = true;
                 inventoryBtn.Visible = true;
@@ -50,15 +51,21 @@ namespace PYLsystems
             }
             if (employeeStatus == 3)
             {
-                salesOrderBtn.Enabled = true;
-                salesOrderBtn.Visible = true;
-                jOrderBtn.Enabled = true;
-                jOrderBtn.Visible = true;
+                inventoryBtn.Enabled = false;
+                inventoryBtn.Text = "Not Applicable";
+                empManBtn.Enabled = false;
+                empManBtn.Text = "Not Applicable";
             }
             if (employeeStatus == 4)
             {
-                inventoryBtn.Enabled = true;
-                inventoryBtn.Visible = true;
+                jOrderBtn.Enabled = false;
+                jOrderBtn.Text = "Not Applicable";
+                inventoryHomePage.btnSupplier.Enabled = false;
+                inventoryHomePage.btnSupplier.Text = "Not Applicable";
+                inventoryHomePage.btnSupplyStockIn.Enabled = false;
+                inventoryHomePage.btnSupplyStockIn.Text = "Not Applicable";
+                inventoryHomePage.btnCustomerAccount.Enabled = false;
+                inventoryHomePage.btnCustomerAccount.Text = "Not Applicable";
             }
         }
         private void salesOrderBtn_Click(object sender, EventArgs e)
@@ -83,6 +90,11 @@ namespace PYLsystems
         {
             frmEmployeeList empMgt = new frmEmployeeList();
             empMgt.ShowDialog();
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
