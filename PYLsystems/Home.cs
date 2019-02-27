@@ -27,7 +27,7 @@ namespace PYLsystems
               */
             LoginForm frmLogin = new LoginForm(this);
             frmLogin.ShowDialog();
-            MessageBox.Show(employeeId.ToString()+" "+employeeStatus.ToString());
+            //MessageBox.Show(employeeId.ToString()+" "+employeeStatus.ToString());
             if (employeeStatus == 1) {
                 salesOrderBtn.Enabled = true;
                 salesOrderBtn.Visible = true;

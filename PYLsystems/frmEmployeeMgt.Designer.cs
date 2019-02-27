@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.btnEmpList = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.payrollBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnEmpList
             // 
-            this.btnEmpList.Location = new System.Drawing.Point(40, 38);
+            this.btnEmpList.Location = new System.Drawing.Point(217, 42);
             this.btnEmpList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEmpList.Name = "btnEmpList";
             this.btnEmpList.Size = new System.Drawing.Size(188, 80);
@@ -44,38 +43,27 @@
             this.btnEmpList.UseVisualStyleBackColor = true;
             this.btnEmpList.Click += new System.EventHandler(this.btnEmpList_Click);
             // 
-            // button2
+            // payrollBtn
             // 
-            this.button2.Location = new System.Drawing.Point(40, 168);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(188, 80);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(254, 168);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(188, 80);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.payrollBtn.Location = new System.Drawing.Point(217, 173);
+            this.payrollBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.payrollBtn.Name = "payrollBtn";
+            this.payrollBtn.Size = new System.Drawing.Size(188, 80);
+            this.payrollBtn.TabIndex = 1;
+            this.payrollBtn.Text = "Payroll";
+            this.payrollBtn.UseVisualStyleBackColor = true;
             // 
             // frmEmployeeMgt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(627, 371);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.payrollBtn);
             this.Controls.Add(this.btnEmpList);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmEmployeeMgt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Employee Management";
             this.Load += new System.EventHandler(this.frmEmployeeMgt_Load);
             this.ResumeLayout(false);
 
@@ -84,8 +72,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnEmpList;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button payrollBtn;
     }
 }
 

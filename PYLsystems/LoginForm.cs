@@ -128,5 +128,15 @@ namespace PYLsystems
                 Application.Exit();
             }
         }
+
+
+        private void passwordTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                loginButton_Click(this, e);
+                    
+            }
+        }
     }
 }
