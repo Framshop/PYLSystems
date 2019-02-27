@@ -189,14 +189,14 @@
 
         private System.Windows.Forms.Button btnSupplyItems;
         private System.Windows.Forms.Button btnFrameDetails;
-        private System.Windows.Forms.Button btnSupplier;
-        private System.Windows.Forms.Button btnSupplyStockIn;
         private System.Windows.Forms.Button btnFrameList;
         private System.Windows.Forms.Button btnJobOrderTransaction;
         private System.Windows.Forms.Button btnDamageItems;
         private System.Windows.Forms.Button btnFrameStockInSupplyStockOut;
-        private System.Windows.Forms.Button btnCustomerAccount;
         private System.Windows.Forms.Button btnJobOrderDetails;
         private System.Windows.Forms.Button btnSupplyFrames;
+        public System.Windows.Forms.Button btnSupplier;
+        public System.Windows.Forms.Button btnSupplyStockIn;
+        public System.Windows.Forms.Button btnCustomerAccount;
     }
 }
