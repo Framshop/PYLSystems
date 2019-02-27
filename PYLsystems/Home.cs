@@ -1,25 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PYLsystems
 {
     public partial class Home : Form
     {
-        int employeeId;
-        int employeeStatus;
+        internal int employeeId;
+        internal int employeeStatus;
         public Home()
         {
             InitializeComponent();
             /*------temporary. to be erased when combine employee management------*/
-            this.employeeId = 1;
-            this.employeeStatus = 1;
+            //this.employeeId = 1;
+            //this.employeeStatus = 1;
         }
         public Home(int employeeId, int employeeStatus) {
             InitializeComponent();
@@ -29,9 +22,44 @@ namespace PYLsystems
 
         private void Home_Load(object sender, EventArgs e)
         {
-           /*For employee Status check from Login. 1-admin programmer, 2-Business Owner, 3-Admin staff, 4-Cashier, 5-Framers.
-            Lock Neccessary buttons based on employee Status
-             */
+            /*For employee Status check from Login. 1-admin programmer-Business Owner, 2-Admin staff, 3-Cashier, 4-Framers.
+             Lock Neccessary buttons based on employee Status
+              */
+            LoginForm frmLogin = new LoginForm(this);
+            frmLogin.ShowDialog();
+            MessageBox.Show(employeeId.ToString()+" "+employeeStatus.ToString());
+            if (employeeStatus == 1) {
+                salesOrderBtn.Enabled = true;
+                salesOrderBtn.Visible = true;
+                jOrderBtn.Enabled = true;
+                jOrderBtn.Visible = true;
+                inventoryBtn.Enabled = true;
+                inventoryBtn.Visible = true;
+                empManBtn.Enabled = true;
+                empManBtn.Visible = true;
+            }
+            if (employeeStatus == 2) {
+                salesOrderBtn.Enabled = true;
+                salesOrderBtn.Visible = true;
+                jOrderBtn.Enabled = true;
+                jOrderBtn.Visible = true;
+                inventoryBtn.Enabled = true;
+                inventoryBtn.Visible = true;
+                empManBtn.Enabled = true;
+                empManBtn.Visible = true;
+            }
+            if (employeeStatus == 3)
+            {
+                salesOrderBtn.Enabled = true;
+                salesOrderBtn.Visible = true;
+                jOrderBtn.Enabled = true;
+                jOrderBtn.Visible = true;
+            }
+            if (employeeStatus == 4)
+            {
+                inventoryBtn.Enabled = true;
+                inventoryBtn.Visible = true;
+            }
         }
         private void salesOrderBtn_Click(object sender, EventArgs e)
         {

@@ -52,6 +52,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblwarning = new System.Windows.Forms.Label();
             this.lblwaring1 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.usernameTextBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtFirstName
@@ -213,7 +217,7 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(242, 660);
+            this.btnCreate.Location = new System.Drawing.Point(245, 779);
             this.btnCreate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(147, 51);
@@ -224,7 +228,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(418, 660);
+            this.btnCancel.Location = new System.Drawing.Point(421, 779);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(147, 51);
@@ -311,11 +315,54 @@
             this.lblwaring1.TabIndex = 38;
             this.lblwaring1.Text = "This entry can only contain numbers(11 digits)";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(100, 673);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(102, 25);
+            this.label9.TabIndex = 40;
+            this.label9.Text = "Username";
+            // 
+            // usernameTextBox
+            // 
+            this.usernameTextBox.Location = new System.Drawing.Point(242, 673);
+            this.usernameTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.usernameTextBox.Name = "usernameTextBox";
+            this.usernameTextBox.Size = new System.Drawing.Size(326, 26);
+            this.usernameTextBox.TabIndex = 39;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(100, 719);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(98, 25);
+            this.label10.TabIndex = 42;
+            this.label10.Text = "Password";
+            // 
+            // passwordTextBox
+            // 
+            this.passwordTextBox.Location = new System.Drawing.Point(242, 719);
+            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Size = new System.Drawing.Size(326, 26);
+            this.passwordTextBox.TabIndex = 41;
+            this.passwordTextBox.UseSystemPasswordChar = true;
+            // 
             // frmNewEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 729);
+            this.ClientSize = new System.Drawing.Size(598, 869);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.passwordTextBox);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.usernameTextBox);
             this.Controls.Add(this.lblwaring1);
             this.Controls.Add(this.lblwarning);
             this.Controls.Add(this.label4);
@@ -377,5 +424,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblwarning;
         private System.Windows.Forms.Label lblwaring1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox usernameTextBox;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox passwordTextBox;
     }
 }

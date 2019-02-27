@@ -43,11 +43,14 @@
             // 
             // dgEmpList
             // 
+            this.dgEmpList.AllowUserToAddRows = false;
+            this.dgEmpList.AllowUserToDeleteRows = false;
             this.dgEmpList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgEmpList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgEmpList.Location = new System.Drawing.Point(38, 77);
             this.dgEmpList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgEmpList.Name = "dgEmpList";
+            this.dgEmpList.ReadOnly = true;
             this.dgEmpList.RowHeadersVisible = false;
             this.dgEmpList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgEmpList.Size = new System.Drawing.Size(742, 391);
