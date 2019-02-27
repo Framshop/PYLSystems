@@ -62,6 +62,7 @@
             this.txtSupplierName = new System.Windows.Forms.TextBox();
             this.lblSupplyame = new System.Windows.Forms.Label();
             this.lbelSupplierName = new System.Windows.Forms.Label();
+            this.cboDimension = new System.Windows.Forms.ComboBox();
             lvwSupplyID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSupplyStockIn)).BeginInit();
             this.SuspendLayout();
@@ -335,10 +336,11 @@
             // 
             // lblCompute
             // 
-            this.lblCompute.Location = new System.Drawing.Point(119, 188);
+            this.lblCompute.Location = new System.Drawing.Point(351, 182);
             this.lblCompute.Name = "lblCompute";
             this.lblCompute.Size = new System.Drawing.Size(100, 20);
             this.lblCompute.TabIndex = 29;
+            this.lblCompute.Visible = false;
             // 
             // txtSupplyName
             // 
@@ -375,17 +377,26 @@
             this.lbelSupplierName.TabIndex = 33;
             this.lbelSupplierName.Text = "Supplier Name";
             // 
+            // cboDimension
+            // 
+            this.cboDimension.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDimension.FormattingEnabled = true;
+            this.cboDimension.Location = new System.Drawing.Point(119, 53);
+            this.cboDimension.Name = "cboDimension";
+            this.cboDimension.Size = new System.Drawing.Size(156, 21);
+            this.cboDimension.TabIndex = 34;
+            // 
             // frmFrameStockInSupplyStockOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(960, 749);
             this.ControlBox = false;
+            this.Controls.Add(this.cboDimension);
             this.Controls.Add(this.lbelSupplierName);
             this.Controls.Add(this.lblSupplyame);
             this.Controls.Add(this.txtSupplierName);
             this.Controls.Add(this.txtSupplyName);
-            this.Controls.Add(this.lblCompute);
             this.Controls.Add(this.lblValidate);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.lblSearch);
@@ -410,6 +421,7 @@
             this.Controls.Add(this.lblSupplierName);
             this.Controls.Add(this.lblSupplyName);
             this.Controls.Add(this.lblSupplyID);
+            this.Controls.Add(this.lblCompute);
             this.Name = "frmFrameStockInSupplyStockOut";
             this.Text = "Frame Stock In and Supply Stock Out";
             this.Load += new System.EventHandler(this.frmFrameStockInSupplyStockOut_Load);
@@ -454,5 +466,6 @@
         private System.Windows.Forms.TextBox txtSupplierName;
         private System.Windows.Forms.Label lblSupplyame;
         private System.Windows.Forms.Label lbelSupplierName;
+        private System.Windows.Forms.ComboBox cboDimension;
     }
 }
