@@ -81,7 +81,7 @@ namespace PYLsystems
              "on attIn.employeeID = attOut.employeeID AND attIn.date = attOut.date " +
              "WHERE attIn.employeeID = @selectedEmpID AND attIn.date=CURDATE();";
             MySqlConnection my_conn = new MySqlConnection(connString);
-            MySqlCommand attendanceView_command = new MySqlCommand(attendanceViewString, my_conn);
+            MySqlCommand attendanceView_command = new MySqlCommand(attendanceViewString , my_conn);
             attendanceView_command.Parameters.AddWithValue("@selectedEmpID", this.selectedEmpID);
             MySqlDataAdapter my_adapter = new MySqlDataAdapter(attendanceView_command);
 

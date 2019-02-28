@@ -327,22 +327,28 @@ namespace PYLsystems
         //Cancel Sales Orders
         internal void cancelSalesOrder()
         {
-            //int firstRowIndex = salesOrdersGrid.SelectedRows.Count - 1;
-            int curRowIndex = salesOrdersGrid.SelectedRows[0].Index;
-            int sOrd_Num = Int32.Parse(salesOrdersGrid.Rows[curRowIndex].Cells[0].Value.ToString());
-            String sOrdDet_cancelString = "UPDATE salesOrder AS SO SET SO.sOrd_status=0,SO.dateModified = NOW(),SO.modEmployeeID=@employeeID WHERE sOrd_Num=@sOrd_Num;";
-            MySqlConnection my_conn = new MySqlConnection(connString);
-            MySqlCommand sOrdDet_Cancelcommand = new MySqlCommand(sOrdDet_cancelString, my_conn);
-            sOrdDet_Cancelcommand.Parameters.AddWithValue("@sOrd_Num", sOrd_Num);
-            sOrdDet_Cancelcommand.Parameters.AddWithValue("@employeeID", employeeId);
-            MySqlDataReader dataReader;
-            my_conn.Open();
-            dataReader = sOrdDet_Cancelcommand.ExecuteReader();
-            while (dataReader.Read())
+            try
+            {
+                //int firstRowIndex = salesOrdersGrid.SelectedRows.Count - 1;
+                int curRowIndex = salesOrdersGrid.SelectedRows[0].Index;
+                int sOrd_Num = Int32.Parse(salesOrdersGrid.Rows[curRowIndex].Cells[0].Value.ToString());
+                String sOrdDet_cancelString = "UPDATE salesOrder AS SO SET SO.sOrd_status=0,SO.dateModified = NOW(),SO.modEmployeeID=@employeeID WHERE sOrd_Num=@sOrd_Num;";
+                MySqlConnection my_conn = new MySqlConnection(connString);
+                MySqlCommand sOrdDet_Cancelcommand = new MySqlCommand(sOrdDet_cancelString, my_conn);
+                sOrdDet_Cancelcommand.Parameters.AddWithValue("@sOrd_Num", sOrd_Num);
+                sOrdDet_Cancelcommand.Parameters.AddWithValue("@employeeID", employeeId);
+                MySqlDataReader dataReader;
+                my_conn.Open();
+                dataReader = sOrdDet_Cancelcommand.ExecuteReader();
+                while (dataReader.Read())
+                {
+                }
+                my_conn.Close();
+                checkSales_Loader();
+            }
+            catch
             {
             }
-            my_conn.Close();
-            checkSales_Loader();
         }
         //salesOrderGridUpdate
         private void salesOrderGridUpdate() {

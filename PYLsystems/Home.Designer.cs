@@ -61,8 +61,9 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 979);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 960);
             this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // tableLayoutPanel2
             // 
@@ -75,7 +76,7 @@
             this.tableLayoutPanel2.Controls.Add(this.groupBox2, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.groupBox1, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(163, 100);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(163, 99);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 6;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -84,16 +85,16 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(474, 777);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(474, 762);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.empManBtn);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(50, 545);
+            this.groupBox4.Location = new System.Drawing.Point(50, 535);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(373, 149);
+            this.groupBox4.Size = new System.Drawing.Size(373, 146);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             // 
@@ -101,9 +102,9 @@
             // 
             this.empManBtn.BackColor = System.Drawing.Color.YellowGreen;
             this.empManBtn.Enabled = false;
-            this.empManBtn.Location = new System.Drawing.Point(73, 46);
+            this.empManBtn.Location = new System.Drawing.Point(74, 46);
             this.empManBtn.Name = "empManBtn";
-            this.empManBtn.Size = new System.Drawing.Size(210, 70);
+            this.empManBtn.Size = new System.Drawing.Size(210, 69);
             this.empManBtn.TabIndex = 0;
             this.empManBtn.Text = "Employee Management";
             this.empManBtn.UseVisualStyleBackColor = false;
@@ -114,9 +115,9 @@
             // 
             this.groupBox3.Controls.Add(this.inventoryBtn);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(50, 390);
+            this.groupBox3.Location = new System.Drawing.Point(50, 383);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(373, 149);
+            this.groupBox3.Size = new System.Drawing.Size(373, 146);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             // 
@@ -124,9 +125,9 @@
             // 
             this.inventoryBtn.BackColor = System.Drawing.Color.YellowGreen;
             this.inventoryBtn.Enabled = false;
-            this.inventoryBtn.Location = new System.Drawing.Point(73, 43);
+            this.inventoryBtn.Location = new System.Drawing.Point(74, 43);
             this.inventoryBtn.Name = "inventoryBtn";
-            this.inventoryBtn.Size = new System.Drawing.Size(210, 70);
+            this.inventoryBtn.Size = new System.Drawing.Size(210, 69);
             this.inventoryBtn.TabIndex = 0;
             this.inventoryBtn.Text = "Inventory";
             this.inventoryBtn.UseVisualStyleBackColor = false;
@@ -137,9 +138,9 @@
             // 
             this.groupBox2.Controls.Add(this.jOrderBtn);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(50, 235);
+            this.groupBox2.Location = new System.Drawing.Point(50, 231);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(373, 149);
+            this.groupBox2.Size = new System.Drawing.Size(373, 146);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             // 
@@ -147,9 +148,9 @@
             // 
             this.jOrderBtn.BackColor = System.Drawing.Color.YellowGreen;
             this.jOrderBtn.Enabled = false;
-            this.jOrderBtn.Location = new System.Drawing.Point(73, 42);
+            this.jOrderBtn.Location = new System.Drawing.Point(74, 42);
             this.jOrderBtn.Name = "jOrderBtn";
-            this.jOrderBtn.Size = new System.Drawing.Size(210, 70);
+            this.jOrderBtn.Size = new System.Drawing.Size(210, 69);
             this.jOrderBtn.TabIndex = 0;
             this.jOrderBtn.Text = "Job Order";
             this.jOrderBtn.UseVisualStyleBackColor = false;
@@ -160,9 +161,9 @@
             // 
             this.groupBox1.Controls.Add(this.salesOrderBtn);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(50, 80);
+            this.groupBox1.Location = new System.Drawing.Point(50, 79);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(373, 149);
+            this.groupBox1.Size = new System.Drawing.Size(373, 146);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
@@ -170,9 +171,9 @@
             // 
             this.salesOrderBtn.BackColor = System.Drawing.Color.YellowGreen;
             this.salesOrderBtn.Enabled = false;
-            this.salesOrderBtn.Location = new System.Drawing.Point(73, 44);
+            this.salesOrderBtn.Location = new System.Drawing.Point(74, 45);
             this.salesOrderBtn.Name = "salesOrderBtn";
-            this.salesOrderBtn.Size = new System.Drawing.Size(210, 70);
+            this.salesOrderBtn.Size = new System.Drawing.Size(210, 69);
             this.salesOrderBtn.TabIndex = 0;
             this.salesOrderBtn.Text = "Sales Order";
             this.salesOrderBtn.UseVisualStyleBackColor = false;
@@ -184,7 +185,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.YellowGreen;
-            this.ClientSize = new System.Drawing.Size(800, 979);
+            this.ClientSize = new System.Drawing.Size(800, 960);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Home";
@@ -207,12 +208,12 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button empManBtn;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button inventoryBtn;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button jOrderBtn;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button salesOrderBtn;
+        public System.Windows.Forms.Button empManBtn;
+        public System.Windows.Forms.Button inventoryBtn;
+        public System.Windows.Forms.Button jOrderBtn;
+        public System.Windows.Forms.Button salesOrderBtn;
     }
 }

@@ -21,7 +21,8 @@ namespace PYLsystems
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             functionAdd();
-            string myQuery = "SELECT frameItemID FROM frame_list WHERE frameName = '" + cboFrameList.Text + "' AND active = 'active'";
+            cboDimension.SelectedIndex = cboFrameList.SelectedIndex;
+            string myQuery = "SELECT frameItemID FROM frame_list WHERE frameName = '" + cboFrameList.Text + "' AND dimension = '" +  cboDimension.Text  +  "' AND active = 'active'";
             MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
             MySqlDataReader myReader;
             try
@@ -78,7 +79,9 @@ namespace PYLsystems
                 while (myReader.Read())
                 {
                     string frameList = myReader.GetString(1);
+                    string dimension = myReader.GetString(4);
                     cboFrameList.Items.Add(frameList);
+                    cboDimension.Items.Add(dimension);
                 }
                 myConn.Close();
             }

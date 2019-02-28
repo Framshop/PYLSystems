@@ -36,12 +36,15 @@ namespace PYLsystems
         }
         private void loginButton_Click(object sender, EventArgs e)
         {
+     
             string username = this.usernameTextBox.Text;
             string password = this.passwordTextBox.Text;
 
             bool r = loginValidate(username, password);
             if (r)
-            {               
+            {
+    
+                
                 //openHome();
                 this.Close();
             }
