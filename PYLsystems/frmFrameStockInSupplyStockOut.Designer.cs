@@ -44,9 +44,7 @@
             this.txtUnitType = new System.Windows.Forms.TextBox();
             this.lblFrameItemID = new System.Windows.Forms.Label();
             this.lblQuantityIn = new System.Windows.Forms.Label();
-            this.lblEmployee = new System.Windows.Forms.Label();
             this.txtQuantityIn = new System.Windows.Forms.TextBox();
-            this.cboEmployeeName = new System.Windows.Forms.ComboBox();
             this.lvwSupplyStockOut = new System.Windows.Forms.ListView();
             this.lvwSupplyName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvwSupplierName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -144,6 +142,7 @@
             this.dataGridSupplyStockIn.Size = new System.Drawing.Size(674, 308);
             this.dataGridSupplyStockIn.TabIndex = 13;
             this.dataGridSupplyStockIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridSupplyStockIn_CellClick);
+            this.dataGridSupplyStockIn.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridSupplyStockIn_CellContentClick);
             // 
             // lblSupplyID
             // 
@@ -220,15 +219,6 @@
             this.lblQuantityIn.TabIndex = 3;
             this.lblQuantityIn.Text = "Stock In Quantity";
             // 
-            // lblEmployee
-            // 
-            this.lblEmployee.AutoSize = true;
-            this.lblEmployee.Location = new System.Drawing.Point(11, 141);
-            this.lblEmployee.Name = "lblEmployee";
-            this.lblEmployee.Size = new System.Drawing.Size(84, 13);
-            this.lblEmployee.TabIndex = 5;
-            this.lblEmployee.Text = "Employee Name";
-            // 
             // txtQuantityIn
             // 
             this.txtQuantityIn.Location = new System.Drawing.Point(119, 107);
@@ -237,16 +227,6 @@
             this.txtQuantityIn.TabIndex = 2;
             this.txtQuantityIn.TextChanged += new System.EventHandler(this.txtQuantityIn_TextChanged);
             this.txtQuantityIn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantityIn_KeyPress);
-            // 
-            // cboEmployeeName
-            // 
-            this.cboEmployeeName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboEmployeeName.FormattingEnabled = true;
-            this.cboEmployeeName.Location = new System.Drawing.Point(119, 133);
-            this.cboEmployeeName.Name = "cboEmployeeName";
-            this.cboEmployeeName.Size = new System.Drawing.Size(156, 21);
-            this.cboEmployeeName.TabIndex = 4;
-            this.cboEmployeeName.SelectedIndexChanged += new System.EventHandler(this.cboEmployeeName_SelectedIndexChanged);
             // 
             // lvwSupplyStockOut
             // 
@@ -403,9 +383,7 @@
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lvwSupplyStockOut);
-            this.Controls.Add(this.cboEmployeeName);
             this.Controls.Add(this.lblQuantityIn);
-            this.Controls.Add(this.lblEmployee);
             this.Controls.Add(this.txtQuantityIn);
             this.Controls.Add(this.txtUnitType);
             this.Controls.Add(this.btnStockOut);
@@ -448,9 +426,7 @@
         private System.Windows.Forms.TextBox txtUnitType;
         private System.Windows.Forms.Label lblFrameItemID;
         private System.Windows.Forms.Label lblQuantityIn;
-        private System.Windows.Forms.Label lblEmployee;
         private System.Windows.Forms.TextBox txtQuantityIn;
-        private System.Windows.Forms.ComboBox cboEmployeeName;
         private System.Windows.Forms.ListView lvwSupplyStockOut;
         private System.Windows.Forms.ColumnHeader lvwSupplyName;
         private System.Windows.Forms.ColumnHeader lvwSupplierName;
