@@ -95,7 +95,7 @@
             // 
             // txtContact
             // 
-            this.txtContact.Location = new System.Drawing.Point(25, 37);
+            this.txtContact.Location = new System.Drawing.Point(356, 130);
             this.txtContact.Name = "txtContact";
             this.txtContact.Size = new System.Drawing.Size(155, 20);
             this.txtContact.TabIndex = 5;
