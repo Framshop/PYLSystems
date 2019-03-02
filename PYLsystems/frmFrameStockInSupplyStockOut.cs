@@ -9,13 +9,13 @@ namespace PYLsystems
     {
         public static string lastname = "";
         public static string firstname = "";
+        public static float remainingItem = 0;
         MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
         public frmFrameStockInSupplyStockOut()
         {
             InitializeComponent();
             DisplayFrameItem();
             FillFrameList();
-            FillEmployeeList();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -43,30 +43,7 @@ namespace PYLsystems
                 MessageBox.Show(ex.Message);
             }
         }
-        private void FillEmployeeList()
-        {
-            string myQuery = "SELECT lastname,firstname,employeeID FROM employee";
-            MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
-            MySqlDataReader myReader;
-            try
-            {
-                myConn.Open();
-                myReader = myComm.ExecuteReader();
-                while (myReader.Read())
-                {
-                    lastname = myReader.GetString(0);
-                    firstname = myReader.GetString(1);
-                    string employee = myReader.GetString(1);
-                    employee = employee + ", " +  myReader.GetString(0);
-                    cboEmployeeName.Items.Add(employee);
-                }
-                myConn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+    
         private void FillFrameList()
         {
             string myQuery = "SELECT * FROM frame_list";
@@ -93,6 +70,7 @@ namespace PYLsystems
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            LoginForm frmLogin = new LoginForm();
             int MAX;
             MAX = lvwSupplyStockOut.Items.Count;
             myConn.Open();
@@ -110,7 +88,7 @@ namespace PYLsystems
             {
                 myConn.Close();
                 myConn.Open();
-                string myQuery = "INSERT INTO frameStock_In (employeeID,frameItemID,stockinQuantity,dateStockIn) values(" + lblEmployeeID.Text + ", " + lblFrameItemID.Text + "," + txtQuantityIn.Text + ",NOW())";
+                string myQuery = "INSERT INTO frameStock_In (employeeID,frameItemID,stockinQuantity,dateStockIn) values(" + frmLogin.employeeid+ ", " + lblFrameItemID.Text + "," + txtQuantityIn.Text + ",NOW())";
                 MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                 MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                 DataTable myDt = new DataTable();
@@ -172,6 +150,7 @@ namespace PYLsystems
 
         private void dataGridSupplyStockIn_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+           
             lblSupplyID.Text = dataGridSupplyStockIn.CurrentRow.Cells[1].Value.ToString();
             lblSupplyName.Text = dataGridSupplyStockIn.CurrentRow.Cells[2].Value.ToString();
             lblSupplierName.Text = dataGridSupplyStockIn.CurrentRow.Cells[3].Value.ToString();
@@ -180,24 +159,56 @@ namespace PYLsystems
             txtSupplyName.Text = dataGridSupplyStockIn.CurrentRow.Cells[2].Value.ToString(); 
             txtSupplierName.Text = dataGridSupplyStockIn.CurrentRow.Cells[3].Value.ToString();
             txtUnitType.Text = dataGridSupplyStockIn.CurrentRow.Cells[0].Value.ToString();
+
+            string myQuery = "SELECT s.supplierName as 'supplierName',s_i.supplyName as 'supplyName',s_d.supply_price as 'supply_price',s_d.stockin_quantity as 'StockInSupply',SUM(f_m.stockout_quantity) as 'StockOutSupply',SUM(s_d.stockin_quantity - f_m.stockout_quantity) as 'AvailableSupply' FROM frame_materials f_m LEFT JOIN supply_details s_d ON s_d.supplyID = f_m.supply_detailsID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supplier s ON s.supplierID = s_d.supplierID WHERE s_d.supplyID = '" + lblSupplyID.Text + "' GROUP BY s_d.supplyID ORDER BY 'AvailableSupply' ";
+            MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
+            MySqlDataReader myReader;
+            try
+            {
+                myConn.Open();
+                myReader = myComm.ExecuteReader();
+                while (myReader.Read())
+                {
+                    remainingItem = myReader.GetFloat(3);
+                }
+                myConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnStockOut_Click(object sender, EventArgs e)
         {
-            ListViewItem item = new ListViewItem();
-          
-
-            int max;
-            max = lvwSupplyStockOut.Items.Count;
-            item = lvwSupplyStockOut.Items.Add(lblSupplyID.Text);
-            item.SubItems.Add(lblSupplyName.Text);
-            item.SubItems.Add(lblSupplierName.Text);
-            item.SubItems.Add(txtQuantity.Text);
-            item.SubItems.Add(txtUnitType.Text);
-            txtQuantity.Text = "";
-            txtUnitType.Text = "";
-            txtSupplierName.Text = "";
-            txtSupplyName.Text = "";
+            try
+            {
+            
+                if (remainingItem < Int32.Parse(txtQuantity.Text.ToString()))
+                {
+                    MessageBox.Show("Your input " + txtQuantity.Text + " has exceeded to the remaining item you selected which is only left of " + remainingItem);
+                }
+                else
+                {
+                    ListViewItem item = new ListViewItem();
+                    int max;
+                    max = lvwSupplyStockOut.Items.Count;
+                    item = lvwSupplyStockOut.Items.Add(lblSupplyID.Text);
+                    item.SubItems.Add(lblSupplyName.Text);
+                    item.SubItems.Add(lblSupplierName.Text);
+                    item.SubItems.Add(txtQuantity.Text);
+                    item.SubItems.Add(txtUnitType.Text);
+                    txtQuantity.Text = "";
+                    txtUnitType.Text = "";
+                    txtSupplierName.Text = "";
+                    txtSupplyName.Text = "";
+                    btnStockOut.Enabled = false;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         public void functionEnableSupply()
         {
@@ -215,9 +226,8 @@ namespace PYLsystems
         public void functionAdd()
         {
             int framelist = cboFrameList.SelectedIndex;
-            int employeelist = cboEmployeeName.SelectedIndex;
             int stockin_quantity = txtQuantityIn.TextLength;
-            if (lvwSupplyStockOut.Items.Count > 0 && framelist > -1 && employeelist > -1 && stockin_quantity > 0)
+            if (lvwSupplyStockOut.Items.Count > 0 && framelist > -1 && stockin_quantity > 0)
             {
                 btnAdd.Enabled = true;
             }
@@ -330,27 +340,6 @@ namespace PYLsystems
 
         private void cboEmployeeName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            functionAdd();
-            string myQuery = "SELECT employeeID FROM employee WHERE lastname = '" + lastname + "' OR firstname = '" + firstname + "'";
-            MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
-            MySqlDataReader myReader;
-            try
-            {
-                myConn.Open();
-                myReader = myComm.ExecuteReader();
-                while (myReader.Read())
-                {
-
-                    string myId = myReader.GetString(0);
-                    lblEmployeeID.Text = myId;
-
-                }
-                myConn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
         private void txtSupplyName_TextChanged(object sender, EventArgs e)
@@ -366,6 +355,11 @@ namespace PYLsystems
                     btnStockOut.Enabled = true;
                 }
             }
+        }
+
+        private void dataGridSupplyStockIn_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
     }
