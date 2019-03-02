@@ -13,6 +13,7 @@ namespace PYLsystems
 {
     public partial class frmRemainingSupplyFrames : Form
     {
+        DataTable frameAvail_dt;
         MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
         public frmRemainingSupplyFrames()
         {
@@ -58,7 +59,7 @@ namespace PYLsystems
                 {
                     dgvSupply.Rows[i].DefaultCellStyle.BackColor = Color.LightSalmon;
                 }
-                if (float.Parse(dgvSupply.Rows[i].Cells[5].Value.ToString()) >= 1 && float.Parse(dgvSupply.Rows[i].Cells[5].Value.ToString()) <= 20)
+                else if (float.Parse(dgvSupply.Rows[i].Cells[5].Value.ToString()) >= 1 && float.Parse(dgvSupply.Rows[i].Cells[5].Value.ToString()) <= 20)
                 {
                     dgvSupply.Rows[i].DefaultCellStyle.BackColor = Color.LightYellow;
                 }
@@ -74,13 +75,44 @@ namespace PYLsystems
             dgvSupply.Columns["stockinsupply"].HeaderText = "Stock In Supply";
             dgvSupply.Columns["stockoutsupply"].HeaderText = "Stock Out Supply";
             dgvSupply.Columns["availablesupply"].HeaderText = "Available Supply";
-           
+
         }
-
-
+        private void addSalesAvail_Loader()
+        {
+            String frameAvailString = "SELECT FL.frameName AS Frame, FL.Dimension, FL.UnitPrice AS 'Unit Price', IFNULL(FS.Stockin - (IFNULL(SOD.Stockout,0)),0) AS 'Quantity Left', " +
+            "FL.frameItemID FROM frame_list AS FL " +
+            "LEFT JOIN(SELECT FS.frameItemID, SUM(FS.stockinQuantity) AS Stockin FROM framestock_in AS FS GROUP BY FS.frameItemID) " +
+            "AS FS ON FL.frameItemID = FS.frameItemID " +
+            "LEFT JOIN(SELECT SOD.frameItemID, SUM(SOD.sOrd_Quantity) AS Stockout FROM sOrder_details AS SOD LEFT JOIN salesOrder AS SO ON SOD.sOrd_Num=SO.sOrd_Num WHERE SO.sOrd_status>0 GROUP BY SOD.frameItemID) " +
+            "AS SOD ON FL.frameItemID = SOD.frameItemID " +
+            "WHERE FL.active = 'active' ORDER BY FL.frameName; ";
+        MySqlCommand frameAvail_command = new MySqlCommand(frameAvailString, myConn);
+        MySqlDataAdapter frameAvail_adapter = new MySqlDataAdapter(frameAvail_command);
+        frameAvail_dt = new DataTable();
+        frameAvail_adapter.Fill(frameAvail_dt);
+            dgvFrames.DataSource = frameAvail_dt;
+            for (int i = 0; i < dgvFrames.Rows.Count; i++)
+            {
+                if (float.Parse(dgvFrames.Rows[i].Cells[3].Value.ToString()) <= 0)
+                {
+                    dgvFrames.Rows[i].DefaultCellStyle.BackColor = Color.LightSalmon;
+                }
+                else if (float.Parse(dgvFrames.Rows[i].Cells[3].Value.ToString()) >= 1 && float.Parse(dgvFrames.Rows[i].Cells[3].Value.ToString()) <= 20)
+                {
+                    dgvFrames.Rows[i].DefaultCellStyle.BackColor = Color.LightYellow;
+                }
+                else
+                {
+                    dgvFrames.Rows[i].DefaultCellStyle.BackColor = Color.LightGreen;
+                }
+            }
+            dgvFrames.Columns["frameItemID"].Visible = false;
+            dgvFrames.Columns["Unit Price"].DefaultCellStyle.Format = "0.00";
+        }
         private void frmRemainingSupplyFrames_Load(object sender, EventArgs e)
         {
             FillRemainingSupply();
+            addSalesAvail_Loader();
         }
     }
 }
