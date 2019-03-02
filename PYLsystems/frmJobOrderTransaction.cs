@@ -13,14 +13,14 @@ namespace PYLsystems
 {
     public partial class frmJobOrderTransaction : Form
     {
+
         public static string jOrd_Num = "";
+        public static string totalAmount = "";
         MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
         public frmJobOrderTransaction()
         {
             InitializeComponent();
         }
-
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -35,19 +35,23 @@ namespace PYLsystems
         public void RefreshJobOrder()
         {
             myConn.Open();
-            string query = "SELECT j.jOrd_Num,CONCAT(e.lastname,' ',e.firstname) as 'Name',j.totalamount, IF(j.paymenttype=0,'Cash','Credit Card') as 'PaymentType',j.joborderdate,IFNULL(j.voidreason,'On-Going') as 'voidreason' FROM jobOrder j LEFT JOIN jOrder_details j_d ON j_d.jOrd_Num = j.jOrd_Num LEFT JOIN employee e ON e.employeeID = j.employeeID";
+            string query = "SELECT j.jOrd_Num,c_a.customerFullName,CONCAT(e.lastName,' ',e.firstname) as 'name',j.jobOrderDate,j.voidReason,IF(j.paymenttype=0,'Cash','Credit Card') as 'PaymentType',j.totalAmount,c_p.customer_Payment,j.discount FROM customer_payment c_p LEFT JOIN customer_account c_a ON c_a.customerID = c_p.customerID LEFT JOIN joborder j ON j.jOrd_Num = c_p.jOrd_Num LEFT JOIN employee e ON e.employeeID = j.employeeID WHERE j.voidReason = 'On-Going Transaction'";
+
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
             adp.Fill(dt);
             dgvJobOrders.DataSource = dt;
-            dgvJobOrders.Columns["jOrd_Num"].Visible = false;
             dgvJobOrders.Columns["jOrd_Num"].HeaderText = "Job Order Number";
-            dgvJobOrders.Columns["Name"].HeaderText = "Employee Name";
+            dgvJobOrders.Columns["customerFullName"].HeaderText = "Customer Name";
+            dgvJobOrders.Columns["name"].HeaderText = "Employee Name";
             dgvJobOrders.Columns["totalamount"].HeaderText = "Total Amount";
             dgvJobOrders.Columns["paymenttype"].HeaderText = "Payment Type";
             dgvJobOrders.Columns["joborderdate"].HeaderText = "Job Order Date";
             dgvJobOrders.Columns["voidreason"].HeaderText = "Transaction Type";
+            dgvJobOrders.Columns["customer_Payment"].HeaderText = "Customer Payment";
+            dgvJobOrders.Columns["discount"].HeaderText = "Discount";
+
             myConn.Close();
         }
 
@@ -63,6 +67,7 @@ namespace PYLsystems
             try
             {
                 jOrd_Num = dgvJobOrders.CurrentRow.Cells[0].Value.ToString();
+                totalAmount = dgvJobOrders.CurrentRow.Cells[0].Value.ToString();
                 lblNumber.Text = jOrd_Num;
                 functionEnable();
                 myConn.Open();
@@ -84,13 +89,14 @@ namespace PYLsystems
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             myConn.Open();
-            string query = "SELECT j.jOrd_Num,c_a.customerFullname,CONCAT(e.lastname,' ',e.firstname) as 'Name',j.totalamount, IF(j.paymenttype=0,'Cash','Credit Card') as 'PaymentType',j.joborderdate,IFNULL(j.voidreason,'On-Going Transaction') FROM jobOrder j LEFT JOIN customer_account c_a ON c_a.customerID = j.customerID LEFT JOIN jOrder_details j_d ON j_d.jOrd_Num = j.jOrd_Num LEFT JOIN employee e ON e.employeeID = j.employeeID WHERE j.jOrd_Num LIKE '%" + txtSearch.Text + "%' OR c_a.customerFullname LIKE '%" + txtSearch.Text + "%' OR e.lastname LIKE '%" + txtSearch.Text + "%' OR e.firstname LIKE '%" + txtSearch.Text + "%' OR j.totalamount LIKE '%" + txtSearch.Text + "%' OR j.paymenttype LIKE '%" + txtSearch.Text + "%' OR j.joborderdate LIKE '%" + txtSearch.Text + "%' ORDER BY j.voidreason";
+            string query = "SELECT j.jOrd_Num,c_a.customerFullName,CONCAT(e.lastName,' ',e.firstname) as 'name',j.jobOrderDate,j.voidReason,IF(j.paymenttype=0,'Cash','Credit Card') as 'PaymentType',j.totalAmount,c_p.customer_Payment,j.discount FROM customer_payment c_p LEFT JOIN customer_account c_a ON c_a.customerID = c_p.customerID LEFT JOIN joborder j ON j.jOrd_Num = c_p.jOrd_Num LEFT JOIN employee e ON e.employeeID = j.employeeID WHERE j.voidReason = 'On-Going Transaction' AND " +
+                "j.jOrd_Num LIKE '%" + txtSearch.Text + "%' OR c_a.customerFullName LIKE '%" + txtSearch.Text + "%' OR e.lastname LIKE '%" + txtSearch.Text + "%' OR e.firstname LIKE '%" + txtSearch.Text + "%' OR j.jobOrderDate LIKE '%" + txtSearch.Text + "%' OR j.totalAmount LIKE '%" + txtSearch.Text +  "%' ";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
             adp.Fill(dt);
             dgvJobOrders.DataSource = dt;
-            dgvJobOrders.Columns["jOrd_Num"].Visible = false;
+       
             dgvJobOrders.Columns["jOrd_Num"].HeaderText = "Job Order Number";
             dgvJobOrders.Columns["customerFullname"].HeaderText = "Custmer Name";
             dgvJobOrders.Columns["Name"].HeaderText = "Employee Name";
@@ -129,89 +135,11 @@ namespace PYLsystems
 
         private void chkDone_CheckedChanged(object sender, EventArgs e)
         {
-            myConn.Open();
-            if (chkDone.Checked == true)
-            {
-                string query = "SELECT j.jOrd_Num,c_a.customerFullname,CONCAT(e.lastname,' ',e.firstname) as 'Name',j.totalamount, IF(j.paymenttype=0,'Cash','Credit Card') as 'PaymentType',j.joborderdate,IFNULL(j.voidreason,'On-Going Transaction') as 'voidreason' FROM jobOrder j LEFT JOIN customer_account c_a ON c_a.customerID = j.customerID LEFT JOIN jOrder_details j_d ON j_d.jOrd_Num = j.jOrd_Num LEFT JOIN employee e ON e.employeeID = j.employeeID WHERE j.jOrd_Num LIKE '%" + txtSearch.Text + "%' OR c_a.customerFullname LIKE '%" + txtSearch.Text + "%' OR e.lastname LIKE '%" + txtSearch.Text + "%' OR e.firstname LIKE '%" + txtSearch.Text + "%' OR j.totalamount LIKE '%" + txtSearch.Text + "%' OR j.paymenttype LIKE '%" + txtSearch.Text + "%' OR j.joborderdate LIKE '%" + txtSearch.Text + "%' AND j.voidreason = 'Done Transaction' ORDER BY j.voidreason";
-                MySqlCommand comm = new MySqlCommand(query, myConn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-                dgvJobOrders.DataSource = dt;
-                dgvJobOrders.Columns["jOrd_Num"].Visible = false;
-                dgvJobOrders.Columns["jOrd_Num"].HeaderText = "Job Order Number";
-                dgvJobOrders.Columns["customerFullname"].HeaderText = "Custmer Name";
-                dgvJobOrders.Columns["Name"].HeaderText = "Employee Name";
-                dgvJobOrders.Columns["totalamount"].HeaderText = "Total Amount";
-                dgvJobOrders.Columns["paymenttype"].HeaderText = "Payment Type";
-                dgvJobOrders.Columns["joborderdate"].HeaderText = "Job Order Date";
-                dgvJobOrders.Columns["voidreason"].HeaderText = "Transaction Type";
-                myConn.Close();
-        
-            }
-            else
-            {
-
-                string query = "SELECT j.jOrd_Num,c_a.customerFullname,CONCAT(e.lastname,' ',e.firstname) as 'Name',j.totalamount, IF(j.paymenttype=0,'Cash','Credit Card') as 'PaymentType',j.joborderdate,IFNULL(j.voidreason,'On-Going Transaction') as 'voidreason' FROM jobOrder j LEFT JOIN customer_account c_a ON c_a.customerID = j.customerID LEFT JOIN jOrder_details j_d ON j_d.jOrd_Num = j.jOrd_Num LEFT JOIN employee e ON e.employeeID = j.employeeID WHERE j.jOrd_Num LIKE '%" + txtSearch.Text + "%' OR c_a.customerFullname LIKE '%" + txtSearch.Text + "%' OR e.lastname LIKE '%" + txtSearch.Text + "%' OR e.firstname LIKE '%" + txtSearch.Text + "%' OR j.totalamount LIKE '%" + txtSearch.Text + "%' OR j.paymenttype LIKE '%" + txtSearch.Text + "%' OR j.joborderdate LIKE '%" + txtSearch.Text + "%' ORDER BY j.voidreason";
-                MySqlCommand comm = new MySqlCommand(query, myConn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-                dgvJobOrders.DataSource = dt;
-                dgvJobOrders.Columns["jOrd_Num"].Visible = false;
-                dgvJobOrders.Columns["jOrd_Num"].HeaderText = "Job Order Number";
-                dgvJobOrders.Columns["customerFullname"].HeaderText = "Custmer Name";
-                dgvJobOrders.Columns["Name"].HeaderText = "Employee Name";
-                dgvJobOrders.Columns["totalamount"].HeaderText = "Total Amount";
-                dgvJobOrders.Columns["paymenttype"].HeaderText = "Payment Type";
-                dgvJobOrders.Columns["joborderdate"].HeaderText = "Job Order Date";
-                dgvJobOrders.Columns["voidreason"].HeaderText = "Transaction Type";
-                myConn.Close();
-           
-            }
+ 
         }
 
         private void chkOnGoing_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkCancelled.Checked == true)
-            {
-
-                myConn.Open();
-                string query = "SELECT j.jOrd_Num,CONCAT(e.lastname,' ',e.firstname) as 'Name',j.totalamount, IF(j.paymenttype=0,'Cash','Credit Card') as 'PaymentType',j.joborderdate,IFNULL(j.voidreason,'On-Going Transaction') as 'voidreason' FROM jobOrder j  LEFT JOIN jOrder_details j_d ON j_d.jOrd_Num = j.jOrd_Num LEFT JOIN employee e ON e.employeeID = j.employeeID WHERE j.jOrd_Num LIKE '%" + txtSearch.Text + "%' OR c_a.customerFullname LIKE '%" + txtSearch.Text + "%' OR e.lastname LIKE '%" + txtSearch.Text + "%' OR e.firstname LIKE '%" + txtSearch.Text + "%' OR j.totalamount LIKE '%" + txtSearch.Text + "%' OR j.paymenttype LIKE '%" + txtSearch.Text + "%' OR j.joborderdate LIKE '%" + txtSearch.Text + "%' AND j.voidreason = 'Cancelled Transaction' ORDER BY j.voidreason";
-                MySqlCommand comm = new MySqlCommand(query, myConn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-                dgvJobOrders.DataSource = dt;
-                dgvJobOrders.Columns["jOrd_Num"].Visible = false;
-                dgvJobOrders.Columns["jOrd_Num"].HeaderText = "Job Order Number";
-                dgvJobOrders.Columns["Name"].HeaderText = "Employee Name";
-                dgvJobOrders.Columns["totalamount"].HeaderText = "Total Amount";
-                dgvJobOrders.Columns["paymenttype"].HeaderText = "Payment Type";
-                dgvJobOrders.Columns["joborderdate"].HeaderText = "Job Order Date";
-                dgvJobOrders.Columns["voidreason"].HeaderText = "Transaction Type";
-                myConn.Close();
-        
-            }
-            else
-            {
-
-                string query = "SELECT j.jOrd_Num,CONCAT(e.lastname,' ',e.firstname) as 'Name',j.totalamount, IF(j.paymenttype=0,'Cash','Credit Card') as 'PaymentType',j.joborderdate,IFNULL(j.voidreason,'On-Going Transaction') as 'voidreason' FROM jobOrder j LEFT JOIN jOrder_details j_d ON j_d.jOrd_Num = j.jOrd_Num LEFT JOIN employee e ON e.employeeID = j.employeeID WHERE j.jOrd_Num LIKE '%" + txtSearch.Text + "%' OR c_a.customerFullname LIKE '%" + txtSearch.Text + "%' OR e.lastname LIKE '%" + txtSearch.Text + "%' OR e.firstname LIKE '%" + txtSearch.Text + "%' OR j.totalamount LIKE '%" + txtSearch.Text + "%' OR j.paymenttype LIKE '%" + txtSearch.Text + "%' OR j.joborderdate LIKE '%" + txtSearch.Text + "%' ORDER BY j.voidreason";
-                MySqlCommand comm = new MySqlCommand(query, myConn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-                dgvJobOrders.DataSource = dt;
-                dgvJobOrders.Columns["jOrd_Num"].Visible = false;
-                dgvJobOrders.Columns["jOrd_Num"].HeaderText = "Job Order Number";
-                dgvJobOrders.Columns["Name"].HeaderText = "Employee Name";
-                dgvJobOrders.Columns["totalamount"].HeaderText = "Total Amount";
-                dgvJobOrders.Columns["paymenttype"].HeaderText = "Payment Type";
-                dgvJobOrders.Columns["joborderdate"].HeaderText = "Job Order Date";
-                dgvJobOrders.Columns["voidreason"].HeaderText = "Transaction Type";
-                myConn.Close();
-  
-            }
         }
 
         private void btnFinishJobOrder_Click(object sender, EventArgs e)
@@ -220,12 +148,16 @@ namespace PYLsystems
             string query = "UPDATE joborder SET voidreason = 'Done Transaction' WHERE jOrd_Num = " + jOrd_Num;
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-            DataTable dt = new DataTable();
-            adp.Fill(dt);
-            dgvJobOrders.DataSource = dt;
             myConn.Close();
-            RefreshJobOrder();
+
+
+            myConn.Open();
+            string quer = "UPDATE customer_payment SET customer_payment =" + totalAmount + " WHERE jOrd_Num = " + jOrd_Num;
+            MySqlCommand com = new MySqlCommand(quer, myConn);
+            MySqlDataAdapter ad = new MySqlDataAdapter(com);
+            myConn.Close();
             jOrd_Num = "";
+            RefreshJobOrder();
         }
     }
 }
