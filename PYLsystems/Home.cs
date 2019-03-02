@@ -5,6 +5,11 @@ namespace PYLsystems
 {
     public partial class Home : Form
     {
+        public class Global
+        {
+            public static string empId;
+
+        }
         internal int employeeId;
         internal int employeeStatus;
         public Home()
@@ -27,7 +32,7 @@ namespace PYLsystems
               */
             LoginForm frmLogin = new LoginForm(this);
             frmLogin.ShowDialog();
-
+            Global.empId = employeeId.ToString();
             frmInventoryHomePage inventoryHomePage = new frmInventoryHomePage();
             MessageBox.Show(employeeId.ToString()+" "+employeeStatus.ToString());
             if (employeeStatus == 1) {
