@@ -207,7 +207,7 @@ namespace PYLsystems
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             myConn.Open();
-            string query = "SELECT customerID,customerFullName,contactPerson,if(gender=1,'Female','Male') as 'gender',emailAddress,homeAddress FROM customer_account WHERE customerFullName LIKE '%" + txtSearch.Text + "%' || contactPerson LIKE '%" + txtSearch.Text + "%' || gender LIKE '%" + txtSearch.Text + "%' || homeAddress LIKE '%" + txtSearch.Text + "%' || balance LIKE '%" + txtSearch.Text + "%'";
+            string query = "SELECT customerID,customerFullName,contactPerson,if(gender=1,'Female','Male') as 'gender',emailAddress,homeAddress FROM customer_account WHERE customerFullName LIKE '%" + txtSearch.Text + "%' OR contactPerson LIKE '%" + txtSearch.Text + "%' OR gender LIKE '%" + txtSearch.Text + "%' OR homeAddress LIKE '%" + txtSearch.Text + "%'";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter Adp = new MySqlDataAdapter(comm);
             DataTable Dt = new DataTable();
