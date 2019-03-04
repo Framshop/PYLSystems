@@ -34,7 +34,7 @@
             // 
             // btnEmpList
             // 
-            this.btnEmpList.Location = new System.Drawing.Point(217, 42);
+            this.btnEmpList.Location = new System.Drawing.Point(217, 79);
             this.btnEmpList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEmpList.Name = "btnEmpList";
             this.btnEmpList.Size = new System.Drawing.Size(188, 80);
@@ -45,13 +45,14 @@
             // 
             // payrollBtn
             // 
-            this.payrollBtn.Location = new System.Drawing.Point(217, 173);
+            this.payrollBtn.Location = new System.Drawing.Point(217, 210);
             this.payrollBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.payrollBtn.Name = "payrollBtn";
             this.payrollBtn.Size = new System.Drawing.Size(188, 80);
             this.payrollBtn.TabIndex = 1;
             this.payrollBtn.Text = "Payroll";
             this.payrollBtn.UseVisualStyleBackColor = true;
+            this.payrollBtn.Click += new System.EventHandler(this.payrollBtn_Click);
             // 
             // frmEmployeeMgt
             // 
@@ -60,6 +61,7 @@
             this.ClientSize = new System.Drawing.Size(627, 371);
             this.Controls.Add(this.payrollBtn);
             this.Controls.Add(this.btnEmpList);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmEmployeeMgt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

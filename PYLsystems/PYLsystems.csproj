@@ -94,6 +94,12 @@
     <Compile Include="frmCashAdvancecs.Designer.cs">
       <DependentUpon>frmCashAdvancecs.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCashAdvanceDet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCashAdvanceDet.Designer.cs">
+      <DependentUpon>frmCashAdvanceDet.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCustomerAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -287,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCashAdvancecs.resx">
       <DependentUpon>frmCashAdvancecs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCashAdvanceDet.resx">
+      <DependentUpon>frmCashAdvanceDet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCustomerAccount.resx">
       <DependentUpon>frmCustomerAccount.cs</DependentUpon>
