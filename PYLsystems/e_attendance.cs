@@ -14,12 +14,12 @@ namespace PYLsystems
     public partial class e_attendance : Form
     {
         String connString = "server=localhost;uid=root;pwd=root;database=frameshopdb;";
-        String DateStart;
-        String DateEnd;
-        private DataTable attendanceDT;
-        int selectedEmpID;
-        int employeeStatus;
-        int employeeID;
+        private String DateStart;
+        private String DateEnd;
+        DataTable attendanceDT;
+        private int selectedEmpID;
+        private int employeeStatus;
+        private int employeeID;
         //--------------Initial Load--------------
         //----for programming initializer
         public e_attendance()
