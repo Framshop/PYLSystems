@@ -32,10 +32,8 @@
             this.dgvJobOrderDetails = new System.Windows.Forms.DataGridView();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnFinishJobOrder = new System.Windows.Forms.Button();
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnCancelJobOrder = new System.Windows.Forms.Button();
             this.lblJobOrderNumber = new System.Windows.Forms.Label();
             this.lblNumber = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJobOrders)).BeginInit();
@@ -90,17 +88,6 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // btnFinishJobOrder
-            // 
-            this.btnFinishJobOrder.Enabled = false;
-            this.btnFinishJobOrder.Location = new System.Drawing.Point(320, 569);
-            this.btnFinishJobOrder.Name = "btnFinishJobOrder";
-            this.btnFinishJobOrder.Size = new System.Drawing.Size(151, 23);
-            this.btnFinishJobOrder.TabIndex = 4;
-            this.btnFinishJobOrder.Text = "Finish Job Transactions";
-            this.btnFinishJobOrder.UseVisualStyleBackColor = true;
-            this.btnFinishJobOrder.Click += new System.EventHandler(this.btnFinishJobOrder_Click);
-            // 
             // lblSearch
             // 
             this.lblSearch.AutoSize = true;
@@ -117,17 +104,6 @@
             this.txtSearch.Size = new System.Drawing.Size(234, 20);
             this.txtSearch.TabIndex = 6;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
-            // btnCancelJobOrder
-            // 
-            this.btnCancelJobOrder.Enabled = false;
-            this.btnCancelJobOrder.Location = new System.Drawing.Point(477, 569);
-            this.btnCancelJobOrder.Name = "btnCancelJobOrder";
-            this.btnCancelJobOrder.Size = new System.Drawing.Size(151, 23);
-            this.btnCancelJobOrder.TabIndex = 9;
-            this.btnCancelJobOrder.Text = "Cancel Job Order";
-            this.btnCancelJobOrder.UseVisualStyleBackColor = true;
-            this.btnCancelJobOrder.Click += new System.EventHandler(this.btnCancelJobOrder_Click_1);
             // 
             // lblJobOrderNumber
             // 
@@ -154,10 +130,8 @@
             this.ClientSize = new System.Drawing.Size(640, 605);
             this.Controls.Add(this.lblNumber);
             this.Controls.Add(this.lblJobOrderNumber);
-            this.Controls.Add(this.btnCancelJobOrder);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.lblSearch);
-            this.Controls.Add(this.btnFinishJobOrder);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.dgvJobOrderDetails);
@@ -178,10 +152,8 @@
         private System.Windows.Forms.DataGridView dgvJobOrderDetails;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnFinishJobOrder;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Button btnCancelJobOrder;
         private System.Windows.Forms.Label lblJobOrderNumber;
         private System.Windows.Forms.Label lblNumber;
     }
