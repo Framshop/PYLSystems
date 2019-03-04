@@ -69,7 +69,6 @@ namespace PYLsystems
                 jOrd_Num = dgvJobOrders.CurrentRow.Cells[0].Value.ToString();
                 totalAmount = dgvJobOrders.CurrentRow.Cells[0].Value.ToString();
                 lblNumber.Text = jOrd_Num;
-                functionEnable();
                 myConn.Open();
                 string query = "SELECT s.supplierName,s_i.supplyName,j_d.quantity,j_d.price FROM jorder_details j_d LEFT JOIN supply_details s_d  ON s_d.supplyID = j_d.supply_itemsID LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE jOrd_Num = " + jOrd_Num;
                 MySqlCommand comm = new MySqlCommand(query, myConn);
@@ -106,19 +105,7 @@ namespace PYLsystems
             dgvJobOrders.Columns["voidreason"].HeaderText = "Transaction Type";
             myConn.Close();
         }
-        public void functionEnable()
-        {
-            if (jOrd_Num != "")
-            {
-                btnCancelJobOrder.Enabled = true;
-                btnFinishJobOrder.Enabled = true;
-            }
-            else
-            {
-                btnCancelJobOrder.Enabled = false;
-                btnFinishJobOrder.Enabled = false;
-            }
-        }
+  
         private void btnCancelJobOrder_Click_1(object sender, EventArgs e)
         {
             myConn.Open();
