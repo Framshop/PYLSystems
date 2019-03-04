@@ -110,6 +110,7 @@ namespace PYLsystems
 
         private void dgvCustomerAccount_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            btnPay.Enabled = true;
             lblCustomerAccountID.Text = dgvCustomerAccount.CurrentRow.Cells[0].Value.ToString();
             customerID = dgvCustomerAccount.CurrentRow.Cells[0].Value.ToString();
             txtFullName.Text = dgvCustomerAccount.CurrentRow.Cells[1].Value.ToString();
@@ -238,9 +239,14 @@ namespace PYLsystems
         }
         private void dgvCustomerAccount_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            frmCustomerPayment frmCustomerPayment = new frmCustomerPayment();
-            frmCustomerPayment.customerID = dgvCustomerAccount.CurrentRow.Cells[0].Value.ToString();
-            frmCustomerPayment.ShowDialog();
+        }
+
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            frmCustomerPayment customerPayment = new frmCustomerPayment();
+            customerPayment.lblCustomerID.Text = dgvCustomerAccount.CurrentRow.Cells[0].Value.ToString();
+            customerPayment.txtCustomerName.Text = dgvCustomerAccount.CurrentRow.Cells[1].Value.ToString();
+            customerPayment.ShowDialog();
         }
     }
 }
