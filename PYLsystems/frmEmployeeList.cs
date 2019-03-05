@@ -30,7 +30,8 @@ namespace PYLsystems
         }
         public void reload()
         {
-           string query = "SELECT  employeeid, lastname, firstname FROM employee";
+            string query = "SELECT emp.employeeid, emp.lastname, emp.firstname, ac.employeePosition FROM employee emp left join accessworkdesc ac on ac.employeeStatus = emp.employeeStatus ";
+            //string query = "SELECT  employeeid, lastname, firstname FROM employee";
             MySqlCommand myComm = new MySqlCommand(query, conn);
             MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
             DataTable myDt = new DataTable();
@@ -42,7 +43,10 @@ namespace PYLsystems
             dgEmpList.Columns["employeeid"].Visible = false;
             dgEmpList.Columns["lastname"].HeaderText = "Last Name";
             dgEmpList.Columns["firstname"].HeaderText = "First Name";
-           
+            dgEmpList.Columns["employeePosition"].HeaderText = "Position";
+            
+
+
 
         }
         private employeeDetailsObj getSelectedEmpDetails() {
@@ -110,5 +114,46 @@ namespace PYLsystems
             }
 
         }
+
+        private void BtnNewWorkDesc_Click(object sender, EventArgs e)
+        {
+            frmWorkDesc workDesc = new frmWorkDesc();
+            workDesc.ShowDialog();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            conn.Open();
+            string query = "SELECT emp.employeeid, emp.lastname, emp.firstname, ac.employeePosition FROM employee emp left join accessworkdesc ac on ac.employeeStatus = emp.employeeStatus  where emp.lastname LIKE '%" + txtSearch.Text + "%' OR emp.firstname LIKE '%" + txtSearch.Text + "%' OR ac.employeePosition LIKE '%" + txtSearch.Text + "%'";
+
+            //string query = "SELECT   lastname, firstname FROM employee where lastname LIKE '%" + txtSearch.Text + "%' OR firstname LIKE '%" + txtSearch.Text + "%'";
+            MySqlCommand myComm = new MySqlCommand(query, conn);
+            MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
+            DataTable myDt = new DataTable();
+            myAdp.Fill(myDt);
+            dgEmpList.DataSource = myDt;
+            conn.Close();
+        }
+
+        private void dgEmpList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
+
+        private void btnArchiveRec_Click(object sender, EventArgs e)
+        {
+            frmArchiveList archlist = new frmArchiveList();
+            archlist.ShowDialog();
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
