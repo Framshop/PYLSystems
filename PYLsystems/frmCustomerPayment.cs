@@ -59,7 +59,7 @@ namespace PYLsystems
         private void btnAddPayment_Click(object sender, EventArgs e)
         {
             myConn.Open();
-            string query = "UPDATE customer_payment SET customer_payment =" + totalAmount + " WHERE customerID ='" + lblCustomerID.Text + " ' AND jOrd_Num =" + jobOrderNumber;
+            string query = "UPDATE customer_payment c_p LEFT JOIN joborder j ON j.jOrd_Num =  c_p.jOrd_Num SET customer_payment =" + totalAmount + ", j.voidreason = 'Done Transaction' WHERE c_p.customerID ='" + lblCustomerID.Text + " ' AND c_p.jOrd_Num =" + jobOrderNumber;
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
