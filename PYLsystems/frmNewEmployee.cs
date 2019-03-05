@@ -93,7 +93,7 @@ namespace PYLsystems
             int contact = txtContactNumber.TextLength;
 
 
-            if (  gender > -1 && contact > 0 && lastname  >0 && firstname > 0 && homeaddress > 0 && salaryrate > 0 && contact > 0 && status > -1 )
+            if (  gender > -1 && contact > 0 && lastname  > 0 && firstname > 0 && homeaddress > 0 && salaryrate > 0 && contact > 0 && status > -1 )
             {
                 btnCreate.Enabled = true;
             }
