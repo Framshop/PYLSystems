@@ -35,13 +35,15 @@ namespace PYLsystems
         public void RefreshJobOrder()
         {
             myConn.Open();
-            string query = "SELECT j.jOrd_Num,c_a.customerFullName,CONCAT(e.lastName,' ',e.firstname) as 'name',j.jobOrderDate,j.voidReason,IF(j.paymenttype=0,'Cash','Credit Card') as 'PaymentType',j.totalAmount,c_p.customer_Payment,j.discount FROM customer_payment c_p LEFT JOIN customer_account c_a ON c_a.customerID = c_p.customerID LEFT JOIN joborder j ON j.jOrd_Num = c_p.jOrd_Num LEFT JOIN employee e ON e.employeeID = j.employeeID WHERE j.voidReason = 'On-Going Transaction'";
+            string query = "SELECT j.jOrd_Num as 'Job',j.jOrd_Num,c_a.customerFullName,CONCAT(e.lastName,' ',e.firstname) as 'name',j.jobOrderDate,j.voidReason,IF(j.paymenttype=0,'Cash','Credit Card') as 'PaymentType',j.totalAmount,c_p.customer_Payment,j.discount FROM customer_payment c_p LEFT JOIN customer_account c_a ON c_a.customerID = c_p.customerID LEFT JOIN joborder j ON j.jOrd_Num = c_p.jOrd_Num LEFT JOIN employee e ON e.employeeID = j.employeeID WHERE j.voidReason = 'On-Going Transaction'";
 
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
             adp.Fill(dt);
             dgvJobOrders.DataSource = dt;
+            dgvJobOrders.Columns["Job"].HeaderText = "Job Order Number";
+            dgvJobOrders.Columns["Job"].Visible = false;
             dgvJobOrders.Columns["jOrd_Num"].HeaderText = "Job Order Number";
             dgvJobOrders.Columns["customerFullName"].HeaderText = "Customer Name";
             dgvJobOrders.Columns["name"].HeaderText = "Employee Name";
@@ -51,6 +53,7 @@ namespace PYLsystems
             dgvJobOrders.Columns["voidreason"].HeaderText = "Transaction Type";
             dgvJobOrders.Columns["customer_Payment"].HeaderText = "Customer Payment";
             dgvJobOrders.Columns["discount"].HeaderText = "Discount";
+            dgvJobOrders.Columns["jOrd_Num"].DefaultCellStyle.Format = "0000000";
 
             myConn.Close();
         }
@@ -66,6 +69,9 @@ namespace PYLsystems
         {
             try
             {
+                //Int32.Parse(receiptRow["sOrd_Num"].ToString()).ToString("0000000");
+
+              
                 jOrd_Num = dgvJobOrders.CurrentRow.Cells[0].Value.ToString();
                 totalAmount = dgvJobOrders.CurrentRow.Cells[0].Value.ToString();
                 lblNumber.Text = jOrd_Num;
@@ -87,23 +93,6 @@ namespace PYLsystems
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            myConn.Open();
-            string query = "SELECT j.jOrd_Num,c_a.customerFullName,CONCAT(e.lastName,' ',e.firstname) as 'name',j.jobOrderDate,j.voidReason,IF(j.paymenttype=0,'Cash','Credit Card') as 'PaymentType',j.totalAmount,c_p.customer_Payment,j.discount FROM customer_payment c_p LEFT JOIN customer_account c_a ON c_a.customerID = c_p.customerID LEFT JOIN joborder j ON j.jOrd_Num = c_p.jOrd_Num LEFT JOIN employee e ON e.employeeID = j.employeeID WHERE j.voidReason = 'On-Going Transaction' AND " +
-                "j.jOrd_Num LIKE '%" + txtSearch.Text + "%' OR c_a.customerFullName LIKE '%" + txtSearch.Text + "%' OR e.lastname LIKE '%" + txtSearch.Text + "%' OR e.firstname LIKE '%" + txtSearch.Text + "%' OR j.jobOrderDate LIKE '%" + txtSearch.Text + "%' OR j.totalAmount LIKE '%" + txtSearch.Text +  "%' ";
-            MySqlCommand comm = new MySqlCommand(query, myConn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-            DataTable dt = new DataTable();
-            adp.Fill(dt);
-            dgvJobOrders.DataSource = dt;
-       
-            dgvJobOrders.Columns["jOrd_Num"].HeaderText = "Job Order Number";
-            dgvJobOrders.Columns["customerFullname"].HeaderText = "Custmer Name";
-            dgvJobOrders.Columns["Name"].HeaderText = "Employee Name";
-            dgvJobOrders.Columns["totalamount"].HeaderText = "Total Amount";
-            dgvJobOrders.Columns["paymenttype"].HeaderText = "Payment Type";
-            dgvJobOrders.Columns["joborderdate"].HeaderText = "Job Order Date";
-            dgvJobOrders.Columns["voidreason"].HeaderText = "Transaction Type";
-            myConn.Close();
         }
   
         private void btnCancelJobOrder_Click_1(object sender, EventArgs e)
