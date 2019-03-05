@@ -312,6 +312,9 @@
     <EmbeddedResource Include="frmEmployeeMgt.resx">
       <DependentUpon>frmEmployeeMgt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmFrameDetails.resx">
+      <DependentUpon>frmFrameDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFrameList.resx">
       <DependentUpon>frmFrameList.cs</DependentUpon>
     </EmbeddedResource>
