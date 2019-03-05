@@ -134,7 +134,7 @@ namespace PYLsystems
             }
 
 
-            string myQuer = "SELECT s.supplierName as 'supplierName',s_i.supplyName as 'supplyName',s_d.supply_price as 'supply_price',s_d.stockin_quantity as 'StockInSupply',SUM(f_m.stockout_quantity) as 'StockOutSupply',SUM(s_d.stockin_quantity - f_m.stockout_quantity) as 'AvailableSupply' FROM frame_materials f_m LEFT JOIN supply_details s_d ON s_d.supplyID = f_m.supply_detailsID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supplier s ON s.supplierID = s_d.supplierID WHERE s_d.supplyID = " + lblSupplyID.Text + " GROUP BY s_d.supplyID ORDER BY 'AvailableSupply'";
+            string myQuer = "SELECT s.supplierName as 'Supplier Name',s_i.supplyName as 'Supply Name',SUM(s_d.stockin_quantity) as 'Supply Stock In',SUM(ifnull(quantity,0)) as 'Stock Out in Job Order',SUM(ifnull(f_m.stockout_quantity,0)) as 'Stock Out in Inventory',SUM(ifnull(f_m.stockout_quantity,0)) + SUM(ifnull(quantity,0)) as 'Overall Stock Out',SUM(s_d.stockin_quantity) - SUM(ifnull(f_m.stockout_quantity,0)) - SUM(ifnull(quantity,0)) as 'Remaining Supplies' FROM supply_details s_d LEFT JOIN jorder_details j_d ON s_d.supplyID = j_d.supply_itemsID LEFT JOIN frame_materials f_m ON f_m.supply_detailsID = s_d.supplierID LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.supplyID = " + lblSupplyID.Text +" GROUP BY s_d.supplyID";
                 MySqlCommand myCom = new MySqlCommand(myQuer, myConn);
                 MySqlDataReader myReader1;
                 try
@@ -143,7 +143,7 @@ namespace PYLsystems
                     myReader1 = myCom.ExecuteReader();
                     while (myReader1.Read())
                     {
-                        remainingItem = myReader1.GetFloat(5);
+                        remainingItem = myReader1.GetFloat(6);
                     }
                     myConn.Close();
                 }
@@ -355,7 +355,7 @@ namespace PYLsystems
                 if (txtDiscount.Text == "" && (float.Parse(txtTotalAmount.Text) > float.Parse(txtCustomerPayment.Text)))
                 {
                     //UPDATE customer_account SET balance = balance - 20 WHERE customerID = 2
-                    string myQuery = "INSERT INTO jobOrder (jobOrderDate,employeeID,paymentType,totalAmount,voidReason) values('" + msktxtJobOrderDate.Text + "'," + Home.Global.empId.ToString() + ",'" + cboPaymentType.SelectedIndex + "'," + txtTotalAmount.Text +"','On-Going Transaction'" + ")";
+                    string myQuery = "INSERT INTO jobOrder (jobOrderDate,employeeID,paymentType,totalAmount,voidReason) values('" + msktxtJobOrderDate.Text + "'," + Home.Global.empId.ToString() + ",'" + cboPaymentType.SelectedIndex + "'," + txtTotalAmount.Text +",'On-Going Transaction'" + ")";
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
