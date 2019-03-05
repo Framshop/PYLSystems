@@ -330,34 +330,40 @@
             // 
             // btnAddSupply
             // 
+            this.btnAddSupply.BackColor = System.Drawing.Color.Lime;
             this.btnAddSupply.Enabled = false;
+            this.btnAddSupply.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddSupply.Location = new System.Drawing.Point(362, 557);
             this.btnAddSupply.Name = "btnAddSupply";
             this.btnAddSupply.Size = new System.Drawing.Size(75, 23);
             this.btnAddSupply.TabIndex = 30;
             this.btnAddSupply.Text = "Add Supply";
-            this.btnAddSupply.UseVisualStyleBackColor = true;
+            this.btnAddSupply.UseVisualStyleBackColor = false;
             this.btnAddSupply.Click += new System.EventHandler(this.btnAddSupply_Click);
             // 
             // btnAddJobOrderDetails
             // 
+            this.btnAddJobOrderDetails.BackColor = System.Drawing.Color.Lime;
             this.btnAddJobOrderDetails.Enabled = false;
+            this.btnAddJobOrderDetails.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddJobOrderDetails.Location = new System.Drawing.Point(443, 528);
             this.btnAddJobOrderDetails.Name = "btnAddJobOrderDetails";
             this.btnAddJobOrderDetails.Size = new System.Drawing.Size(124, 23);
             this.btnAddJobOrderDetails.TabIndex = 31;
             this.btnAddJobOrderDetails.Text = "Add Job Order Details";
-            this.btnAddJobOrderDetails.UseVisualStyleBackColor = true;
+            this.btnAddJobOrderDetails.UseVisualStyleBackColor = false;
             this.btnAddJobOrderDetails.Click += new System.EventHandler(this.btnAddJobOrderDetails_Click);
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.Color.Lime;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancel.Location = new System.Drawing.Point(362, 528);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 32;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // txtSize
@@ -522,12 +528,14 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(443, 556);
+            this.button1.BackColor = System.Drawing.Color.Lime;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(443, 557);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(124, 23);
             this.button1.TabIndex = 51;
             this.button1.Text = "Add Customer Account";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblAvoidDuplicate
@@ -545,6 +553,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(913, 599);
             this.Controls.Add(this.lblAvoidDuplicate);
             this.Controls.Add(this.button1);
