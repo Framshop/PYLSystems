@@ -69,23 +69,27 @@
             // 
             // btnAddPayment
             // 
+            this.btnAddPayment.BackColor = System.Drawing.Color.Lime;
             this.btnAddPayment.Enabled = false;
+            this.btnAddPayment.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddPayment.Location = new System.Drawing.Point(156, 50);
             this.btnAddPayment.Name = "btnAddPayment";
             this.btnAddPayment.Size = new System.Drawing.Size(213, 23);
             this.btnAddPayment.TabIndex = 4;
             this.btnAddPayment.Text = "Full Payment";
-            this.btnAddPayment.UseVisualStyleBackColor = true;
+            this.btnAddPayment.UseVisualStyleBackColor = false;
             this.btnAddPayment.Click += new System.EventHandler(this.btnAddPayment_Click);
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.Color.Lime;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancel.Location = new System.Drawing.Point(156, 79);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(213, 23);
             this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // lblCustomerID
@@ -102,6 +106,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(864, 383);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAddPayment);
