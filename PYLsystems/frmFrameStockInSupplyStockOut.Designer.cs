@@ -61,6 +61,7 @@
             this.lblSupplyame = new System.Windows.Forms.Label();
             this.lbelSupplierName = new System.Windows.Forms.Label();
             this.cboDimension = new System.Windows.Forms.ComboBox();
+            this.lblAvoidDuplicate = new System.Windows.Forms.Label();
             lvwSupplyID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSupplyStockIn)).BeginInit();
             this.SuspendLayout();
@@ -118,13 +119,15 @@
             // 
             // btnAdd
             // 
+            this.btnAdd.BackColor = System.Drawing.Color.Lime;
             this.btnAdd.Enabled = false;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Location = new System.Drawing.Point(119, 377);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(156, 23);
             this.btnAdd.TabIndex = 6;
             this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // dataGridSupplyStockIn
@@ -182,13 +185,15 @@
             // 
             // btnStockOut
             // 
+            this.btnStockOut.BackColor = System.Drawing.Color.Lime;
             this.btnStockOut.Enabled = false;
+            this.btnStockOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStockOut.Location = new System.Drawing.Point(119, 319);
             this.btnStockOut.Name = "btnStockOut";
             this.btnStockOut.Size = new System.Drawing.Size(156, 23);
             this.btnStockOut.TabIndex = 10;
             this.btnStockOut.Text = "Stock Out Supply";
-            this.btnStockOut.UseVisualStyleBackColor = true;
+            this.btnStockOut.UseVisualStyleBackColor = false;
             this.btnStockOut.Click += new System.EventHandler(this.btnStockOut_Click);
             // 
             // txtUnitType
@@ -240,13 +245,13 @@
             this.lvwStockOutSupply,
             this.lvwUType});
             this.lvwSupplyStockOut.FullRowSelect = true;
-            this.lvwSupplyStockOut.GridLines = true;
-            this.lvwSupplyStockOut.Location = new System.Drawing.Point(281, 394);
+            this.lvwSupplyStockOut.Location = new System.Drawing.Point(281, 431);
             this.lvwSupplyStockOut.Name = "lvwSupplyStockOut";
             this.lvwSupplyStockOut.Size = new System.Drawing.Size(674, 306);
             this.lvwSupplyStockOut.TabIndex = 14;
             this.lvwSupplyStockOut.UseCompatibleStateImageBehavior = false;
             this.lvwSupplyStockOut.View = System.Windows.Forms.View.Details;
+            this.lvwSupplyStockOut.SelectedIndexChanged += new System.EventHandler(this.lvwSupplyStockOut_SelectedIndexChanged);
             // 
             // lvwSupplyName
             // 
@@ -270,22 +275,26 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.Color.Lime;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Location = new System.Drawing.Point(119, 406);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(156, 23);
             this.btnCancel.TabIndex = 25;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnRemove
             // 
+            this.btnRemove.BackColor = System.Drawing.Color.Lime;
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemove.Location = new System.Drawing.Point(119, 348);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(156, 23);
             this.btnRemove.TabIndex = 11;
             this.btnRemove.Text = "Remove";
-            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.UseVisualStyleBackColor = false;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // lblSearch
@@ -366,12 +375,25 @@
             this.cboDimension.Size = new System.Drawing.Size(156, 21);
             this.cboDimension.TabIndex = 34;
             // 
+            // lblAvoidDuplicate
+            // 
+            this.lblAvoidDuplicate.AutoSize = true;
+            this.lblAvoidDuplicate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAvoidDuplicate.ForeColor = System.Drawing.Color.Red;
+            this.lblAvoidDuplicate.Location = new System.Drawing.Point(282, 406);
+            this.lblAvoidDuplicate.Name = "lblAvoidDuplicate";
+            this.lblAvoidDuplicate.Size = new System.Drawing.Size(436, 18);
+            this.lblAvoidDuplicate.TabIndex = 35;
+            this.lblAvoidDuplicate.Text = "Avoid Duplicate Items ... If it happens, use remove button";
+            // 
             // frmFrameStockInSupplyStockOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(960, 749);
             this.ControlBox = false;
+            this.Controls.Add(this.lblAvoidDuplicate);
             this.Controls.Add(this.cboDimension);
             this.Controls.Add(this.lbelSupplierName);
             this.Controls.Add(this.lblSupplyame);
@@ -443,5 +465,6 @@
         private System.Windows.Forms.Label lblSupplyame;
         private System.Windows.Forms.Label lbelSupplierName;
         private System.Windows.Forms.ComboBox cboDimension;
+        private System.Windows.Forms.Label lblAvoidDuplicate;
     }
 }
