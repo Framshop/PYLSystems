@@ -79,6 +79,7 @@
             this.lblCustomerPayment = new System.Windows.Forms.Label();
             this.txtCustomerPayment = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.lblAvoidDuplicate = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblJobOrderID
@@ -529,11 +530,23 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // lblAvoidDuplicate
+            // 
+            this.lblAvoidDuplicate.AutoSize = true;
+            this.lblAvoidDuplicate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAvoidDuplicate.ForeColor = System.Drawing.Color.Red;
+            this.lblAvoidDuplicate.Location = new System.Drawing.Point(445, 58);
+            this.lblAvoidDuplicate.Name = "lblAvoidDuplicate";
+            this.lblAvoidDuplicate.Size = new System.Drawing.Size(436, 18);
+            this.lblAvoidDuplicate.TabIndex = 52;
+            this.lblAvoidDuplicate.Text = "Avoid Duplicate Items ... If it happens, use remove button";
+            // 
             // frmJobOrderDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(913, 599);
+            this.Controls.Add(this.lblAvoidDuplicate);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtCustomerPayment);
             this.Controls.Add(this.lblCustomerPayment);
@@ -638,5 +651,6 @@
         private System.Windows.Forms.Label lblCustomerPayment;
         private System.Windows.Forms.TextBox txtCustomerPayment;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblAvoidDuplicate;
     }
 }
