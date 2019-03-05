@@ -32,9 +32,8 @@
             this.lblCustomerName = new System.Windows.Forms.Label();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.btnAddPayment = new System.Windows.Forms.Button();
-            this.lblBalance = new System.Windows.Forms.Label();
-            this.txtBalance = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.lblCustomerID = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJobOrder)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,6 +48,7 @@
             this.dgvJobOrder.Name = "dgvJobOrder";
             this.dgvJobOrder.Size = new System.Drawing.Size(477, 359);
             this.dgvJobOrder.TabIndex = 0;
+            this.dgvJobOrder.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvJobOrder_CellClick);
             // 
             // lblCustomerName
             // 
@@ -61,6 +61,7 @@
             // 
             // txtCustomerName
             // 
+            this.txtCustomerName.Enabled = false;
             this.txtCustomerName.Location = new System.Drawing.Point(156, 24);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(213, 20);
@@ -68,51 +69,51 @@
             // 
             // btnAddPayment
             // 
-            this.btnAddPayment.Location = new System.Drawing.Point(156, 76);
+            this.btnAddPayment.BackColor = System.Drawing.Color.Lime;
+            this.btnAddPayment.Enabled = false;
+            this.btnAddPayment.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAddPayment.Location = new System.Drawing.Point(156, 50);
             this.btnAddPayment.Name = "btnAddPayment";
-            this.btnAddPayment.Size = new System.Drawing.Size(169, 23);
+            this.btnAddPayment.Size = new System.Drawing.Size(213, 23);
             this.btnAddPayment.TabIndex = 4;
             this.btnAddPayment.Text = "Full Payment";
-            this.btnAddPayment.UseVisualStyleBackColor = true;
-            // 
-            // lblBalance
-            // 
-            this.lblBalance.AutoSize = true;
-            this.lblBalance.Location = new System.Drawing.Point(12, 57);
-            this.lblBalance.Name = "lblBalance";
-            this.lblBalance.Size = new System.Drawing.Size(46, 13);
-            this.lblBalance.TabIndex = 5;
-            this.lblBalance.Text = "Balance";
-            // 
-            // txtBalance
-            // 
-            this.txtBalance.Location = new System.Drawing.Point(156, 50);
-            this.txtBalance.Name = "txtBalance";
-            this.txtBalance.Size = new System.Drawing.Size(213, 20);
-            this.txtBalance.TabIndex = 6;
+            this.btnAddPayment.UseVisualStyleBackColor = false;
+            this.btnAddPayment.Click += new System.EventHandler(this.btnAddPayment_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(156, 105);
+            this.btnCancel.BackColor = System.Drawing.Color.Lime;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancel.Location = new System.Drawing.Point(156, 79);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(213, 23);
             this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // lblCustomerID
+            // 
+            this.lblCustomerID.AutoSize = true;
+            this.lblCustomerID.Location = new System.Drawing.Point(434, 158);
+            this.lblCustomerID.Name = "lblCustomerID";
+            this.lblCustomerID.Size = new System.Drawing.Size(35, 13);
+            this.lblCustomerID.TabIndex = 8;
+            this.lblCustomerID.Text = "label1";
+            this.lblCustomerID.Visible = false;
             // 
             // frmCustomerPayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(864, 383);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.txtBalance);
-            this.Controls.Add(this.lblBalance);
             this.Controls.Add(this.btnAddPayment);
             this.Controls.Add(this.txtCustomerName);
             this.Controls.Add(this.lblCustomerName);
             this.Controls.Add(this.dgvJobOrder);
+            this.Controls.Add(this.lblCustomerID);
             this.Name = "frmCustomerPayment";
             this.Text = "Customer Payment";
             this.Load += new System.EventHandler(this.frmCustomerPayment_Load);
@@ -126,10 +127,9 @@
 
         private System.Windows.Forms.DataGridView dgvJobOrder;
         private System.Windows.Forms.Label lblCustomerName;
-        private System.Windows.Forms.TextBox txtCustomerName;
         private System.Windows.Forms.Button btnAddPayment;
-        private System.Windows.Forms.Label lblBalance;
-        private System.Windows.Forms.TextBox txtBalance;
         private System.Windows.Forms.Button btnCancel;
+        public System.Windows.Forms.TextBox txtCustomerName;
+        public System.Windows.Forms.Label lblCustomerID;
     }
 }

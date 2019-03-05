@@ -16,7 +16,7 @@ namespace PYLsystems
         String connString = "server=localhost;uid=root;pwd=root;database=frameshopdb;";
         addSales addSalesPForm;
         DataTable frameAvail_dt;
-        DataView frameAvailDefaultFilter;
+     
 
         int frameItemIDEdit;
         int itemQuantityEdit;

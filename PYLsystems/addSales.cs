@@ -43,6 +43,7 @@ namespace PYLsystems
             addSalesDT.Columns.Add("Total");
             addSalesGrid.DataSource = addSalesDT;
 
+
             String receiptNumberPrevString = "SELECT sOrd_Num FROM salesOrder WHERE sOrd_Num=(SELECT MAX(sOrd_Num) FROM salesOrder); ";
 
             MySqlConnection my_conn = new MySqlConnection(connString);
@@ -51,12 +52,19 @@ namespace PYLsystems
 
             DataTable receiptNumberPrev_dt = new DataTable();
             receiptNumberPrev_adapter.Fill(receiptNumberPrev_dt);
-            int receiptNum = Int32.Parse(receiptNumberPrev_dt.Rows[0][0].ToString())+1;
+            if (receiptNumberPrev_dt.Rows == null) {
+                int receiptNum = 1;
+                this.receiptTextBox.Text= receiptNum.ToString("0000000");
+            }
+            else { 
+                int receiptNum = Int32.Parse(receiptNumberPrev_dt.Rows[0][0].ToString())+1;
 
-            this.receiptTextBox.Text =receiptNum.ToString("0000000");
-            //frameAvailDefaultFilter = new DataView(frameAvail_dt);
-            //frameAvailDefaultFilter.RowFilter = "sOrd_status = 0";
-            discountTextBox.Text = "0.00";
+                this.receiptTextBox.Text =receiptNum.ToString("0000000");
+                //frameAvailDefaultFilter = new DataView(frameAvail_dt);
+                //frameAvailDefaultFilter.RowFilter = "sOrd_status = 0";
+                discountTextBox.Text = "0.00";
+            }
+
 
         }
         /*private void addSales_dtColumns() {

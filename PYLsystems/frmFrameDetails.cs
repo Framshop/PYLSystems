@@ -72,7 +72,7 @@ namespace PYLsystems
                 dgvSupply.Columns["unittype"].HeaderText = "Unit Type";
                 dgvSupply.Columns["fixedquantity"].HeaderText = "Fixed Quantity";
             }
-            catch (Exception ex)
+            catch 
             {
 
             }

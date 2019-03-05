@@ -14,12 +14,12 @@ namespace PYLsystems
     public partial class e_attendance : Form
     {
         String connString = "server=localhost;uid=root;pwd=root;database=frameshopdb;";
-        String DateStart;
-        String DateEnd;
-        private DataTable attendanceDT;
-        int selectedEmpID;
-        int employeeStatus;
-        int employeeID;
+        private String DateStart;
+        private String DateEnd;
+        DataTable attendanceDT;
+        private int selectedEmpID;
+        private int employeeStatus;
+        private int employeeID;
         //--------------Initial Load--------------
         //----for programming initializer
         public e_attendance()
@@ -81,7 +81,7 @@ namespace PYLsystems
              "on attIn.employeeID = attOut.employeeID AND attIn.date = attOut.date " +
              "WHERE attIn.employeeID = @selectedEmpID AND attIn.date=CURDATE();";
             MySqlConnection my_conn = new MySqlConnection(connString);
-            MySqlCommand attendanceView_command = new MySqlCommand(attendanceViewString, my_conn);
+            MySqlCommand attendanceView_command = new MySqlCommand(attendanceViewString , my_conn);
             attendanceView_command.Parameters.AddWithValue("@selectedEmpID", this.selectedEmpID);
             MySqlDataAdapter my_adapter = new MySqlDataAdapter(attendanceView_command);
 

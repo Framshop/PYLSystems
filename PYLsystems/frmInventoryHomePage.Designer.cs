@@ -166,6 +166,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(540, 565);
             this.Controls.Add(this.btnSupplyFrames);
             this.Controls.Add(this.btnJobOrderTransaction);
@@ -189,14 +190,14 @@
 
         private System.Windows.Forms.Button btnSupplyItems;
         private System.Windows.Forms.Button btnFrameDetails;
-        private System.Windows.Forms.Button btnSupplier;
-        private System.Windows.Forms.Button btnSupplyStockIn;
         private System.Windows.Forms.Button btnFrameList;
         private System.Windows.Forms.Button btnJobOrderTransaction;
         private System.Windows.Forms.Button btnDamageItems;
         private System.Windows.Forms.Button btnFrameStockInSupplyStockOut;
-        private System.Windows.Forms.Button btnCustomerAccount;
         private System.Windows.Forms.Button btnJobOrderDetails;
         private System.Windows.Forms.Button btnSupplyFrames;
+        public System.Windows.Forms.Button btnSupplier;
+        public System.Windows.Forms.Button btnSupplyStockIn;
+        public System.Windows.Forms.Button btnCustomerAccount;
     }
 }

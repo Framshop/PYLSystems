@@ -97,7 +97,7 @@ namespace PYLsystems
             txtName.Text = "";
             txtDimension.Text = "";
             txtUnitPrice.Text = "";
-            cboActive.Text = "";
+            cboActive.SelectedIndex = -1;
             btnUpdate.Enabled = false;
         }
 

@@ -146,24 +146,28 @@
             // 
             // btbAdd
             // 
+            this.btbAdd.BackColor = System.Drawing.Color.Lime;
             this.btbAdd.Enabled = false;
+            this.btbAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btbAdd.Location = new System.Drawing.Point(29, 332);
             this.btbAdd.Name = "btbAdd";
             this.btbAdd.Size = new System.Drawing.Size(75, 23);
             this.btbAdd.TabIndex = 11;
             this.btbAdd.Text = "Add";
-            this.btbAdd.UseVisualStyleBackColor = true;
+            this.btbAdd.UseVisualStyleBackColor = false;
             this.btbAdd.Click += new System.EventHandler(this.btbAdd_Click);
             // 
             // btnUpdate
             // 
+            this.btnUpdate.BackColor = System.Drawing.Color.Lime;
             this.btnUpdate.Enabled = false;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUpdate.Location = new System.Drawing.Point(110, 332);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 12;
             this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // frameItemsGrid
@@ -231,12 +235,14 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.Color.Lime;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancel.Location = new System.Drawing.Point(26, 404);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 26;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // lblFrameID
@@ -261,6 +267,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(647, 439);
             this.ControlBox = false;
             this.Controls.Add(this.lblValidate);

@@ -14,6 +14,8 @@ namespace PYLsystems
     public partial class frmUpdateEmployee : Form
     {
         MySqlConnection conn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
+        private String username;
+        private String password;
         public frmUpdateEmployee()
         {
             InitializeComponent();
@@ -68,7 +70,26 @@ namespace PYLsystems
                 string homeaddress = reader.GetString(7);
                 string salaryrate = reader.GetString(8);
                 string contactnumber = reader.GetString(9);
+                string username="";
+                string password="";
+                if (reader.IsDBNull(10))
+                {
+                    username = "";
 
+                }
+                else if (reader.IsDBNull(11))
+                {
+                    password = "";
+                }
+                else if (reader.IsDBNull(10) && reader.IsDBNull(11)) {
+                    username = "";
+                    password = "";
+                }
+                else
+                {
+                    username = reader.GetString(10);
+                    password = reader.GetString(11);
+                }
 
                 cbEmpStatus.Text = position;
                 dtpStartofEmp.Text = startofEmp;
@@ -79,6 +100,10 @@ namespace PYLsystems
                 txtHomeAddress.Text = homeaddress;
                 txtSalaryRate.Text = salaryrate;
                 txtContactNumber.Text = contactnumber;
+                usernameTextBox.Text = username;
+                passwordTextBox.Text = password;
+                this.username = username;
+                this.password = password;
 
                 empid.Text = reader.GetString(0);
 
@@ -90,19 +115,40 @@ namespace PYLsystems
 
         private void btnUpdateEmp_Click(object sender, EventArgs e)
         {
-            conn.Open();
+            if (usernameTextBox.Text == this.username && passwordTextBox.Text == this.password) { 
+                conn.Open();
 
-            // string myQuery = "UPDATE product SET code = '" + txtEditCode.Text + "',name =  '" + txtEditName.Text + "', description = '" + txtEditDescription.Text + "', unitprice = '" + txtEditUnitPrice.Text + "',quantity =  '" + txtEditQuantity.Text + "',active = '" + cboEditActive.Text + "',unitmeasure = '" + txtEditUnitmeasure.Text + "' WHERE code = '" + code.Text + "'AND name = '" + name.Text + "'AND description = '" + description.Text + "'AND unitprice = '" + unitprice.Text + "'";
+                // string myQuery = "UPDATE product SET code = '" + txtEditCode.Text + "',name =  '" + txtEditName.Text + "', description = '" + txtEditDescription.Text + "', unitprice = '" + txtEditUnitPrice.Text + "',quantity =  '" + txtEditQuantity.Text + "',active = '" + cboEditActive.Text + "',unitmeasure = '" + txtEditUnitmeasure.Text + "' WHERE code = '" + code.Text + "'AND name = '" + name.Text + "'AND description = '" + description.Text + "'AND unitprice = '" + unitprice.Text + "'";
 
-            string myQuery = "UPDATE employee set employeeStatus ='" + status.Text + "', startofEmployment = '" + dtpStartofEmp.Value.Date.ToString("yyyy-MM-dd") + "', firstName ='" + txtFirstName.Text + "',lastName ='" + txtLastName.Text + "', gender= '" + cbGender.Text + "', birthDate= '" + dtpBirthDate.Value.Date.ToString("yyyy-MM-dd ") + "', homeAddress= '" + txtHomeAddress.Text + "', salaryRate= " + txtSalaryRate.Text + ", contactNumber= '" + txtContactNumber.Text + "' WHERE employeeid ='" + empid.Text + "'";
-            MySqlCommand myComm = new MySqlCommand(myQuery, conn);
-            MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
-            DataTable myDt = new DataTable();
-            myAdp.Fill(myDt);
-            conn.Close();
-            MessageBox.Show("Update Success");
-            this.Close();
+                string myQuery = "UPDATE employee set employeeStatus ='" + status.Text + "', startofEmployment = '" + dtpStartofEmp.Value.Date.ToString("yyyy-MM-dd") + "', firstName ='" + txtFirstName.Text + "',lastName ='" + txtLastName.Text + "', gender= '" + cbGender.Text + "', birthDate= '" + dtpBirthDate.Value.Date.ToString("yyyy-MM-dd ") + "', homeAddress= '" + txtHomeAddress.Text + "', salaryRate= " + txtSalaryRate.Text + ", contactNumber= '" + txtContactNumber.Text + "' WHERE employeeid ='" + empid.Text + "'";
+                MySqlCommand myComm = new MySqlCommand(myQuery, conn);
+                MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
+                DataTable myDt = new DataTable();
+                myAdp.Fill(myDt);
+                conn.Close();
+                MessageBox.Show("Update Success");
+                this.Close();
+            }
+            else{
+                conn.Open();
 
+                // string myQuery = "UPDATE product SET code = '" + txtEditCode.Text + "',name =  '" + txtEditName.Text + "', description = '" + txtEditDescription.Text + "', unitprice = '" + txtEditUnitPrice.Text + "',quantity =  '" + txtEditQuantity.Text + "',active = '" + cboEditActive.Text + "',unitmeasure = '" + txtEditUnitmeasure.Text + "' WHERE code = '" + code.Text + "'AND name = '" + name.Text + "'AND description = '" + description.Text + "'AND unitprice = '" + unitprice.Text + "'";
+
+                String myQuery = "UPDATE employee set employeeStatus ='" + status.Text + "', startofEmployment = '" + dtpStartofEmp.Value.Date.ToString("yyyy-MM-dd") + "', firstName ='" + txtFirstName.Text + "',lastName ='" + txtLastName.Text 
+                    + "', gender= '" + cbGender.Text + "', birthDate= '" + dtpBirthDate.Value.Date.ToString("yyyy-MM-dd ") 
+                    + "', homeAddress= '" + txtHomeAddress.Text + "', salaryRate= " + txtSalaryRate.Text 
+                    + ", contactNumber= '" + txtContactNumber.Text
+                    + "', username= '" + usernameTextBox.Text
+                    + "', password= '" + passwordTextBox.Text
+                    + "' WHERE employeeid ='" + empid.Text + "'";
+                MySqlCommand myComm = new MySqlCommand(myQuery, conn);
+                MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
+                DataTable myDt = new DataTable();
+                myAdp.Fill(myDt);
+                conn.Close();
+                MessageBox.Show("Update Success -- username and password updated");
+                this.Close();
+            }
 
         }
 

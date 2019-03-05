@@ -40,6 +40,7 @@
             this.payrollBtn = new System.Windows.Forms.Button();
             this.BtnNewWorkDesc = new System.Windows.Forms.Button();
             this.btnArchiveRec = new System.Windows.Forms.Button();
+
             ((System.ComponentModel.ISupportInitialize)(this.dgEmpList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,6 +136,7 @@
             this.viewAttendance.UseVisualStyleBackColor = true;
             this.viewAttendance.Click += new System.EventHandler(this.viewAttendance_Click);
             // 
+
             // payrollBtn
             // 
             this.payrollBtn.Location = new System.Drawing.Point(22, 407);
@@ -164,14 +166,19 @@
             this.btnArchiveRec.UseVisualStyleBackColor = true;
             this.btnArchiveRec.Click += new System.EventHandler(this.btnArchiveRec_Click);
             // 
+
             // frmEmployeeList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+
             this.ClientSize = new System.Drawing.Size(538, 469);
             this.Controls.Add(this.btnArchiveRec);
             this.Controls.Add(this.BtnNewWorkDesc);
             this.Controls.Add(this.payrollBtn);
+
+            this.ClientSize = new System.Drawing.Size(813, 653);
+
             this.Controls.Add(this.viewAttendance);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtSearch);

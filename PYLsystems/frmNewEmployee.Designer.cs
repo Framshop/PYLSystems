@@ -52,6 +52,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblwarning = new System.Windows.Forms.Label();
             this.lblwaring1 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.usernameTextBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtFirstName
@@ -114,7 +118,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
             this.label5.Location = new System.Drawing.Point(42, 263);
+
+            this.label5.Location = new System.Drawing.Point(47, 262);
+
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(101, 17);
             this.label5.TabIndex = 15;
@@ -172,6 +180,7 @@
             // 
             // cbEmpStatus
             // 
+            this.cbEmpStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEmpStatus.FormattingEnabled = true;
             this.cbEmpStatus.Location = new System.Drawing.Point(161, 32);
             this.cbEmpStatus.Name = "cbEmpStatus";
@@ -198,7 +207,11 @@
             // 
             // btnCreate
             // 
+
             this.btnCreate.Location = new System.Drawing.Point(161, 429);
+
+            this.btnCreate.Location = new System.Drawing.Point(163, 506);
+
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(98, 33);
             this.btnCreate.TabIndex = 27;
@@ -208,7 +221,11 @@
             // 
             // btnCancel
             // 
+
             this.btnCancel.Location = new System.Drawing.Point(279, 429);
+
+            this.btnCancel.Location = new System.Drawing.Point(281, 506);
+
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(98, 33);
             this.btnCancel.TabIndex = 28;
@@ -229,6 +246,7 @@
             // cbGender
             // 
             this.cbGender.DisplayMember = "sdsd";
+            this.cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGender.FormattingEnabled = true;
             this.cbGender.Items.AddRange(new object[] {
             "Male",
@@ -287,11 +305,54 @@
             this.lblwaring1.TabIndex = 38;
             this.lblwaring1.Text = "This entry can only contain numbers(11 digits)";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(67, 437);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(73, 17);
+            this.label9.TabIndex = 40;
+            this.label9.Text = "Username";
+            // 
+            // usernameTextBox
+            // 
+            this.usernameTextBox.Location = new System.Drawing.Point(161, 437);
+            this.usernameTextBox.Name = "usernameTextBox";
+            this.usernameTextBox.Size = new System.Drawing.Size(219, 20);
+            this.usernameTextBox.TabIndex = 39;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(67, 467);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(69, 17);
+            this.label10.TabIndex = 42;
+            this.label10.Text = "Password";
+            // 
+            // passwordTextBox
+            // 
+            this.passwordTextBox.Location = new System.Drawing.Point(161, 467);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Size = new System.Drawing.Size(219, 20);
+            this.passwordTextBox.TabIndex = 41;
+            this.passwordTextBox.UseSystemPasswordChar = true;
+            // 
             // frmNewEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+
             this.ClientSize = new System.Drawing.Size(399, 474);
+
+            this.ClientSize = new System.Drawing.Size(399, 547);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.passwordTextBox);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.usernameTextBox);
+
             this.Controls.Add(this.lblwaring1);
             this.Controls.Add(this.lblwarning);
             this.Controls.Add(this.label4);
@@ -351,5 +412,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblwarning;
         private System.Windows.Forms.Label lblwaring1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox usernameTextBox;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox passwordTextBox;
     }
 }

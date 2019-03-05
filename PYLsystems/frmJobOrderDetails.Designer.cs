@@ -33,7 +33,6 @@
             this.lblSupplyItems = new System.Windows.Forms.Label();
             this.lblQuantity = new System.Windows.Forms.Label();
             this.lblUnitMeasure = new System.Windows.Forms.Label();
-            this.lblEmployeeName = new System.Windows.Forms.Label();
             this.lblTotalAmount = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
             this.lblCustomerName = new System.Windows.Forms.Label();
@@ -41,7 +40,6 @@
             this.lblSize = new System.Windows.Forms.Label();
             this.lblJobOrderDate = new System.Windows.Forms.Label();
             this.msktxtJobOrderDate = new System.Windows.Forms.MaskedTextBox();
-            this.cboEmployeeLastName = new System.Windows.Forms.ComboBox();
             this.cboPaymentType = new System.Windows.Forms.ComboBox();
             this.cboCustomerName = new System.Windows.Forms.ComboBox();
             this.txtTotalAmount = new System.Windows.Forms.TextBox();
@@ -80,6 +78,8 @@
             this.lblValidate = new System.Windows.Forms.Label();
             this.lblCustomerPayment = new System.Windows.Forms.Label();
             this.txtCustomerPayment = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lblAvoidDuplicate = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblJobOrderID
@@ -126,15 +126,6 @@
             this.lblUnitMeasure.Size = new System.Drawing.Size(70, 13);
             this.lblUnitMeasure.TabIndex = 4;
             this.lblUnitMeasure.Text = "Unit Measure";
-            // 
-            // lblEmployeeName
-            // 
-            this.lblEmployeeName.AutoSize = true;
-            this.lblEmployeeName.Location = new System.Drawing.Point(37, 148);
-            this.lblEmployeeName.Name = "lblEmployeeName";
-            this.lblEmployeeName.Size = new System.Drawing.Size(84, 13);
-            this.lblEmployeeName.TabIndex = 5;
-            this.lblEmployeeName.Text = "Employee Name";
             // 
             // lblTotalAmount
             // 
@@ -199,16 +190,6 @@
             this.msktxtJobOrderDate.Size = new System.Drawing.Size(186, 20);
             this.msktxtJobOrderDate.TabIndex = 13;
             this.msktxtJobOrderDate.TextChanged += new System.EventHandler(this.msktxtJobOrderDate_TextChanged);
-            // 
-            // cboEmployeeLastName
-            // 
-            this.cboEmployeeLastName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboEmployeeLastName.FormattingEnabled = true;
-            this.cboEmployeeLastName.Location = new System.Drawing.Point(170, 140);
-            this.cboEmployeeLastName.Name = "cboEmployeeLastName";
-            this.cboEmployeeLastName.Size = new System.Drawing.Size(186, 21);
-            this.cboEmployeeLastName.TabIndex = 14;
-            this.cboEmployeeLastName.SelectedIndexChanged += new System.EventHandler(this.cboEmployeeLastName_SelectedIndexChanged);
             // 
             // cboPaymentType
             // 
@@ -349,34 +330,40 @@
             // 
             // btnAddSupply
             // 
+            this.btnAddSupply.BackColor = System.Drawing.Color.Lime;
             this.btnAddSupply.Enabled = false;
+            this.btnAddSupply.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddSupply.Location = new System.Drawing.Point(362, 557);
             this.btnAddSupply.Name = "btnAddSupply";
             this.btnAddSupply.Size = new System.Drawing.Size(75, 23);
             this.btnAddSupply.TabIndex = 30;
             this.btnAddSupply.Text = "Add Supply";
-            this.btnAddSupply.UseVisualStyleBackColor = true;
+            this.btnAddSupply.UseVisualStyleBackColor = false;
             this.btnAddSupply.Click += new System.EventHandler(this.btnAddSupply_Click);
             // 
             // btnAddJobOrderDetails
             // 
+            this.btnAddJobOrderDetails.BackColor = System.Drawing.Color.Lime;
             this.btnAddJobOrderDetails.Enabled = false;
+            this.btnAddJobOrderDetails.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddJobOrderDetails.Location = new System.Drawing.Point(443, 528);
             this.btnAddJobOrderDetails.Name = "btnAddJobOrderDetails";
             this.btnAddJobOrderDetails.Size = new System.Drawing.Size(124, 23);
             this.btnAddJobOrderDetails.TabIndex = 31;
             this.btnAddJobOrderDetails.Text = "Add Job Order Details";
-            this.btnAddJobOrderDetails.UseVisualStyleBackColor = true;
+            this.btnAddJobOrderDetails.UseVisualStyleBackColor = false;
             this.btnAddJobOrderDetails.Click += new System.EventHandler(this.btnAddJobOrderDetails_Click);
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.Color.Lime;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancel.Location = new System.Drawing.Point(362, 528);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 32;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // txtSize
@@ -539,11 +526,37 @@
             this.txtCustomerPayment.TextChanged += new System.EventHandler(this.txtCustomerPayment_TextChanged);
             this.txtCustomerPayment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustomerPayment_KeyPress);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Lime;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(443, 557);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(124, 23);
+            this.button1.TabIndex = 51;
+            this.button1.Text = "Add Customer Account";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lblAvoidDuplicate
+            // 
+            this.lblAvoidDuplicate.AutoSize = true;
+            this.lblAvoidDuplicate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAvoidDuplicate.ForeColor = System.Drawing.Color.Red;
+            this.lblAvoidDuplicate.Location = new System.Drawing.Point(445, 58);
+            this.lblAvoidDuplicate.Name = "lblAvoidDuplicate";
+            this.lblAvoidDuplicate.Size = new System.Drawing.Size(436, 18);
+            this.lblAvoidDuplicate.TabIndex = 52;
+            this.lblAvoidDuplicate.Text = "Avoid Duplicate Items ... If it happens, use remove button";
+            // 
             // frmJobOrderDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 705);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.ClientSize = new System.Drawing.Size(913, 599);
+            this.Controls.Add(this.lblAvoidDuplicate);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtCustomerPayment);
             this.Controls.Add(this.lblCustomerPayment);
             this.Controls.Add(this.lblValidate);
@@ -571,7 +584,6 @@
             this.Controls.Add(this.txtTotalAmount);
             this.Controls.Add(this.cboCustomerName);
             this.Controls.Add(this.cboPaymentType);
-            this.Controls.Add(this.cboEmployeeLastName);
             this.Controls.Add(this.msktxtJobOrderDate);
             this.Controls.Add(this.lblJobOrderDate);
             this.Controls.Add(this.lblSize);
@@ -579,7 +591,6 @@
             this.Controls.Add(this.lblCustomerName);
             this.Controls.Add(this.lblPrice);
             this.Controls.Add(this.lblTotalAmount);
-            this.Controls.Add(this.lblEmployeeName);
             this.Controls.Add(this.lblUnitMeasure);
             this.Controls.Add(this.lblQuantity);
             this.Controls.Add(this.lblSupplyItems);
@@ -603,7 +614,6 @@
         private System.Windows.Forms.Label lblSupplyItems;
         private System.Windows.Forms.Label lblQuantity;
         private System.Windows.Forms.Label lblUnitMeasure;
-        private System.Windows.Forms.Label lblEmployeeName;
         private System.Windows.Forms.Label lblTotalAmount;
         private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.Label lblCustomerName;
@@ -611,7 +621,6 @@
         private System.Windows.Forms.Label lblSize;
         private System.Windows.Forms.Label lblJobOrderDate;
         private System.Windows.Forms.MaskedTextBox msktxtJobOrderDate;
-        private System.Windows.Forms.ComboBox cboEmployeeLastName;
         private System.Windows.Forms.ComboBox cboPaymentType;
         private System.Windows.Forms.ComboBox cboCustomerName;
         private System.Windows.Forms.TextBox txtTotalAmount;
@@ -650,5 +659,7 @@
         private System.Windows.Forms.Label lblValidate;
         private System.Windows.Forms.Label lblCustomerPayment;
         private System.Windows.Forms.TextBox txtCustomerPayment;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblAvoidDuplicate;
     }
 }

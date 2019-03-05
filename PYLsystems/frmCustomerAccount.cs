@@ -42,7 +42,7 @@ namespace PYLsystems
             dgvCustomerAccount.Columns["emailAddress"].HeaderText = "Email Address";
             dgvCustomerAccount.Columns["homeAddress"].HeaderText = "Home Address";
             dgvCustomerAccount.Columns["gender"].HeaderText = "Gender";
-            dgvCustomerAccount.Columns["balance"].HeaderText = "Balance";
+            //dgvCustomerAccount.Columns["balance"].HeaderText = "Balance";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -72,10 +72,12 @@ namespace PYLsystems
                 RefreshDatabase();
                 txtEmailAddress.Text = "";
                 txtHomeAddress.Text = "";
+                msktxtContactPerson.Text = "";
                 txtFullName.Text = "";
                 cboGender.SelectedIndex = -1;
                 msktxtContactPerson.Text = "";
                 lblValidate.Text = "";
+
             }
             else
             {
@@ -108,6 +110,7 @@ namespace PYLsystems
 
         private void dgvCustomerAccount_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            btnPay.Enabled = true;
             lblCustomerAccountID.Text = dgvCustomerAccount.CurrentRow.Cells[0].Value.ToString();
             customerID = dgvCustomerAccount.CurrentRow.Cells[0].Value.ToString();
             txtFullName.Text = dgvCustomerAccount.CurrentRow.Cells[1].Value.ToString();
@@ -129,7 +132,7 @@ namespace PYLsystems
             int emailaddress = txtEmailAddress.TextLength;
             int homeaddress = txtHomeAddress.TextLength;
             int gender = cboGender.SelectedIndex;
-            if (fullname > 0 && contactperson > 10 && emailaddress > 5 && homeaddress > 0 && gender > -1)
+            if (fullname > 0 && contactperson > 10 && homeaddress > 0 && gender > -1)
             {
                 btnAdd.Enabled = true;
             }
@@ -167,8 +170,6 @@ namespace PYLsystems
 
         private void txtEmailAddress_TextChanged(object sender, EventArgs e)
         {
-            functionAdd();
-            functionUpdate();
         }
 
         private void txtHomeAddress_TextChanged(object sender, EventArgs e)
@@ -207,7 +208,7 @@ namespace PYLsystems
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             myConn.Open();
-            string query = "SELECT customerID,customerFullName,contactPerson,if(gender=1,'Female','Male') as 'gender',emailAddress,homeAddress FROM customer_account WHERE customerFullName LIKE '%" + txtSearch.Text + "%' || contactPerson LIKE '%" + txtSearch.Text + "%' || gender LIKE '%" + txtSearch.Text + "%' || homeAddress LIKE '%" + txtSearch.Text + "%' || balance LIKE '%" + txtSearch.Text + "%'";
+            string query = "SELECT customerID,customerFullName,contactPerson,if(gender=1,'Female','Male') as 'gender',emailAddress,homeAddress FROM customer_account WHERE customerFullName LIKE '%" + txtSearch.Text + "%' OR contactPerson LIKE '%" + txtSearch.Text + "%' OR gender LIKE '%" + txtSearch.Text + "%' OR homeAddress LIKE '%" + txtSearch.Text + "%'";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter Adp = new MySqlDataAdapter(comm);
             DataTable Dt = new DataTable();
@@ -238,9 +239,14 @@ namespace PYLsystems
         }
         private void dgvCustomerAccount_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            frmCustomerPayment frmCustomerPayment = new frmCustomerPayment();
-            frmCustomerPayment.customerID = dgvCustomerAccount.CurrentRow.Cells[0].Value.ToString();
-            frmCustomerPayment.ShowDialog();
+        }
+
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            frmCustomerPayment customerPayment = new frmCustomerPayment();
+            customerPayment.lblCustomerID.Text = dgvCustomerAccount.CurrentRow.Cells[0].Value.ToString();
+            customerPayment.txtCustomerName.Text = dgvCustomerAccount.CurrentRow.Cells[1].Value.ToString();
+            customerPayment.ShowDialog();
         }
     }
 }

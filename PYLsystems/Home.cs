@@ -1,31 +1,82 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PYLsystems
 {
     public partial class Home : Form
     {
-        int employeeId;
-        int employeeStatus;
+        public class Global
+        {
+            public static string empId;
+
+        }
+        internal int employeeId;
+        internal int employeeStatus;
         public Home()
         {
             InitializeComponent();
             /*------temporary. to be erased when combine employee management------*/
-            this.employeeId = 1;
-            this.employeeStatus = 1;
+            //this.employeeId = 1;
+            //this.employeeStatus = 1;
         }
+        public Home(int employeeId, int employeeStatus) {
+            InitializeComponent();
+            this.employeeId = employeeId;
+            this.employeeStatus = employeeStatus;
+        }
+
         private void Home_Load(object sender, EventArgs e)
         {
-           /*For employee Status check from Login. 1-admin programmer, 2-Business Owner, 3-Admin staff, 4-Cashier, 5-Framers.
-            Lock Neccessary buttons based on employee Status
-             */
+            /*For employee Status check from Login. 1-admin programmer-Business Owner, 2-Admin staff, 3-Cashier, 4-Framers.
+             Lock Neccessary buttons based on employee Status
+              */
+            LoginForm frmLogin = new LoginForm(this);
+            frmLogin.ShowDialog();
+            Global.empId = employeeId.ToString();
+            frmInventoryHomePage inventoryHomePage = new frmInventoryHomePage();
+            MessageBox.Show(employeeId.ToString()+" "+employeeStatus.ToString());
+            if (employeeStatus == 1) {
+                salesOrderBtn.Enabled = true;
+                salesOrderBtn.Visible = true;
+                jOrderBtn.Enabled = true;
+                jOrderBtn.Visible = true;
+                inventoryBtn.Enabled = true;
+                inventoryBtn.Visible = true;
+                empManBtn.Enabled = true;
+                empManBtn.Visible = true;
+            }
+            if (employeeStatus == 2)
+            {
+                salesOrderBtn.Enabled = true;
+                salesOrderBtn.Visible = true;
+                jOrderBtn.Visible = true;
+                inventoryBtn.Enabled = true;
+                inventoryBtn.Visible = true;
+                empManBtn.Enabled = true;
+                empManBtn.Visible = true;
+            }
+            if (employeeStatus == 3)
+            {
+                salesOrderBtn.Enabled = true;
+                salesOrderBtn.Visible = true;
+                jOrderBtn.Enabled = true;
+                jOrderBtn.Visible = true;
+                inventoryBtn.Enabled = false;
+                inventoryBtn.Text = "Not Applicable";
+                empManBtn.Enabled = false;
+                empManBtn.Text = "Not Applicable";
+            }
+            if (employeeStatus == 4)
+            {
+                jOrderBtn.Enabled = false;
+                jOrderBtn.Text = "Not Applicable";
+                inventoryHomePage.btnSupplier.Enabled = false;
+                inventoryHomePage.btnSupplier.Text = "Not Applicable";
+                inventoryHomePage.btnSupplyStockIn.Enabled = false;
+                inventoryHomePage.btnSupplyStockIn.Text = "Not Applicable";
+                inventoryHomePage.btnCustomerAccount.Enabled = false;
+                inventoryHomePage.btnCustomerAccount.Text = "Not Applicable";
+            }
         }
         private void salesOrderBtn_Click(object sender, EventArgs e)
         {
@@ -47,7 +98,7 @@ namespace PYLsystems
 
         private void empManBtn_Click(object sender, EventArgs e)
         {
-            frmEmployeeList empMgt = new frmEmployeeList();
+            frmEmployeeMgt empMgt = new frmEmployeeMgt(this.employeeId);
             empMgt.ShowDialog();
         }
     }

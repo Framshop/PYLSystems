@@ -16,12 +16,13 @@ namespace PYLsystems
         public static string jOrdID = "";
         public static string lastname = "";
         public static string firstname = "";
+        public static float remainingItem = 0;
         MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
         public frmJobOrderDetails()
         {
             InitializeComponent();
             fillCustomerName();
-            FillEmployeeList();
+  
             FillSupplyDetails();
         }
         private void fillCustomerName()
@@ -46,30 +47,7 @@ namespace PYLsystems
                 MessageBox.Show(ex.Message);
             }
         }
-        private void FillEmployeeList()
-        {
-            string myQuery = "SELECT lastname,firstname,employeeID FROM employee";
-            MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
-            MySqlDataReader myReader;
-            try
-            {
-                myConn.Open();
-                myReader = myComm.ExecuteReader();
-                while (myReader.Read())
-                {
-                    lastname = myReader.GetString(0);
-                    firstname = myReader.GetString(1);
-                    string employee = myReader.GetString(1);
-                    employee = employee + ", " + myReader.GetString(0);
-                    cboEmployeeLastName.Items.Add(employee);
-                }
-                myConn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+     
         private void FillSupplyDetails()
         {
             string myQuery = "SELECT s_i.supplyName FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplyID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID";
@@ -118,28 +96,6 @@ namespace PYLsystems
 
         private void cboEmployeeLastName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            AddJobOrder();
-
-            string myQuery = "SELECT employeeID FROM employee WHERE lastname = '" + lastname + "' OR firstname = '" + firstname + "'";
-            MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
-            MySqlDataReader myReader;
-            try
-            {
-                myConn.Open();
-                myReader = myComm.ExecuteReader();
-                while (myReader.Read())
-                {
-
-                    string myId = myReader.GetString(0);
-                    lblEmployeeID.Text = myId;
-
-                }
-                myConn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -162,7 +118,6 @@ namespace PYLsystems
                 myReader = myComm.ExecuteReader();
                 while (myReader.Read())
                 {
-
                     string supplierName = myReader.GetString(1);
                     txtSupplier.Text = supplierName;
                     string supplyID = myReader.GetString(0);
@@ -171,13 +126,34 @@ namespace PYLsystems
                     txtUnitMeasure.Text = myReader.GetString(3);
                 }
                 myConn.Close();
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-        }
 
+
+            string myQuer = "SELECT s.supplierName as 'Supplier Name',s_i.supplyName as 'Supply Name',SUM(s_d.stockin_quantity) as 'Supply Stock In',SUM(ifnull(quantity,0)) as 'Stock Out in Job Order',SUM(ifnull(f_m.stockout_quantity,0)) as 'Stock Out in Inventory',SUM(ifnull(f_m.stockout_quantity,0)) + SUM(ifnull(quantity,0)) as 'Overall Stock Out',SUM(s_d.stockin_quantity) - SUM(ifnull(f_m.stockout_quantity,0)) - SUM(ifnull(quantity,0)) as 'Remaining Supplies' FROM supply_details s_d LEFT JOIN jorder_details j_d ON s_d.supplyID = j_d.supply_itemsID LEFT JOIN frame_materials f_m ON f_m.supply_detailsID = s_d.supplierID LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.supplyID = " + lblSupplyID.Text +" GROUP BY s_d.supplyID";
+                MySqlCommand myCom = new MySqlCommand(myQuer, myConn);
+                MySqlDataReader myReader1;
+                try
+                {
+                    myConn.Open();
+                    myReader1 = myCom.ExecuteReader();
+                    while (myReader1.Read())
+                    {
+                        remainingItem = myReader1.GetFloat(6);
+                    }
+                    myConn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+          
+           }
         private void txtSize_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
@@ -315,30 +291,39 @@ namespace PYLsystems
 
         private void btnAddSupply_Click(object sender, EventArgs e)
         {
-            ListViewItem item = new ListViewItem();
-            float sumSubTotal = 0;
-            int max;
-            max = lvwJobDetails.Items.Count;
-            item = lvwJobDetails.Items.Add(lblSupplyID.Text);
-            item.SubItems.Add(cboSupplyItems.Text);
-            item.SubItems.Add(txtSupplier.Text);
-            item.SubItems.Add(txtSize.Text);
-            item.SubItems.Add(txtUnitMeasure.Text);
-            item.SubItems.Add(txtQuantity.Text);
-            item.SubItems.Add(txtPrice.Text);
-            item.SubItems.Add(txtSubtotal.Text);
-            foreach (ListViewItem lsItem in lvwJobDetails.Items)
+
+       
+          
+            if (remainingItem < Int32.Parse(txtQuantity.Text.ToString()))
             {
-                sumSubTotal += float.Parse(lsItem.SubItems[7].Text);
+                MessageBox.Show("Your input " + txtQuantity.Text + " has exceeded to the remaining item you selected which is only left of " + remainingItem);
             }
-            txtTotalAmount.Text = sumSubTotal.ToString();
-            cboSupplyItems.SelectedIndex = -1;
-            txtSupplier.Text = "";
-            txtSize.Text = "";
-            txtUnitMeasure.Text = "";
-            txtQuantity.Text = "";
-            txtPrice.Text = "";
-            txtSupplyPrice.Text = "";
+            else {
+                ListViewItem item = new ListViewItem();
+                float sumSubTotal = 0;
+                int max;
+                max = lvwJobDetails.Items.Count;
+                item = lvwJobDetails.Items.Add(lblSupplyID.Text);
+                item.SubItems.Add(cboSupplyItems.Text);
+                item.SubItems.Add(txtSupplier.Text);
+                item.SubItems.Add(txtSize.Text);
+                item.SubItems.Add(txtUnitMeasure.Text);
+                item.SubItems.Add(txtQuantity.Text);
+                item.SubItems.Add(txtPrice.Text);
+                item.SubItems.Add(txtSubtotal.Text);
+                foreach (ListViewItem lsItem in lvwJobDetails.Items)
+                {
+                    sumSubTotal += float.Parse(lsItem.SubItems[7].Text);
+                }
+                txtTotalAmount.Text = sumSubTotal.ToString();
+                cboSupplyItems.SelectedIndex = -1;
+                txtSupplier.Text = "";
+                txtSize.Text = "";
+                txtUnitMeasure.Text = "";
+                txtQuantity.Text = "";
+                txtPrice.Text = "";
+                txtSupplyPrice.Text = "";
+            }
         }
 
 
@@ -346,11 +331,11 @@ namespace PYLsystems
         {
             int joborderdate = txtJobOrderDate.TextLength;
             int customername = cboCustomerName.SelectedIndex;
-            int employeename = cboEmployeeLastName.SelectedIndex;
+         
             int paymenttype = cboPaymentType.SelectedIndex;
             int totalamount = txtTotalAmount.TextLength;
             int customer_payment = txtCustomerPayment.TextLength;
-            if (joborderdate > 15 && customername > -1 && employeename > -1 && paymenttype > -1 && totalamount > 0 && customer_payment > 0)
+            if (joborderdate > 15 && customername > -1 && paymenttype > -1 && totalamount > 0 && customer_payment > 0)
             {
                 btnAddJobOrderDetails.Enabled = true;
             }
@@ -362,14 +347,31 @@ namespace PYLsystems
 
         private void btnAddJobOrderDetails_Click(object sender, EventArgs e)
         {
-
+            Home home = new Home();
+         
             myConn.Open();
             if (lvwJobDetails.Items.Count > 0)
             {
-                if (txtDiscount.Text == "")
+                if (txtDiscount.Text == "" && (float.Parse(txtTotalAmount.Text) > float.Parse(txtCustomerPayment.Text)))
                 {
                     //UPDATE customer_account SET balance = balance - 20 WHERE customerID = 2
-                    string myQuery = "INSERT INTO jobOrder (jobOrderDate,employeeID,paymentType,totalAmount) values('" + msktxtJobOrderDate.Text + "'," + lblEmployeeID.Text + ",'" + cboPaymentType.SelectedIndex + "'," + txtTotalAmount.Text + ")";
+                    string myQuery = "INSERT INTO jobOrder (jobOrderDate,employeeID,paymentType,totalAmount,voidReason) values('" + msktxtJobOrderDate.Text + "'," + Home.Global.empId.ToString() + ",'" + cboPaymentType.SelectedIndex + "'," + txtTotalAmount.Text +",'On-Going Transaction'" + ")";
+                    MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
+                    MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
+                    DataTable myDt = new DataTable();
+                    myAdp.Fill(myDt);
+                }
+                else if (txtDiscount.Text == "" && (float.Parse(txtTotalAmount.Text) == float.Parse(txtCustomerPayment.Text)))
+                {
+                    string myQuery = "INSERT INTO jobOrder (jobOrderDate,employeeID,paymentType,totalAmount,voidReason) values('" + msktxtJobOrderDate.Text + "'," + Home.Global.empId.ToString() + ",'" + cboPaymentType.SelectedIndex + "'," + txtTotalAmount.Text  +",'Done Transaction'" + ")";
+                    MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
+                    MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
+                    DataTable myDt = new DataTable();
+                    myAdp.Fill(myDt);
+                }
+                else if (txtDiscount.Text != "" && (float.Parse(txtTotalAmount.Text) == float.Parse(txtCustomerPayment.Text)))
+                {
+                    string myQuery = "INSERT INTO jobOrder (jobOrderDate,employeeID,paymentType,totalAmount,voidReason,discount) values('" + msktxtJobOrderDate.Text + "'," + Home.Global.empId.ToString() + ",'" + cboPaymentType.SelectedIndex + "'," + txtTotalAmount.Text + ",'Done Transaction'," + txtDiscount.Text + ")";
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
@@ -378,7 +380,7 @@ namespace PYLsystems
                 else
                 {
 
-                    string myQuery = "INSERT INTO jobOrder (jobOrderDate,employeeID,paymentType,totalAmount,discount) values('" + msktxtJobOrderDate.Text + "'," + lblEmployeeID.Text + "," + cboPaymentType.SelectedIndex + "," + txtDiscountedTotalAmount.Text + "," + txtDiscount.Text + ")";
+                    string myQuery = "INSERT INTO jobOrder (jobOrderDate,employeeID,paymentType,totalAmount,discount,voidReason) values('" + msktxtJobOrderDate.Text + "'," + Home.Global.empId.ToString() + "," + cboPaymentType.SelectedIndex + "," + txtDiscountedTotalAmount.Text + "," + txtDiscount.Text + ",'On-Going Transaction'" + ")";
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
@@ -454,7 +456,7 @@ namespace PYLsystems
 
         private void frmJobOrderDetails_Load(object sender, EventArgs e)
         {
-
+       
         }
 
         private void txtDiscount_TextChanged_1(object sender, EventArgs e)
@@ -516,6 +518,14 @@ namespace PYLsystems
             frmCustomerAccount addCustomerAcc = new frmCustomerAccount();
             addCustomerAcc.ShowDialog();
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmCustomerAccount custAccount = new frmCustomerAccount();
+            custAccount.ShowDialog();
+            fillCustomerName();
+            
         }
     }
 }
