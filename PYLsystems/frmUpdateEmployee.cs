@@ -40,6 +40,8 @@ namespace PYLsystems
 
             catch (Exception) { }
 
+            enable();
+
 
         }
 
@@ -111,6 +113,9 @@ namespace PYLsystems
 
         private void cbEmpStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            enable();
+
             conn.Close();
             conn.Open();
             string query = "SELECT  employeestatus FROM accessworkdesc WHERE employeeposition = '" + cbEmpStatus.Text + "'";
@@ -130,9 +135,97 @@ namespace PYLsystems
 
         }
 
+
+
+        private void enable()
+        {
+
+            int status = cbEmpStatus.SelectedIndex;
+            int lastname = txtLastName.TextLength;
+            int firstname = txtFirstName.TextLength;
+            int gender = cbGender.SelectedIndex;
+            int homeaddress = txtHomeAddress.TextLength;
+            int salaryrate = txtSalaryRate.TextLength;
+            int contact = txtContactNumber.TextLength;
+
+
+            if (gender > -1 && contact > 0 && lastname > 0 && firstname > 0 && homeaddress > 0 && salaryrate > 0 && contact > 0 && status > -1)
+            {
+                btnUpdateEmp.Enabled = true;
+            }
+            else
+
+                btnUpdateEmp.Enabled = false;
+
+
+        }
+
         private void txtContactNumber_TextChanged(object sender, EventArgs e)
         {
-            
+            lblwaring1.Hide();
+            enable();
+        }
+
+        private void txtSalaryRate_TextChanged(object sender, EventArgs e)
+        {
+            lblwarning.Hide();
+            enable();
+        }
+
+        private void txtSalaryRate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+
+                lblwarning.Show();
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtContactNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+
+                lblwaring1.Show();
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtFirstName_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtLastName_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void cbGender_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void txtHomeAddress_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void cbGender_SelectedValueChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }
