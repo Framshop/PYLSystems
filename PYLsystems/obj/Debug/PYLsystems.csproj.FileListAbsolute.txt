@@ -116,13 +116,3 @@ C:\Users\user\Desktop\PYLSystems\PYLsystems\obj\Debug\PYLsystems.exe
 C:\Users\user\Desktop\PYLSystems\PYLsystems\obj\Debug\PYLsystems.pdb
 C:\Users\user\Desktop\PYLSystems\PYLsystems\obj\Debug\PYLsystems.frmCashAdvancecs.resources
 C:\Users\user\Desktop\PYLSystems\PYLsystems\obj\Debug\PYLsystems.frmPayroll.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\bin\Debug\MySql.Data.xml
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.e_attendance.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmCustomerPayment.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmEmployeeList.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmEmployeeMgt.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmNewEmployee.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmSetWorkDetails.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmUpdateEmployee.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmViewEmployee.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmWorkDetails.resources
