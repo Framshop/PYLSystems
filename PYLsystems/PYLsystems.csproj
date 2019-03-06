@@ -76,12 +76,6 @@
     <Compile Include="checkSales.designer.cs">
       <DependentUpon>checkSales.cs</DependentUpon>
     </Compile>
-    <Compile Include="e_addPayroll.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="e_addPayroll.Designer.cs">
-      <DependentUpon>e_addPayroll.cs</DependentUpon>
-    </Compile>
     <Compile Include="e_attendance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,12 +244,6 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="e_payRoll.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="e_payRoll.Designer.cs">
-      <DependentUpon>e_payRoll.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="viewProductsSold.cs">
@@ -284,9 +272,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="checkSales.resx">
       <DependentUpon>checkSales.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="e_addPayroll.resx">
-      <DependentUpon>e_addPayroll.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="e_attendance.resx">
       <DependentUpon>e_attendance.cs</DependentUpon>
@@ -371,9 +356,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSupplyItems.resx">
       <DependentUpon>frmSupplyItems.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="e_payRoll.resx">
-      <DependentUpon>e_payRoll.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

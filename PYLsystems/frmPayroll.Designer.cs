@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.GBSetPayrollDate = new System.Windows.Forms.GroupBox();
             this.GBPayrollCalculate = new System.Windows.Forms.GroupBox();
+            this.datagridPayrollCalc = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.GBExtrabox = new System.Windows.Forms.GroupBox();
             this.GBButtons = new System.Windows.Forms.GroupBox();
-            this.btnClose = new System.Windows.Forms.Button();
             this.btnAddPayroll = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.GBExtrabox = new System.Windows.Forms.GroupBox();
+            this.GBSetPayrollDate = new System.Windows.Forms.GroupBox();
             this.endLabel = new System.Windows.Forms.Label();
             this.startLabel = new System.Windows.Forms.Label();
             this.endDatePicker = new System.Windows.Forms.DateTimePicker();
             this.startDatePicker = new System.Windows.Forms.DateTimePicker();
-            this.datagridPayrollCalc = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
-            this.GBSetPayrollDate.SuspendLayout();
             this.GBPayrollCalculate.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridPayrollCalc)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.GBButtons.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datagridPayrollCalc)).BeginInit();
+            this.GBSetPayrollDate.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -64,20 +64,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1341, 873);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // GBSetPayrollDate
-            // 
-            this.GBSetPayrollDate.Controls.Add(this.endLabel);
-            this.GBSetPayrollDate.Controls.Add(this.startLabel);
-            this.GBSetPayrollDate.Controls.Add(this.endDatePicker);
-            this.GBSetPayrollDate.Controls.Add(this.startDatePicker);
-            this.GBSetPayrollDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GBSetPayrollDate.Location = new System.Drawing.Point(3, 3);
-            this.GBSetPayrollDate.Name = "GBSetPayrollDate";
-            this.GBSetPayrollDate.Size = new System.Drawing.Size(489, 282);
-            this.GBSetPayrollDate.TabIndex = 0;
-            this.GBSetPayrollDate.TabStop = false;
-            this.GBSetPayrollDate.Text = "Set Payroll Date";
-            // 
             // GBPayrollCalculate
             // 
             this.GBPayrollCalculate.Controls.Add(this.datagridPayrollCalc);
@@ -88,6 +74,21 @@
             this.GBPayrollCalculate.TabIndex = 1;
             this.GBPayrollCalculate.TabStop = false;
             this.GBPayrollCalculate.Text = "Payroll";
+            // 
+            // datagridPayrollCalc
+            // 
+            this.datagridPayrollCalc.AllowUserToAddRows = false;
+            this.datagridPayrollCalc.AllowUserToDeleteRows = false;
+            this.datagridPayrollCalc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.datagridPayrollCalc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagridPayrollCalc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.datagridPayrollCalc.Location = new System.Drawing.Point(3, 22);
+            this.datagridPayrollCalc.Name = "datagridPayrollCalc";
+            this.datagridPayrollCalc.ReadOnly = true;
+            this.datagridPayrollCalc.RowHeadersVisible = false;
+            this.datagridPayrollCalc.RowTemplate.Height = 28;
+            this.datagridPayrollCalc.Size = new System.Drawing.Size(828, 842);
+            this.datagridPayrollCalc.TabIndex = 1;
             // 
             // tableLayoutPanel2
             // 
@@ -106,36 +107,16 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(495, 867);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
-            // GBExtrabox
-            // 
-            this.GBExtrabox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GBExtrabox.Location = new System.Drawing.Point(3, 291);
-            this.GBExtrabox.Name = "GBExtrabox";
-            this.GBExtrabox.Size = new System.Drawing.Size(489, 282);
-            this.GBExtrabox.TabIndex = 1;
-            this.GBExtrabox.TabStop = false;
-            // 
             // GBButtons
             // 
             this.GBButtons.Controls.Add(this.btnAddPayroll);
             this.GBButtons.Controls.Add(this.btnClose);
             this.GBButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GBButtons.Location = new System.Drawing.Point(3, 579);
+            this.GBButtons.Location = new System.Drawing.Point(3, 581);
             this.GBButtons.Name = "GBButtons";
-            this.GBButtons.Size = new System.Drawing.Size(489, 285);
+            this.GBButtons.Size = new System.Drawing.Size(489, 283);
             this.GBButtons.TabIndex = 2;
             this.GBButtons.TabStop = false;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(167, 210);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(130, 37);
-            this.btnClose.TabIndex = 4;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
             // 
             // btnAddPayroll
             // 
@@ -147,6 +128,42 @@
             this.btnAddPayroll.TabIndex = 5;
             this.btnAddPayroll.Text = "Add Payroll";
             this.btnAddPayroll.UseVisualStyleBackColor = true;
+            this.btnAddPayroll.Click += new System.EventHandler(this.btnAddPayroll_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Location = new System.Drawing.Point(167, 210);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(130, 37);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // GBExtrabox
+            // 
+            this.GBExtrabox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GBExtrabox.Location = new System.Drawing.Point(3, 292);
+            this.GBExtrabox.Name = "GBExtrabox";
+            this.GBExtrabox.Size = new System.Drawing.Size(489, 283);
+            this.GBExtrabox.TabIndex = 1;
+            this.GBExtrabox.TabStop = false;
+            // 
+            // GBSetPayrollDate
+            // 
+            this.GBSetPayrollDate.Controls.Add(this.endLabel);
+            this.GBSetPayrollDate.Controls.Add(this.startLabel);
+            this.GBSetPayrollDate.Controls.Add(this.endDatePicker);
+            this.GBSetPayrollDate.Controls.Add(this.startDatePicker);
+            this.GBSetPayrollDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GBSetPayrollDate.Location = new System.Drawing.Point(3, 3);
+            this.GBSetPayrollDate.Name = "GBSetPayrollDate";
+            this.GBSetPayrollDate.Size = new System.Drawing.Size(489, 283);
+            this.GBSetPayrollDate.TabIndex = 0;
+            this.GBSetPayrollDate.TabStop = false;
+            this.GBSetPayrollDate.Text = "Set Payroll Date";
             // 
             // endLabel
             // 
@@ -178,12 +195,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.endDatePicker.CustomFormat = "yyyy/MM/dd";
+            this.endDatePicker.Enabled = false;
             this.endDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.endDatePicker.Location = new System.Drawing.Point(117, 104);
             this.endDatePicker.Name = "endDatePicker";
             this.endDatePicker.Size = new System.Drawing.Size(350, 26);
             this.endDatePicker.TabIndex = 16;
             this.endDatePicker.Value = new System.DateTime(2019, 1, 5, 0, 0, 0, 0);
+            this.endDatePicker.ValueChanged += new System.EventHandler(this.endDatePicker_ValueChanged);
             // 
             // startDatePicker
             // 
@@ -191,27 +210,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.startDatePicker.CustomFormat = "yyyy/MM/dd";
+            this.startDatePicker.Enabled = false;
             this.startDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.startDatePicker.Location = new System.Drawing.Point(117, 69);
             this.startDatePicker.Name = "startDatePicker";
             this.startDatePicker.Size = new System.Drawing.Size(350, 26);
             this.startDatePicker.TabIndex = 15;
             this.startDatePicker.Value = new System.DateTime(2019, 1, 4, 0, 0, 0, 0);
-            // 
-            // datagridPayrollCalc
-            // 
-            this.datagridPayrollCalc.AllowUserToAddRows = false;
-            this.datagridPayrollCalc.AllowUserToDeleteRows = false;
-            this.datagridPayrollCalc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.datagridPayrollCalc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datagridPayrollCalc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.datagridPayrollCalc.Location = new System.Drawing.Point(3, 22);
-            this.datagridPayrollCalc.Name = "datagridPayrollCalc";
-            this.datagridPayrollCalc.ReadOnly = true;
-            this.datagridPayrollCalc.RowHeadersVisible = false;
-            this.datagridPayrollCalc.RowTemplate.Height = 28;
-            this.datagridPayrollCalc.Size = new System.Drawing.Size(828, 842);
-            this.datagridPayrollCalc.TabIndex = 1;
+            this.startDatePicker.ValueChanged += new System.EventHandler(this.startDatePicker_ValueChanged);
             // 
             // frmPayroll
             // 
@@ -221,13 +227,14 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmPayroll";
             this.Text = "frmPayroll";
+            this.Load += new System.EventHandler(this.frmPayroll_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.GBSetPayrollDate.ResumeLayout(false);
-            this.GBSetPayrollDate.PerformLayout();
             this.GBPayrollCalculate.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.datagridPayrollCalc)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.GBButtons.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.datagridPayrollCalc)).EndInit();
+            this.GBSetPayrollDate.ResumeLayout(false);
+            this.GBSetPayrollDate.PerformLayout();
             this.ResumeLayout(false);
 
         }

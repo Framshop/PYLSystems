@@ -34,7 +34,7 @@ namespace PYLsystems
             frmLogin.ShowDialog();
             Global.empId = employeeId.ToString();
             frmInventoryHomePage inventoryHomePage = new frmInventoryHomePage();
-            MessageBox.Show(employeeId.ToString()+" "+employeeStatus.ToString());
+            //MessageBox.Show(employeeId.ToString()+" "+employeeStatus.ToString());
             if (employeeStatus == 1) {
                 salesOrderBtn.Enabled = true;
                 salesOrderBtn.Visible = true;

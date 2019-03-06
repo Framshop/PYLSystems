@@ -37,7 +37,7 @@ namespace PYLsystems
             DefaultDatesInitializer();
             employeeListLoader();
         }
-        private void employeeListLoader() {
+        internal void employeeListLoader() {
             int selectedEmpId;
             this.datagridEmpList.DataSource = null;
             this.datagridEmpList.Rows.Clear();
@@ -107,6 +107,12 @@ namespace PYLsystems
                 int selectedpayrollId = Int32.Parse(datagridPayrollDet.Rows[currRowIndex].Cells["payrollID"].Value.ToString());
                 cashAdvLoader(selectedpayrollId);
                 //MessageBox.Show(DateStart+" "+DateEnd);
+            }
+            else
+            {
+                //cashAdvLoader();
+                this.datagridCashAdv.DataSource = null;
+                this.datagridCashAdv.Rows.Clear();
             }
             
         }
