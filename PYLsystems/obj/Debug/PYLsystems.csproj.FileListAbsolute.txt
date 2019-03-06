@@ -40,6 +40,38 @@ C:\Users\user\Desktop\PYLSoftwareSystem-master\PYLsystems\obj\Debug\PYLsystems.f
 C:\Users\user\Desktop\PYLSoftwareSystem-master\PYLsystems\obj\Debug\PYLsystems.frmFrameList.resources
 C:\Users\user\Desktop\PYLSoftwareSystem-master\PYLsystems\obj\Debug\PYLsystems.frmSupplyStockIn.resources
 C:\Users\user\Desktop\PYLSoftwareSystem-master\PYLsystems\obj\Debug\PYLsystems.frmStockInSupplyEdit.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\bin\Debug\PYLsystems.exe.config
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\bin\Debug\PYLsystems.exe
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\bin\Debug\PYLsystems.pdb
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLSystems.csprojResolveAssemblyReference.cache
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLsystems.frmFrameList.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLsystems.frmStockInSupplyEdit.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLsystems.frmSupplier.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLsystems.frmSupplyStockIn.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLsystems.LoginForm.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLsystems.frmSupplyItems.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLsystems.Properties.Resources.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLSystems.csproj.GenerateResource.cache
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLSystems.csproj.CoreCompileInputs.cache
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLSystems.csproj.CopyComplete
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLsystems.exe
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLsystems.pdb
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLSystems.cancelSalesConfirm.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLSystems.checkSales.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLSystems.viewProductsSold.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLSystems.viewTotalProfit.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.addSales.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.addSalesAvailability.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLSystems\PYLsystems\obj\Debug\PYLsystems.addSalesConfirm.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmCustomerAccount.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmDamageItems.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmFrameStockInSupplyStockOut.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmFrameStockInUpdate.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmInventoryHomePage.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmJobOrderDetails.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmJobOrderTransaction.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmRemainingSupplyFrames.resources
+C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.Home.resources
 C:\Users\user\Desktop\PYLSystems\PYLsystems\bin\Debug\PYLsystems.exe.config
 C:\Users\user\Desktop\PYLSystems\PYLsystems\bin\Debug\PYLsystems.exe
 C:\Users\user\Desktop\PYLSystems\PYLsystems\bin\Debug\PYLsystems.pdb
@@ -84,49 +116,3 @@ C:\Users\user\Desktop\PYLSystems\PYLsystems\obj\Debug\PYLsystems.exe
 C:\Users\user\Desktop\PYLSystems\PYLsystems\obj\Debug\PYLsystems.pdb
 C:\Users\user\Desktop\PYLSystems\PYLsystems\obj\Debug\PYLsystems.frmCashAdvancecs.resources
 C:\Users\user\Desktop\PYLSystems\PYLsystems\obj\Debug\PYLsystems.frmPayroll.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\bin\Debug\PYLsystems.exe.config
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\bin\Debug\PYLsystems.exe
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\bin\Debug\PYLsystems.pdb
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\bin\Debug\MySql.Data.xml
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLSystems.csprojResolveAssemblyReference.cache
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.addSales.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.addSalesAvailability.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.addSalesConfirm.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.cancelSalesConfirm.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.checkSales.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.e_attendance.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmCashAdvancecs.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmCashAdvanceDet.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmCustomerAccount.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmCustomerPayment.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmDamageItems.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmEmployeeList.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmEmployeeMgt.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmFrameList.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmFrameStockInSupplyStockOut.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmFrameStockInUpdate.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmInventoryHomePage.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmJobOrderDetails.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmJobOrderTransaction.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmNewEmployee.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmPayroll.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmPayrollListcs.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmRemainingSupplyFrames.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmSetWorkDetails.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmStockInSupplyEdit.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmSupplier.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmSupplyStockIn.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmUpdateEmployee.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmViewEmployee.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmWorkDetails.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.Home.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.LoginForm.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.frmSupplyItems.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.Properties.Resources.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.viewProductsSold.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.viewTotalProfit.resources
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLSystems.csproj.GenerateResource.cache
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLSystems.csproj.CoreCompileInputs.cache
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLSystems.csproj.CopyComplete
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.exe
-C:\Users\Work-PCQ\Desktop\My Local Files\School\2018-2019\2nd Sem\SoftEng\C#\PYLsystems\PYLsystems\obj\Debug\PYLsystems.pdb
