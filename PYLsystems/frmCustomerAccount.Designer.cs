@@ -43,13 +43,12 @@
             this.msktxtContactPerson = new System.Windows.Forms.MaskedTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.grpInfo = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblCustomerAccountID = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.lblValidate = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnPay = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerAccount)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.grpInfo.SuspendLayout();
@@ -167,7 +166,7 @@
             this.dgvCustomerAccount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCustomerAccount.Location = new System.Drawing.Point(344, 3);
             this.dgvCustomerAccount.Name = "dgvCustomerAccount";
-            this.dgvCustomerAccount.Size = new System.Drawing.Size(681, 411);
+            this.dgvCustomerAccount.Size = new System.Drawing.Size(681, 419);
             this.dgvCustomerAccount.TabIndex = 17;
             this.dgvCustomerAccount.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomerAccount_CellClick);
             this.dgvCustomerAccount.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomerAccount_CellDoubleClick);
@@ -194,12 +193,11 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1028, 417);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1028, 425);
             this.tableLayoutPanel1.TabIndex = 16;
             // 
             // grpInfo
             // 
-            this.grpInfo.Controls.Add(this.btnPay);
             this.grpInfo.Controls.Add(this.label1);
             this.grpInfo.Controls.Add(this.lblCustomerAccountID);
             this.grpInfo.Controls.Add(this.txtSearch);
@@ -221,21 +219,10 @@
             this.grpInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpInfo.Location = new System.Drawing.Point(3, 3);
             this.grpInfo.Name = "grpInfo";
-            this.grpInfo.Size = new System.Drawing.Size(335, 411);
+            this.grpInfo.Size = new System.Drawing.Size(335, 419);
             this.grpInfo.TabIndex = 15;
             this.grpInfo.TabStop = false;
             this.grpInfo.Text = " ";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(149, 126);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Optional";
             // 
             // lblCustomerAccountID
             // 
@@ -282,22 +269,22 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnPay
+            // label1
             // 
-            this.btnPay.Enabled = false;
-            this.btnPay.Location = new System.Drawing.Point(106, 295);
-            this.btnPay.Name = "btnPay";
-            this.btnPay.Size = new System.Drawing.Size(75, 23);
-            this.btnPay.TabIndex = 19;
-            this.btnPay.Text = "Pay";
-            this.btnPay.UseVisualStyleBackColor = true;
-            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(149, 126);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Optional";
             // 
             // frmCustomerAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 417);
+            this.ClientSize = new System.Drawing.Size(1028, 425);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmCustomerAccount";
@@ -334,6 +321,5 @@
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.Label lblCustomerAccountID;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnPay;
     }
 }

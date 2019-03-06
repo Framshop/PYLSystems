@@ -13,15 +13,37 @@ namespace PYLsystems
 {
     public partial class frmCustomerPayment : Form
     {
+        public static string balance = "";
         public static string customerPayment = "";
-        public static string jobOrderNumber = "";
-        public static string totalAmount = "";
+        public static string customerID = "";
         MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
         public frmCustomerPayment()
         {
             InitializeComponent();
+            fillCustomerName();
         }
+        private void fillCustomerName()
+        {
+            string myQuery = "SELECT * FROM customer_account WHERE customerID =" + customerID;
+            MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
+            MySqlDataReader myReader;
+            try
+            {
+                myConn.Open();
+                myReader = myComm.ExecuteReader();
+                while (myReader.Read())
+                {
+                    string customerList = myReader.GetString(1);
+                    txtCustomerName.Text = customerList;
 
+                }
+                myConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
             private void frmCustomerPayment_Load(object sender, EventArgs e)
         {
             RefreshDatabase();
@@ -29,44 +51,26 @@ namespace PYLsystems
 
         public void RefreshDatabase()
         {
-            myConn.Close();
             myConn.Open();
-            string query = "SELECT j.jOrd_Num,j.jobOrderDate,j.totalAmount,c_p.customer_payment FROM joborder j LEFT JOIN customer_payment c_p ON j.jOrd_Num = c_p.jOrd_Num LEFT JOIN customer_account c_a ON c_a.customerID = c_p.customerID WHERE c_a.customerID =" + lblCustomerID.Text +  " AND j.totalAmount != c_p.customer_payment";
+            string query = "SELECT j.jOrd_Num,c_a.customerFullname,CONCAT(e.lastname,' ',e.firstname) as 'Name',j.totalamount, IF(j.paymenttype=0,'Cash','Credit Card') as 'PaymentType',j.joborderdate,IFNULL(j.voidreason,'On-Going') as 'voidreason' FROM jobOrder j LEFT JOIN customer_account c_a ON c_a.customerID = j.customerID LEFT JOIN jOrder_details j_d ON j_d.jOrd_Num = j.jOrd_Num LEFT JOIN employee e ON e.employeeID = j.employeeID";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
             adp.Fill(dt);
             dgvJobOrder.DataSource = dt;
             dgvJobOrder.Columns["jOrd_Num"].HeaderText = "Job Order Number";
-            dgvJobOrder.Columns["totalamount"].HeaderText = "Total Amount Order";
+            dgvJobOrder.Columns["customerFullname"].HeaderText = "Custmer Name";
+            dgvJobOrder.Columns["Name"].HeaderText = "Employee Name";
+            dgvJobOrder.Columns["totalamount"].HeaderText = "Total Amount";
+            dgvJobOrder.Columns["paymenttype"].HeaderText = "Payment Type";
             dgvJobOrder.Columns["joborderdate"].HeaderText = "Job Order Date";
-            dgvJobOrder.Columns["customer_payment"].HeaderText = "Total Amount Paid";
+            dgvJobOrder.Columns["voidreason"].HeaderText = "Transaction Type";
             myConn.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void dgvJobOrder_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            btnAddPayment.Enabled = true;
-            jobOrderNumber = dgvJobOrder.CurrentRow.Cells[0].Value.ToString();
-            totalAmount = dgvJobOrder.CurrentRow.Cells[2].Value.ToString();
-        }
-
-        private void btnAddPayment_Click(object sender, EventArgs e)
-        {
-            myConn.Open();
-            string query = "UPDATE customer_payment SET customer_payment =" + totalAmount + " WHERE customerID ='" + lblCustomerID.Text + " ' AND jOrd_Num =" + jobOrderNumber;
-            MySqlCommand comm = new MySqlCommand(query, myConn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-            DataTable dt = new DataTable();
-            adp.Fill(dt);
-            myConn.Close();
-            MessageBox.Show("Update Successful!");
-            RefreshDatabase();
         }
     }
 }

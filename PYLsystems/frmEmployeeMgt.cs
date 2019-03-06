@@ -14,15 +14,9 @@ namespace PYLsystems
 {
     public partial class frmEmployeeMgt : Form
     {
-        private int employeeId;
         public frmEmployeeMgt()
         {
             InitializeComponent();
-        }
-        public frmEmployeeMgt(int employeeId)
-        {
-            InitializeComponent();
-            this.employeeId = employeeId;
         }
 
         private void btnEmpList_Click(object sender, EventArgs e)
@@ -35,10 +29,11 @@ namespace PYLsystems
         {
 
         }
-        private void payrollBtn_Click(object sender, EventArgs e)
+
+        private void button3_Click(object sender, EventArgs e)
         {
-            frmPayrollListcs payroll = new frmPayrollListcs(this.employeeId);
-            payroll.ShowDialog();
+            frmWorkDetails workdeteils = new frmWorkDetails();
+            workdeteils.ShowDialog();
         }
     }
 }

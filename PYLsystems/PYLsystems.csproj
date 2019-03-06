@@ -82,18 +82,6 @@
     <Compile Include="e_attendance.Designer.cs">
       <DependentUpon>e_attendance.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCashAdvancecs.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCashAdvancecs.Designer.cs">
-      <DependentUpon>frmCashAdvancecs.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmCashAdvanceDet.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCashAdvanceDet.Designer.cs">
-      <DependentUpon>frmCashAdvanceDet.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmCustomerAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,18 +159,6 @@
     </Compile>
     <Compile Include="frmNewEmployee.Designer.cs">
       <DependentUpon>frmNewEmployee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmPayroll.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPayroll.Designer.cs">
-      <DependentUpon>frmPayroll.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmPayrollListcs.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPayrollListcs.Designer.cs">
-      <DependentUpon>frmPayrollListcs.cs</DependentUpon>
     </Compile>
     <Compile Include="frmRemainingSupplyFrames.cs">
       <SubType>Form</SubType>
@@ -276,12 +252,6 @@
     <EmbeddedResource Include="e_attendance.resx">
       <DependentUpon>e_attendance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCashAdvancecs.resx">
-      <DependentUpon>frmCashAdvancecs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCashAdvanceDet.resx">
-      <DependentUpon>frmCashAdvanceDet.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmCustomerAccount.resx">
       <DependentUpon>frmCustomerAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -317,12 +287,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewEmployee.resx">
       <DependentUpon>frmNewEmployee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmPayroll.resx">
-      <DependentUpon>frmPayroll.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmPayrollListcs.resx">
-      <DependentUpon>frmPayrollListcs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRemainingSupplyFrames.resx">
       <DependentUpon>frmRemainingSupplyFrames.cs</DependentUpon>
