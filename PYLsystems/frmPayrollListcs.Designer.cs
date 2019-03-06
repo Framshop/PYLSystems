@@ -178,6 +178,7 @@
             // 
             this.datagridPayrollDet.AllowUserToAddRows = false;
             this.datagridPayrollDet.AllowUserToDeleteRows = false;
+            this.datagridPayrollDet.AllowUserToResizeRows = false;
             this.datagridPayrollDet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.datagridPayrollDet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridPayrollDet.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -206,6 +207,7 @@
             // 
             this.datagridCashAdv.AllowUserToAddRows = false;
             this.datagridCashAdv.AllowUserToDeleteRows = false;
+            this.datagridCashAdv.AllowUserToResizeRows = false;
             this.datagridCashAdv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.datagridCashAdv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridCashAdv.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -317,6 +319,7 @@
             // 
             this.datagridEmpList.AllowUserToAddRows = false;
             this.datagridEmpList.AllowUserToDeleteRows = false;
+            this.datagridEmpList.AllowUserToResizeRows = false;
             this.datagridEmpList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.datagridEmpList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridEmpList.Dock = System.Windows.Forms.DockStyle.Fill;
