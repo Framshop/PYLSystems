@@ -98,8 +98,13 @@ namespace PYLsystems
 
         private void empManBtn_Click(object sender, EventArgs e)
         {
-            frmEmployeeMgt empMgt = new frmEmployeeMgt(this.employeeId);
+            frmEmployeeList empMgt = new frmEmployeeList();
             empMgt.ShowDialog();
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
