@@ -228,7 +228,7 @@ namespace PYLsystems
             {
                 timeInBtn.Enabled = true;              
             }
-            if (String.IsNullOrEmpty(checkTimeOut.Rows[0]["TimeIn"].ToString()))
+            else if (String.IsNullOrEmpty(checkTimeOut.Rows[0]["TimeIn"].ToString()))
             {
                 timeInBtn.Enabled = true;
             }

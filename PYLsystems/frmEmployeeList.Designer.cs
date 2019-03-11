@@ -34,10 +34,11 @@
             this.btnViewEmp = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnEmpList = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.viewAttendance = new System.Windows.Forms.Button();
-            this.payrollBtn = new System.Windows.Forms.Button();
+            this.BtnNewWorkDesc = new System.Windows.Forms.Button();
+            this.btnArchiveRec = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgEmpList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,6 +46,7 @@
             // 
             this.dgEmpList.AllowUserToAddRows = false;
             this.dgEmpList.AllowUserToDeleteRows = false;
+            this.dgEmpList.AllowUserToResizeRows = false;
             this.dgEmpList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgEmpList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgEmpList.Location = new System.Drawing.Point(38, 77);
@@ -110,13 +112,13 @@
             this.btnEmpList.UseVisualStyleBackColor = true;
             this.btnEmpList.Click += new System.EventHandler(this.btnEmpList_Click);
             // 
-            // textBox1
+            // txtSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(104, 37);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(193, 26);
-            this.textBox1.TabIndex = 6;
+            this.txtSearch.Location = new System.Drawing.Point(104, 37);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(193, 26);
+            this.txtSearch.TabIndex = 6;
             // 
             // label2
             // 
@@ -139,25 +141,36 @@
             this.viewAttendance.UseVisualStyleBackColor = true;
             this.viewAttendance.Click += new System.EventHandler(this.viewAttendance_Click);
             // 
-            // payrollBtn
+            // BtnNewWorkDesc
             // 
-            this.payrollBtn.Location = new System.Drawing.Point(37, 573);
-            this.payrollBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.payrollBtn.Name = "payrollBtn";
-            this.payrollBtn.Size = new System.Drawing.Size(152, 66);
-            this.payrollBtn.TabIndex = 9;
-            this.payrollBtn.Text = "Payroll";
-            this.payrollBtn.UseVisualStyleBackColor = true;
+            this.BtnNewWorkDesc.Location = new System.Drawing.Point(38, 575);
+            this.BtnNewWorkDesc.Name = "BtnNewWorkDesc";
+            this.BtnNewWorkDesc.Size = new System.Drawing.Size(152, 66);
+            this.BtnNewWorkDesc.TabIndex = 10;
+            this.BtnNewWorkDesc.Text = "Create Work Description";
+            this.BtnNewWorkDesc.UseVisualStyleBackColor = true;
+            this.BtnNewWorkDesc.Click += new System.EventHandler(this.BtnNewWorkDesc_Click);
+            // 
+            // btnArchiveRec
+            // 
+            this.btnArchiveRec.Location = new System.Drawing.Point(438, 573);
+            this.btnArchiveRec.Name = "btnArchiveRec";
+            this.btnArchiveRec.Size = new System.Drawing.Size(152, 66);
+            this.btnArchiveRec.TabIndex = 11;
+            this.btnArchiveRec.Text = "Archive List";
+            this.btnArchiveRec.UseVisualStyleBackColor = true;
+            this.btnArchiveRec.Click += new System.EventHandler(this.btnArchiveRec_Click);
             // 
             // frmEmployeeList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(813, 653);
-            this.Controls.Add(this.payrollBtn);
+            this.Controls.Add(this.btnArchiveRec);
+            this.Controls.Add(this.BtnNewWorkDesc);
             this.Controls.Add(this.viewAttendance);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnViewEmp);
             this.Controls.Add(this.btnEmpList);
@@ -178,15 +191,17 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgEmpList;
+        public System.Windows.Forms.DataGridView dgEmpList;
         private System.Windows.Forms.Button btnNewEmp;
         private System.Windows.Forms.Button btnUpdateEmp;
         private System.Windows.Forms.Button btnViewEmp;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnEmpList;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button viewAttendance;
-        private System.Windows.Forms.Button payrollBtn;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button BtnNewWorkDesc;
+        private System.Windows.Forms.Button btnArchiveRec;
+
     }
 }
