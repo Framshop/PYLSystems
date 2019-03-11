@@ -100,15 +100,17 @@ namespace PYLsystems
             datagridPayrollCalc.Columns["Gross Amount"].DefaultCellStyle.Format = "0.00";
             if (datagridPayrollCalc.Rows.Count > 0)
             {
+                //MessageBox.Show(dtPayrollCalc.Rows[0]["employeeID"].ToString());
                 datagridPayrollCalc.Rows[0].Selected = true;
                 int currRowIndex = datagridPayrollCalc.SelectedRows[0].Index;
                 this.txtBoxEmployeeName.Text = datagridPayrollCalc.Rows[currRowIndex].Cells["Employee Name"].Value.ToString();
                 this.txtBoxAmount.Text = datagridPayrollCalc.Rows[currRowIndex].Cells["Gross Amount"].Value.ToString();
                 this.txtBoxReceiver.Text = txtBoxEmployeeName.Text;
+                
             }
-
             insertIntoPayrollList();
             insertIntotempSave();
+
         }
         private void insertIntoPayrollList() {
             //MessageBox.Show(Double.Parse(dtPayrollCalc.Rows[1]["Gross Amount"].ToString()).ToString());
@@ -135,20 +137,22 @@ namespace PYLsystems
                 Console.WriteLine(ex.ToString());
             }
             int kCAcheck = 0;
-            for (int i=0;i < dtPayrollCalc.Rows.Count; i++)
-            {
-                if (Int32.Parse(dtPayrollCalc.Rows[i]["employeeID"].ToString()) == Int32.Parse(dtCashAdvChecker.Rows[kCAcheck]["employeeID"].ToString()))
+            if (dtCashAdvChecker.Rows.Count > 0) { 
+                for (int i=0;i < dtPayrollCalc.Rows.Count; i++)
                 {
-                    UpdateEmpPayrollList.Add(new payRollList(Int32.Parse(dtPayrollCalc.Rows[i]["employeeID"].ToString()), encoderID, DateStart, DateEnd,
-                         Double.Parse(dtPayrollCalc.Rows[i]["Gross Amount"].ToString()),
-                         Int32.Parse(dtCashAdvChecker.Rows[kCAcheck]["payrollID"].ToString())));
-                    datagridPayrollCalc.Rows[i].Cells["Cash Advance"].Value = dtCashAdvChecker.Rows[kCAcheck]["amount"].ToString();
-                    kCAcheck++;
+                    if (Int32.Parse(dtPayrollCalc.Rows[i]["employeeID"].ToString()) == Int32.Parse(dtCashAdvChecker.Rows[kCAcheck]["employeeID"].ToString()))
+                    {
+                        UpdateEmpPayrollList.Add(new payRollList(Int32.Parse(dtPayrollCalc.Rows[i]["employeeID"].ToString()), encoderID, DateStart, DateEnd,
+                             Double.Parse(dtPayrollCalc.Rows[i]["Gross Amount"].ToString()),
+                             Int32.Parse(dtCashAdvChecker.Rows[kCAcheck]["payrollID"].ToString())));
+                        datagridPayrollCalc.Rows[i].Cells["Cash Advance"].Value = dtCashAdvChecker.Rows[kCAcheck]["amount"].ToString();
+                        kCAcheck++;
                     
-                }
-                else { 
-                    InsertEmpPayrollList.Add(new payRollList(Int32.Parse(dtPayrollCalc.Rows[i]["employeeID"].ToString()), encoderID, DateStart, DateEnd,
-                         Double.Parse(dtPayrollCalc.Rows[i]["Gross Amount"].ToString())));
+                    }
+                    else { 
+                        InsertEmpPayrollList.Add(new payRollList(Int32.Parse(dtPayrollCalc.Rows[i]["employeeID"].ToString()), encoderID, DateStart, DateEnd,
+                             Double.Parse(dtPayrollCalc.Rows[i]["Gross Amount"].ToString())));
+                    }
                 }
             }
             //MessageBox.Show(dtCashAdvChecker.Rows.Count.ToString()+" " + UpdateEmpPayrollList.Count.ToString()+" "+InsertEmpPayrollList.Count.ToString());
@@ -162,31 +166,150 @@ namespace PYLsystems
                 tempSave.Add(new tempSaveRollDet(Int32.Parse(dtPayrollCalc.Rows[i]["employeeID"].ToString()), dtPayrollCalc.Rows[i]["Employee Name"].ToString(), -1, -1, "", Double.Parse(dtPayrollCalc.Rows[i]["Gross Amount"].ToString())));
             }
         }
-        private void insertPayroll() {
-            StringBuilder stringAddPayroll = new StringBuilder("INSERT INTO payroll (employeeIDReceiver, employeeIDProvider, payRollStartDate,payRollEndDate,dateReceived,amountReceived) VALUES ");
-            using (MySqlConnection my_conn = new MySqlConnection(connString))
-            {
-                List<string> payRollAdd = new List<string>();
-                for (int i = 0; i < InsertEmpPayrollList.Count; i++)
+        private void addPayroll() {
+            if (InsertEmpPayrollList.Count > 0) {
+                int[] tempSaveIndice = new int[InsertEmpPayrollList.Count];
+                int k = 0;
+                //MessageBox.Show(InsertEmpPayrollList.Count.ToString());
+                for (int i = 0; i < tempSave.Count; i++)
                 {
-                    payRollAdd.Add(string.Format("('{0}','{1}','{2}','{3}',NOW(),'{4}')",
-                    MySqlHelper.EscapeString(InsertEmpPayrollList[i].employeeID.ToString()),
-                    MySqlHelper.EscapeString(InsertEmpPayrollList[i].encoderID.ToString()),
-                    MySqlHelper.EscapeString(InsertEmpPayrollList[i].pDateStart.ToString()),
-                    MySqlHelper.EscapeString(InsertEmpPayrollList[i].pDateEnd.ToString()),
-                    MySqlHelper.EscapeString(tempSave[i].totalAmountReceived.ToString())
-                    ));
+                    if (tempSave[i].employeeID == InsertEmpPayrollList[k].employeeID)
+                    {
+                        tempSaveIndice[k] = i;
+                        k++;
+                        if (k == tempSaveIndice.Length)
+                        {
+                            break;
+                        }
+                    }
                 }
-                stringAddPayroll.Append(string.Join(",", payRollAdd));
-                stringAddPayroll.Append(";");
-                my_conn.Open();
-                using (MySqlCommand cmdAddPayroll = new MySqlCommand(stringAddPayroll.ToString(), my_conn))
+                StringBuilder stringAddPayroll = new StringBuilder("INSERT INTO payroll (employeeIDReceiver, employeeIDProvider, payRollStartDate,payRollEndDate,dateReceived,amountReceived,nameOfReceiver) VALUES ");
+                using (MySqlConnection my_conn = new MySqlConnection(connString))
                 {
-                    cmdAddPayroll.CommandType = CommandType.Text;
-                    cmdAddPayroll.ExecuteNonQuery();
+                    List<string> payRollAdd = new List<string>();
+                    for (int i = 0; i < tempSaveIndice.Length; i++)
+                    {
+                        payRollAdd.Add(string.Format("('{0}','{1}','{2}','{3}',NOW(),'{4}','{5}')",
+                        MySqlHelper.EscapeString(tempSave[tempSaveIndice[i]].employeeID.ToString()),
+                        MySqlHelper.EscapeString(encoderID.ToString()),
+                        MySqlHelper.EscapeString(InsertEmpPayrollList[i].pDateStart.ToString()),
+                        MySqlHelper.EscapeString(InsertEmpPayrollList[i].pDateEnd.ToString()),
+                        MySqlHelper.EscapeString(tempSave[tempSaveIndice[i]].totalAmountReceived.ToString()),
+                        MySqlHelper.EscapeString(tempSave[tempSaveIndice[i]].receiverName.ToString())
+                        ));
+                    }
+                    stringAddPayroll.Append(string.Join(",", payRollAdd));
+                    stringAddPayroll.Append(";");
+                    my_conn.Open();
+                    using (MySqlCommand cmdAddPayroll = new MySqlCommand(stringAddPayroll.ToString(), my_conn))
+                    {
+                        cmdAddPayroll.CommandType = CommandType.Text;
+                        cmdAddPayroll.ExecuteNonQuery();
+                    }
                 }
             }
+            if (UpdateEmpPayrollList.Count > 0)
+            {
+                int[] tempSaveIndice = new int[UpdateEmpPayrollList.Count];
+                int k = 0;
+                for(int i = 0; i < tempSave.Count;i++)
+                {
+                    if (tempSave[i].employeeID == UpdateEmpPayrollList[k].employeeID) {
+                        tempSaveIndice[k] = i;
+                        k++;
+                        if (k == tempSaveIndice.Length)
+                        {
+                            break;
+                        }
+                    }
+                }
+                for(int i = 0; i < tempSaveIndice.Length; i++)
+                {
+                    String payroll_UpdateString = "UPDATE payroll AS pay " +
+                        "SET " +
+                        "pay.dateReceived = NOW(), " +
+                        "pay.amountReceived = @amount, " +
+                        "pay.nameOfReceiver = @nameOfReceiver," +
+                        "pay.employeeIDProvider = @encoderID " +
+                        "WHERE employeeIDReceiver = @employeeID; ";
+                    MySqlConnection my_conn = new MySqlConnection(connString);
+                    MySqlCommand payroll_Updatecommand = new MySqlCommand(payroll_UpdateString, my_conn);
+                    payroll_Updatecommand.Parameters.AddWithValue("@amount", tempSave[tempSaveIndice[i]].totalAmountReceived);
+                    payroll_Updatecommand.Parameters.AddWithValue("@nameOfReceiver", tempSave[tempSaveIndice[i]].receiverName);
+                    payroll_Updatecommand.Parameters.AddWithValue("@encoderID", encoderID);
+                    payroll_Updatecommand.Parameters.AddWithValue("@employeeID", tempSave[tempSaveIndice[i]].employeeID);
+                    MySqlDataReader dataReader;
+                    my_conn.Open();
+                    dataReader = payroll_Updatecommand.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                    }
+                    my_conn.Close();
+                }
+            }
+            insertDeductionsTable();
             pFrmPayrollListcs.employeeListLoader();
+        }
+        private void insertDeductionsTable() {
+            DataTable dtPayrollListID = new DataTable();
+            
+            try
+            {
+                String stringPayrollListID = "SELECT pay.payrollID, pay.employeeIDReceiver " +
+                    "FROM payroll AS pay " +
+                    "WHERE pay.payRollStartDate = @DateStart AND pay.payRollEndDate = @DateEnd; ";
+
+                MySqlConnection my_conn = new MySqlConnection(connString);
+                MySqlCommand cmdPayrollListID = new MySqlCommand(stringPayrollListID, my_conn);
+                cmdPayrollListID.Parameters.AddWithValue("@DateStart", DateStart);
+                cmdPayrollListID.Parameters.AddWithValue("@DateEnd", DateEnd);
+
+                MySqlDataAdapter my_adapter = new MySqlDataAdapter(cmdPayrollListID);
+                my_adapter.Fill(dtPayrollListID);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            int[] tempSaveIndices = new int[dtPayrollListID.Rows.Count];
+            int k = 0;
+            for (int i = 0; i < tempSaveIndices.Length; i++) {
+                for (int a = 0; a < tempSave.Count; a++) { 
+                    if (Int32.Parse(dtPayrollListID.Rows[i]["employeeIDReceiver"].ToString()) == tempSave[a].employeeID) {
+                        tempSaveIndices[k] = a;
+                        k++;
+                    }
+                }
+                if (k == tempSaveIndices.Length)
+                {
+                    break;
+                }
+            }
+
+            if (dtPayrollListID.Rows.Count > 0) {
+                StringBuilder stringAddPayroll = new StringBuilder("INSERT INTO deductions (payrollID,typeOfDeduction,amount) VALUES ");
+                using (MySqlConnection my_conn = new MySqlConnection(connString))
+                {
+                    List<string> payRollAdd = new List<string>();
+                    for (int i = 0; i < dtPayrollListID.Rows.Count; i++)
+                    {
+                        payRollAdd.Add(string.Format("('{0}','PhilHealth','{1}'),('{2}','SSS','{3}')",
+                        MySqlHelper.EscapeString(dtPayrollListID.Rows[i]["payrollID"].ToString()),
+                        MySqlHelper.EscapeString(tempSave[tempSaveIndices[i]].philHealth.ToString()),
+                        MySqlHelper.EscapeString(dtPayrollListID.Rows[i]["payrollID"].ToString()),
+                        MySqlHelper.EscapeString(tempSave[tempSaveIndices[i]].sss.ToString())
+                        ));
+                    }
+                    stringAddPayroll.Append(string.Join(",", payRollAdd));
+                    stringAddPayroll.Append(";");
+                    my_conn.Open();
+                    using (MySqlCommand cmdAddPayroll = new MySqlCommand(stringAddPayroll.ToString(), my_conn))
+                    {
+                        cmdAddPayroll.CommandType = CommandType.Text;
+                        cmdAddPayroll.ExecuteNonQuery();
+                    }
+                }
+            }
         }
         private void DefaultDatesInitializer()
         {
@@ -220,7 +343,7 @@ namespace PYLsystems
             }
             return Datetime;
         }
-        private bool insertValidation() {
+        private bool insertPhilHealthSSSValidation() {
             bool validForms = false;
             nameListInvalid = new String[tempSave.Count];
             int numListInvalid = 0;
@@ -236,6 +359,18 @@ namespace PYLsystems
             }
             else {
                 validForms = true;
+            }
+            String concat = "Please add SSS and Philhealth values to the following Employees: \n";
+            if (!validForms)
+            {
+                for (int i = 0; i < nameListInvalid.Length; i++)
+                {
+                    if (!String.IsNullOrEmpty(nameListInvalid[i]))
+                    {
+                        concat += "> " + nameListInvalid[i] + "\n";
+                    }
+                }
+                MessageBox.Show(concat);
             }
             return validForms;
         }
@@ -327,6 +462,75 @@ namespace PYLsystems
             //MessageBox.Show(txtBoxCashAdv.Text.ToString());
 
         }
+        private bool validateDates()
+        {
+            int invalidForms = 0;
+            DateTime Start = startDatePicker.Value.Date.Add(new TimeSpan(0, 0, 0));
+            DateTime End = endDatePicker.Value.Date.Add(new TimeSpan(23,59,59));
+            int totalDays = (int)Math.Round((End - Start).TotalDays);
+            //MessageBox.Show(totalDays.ToString());
+            if (totalDays < 6 || totalDays > 6) {
+                MessageBox.Show("Payroll should be 6 days");
+                invalidForms++;
+            }
+            if (Start.DayOfWeek != DayOfWeek.Monday || End.DayOfWeek != DayOfWeek.Saturday)
+            {
+                MessageBox.Show("Payroll Start date should be on a Monday and Payroll End date should be on a Saturday");
+                invalidForms++;
+            }
+            DataTable checkIfAmountsExist = new DataTable();
+            try
+            {
+                String stringCheckExistPayroll = "SELECT pay.payrollID,pay.employeeIDReceiver,pay.employeeIDProvider,pay.payRollStartDate," +
+                    "pay.payRollEndDate,pay.dateReceived,pay.amountReceived " +
+                    "FROM payroll as pay " +
+                    "WHERE pay.payRollStartDate = @DateStart AND pay.payRollEndDate = @DateEnd; ";
+
+                MySqlConnection my_conn = new MySqlConnection(connString);
+                MySqlCommand cmdCheckExistPayroll = new MySqlCommand(stringCheckExistPayroll, my_conn);
+                cmdCheckExistPayroll.Parameters.AddWithValue("@DateStart", DateStart);
+                cmdCheckExistPayroll.Parameters.AddWithValue("@DateEnd", DateEnd);
+
+                MySqlDataAdapter my_adapter = new MySqlDataAdapter(cmdCheckExistPayroll);
+                my_adapter.Fill(checkIfAmountsExist);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            int nullAccs = 0;
+            int notnullAccs = 0;
+            if(checkIfAmountsExist.Rows.Count > 0) { 
+                for (int i = 0; i<checkIfAmountsExist.Rows.Count;i++) {
+                    if (!String.IsNullOrEmpty(checkIfAmountsExist.Rows[i]["amountReceived"].ToString()))
+                    {
+                        notnullAccs++;
+                    
+                    }
+                    else {
+                        nullAccs++;
+                    }
+                }
+            }
+            if (notnullAccs > 0)
+            {
+                invalidForms++;
+                MessageBox.Show("Payroll already exists. Please select different payroll dates.");
+            }
+
+            if (datagridPayrollCalc.Rows.Count == 0)
+            {
+                MessageBox.Show("No employees to add payroll to.");
+                invalidForms++;
+            }
+            //Number of invalidforms to be satisfied
+            if (invalidForms > 0) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
         //----------------Event Methods-----------------
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -352,17 +556,26 @@ namespace PYLsystems
 
         private void btnAddPayroll_Click(object sender, EventArgs e)
         {
-            bool insertValidate = insertValidation();
-            //MessageBox.Show(insertValidate.ToString());
-            String concat = "Please add SSS and Philhealth values to the following Employees: \n";
-            if (!insertValidate) {
-                for(int i=0; i < nameListInvalid.Length; i++) {
-                    if(!String.IsNullOrEmpty(nameListInvalid[i])) { 
-                         concat += "> "+ nameListInvalid[i] + "\n";
-                    }
-                }
-                MessageBox.Show(concat);
+
+            bool PhilHealthSSSValidate = insertPhilHealthSSSValidation();
+            bool dateValidate = validateDates();
+
+            if (!PhilHealthSSSValidate)
+            {
+                return;
             }
+            if (!dateValidate)
+            {
+                return;
+            }
+
+            if (PhilHealthSSSValidate && dateValidate)
+            {
+                addPayroll();
+                MessageBox.Show("Payroll Added.");
+                this.Close();
+            }
+
         }
 
         private void datagridPayrollCalc_CellClick(object sender, DataGridViewCellEventArgs e)

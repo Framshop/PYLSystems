@@ -82,6 +82,12 @@
     <Compile Include="e_attendance.Designer.cs">
       <DependentUpon>e_attendance.cs</DependentUpon>
     </Compile>
+    <Compile Include="e_frmEditAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="e_frmEditAttendance.Designer.cs">
+      <DependentUpon>e_frmEditAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCashAdvancecs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -275,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="e_attendance.resx">
       <DependentUpon>e_attendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="e_frmEditAttendance.resx">
+      <DependentUpon>e_frmEditAttendance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCashAdvancecs.resx">
       <DependentUpon>frmCashAdvancecs.cs</DependentUpon>

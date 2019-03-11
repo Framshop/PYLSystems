@@ -122,9 +122,16 @@ namespace PYLsystems
             DataTable dtCashAdvList = new DataTable();
             try
             {
-                String stringCashAdvList = "SELECT ca.cashAdvanceID, ca.dateReceived AS 'Date Received', ca.Amount 'C.A. Amount', concat(empenc.lastname,', ',empenc.firstname) AS 'Encoded by' " +
-                    "FROM cashadvance AS ca LEFT JOIN employee AS empenc ON ca.employeeIDProvider = empenc.employeeID " +
-                    "WHERE payrollID = @payrollID; ";
+                String stringCashAdvList = "SELECT  ca.cashAdvanceID AS 'origintableID', ca.payrollID, 'Cash Advance' as typeOfDeduction, ca.Amount, concat(empenc.lastname,', ',empenc.firstname) AS 'Encoded by'  " +
+                    "FROM cashAdvance AS ca " +
+                    "LEFT JOIN employee AS empenc ON ca.employeeIDProvider = empenc.employeeID " +
+                    "WHERE ca.payrollID = @payrollID " +
+                    "UNION ALL " +
+                    "SELECT de.deductionsID AS 'origintableID', de.payrollID, de.typeOfDeduction, de.Amount, concat(empenc.lastname, ', ', empenc.firstname) AS 'Encoded by' " +
+                    "FROM deductions AS de " +
+                    "LEFT JOIN payroll AS pay ON de.payrollID = pay.payrollID " +
+                    "LEFT JOIN employee AS empenc ON pay.employeeIDProvider = empenc.employeeID " +
+                    "WHERE de.payrollID = @payrollID; ";
 
                 MySqlConnection my_conn = new MySqlConnection(connString);
                 MySqlCommand cmdCashAdvList = new MySqlCommand(stringCashAdvList, my_conn);
@@ -137,7 +144,7 @@ namespace PYLsystems
                 
                 my_adapter.Fill(dtCashAdvList);
                 this.datagridCashAdv.DataSource = dtCashAdvList;
-                datagridCashAdv.Columns["cashAdvanceID"].Visible = false;
+                datagridCashAdv.Columns["payrollID"].Visible = false;
             }
             catch (Exception e)
             {
@@ -226,10 +233,13 @@ namespace PYLsystems
         private void datagridCashAdv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int currRowIndex = datagridCashAdv.SelectedRows[0].Index;
-            //MessageBox.Show(datagridPayrollDet.Rows[currRowIndex].Cells["payrollID"].ToString());
-            int selectedCashAdvID = Int32.Parse(datagridCashAdv.Rows[currRowIndex].Cells["cashAdvanceID"].Value.ToString());
-            frmCashAdvanceDet cashAdvForm = new frmCashAdvanceDet(selectedCashAdvID);
-            cashAdvForm.ShowDialog();
+
+            if (String.Equals("Cash Advance",datagridCashAdv.Rows[currRowIndex].Cells["typeOfDeduction"].Value.ToString())) {               
+                //MessageBox.Show(datagridPayrollDet.Rows[currRowIndex].Cells["payrollID"].ToString());
+                int selectedCashAdvID = Int32.Parse(datagridCashAdv.Rows[currRowIndex].Cells["originTableID"].Value.ToString());
+                frmCashAdvanceDet cashAdvForm = new frmCashAdvanceDet(selectedCashAdvID);
+                cashAdvForm.ShowDialog();
+            }
         }
     }
 }
