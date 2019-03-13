@@ -31,6 +31,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.GBCashAdvance = new System.Windows.Forms.GroupBox();
+            this.comboBoxEmp = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.endDatePicker = new System.Windows.Forms.DateTimePicker();
             this.startDatePicker = new System.Windows.Forms.DateTimePicker();
@@ -48,7 +49,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTodayLabel = new System.Windows.Forms.Label();
-            this.comboBoxEmp = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.GBCashAdvance.SuspendLayout();
@@ -111,6 +111,15 @@
             this.GBCashAdvance.TabIndex = 0;
             this.GBCashAdvance.TabStop = false;
             this.GBCashAdvance.Text = "Cash Advance";
+            // 
+            // comboBoxEmp
+            // 
+            this.comboBoxEmp.FormattingEnabled = true;
+            this.comboBoxEmp.Location = new System.Drawing.Point(306, 173);
+            this.comboBoxEmp.Name = "comboBoxEmp";
+            this.comboBoxEmp.Size = new System.Drawing.Size(389, 28);
+            this.comboBoxEmp.TabIndex = 36;
+            this.comboBoxEmp.SelectedIndexChanged += new System.EventHandler(this.comboBoxEmp_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -230,6 +239,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBoxCAdesc.Location = new System.Drawing.Point(306, 325);
+            this.txtBoxCAdesc.MaxLength = 99;
             this.txtBoxCAdesc.Multiline = true;
             this.txtBoxCAdesc.Name = "txtBoxCAdesc";
             this.txtBoxCAdesc.Size = new System.Drawing.Size(389, 186);
@@ -315,15 +325,6 @@
             this.dateTodayLabel.Size = new System.Drawing.Size(155, 20);
             this.dateTodayLabel.TabIndex = 15;
             this.dateTodayLabel.Text = "Cash Advance Date:";
-            // 
-            // comboBoxEmp
-            // 
-            this.comboBoxEmp.FormattingEnabled = true;
-            this.comboBoxEmp.Location = new System.Drawing.Point(306, 173);
-            this.comboBoxEmp.Name = "comboBoxEmp";
-            this.comboBoxEmp.Size = new System.Drawing.Size(389, 28);
-            this.comboBoxEmp.TabIndex = 36;
-            this.comboBoxEmp.SelectedIndexChanged += new System.EventHandler(this.comboBoxEmp_SelectedIndexChanged);
             // 
             // frmCashAdvancecs
             // 

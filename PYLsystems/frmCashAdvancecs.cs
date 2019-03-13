@@ -55,7 +55,7 @@ namespace PYLsystems
             DateEnd = DateStart.AddDays(((int)DayOfWeek.Saturday - (int)DateStart.DayOfWeek + 7) % 7);
             startDatePicker.Value = DateStart.AddHours(0).AddMinutes(0).AddSeconds(0);
             endDatePicker.Value = DateEnd.AddHours(23).AddMinutes(59).AddSeconds(59);
-            datePickerCashAdv.Value = DateTime.Today.AddDays(((int)DayOfWeek.Wednesday - (int)DateTime.Today.DayOfWeek + 7) % 7);
+            datePickerCashAdv.Value = DateStart.AddDays(((int)DayOfWeek.Wednesday - (int)DateStart.DayOfWeek + 7) % 7);
             //MessageBox.Show(endDatePicker.Value.ToString());
 
         }
@@ -111,6 +111,7 @@ namespace PYLsystems
             DateTime End = endDatePicker.Value.Date.Add(new TimeSpan(23, 59, 59));
             int totalDays = (int)Math.Round((End - Start).TotalDays);
             //MessageBox.Show(totalDays.ToString());
+            //Check if dates are valid
             if (totalDays < 6 || totalDays > 6)
             {
                 MessageBox.Show("Payroll should be 6 days");
@@ -121,7 +122,13 @@ namespace PYLsystems
                 MessageBox.Show("Payroll Start date should be on a Monday and Payroll End date should be on a Saturday");
                 invalidForms++;
             }
-            DataTable checkIfAmountsExist = new DataTable();
+            if (!(datePickerCashAdv.Value >= DateStart && datePickerCashAdv.Value<=DateEnd))
+            {
+                MessageBox.Show("Cash Advance Date should be in between chosen Payroll Dates");
+                invalidForms++;
+            }
+            //Check if Cash Advance already exists in those dates
+            DataTable checkIfCAexists = new DataTable();
             try
             {
                 String stringCashAdvChecker = "SELECT ca.cashadvanceID, ca.employeeID " +
@@ -134,32 +141,175 @@ namespace PYLsystems
                 cmdCashAdvChecker.Parameters.AddWithValue("@DateStart", DateStart.ToString("yyyy-MM-dd"));
                 cmdCashAdvChecker.Parameters.AddWithValue("@DateEnd", DateEnd.ToString("yyyy-MM-dd"));
                 MySqlDataAdapter my_adapter = new MySqlDataAdapter(cmdCashAdvChecker);
-                my_adapter.Fill(checkIfAmountsExist);
-                MessageBox.Show(checkIfAmountsExist.Rows.Count+ " "+ comboBoxEmp.SelectedValue.ToString()+ " "+DateStart.ToString("yyyy-MM-dd")+" "+DateEnd.ToString("yyyy-MM-dd"));
+                my_adapter.Fill(checkIfCAexists);
+                //MessageBox.Show(checkIfCAexists.Rows.Count+ " "+ comboBoxEmp.SelectedValue.ToString()+ " "+DateStart.ToString("yyyy-MM-dd")+" "+DateEnd.ToString("yyyy-MM-dd"));
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
-            int nullAccs = 0;
-            int notnullAccs = 0;
-            if (checkIfAmountsExist.Rows.Count > 0)
+            int nullCAs = 0;
+            int notNullCAs = 0;
+            if (checkIfCAexists.Rows.Count > 0)
             {
-                notnullAccs++;
+                notNullCAs++;
             }
             else
             {
-                nullAccs++;
+                nullCAs++;
             }
-            if (notnullAccs > 0)
+            if (notNullCAs > 0)
             {
                 invalidForms++;
                 MessageBox.Show("Cash Advance already exists. Please select different payroll dates.");
             }
 
+
             //Number of invalidforms to be satisfied
             if (invalidForms > 0)
             {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        private void addCashAdv()
+        {
+            //bool duplicatePayroll = checkDuplicatePayroll();
+            int payrollIDDuplicate = checkDuplicatePayroll();
+            int payrollID = -1;
+            if (payrollIDDuplicate > -1) {
+                insertCashAdv(payrollIDDuplicate);
+            }
+            else if (payrollIDDuplicate == -1)
+            {
+                payrollID = insertPayroll();
+                insertCashAdv(payrollID);
+            }          
+            //MessageBox.Show("Payroll ID" + payrollID +" "+ payrollIDDuplicate);
+            
+        }
+        private int checkDuplicatePayroll() {
+            int payrollID = -1;
+            DataTable dtPayrollID = new DataTable();
+            try
+            {
+                String stringGetPayrollID = "SELECT payrollID FROM payroll " +
+                    "WHERE employeeIDReceiver = @employeeID AND payRollStartDate = @DateStart AND payRollEndDate = @DateEnd;";
+
+                MySqlConnection my_conn = new MySqlConnection(connString);
+                MySqlCommand cmdGetPayrollID = new MySqlCommand(stringGetPayrollID, my_conn);
+                cmdGetPayrollID.Parameters.AddWithValue("@employeeID", comboBoxEmp.SelectedValue);
+                cmdGetPayrollID.Parameters.AddWithValue("@DateStart", DateStart.ToString("yyyy-MM-dd"));
+                cmdGetPayrollID.Parameters.AddWithValue("@DateEnd", DateEnd.ToString("yyyy-MM-dd"));
+                MySqlDataAdapter my_adapter = new MySqlDataAdapter(cmdGetPayrollID);
+                my_adapter.Fill(dtPayrollID);
+                //MessageBox.Show(dtPayrollID.Rows.Count + " " + comboBoxEmp.SelectedValue + " " + DateStart.ToString("yyyy-MM-dd") + " " + DateEnd.ToString("yyyy-MM-dd"));
+                if (dtPayrollID.Rows.Count > 0)
+                {
+                    payrollID = Int32.Parse(dtPayrollID.Rows[0]["payrollID"].ToString());
+                }
+
+                //MessageBox.Show(checkIfCAexists.Rows.Count+ " "+ comboBoxEmp.SelectedValue.ToString()+ " "+DateStart.ToString("yyyy-MM-dd")+" "+DateEnd.ToString("yyyy-MM-dd"));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return payrollID;
+        }
+        private int insertPayroll() {
+            int payrollID = -1;
+            //INSERT PAYROLL
+            try
+            {
+                String stringPayrollInsert = "INSERT INTO payroll (employeeIDReceiver,employeeIDProvider,payRollStartDate,payRollEndDate) " +
+                    "VALUES (@employeeID,@encoderID,@DateStart,@DateEnd); " +
+                    "SELECT LAST_INSERT_ID();";
+                MySqlConnection my_conn = new MySqlConnection(connString);
+                MySqlCommand cmdPayrollInsert = new MySqlCommand(stringPayrollInsert, my_conn);
+                cmdPayrollInsert.Parameters.AddWithValue("@employeeID", comboBoxEmp.SelectedValue);
+                cmdPayrollInsert.Parameters.AddWithValue("@encoderID", employeeId);
+                cmdPayrollInsert.Parameters.AddWithValue("@DateStart", DateStart.ToString("yyyy-MM-dd"));
+                cmdPayrollInsert.Parameters.AddWithValue("@DateEnd", DateEnd.ToString("yyyy-MM-dd"));
+                my_conn.Open();
+                payrollID = Convert.ToInt32(cmdPayrollInsert.ExecuteScalar());
+                my_conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            //GET PAYROLL ID
+            //DataTable dtPayrollID = new DataTable();
+            //try
+            //{
+            //    String stringGetPayrollID = "SELECT payrollID FROM payroll " +
+            //        "WHERE employeeIDReceiver = @employeeID AND payRollStartDate = @DateStart AND payRollEndDate = @DateEnd;";
+
+            //    MySqlConnection my_conn = new MySqlConnection(connString);
+            //    MySqlCommand cmdGetPayrollID = new MySqlCommand(stringGetPayrollID, my_conn);
+            //    cmdGetPayrollID.Parameters.AddWithValue("@employeeId", comboBoxEmp.SelectedValue);
+            //    cmdGetPayrollID.Parameters.AddWithValue("@DateStart", DateStart.ToString("yyyy-MM-dd"));
+            //    cmdGetPayrollID.Parameters.AddWithValue("@DateEnd", DateEnd.ToString("yyyy-MM-dd"));
+            //    MySqlDataAdapter my_adapter = new MySqlDataAdapter(cmdGetPayrollID);
+            //    my_adapter.Fill(dtPayrollID);
+            //    MessageBox.Show(dtPayrollID.Rows.Count+"");
+            //    if (dtPayrollID.Rows.Count>0)
+            //    {
+            //        payrollID = Int32.Parse(dtPayrollID.Rows[0]["payrollID"].ToString());
+            //    }
+                
+            //    //MessageBox.Show(checkIfCAexists.Rows.Count+ " "+ comboBoxEmp.SelectedValue.ToString()+ " "+DateStart.ToString("yyyy-MM-dd")+" "+DateEnd.ToString("yyyy-MM-dd"));
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.ToString());
+            //}
+            return payrollID;
+        }
+        private void insertCashAdv(int payrollID)
+        {
+            //MessageBox.Show(payrollID+"");
+            try
+            {
+                String stringCashAdvInsert = "INSERT INTO cashadvance (amount,dateReceived,active,employeeID,payrollID,employeeIDProvider,nameOfReceiver,cashAdvancedescription) " +
+                    "VALUES (@amount, @dateReceived, 1, @employeeID, @payrollID, @encoderID, @nameOfReceiver, @cashAdvancedescription); ";
+                MySqlConnection my_conn = new MySqlConnection(connString);
+                MySqlCommand cmdCashAdvInsert = new MySqlCommand(stringCashAdvInsert, my_conn);
+                cmdCashAdvInsert.Parameters.AddWithValue("@amount", Double.Parse(txtBoxCAAmount.Text));
+                cmdCashAdvInsert.Parameters.AddWithValue("@dateReceived", datePickerCashAdv.Value.ToString("yyyy-MM-dd"));
+                cmdCashAdvInsert.Parameters.AddWithValue("@employeeID", comboBoxEmp.SelectedValue);
+                cmdCashAdvInsert.Parameters.AddWithValue("@payrollID", payrollID);
+                cmdCashAdvInsert.Parameters.AddWithValue("@encoderID", employeeId);
+                cmdCashAdvInsert.Parameters.AddWithValue("@nameOfReceiver", txtBoxReceivedBy.Text);
+                cmdCashAdvInsert.Parameters.AddWithValue("@cashAdvancedescription", txtBoxCAdesc.Text);
+                my_conn.Open();
+                cmdCashAdvInsert.ExecuteNonQuery();
+                my_conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+        private bool validateCashAdvAmount()
+        {
+            if (String.IsNullOrEmpty(txtBoxCAAmount.Text))
+            {
+                MessageBox.Show("Please enter a valid amount.");
+                return false;
+            }
+            else if(Double.Parse(txtBoxCAAmount.Text)==0)
+            {
+                MessageBox.Show("Please enter a valid amount.");
+                return false;
+            }
+            else if (Double.Parse(txtBoxCAAmount.Text) > 500)
+            {
+                MessageBox.Show("Please enter a valid amount. \n Cash Advance cannot exceed more than P500.");
                 return false;
             }
             else
@@ -177,6 +327,20 @@ namespace PYLsystems
         {
             //MessageBox.Show(comboBoxEmp.SelectedValue+"");
             bool validDates = validateDates();
+            bool validCashAdvAmount = validateCashAdvAmount();
+            if (!validDates) {
+                return;
+            }
+            if (!validCashAdvAmount)
+            {
+                return;
+            }
+            else
+            {
+                addCashAdv();
+                MessageBox.Show("Cash Advance added.");
+                this.Close();
+            }
         }
 
         private void comboBoxEmp_SelectedIndexChanged(object sender, EventArgs e)

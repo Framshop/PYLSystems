@@ -114,7 +114,7 @@ namespace PYLsystems
                 this.datagridCashAdv.DataSource = null;
                 this.datagridCashAdv.Rows.Clear();
             }
-            
+            voidCashAdvButtonEnabler();
         }
         private void cashAdvLoader(int selectedpayrollId) {
             this.datagridCashAdv.DataSource = null;
@@ -145,11 +145,13 @@ namespace PYLsystems
                 my_adapter.Fill(dtCashAdvList);
                 this.datagridCashAdv.DataSource = dtCashAdvList;
                 datagridCashAdv.Columns["payrollID"].Visible = false;
+                datagridCashAdv.Columns["origintableID"].Visible = false;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
             }
+            voidCashAdvButtonEnabler();
         }
         private void DefaultDatesInitializer()
         {
@@ -175,6 +177,58 @@ namespace PYLsystems
             }
             return Datetime;
         }
+        private void voidCashAdvButtonEnabler()
+        {
+            if (datagridCashAdv.Rows.Count > 0)
+            {
+                int currRowIndex = datagridCashAdv.SelectedRows[0].Index;
+                if (String.Equals("Cash Advance", datagridCashAdv.Rows[currRowIndex].Cells["typeOfDeduction"].Value.ToString()))
+                {
+                    btnVoidCashAdv.Enabled = true;
+                    
+                }
+                else
+                {
+                    btnVoidCashAdv.Enabled = false;
+                }
+            }
+            else
+            {
+                btnVoidCashAdv.Enabled = false;
+            }
+            
+        }
+        private void voidCashdv()
+        {
+            int currRowIndex = datagridCashAdv.SelectedRows[0].Index;
+            int selectedCashAdvID = Int32.Parse(datagridCashAdv.Rows[currRowIndex].Cells["originTableID"].Value.ToString());
+            try
+            {
+                String stringCashAdvUpdStat = "UPDATE cashadvance AS ca " +
+               "SET " +
+               "ca.active = 0 " +
+               "WHERE ca.cashadvanceID = @cashadvanceID; ";
+                MySqlConnection my_conn = new MySqlConnection(connString);
+                MySqlCommand cmdCashAdvUpdStat = new MySqlCommand(stringCashAdvUpdStat, my_conn);
+                cmdCashAdvUpdStat.Parameters.AddWithValue("@cashadvanceID", selectedCashAdvID);
+
+                MySqlDataReader dataReader;
+                my_conn.Open();
+                dataReader = cmdCashAdvUpdStat.ExecuteReader();
+                while (dataReader.Read())
+                {
+                }
+                my_conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            int currRowIndexB = datagridPayrollDet.SelectedRows[0].Index;
+            //MessageBox.Show(datagridPayrollDet.Rows[currRowIndex].Cells["payrollID"].ToString());
+            int selectedPayrollID = Int32.Parse(datagridPayrollDet.Rows[currRowIndexB].Cells["payrollID"].Value.ToString());
+            cashAdvLoader(selectedPayrollID);
+        }
         //----------------Event Methods-----------------
         private void closeBtn_Click(object sender, EventArgs e)
         {
@@ -185,6 +239,7 @@ namespace PYLsystems
         {
             frmCashAdvancecs cashAdvForm = new frmCashAdvancecs(this.employeeId,this);
             cashAdvForm.ShowDialog();
+            employeeListLoader();
         }
 
         private void btnCreatePayroll_Click(object sender, EventArgs e)
@@ -239,6 +294,67 @@ namespace PYLsystems
                 int selectedCashAdvID = Int32.Parse(datagridCashAdv.Rows[currRowIndex].Cells["originTableID"].Value.ToString());
                 frmCashAdvanceDet cashAdvForm = new frmCashAdvanceDet(selectedCashAdvID);
                 cashAdvForm.ShowDialog();
+                
+            }
+            
+        }
+
+        private void datagridCashAdv_CellClick_ch(object sender, DataGridViewCellEventArgs e)
+        {
+            voidCashAdvButtonEnabler();
+        }
+
+        private void btnVoidCashAdv_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to void Cash Advance?",
+                                     "Void Confirmation",
+                                     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                // If 'Yes', do something here.
+                voidCashdv();
+            }
+        }
+
+        private void btnEditPayment_Click(object sender, EventArgs e)
+        {        
+            if(datagridPayrollDet.SelectedRows.Count == 1) { 
+                int selectedEmpId = Int32.Parse(datagridEmpList.Rows[datagridEmpList.SelectedRows[0].Index].Cells["employeeID"].Value.ToString());
+                int selectedPayrollID = Int32.Parse(datagridPayrollDet.Rows[datagridPayrollDet.SelectedRows[0].Index].Cells["payrollID"].Value.ToString());
+                String selectedEmpName = datagridEmpList.Rows[datagridEmpList.SelectedRows[0].Index].Cells["Employee Name"].Value.ToString();
+                DateTime PDateStart = Convert.ToDateTime(datagridPayrollDet.Rows[datagridPayrollDet.SelectedRows[0].Index].Cells["Payroll Start Date"].Value);
+                DateTime PDateEnd = Convert.ToDateTime(datagridPayrollDet.Rows[datagridPayrollDet.SelectedRows[0].Index].Cells["Payroll End Date"].Value);
+                double cashAdvanceValue = 0;
+                double philHealth = 0;
+                double sss = 0;
+                int philHealthID = -1;
+                int sssID = -1;
+                for (int i = 0; i < datagridCashAdv.Rows.Count; i++)
+                {
+                    if (String.Equals("Cash Advance", datagridCashAdv.Rows[i].Cells["typeOfDeduction"].Value.ToString()))
+                    {
+                        cashAdvanceValue = Double.Parse(datagridCashAdv.Rows[i].Cells["Amount"].Value.ToString());
+                    }
+                    if (String.Equals("PhilHealth", datagridCashAdv.Rows[i].Cells["typeOfDeduction"].Value.ToString()))
+                    {
+                        philHealth = Double.Parse(datagridCashAdv.Rows[i].Cells["Amount"].Value.ToString());
+                        philHealthID = Int32.Parse(datagridCashAdv.Rows[i].Cells["origintableID"].Value.ToString());
+                    }
+                    if (String.Equals("SSS", datagridCashAdv.Rows[i].Cells["typeOfDeduction"].Value.ToString()))
+                    {
+                        sss = Double.Parse(datagridCashAdv.Rows[i].Cells["Amount"].Value.ToString());
+                        sssID = Int32.Parse(datagridCashAdv.Rows[i].Cells["origintableID"].Value.ToString());
+                    }
+                }             
+                frmPayrollEditPay frmPayEdit = new frmPayrollEditPay(employeeId,selectedEmpId,selectedPayrollID,selectedEmpName,
+                    PDateStart,PDateEnd,this,cashAdvanceValue,philHealth,sss,philHealthID,sssID);
+                frmPayEdit.ShowDialog();
+                int currRowIndex = datagridEmpList.SelectedRows[0].Index;
+                payrollDetLoader(selectedEmpId);
+            }
+            else
+            {
+                MessageBox.Show("Please select a Payroll.");
             }
         }
     }

@@ -190,6 +190,12 @@
     <Compile Include="frmPayroll.Designer.cs">
       <DependentUpon>frmPayroll.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPayrollEditPay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPayrollEditPay.Designer.cs">
+      <DependentUpon>frmPayrollEditPay.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPayrollListcs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -341,6 +347,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPayroll.resx">
       <DependentUpon>frmPayroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPayrollEditPay.resx">
+      <DependentUpon>frmPayrollEditPay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPayrollListcs.resx">
       <DependentUpon>frmPayrollListcs.cs</DependentUpon>
