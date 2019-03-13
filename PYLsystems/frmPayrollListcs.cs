@@ -125,7 +125,7 @@ namespace PYLsystems
                 String stringCashAdvList = "SELECT  ca.cashAdvanceID AS 'origintableID', ca.payrollID, 'Cash Advance' as typeOfDeduction, ca.Amount, concat(empenc.lastname,', ',empenc.firstname) AS 'Encoded by'  " +
                     "FROM cashAdvance AS ca " +
                     "LEFT JOIN employee AS empenc ON ca.employeeIDProvider = empenc.employeeID " +
-                    "WHERE ca.payrollID = @payrollID " +
+                    "WHERE ca.payrollID = @payrollID AND ca.active=1 " +
                     "UNION ALL " +
                     "SELECT de.deductionsID AS 'origintableID', de.payrollID, de.typeOfDeduction, de.Amount, concat(empenc.lastname, ', ', empenc.firstname) AS 'Encoded by' " +
                     "FROM deductions AS de " +

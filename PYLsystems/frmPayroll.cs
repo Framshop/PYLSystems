@@ -122,7 +122,7 @@ namespace PYLsystems
                     "FROM cashadvance AS ca " +
                     "LEFT JOIN payroll AS pay ON ca.payrollID = pay.payrollID " +
                     "LEFT JOIN employee AS emp ON ca.employeeID = emp.employeeID " +
-                    "WHERE pay.payRollStartDate = @DateStart AND pay.payRollEndDate = @DateEnd; ";
+                    "WHERE ca.active = 1 AND pay.payRollStartDate = @DateStart AND pay.payRollEndDate = @DateEnd; ";
 
                 MySqlConnection my_conn = new MySqlConnection(connString);
                 MySqlCommand cmdCashAdvChecker = new MySqlCommand(stringCashAdvChecker, my_conn);
