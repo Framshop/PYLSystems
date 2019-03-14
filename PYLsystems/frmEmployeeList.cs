@@ -80,6 +80,24 @@ namespace PYLsystems
         private void btnUpdateEmp_Click(object sender, EventArgs e)
         {
             frmUpdateEmployee empupdate = new frmUpdateEmployee();
+            string empstatus = dgEmpList.CurrentRow.Cells[2].Value.ToString();
+            if (empstatus == "Owner" || empstatus == "Owner/Programmer")
+            {
+                empupdate.cbEmpStatus.SelectedIndex = 0;
+            }
+            else if (empstatus == "Management" || empstatus == "Management Staff")
+            {
+                empupdate.cbEmpStatus.SelectedIndex = 1;
+            }
+            else if (empstatus == "Cashier" || empstatus == "Cashier")
+            {
+                empupdate.cbEmpStatus.SelectedIndex = 2;
+            }
+            else
+            {
+                empupdate.cbEmpStatus.SelectedIndex = 3;
+            }
+
             empupdate.empid.Text = dgEmpList.CurrentRow.Cells[0].Value.ToString();
 
             empupdate.ShowDialog();

@@ -61,6 +61,7 @@
             this.lblSupplyame = new System.Windows.Forms.Label();
             this.lbelSupplierName = new System.Windows.Forms.Label();
             this.cboDimension = new System.Windows.Forms.ComboBox();
+            this.lblSign = new System.Windows.Forms.Label();
             lvwSupplyID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSupplyStockIn)).BeginInit();
             this.SuspendLayout();
@@ -119,7 +120,7 @@
             // btnAdd
             // 
             this.btnAdd.Enabled = false;
-            this.btnAdd.Location = new System.Drawing.Point(119, 377);
+            this.btnAdd.Location = new System.Drawing.Point(119, 348);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(156, 23);
             this.btnAdd.TabIndex = 6;
@@ -241,7 +242,7 @@
             this.lvwUType});
             this.lvwSupplyStockOut.FullRowSelect = true;
             this.lvwSupplyStockOut.GridLines = true;
-            this.lvwSupplyStockOut.Location = new System.Drawing.Point(281, 394);
+            this.lvwSupplyStockOut.Location = new System.Drawing.Point(281, 431);
             this.lvwSupplyStockOut.Name = "lvwSupplyStockOut";
             this.lvwSupplyStockOut.Size = new System.Drawing.Size(674, 306);
             this.lvwSupplyStockOut.TabIndex = 14;
@@ -270,7 +271,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(119, 406);
+            this.btnCancel.Location = new System.Drawing.Point(119, 377);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(156, 23);
             this.btnCancel.TabIndex = 25;
@@ -280,7 +281,7 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(119, 348);
+            this.btnRemove.Location = new System.Drawing.Point(119, 406);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(156, 23);
             this.btnRemove.TabIndex = 11;
@@ -291,7 +292,7 @@
             // lblSearch
             // 
             this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(278, 39);
+            this.lblSearch.Location = new System.Drawing.Point(290, 52);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(41, 13);
             this.lblSearch.TabIndex = 27;
@@ -299,7 +300,7 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(325, 32);
+            this.txtSearch.Location = new System.Drawing.Point(337, 45);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(218, 20);
             this.txtSearch.TabIndex = 12;
@@ -309,7 +310,7 @@
             // 
             this.lblValidate.AutoSize = true;
             this.lblValidate.ForeColor = System.Drawing.Color.Red;
-            this.lblValidate.Location = new System.Drawing.Point(10, 119);
+            this.lblValidate.Location = new System.Drawing.Point(12, 136);
             this.lblValidate.Name = "lblValidate";
             this.lblValidate.Size = new System.Drawing.Size(0, 13);
             this.lblValidate.TabIndex = 28;
@@ -361,10 +362,21 @@
             // 
             this.cboDimension.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDimension.FormattingEnabled = true;
-            this.cboDimension.Location = new System.Drawing.Point(119, 53);
+            this.cboDimension.Location = new System.Drawing.Point(337, 128);
             this.cboDimension.Name = "cboDimension";
             this.cboDimension.Size = new System.Drawing.Size(156, 21);
             this.cboDimension.TabIndex = 34;
+            // 
+            // lblSign
+            // 
+            this.lblSign.AutoSize = true;
+            this.lblSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSign.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.lblSign.Location = new System.Drawing.Point(281, 406);
+            this.lblSign.Name = "lblSign";
+            this.lblSign.Size = new System.Drawing.Size(196, 20);
+            this.lblSign.TabIndex = 53;
+            this.lblSign.Text = "Avoid Duplicate Entries";
             // 
             // frmFrameStockInSupplyStockOut
             // 
@@ -372,7 +384,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(960, 749);
             this.ControlBox = false;
-            this.Controls.Add(this.cboDimension);
+            this.Controls.Add(this.lblSign);
             this.Controls.Add(this.lbelSupplierName);
             this.Controls.Add(this.lblSupplyame);
             this.Controls.Add(this.txtSupplierName);
@@ -400,6 +412,7 @@
             this.Controls.Add(this.lblSupplyName);
             this.Controls.Add(this.lblSupplyID);
             this.Controls.Add(this.lblCompute);
+            this.Controls.Add(this.cboDimension);
             this.Name = "frmFrameStockInSupplyStockOut";
             this.Text = "Frame Stock In and Supply Stock Out";
             this.Load += new System.EventHandler(this.frmFrameStockInSupplyStockOut_Load);
@@ -443,5 +456,6 @@
         private System.Windows.Forms.Label lblSupplyame;
         private System.Windows.Forms.Label lbelSupplierName;
         private System.Windows.Forms.ComboBox cboDimension;
+        private System.Windows.Forms.Label lblSign;
     }
 }

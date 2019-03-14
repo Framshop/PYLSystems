@@ -37,7 +37,6 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.supplyItemsGrid = new System.Windows.Forms.DataGridView();
             this.addBtn = new System.Windows.Forms.Button();
-            this.txtUnitMeasure = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblDescription = new System.Windows.Forms.Label();
@@ -46,6 +45,11 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.lblValidate = new System.Windows.Forms.Label();
             this.lblSupplyItemsID = new System.Windows.Forms.Label();
+            this.lblsales_price = new System.Windows.Forms.Label();
+            this.lblOptional = new System.Windows.Forms.Label();
+            this.txtSales_Price = new System.Windows.Forms.TextBox();
+            this.cboUnitMeasure = new System.Windows.Forms.ComboBox();
+            this.btnStockIn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.supplyItemsGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,10 +113,10 @@
             // btnUpdate
             // 
             this.btnUpdate.Enabled = false;
-            this.btnUpdate.Location = new System.Drawing.Point(130, 286);
+            this.btnUpdate.Location = new System.Drawing.Point(119, 365);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 8;
+            this.btnUpdate.TabIndex = 10;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -129,28 +133,20 @@
             this.supplyItemsGrid.Location = new System.Drawing.Point(369, 38);
             this.supplyItemsGrid.Name = "supplyItemsGrid";
             this.supplyItemsGrid.ReadOnly = true;
-            this.supplyItemsGrid.Size = new System.Drawing.Size(315, 331);
-            this.supplyItemsGrid.TabIndex = 11;
+            this.supplyItemsGrid.Size = new System.Drawing.Size(315, 424);
+            this.supplyItemsGrid.TabIndex = 13;
             this.supplyItemsGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.supplyItemsGrid_CellClick);
             // 
             // addBtn
             // 
             this.addBtn.Enabled = false;
-            this.addBtn.Location = new System.Drawing.Point(46, 286);
+            this.addBtn.Location = new System.Drawing.Point(38, 365);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(75, 23);
-            this.addBtn.TabIndex = 7;
+            this.addBtn.TabIndex = 9;
             this.addBtn.Text = "Add";
             this.addBtn.UseVisualStyleBackColor = true;
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
-            // 
-            // txtUnitMeasure
-            // 
-            this.txtUnitMeasure.Location = new System.Drawing.Point(130, 254);
-            this.txtUnitMeasure.Name = "txtUnitMeasure";
-            this.txtUnitMeasure.Size = new System.Drawing.Size(184, 20);
-            this.txtUnitMeasure.TabIndex = 5;
-            this.txtUnitMeasure.TextChanged += new System.EventHandler(this.txtContact_TextChanged);
             // 
             // txtDescription
             // 
@@ -181,7 +177,7 @@
             // lblUnitMeasure
             // 
             this.lblUnitMeasure.AutoSize = true;
-            this.lblUnitMeasure.Location = new System.Drawing.Point(43, 254);
+            this.lblUnitMeasure.Location = new System.Drawing.Point(43, 261);
             this.lblUnitMeasure.Name = "lblUnitMeasure";
             this.lblUnitMeasure.Size = new System.Drawing.Size(70, 13);
             this.lblUnitMeasure.TabIndex = 6;
@@ -190,7 +186,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(43, 75);
+            this.lblName.Location = new System.Drawing.Point(43, 82);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(35, 13);
             this.lblName.TabIndex = 2;
@@ -198,10 +194,10 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(46, 346);
+            this.btnCancel.Location = new System.Drawing.Point(38, 394);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 9;
+            this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -210,7 +206,7 @@
             // 
             this.lblValidate.AutoSize = true;
             this.lblValidate.ForeColor = System.Drawing.Color.Red;
-            this.lblValidate.Location = new System.Drawing.Point(43, 321);
+            this.lblValidate.Location = new System.Drawing.Point(127, 48);
             this.lblValidate.Name = "lblValidate";
             this.lblValidate.Size = new System.Drawing.Size(0, 13);
             this.lblValidate.TabIndex = 31;
@@ -224,11 +220,69 @@
             this.lblSupplyItemsID.TabIndex = 32;
             this.lblSupplyItemsID.Visible = false;
             // 
+            // lblsales_price
+            // 
+            this.lblsales_price.AutoSize = true;
+            this.lblsales_price.Location = new System.Drawing.Point(43, 325);
+            this.lblsales_price.Name = "lblsales_price";
+            this.lblsales_price.Size = new System.Drawing.Size(60, 13);
+            this.lblsales_price.TabIndex = 8;
+            this.lblsales_price.Text = "Sales Price";
+            // 
+            // lblOptional
+            // 
+            this.lblOptional.AutoSize = true;
+            this.lblOptional.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOptional.ForeColor = System.Drawing.Color.Red;
+            this.lblOptional.Location = new System.Drawing.Point(126, 295);
+            this.lblOptional.Name = "lblOptional";
+            this.lblOptional.Size = new System.Drawing.Size(156, 20);
+            this.lblOptional.TabIndex = 35;
+            this.lblOptional.Text = "Optional if for sale";
+            // 
+            // txtSales_Price
+            // 
+            this.txtSales_Price.Location = new System.Drawing.Point(130, 318);
+            this.txtSales_Price.Name = "txtSales_Price";
+            this.txtSales_Price.Size = new System.Drawing.Size(184, 20);
+            this.txtSales_Price.TabIndex = 7;
+            this.txtSales_Price.TextChanged += new System.EventHandler(this.txtSales_Price_TextChanged);
+            this.txtSales_Price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSales_Price_KeyPress);
+            // 
+            // cboUnitMeasure
+            // 
+            this.cboUnitMeasure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboUnitMeasure.FormattingEnabled = true;
+            this.cboUnitMeasure.Items.AddRange(new object[] {
+            "ft",
+            "inches"});
+            this.cboUnitMeasure.Location = new System.Drawing.Point(130, 253);
+            this.cboUnitMeasure.Name = "cboUnitMeasure";
+            this.cboUnitMeasure.Size = new System.Drawing.Size(184, 21);
+            this.cboUnitMeasure.TabIndex = 5;
+            this.cboUnitMeasure.SelectedIndexChanged += new System.EventHandler(this.cboUnitMeasure_SelectedIndexChanged);
+            // 
+            // btnStockIn
+            // 
+            this.btnStockIn.Enabled = false;
+            this.btnStockIn.Location = new System.Drawing.Point(119, 394);
+            this.btnStockIn.Name = "btnStockIn";
+            this.btnStockIn.Size = new System.Drawing.Size(75, 23);
+            this.btnStockIn.TabIndex = 11;
+            this.btnStockIn.Text = " Stock In";
+            this.btnStockIn.UseVisualStyleBackColor = true;
+            this.btnStockIn.Click += new System.EventHandler(this.btnStockIn_Click);
+            // 
             // frmSupplyItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(696, 381);
+            this.ClientSize = new System.Drawing.Size(696, 474);
+            this.Controls.Add(this.btnStockIn);
+            this.Controls.Add(this.cboUnitMeasure);
+            this.Controls.Add(this.lblOptional);
+            this.Controls.Add(this.txtSales_Price);
+            this.Controls.Add(this.lblsales_price);
             this.Controls.Add(this.lblSupplyItemsID);
             this.Controls.Add(this.lblValidate);
             this.Controls.Add(this.btnCancel);
@@ -237,7 +291,6 @@
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.supplyItemsGrid);
             this.Controls.Add(this.addBtn);
-            this.Controls.Add(this.txtUnitMeasure);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lblDescription);
@@ -248,7 +301,7 @@
             this.Controls.Add(this.lblDescriptionUpdate);
             this.Controls.Add(this.lblNameUpdate);
             this.Name = "frmSupplyItems";
-            this.Text = "Supply Items";
+            this.Text = "Materials";
             this.Load += new System.EventHandler(this.frmSupplyItems_Load);
             ((System.ComponentModel.ISupportInitialize)(this.supplyItemsGrid)).EndInit();
             this.ResumeLayout(false);
@@ -267,7 +320,6 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.DataGridView supplyItemsGrid;
         private System.Windows.Forms.Button addBtn;
-        private System.Windows.Forms.TextBox txtUnitMeasure;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lblDescription;
@@ -276,5 +328,10 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label lblValidate;
         private System.Windows.Forms.Label lblSupplyItemsID;
+        private System.Windows.Forms.Label lblsales_price;
+        private System.Windows.Forms.Label lblOptional;
+        private System.Windows.Forms.TextBox txtSales_Price;
+        private System.Windows.Forms.ComboBox cboUnitMeasure;
+        private System.Windows.Forms.Button btnStockIn;
     }
 }

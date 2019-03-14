@@ -97,7 +97,7 @@
             // lblsupplierID
             // 
             this.lblsupplierID.AutoSize = true;
-            this.lblsupplierID.Location = new System.Drawing.Point(218, 483);
+            this.lblsupplierID.Location = new System.Drawing.Point(508, 383);
             this.lblsupplierID.Name = "lblsupplierID";
             this.lblsupplierID.Size = new System.Drawing.Size(35, 13);
             this.lblsupplierID.TabIndex = 6;
@@ -107,7 +107,7 @@
             // lbl_supply_itemsID
             // 
             this.lbl_supply_itemsID.AutoSize = true;
-            this.lbl_supply_itemsID.Location = new System.Drawing.Point(218, 455);
+            this.lbl_supply_itemsID.Location = new System.Drawing.Point(508, 355);
             this.lbl_supply_itemsID.Name = "lbl_supply_itemsID";
             this.lbl_supply_itemsID.Size = new System.Drawing.Size(35, 13);
             this.lbl_supply_itemsID.TabIndex = 7;
@@ -281,7 +281,7 @@
             // lblSupplyID
             // 
             this.lblSupplyID.AutoSize = true;
-            this.lblSupplyID.Location = new System.Drawing.Point(150, 440);
+            this.lblSupplyID.Location = new System.Drawing.Point(440, 340);
             this.lblSupplyID.Name = "lblSupplyID";
             this.lblSupplyID.Size = new System.Drawing.Size(35, 13);
             this.lblSupplyID.TabIndex = 24;
@@ -291,7 +291,7 @@
             // lblsupplyStockInQuantityUpdate
             // 
             this.lblsupplyStockInQuantityUpdate.AutoSize = true;
-            this.lblsupplyStockInQuantityUpdate.Location = new System.Drawing.Point(150, 461);
+            this.lblsupplyStockInQuantityUpdate.Location = new System.Drawing.Point(440, 361);
             this.lblsupplyStockInQuantityUpdate.Name = "lblsupplyStockInQuantityUpdate";
             this.lblsupplyStockInQuantityUpdate.Size = new System.Drawing.Size(35, 13);
             this.lblsupplyStockInQuantityUpdate.TabIndex = 25;
@@ -301,7 +301,7 @@
             // lblUnitPriceUpdate
             // 
             this.lblUnitPriceUpdate.AutoSize = true;
-            this.lblUnitPriceUpdate.Location = new System.Drawing.Point(150, 483);
+            this.lblUnitPriceUpdate.Location = new System.Drawing.Point(440, 383);
             this.lblUnitPriceUpdate.Name = "lblUnitPriceUpdate";
             this.lblUnitPriceUpdate.Size = new System.Drawing.Size(35, 13);
             this.lblUnitPriceUpdate.TabIndex = 26;
@@ -311,7 +311,7 @@
             // lblActiveUpdate
             // 
             this.lblActiveUpdate.AutoSize = true;
-            this.lblActiveUpdate.Location = new System.Drawing.Point(150, 505);
+            this.lblActiveUpdate.Location = new System.Drawing.Point(440, 405);
             this.lblActiveUpdate.Name = "lblActiveUpdate";
             this.lblActiveUpdate.Size = new System.Drawing.Size(35, 13);
             this.lblActiveUpdate.TabIndex = 27;

@@ -13,6 +13,7 @@ namespace PYLsystems
 {
     public partial class frmSupplier : Form
     {
+        public static string address = "";
         MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
         public frmSupplier()
         {
@@ -36,7 +37,7 @@ namespace PYLsystems
             if (myD.Rows.Count == 0)
             {
                 myConn.Open();
-                string myQuery = "INSERT INTO supplier (supplierName, supplierDetails, contactDetails) values('" + txtName.Text + "','" + txtDetails.Text + "','" + txtContact.Text + "')";
+                string myQuery = "INSERT INTO supplier (supplierName, supplierDetails, contactDetails, address) values('" + txtName.Text + "','" + txtDetails.Text + "','" + txtContact.Text + "','" + txtAddress.Text + "')";
                 MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                 MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                 DataTable myDt = new DataTable();
@@ -47,6 +48,7 @@ namespace PYLsystems
                 txtDetails.Text = "";
                 txtName.Text = "";
                 txtContact.Text = "";
+                txtAddress.Text = "";
             }
             else
             {
@@ -57,7 +59,7 @@ namespace PYLsystems
         public void RefreshDatabase()
         {
             myConn.Open();
-            string query = "SELECT supplierID,supplierName,supplierDetails,contactDetails FROM supplier";
+            string query = "SELECT supplierID,supplierName,address as 'Address',contactDetails,supplierDetails FROM supplier";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter Adp = new MySqlDataAdapter(comm);
             DataTable Dt = new DataTable();
@@ -85,12 +87,13 @@ namespace PYLsystems
 
         private void supplierGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            address = supplierGrid.CurrentRow.Cells[0].Value.ToString();
             lblSupplierID.Text = supplierGrid.CurrentRow.Cells[0].Value.ToString();
             lblNameUpdate.Text = supplierGrid.CurrentRow.Cells[1].Value.ToString();
-            lblDetailsUpdate.Text = supplierGrid.CurrentRow.Cells[2].Value.ToString();
+            lblDetailsUpdate.Text = supplierGrid.CurrentRow.Cells[4].Value.ToString();
             lblContactUpdate.Text = supplierGrid.CurrentRow.Cells[3].Value.ToString();
             txtName.Text = supplierGrid.CurrentRow.Cells[1].Value.ToString();
-            txtDetails.Text = supplierGrid.CurrentRow.Cells[2].Value.ToString();
+            txtDetails.Text = supplierGrid.CurrentRow.Cells[4].Value.ToString();
             msktxtContactNumber.Text = supplierGrid.CurrentRow.Cells[3].Value.ToString();
             lblIDUpdate.Text = supplierGrid.CurrentRow.Cells[0].Value.ToString();
         }
@@ -117,8 +120,8 @@ namespace PYLsystems
         {
             myConn.Open();
             string myQuery = "UPDATE supplier SET supplierName = '" + txtName.Text + "',supplierDetails =  " +
-                "'" + txtDetails.Text + "', contactDetails = '" + txtContact.Text + "'WHERE supplierName = '" + lblNameUpdate.Text + "'AND supplierDetails = '" +
-                lblDetailsUpdate.Text + "' AND contactDetails = '" + lblContactUpdate.Text + "'"; 
+                "'" + txtDetails.Text + "', contactDetails = '" + txtContact.Text + "', address = '" + txtAddress.Text + "' WHERE supplierName = '" + lblNameUpdate.Text + "' AND supplierDetails = '" +
+                lblDetailsUpdate.Text + "' AND supplierID = " + lblSupplierID.Text; 
             MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
             MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
             DataTable myDt = new DataTable();
@@ -130,6 +133,7 @@ namespace PYLsystems
             txtName.Text = "";
             msktxtContactNumber.Text = "";
             btnUpdate.Enabled = false;
+            txtAddress.Text = "";
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -141,7 +145,8 @@ namespace PYLsystems
             int name = txtName.TextLength;
             int details = txtDetails.TextLength;
             int contactnumber = txtContact.TextLength;
-            if (name > 0 && details > 0 && contactnumber==11)
+            int address = txtAddress.TextLength;
+            if (name > 0 && details > 0 && contactnumber==11 && address > 0)
             {
                 addBtn.Enabled = true;
             }

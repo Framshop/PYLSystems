@@ -23,25 +23,39 @@ namespace PYLsystems
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            myConn.Open();
-            string myQuery = "INSERT INTO supply_details (active, delivery_date, stockin_quantity,supply_price,supplierID,supply_itemsID) values(" + cboActive.SelectedIndex + ",'" + txtDeliveryDate.Text + "'," + txtStockInQuantity.Text + "," + txtSupplyPrice.Text + "," + lblsupplierID.Text + "," + lbl_supply_itemsID.Text + ")";
-            MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
-            MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
-            DataTable myDt = new DataTable();
-            myAdp.Fill(myDt);
-            myConn.Close();
-            MessageBox.Show("Insert Successful!");
-            RefreshDatabase();
-            cboSupplierName.SelectedIndex = -1;
-            cboSupplyName.SelectedIndex = -1;
-            cboActive.SelectedIndex = -1;
-            msktxtDeliveryDate.Text = "";
-            txtStockInQuantity.Text = "";
-            txtSupplierDetails.Text = "";
-            txtSupplyDescription.Text = "";
-            txtContactDetails.Text = "";
-            txtSupplyPrice.Text = "";
-            txtUnitMeasure.Text = "";
+            MySqlDataAdapter myAd;
+            MySqlCommand myCom = new MySqlCommand("SELECT * FROM supply_details WHERE supplierID = " + lblsupplierID.Text + " AND supply_itemsID = " + lbl_supply_itemsID.Text, myConn);
+            myAd = new MySqlDataAdapter(myCom);
+            DataTable myD = new DataTable();
+            myAd.Fill(myD);
+            //ADD
+
+            if (myD.Rows.Count == 0)
+            {
+                myConn.Open();
+                string myQuery = "INSERT INTO supply_details (active, delivery_date, stockin_quantity,supply_price,supplierID,supply_itemsID) values(" + cboActive.SelectedIndex + ",'" + txtDeliveryDate.Text + "'," + txtStockInQuantity.Text + "," + txtSupplyPrice.Text + "," + lblsupplierID.Text + "," + lbl_supply_itemsID.Text + ")";
+                MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
+                MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
+                DataTable myDt = new DataTable();
+                myAdp.Fill(myDt);
+                myConn.Close();
+                MessageBox.Show("Insert Successful!");
+                RefreshDatabase();
+                cboSupplierName.SelectedIndex = -1;
+                cboSupplyName.SelectedIndex = -1;
+                cboActive.SelectedIndex = -1;
+                msktxtDeliveryDate.Text = "";
+                txtStockInQuantity.Text = "";
+                txtSupplierDetails.Text = "";
+                txtSupplyDescription.Text = "";
+                txtContactDetails.Text = "";
+                txtSupplyPrice.Text = "";
+                txtUnitMeasure.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("The supplier " + cboSupplierName.Text + " already have an existing item for " + cboSupplyName.Text);
+            }
            
         }
         private void FillSupplier()

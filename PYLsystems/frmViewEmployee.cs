@@ -64,6 +64,20 @@ namespace PYLsystems
             this.Close();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string myQuery = "update employee set active = 1 where employeeid =" + empid.Text;
+            MySqlCommand myComm = new MySqlCommand(myQuery, conn);
+            MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
+            DataTable myDt = new DataTable();
+            myAdp.Fill(myDt);
+            conn.Close();
+            MessageBox.Show("Archive Success");
+            this.Close();
+        }
+
+
+        //employee photo:
         //private void btnUpload_Click(object sender, EventArgs e)
         //{
         //    string imageLocation = "";

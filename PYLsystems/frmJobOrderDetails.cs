@@ -134,7 +134,7 @@ namespace PYLsystems
             }
 
 
-            string myQuer = "SELECT s.supplierName as 'supplierName',s_i.supplyName as 'supplyName',s_d.supply_price as 'supply_price',s_d.stockin_quantity as 'StockInSupply',SUM(f_m.stockout_quantity) as 'StockOutSupply',SUM(s_d.stockin_quantity - f_m.stockout_quantity) as 'AvailableSupply' FROM frame_materials f_m LEFT JOIN supply_details s_d ON s_d.supplyID = f_m.supply_detailsID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supplier s ON s.supplierID = s_d.supplierID WHERE s_d.supplyID = " + lblSupplyID.Text + " GROUP BY s_d.supplyID ORDER BY 'AvailableSupply'";
+            string myQuer = "SELECT s.supplierName as 'Supplier Name',s_i.supplyName as 'Supply Name',SUM(s_d.stockin_quantity) as 'Supply Stock In',SUM(ifnull(quantity,0)) as 'Stock Out in Job Order',SUM(ifnull(f_m.stockout_quantity,0)) as 'Stock Out in Inventory',SUM(ifnull(f_m.stockout_quantity,0)) + SUM(ifnull(quantity,0)) as 'Overall Stock Out',SUM(s_d.stockin_quantity) - SUM(ifnull(f_m.stockout_quantity,0)) - SUM(ifnull(quantity,0)) as 'Remaining Supplies' FROM supply_details s_d LEFT JOIN jorder_details j_d ON s_d.supplyID = j_d.supply_itemsID LEFT JOIN frame_materials f_m ON f_m.supply_detailsID = s_d.supplierID LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.supplyID = " + lblSupplyID.Text + " GROUP BY s_d.supplyID";
                 MySqlCommand myCom = new MySqlCommand(myQuer, myConn);
                 MySqlDataReader myReader1;
                 try
@@ -217,17 +217,68 @@ namespace PYLsystems
 
         private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
+            // 1 ft = 12 inches
+            // 12 inches = 1 ft
+            // ex
+            //
+            //
+            //
+            //
+            //
+            //
+            //
+            //
+            //
             functionAddSupply();
             try
             {
-                if (txtQuantity.TextLength > 0)
+                if (cboUnitMeasure.Text == "ft" && txtUnitMeasure.Text == "ft")
                 {
-                    txtSubtotal.Text = (float.Parse(txtPrice.Text) * float.Parse(txtQuantity.Text)).ToString();
+                    if (txtQuantity.TextLength > 0)
+                    {
+                        txtSubtotal.Text = (float.Parse(txtPrice.Text) * float.Parse(txtQuantity.Text)).ToString();
+                    }
+                    else
+                    {
+                        txtSubtotal.Text = "";
+                    }
+                }
+                else if (cboUnitMeasure.Text == "ft" && txtUnitMeasure.Text == "inches")
+                {
+                    txtSize.Text = (float.Parse(txtQuantity.Text) / 12).ToString();
+                    if (txtQuantity.TextLength > 0)
+                    {
+                        txtSubtotal.Text = (float.Parse(txtPrice.Text) * float.Parse(txtSize.Text)).ToString();
+                    }
+                    else
+                    {
+                        txtSubtotal.Text = "";
+                    }
+                }
+                else if (cboUnitMeasure.Text == "inches" && txtUnitMeasure.Text == "ft")
+                {
+                    txtSize.Text = (float.Parse(txtQuantity.Text) * 12).ToString();
+                    if (txtQuantity.TextLength > 0)
+                    {
+                        txtSubtotal.Text = (float.Parse(txtPrice.Text) * float.Parse(txtSize.Text)).ToString();
+                    }
+                    else
+                    {
+                        txtSubtotal.Text = "";
+                    }
                 }
                 else
                 {
-                    txtSubtotal.Text = "";
+                    if (txtQuantity.TextLength > 0)
+                    {
+                        txtSubtotal.Text = (float.Parse(txtPrice.Text) * float.Parse(txtQuantity.Text)).ToString();
+                    }
+                    else
+                    {
+                        txtSubtotal.Text = "";
+                    }
                 }
+    
             }
             catch
             {
