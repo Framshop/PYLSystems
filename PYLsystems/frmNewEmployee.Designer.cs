@@ -63,7 +63,7 @@
             this.txtFirstName.Location = new System.Drawing.Point(161, 137);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(219, 20);
-            this.txtFirstName.TabIndex = 1;
+            this.txtFirstName.TabIndex = 3;
             this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
             // 
             // txtSalaryRate
@@ -71,7 +71,7 @@
             this.txtSalaryRate.Location = new System.Drawing.Point(161, 341);
             this.txtSalaryRate.Name = "txtSalaryRate";
             this.txtSalaryRate.Size = new System.Drawing.Size(219, 20);
-            this.txtSalaryRate.TabIndex = 6;
+            this.txtSalaryRate.TabIndex = 7;
             this.txtSalaryRate.TextChanged += new System.EventHandler(this.txtSalaryRate_TextChanged);
             this.txtSalaryRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalaryRate_KeyPress);
             // 
@@ -80,7 +80,7 @@
             this.txtContactNumber.Location = new System.Drawing.Point(161, 383);
             this.txtContactNumber.Name = "txtContactNumber";
             this.txtContactNumber.Size = new System.Drawing.Size(219, 20);
-            this.txtContactNumber.TabIndex = 5;
+            this.txtContactNumber.TabIndex = 8;
             this.txtContactNumber.TextChanged += new System.EventHandler(this.txtContactNumber_TextChanged);
             this.txtContactNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContactNumber_KeyPress);
             // 
@@ -181,7 +181,7 @@
             this.cbEmpStatus.Location = new System.Drawing.Point(161, 32);
             this.cbEmpStatus.Name = "cbEmpStatus";
             this.cbEmpStatus.Size = new System.Drawing.Size(219, 21);
-            this.cbEmpStatus.TabIndex = 20;
+            this.cbEmpStatus.TabIndex = 0;
             this.cbEmpStatus.SelectedIndexChanged += new System.EventHandler(this.cbEmpStatus_SelectedIndexChanged);
             // 
             // txtLastName
@@ -189,7 +189,7 @@
             this.txtLastName.Location = new System.Drawing.Point(161, 100);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(219, 20);
-            this.txtLastName.TabIndex = 24;
+            this.txtLastName.TabIndex = 2;
             this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
             // 
             // txtHomeAddress
@@ -198,7 +198,7 @@
             this.txtHomeAddress.Multiline = true;
             this.txtHomeAddress.Name = "txtHomeAddress";
             this.txtHomeAddress.Size = new System.Drawing.Size(219, 56);
-            this.txtHomeAddress.TabIndex = 26;
+            this.txtHomeAddress.TabIndex = 6;
             this.txtHomeAddress.TextChanged += new System.EventHandler(this.txtHomeAddress_TextChanged);
             // 
             // btnCreate
@@ -242,7 +242,7 @@
             this.cbGender.Location = new System.Drawing.Point(161, 175);
             this.cbGender.Name = "cbGender";
             this.cbGender.Size = new System.Drawing.Size(219, 21);
-            this.cbGender.TabIndex = 33;
+            this.cbGender.TabIndex = 4;
             this.cbGender.SelectedIndexChanged += new System.EventHandler(this.cbGender_SelectedIndexChanged);
             // 
             // dtpStartofEmp
@@ -252,7 +252,7 @@
             this.dtpStartofEmp.Location = new System.Drawing.Point(161, 67);
             this.dtpStartofEmp.Name = "dtpStartofEmp";
             this.dtpStartofEmp.Size = new System.Drawing.Size(219, 20);
-            this.dtpStartofEmp.TabIndex = 34;
+            this.dtpStartofEmp.TabIndex = 1;
             // 
             // dtpBirthDate
             // 
@@ -261,7 +261,7 @@
             this.dtpBirthDate.Location = new System.Drawing.Point(164, 216);
             this.dtpBirthDate.Name = "dtpBirthDate";
             this.dtpBirthDate.Size = new System.Drawing.Size(219, 20);
-            this.dtpBirthDate.TabIndex = 35;
+            this.dtpBirthDate.TabIndex = 5;
             // 
             // label4
             // 
@@ -308,7 +308,7 @@
             this.usernameTextBox.Location = new System.Drawing.Point(161, 437);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(219, 20);
-            this.usernameTextBox.TabIndex = 39;
+            this.usernameTextBox.TabIndex = 9;
             // 
             // label10
             // 
@@ -325,7 +325,7 @@
             this.passwordTextBox.Location = new System.Drawing.Point(161, 467);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(219, 20);
-            this.passwordTextBox.TabIndex = 41;
+            this.passwordTextBox.TabIndex = 10;
             this.passwordTextBox.UseSystemPasswordChar = true;
             // 
             // frmNewEmployee
@@ -362,9 +362,9 @@
             this.Controls.Add(this.txtContactNumber);
             this.Controls.Add(this.txtFirstName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.Name = "frmNewEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmNewEmployee";
             this.Load += new System.EventHandler(this.frmNewEmployee_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

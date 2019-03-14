@@ -21,48 +21,66 @@ namespace PYLsystems
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            /*  conn.Open();
-              string myQuery = "INSERT INTO product(code, name, description, unitprice, quantity, active, unitmeasure) values('" + txtCode.Text + "','" + txtName.Text + "','" + txtDescription.Text + "','" + txtUnitPrice.Text + "','" + txtQuantity.Text + "','" + cboActive.Text + "','" + txtUnitmeasure.Text + "')";
-              MySqlCommand myComm = new MySqlCommand(myQuery, conn);
-              MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
-              DataTable myDt = new DataTable();
-              myAdp.Fill(myDt);
-              conn.Close();
-              MessageBox.Show("Success!");
-
-              this.Close();*/
-            if (usernameTextBox.Text == "")
+            conn.Open();
+            MySqlDataAdapter myAd;
+            DataTable myD = new DataTable();
+            MySqlCommand myCom = new MySqlCommand("SELECT * FROM employee WHERE lastname = '" + txtLastName.Text + "' AND firstname = '" + txtFirstName.Text + "'", conn);
+            myAd = new MySqlDataAdapter(myCom);
+            //ADD ----------
+            MySqlDataReader myReader;
+            myAd.Fill(myD);
+            //ADD
+            myReader = myCom.ExecuteReader();
+            conn.Close();
+            if (myD.Rows.Count == 0)
             {
-                conn.Open();
+                /*  conn.Open();
+                  string myQuery = "INSERT INTO product(code, name, description, unitprice, quantity, active, unitmeasure) values('" + txtCode.Text + "','" + txtName.Text + "','" + txtDescription.Text + "','" + txtUnitPrice.Text + "','" + txtQuantity.Text + "','" + cboActive.Text + "','" + txtUnitmeasure.Text + "')";
+                  MySqlCommand myComm = new MySqlCommand(myQuery, conn);
+                  MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
+                  DataTable myDt = new DataTable();
+                  myAdp.Fill(myDt);
+                  conn.Close();
+                  MessageBox.Show("Success!");
 
-                string myQuery = "Insert INTO employee(employeestatus, startofEmployment, firstName, lastName, gender, birthDate, homeAddress, salaryRate, contactNumber) values('" + status.Text + "','" + dtpStartofEmp.Value.Date.ToString("yyyy-MM-dd") + "','" + txtFirstName.Text + "','" + txtLastName.Text + "','" + cbGender.Text + "','" + dtpBirthDate.Value.Date.ToString("yyyy-MM-dd ") + "','" + txtHomeAddress.Text + "','" + txtSalaryRate.Text + "','" + txtContactNumber.Text + "')";
-                MySqlCommand myComm = new MySqlCommand(myQuery, conn);
-                MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
-                DataTable myDt = new DataTable();
-                myAdp.Fill(myDt);
-                conn.Close();
-                MessageBox.Show("New Employee Created");
+                  this.Close();*/
+                if (usernameTextBox.Text == "")
+                {
+                    conn.Open();
+
+                    string myQuery = "Insert INTO employee(employeestatus, startofEmployment, firstName, lastName, gender, birthDate, homeAddress, salaryRate, contactNumber, active) values('" + status.Text + "','" + dtpStartofEmp.Value.Date.ToString("yyyy-MM-dd") + "','" + txtFirstName.Text + "','" + txtLastName.Text + "','" + cbGender.Text + "','" + dtpBirthDate.Value.Date.ToString("yyyy-MM-dd ") + "','" + txtHomeAddress.Text + "','" + txtSalaryRate.Text + "','" + txtContactNumber.Text + "', 0)";
+                    MySqlCommand myComm = new MySqlCommand(myQuery, conn);
+                    MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
+                    DataTable myDt = new DataTable();
+                    myAdp.Fill(myDt);
+                    conn.Close();
+                    MessageBox.Show("New Employee Created");
 
 
-                this.Close();
+                    this.Close();
+                }
+                else if (usernameTextBox.Text != "" && passwordTextBox.Text != "")
+                {
+
+                    conn.Open();
+
+                    string myQuery = "Insert INTO employee(employeestatus, startofEmployment, firstName, lastName, gender, birthDate, homeAddress, salaryRate, contactNumber,username,password) values('" + status.Text + "','" + dtpStartofEmp.Value.Date.ToString("yyyy-MM-dd") + "','" + txtFirstName.Text + "','" + txtLastName.Text + "','" + cbGender.Text + "','" + dtpBirthDate.Value.Date.ToString("yyyy-MM-dd ") + "','" + txtHomeAddress.Text + "','" + txtSalaryRate.Text + "','"
+                        + txtContactNumber.Text + "','" + usernameTextBox.Text + "','" + passwordTextBox.Text + "')";
+                    MySqlCommand myComm = new MySqlCommand(myQuery, conn);
+                    MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
+                    DataTable myDt = new DataTable();
+                    myAdp.Fill(myDt);
+                    conn.Close();
+                    MessageBox.Show("New Employee Created");
+
+
+                    this.Close();
+                }
             }
-            else if(usernameTextBox.Text != "" && passwordTextBox.Text!=""){
-
-                conn.Open();
-
-                string myQuery = "Insert INTO employee(employeestatus, startofEmployment, firstName, lastName, gender, birthDate, homeAddress, salaryRate, contactNumber,username,password) values('" + status.Text + "','" + dtpStartofEmp.Value.Date.ToString("yyyy-MM-dd") + "','" + txtFirstName.Text + "','" + txtLastName.Text + "','" + cbGender.Text + "','" + dtpBirthDate.Value.Date.ToString("yyyy-MM-dd ") + "','" + txtHomeAddress.Text + "','" + txtSalaryRate.Text + "','" 
-                    + txtContactNumber.Text + "','" + usernameTextBox.Text + "','" + passwordTextBox.Text + "')";
-                MySqlCommand myComm = new MySqlCommand(myQuery, conn);
-                MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
-                DataTable myDt = new DataTable();
-                myAdp.Fill(myDt);
-                conn.Close();
-                MessageBox.Show("New Employee Created");
-
-
-                this.Close();
+            else
+            {
+                MessageBox.Show("Employee" + txtLastName.Text + " " + txtFirstName.Text + " already exist");
             }
-              
         }
 
         private void frmNewEmployee_Load(object sender, EventArgs e)
@@ -112,7 +130,7 @@ namespace PYLsystems
             int contact = txtContactNumber.TextLength;
 
 
-            if (  gender > -1 && contact > 0 && lastname  >0 && firstname > 0 && homeaddress > 0 && salaryrate > 0 && contact > 0 && status > -1 )
+            if (  gender > -1 && contact > 0 && lastname  > 0 && firstname > 0 && homeaddress > 0 && salaryrate > 0 && contact > 0 && status > -1 )
             {
                 btnCreate.Enabled = true;
             }
