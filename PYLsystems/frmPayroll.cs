@@ -336,23 +336,20 @@ namespace PYLsystems
             }
         }
         private void DefaultDatesInitializer()
-        {
-            DateTime saturdayDate;
-            if (DateTime.Today.DayOfWeek != DayOfWeek.Saturday) {
-                saturdayDate = DateTime.Today.AddDays(-(int)DateTime.Now.DayOfWeek - 1);
-            }
-            else
-            {
-                saturdayDate = DateTime.Today;
-            }
-            String DefaultStartDate = DateTime.Today.AddDays(-(int)DateTime.Now.DayOfWeek - 6).ToString("yyyy-MM-dd");
-            String DefaultEndDate = saturdayDate.ToString("yyyy-MM-dd");
+        {         
+            DayOfWeek day = DateTime.Now.DayOfWeek;
+            int days = day - DayOfWeek.Monday;
+            DateTime start = DateTime.Now.AddDays(-days);
+            DateTime end = start.AddDays(5);
+
+            //String DefaultStartDate = DateTime.Today.AddDays(-(int)DateTime.Now.DayOfWeek - 6).ToString("yyyy-MM-dd");
+            String DefaultStartDate = start.ToString("yyyy-MM-dd");
+            String DefaultEndDate = end.ToString("yyyy-MM-dd");
             DateStart = DefaultStartDate;
             DateEnd = DefaultEndDate;
-            startDatePicker.Value = DateTime.Today.AddDays(-(int)DateTime.Now.DayOfWeek - 6).AddHours(0).AddMinutes(0).AddSeconds(0);
-            endDatePicker.Value = saturdayDate.AddHours(23).AddMinutes(59).AddSeconds(59);
+            startDatePicker.Value = start;
+            endDatePicker.Value = end;
             //MessageBox.Show(endDatePicker.Value.ToString());
-
         }
         private String getDateTimePicker(int startOrEnd)
         {
