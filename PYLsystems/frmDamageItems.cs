@@ -45,7 +45,7 @@ namespace PYLsystems
         private void btnAdd_Click(object sender, EventArgs e)
         {
             myConn.Open();
-            string myQuery = "INSERT INTO damaged_items(inventoryID,damageReason,quantity) VALUES(" + lblFrameItemID.Text + ",'" + txtDamageReason.Text + "'," + txtQuantity.Text+ ")";
+            string myQuery = "INSERT INTO damaged_items(inventoryID,damageReason,quantity,date) VALUES(" + lblFrameItemID.Text + ",'" + txtDamageReason.Text + "'," + txtQuantity.Text+ ",NOW())";
             MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
             MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
             DataTable myDt = new DataTable();

@@ -156,5 +156,11 @@ namespace PYLsystems
             dgvFrameStockInDetails.Columns["dateStockIn"].HeaderText = "Date Stock In";
             dgvFrameStockInDetails.Columns["dateModified"].HeaderText = "Date Modified";
         }
+
+        private void btnAddFrame_Click(object sender, EventArgs e)
+        {
+            frmFrameList FrameList = new frmFrameList();
+            FrameList.ShowDialog();
+        }
     }
 }

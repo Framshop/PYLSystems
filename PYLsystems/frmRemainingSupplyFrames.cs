@@ -47,7 +47,7 @@ namespace PYLsystems
         public void FillRemainingSupply()
         {
             myConn.Open();
-            string query = "SELECT s.supplierName as 'supplierName',s_i.supplyName as 'supplyName',s_d.supply_price as 'supply_price',s_d.stockin_quantity as 'StockInSupply',SUM(f_m.stockout_quantity) as 'StockOutSupply',SUM(s_d.stockin_quantity - f_m.stockout_quantity) as 'AvailableSupply' FROM frame_materials f_m LEFT JOIN supply_details s_d ON s_d.supplyID = f_m.supply_detailsID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supplier s ON s.supplierID = s_d.supplierID GROUP BY s_d.supplyID ORDER BY 'AvailableSupply' ";
+            string query = "SELECT s.supplierName as 'Supplier Name',s_i.supplyName as 'Supply Name',SUM(s_d.stockin_quantity) as 'Supply Stock In',SUM(ifnull(quantity,0)) as 'Stock Out in Job Order',SUM(ifnull(f_m.stockout_quantity,0)) as 'Stock Out in Inventory',SUM(ifnull(f_m.stockout_quantity,0)) + SUM(ifnull(quantity,0)) as 'Overall Stock Out',SUM(s_d.stockin_quantity) - SUM(ifnull(f_m.stockout_quantity,0)) - SUM(ifnull(quantity,0)) as 'Remaining Supplies' FROM supply_details s_d LEFT JOIN jorder_details j_d ON s_d.supplyID = j_d.supply_itemsID LEFT JOIN frame_materials f_m ON f_m.supply_detailsID = s_d.supplierID LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID GROUP BY s_d.supplyID ";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter Adp = new MySqlDataAdapter(comm);
             DataTable Dt = new DataTable();
@@ -55,13 +55,13 @@ namespace PYLsystems
             dgvSupply.DataSource = Dt;
             for (int i = 0; i < dgvSupply.Rows.Count; i++)
             {
-                if (float.Parse(dgvSupply.Rows[i].Cells[5].Value.ToString()) <= 0)
+                if (float.Parse(dgvSupply.Rows[i].Cells[6].Value.ToString()) <= 0)
                 {
                     dgvSupply.Rows[i].DefaultCellStyle.BackColor = Color.LightSalmon;
                 }
-                else if (float.Parse(dgvSupply.Rows[i].Cells[5].Value.ToString()) >= 1 && float.Parse(dgvSupply.Rows[i].Cells[5].Value.ToString()) <= 20)
+                else if (float.Parse(dgvSupply.Rows[i].Cells[6].Value.ToString()) >= 1 && float.Parse(dgvSupply.Rows[i].Cells[6].Value.ToString()) <= 20)
                 {
-                    dgvSupply.Rows[i].DefaultCellStyle.BackColor = Color.LightYellow;
+                    dgvSupply.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
                 }
                 else
                 {
@@ -69,18 +69,41 @@ namespace PYLsystems
                 }
             }
             myConn.Close();
-            dgvSupply.Columns["suppliername"].HeaderText = "Supplier Name";
-            dgvSupply.Columns["supply_price"].HeaderText = "Supply Price";
-            dgvSupply.Columns["supplyname"].HeaderText = "Supply Name";
-            dgvSupply.Columns["stockinsupply"].HeaderText = "Stock In Supply";
-            dgvSupply.Columns["stockoutsupply"].HeaderText = "Stock Out Supply";
-            dgvSupply.Columns["availablesupply"].HeaderText = "Available Supply";
 
+        }
+        private void materialsAvailability()
+        {
+            myConn.Open();
+            string query = "SELECT s_i.supplyName as 'Material',IFNULL(s_m.StockInMaterials,0) as 'Stock In',IFNULL(d_m.DamagedMaterials,0) as 'Damaged Stocks',IFNULL(s_ma.SalesMaterials,0) as 'Sales Stock Out',IFNULL(s_m.StockInMaterials,0) - IFNULL(d_m.DamagedMaterials,0) - IFNULL(s_ma.SalesMaterials,0) 'Available Materials'FROM supply_items s_i LEFT JOIN (SELECT s_m.supply_itemsID,SUM(IFNULL(s_m.quantity,0)) as 'StockInMaterials' FROM stockin_materials s_m GROUP BY s_m.supply_itemsID) s_m ON s_i.supply_itemsID = s_m.supply_itemsID LEFT JOIN (SELECT d_m.supply_itemsID,SUM(IFNULL(d_m.quantity,0)) as 'DamagedMaterials' FROM damaged_materials d_m GROUP BY d_m.supply_itemsID) d_m ON d_m.supply_itemsID = s_i.supply_itemsID LEFT JOIN (SELECT s_ma.supply_itemsID,SUM(IFNULL(s_ma.quantity,0)) as 'SalesMaterials' FROM sales_materials s_ma GROUP BY s_ma.supply_itemsID) s_ma ON s_ma.supply_itemsID = s_i.supply_itemsID WHERE s_m.StockInMaterials > 0";
+            MySqlCommand comm = new MySqlCommand(query, myConn);
+            MySqlDataAdapter Adp = new MySqlDataAdapter(comm);
+            DataTable D = new DataTable();
+            Adp.Fill(D);
+            dgvSupplySalesDamage.DataSource = D;
+            for (int i = 0; i < dgvSupplySalesDamage.Rows.Count; i++)
+            {
+                if (float.Parse(dgvSupplySalesDamage.Rows[i].Cells[4].Value.ToString()) <= 0)
+                {
+                    dgvSupplySalesDamage.Rows[i].DefaultCellStyle.BackColor = Color.LightSalmon;
+                }
+                else if (float.Parse(dgvSupplySalesDamage.Rows[i].Cells[4].Value.ToString()) >= 1 && float.Parse(dgvSupplySalesDamage.Rows[i].Cells[4].Value.ToString()) <= 20)
+                {
+                    dgvSupplySalesDamage.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+                }
+                else
+                {
+                    dgvSupplySalesDamage.Rows[i].DefaultCellStyle.BackColor = Color.LightGreen;
+                }
+            }
+            
+            myConn.Close();
         }
         private void addSalesAvail_Loader()
         {
             String frameAvailString = "SELECT FL.frameName AS Frame, FL.Dimension, FL.UnitPrice AS 'Unit Price', IFNULL(FS.Stockin - (IFNULL(SOD.Stockout,0)),0) AS 'Quantity Left', " +
             "FL.frameItemID FROM frame_list AS FL " +
+            "LEFeT JOIN(SELECT d_i.inventoryID,SUM(IFNULL(d_i.quantity,0)) AS Damage FROM damage_items d_i GROUP BY d_i.inventoryID " +
+            "AS d_i ON FL.frameItemID = d_i.inventoryID " +
             "LEFT JOIN(SELECT FS.frameItemID, SUM(FS.stockinQuantity) AS Stockin FROM framestock_in AS FS GROUP BY FS.frameItemID) " +
             "AS FS ON FL.frameItemID = FS.frameItemID " +
             "LEFT JOIN(SELECT SOD.frameItemID, SUM(SOD.sOrd_Quantity) AS Stockout FROM sOrder_details AS SOD LEFT JOIN salesOrder AS SO ON SOD.sOrd_Num=SO.sOrd_Num WHERE SO.sOrd_status>0 GROUP BY SOD.frameItemID) " +
@@ -99,7 +122,7 @@ namespace PYLsystems
                 }
                 else if (float.Parse(dgvFrames.Rows[i].Cells[3].Value.ToString()) >= 1 && float.Parse(dgvFrames.Rows[i].Cells[3].Value.ToString()) <= 20)
                 {
-                    dgvFrames.Rows[i].DefaultCellStyle.BackColor = Color.LightYellow;
+                    dgvFrames.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
                 }
                 else
                 {
@@ -113,6 +136,7 @@ namespace PYLsystems
         {
             FillRemainingSupply();
             addSalesAvail_Loader();
+            materialsAvailability();
         }
     }
 }

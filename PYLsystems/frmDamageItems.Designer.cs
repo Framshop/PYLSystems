@@ -44,7 +44,7 @@
             // 
             // txtDamageReason
             // 
-            this.txtDamageReason.Location = new System.Drawing.Point(179, 71);
+            this.txtDamageReason.Location = new System.Drawing.Point(179, 79);
             this.txtDamageReason.Multiline = true;
             this.txtDamageReason.Name = "txtDamageReason";
             this.txtDamageReason.Size = new System.Drawing.Size(249, 85);
@@ -53,7 +53,7 @@
             // 
             // txtQuantity
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(179, 45);
+            this.txtQuantity.Location = new System.Drawing.Point(179, 53);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(249, 20);
             this.txtQuantity.TabIndex = 5;
@@ -64,7 +64,7 @@
             // 
             this.cboFrameName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFrameName.FormattingEnabled = true;
-            this.cboFrameName.Location = new System.Drawing.Point(179, 18);
+            this.cboFrameName.Location = new System.Drawing.Point(179, 26);
             this.cboFrameName.Name = "cboFrameName";
             this.cboFrameName.Size = new System.Drawing.Size(249, 21);
             this.cboFrameName.TabIndex = 3;
@@ -73,7 +73,7 @@
             // lblFrameName
             // 
             this.lblFrameName.AutoSize = true;
-            this.lblFrameName.Location = new System.Drawing.Point(12, 26);
+            this.lblFrameName.Location = new System.Drawing.Point(12, 34);
             this.lblFrameName.Name = "lblFrameName";
             this.lblFrameName.Size = new System.Drawing.Size(67, 13);
             this.lblFrameName.TabIndex = 4;
@@ -82,7 +82,7 @@
             // lblQuantity
             // 
             this.lblQuantity.AutoSize = true;
-            this.lblQuantity.Location = new System.Drawing.Point(12, 52);
+            this.lblQuantity.Location = new System.Drawing.Point(12, 60);
             this.lblQuantity.Name = "lblQuantity";
             this.lblQuantity.Size = new System.Drawing.Size(46, 13);
             this.lblQuantity.TabIndex = 6;
@@ -167,7 +167,7 @@
             this.Controls.Add(this.txtDamageReason);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmDamageItems";
-            this.Text = "Damage Items";
+            this.Text = "Damage Frame";
             this.Load += new System.EventHandler(this.frmDamageItems_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDamageItems)).EndInit();
             this.ResumeLayout(false);

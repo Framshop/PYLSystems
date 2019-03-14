@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblJobOrderID = new System.Windows.Forms.Label();
             this.lblPaymentType = new System.Windows.Forms.Label();
             this.lblSupplyItems = new System.Windows.Forms.Label();
             this.lblQuantity = new System.Windows.Forms.Label();
@@ -73,22 +72,16 @@
             this.txtSubtotal = new System.Windows.Forms.TextBox();
             this.lblDiscountedTotalAmount = new System.Windows.Forms.Label();
             this.txtDiscountedTotalAmount = new System.Windows.Forms.TextBox();
-            this.txtUnitMeasure = new System.Windows.Forms.TextBox();
             this.txtDiscount = new System.Windows.Forms.TextBox();
             this.lblValidate = new System.Windows.Forms.Label();
             this.lblCustomerPayment = new System.Windows.Forms.Label();
             this.txtCustomerPayment = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.lblSign = new System.Windows.Forms.Label();
+            this.txtUnitMeasure = new System.Windows.Forms.TextBox();
+            this.cboUnitMeasure = new System.Windows.Forms.ComboBox();
+            this.lblConverter = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // lblJobOrderID
-            // 
-            this.lblJobOrderID.AutoSize = true;
-            this.lblJobOrderID.Location = new System.Drawing.Point(37, 45);
-            this.lblJobOrderID.Name = "lblJobOrderID";
-            this.lblJobOrderID.Size = new System.Drawing.Size(93, 13);
-            this.lblJobOrderID.TabIndex = 0;
-            this.lblJobOrderID.Text = "Job Order Number";
             // 
             // lblPaymentType
             // 
@@ -111,7 +104,7 @@
             // lblQuantity
             // 
             this.lblQuantity.AutoSize = true;
-            this.lblQuantity.Location = new System.Drawing.Point(37, 536);
+            this.lblQuantity.Location = new System.Drawing.Point(37, 562);
             this.lblQuantity.Name = "lblQuantity";
             this.lblQuantity.Size = new System.Drawing.Size(46, 13);
             this.lblQuantity.TabIndex = 3;
@@ -138,7 +131,7 @@
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(37, 561);
+            this.lblPrice.Location = new System.Drawing.Point(37, 587);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(74, 13);
             this.lblPrice.TabIndex = 8;
@@ -165,7 +158,7 @@
             // lblSize
             // 
             this.lblSize.AutoSize = true;
-            this.lblSize.Location = new System.Drawing.Point(37, 509);
+            this.lblSize.Location = new System.Drawing.Point(37, 535);
             this.lblSize.Name = "lblSize";
             this.lblSize.Size = new System.Drawing.Size(27, 13);
             this.lblSize.TabIndex = 11;
@@ -234,7 +227,7 @@
             // 
             // txtQuantity
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(170, 528);
+            this.txtQuantity.Location = new System.Drawing.Point(170, 554);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(186, 20);
             this.txtQuantity.TabIndex = 22;
@@ -243,7 +236,7 @@
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(170, 554);
+            this.txtPrice.Location = new System.Drawing.Point(170, 580);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(186, 20);
             this.txtPrice.TabIndex = 23;
@@ -330,7 +323,7 @@
             // btnAddSupply
             // 
             this.btnAddSupply.Enabled = false;
-            this.btnAddSupply.Location = new System.Drawing.Point(362, 557);
+            this.btnAddSupply.Location = new System.Drawing.Point(362, 556);
             this.btnAddSupply.Name = "btnAddSupply";
             this.btnAddSupply.Size = new System.Drawing.Size(75, 23);
             this.btnAddSupply.TabIndex = 30;
@@ -361,7 +354,7 @@
             // 
             // txtSize
             // 
-            this.txtSize.Location = new System.Drawing.Point(170, 502);
+            this.txtSize.Location = new System.Drawing.Point(170, 528);
             this.txtSize.Name = "txtSize";
             this.txtSize.Size = new System.Drawing.Size(186, 20);
             this.txtSize.TabIndex = 33;
@@ -444,7 +437,7 @@
             // lblSubtotal
             // 
             this.lblSubtotal.AutoSize = true;
-            this.lblSubtotal.Location = new System.Drawing.Point(37, 587);
+            this.lblSubtotal.Location = new System.Drawing.Point(37, 613);
             this.lblSubtotal.Name = "lblSubtotal";
             this.lblSubtotal.Size = new System.Drawing.Size(46, 13);
             this.lblSubtotal.TabIndex = 42;
@@ -453,7 +446,7 @@
             // txtSubtotal
             // 
             this.txtSubtotal.Enabled = false;
-            this.txtSubtotal.Location = new System.Drawing.Point(170, 580);
+            this.txtSubtotal.Location = new System.Drawing.Point(170, 606);
             this.txtSubtotal.Name = "txtSubtotal";
             this.txtSubtotal.Size = new System.Drawing.Size(186, 20);
             this.txtSubtotal.TabIndex = 43;
@@ -475,14 +468,6 @@
             this.txtDiscountedTotalAmount.Name = "txtDiscountedTotalAmount";
             this.txtDiscountedTotalAmount.Size = new System.Drawing.Size(186, 20);
             this.txtDiscountedTotalAmount.TabIndex = 45;
-            // 
-            // txtUnitMeasure
-            // 
-            this.txtUnitMeasure.Enabled = false;
-            this.txtUnitMeasure.Location = new System.Drawing.Point(170, 449);
-            this.txtUnitMeasure.Name = "txtUnitMeasure";
-            this.txtUnitMeasure.Size = new System.Drawing.Size(186, 20);
-            this.txtUnitMeasure.TabIndex = 46;
             // 
             // txtDiscount
             // 
@@ -529,11 +514,54 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // lblSign
+            // 
+            this.lblSign.AutoSize = true;
+            this.lblSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSign.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.lblSign.Location = new System.Drawing.Point(459, 58);
+            this.lblSign.Name = "lblSign";
+            this.lblSign.Size = new System.Drawing.Size(196, 20);
+            this.lblSign.TabIndex = 52;
+            this.lblSign.Text = "Avoid Duplicate Entries";
+            // 
+            // txtUnitMeasure
+            // 
+            this.txtUnitMeasure.Enabled = false;
+            this.txtUnitMeasure.Location = new System.Drawing.Point(170, 449);
+            this.txtUnitMeasure.Name = "txtUnitMeasure";
+            this.txtUnitMeasure.Size = new System.Drawing.Size(186, 20);
+            this.txtUnitMeasure.TabIndex = 46;
+            // 
+            // cboUnitMeasure
+            // 
+            this.cboUnitMeasure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboUnitMeasure.FormattingEnabled = true;
+            this.cboUnitMeasure.Items.AddRange(new object[] {
+            "ft",
+            "inches"});
+            this.cboUnitMeasure.Location = new System.Drawing.Point(170, 501);
+            this.cboUnitMeasure.Name = "cboUnitMeasure";
+            this.cboUnitMeasure.Size = new System.Drawing.Size(186, 21);
+            this.cboUnitMeasure.TabIndex = 53;
+            // 
+            // lblConverter
+            // 
+            this.lblConverter.AutoSize = true;
+            this.lblConverter.Location = new System.Drawing.Point(37, 509);
+            this.lblConverter.Name = "lblConverter";
+            this.lblConverter.Size = new System.Drawing.Size(87, 13);
+            this.lblConverter.TabIndex = 54;
+            this.lblConverter.Text = "Conversion Type";
+            // 
             // frmJobOrderDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 599);
+            this.ClientSize = new System.Drawing.Size(913, 699);
+            this.Controls.Add(this.lblConverter);
+            this.Controls.Add(this.cboUnitMeasure);
+            this.Controls.Add(this.lblSign);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtCustomerPayment);
             this.Controls.Add(this.lblCustomerPayment);
@@ -573,7 +601,6 @@
             this.Controls.Add(this.lblQuantity);
             this.Controls.Add(this.lblSupplyItems);
             this.Controls.Add(this.lblPaymentType);
-            this.Controls.Add(this.lblJobOrderID);
             this.Controls.Add(this.txtJobOrderDate);
             this.Controls.Add(this.lblEmployeeID);
             this.Controls.Add(this.lblCustomerID);
@@ -586,8 +613,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblJobOrderID;
         private System.Windows.Forms.Label lblPaymentType;
         private System.Windows.Forms.Label lblSupplyItems;
         private System.Windows.Forms.Label lblQuantity;
@@ -632,11 +657,14 @@
         private System.Windows.Forms.TextBox txtSubtotal;
         private System.Windows.Forms.Label lblDiscountedTotalAmount;
         private System.Windows.Forms.TextBox txtDiscountedTotalAmount;
-        private System.Windows.Forms.TextBox txtUnitMeasure;
         private System.Windows.Forms.TextBox txtDiscount;
         private System.Windows.Forms.Label lblValidate;
         private System.Windows.Forms.Label lblCustomerPayment;
         private System.Windows.Forms.TextBox txtCustomerPayment;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblSign;
+        private System.Windows.Forms.TextBox txtUnitMeasure;
+        private System.Windows.Forms.ComboBox cboUnitMeasure;
+        private System.Windows.Forms.Label lblConverter;
     }
 }

@@ -36,6 +36,7 @@
             this.lblSupplyName = new System.Windows.Forms.Label();
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnAddFrame = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFrameStockInDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupply)).BeginInit();
             this.SuspendLayout();
@@ -46,7 +47,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvFrameStockInDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFrameStockInDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFrameStockInDetails.Location = new System.Drawing.Point(12, 41);
+            this.dgvFrameStockInDetails.Location = new System.Drawing.Point(12, 54);
             this.dgvFrameStockInDetails.Name = "dgvFrameStockInDetails";
             this.dgvFrameStockInDetails.Size = new System.Drawing.Size(703, 241);
             this.dgvFrameStockInDetails.TabIndex = 0;
@@ -119,11 +120,22 @@
             this.txtSearch.TabIndex = 7;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
+            // btnAddFrame
+            // 
+            this.btnAddFrame.Location = new System.Drawing.Point(640, 17);
+            this.btnAddFrame.Name = "btnAddFrame";
+            this.btnAddFrame.Size = new System.Drawing.Size(75, 23);
+            this.btnAddFrame.TabIndex = 8;
+            this.btnAddFrame.Text = "Add Frame";
+            this.btnAddFrame.UseVisualStyleBackColor = true;
+            this.btnAddFrame.Click += new System.EventHandler(this.btnAddFrame_Click);
+            // 
             // frmFrameDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(727, 609);
+            this.Controls.Add(this.btnAddFrame);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.lblSupplyName);
@@ -152,5 +164,6 @@
         private System.Windows.Forms.Label lblSupplyName;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnAddFrame;
     }
 }

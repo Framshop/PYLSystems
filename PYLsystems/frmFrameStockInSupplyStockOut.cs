@@ -70,14 +70,15 @@ namespace PYLsystems
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            LoginForm frmLogin = new LoginForm();
+            Home home = new Home();
             int MAX;
             MAX = lvwSupplyStockOut.Items.Count;
             myConn.Open();
             MySqlDataAdapter myAd;
-            DataTable myD = new DataTable();
-            MySqlCommand myCom = new MySqlCommand("SELECT * FROM framestock_in WHERE frameItemID= '" + cboFrameList.Text + "'", myConn);
+
+            MySqlCommand myCom = new MySqlCommand("SELECT * FROM framestock_in WHERE frameItemID= '" + lblFrameItemID.Text + "'", myConn);
             myAd = new MySqlDataAdapter(myCom);
+            DataTable myD = new DataTable();
             //ADD ----------
             MySqlDataReader myReader;
             myAd.Fill(myD);
@@ -88,7 +89,7 @@ namespace PYLsystems
             {
                 myConn.Close();
                 myConn.Open();
-                string myQuery = "INSERT INTO frameStock_In (employeeID,frameItemID,stockinQuantity,dateStockIn) values(" + frmLogin.employeeid+ ", " + lblFrameItemID.Text + "," + txtQuantityIn.Text + ",NOW())";
+                string myQuery = "INSERT INTO frameStock_In (employeeID,frameItemID,stockinQuantity,dateStockIn) values(" + Home.Global.empId + ", " + lblFrameItemID.Text + "," + txtQuantityIn.Text + ",NOW())";
                 MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                 MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                 DataTable myDt = new DataTable();
@@ -115,12 +116,13 @@ namespace PYLsystems
                 }
                 myConn.Close();
                 MessageBox.Show("Insert Successful!");
+                this.Close();
             }
             else
             {
-                lblValidate.Text = "There is already an existing stock for" + cboFrameList.Text;
+                lblValidate.Text = "There is already an existing stock for " + cboFrameList.Text;
             }
-            this.Close();
+           
         }
 
         public void DisplayFrameItem()
@@ -160,7 +162,7 @@ namespace PYLsystems
             txtSupplierName.Text = dataGridSupplyStockIn.CurrentRow.Cells[3].Value.ToString();
             txtUnitType.Text = dataGridSupplyStockIn.CurrentRow.Cells[0].Value.ToString();
 
-            string myQuery = "SELECT s.supplierName as 'supplierName',s_i.supplyName as 'supplyName',s_d.supply_price as 'supply_price',s_d.stockin_quantity as 'StockInSupply',SUM(f_m.stockout_quantity) as 'StockOutSupply',SUM(s_d.stockin_quantity - f_m.stockout_quantity) as 'AvailableSupply' FROM frame_materials f_m LEFT JOIN supply_details s_d ON s_d.supplyID = f_m.supply_detailsID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supplier s ON s.supplierID = s_d.supplierID WHERE s_d.supplyID = '" + lblSupplyID.Text + "' GROUP BY s_d.supplyID ORDER BY 'AvailableSupply' ";
+            string myQuery = "SELECT s.supplierName as 'Supplier Name',s_i.supplyName as 'Supply Name',SUM(s_d.stockin_quantity) as 'Supply Stock In',SUM(ifnull(quantity,0)) as 'Stock Out in Job Order',SUM(ifnull(f_m.stockout_quantity,0)) as 'Stock Out in Inventory',SUM(ifnull(f_m.stockout_quantity,0)) + SUM(ifnull(quantity,0)) as 'Overall Stock Out',SUM(s_d.stockin_quantity) - SUM(ifnull(f_m.stockout_quantity,0)) - SUM(ifnull(quantity,0)) as 'Remaining Supplies' FROM supply_details s_d LEFT JOIN jorder_details j_d ON s_d.supplyID = j_d.supply_itemsID LEFT JOIN frame_materials f_m ON f_m.supply_detailsID = s_d.supplierID LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.supplyID = " + lblSupplyID.Text + " GROUP BY s_d.supplyID";
             MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
             MySqlDataReader myReader;
             try
@@ -169,7 +171,7 @@ namespace PYLsystems
                 myReader = myComm.ExecuteReader();
                 while (myReader.Read())
                 {
-                    remainingItem = myReader.GetFloat(3);
+                    remainingItem = myReader.GetFloat(6);
                 }
                 myConn.Close();
             }

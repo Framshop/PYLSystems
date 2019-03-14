@@ -31,8 +31,10 @@
             this.dgvSupply = new System.Windows.Forms.DataGridView();
             this.dgvFrames = new System.Windows.Forms.DataGridView();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.dgvSupplySalesDamage = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupply)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFrames)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSupplySalesDamage)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvSupply
@@ -46,7 +48,7 @@
             this.dgvSupply.Location = new System.Drawing.Point(12, 12);
             this.dgvSupply.Name = "dgvSupply";
             this.dgvSupply.ReadOnly = true;
-            this.dgvSupply.Size = new System.Drawing.Size(727, 226);
+            this.dgvSupply.Size = new System.Drawing.Size(426, 226);
             this.dgvSupply.TabIndex = 0;
             // 
             // dgvFrames
@@ -60,7 +62,7 @@
             this.dgvFrames.Location = new System.Drawing.Point(12, 244);
             this.dgvFrames.Name = "dgvFrames";
             this.dgvFrames.ReadOnly = true;
-            this.dgvFrames.Size = new System.Drawing.Size(727, 226);
+            this.dgvFrames.Size = new System.Drawing.Size(426, 226);
             this.dgvFrames.TabIndex = 1;
             // 
             // btnCancel
@@ -73,11 +75,21 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // dgvSupplySalesDamage
+            // 
+            this.dgvSupplySalesDamage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvSupplySalesDamage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSupplySalesDamage.Location = new System.Drawing.Point(444, 12);
+            this.dgvSupplySalesDamage.Name = "dgvSupplySalesDamage";
+            this.dgvSupplySalesDamage.Size = new System.Drawing.Size(351, 458);
+            this.dgvSupplySalesDamage.TabIndex = 3;
+            // 
             // frmRemainingSupplyFrames
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 524);
+            this.ClientSize = new System.Drawing.Size(807, 524);
+            this.Controls.Add(this.dgvSupplySalesDamage);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.dgvFrames);
             this.Controls.Add(this.dgvSupply);
@@ -86,6 +98,7 @@
             this.Load += new System.EventHandler(this.frmRemainingSupplyFrames_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupply)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFrames)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSupplySalesDamage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -95,5 +108,6 @@
         private System.Windows.Forms.DataGridView dgvSupply;
         private System.Windows.Forms.DataGridView dgvFrames;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.DataGridView dgvSupplySalesDamage;
     }
 }

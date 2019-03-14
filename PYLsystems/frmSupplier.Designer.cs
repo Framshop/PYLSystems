@@ -47,13 +47,15 @@
             this.lblValidate = new System.Windows.Forms.Label();
             this.msktxtContactNumber = new System.Windows.Forms.MaskedTextBox();
             this.lblSupplierID = new System.Windows.Forms.Label();
+            this.lblAddress = new System.Windows.Forms.Label();
+            this.txtAddress = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.supplierGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 63);
+            this.label1.Location = new System.Drawing.Point(22, 70);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 2;
@@ -62,7 +64,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 137);
+            this.label2.Location = new System.Drawing.Point(22, 122);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 13);
             this.label2.TabIndex = 6;
@@ -71,7 +73,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 101);
+            this.label3.Location = new System.Drawing.Point(22, 148);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 4;
@@ -79,7 +81,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(114, 63);
+            this.txtName.Location = new System.Drawing.Point(112, 63);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(155, 20);
             this.txtName.TabIndex = 1;
@@ -87,9 +89,10 @@
             // 
             // txtDetails
             // 
-            this.txtDetails.Location = new System.Drawing.Point(112, 101);
+            this.txtDetails.Location = new System.Drawing.Point(112, 141);
+            this.txtDetails.Multiline = true;
             this.txtDetails.Name = "txtDetails";
-            this.txtDetails.Size = new System.Drawing.Size(155, 20);
+            this.txtDetails.Size = new System.Drawing.Size(155, 88);
             this.txtDetails.TabIndex = 3;
             this.txtDetails.TextAlignChanged += new System.EventHandler(this.txtDetails_TextAlignChanged);
             // 
@@ -105,7 +108,7 @@
             // addBtn
             // 
             this.addBtn.Enabled = false;
-            this.addBtn.Location = new System.Drawing.Point(25, 170);
+            this.addBtn.Location = new System.Drawing.Point(25, 249);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(75, 23);
             this.addBtn.TabIndex = 7;
@@ -125,7 +128,7 @@
             this.supplierGrid.Location = new System.Drawing.Point(273, 63);
             this.supplierGrid.Name = "supplierGrid";
             this.supplierGrid.ReadOnly = true;
-            this.supplierGrid.Size = new System.Drawing.Size(315, 191);
+            this.supplierGrid.Size = new System.Drawing.Size(348, 341);
             this.supplierGrid.TabIndex = 11;
             this.supplierGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.supplierGrid_CellClick);
             this.supplierGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.supplierGrid_CellContentClick);
@@ -133,7 +136,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Enabled = false;
-            this.btnUpdate.Location = new System.Drawing.Point(129, 170);
+            this.btnUpdate.Location = new System.Drawing.Point(129, 249);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 8;
@@ -196,7 +199,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(25, 216);
+            this.btnCancel.Location = new System.Drawing.Point(25, 295);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 9;
@@ -208,18 +211,18 @@
             // 
             this.lblValidate.AutoSize = true;
             this.lblValidate.ForeColor = System.Drawing.Color.Red;
-            this.lblValidate.Location = new System.Drawing.Point(26, 196);
+            this.lblValidate.Location = new System.Drawing.Point(111, 47);
             this.lblValidate.Name = "lblValidate";
             this.lblValidate.Size = new System.Drawing.Size(0, 13);
             this.lblValidate.TabIndex = 16;
             // 
             // msktxtContactNumber
             // 
-            this.msktxtContactNumber.Location = new System.Drawing.Point(112, 137);
+            this.msktxtContactNumber.Location = new System.Drawing.Point(112, 115);
             this.msktxtContactNumber.Mask = "00000000000";
             this.msktxtContactNumber.Name = "msktxtContactNumber";
             this.msktxtContactNumber.PromptChar = ' ';
-            this.msktxtContactNumber.Size = new System.Drawing.Size(157, 20);
+            this.msktxtContactNumber.Size = new System.Drawing.Size(155, 20);
             this.msktxtContactNumber.TabIndex = 5;
             this.msktxtContactNumber.TextChanged += new System.EventHandler(this.msktxtContactNumber_TextChanged);
             // 
@@ -233,11 +236,29 @@
             this.lblSupplierID.TabIndex = 18;
             this.lblSupplierID.Visible = false;
             // 
+            // lblAddress
+            // 
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Location = new System.Drawing.Point(22, 96);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(45, 13);
+            this.lblAddress.TabIndex = 19;
+            this.lblAddress.Text = "Address";
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(112, 89);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(155, 20);
+            this.txtAddress.TabIndex = 20;
+            // 
             // frmSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(616, 274);
+            this.ClientSize = new System.Drawing.Size(649, 424);
+            this.Controls.Add(this.txtAddress);
+            this.Controls.Add(this.lblAddress);
             this.Controls.Add(this.lblSupplierID);
             this.Controls.Add(this.msktxtContactNumber);
             this.Controls.Add(this.lblValidate);
@@ -287,5 +308,7 @@
         private System.Windows.Forms.Label lblValidate;
         private System.Windows.Forms.MaskedTextBox msktxtContactNumber;
         private System.Windows.Forms.Label lblSupplierID;
+        private System.Windows.Forms.Label lblAddress;
+        private System.Windows.Forms.TextBox txtAddress;
     }
 }

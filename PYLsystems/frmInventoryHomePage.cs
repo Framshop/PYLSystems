@@ -31,8 +31,7 @@ namespace PYLsystems
 
         private void btnFrameList_Click(object sender, EventArgs e)
         {
-            frmFrameList FrameList = new frmFrameList();
-            FrameList.ShowDialog();
+           
         }
 
         private void btnFrameDetails_Click(object sender, EventArgs e)
@@ -81,6 +80,18 @@ namespace PYLsystems
         {
             frmRemainingSupplyFrames remainingSupplyFrames = new frmRemainingSupplyFrames();
             remainingSupplyFrames.ShowDialog();
+        }
+
+        private void btnSales_Materials_Click(object sender, EventArgs e)
+        {
+            sales_materials sales_Materials = new sales_materials();
+            sales_Materials.ShowDialog();
+        }
+
+        private void btnDamageMaterials_Click(object sender, EventArgs e)
+        {
+            frmDamageMaterials damageMaterials = new frmDamageMaterials();
+            damageMaterials.ShowDialog();
         }
     }
 }
