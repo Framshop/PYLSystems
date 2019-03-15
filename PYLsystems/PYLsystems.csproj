@@ -124,6 +124,18 @@
     <Compile Include="frmDamageItems.Designer.cs">
       <DependentUpon>frmDamageItems.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDamageMaterials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDamageMaterials.Designer.cs">
+      <DependentUpon>frmDamageMaterials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmdamage_materials_update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmdamage_materials_update.Designer.cs">
+      <DependentUpon>frmdamage_materials_update.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEmployeeList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +220,12 @@
     <Compile Include="frmRemainingSupplyFrames.Designer.cs">
       <DependentUpon>frmRemainingSupplyFrames.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmsales_materials_update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmsales_materials_update.Designer.cs">
+      <DependentUpon>frmsales_materials_update.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSetWorkDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -268,8 +286,20 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="materials_stockin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="materials_stockin.Designer.cs">
+      <DependentUpon>materials_stockin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sales_materials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sales_materials.Designer.cs">
+      <DependentUpon>sales_materials.cs</DependentUpon>
+    </Compile>
     <Compile Include="viewProductsSold.cs">
       <SubType>Form</SubType>
     </Compile>
