@@ -43,12 +43,13 @@
             this.msktxtContactPerson = new System.Windows.Forms.MaskedTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.grpInfo = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblCustomerAccountID = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.lblValidate = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnPay = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerAccount)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.grpInfo.SuspendLayout();
@@ -198,6 +199,7 @@
             // 
             // grpInfo
             // 
+            this.grpInfo.Controls.Add(this.btnPay);
             this.grpInfo.Controls.Add(this.label1);
             this.grpInfo.Controls.Add(this.lblCustomerAccountID);
             this.grpInfo.Controls.Add(this.txtSearch);
@@ -223,6 +225,17 @@
             this.grpInfo.TabIndex = 15;
             this.grpInfo.TabStop = false;
             this.grpInfo.Text = " ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(149, 126);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Optional";
             // 
             // lblCustomerAccountID
             // 
@@ -269,16 +282,16 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // label1
+            // btnPay
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(149, 126);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Optional";
+            this.btnPay.Enabled = false;
+            this.btnPay.Location = new System.Drawing.Point(107, 294);
+            this.btnPay.Name = "btnPay";
+            this.btnPay.Size = new System.Drawing.Size(75, 23);
+            this.btnPay.TabIndex = 19;
+            this.btnPay.Text = "Pay";
+            this.btnPay.UseVisualStyleBackColor = true;
+            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
             // frmCustomerAccount
             // 
@@ -321,5 +334,6 @@
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.Label lblCustomerAccountID;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnPay;
     }
 }

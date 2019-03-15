@@ -80,29 +80,29 @@ namespace PYLsystems
             DataTable D = new DataTable();
             Adp.Fill(D);
             dgvSupplySalesDamage.DataSource = D;
-            for (int i = 0; i < dgvSupplySalesDamage.Rows.Count; i++)
-            {
-                if (float.Parse(dgvSupplySalesDamage.Rows[i].Cells[4].Value.ToString()) <= 0)
-                {
-                    dgvSupplySalesDamage.Rows[i].DefaultCellStyle.BackColor = Color.LightSalmon;
-                }
-                else if (float.Parse(dgvSupplySalesDamage.Rows[i].Cells[4].Value.ToString()) >= 1 && float.Parse(dgvSupplySalesDamage.Rows[i].Cells[4].Value.ToString()) <= 20)
-                {
-                    dgvSupplySalesDamage.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
-                }
-                else
-                {
-                    dgvSupplySalesDamage.Rows[i].DefaultCellStyle.BackColor = Color.LightGreen;
-                }
-            }
-            
+            //for (int i = 0; i < dgvSupplySalesDamage.Rows.Count; i++)
+            //{
+            //    if (float.Parse(dgvSupplySalesDamage.Rows[i].Cells[4].Value.ToString()) <= 0)
+            //    {
+            //        dgvSupplySalesDamage.Rows[i].DefaultCellStyle.BackColor = Color.LightSalmon;
+            //    }
+            //    else if (float.Parse(dgvSupplySalesDamage.Rows[i].Cells[4].Value.ToString()) >= 1 && float.Parse(dgvSupplySalesDamage.Rows[i].Cells[4].Value.ToString()) <= 20)
+            //    {
+            //        dgvSupplySalesDamage.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+            //    }
+            //    else
+            //    {
+            //        dgvSupplySalesDamage.Rows[i].DefaultCellStyle.BackColor = Color.LightGreen;
+            //    }
+            //}
+
             myConn.Close();
         }
         private void addSalesAvail_Loader()
         {
             String frameAvailString = "SELECT FL.frameName AS Frame, FL.Dimension, FL.UnitPrice AS 'Unit Price', IFNULL(FS.Stockin - (IFNULL(SOD.Stockout,0)),0) AS 'Quantity Left', " +
             "FL.frameItemID FROM frame_list AS FL " +
-            "LEFeT JOIN(SELECT d_i.inventoryID,SUM(IFNULL(d_i.quantity,0)) AS Damage FROM damage_items d_i GROUP BY d_i.inventoryID " +
+            "LEFT JOIN(SELECT d_i.inventoryID,SUM(IFNULL(d_i.quantity,0)) AS Damage FROM damaged_items d_i GROUP BY d_i.inventoryID) " +
             "AS d_i ON FL.frameItemID = d_i.inventoryID " +
             "LEFT JOIN(SELECT FS.frameItemID, SUM(FS.stockinQuantity) AS Stockin FROM framestock_in AS FS GROUP BY FS.frameItemID) " +
             "AS FS ON FL.frameItemID = FS.frameItemID " +

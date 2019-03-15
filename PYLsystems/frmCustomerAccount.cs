@@ -110,6 +110,7 @@ namespace PYLsystems
 
         private void dgvCustomerAccount_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             lblCustomerAccountID.Text = dgvCustomerAccount.CurrentRow.Cells[0].Value.ToString();
             customerID = dgvCustomerAccount.CurrentRow.Cells[0].Value.ToString();
             txtFullName.Text = dgvCustomerAccount.CurrentRow.Cells[1].Value.ToString();
@@ -147,10 +148,12 @@ namespace PYLsystems
             if (lblCustomerAccountID.Text != "")
             {
                 btnUpdate.Enabled = true;
+                btnPay.Enabled = true;
             }
             else
             {
                 btnUpdate.Enabled = false;
+                btnPay.Enabled = false;
             }
         }
         public void functionEmailValidation()
@@ -238,9 +241,15 @@ namespace PYLsystems
         }
         private void dgvCustomerAccount_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            frmCustomerPayment frmCustomerPayment = new frmCustomerPayment();
-            frmCustomerPayment.customerID = dgvCustomerAccount.CurrentRow.Cells[0].Value.ToString();
-            frmCustomerPayment.ShowDialog();
+        }
+
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+
+            frmCustomerPayment customerPayment = new frmCustomerPayment();
+            customerPayment.lblCustomerID.Text = dgvCustomerAccount.CurrentRow.Cells[0].Value.ToString(); 
+            customerPayment.txtCustomerName.Text = dgvCustomerAccount.CurrentRow.Cells[1].Value.ToString();
+            customerPayment.ShowDialog();
         }
     }
 }

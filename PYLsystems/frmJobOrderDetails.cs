@@ -109,7 +109,7 @@ namespace PYLsystems
         private void cboSupplyItems_SelectedIndexChanged(object sender, EventArgs e)
         {
             functionAddSupply();
-            string myQuery = "SELECT s_d.supplyID,s.supplierName,s_d.supply_price,s_i.unitmeasure FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE supplyName = '" + cboSupplyItems.Text + "'";
+            string myQuery = "SELECT s_d.supplyID,s.supplierName,s_d.supply_price,s_i.unitmeasure,s_i.sales_price FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE supplyName = '" + cboSupplyItems.Text + "'";
             MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
             MySqlDataReader myReader;
             try
@@ -124,6 +124,7 @@ namespace PYLsystems
                     lblSupplyID.Text = supplyID;
                     txtSupplyPrice.Text = myReader.GetString(2);
                     txtUnitMeasure.Text = myReader.GetString(3);
+                    txtPrice.Text = myReader.GetString(4);
                 }
                 myConn.Close();
 
@@ -245,10 +246,10 @@ namespace PYLsystems
                 }
                 else if (cboUnitMeasure.Text == "ft" && txtUnitMeasure.Text == "inches")
                 {
-                    txtSize.Text = (float.Parse(txtQuantity.Text) / 12).ToString();
+           
                     if (txtQuantity.TextLength > 0)
                     {
-                        txtSubtotal.Text = (float.Parse(txtPrice.Text) * float.Parse(txtSize.Text)).ToString();
+                        txtSubtotal.Text = (float.Parse(txtPrice.Text) * float.Parse(txtQuantity.Text)).ToString();
                     }
                     else
                     {
@@ -257,10 +258,10 @@ namespace PYLsystems
                 }
                 else if (cboUnitMeasure.Text == "inches" && txtUnitMeasure.Text == "ft")
                 {
-                    txtSize.Text = (float.Parse(txtQuantity.Text) * 12).ToString();
+              
                     if (txtQuantity.TextLength > 0)
                     {
-                        txtSubtotal.Text = (float.Parse(txtPrice.Text) * float.Parse(txtSize.Text)).ToString();
+                        txtSubtotal.Text = (float.Parse(txtPrice.Text) * float.Parse(txtQuantity.Text)).ToString();
                     }
                     else
                     {
@@ -309,6 +310,30 @@ namespace PYLsystems
         private void txtSize_TextChanged(object sender, EventArgs e)
         {
             functionAddSupply();
+            try
+            {
+                if (cboUnitMeasure.Text == "ft" && txtUnitMeasure.Text == "ft")
+                {
+                    txtQuantity.Text = txtSize.Text;
+                }
+                else if (cboUnitMeasure.Text == "ft" && txtUnitMeasure.Text == "inches")
+                {
+                    txtQuantity.Text = (float.Parse(txtSize.Text ) / 12).ToString();
+                }
+                else if (cboUnitMeasure.Text == "inches" && txtUnitMeasure.Text == "ft")
+                {
+                    txtQuantity.Text = (float.Parse(txtSize.Text) * 12).ToString();
+                }
+                else
+                {
+                    txtQuantity.Text = txtSize.Text;
+                }
+
+            }
+            catch
+            {
+
+            }
         }
 
         private void txtUnitMeasure_SelectedIndexChanged(object sender, EventArgs e)
@@ -577,6 +602,11 @@ namespace PYLsystems
             custAccount.ShowDialog();
             fillCustomerName();
             
+        }
+
+        private void cboUnitMeasure_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtSize.Enabled = true;
         }
     }
 }

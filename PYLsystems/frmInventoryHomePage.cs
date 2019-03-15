@@ -84,13 +84,13 @@ namespace PYLsystems
 
         private void btnSales_Materials_Click(object sender, EventArgs e)
         {
-            sales_materials sales_Materials = new sales_materials();
+          sales_materials sales_Materials = new sales_materials();
             sales_Materials.ShowDialog();
         }
 
         private void btnDamageMaterials_Click(object sender, EventArgs e)
         {
-            frmDamageMaterials damageMaterials = new frmDamageMaterials();
+          frmDamageMaterials damageMaterials = new frmDamageMaterials();
             damageMaterials.ShowDialog();
         }
     }

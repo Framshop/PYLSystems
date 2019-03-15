@@ -106,9 +106,9 @@
             this.lblQuantity.AutoSize = true;
             this.lblQuantity.Location = new System.Drawing.Point(37, 562);
             this.lblQuantity.Name = "lblQuantity";
-            this.lblQuantity.Size = new System.Drawing.Size(46, 13);
+            this.lblQuantity.Size = new System.Drawing.Size(99, 13);
             this.lblQuantity.TabIndex = 3;
-            this.lblQuantity.Text = "Quantity";
+            this.lblQuantity.Text = "Quantity Equivalent";
             // 
             // lblUnitMeasure
             // 
@@ -160,9 +160,9 @@
             this.lblSize.AutoSize = true;
             this.lblSize.Location = new System.Drawing.Point(37, 535);
             this.lblSize.Name = "lblSize";
-            this.lblSize.Size = new System.Drawing.Size(27, 13);
+            this.lblSize.Size = new System.Drawing.Size(98, 13);
             this.lblSize.TabIndex = 11;
-            this.lblSize.Text = "Size";
+            this.lblSize.Text = "Converted Quantity";
             // 
             // lblJobOrderDate
             // 
@@ -227,6 +227,7 @@
             // 
             // txtQuantity
             // 
+            this.txtQuantity.Enabled = false;
             this.txtQuantity.Location = new System.Drawing.Point(170, 554);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(186, 20);
@@ -236,6 +237,7 @@
             // 
             // txtPrice
             // 
+            this.txtPrice.Enabled = false;
             this.txtPrice.Location = new System.Drawing.Point(170, 580);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(186, 20);
@@ -275,7 +277,7 @@
             this.chSubtotal});
             this.lvwJobDetails.Location = new System.Drawing.Point(364, 87);
             this.lvwJobDetails.Name = "lvwJobDetails";
-            this.lvwJobDetails.Size = new System.Drawing.Size(800, 435);
+            this.lvwJobDetails.Size = new System.Drawing.Size(1257, 435);
             this.lvwJobDetails.TabIndex = 29;
             this.lvwJobDetails.UseCompatibleStateImageBehavior = false;
             this.lvwJobDetails.View = System.Windows.Forms.View.Details;
@@ -297,7 +299,7 @@
             // 
             // chSize
             // 
-            this.chSize.Text = "Size";
+            this.chSize.Text = "Converted Quantity";
             this.chSize.Width = 100;
             // 
             // chUnitMeasure
@@ -307,7 +309,7 @@
             // 
             // chQuantity
             // 
-            this.chQuantity.Text = "Quantity";
+            this.chQuantity.Text = "Quantity Equivalent";
             this.chQuantity.Width = 100;
             // 
             // chPrice
@@ -354,6 +356,7 @@
             // 
             // txtSize
             // 
+            this.txtSize.Enabled = false;
             this.txtSize.Location = new System.Drawing.Point(170, 528);
             this.txtSize.Name = "txtSize";
             this.txtSize.Size = new System.Drawing.Size(186, 20);
@@ -544,6 +547,7 @@
             this.cboUnitMeasure.Name = "cboUnitMeasure";
             this.cboUnitMeasure.Size = new System.Drawing.Size(186, 21);
             this.cboUnitMeasure.TabIndex = 53;
+            this.cboUnitMeasure.SelectedIndexChanged += new System.EventHandler(this.cboUnitMeasure_SelectedIndexChanged);
             // 
             // lblConverter
             // 
@@ -558,7 +562,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 699);
+            this.ClientSize = new System.Drawing.Size(1370, 705);
             this.Controls.Add(this.lblConverter);
             this.Controls.Add(this.cboUnitMeasure);
             this.Controls.Add(this.lblSign);
