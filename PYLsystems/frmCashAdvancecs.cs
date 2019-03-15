@@ -51,11 +51,27 @@ namespace PYLsystems
             //}
             //String DefaultStartDate = DateTime.Today.AddDays(-(int)DateTime.Now.DayOfWeek - 6).ToString("yyyy-MM-dd");
             //String DefaultEndDate = saturdayDate.ToString("yyyy-MM-dd");
-            DateStart = DateTime.Today.AddDays(((int)DayOfWeek.Monday - (int)DateTime.Today.DayOfWeek + 7) % 7);
-            DateEnd = DateStart.AddDays(((int)DayOfWeek.Saturday - (int)DateStart.DayOfWeek + 7) % 7);
-            startDatePicker.Value = DateStart.AddHours(0).AddMinutes(0).AddSeconds(0);
-            endDatePicker.Value = DateEnd.AddHours(23).AddMinutes(59).AddSeconds(59);
-            datePickerCashAdv.Value = DateStart.AddDays(((int)DayOfWeek.Wednesday - (int)DateStart.DayOfWeek + 7) % 7);
+            if (DateTime.Today.DayOfWeek > DayOfWeek.Wednesday)
+            {
+                DateStart = DateTime.Today.AddDays(((int)DayOfWeek.Monday - (int)DateTime.Today.DayOfWeek + 7) % 7);
+                DateEnd = DateStart.AddDays(((int)DayOfWeek.Saturday - (int)DateStart.DayOfWeek + 7) % 7);
+                startDatePicker.Value = DateStart.AddHours(0).AddMinutes(0).AddSeconds(0);
+                endDatePicker.Value = DateEnd.AddHours(23).AddMinutes(59).AddSeconds(59);
+                datePickerCashAdv.Value = DateStart.AddDays(((int)DayOfWeek.Wednesday - (int)DateStart.DayOfWeek + 7) % 7);
+            }
+            else
+            {
+                DayOfWeek day = DateTime.Now.DayOfWeek;
+                int days = day - DayOfWeek.Monday;
+                DateTime start = DateTime.Now.AddDays(-days);
+                DateTime end = start.AddDays(5);
+
+                //String DefaultStartDate = DateTime.Today.AddDays(-(int)DateTime.Now.DayOfWeek - 6).ToString("yyyy-MM-dd");
+                DateStart = start;
+                DateEnd = end;
+                startDatePicker.Value = start;
+                endDatePicker.Value = end;
+            }
             //MessageBox.Show(endDatePicker.Value.ToString());
 
         }
