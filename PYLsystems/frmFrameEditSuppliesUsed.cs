@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PYLsystems
 {
-    public partial class frmFrameStockInUpdate : Form
+    public partial class frmFrameEditSuppliesUsed : Form
     {
-        public frmFrameStockInUpdate()
+        public frmFrameEditSuppliesUsed()
         {
             InitializeComponent();
         }
