@@ -19,6 +19,16 @@ namespace PYLsystems
 
             InitializeComponent();
         }
-        
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            frmFrameStockInUpdate UpdateStockIn = new frmFrameStockInUpdate();
+            UpdateStockIn.ShowDialog();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

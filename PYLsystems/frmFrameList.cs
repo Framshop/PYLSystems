@@ -29,5 +29,33 @@ namespace PYLsystems
         {
         }
 
+        private void btnCreateFrame_Click(object sender, EventArgs e)
+        {
+            frmFrameCreate formCreateAFrame = new frmFrameCreate();
+            formCreateAFrame.ShowDialog();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            frmFrameEdit formEditFrame = new frmFrameEdit();
+            formEditFrame.ShowDialog();
+        }
+
+        private void btnStockIn_Click(object sender, EventArgs e)
+        {
+            frmFrameStockInAdd formFrameStockIn = new frmFrameStockInAdd();
+            formFrameStockIn.ShowDialog();
+        }
+
+        private void btnArchiveList_Click(object sender, EventArgs e)
+        {
+            frmFrameArchivedList formFrameArchiveL = new frmFrameArchivedList();
+            formFrameArchiveL.ShowDialog();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

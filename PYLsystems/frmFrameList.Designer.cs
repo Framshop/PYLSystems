@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -43,10 +43,10 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnCreateFrame = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnArchiveList = new System.Windows.Forms.Button();
             this.btnStockIn = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.closeBtn = new System.Windows.Forms.Button();
+            this.btnArchiveFrame = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -147,14 +147,14 @@
             this.dgvFrameStockInDetails.AllowUserToResizeRows = false;
             this.dgvFrameStockInDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFrameStockInDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFrameStockInDetails.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFrameStockInDetails.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvFrameStockInDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvFrameStockInDetails.Location = new System.Drawing.Point(3, 22);
             this.dgvFrameStockInDetails.Name = "dgvFrameStockInDetails";
@@ -183,14 +183,14 @@
             this.dgvSupply.AllowUserToResizeRows = false;
             this.dgvSupply.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSupply.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSupply.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSupply.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvSupply.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSupply.Location = new System.Drawing.Point(3, 22);
             this.dgvSupply.Name = "dgvSupply";
@@ -222,10 +222,10 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel4.Controls.Add(this.btnEdit, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnCreateFrame, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.button1, 3, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btnArchiveList, 3, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnStockIn, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.button2, 2, 0);
-            this.tableLayoutPanel4.Controls.Add(this.closeBtn, 5, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btnArchiveFrame, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btnClose, 5, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 22);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -245,6 +245,7 @@
             this.btnEdit.TabIndex = 13;
             this.btnEdit.Text = "Edit Frame Details";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnCreateFrame
             // 
@@ -257,18 +258,20 @@
             this.btnCreateFrame.TabIndex = 8;
             this.btnCreateFrame.Text = "Create-a-Frame ";
             this.btnCreateFrame.UseVisualStyleBackColor = true;
+            this.btnCreateFrame.Click += new System.EventHandler(this.btnCreateFrame_Click);
             // 
-            // button1
+            // btnArchiveList
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnArchiveList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(767, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(185, 51);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "List of Archived Frame";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnArchiveList.Location = new System.Drawing.Point(767, 3);
+            this.btnArchiveList.Name = "btnArchiveList";
+            this.btnArchiveList.Size = new System.Drawing.Size(185, 51);
+            this.btnArchiveList.TabIndex = 11;
+            this.btnArchiveList.Text = "List of Archived Frame";
+            this.btnArchiveList.UseVisualStyleBackColor = true;
+            this.btnArchiveList.Click += new System.EventHandler(this.btnArchiveList_Click);
             // 
             // btnStockIn
             // 
@@ -281,29 +284,31 @@
             this.btnStockIn.TabIndex = 9;
             this.btnStockIn.Text = "Stock In Frame";
             this.btnStockIn.UseVisualStyleBackColor = true;
+            this.btnStockIn.Click += new System.EventHandler(this.btnStockIn_Click);
             // 
-            // button2
+            // btnArchiveFrame
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnArchiveFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(576, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(185, 51);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Archive Frame";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnArchiveFrame.Location = new System.Drawing.Point(576, 3);
+            this.btnArchiveFrame.Name = "btnArchiveFrame";
+            this.btnArchiveFrame.Size = new System.Drawing.Size(185, 51);
+            this.btnArchiveFrame.TabIndex = 12;
+            this.btnArchiveFrame.Text = "Archive Frame";
+            this.btnArchiveFrame.UseVisualStyleBackColor = true;
             // 
-            // closeBtn
+            // btnClose
             // 
-            this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeBtn.Location = new System.Drawing.Point(1011, 3);
-            this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(137, 51);
-            this.closeBtn.TabIndex = 10;
-            this.closeBtn.Text = "Close";
-            this.closeBtn.UseVisualStyleBackColor = true;
+            this.btnClose.Location = new System.Drawing.Point(1011, 3);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(137, 51);
+            this.btnClose.TabIndex = 10;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // groupBox4
             // 
@@ -355,9 +360,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button btnStockIn;
         private System.Windows.Forms.Button btnCreateFrame;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnArchiveList;
+        private System.Windows.Forms.Button btnArchiveFrame;
         private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button closeBtn;
+        private System.Windows.Forms.Button btnClose;
     }
 }

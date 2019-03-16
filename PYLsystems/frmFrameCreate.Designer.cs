@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -42,21 +42,21 @@
             this.txtBoxAmount = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnCreateFrame = new System.Windows.Forms.Button();
-            this.btnStockIn = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAddSupply = new System.Windows.Forms.Button();
+            this.btnEditSupply = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lblEmpName = new System.Windows.Forms.Label();
-            this.txtBoxEmployeeName = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.btnCreate = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.lblEmpName = new System.Windows.Forms.Label();
+            this.txtBoxEmployeeName = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -151,14 +151,14 @@
             this.datagridPayrollCalc.AllowUserToResizeRows = false;
             this.datagridPayrollCalc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.datagridPayrollCalc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.datagridPayrollCalc.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.datagridPayrollCalc.DefaultCellStyle = dataGridViewCellStyle1;
             this.datagridPayrollCalc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.datagridPayrollCalc.Location = new System.Drawing.Point(3, 22);
             this.datagridPayrollCalc.Name = "datagridPayrollCalc";
@@ -234,9 +234,9 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0008F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0008F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0008F));
-            this.tableLayoutPanel6.Controls.Add(this.btnCreateFrame, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.btnStockIn, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.button2, 2, 0);
+            this.tableLayoutPanel6.Controls.Add(this.btnAddSupply, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.btnEditSupply, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.btnRemove, 2, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 22);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -245,41 +245,43 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(823, 73);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
-            // btnCreateFrame
+            // btnAddSupply
             // 
-            this.btnCreateFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnAddSupply.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreateFrame.Location = new System.Drawing.Point(3, 3);
-            this.btnCreateFrame.Name = "btnCreateFrame";
-            this.btnCreateFrame.Size = new System.Drawing.Size(268, 67);
-            this.btnCreateFrame.TabIndex = 8;
-            this.btnCreateFrame.Text = "Add a Supply";
-            this.btnCreateFrame.UseVisualStyleBackColor = true;
+            this.btnAddSupply.Location = new System.Drawing.Point(3, 3);
+            this.btnAddSupply.Name = "btnAddSupply";
+            this.btnAddSupply.Size = new System.Drawing.Size(268, 67);
+            this.btnAddSupply.TabIndex = 8;
+            this.btnAddSupply.Text = "Add a Supply";
+            this.btnAddSupply.UseVisualStyleBackColor = true;
+            this.btnAddSupply.Click += new System.EventHandler(this.btnAddSupply_Click);
             // 
-            // btnStockIn
+            // btnEditSupply
             // 
-            this.btnStockIn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnEditSupply.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStockIn.Location = new System.Drawing.Point(277, 3);
-            this.btnStockIn.Name = "btnStockIn";
-            this.btnStockIn.Size = new System.Drawing.Size(268, 67);
-            this.btnStockIn.TabIndex = 9;
-            this.btnStockIn.Text = "Edit Supply";
-            this.btnStockIn.UseVisualStyleBackColor = true;
+            this.btnEditSupply.Location = new System.Drawing.Point(277, 3);
+            this.btnEditSupply.Name = "btnEditSupply";
+            this.btnEditSupply.Size = new System.Drawing.Size(268, 67);
+            this.btnEditSupply.TabIndex = 9;
+            this.btnEditSupply.Text = "Edit Supply";
+            this.btnEditSupply.UseVisualStyleBackColor = true;
+            this.btnEditSupply.Click += new System.EventHandler(this.btnEditSupply_Click);
             // 
-            // button2
+            // btnRemove
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(551, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(269, 67);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Remove Supply";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnRemove.Location = new System.Drawing.Point(551, 3);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(269, 67);
+            this.btnRemove.TabIndex = 12;
+            this.btnRemove.Text = "Remove Supply";
+            this.btnRemove.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel5
             // 
@@ -314,6 +316,58 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Frame Creation Details";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(48, 173);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(93, 20);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Description:";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox3.Location = new System.Drawing.Point(159, 170);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(218, 146);
+            this.textBox3.TabIndex = 10;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(65, 116);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(88, 20);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Dimension:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.Location = new System.Drawing.Point(159, 113);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(218, 26);
+            this.textBox2.TabIndex = 8;
+            // 
+            // lblEmpName
+            // 
+            this.lblEmpName.AutoSize = true;
+            this.lblEmpName.Location = new System.Drawing.Point(48, 58);
+            this.lblEmpName.Name = "lblEmpName";
+            this.lblEmpName.Size = new System.Drawing.Size(105, 20);
+            this.lblEmpName.TabIndex = 7;
+            this.lblEmpName.Text = "Frame Name:";
+            // 
+            // txtBoxEmployeeName
+            // 
+            this.txtBoxEmployeeName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxEmployeeName.Location = new System.Drawing.Point(159, 55);
+            this.txtBoxEmployeeName.Name = "txtBoxEmployeeName";
+            this.txtBoxEmployeeName.Size = new System.Drawing.Size(218, 26);
+            this.txtBoxEmployeeName.TabIndex = 6;
+            // 
             // groupBox2
             // 
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -334,57 +388,17 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             // 
-            // lblEmpName
+            // btnClose
             // 
-            this.lblEmpName.AutoSize = true;
-            this.lblEmpName.Location = new System.Drawing.Point(48, 58);
-            this.lblEmpName.Name = "lblEmpName";
-            this.lblEmpName.Size = new System.Drawing.Size(105, 20);
-            this.lblEmpName.TabIndex = 7;
-            this.lblEmpName.Text = "Frame Name:";
-            // 
-            // txtBoxEmployeeName
-            // 
-            this.txtBoxEmployeeName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBoxEmployeeName.Location = new System.Drawing.Point(159, 55);
-            this.txtBoxEmployeeName.Name = "txtBoxEmployeeName";
-            this.txtBoxEmployeeName.Size = new System.Drawing.Size(218, 26);
-            this.txtBoxEmployeeName.TabIndex = 6;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(65, 116);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 20);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Dimension:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(159, 113);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(218, 26);
-            this.textBox2.TabIndex = 8;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(48, 173);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 20);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Description:";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(159, 170);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(218, 146);
-            this.textBox3.TabIndex = 10;
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Location = new System.Drawing.Point(78, 109);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(264, 37);
+            this.btnClose.TabIndex = 9;
+            this.btnClose.Text = "Cancel";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnCreate
             // 
@@ -396,17 +410,6 @@
             this.btnCreate.TabIndex = 8;
             this.btnCreate.Text = "Create Frame";
             this.btnCreate.UseVisualStyleBackColor = true;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(78, 109);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(264, 37);
-            this.btnClose.TabIndex = 9;
-            this.btnClose.Text = "Cancel";
-            this.btnClose.UseVisualStyleBackColor = true;
             // 
             // frmFrameCreate
             // 
@@ -452,9 +455,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBoxAmount;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Button btnCreateFrame;
-        private System.Windows.Forms.Button btnStockIn;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAddSupply;
+        private System.Windows.Forms.Button btnEditSupply;
+        private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox3;
