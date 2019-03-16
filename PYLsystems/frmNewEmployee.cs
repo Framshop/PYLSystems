@@ -72,14 +72,12 @@ namespace PYLsystems
                     myAdp.Fill(myDt);
                     conn.Close();
                     MessageBox.Show("New Employee Created");
-
-
                     this.Close();
                 }
             }
             else
             {
-                MessageBox.Show("Employee" + txtLastName.Text + " " + txtFirstName.Text + " already exist");
+                MessageBox.Show("Employee '" + txtLastName.Text + " " + txtFirstName.Text + "' already exist");
             }
         }
 
@@ -227,6 +225,24 @@ namespace PYLsystems
         private void txtHomeAddress_TextChanged(object sender, EventArgs e)
         {
             enable();
+        }
+
+        private void txtLastName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b')
+            {
+                if (!char.IsLetter(e.KeyChar) && e.KeyChar != '-' && !char.IsWhiteSpace(e.KeyChar))
+                    e.Handled = true;
+            }
+        }
+
+        private void txtFirstName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b')
+            {
+                if (!char.IsLetter(e.KeyChar) && e.KeyChar != '-' && !char.IsWhiteSpace(e.KeyChar))
+                    e.Handled = true;
+            }
         }
     }
 }

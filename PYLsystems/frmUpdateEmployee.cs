@@ -372,19 +372,7 @@ namespace PYLsystems
 
         private void btnEmpUpdate_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            MySqlDataAdapter myAd;
-            DataTable myD = new DataTable();
-            MySqlCommand myCom = new MySqlCommand("SELECT * FROM employee WHERE lastname = '" + txtLastName.Text + "' AND firstname = '" + txtFirstName.Text + "'", conn);
-            myAd = new MySqlDataAdapter(myCom);
-            //ADD ----------
-            MySqlDataReader myReader;
-            myAd.Fill(myD);
-            //ADD
-            myReader = myCom.ExecuteReader();
-            conn.Close();
-            if (myD.Rows.Count == 0)
-            {
+        
                 if (usernameTextBox.Text == this.username && passwordTextBox.Text == this.password)
                 {
                     conn.Open();
@@ -422,11 +410,8 @@ namespace PYLsystems
                     this.Close();
                 }
             }
-            //else
-            //{
-            //    MessageBox.Show("Employee '" + txtLastName.Text + " " + txtFirstName.Text + "' already exist");
-            //}
-        }
+         
+        
 
         private void btnClose_Click(object sender, EventArgs e)
         {

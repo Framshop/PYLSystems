@@ -260,10 +260,10 @@
             // txtHomeAddress
             // 
             this.txtHomeAddress.Enabled = false;
-            this.txtHomeAddress.Location = new System.Drawing.Point(163, 275);
+            this.txtHomeAddress.Location = new System.Drawing.Point(167, 275);
             this.txtHomeAddress.Multiline = true;
             this.txtHomeAddress.Name = "txtHomeAddress";
-            this.txtHomeAddress.Size = new System.Drawing.Size(211, 44);
+            this.txtHomeAddress.Size = new System.Drawing.Size(225, 44);
             this.txtHomeAddress.TabIndex = 6;
             this.txtHomeAddress.TextChanged += new System.EventHandler(this.txtHomeAddress_TextChanged);
             this.txtHomeAddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHomeAddress_KeyPress);
@@ -271,9 +271,9 @@
             // txtLastName
             // 
             this.txtLastName.Enabled = false;
-            this.txtLastName.Location = new System.Drawing.Point(163, 105);
+            this.txtLastName.Location = new System.Drawing.Point(167, 105);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(211, 20);
+            this.txtLastName.Size = new System.Drawing.Size(225, 20);
             this.txtLastName.TabIndex = 3;
             this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
             this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLastName_KeyPress);
@@ -283,18 +283,18 @@
             this.cbEmpStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEmpStatus.Enabled = false;
             this.cbEmpStatus.FormattingEnabled = true;
-            this.cbEmpStatus.Location = new System.Drawing.Point(163, 24);
+            this.cbEmpStatus.Location = new System.Drawing.Point(167, 24);
             this.cbEmpStatus.Name = "cbEmpStatus";
-            this.cbEmpStatus.Size = new System.Drawing.Size(211, 21);
+            this.cbEmpStatus.Size = new System.Drawing.Size(225, 21);
             this.cbEmpStatus.TabIndex = 0;
             this.cbEmpStatus.SelectedIndexChanged += new System.EventHandler(this.cbEmpStatus_SelectedIndexChanged);
             // 
             // txtSalaryRate
             // 
             this.txtSalaryRate.Enabled = false;
-            this.txtSalaryRate.Location = new System.Drawing.Point(163, 337);
+            this.txtSalaryRate.Location = new System.Drawing.Point(167, 337);
             this.txtSalaryRate.Name = "txtSalaryRate";
-            this.txtSalaryRate.Size = new System.Drawing.Size(211, 20);
+            this.txtSalaryRate.Size = new System.Drawing.Size(225, 20);
             this.txtSalaryRate.TabIndex = 7;
             this.txtSalaryRate.TextChanged += new System.EventHandler(this.txtSalaryRate_TextChanged);
             this.txtSalaryRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalaryRate_KeyPress);
@@ -302,9 +302,9 @@
             // txtContactNumber
             // 
             this.txtContactNumber.Enabled = false;
-            this.txtContactNumber.Location = new System.Drawing.Point(163, 375);
+            this.txtContactNumber.Location = new System.Drawing.Point(167, 375);
             this.txtContactNumber.Name = "txtContactNumber";
-            this.txtContactNumber.Size = new System.Drawing.Size(211, 20);
+            this.txtContactNumber.Size = new System.Drawing.Size(225, 20);
             this.txtContactNumber.TabIndex = 8;
             this.txtContactNumber.TextChanged += new System.EventHandler(this.txtContactNumber_TextChanged);
             this.txtContactNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContactNumber_KeyPress);
@@ -312,9 +312,9 @@
             // txtFirstName
             // 
             this.txtFirstName.Enabled = false;
-            this.txtFirstName.Location = new System.Drawing.Point(163, 142);
+            this.txtFirstName.Location = new System.Drawing.Point(167, 142);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(211, 20);
+            this.txtFirstName.Size = new System.Drawing.Size(225, 20);
             this.txtFirstName.TabIndex = 2;
             this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
             this.txtFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFirstName_KeyPress);
@@ -338,9 +338,9 @@
             this.cbGender.Items.AddRange(new object[] {
             "Male\t",
             "Female"});
-            this.cbGender.Location = new System.Drawing.Point(163, 180);
+            this.cbGender.Location = new System.Drawing.Point(167, 180);
             this.cbGender.Name = "cbGender";
-            this.cbGender.Size = new System.Drawing.Size(211, 21);
+            this.cbGender.Size = new System.Drawing.Size(225, 21);
             this.cbGender.TabIndex = 4;
             this.cbGender.SelectedIndexChanged += new System.EventHandler(this.cbGender_SelectedIndexChanged);
             this.cbGender.SelectedValueChanged += new System.EventHandler(this.cbGender_SelectedValueChanged);
@@ -350,9 +350,9 @@
             this.dtpStartofEmp.CustomFormat = "yyyy-MM-dd";
             this.dtpStartofEmp.Enabled = false;
             this.dtpStartofEmp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpStartofEmp.Location = new System.Drawing.Point(163, 62);
+            this.dtpStartofEmp.Location = new System.Drawing.Point(167, 62);
             this.dtpStartofEmp.Name = "dtpStartofEmp";
-            this.dtpStartofEmp.Size = new System.Drawing.Size(211, 20);
+            this.dtpStartofEmp.Size = new System.Drawing.Size(225, 20);
             this.dtpStartofEmp.TabIndex = 1;
             this.dtpStartofEmp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtpStartofEmp_KeyPress);
             // 
@@ -361,9 +361,9 @@
             this.dtpBirthDate.CustomFormat = "yyyy-MM-dd";
             this.dtpBirthDate.Enabled = false;
             this.dtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpBirthDate.Location = new System.Drawing.Point(163, 217);
+            this.dtpBirthDate.Location = new System.Drawing.Point(167, 217);
             this.dtpBirthDate.Name = "dtpBirthDate";
-            this.dtpBirthDate.Size = new System.Drawing.Size(211, 20);
+            this.dtpBirthDate.Size = new System.Drawing.Size(225, 20);
             this.dtpBirthDate.TabIndex = 5;
             this.dtpBirthDate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtpBirthDate_KeyPress);
             // 
@@ -391,7 +391,7 @@
             this.lblwarning.AutoSize = true;
             this.lblwarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblwarning.ForeColor = System.Drawing.Color.Maroon;
-            this.lblwarning.Location = new System.Drawing.Point(160, 360);
+            this.lblwarning.Location = new System.Drawing.Point(164, 360);
             this.lblwarning.Name = "lblwarning";
             this.lblwarning.Size = new System.Drawing.Size(173, 13);
             this.lblwarning.TabIndex = 54;
@@ -402,7 +402,7 @@
             this.lblwaring1.AutoSize = true;
             this.lblwaring1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblwaring1.ForeColor = System.Drawing.Color.Maroon;
-            this.lblwaring1.Location = new System.Drawing.Point(160, 398);
+            this.lblwaring1.Location = new System.Drawing.Point(164, 398);
             this.lblwaring1.Name = "lblwaring1";
             this.lblwaring1.Size = new System.Drawing.Size(218, 13);
             this.lblwaring1.TabIndex = 55;
@@ -422,10 +422,10 @@
             // passwordTextBox
             // 
             this.passwordTextBox.Enabled = false;
-            this.passwordTextBox.Location = new System.Drawing.Point(166, 488);
+            this.passwordTextBox.Location = new System.Drawing.Point(170, 488);
             this.passwordTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(215, 20);
+            this.passwordTextBox.Size = new System.Drawing.Size(229, 20);
             this.passwordTextBox.TabIndex = 10;
             this.passwordTextBox.UseSystemPasswordChar = true;
             // 
@@ -443,37 +443,42 @@
             // usernameTextBox
             // 
             this.usernameTextBox.Enabled = false;
-            this.usernameTextBox.Location = new System.Drawing.Point(166, 442);
+            this.usernameTextBox.Location = new System.Drawing.Point(170, 442);
             this.usernameTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.usernameTextBox.Name = "usernameTextBox";
-            this.usernameTextBox.Size = new System.Drawing.Size(215, 20);
+            this.usernameTextBox.Size = new System.Drawing.Size(229, 20);
             this.usernameTextBox.TabIndex = 9;
             // 
             // btnEmpUpdate
             // 
+            this.btnEmpUpdate.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnEmpUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEmpUpdate.Enabled = false;
-            this.btnEmpUpdate.Location = new System.Drawing.Point(163, 534);
+            this.btnEmpUpdate.Location = new System.Drawing.Point(170, 532);
             this.btnEmpUpdate.Name = "btnEmpUpdate";
             this.btnEmpUpdate.Size = new System.Drawing.Size(88, 30);
             this.btnEmpUpdate.TabIndex = 58;
             this.btnEmpUpdate.Text = "Update";
-            this.btnEmpUpdate.UseVisualStyleBackColor = true;
+            this.btnEmpUpdate.UseVisualStyleBackColor = false;
             this.btnEmpUpdate.Click += new System.EventHandler(this.btnEmpUpdate_Click);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(296, 534);
+            this.btnClose.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.Location = new System.Drawing.Point(317, 532);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(82, 30);
             this.btnClose.TabIndex = 59;
             this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmUpdateEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(404, 574);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnEmpUpdate);
