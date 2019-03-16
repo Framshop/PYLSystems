@@ -30,36 +30,6 @@ namespace PYLsystems
      
         }
 
-        private void txtUnitPrice_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-            (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void txtStockInQuantity_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-            (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-        }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -69,19 +39,5 @@ namespace PYLsystems
    
         }
 
-        private void cboActive_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            functionUpdate();
-        }
-
-        private void txtStockInQuantity_TextChanged(object sender, EventArgs e)
-        {
-            functionUpdate();
-        }
-
-        private void txtUnitPrice_TextChanged(object sender, EventArgs e)
-        {
-            functionUpdate();
-        }
     }
 }

@@ -456,12 +456,22 @@ namespace PYLsystems
                 cboActive.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
                 txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
 
+
                 //TRUE
                 lblArea.Visible = true;
                 txtArea1.Visible = true;
                 txtArea2.Visible = true;
                 cboArea.Visible = true;
                 lblX.Visible = true;
+
+            //supplyItemsGrid.DataSource = Dt;
+            //myConn.Close();
+            //supplyItemsGrid.Columns["supply_itemsID"].Visible = false;
+            //supplyItemsGrid.Columns["supplyName"].HeaderText = "Supply Name";
+            //supplyItemsGrid.Columns["supplyDescription"].HeaderText = "Details";
+            //supplyItemsGrid.Columns["unitMeasure"].HeaderText = "Unit Measure";
+
+
 
 
                 txtArea1.Text = dgSupplyItems.CurrentRow.Cells[6].Value.ToString();
@@ -646,8 +656,10 @@ namespace PYLsystems
             validationCreateItem();
         }
 
+
         private void btnUpdateDetails_Click(object sender, EventArgs e)
         {
+
           
                 if (typeOfMeasure_db == "Length")
                 {
@@ -717,6 +729,7 @@ namespace PYLsystems
                 cboWhole.Visible = false;
                 lblWhole.Visible = false;
             }
+
         }
     }
 

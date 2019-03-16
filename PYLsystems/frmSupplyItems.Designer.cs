@@ -111,11 +111,10 @@
             // 
             // txtItemName
             // 
-            this.txtItemName.Location = new System.Drawing.Point(103, 56);
+            this.txtItemName.Location = new System.Drawing.Point(103, 51);
             this.txtItemName.Name = "txtItemName";
             this.txtItemName.Size = new System.Drawing.Size(184, 20);
-            this.txtItemName.TabIndex = 3;
-            this.txtItemName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
+            this.txtItemName.TabIndex = 9;
             // 
             // lblDescription
             // 
@@ -604,7 +603,6 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmSupplyItems";
             this.Text = "Supply Items";
-            this.Load += new System.EventHandler(this.frmSupplyItems_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.gpWhole.ResumeLayout(false);
