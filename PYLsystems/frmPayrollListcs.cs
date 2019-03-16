@@ -357,5 +357,11 @@ namespace PYLsystems
                 MessageBox.Show("Please select a Payroll.");
             }
         }
+
+        private void btnGenerateReport_Click(object sender, EventArgs e)
+        {
+            frmPrintPayroll printForm = new frmPrintPayroll();
+            printForm.ShowDialog();
+        }
     }
 }

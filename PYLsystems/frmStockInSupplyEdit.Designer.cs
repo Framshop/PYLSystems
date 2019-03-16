@@ -28,231 +28,327 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtStockInQuantity = new System.Windows.Forms.TextBox();
-            this.txtUnitPrice = new System.Windows.Forms.TextBox();
-            this.lblStockInQuantity = new System.Windows.Forms.Label();
-            this.lblUnitPrice = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.lblActive = new System.Windows.Forms.Label();
-            this.cboActive = new System.Windows.Forms.ComboBox();
-            this.lblSupplyID = new System.Windows.Forms.Label();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.lblSupplierName = new System.Windows.Forms.Label();
-            this.lblCurrentQuantity = new System.Windows.Forms.Label();
-            this.lblSupplyName = new System.Windows.Forms.Label();
-            this.txtSupplierName = new System.Windows.Forms.TextBox();
-            this.txtCurrentQuantity = new System.Windows.Forms.TextBox();
-            this.txtSupplyName = new System.Windows.Forms.TextBox();
-            this.lblDeliveryDate = new System.Windows.Forms.Label();
-            this.txtDeliveryDate = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.startDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblEmpName = new System.Windows.Forms.Label();
+            this.txtBoxEmployeeName = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.datagridEmpList = new System.Windows.Forms.DataGridView();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridEmpList)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtStockInQuantity
+            // tableLayoutPanel1
             // 
-            this.txtStockInQuantity.Location = new System.Drawing.Point(146, 90);
-            this.txtStockInQuantity.Name = "txtStockInQuantity";
-            this.txtStockInQuantity.Size = new System.Drawing.Size(100, 20);
-            this.txtStockInQuantity.TabIndex = 0;
-            this.txtStockInQuantity.TextChanged += new System.EventHandler(this.txtStockInQuantity_TextChanged);
-            this.txtStockInQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStockInQuantity_KeyPress);
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(679, 947);
+            this.tableLayoutPanel1.TabIndex = 17;
             // 
-            // txtUnitPrice
+            // tableLayoutPanel2
             // 
-            this.txtUnitPrice.Location = new System.Drawing.Point(146, 128);
-            this.txtUnitPrice.Name = "txtUnitPrice";
-            this.txtUnitPrice.Size = new System.Drawing.Size(100, 20);
-            this.txtUnitPrice.TabIndex = 1;
-            this.txtUnitPrice.TextChanged += new System.EventHandler(this.txtUnitPrice_TextChanged);
-            this.txtUnitPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnitPrice_KeyPress);
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 0, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(36, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(605, 941);
+            this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // lblStockInQuantity
+            // tableLayoutPanel4
             // 
-            this.lblStockInQuantity.AutoSize = true;
-            this.lblStockInQuantity.Location = new System.Drawing.Point(35, 97);
-            this.lblStockInQuantity.Name = "lblStockInQuantity";
-            this.lblStockInQuantity.Size = new System.Drawing.Size(89, 13);
-            this.lblStockInQuantity.TabIndex = 2;
-            this.lblStockInQuantity.Text = "Stock In Quantity";
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.groupBox2, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.groupBox3, 0, 2);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 50);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 3;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.86906F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34.53145F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.47112F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(599, 840);
+            this.tableLayoutPanel4.TabIndex = 1;
             // 
-            // lblUnitPrice
+            // groupBox1
             // 
-            this.lblUnitPrice.AutoSize = true;
-            this.lblUnitPrice.Location = new System.Drawing.Point(35, 135);
-            this.lblUnitPrice.Name = "lblUnitPrice";
-            this.lblUnitPrice.Size = new System.Drawing.Size(53, 13);
-            this.lblUnitPrice.TabIndex = 3;
-            this.lblUnitPrice.Text = "Unit Price";
+            this.groupBox1.Controls.Add(this.comboBox4);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.startDatePicker);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.lblEmpName);
+            this.groupBox1.Controls.Add(this.txtBoxEmployeeName);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(593, 312);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Supply Details";
             // 
-            // btnUpdate
+            // comboBox4
             // 
-            this.btnUpdate.Enabled = false;
-            this.btnUpdate.Location = new System.Drawing.Point(38, 173);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 4;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // lblActive
-            // 
-            this.lblActive.AutoSize = true;
-            this.lblActive.Location = new System.Drawing.Point(35, 58);
-            this.lblActive.Name = "lblActive";
-            this.lblActive.Size = new System.Drawing.Size(37, 13);
-            this.lblActive.TabIndex = 5;
-            this.lblActive.Text = "Active";
-            // 
-            // cboActive
-            // 
-            this.cboActive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboActive.FormattingEnabled = true;
-            this.cboActive.Items.AddRange(new object[] {
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
             "Active",
             "Inactive"});
-            this.cboActive.Location = new System.Drawing.Point(146, 49);
-            this.cboActive.Name = "cboActive";
-            this.cboActive.Size = new System.Drawing.Size(100, 21);
-            this.cboActive.TabIndex = 6;
-            this.cboActive.SelectedIndexChanged += new System.EventHandler(this.cboActive_SelectedIndexChanged);
+            this.comboBox4.Location = new System.Drawing.Point(192, 266);
+            this.comboBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(355, 28);
+            this.comboBox4.TabIndex = 18;
             // 
-            // lblSupplyID
+            // label6
             // 
-            this.lblSupplyID.AutoSize = true;
-            this.lblSupplyID.Location = new System.Drawing.Point(53, 9);
-            this.lblSupplyID.Name = "lblSupplyID";
-            this.lblSupplyID.Size = new System.Drawing.Size(35, 13);
-            this.lblSupplyID.TabIndex = 7;
-            this.lblSupplyID.Text = "label1";
-            this.lblSupplyID.Visible = false;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(113, 269);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(60, 20);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Status:";
             // 
-            // btnCancel
+            // startDatePicker
             // 
-            this.btnCancel.Location = new System.Drawing.Point(119, 173);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 8;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.startDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.startDatePicker.CustomFormat = "yyyy/MM/dd";
+            this.startDatePicker.Enabled = false;
+            this.startDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.startDatePicker.Location = new System.Drawing.Point(192, 223);
+            this.startDatePicker.Name = "startDatePicker";
+            this.startDatePicker.Size = new System.Drawing.Size(355, 26);
+            this.startDatePicker.TabIndex = 17;
+            this.startDatePicker.Value = new System.DateTime(2019, 1, 5, 0, 0, 0, 0);
             // 
-            // lblSupplierName
+            // label4
             // 
-            this.lblSupplierName.AutoSize = true;
-            this.lblSupplierName.Location = new System.Drawing.Point(266, 58);
-            this.lblSupplierName.Name = "lblSupplierName";
-            this.lblSupplierName.Size = new System.Drawing.Size(76, 13);
-            this.lblSupplierName.TabIndex = 9;
-            this.lblSupplierName.Text = "Supplier Name";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(69, 228);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(107, 20);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Delivery Date:";
             // 
-            // lblCurrentQuantity
+            // label3
             // 
-            this.lblCurrentQuantity.AutoSize = true;
-            this.lblCurrentQuantity.Location = new System.Drawing.Point(266, 135);
-            this.lblCurrentQuantity.Name = "lblCurrentQuantity";
-            this.lblCurrentQuantity.Size = new System.Drawing.Size(83, 13);
-            this.lblCurrentQuantity.TabIndex = 10;
-            this.lblCurrentQuantity.Text = "Current Quantity";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 178);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(168, 20);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Actual Purchase Price:";
             // 
-            // lblSupplyName
+            // textBox3
             // 
-            this.lblSupplyName.AutoSize = true;
-            this.lblSupplyName.Location = new System.Drawing.Point(266, 97);
-            this.lblSupplyName.Name = "lblSupplyName";
-            this.lblSupplyName.Size = new System.Drawing.Size(70, 13);
-            this.lblSupplyName.TabIndex = 11;
-            this.lblSupplyName.Text = "Supply Name";
+            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox3.Location = new System.Drawing.Point(192, 175);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(355, 26);
+            this.textBox3.TabIndex = 12;
             // 
-            // txtSupplierName
+            // label2
             // 
-            this.txtSupplierName.Enabled = false;
-            this.txtSupplierName.Location = new System.Drawing.Point(362, 51);
-            this.txtSupplierName.Name = "txtSupplierName";
-            this.txtSupplierName.Size = new System.Drawing.Size(153, 20);
-            this.txtSupplierName.TabIndex = 12;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(21, 127);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(155, 20);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Raw Purchase Price:";
             // 
-            // txtCurrentQuantity
+            // textBox2
             // 
-            this.txtCurrentQuantity.Enabled = false;
-            this.txtCurrentQuantity.Location = new System.Drawing.Point(362, 128);
-            this.txtCurrentQuantity.Name = "txtCurrentQuantity";
-            this.txtCurrentQuantity.Size = new System.Drawing.Size(153, 20);
-            this.txtCurrentQuantity.TabIndex = 13;
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.Location = new System.Drawing.Point(192, 124);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(355, 26);
+            this.textBox2.TabIndex = 10;
             // 
-            // txtSupplyName
+            // label1
             // 
-            this.txtSupplyName.Enabled = false;
-            this.txtSupplyName.Location = new System.Drawing.Point(362, 90);
-            this.txtSupplyName.Name = "txtSupplyName";
-            this.txtSupplyName.Size = new System.Drawing.Size(153, 20);
-            this.txtSupplyName.TabIndex = 14;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(104, 76);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 20);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Quantity:";
             // 
-            // lblDeliveryDate
+            // textBox1
             // 
-            this.lblDeliveryDate.AutoSize = true;
-            this.lblDeliveryDate.Location = new System.Drawing.Point(266, 177);
-            this.lblDeliveryDate.Name = "lblDeliveryDate";
-            this.lblDeliveryDate.Size = new System.Drawing.Size(71, 13);
-            this.lblDeliveryDate.TabIndex = 15;
-            this.lblDeliveryDate.Text = "Delivery Date";
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(192, 73);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(355, 26);
+            this.textBox1.TabIndex = 8;
             // 
-            // txtDeliveryDate
+            // lblEmpName
             // 
-            this.txtDeliveryDate.Enabled = false;
-            this.txtDeliveryDate.Location = new System.Drawing.Point(362, 170);
-            this.txtDeliveryDate.Name = "txtDeliveryDate";
-            this.txtDeliveryDate.Size = new System.Drawing.Size(153, 20);
-            this.txtDeliveryDate.TabIndex = 16;
+            this.lblEmpName.AutoSize = true;
+            this.lblEmpName.Location = new System.Drawing.Point(82, 28);
+            this.lblEmpName.Name = "lblEmpName";
+            this.lblEmpName.Size = new System.Drawing.Size(91, 20);
+            this.lblEmpName.TabIndex = 7;
+            this.lblEmpName.Text = "Item Name:";
+            // 
+            // txtBoxEmployeeName
+            // 
+            this.txtBoxEmployeeName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxEmployeeName.Location = new System.Drawing.Point(192, 25);
+            this.txtBoxEmployeeName.Name = "txtBoxEmployeeName";
+            this.txtBoxEmployeeName.ReadOnly = true;
+            this.txtBoxEmployeeName.Size = new System.Drawing.Size(355, 26);
+            this.txtBoxEmployeeName.TabIndex = 6;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.datagridEmpList);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(3, 321);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(593, 284);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Select Supplier";
+            // 
+            // datagridEmpList
+            // 
+            this.datagridEmpList.AllowUserToAddRows = false;
+            this.datagridEmpList.AllowUserToDeleteRows = false;
+            this.datagridEmpList.AllowUserToResizeRows = false;
+            this.datagridEmpList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.datagridEmpList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagridEmpList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.datagridEmpList.Location = new System.Drawing.Point(3, 22);
+            this.datagridEmpList.Name = "datagridEmpList";
+            this.datagridEmpList.ReadOnly = true;
+            this.datagridEmpList.RowHeadersVisible = false;
+            this.datagridEmpList.RowTemplate.Height = 28;
+            this.datagridEmpList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.datagridEmpList.Size = new System.Drawing.Size(587, 259);
+            this.datagridEmpList.TabIndex = 3;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnSave);
+            this.groupBox3.Controls.Add(this.btnClose);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(3, 611);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(593, 226);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Location = new System.Drawing.Point(116, 59);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(405, 37);
+            this.btnSave.TabIndex = 36;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Location = new System.Drawing.Point(116, 152);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(405, 37);
+            this.btnClose.TabIndex = 34;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
             // 
             // frmStockInSupplyEdit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.ClientSize = new System.Drawing.Size(555, 242);
-            this.ControlBox = false;
-            this.Controls.Add(this.txtDeliveryDate);
-            this.Controls.Add(this.lblDeliveryDate);
-            this.Controls.Add(this.txtSupplyName);
-            this.Controls.Add(this.txtCurrentQuantity);
-            this.Controls.Add(this.txtSupplierName);
-            this.Controls.Add(this.lblSupplyName);
-            this.Controls.Add(this.lblCurrentQuantity);
-            this.Controls.Add(this.lblSupplierName);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.lblSupplyID);
-            this.Controls.Add(this.cboActive);
-            this.Controls.Add(this.lblActive);
-            this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.lblUnitPrice);
-            this.Controls.Add(this.lblStockInQuantity);
-            this.Controls.Add(this.txtUnitPrice);
-            this.Controls.Add(this.txtStockInQuantity);
+            this.ClientSize = new System.Drawing.Size(679, 947);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmStockInSupplyEdit";
             this.Text = "Stock In Supply Edit";
             this.Load += new System.EventHandler(this.frmStockInSupplyEdit_Load);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.datagridEmpList)).EndInit();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label lblStockInQuantity;
-        private System.Windows.Forms.Label lblUnitPrice;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Label lblActive;
-        private System.Windows.Forms.ComboBox cboActive;
-        public System.Windows.Forms.Label lblSupplyID;
-        public System.Windows.Forms.TextBox txtStockInQuantity;
-        public System.Windows.Forms.TextBox txtUnitPrice;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label lblSupplierName;
-        private System.Windows.Forms.Label lblCurrentQuantity;
-        private System.Windows.Forms.Label lblSupplyName;
-        public System.Windows.Forms.TextBox txtSupplierName;
-        public System.Windows.Forms.TextBox txtCurrentQuantity;
-        public System.Windows.Forms.TextBox txtSupplyName;
-        private System.Windows.Forms.Label lblDeliveryDate;
-        public System.Windows.Forms.TextBox txtDeliveryDate;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblEmpName;
+        private System.Windows.Forms.TextBox txtBoxEmployeeName;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView datagridEmpList;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker startDatePicker;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Label label6;
     }
 }

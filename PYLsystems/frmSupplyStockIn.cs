@@ -170,7 +170,7 @@ namespace PYLsystems
         public void RefreshDatabase()
         {
             myConn.Open();
-            string query = "SELECT supplyID,si.supplyName,s.supplierName,sd.supply_price,sd.stockin_quantity,if(sd.active=1,'Active','Inactive') as active,sd.delivery_date FROM supply_details sd LEFT JOIN supply_items si ON sd.supply_itemsID = si.supply_itemsID LEFT JOIN supplier s ON s.supplierID=sd.supplierID";
+            string query = "SELECT supplyID,si.supplyName,s.supplierName,sd.supply_price,sd.stockin_quantity,if(sd.active=1,'active','inactive') as active,sd.delivery_date FROM supply_details sd LEFT JOIN supply_items si ON sd.supply_itemsID = si.supply_itemsID LEFT JOIN supplier s ON s.supplierID=sd.supplierID";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter Adp = new MySqlDataAdapter(comm);
             DataTable Dt = new DataTable();
@@ -258,7 +258,7 @@ namespace PYLsystems
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             myConn.Open();
-            string query = "SELECT supplyID,si.supplyName,s.supplierName,sd.supply_price,sd.stockin_quantity,if(sd.active=1,'Active','Inactive') as active,sd.delivery_date FROM supply_details sd LEFT JOIN supply_items si ON sd.supply_itemsID = si.supply_itemsID LEFT JOIN supplier s ON s.supplierID=sd.supplierID WHERE si.supplyName LIKE '%" + txtSearch.Text + "%' OR s.supplierName LIKE '%" + txtSearch.Text + "%' OR sd.supply_price LIKE '%" + txtSearch.Text + "%' OR  sd.stockin_quantity LIKE '%" + txtSearch.Text + "%' OR sd.active LIKE '%" + txtSearch.Text + "%'";
+            string query = "SELECT supplyID,si.supplyName,s.supplierName,sd.supply_price,sd.stockin_quantity,if(sd.active=1,'active','inactive') as active,sd.delivery_date FROM supply_details sd LEFT JOIN supply_items si ON sd.supply_itemsID = si.supply_itemsID LEFT JOIN supplier s ON s.supplierID=sd.supplierID WHERE si.supplyName LIKE '%" + txtSearch.Text + "%' OR s.supplierName LIKE '%" + txtSearch.Text + "%' OR sd.supply_price LIKE '%" + txtSearch.Text + "%' OR  sd.stockin_quantity LIKE '%" + txtSearch.Text + "%' OR sd.active LIKE '%" + txtSearch.Text + "%'";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter Adp = new MySqlDataAdapter(comm);
             DataTable Dt = new DataTable();

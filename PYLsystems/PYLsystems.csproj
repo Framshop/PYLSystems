@@ -88,6 +88,18 @@
     <Compile Include="e_frmEditAttendance.Designer.cs">
       <DependentUpon>e_frmEditAttendance.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddSupplierItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddSupplierItems.Designer.cs">
+      <DependentUpon>frmAddSupplierItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddSupplyCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddSupplyCategory.Designer.cs">
+      <DependentUpon>frmAddSupplyCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmArchive.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -318,6 +330,12 @@
     <Compile Include="viewTotalProfit.designer.cs">
       <DependentUpon>viewTotalProfit.cs</DependentUpon>
     </Compile>
+    <Compile Include="___baseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="___baseForm.Designer.cs">
+      <DependentUpon>___baseForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="addSales.resx">
       <DependentUpon>addSales.cs</DependentUpon>
     </EmbeddedResource>
@@ -338,6 +356,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="e_frmEditAttendance.resx">
       <DependentUpon>e_frmEditAttendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddSupplierItems.resx">
+      <DependentUpon>frmAddSupplierItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddSupplyCategory.resx">
+      <DependentUpon>frmAddSupplyCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCashAdvancecs.resx">
       <DependentUpon>frmCashAdvancecs.cs</DependentUpon>
@@ -446,6 +470,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="viewTotalProfit.resx">
       <DependentUpon>viewTotalProfit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="___baseForm.resx">
+      <DependentUpon>___baseForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

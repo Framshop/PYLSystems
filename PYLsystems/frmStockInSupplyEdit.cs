@@ -91,11 +91,11 @@ namespace PYLsystems
             int unitprice = txtUnitPrice.TextLength;
             if (active > -1 && stock_in_quantity > 0 && unitprice > 0)
             {
-                btnUpdate.Enabled = true;
+                btnSave.Enabled = true;
             }
             else
             {
-                btnUpdate.Enabled = false;
+                btnSave.Enabled = false;
             }     
         }
 

@@ -39,9 +39,11 @@
             this.gbPrintControls = new System.Windows.Forms.GroupBox();
             this.GBBrowser = new System.Windows.Forms.GroupBox();
             this.wBPayrollReport = new System.Windows.Forms.WebBrowser();
+            this.btnPrintReport = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.gbGenerateDates.SuspendLayout();
+            this.gbPrintControls.SuspendLayout();
             this.GBBrowser.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -156,6 +158,7 @@
             // 
             // gbPrintControls
             // 
+            this.gbPrintControls.Controls.Add(this.btnPrintReport);
             this.gbPrintControls.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbPrintControls.Location = new System.Drawing.Point(566, 3);
             this.gbPrintControls.Name = "gbPrintControls";
@@ -183,6 +186,18 @@
             this.wBPayrollReport.Size = new System.Drawing.Size(1120, 669);
             this.wBPayrollReport.TabIndex = 0;
             // 
+            // btnPrintReport
+            // 
+            this.btnPrintReport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrintReport.Location = new System.Drawing.Point(187, 105);
+            this.btnPrintReport.Name = "btnPrintReport";
+            this.btnPrintReport.Size = new System.Drawing.Size(182, 54);
+            this.btnPrintReport.TabIndex = 31;
+            this.btnPrintReport.Text = "Print Report";
+            this.btnPrintReport.UseVisualStyleBackColor = true;
+            this.btnPrintReport.Click += new System.EventHandler(this.btnPrintReport_Click);
+            // 
             // frmPrintPayroll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -196,6 +211,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.gbGenerateDates.ResumeLayout(false);
             this.gbGenerateDates.PerformLayout();
+            this.gbPrintControls.ResumeLayout(false);
             this.GBBrowser.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -214,5 +230,6 @@
         private System.Windows.Forms.GroupBox GBBrowser;
         private System.Windows.Forms.Button btnGenerate;
         private System.Windows.Forms.WebBrowser wBPayrollReport;
+        private System.Windows.Forms.Button btnPrintReport;
     }
 }

@@ -52,7 +52,7 @@ namespace PYLsystems
 
             DataTable receiptNumberPrev_dt = new DataTable();
             receiptNumberPrev_adapter.Fill(receiptNumberPrev_dt);
-            if (receiptNumberPrev_dt.Rows == null) {
+            if (receiptNumberPrev_dt.Rows.Count == 0) {
                 int receiptNum = 1;
                 this.receiptTextBox.Text= receiptNum.ToString("0000000");
             }

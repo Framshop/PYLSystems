@@ -148,11 +148,11 @@ namespace PYLsystems
             int address = txtAddress.TextLength;
             if (name > 0 && details > 0 && contactnumber==11 && address > 0)
             {
-                addBtn.Enabled = true;
+                btnSave.Enabled = true;
             }
             else
             {
-                addBtn.Enabled = false;
+                btnSave.Enabled = false;
             }
         }
         public void functionUpdate()

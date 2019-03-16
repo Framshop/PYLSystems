@@ -64,8 +64,8 @@ namespace PYLsystems
 
                     conn.Open();
 
-                    string myQuery = "Insert INTO employee(employeestatus, startofEmployment, firstName, lastName, gender, birthDate, homeAddress, salaryRate, contactNumber,username,password) values('" + status.Text + "','" + dtpStartofEmp.Value.Date.ToString("yyyy-MM-dd") + "','" + txtFirstName.Text + "','" + txtLastName.Text + "','" + cbGender.Text + "','" + dtpBirthDate.Value.Date.ToString("yyyy-MM-dd ") + "','" + txtHomeAddress.Text + "','" + txtSalaryRate.Text + "','"
-                        + txtContactNumber.Text + "','" + usernameTextBox.Text + "','" + passwordTextBox.Text + "')";
+                    string myQuery = "Insert INTO employee(employeestatus, startofEmployment, firstName, lastName, gender, birthDate, homeAddress, salaryRate, contactNumber,username,password,active) values('" + status.Text + "','" + dtpStartofEmp.Value.Date.ToString("yyyy-MM-dd") + "','" + txtFirstName.Text + "','" + txtLastName.Text + "','" + cbGender.Text + "','" + dtpBirthDate.Value.Date.ToString("yyyy-MM-dd ") + "','" + txtHomeAddress.Text + "','" + txtSalaryRate.Text + "','"
+                        + txtContactNumber.Text + "','" + usernameTextBox.Text + "','" + passwordTextBox.Text + "','0')";
                     MySqlCommand myComm = new MySqlCommand(myQuery, conn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();

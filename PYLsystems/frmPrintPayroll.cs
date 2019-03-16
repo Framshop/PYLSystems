@@ -65,6 +65,7 @@ namespace PYLsystems
                 for (int i = 0; i < dtPayroll.Rows.Count; i++)
                 {
                     int rowspanDeductCount = 0;
+                    int[] indiceOfDeduct;
                     for (int k = 0; k<dtDeductions.Rows.Count;k++)
                     {
                         if (Int32.Parse(dtPayroll.Rows[i]["payrollID"].ToString()) == Int32.Parse(dtDeductions.Rows[k]["payrollID"].ToString()))
@@ -72,11 +73,41 @@ namespace PYLsystems
                             rowspanDeductCount++;
                         }
                     }
+                    indiceOfDeduct = new int[rowspanDeductCount];
+                    int counter = 0;
+                    for(int m = 0; m < dtDeductions.Rows.Count; m++)
+                    {
+                        if (Int32.Parse(dtPayroll.Rows[i]["payrollID"].ToString()) == Int32.Parse(dtDeductions.Rows[m]["payrollID"].ToString()))
+                        {
+                            indiceOfDeduct[counter]=m;
+                            counter++;
+                            if (counter==indiceOfDeduct.Length)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                        
+                    
                     //+ "<td>"++"</td>"
-                    stringPayRollReportGen += "<tr>" + "<td rowspan='"+rowspanDeductCount+"'>"+ dtPayroll.Rows[i]["Employee Name"].ToString() +"</td>" 
-                        + "<td>"+ dtPayroll.Rows[i]["Hourly Rate"].ToString() + "</td>" + "<td>"+ dtPayroll.Rows[i]["Total Work Hours"].ToString() + "</td>"
-                        + "<td>" + dtPayroll.Rows[i]["Gross Amount"].ToString() + "</td>"
-                        + "</tr>";
+                    stringPayRollReportGen += "<tr>" 
+                        + "<td rowspan='" + rowspanDeductCount + "'>"+ dtPayroll.Rows[i]["Employee Name"].ToString() +"</td>" 
+                        + "<td rowspan='" + rowspanDeductCount + "'>" + dtPayroll.Rows[i]["Hourly Rate"].ToString() + "</td>" 
+                        + "<td rowspan='" + rowspanDeductCount + "'>" + dtPayroll.Rows[i]["Total Work Hours"].ToString() + "</td>"
+                        + "<td rowspan='" + rowspanDeductCount + "'>" + dtPayroll.Rows[i]["Gross Amount"].ToString() + "</td>";
+                    int DeductCounter = 0;
+                    stringPayRollReportGen += "<td>" + dtDeductions.Rows[indiceOfDeduct[DeductCounter]]["typeOfDeduction"].ToString() +
+                        " - " + dtDeductions.Rows[indiceOfDeduct[DeductCounter]]["Amount"].ToString()
+                        + "</td>";
+                    DeductCounter++;
+                    stringPayRollReportGen += "<td rowspan='" + rowspanDeductCount + "'>" + dtPayroll.Rows[i]["Net Amount"].ToString() + "</td></tr>";
+                    while (DeductCounter < indiceOfDeduct.Length)
+                    {
+                        stringPayRollReportGen += "<tr><td>" + dtDeductions.Rows[indiceOfDeduct[DeductCounter]]["typeOfDeduction"].ToString() +
+                        " - " + dtDeductions.Rows[indiceOfDeduct[DeductCounter]]["Amount"].ToString()
+                        + "</td></tr>";
+                        DeductCounter++;
+                    }
                 }
             }
             stringPayRollReportGen += " </table></body></html>";
@@ -97,7 +128,7 @@ namespace PYLsystems
         {
             if (DateTime.Today.DayOfWeek < DayOfWeek.Saturday)
             {
-                DateStart = DateTime.Today.AddDays(-((int)DayOfWeek.Monday - (int)DateTime.Today.DayOfWeek + 6) % 6);
+                DateStart = DateTime.Today.AddDays(-(((int)DayOfWeek.Monday - (int)DateTime.Today.DayOfWeek + 7) % 7));
                 DateEnd = DateStart.AddDays(((int)DayOfWeek.Saturday - (int)DateStart.DayOfWeek + 7) % 7);
                 startDatePicker.Value = DateStart.AddHours(0).AddMinutes(0).AddSeconds(0);
                 endDatePicker.Value = DateEnd.AddHours(23).AddMinutes(59).AddSeconds(59);
@@ -216,6 +247,11 @@ namespace PYLsystems
             {
                 DateEnd = endDatePicker.Value;
             }
+        }
+
+        private void btnPrintReport_Click(object sender, EventArgs e)
+        {
+            wBPayrollReport.Print();
         }
     }
 }
