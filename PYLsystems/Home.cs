@@ -72,10 +72,10 @@ namespace PYLsystems
                 jOrderBtn.Text = "Not Applicable";
                 inventoryHomePage.btnSupplies.Enabled = false;
                 inventoryHomePage.btnSupplies.Text = "Not Applicable";
-                inventoryHomePage.btnSupplyStockIn.Enabled = false;
-                inventoryHomePage.btnSupplyStockIn.Text = "Not Applicable";
-                inventoryHomePage.btnCustomerAccount.Enabled = false;
-                inventoryHomePage.btnCustomerAccount.Text = "Not Applicable";
+                //inventoryHomePage.btnSupplyStockIn.Enabled = false;
+                //inventoryHomePage.btnSupplyStockIn.Text = "Not Applicable";
+                //inventoryHomePage.btnCustomerAccount.Enabled = false;
+                //inventoryHomePage.btnCustomerAccount.Text = "Not Applicable";
             }
         }
         private void salesOrderBtn_Click(object sender, EventArgs e)
