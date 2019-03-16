@@ -70,8 +70,8 @@ namespace PYLsystems
             {
                 jOrderBtn.Enabled = false;
                 jOrderBtn.Text = "Not Applicable";
-                inventoryHomePage.btnSupplier.Enabled = false;
-                inventoryHomePage.btnSupplier.Text = "Not Applicable";
+                inventoryHomePage.btnSupplies.Enabled = false;
+                inventoryHomePage.btnSupplies.Text = "Not Applicable";
                 inventoryHomePage.btnSupplyStockIn.Enabled = false;
                 inventoryHomePage.btnSupplyStockIn.Text = "Not Applicable";
                 inventoryHomePage.btnCustomerAccount.Enabled = false;
