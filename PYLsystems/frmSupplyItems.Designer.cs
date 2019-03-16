@@ -69,6 +69,7 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.gpSupplyDetails = new System.Windows.Forms.GroupBox();
             this.dgSupplyItems = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.gpWhole.SuspendLayout();
@@ -492,6 +493,7 @@
             // 
             // gpButtons
             // 
+            this.gpButtons.Controls.Add(this.button1);
             this.gpButtons.Controls.Add(this.btnStockInSelectedItem);
             this.gpButtons.Controls.Add(this.btnUpdateDetails);
             this.gpButtons.Controls.Add(this.btnCreateItem);
@@ -510,10 +512,10 @@
             this.btnStockInSelectedItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStockInSelectedItem.Enabled = false;
-            this.btnStockInSelectedItem.Location = new System.Drawing.Point(78, 77);
+            this.btnStockInSelectedItem.Location = new System.Drawing.Point(25, 72);
             this.btnStockInSelectedItem.Margin = new System.Windows.Forms.Padding(2);
             this.btnStockInSelectedItem.Name = "btnStockInSelectedItem";
-            this.btnStockInSelectedItem.Size = new System.Drawing.Size(138, 24);
+            this.btnStockInSelectedItem.Size = new System.Drawing.Size(104, 24);
             this.btnStockInSelectedItem.TabIndex = 25;
             this.btnStockInSelectedItem.Text = "Stock In Selected Item";
             this.btnStockInSelectedItem.UseVisualStyleBackColor = true;
@@ -524,10 +526,10 @@
             this.btnUpdateDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpdateDetails.Enabled = false;
-            this.btnUpdateDetails.Location = new System.Drawing.Point(78, 49);
+            this.btnUpdateDetails.Location = new System.Drawing.Point(25, 44);
             this.btnUpdateDetails.Margin = new System.Windows.Forms.Padding(2);
             this.btnUpdateDetails.Name = "btnUpdateDetails";
-            this.btnUpdateDetails.Size = new System.Drawing.Size(138, 24);
+            this.btnUpdateDetails.Size = new System.Drawing.Size(104, 24);
             this.btnUpdateDetails.TabIndex = 24;
             this.btnUpdateDetails.Text = "Update Details";
             this.btnUpdateDetails.UseVisualStyleBackColor = true;
@@ -538,10 +540,10 @@
             this.btnCreateItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCreateItem.Enabled = false;
-            this.btnCreateItem.Location = new System.Drawing.Point(78, 21);
+            this.btnCreateItem.Location = new System.Drawing.Point(25, 16);
             this.btnCreateItem.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreateItem.Name = "btnCreateItem";
-            this.btnCreateItem.Size = new System.Drawing.Size(138, 24);
+            this.btnCreateItem.Size = new System.Drawing.Size(104, 24);
             this.btnCreateItem.TabIndex = 23;
             this.btnCreateItem.Text = "Create Item";
             this.btnCreateItem.UseVisualStyleBackColor = true;
@@ -551,10 +553,10 @@
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(78, 105);
+            this.btnClose.Location = new System.Drawing.Point(25, 100);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(138, 24);
+            this.btnClose.Size = new System.Drawing.Size(104, 24);
             this.btnClose.TabIndex = 26;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -593,6 +595,19 @@
             this.dgSupplyItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSupplyItems_CellClick);
             this.dgSupplyItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSupplyItems_CellContentClick);
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(167, 16);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(104, 24);
+            this.button1.TabIndex = 27;
+            this.button1.Text = "Create Item";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // frmSupplyItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -603,6 +618,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmSupplyItems";
             this.Text = "Supply Items";
+            this.Load += new System.EventHandler(this.frmSupplyItems_Load_1);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.gpWhole.ResumeLayout(false);
@@ -663,5 +679,6 @@
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.ComboBox cboWhole;
         private System.Windows.Forms.Label lblWhole;
+        private System.Windows.Forms.Button button1;
     }
 }

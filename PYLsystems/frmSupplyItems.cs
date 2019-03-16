@@ -279,7 +279,37 @@ namespace PYLsystems
         private void btnStockInSelectedItem_Click(object sender, EventArgs e)
         {
             frmSupplyStockIn supplyStockIn = new frmSupplyStockIn();
+            frmSupplyStockIn.Global.supplyID = dgSupplyItems.CurrentRow.Cells[0].Value.ToString();
+            supplyStockIn.txtItemName.Text = dgSupplyItems.CurrentRow.Cells[2].Value.ToString();
+            supplyStockIn.txtRawPurchasePrice.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
             supplyStockIn.ShowDialog();
+            RefreshDatabase();
+            cboSupplyCategory.SelectedIndex = -1;
+            txtItemName.Text = "";
+            txtItemDescription.Text = "";
+            cboActive.SelectedIndex = -1;
+
+            txtPurchaseUnitPrice.Text = "";
+            supply_categoryID = "";
+            typeOfMeasure_db = "";
+            supplyID = "";
+
+            lblArea.Visible = false;
+            txtArea1.Visible = false;
+            txtArea2.Visible = false;
+            cboArea.Visible = false;
+            lblX.Visible = false;
+
+            txtLength.Visible = false;
+            cboLength.Visible = false;
+            lblLength.Visible = false;
+
+            lblWeight.Visible = false;
+            txtWeight.Visible = false;
+            cboWeight.Visible = false;
+
+            cboWhole.Visible = false;
+            lblWhole.Visible = false;
         }
 
         private void btnCreateItem_Click(object sender, EventArgs e)
@@ -730,6 +760,10 @@ namespace PYLsystems
                 lblWhole.Visible = false;
             }
 
+        private void frmSupplyItems_Load_1(object sender, EventArgs e)
+        {
+            RefreshDatabase();
         }
+    }
     }
 
