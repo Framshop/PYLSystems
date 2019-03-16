@@ -30,160 +30,147 @@
         {
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.txtDescription = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtItemDescription = new System.Windows.Forms.TextBox();
+            this.txtItemName = new System.Windows.Forms.TextBox();
             this.lblDescription = new System.Windows.Forms.Label();
-            this.lblUnitMeasure = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
+            this.lblSupplyCategory = new System.Windows.Forms.Label();
+            this.lblItemName = new System.Windows.Forms.Label();
             this.lblValidate = new System.Windows.Forms.Label();
             this.lblSupplyItemsID = new System.Windows.Forms.Label();
-            this.cboUnitMeasure = new System.Windows.Forms.ComboBox();
+            this.cboSupplyCategory = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gpWhole = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.gpMeasurements = new System.Windows.Forms.GroupBox();
+            this.cboWhole = new System.Windows.Forms.ComboBox();
+            this.lblWhole = new System.Windows.Forms.Label();
+            this.txtPurchaseUnitPrice = new System.Windows.Forms.TextBox();
+            this.lblPurchaseUnitPrice = new System.Windows.Forms.Label();
+            this.cboWeight = new System.Windows.Forms.ComboBox();
+            this.txtWeight = new System.Windows.Forms.TextBox();
+            this.lblX = new System.Windows.Forms.Label();
+            this.txtArea2 = new System.Windows.Forms.TextBox();
+            this.cboArea = new System.Windows.Forms.ComboBox();
+            this.txtArea1 = new System.Windows.Forms.TextBox();
+            this.cboLength = new System.Windows.Forms.ComboBox();
+            this.txtLength = new System.Windows.Forms.TextBox();
+            this.lblWeight = new System.Windows.Forms.Label();
+            this.lblArea = new System.Windows.Forms.Label();
+            this.lblLength = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnStockIn = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.cboActive = new System.Windows.Forms.ComboBox();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.gpButtons = new System.Windows.Forms.GroupBox();
+            this.btnStockInSelectedItem = new System.Windows.Forms.Button();
+            this.btnUpdateDetails = new System.Windows.Forms.Button();
+            this.btnCreateItem = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.datagridEmpList = new System.Windows.Forms.DataGridView();
+            this.gpSupplyDetails = new System.Windows.Forms.GroupBox();
+            this.dgSupplyItems = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gpWhole.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.gpMeasurements.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datagridEmpList)).BeginInit();
+            this.gpButtons.SuspendLayout();
+            this.gpSupplyDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSupplyItems)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSearch
             // 
             this.lblSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(861, 16);
-            this.lblSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSearch.Location = new System.Drawing.Point(472, 10);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(64, 20);
+            this.lblSearch.Size = new System.Drawing.Size(44, 13);
             this.lblSearch.TabIndex = 28;
             this.lblSearch.Text = "Search:";
             // 
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Location = new System.Drawing.Point(957, 13);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtSearch.Location = new System.Drawing.Point(536, 8);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(400, 26);
-            this.txtSearch.TabIndex = 10;
+            this.txtSearch.Size = new System.Drawing.Size(268, 20);
+            this.txtSearch.TabIndex = 27;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // txtDescription
+            // txtItemDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(155, 139);
-            this.txtDescription.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(274, 81);
-            this.txtDescription.TabIndex = 3;
-            this.txtDescription.TextChanged += new System.EventHandler(this.txtDescription_TextChanged);
+            this.txtItemDescription.Location = new System.Drawing.Point(103, 90);
+            this.txtItemDescription.Multiline = true;
+            this.txtItemDescription.Name = "txtItemDescription";
+            this.txtItemDescription.Size = new System.Drawing.Size(184, 39);
+            this.txtItemDescription.TabIndex = 5;
+            this.txtItemDescription.TextChanged += new System.EventHandler(this.txtDescription_TextChanged);
             // 
-            // txtName
+            // txtItemName
             // 
-            this.txtName.Location = new System.Drawing.Point(155, 86);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(274, 26);
-            this.txtName.TabIndex = 1;
-            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
+            this.txtItemName.Location = new System.Drawing.Point(103, 56);
+            this.txtItemName.Name = "txtItemName";
+            this.txtItemName.Size = new System.Drawing.Size(184, 20);
+            this.txtItemName.TabIndex = 3;
+            this.txtItemName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(58, 142);
-            this.lblDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDescription.Location = new System.Drawing.Point(39, 92);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(93, 20);
-            this.lblDescription.TabIndex = 4;
+            this.lblDescription.Size = new System.Drawing.Size(63, 13);
+            this.lblDescription.TabIndex = 6;
             this.lblDescription.Text = "Description:";
             // 
-            // lblUnitMeasure
+            // lblSupplyCategory
             // 
-            this.lblUnitMeasure.AutoSize = true;
-            this.lblUnitMeasure.Location = new System.Drawing.Point(18, 30);
-            this.lblUnitMeasure.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblUnitMeasure.Name = "lblUnitMeasure";
-            this.lblUnitMeasure.Size = new System.Drawing.Size(129, 20);
-            this.lblUnitMeasure.TabIndex = 6;
-            this.lblUnitMeasure.Text = "Supply Category:";
+            this.lblSupplyCategory.AutoSize = true;
+            this.lblSupplyCategory.Location = new System.Drawing.Point(12, 19);
+            this.lblSupplyCategory.Name = "lblSupplyCategory";
+            this.lblSupplyCategory.Size = new System.Drawing.Size(87, 13);
+            this.lblSupplyCategory.TabIndex = 2;
+            this.lblSupplyCategory.Text = "Supply Category:";
             // 
-            // lblName
+            // lblItemName
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(56, 89);
-            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(91, 20);
-            this.lblName.TabIndex = 2;
-            this.lblName.Text = "Item Name:";
+            this.lblItemName.AutoSize = true;
+            this.lblItemName.Location = new System.Drawing.Point(37, 58);
+            this.lblItemName.Name = "lblItemName";
+            this.lblItemName.Size = new System.Drawing.Size(61, 13);
+            this.lblItemName.TabIndex = 4;
+            this.lblItemName.Text = "Item Name:";
             // 
             // lblValidate
             // 
             this.lblValidate.AutoSize = true;
             this.lblValidate.ForeColor = System.Drawing.Color.Red;
-            this.lblValidate.Location = new System.Drawing.Point(190, 74);
-            this.lblValidate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblValidate.Location = new System.Drawing.Point(127, 48);
             this.lblValidate.Name = "lblValidate";
-            this.lblValidate.Size = new System.Drawing.Size(0, 20);
+            this.lblValidate.Size = new System.Drawing.Size(0, 13);
             this.lblValidate.TabIndex = 31;
             // 
             // lblSupplyItemsID
             // 
             this.lblSupplyItemsID.AutoSize = true;
-            this.lblSupplyItemsID.Location = new System.Drawing.Point(706, 228);
-            this.lblSupplyItemsID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSupplyItemsID.Location = new System.Drawing.Point(471, 148);
             this.lblSupplyItemsID.Name = "lblSupplyItemsID";
-            this.lblSupplyItemsID.Size = new System.Drawing.Size(0, 20);
+            this.lblSupplyItemsID.Size = new System.Drawing.Size(0, 13);
             this.lblSupplyItemsID.TabIndex = 32;
             this.lblSupplyItemsID.Visible = false;
             // 
-            // cboUnitMeasure
+            // cboSupplyCategory
             // 
-            this.cboUnitMeasure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboUnitMeasure.FormattingEnabled = true;
-            this.cboUnitMeasure.Items.AddRange(new object[] {
-            "ft",
-            "inches"});
-            this.cboUnitMeasure.Location = new System.Drawing.Point(155, 27);
-            this.cboUnitMeasure.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cboUnitMeasure.Name = "cboUnitMeasure";
-            this.cboUnitMeasure.Size = new System.Drawing.Size(274, 28);
-            this.cboUnitMeasure.TabIndex = 5;
-            this.cboUnitMeasure.SelectedIndexChanged += new System.EventHandler(this.cboUnitMeasure_SelectedIndexChanged);
+            this.cboSupplyCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSupplyCategory.FormattingEnabled = true;
+            this.cboSupplyCategory.Location = new System.Drawing.Point(103, 18);
+            this.cboSupplyCategory.Name = "cboSupplyCategory";
+            this.cboSupplyCategory.Size = new System.Drawing.Size(184, 21);
+            this.cboSupplyCategory.TabIndex = 1;
+            this.cboSupplyCategory.SelectedIndexChanged += new System.EventHandler(this.cboSupplyCategory_SelectedIndexChanged);
             // 
             // tableLayoutPanel1
             // 
@@ -194,38 +181,42 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1539, 1021);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(913, 667);
             this.tableLayoutPanel1.TabIndex = 36;
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.gpWhole, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(79, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(47, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1379, 1015);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.832298F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.26915F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.898551F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(817, 663);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // groupBox1
+            // gpWhole
             // 
-            this.groupBox1.Controls.Add(this.txtSearch);
-            this.groupBox1.Controls.Add(this.lblSearch);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1373, 44);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
+            this.gpWhole.Controls.Add(this.txtSearch);
+            this.gpWhole.Controls.Add(this.lblSearch);
+            this.gpWhole.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gpWhole.Location = new System.Drawing.Point(2, 2);
+            this.gpWhole.Margin = new System.Windows.Forms.Padding(2);
+            this.gpWhole.Name = "gpWhole";
+            this.gpWhole.Padding = new System.Windows.Forms.Padding(2);
+            this.gpWhole.Size = new System.Drawing.Size(813, 41);
+            this.gpWhole.TabIndex = 0;
+            this.gpWhole.TabStop = false;
             // 
             // tableLayoutPanel3
             // 
@@ -233,360 +224,400 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.99927F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.00073F));
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.groupBox5, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.gpSupplyDetails, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 53);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 47);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1373, 907);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(813, 594);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.groupBox3, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.gpMeasurements, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.groupBox2, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.groupBox4, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.gpButtons, 0, 2);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.96338F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.39734F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.5283F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(501, 901);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(296, 590);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
-            // groupBox3
+            // gpMeasurements
             // 
-            this.groupBox3.Controls.Add(this.comboBox5);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.textBox5);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.comboBox3);
-            this.groupBox3.Controls.Add(this.textBox4);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.textBox3);
-            this.groupBox3.Controls.Add(this.comboBox2);
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Controls.Add(this.comboBox1);
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(3, 300);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(495, 376);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Measurements";
+            this.gpMeasurements.Controls.Add(this.cboWhole);
+            this.gpMeasurements.Controls.Add(this.lblWhole);
+            this.gpMeasurements.Controls.Add(this.txtPurchaseUnitPrice);
+            this.gpMeasurements.Controls.Add(this.lblPurchaseUnitPrice);
+            this.gpMeasurements.Controls.Add(this.cboWeight);
+            this.gpMeasurements.Controls.Add(this.txtWeight);
+            this.gpMeasurements.Controls.Add(this.lblX);
+            this.gpMeasurements.Controls.Add(this.txtArea2);
+            this.gpMeasurements.Controls.Add(this.cboArea);
+            this.gpMeasurements.Controls.Add(this.txtArea1);
+            this.gpMeasurements.Controls.Add(this.cboLength);
+            this.gpMeasurements.Controls.Add(this.txtLength);
+            this.gpMeasurements.Controls.Add(this.lblWeight);
+            this.gpMeasurements.Controls.Add(this.lblArea);
+            this.gpMeasurements.Controls.Add(this.lblLength);
+            this.gpMeasurements.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gpMeasurements.Location = new System.Drawing.Point(2, 196);
+            this.gpMeasurements.Margin = new System.Windows.Forms.Padding(2);
+            this.gpMeasurements.Name = "gpMeasurements";
+            this.gpMeasurements.Padding = new System.Windows.Forms.Padding(2);
+            this.gpMeasurements.Size = new System.Drawing.Size(292, 246);
+            this.gpMeasurements.TabIndex = 1;
+            this.gpMeasurements.TabStop = false;
+            this.gpMeasurements.Text = "Measurements";
             // 
-            // comboBox5
+            // cboWhole
             // 
-            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
-            "sheet",
-            "piece"});
-            this.comboBox5.Location = new System.Drawing.Point(332, 286);
-            this.comboBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(97, 28);
-            this.comboBox5.TabIndex = 20;
+            this.cboWhole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboWhole.FormattingEnabled = true;
+            this.cboWhole.ItemHeight = 13;
+            this.cboWhole.Items.AddRange(new object[] {
+            "pieces",
+            "sheets"});
+            this.cboWhole.Location = new System.Drawing.Point(221, 186);
+            this.cboWhole.Name = "cboWhole";
+            this.cboWhole.Size = new System.Drawing.Size(66, 21);
+            this.cboWhole.TabIndex = 20;
+            this.cboWhole.Visible = false;
+            this.cboWhole.SelectedIndexChanged += new System.EventHandler(this.cboWhole_SelectedIndexChanged);
             // 
-            // label7
+            // lblWhole
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(72, 249);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 20);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Whole:";
+            this.lblWhole.AutoSize = true;
+            this.lblWhole.Location = new System.Drawing.Point(45, 194);
+            this.lblWhole.Name = "lblWhole";
+            this.lblWhole.Size = new System.Drawing.Size(41, 13);
+            this.lblWhole.TabIndex = 20;
+            this.lblWhole.Text = "Whole:";
+            this.lblWhole.Visible = false;
             // 
-            // textBox5
+            // txtPurchaseUnitPrice
             // 
-            this.textBox5.Location = new System.Drawing.Point(193, 336);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(236, 26);
-            this.textBox5.TabIndex = 17;
+            this.txtPurchaseUnitPrice.Location = new System.Drawing.Point(129, 218);
+            this.txtPurchaseUnitPrice.Name = "txtPurchaseUnitPrice";
+            this.txtPurchaseUnitPrice.Size = new System.Drawing.Size(159, 20);
+            this.txtPurchaseUnitPrice.TabIndex = 21;
+            this.txtPurchaseUnitPrice.TextChanged += new System.EventHandler(this.txtPurchaseUnitPrice_TextChanged);
+            this.txtPurchaseUnitPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPurchaseUnitPrice_KeyPress);
             // 
-            // label5
+            // lblPurchaseUnitPrice
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(33, 336);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(152, 20);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "Purchase Unit Price:";
+            this.lblPurchaseUnitPrice.AutoSize = true;
+            this.lblPurchaseUnitPrice.Location = new System.Drawing.Point(22, 218);
+            this.lblPurchaseUnitPrice.Name = "lblPurchaseUnitPrice";
+            this.lblPurchaseUnitPrice.Size = new System.Drawing.Size(104, 13);
+            this.lblPurchaseUnitPrice.TabIndex = 22;
+            this.lblPurchaseUnitPrice.Text = "Purchase Unit Price:";
             // 
-            // comboBox3
+            // cboWeight
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "ft",
-            "inches"});
-            this.comboBox3.Location = new System.Drawing.Point(332, 205);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(97, 28);
-            this.comboBox3.TabIndex = 16;
+            this.cboWeight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboWeight.FormattingEnabled = true;
+            this.cboWeight.ItemHeight = 13;
+            this.cboWeight.Items.AddRange(new object[] {
+            "ounce",
+            "kilogram/s",
+            "gram/s"});
+            this.cboWeight.Location = new System.Drawing.Point(221, 133);
+            this.cboWeight.Name = "cboWeight";
+            this.cboWeight.Size = new System.Drawing.Size(66, 21);
+            this.cboWeight.TabIndex = 16;
+            this.cboWeight.Visible = false;
+            this.cboWeight.SelectedIndexChanged += new System.EventHandler(this.cboWeight_SelectedIndexChanged);
             // 
-            // textBox4
+            // txtWeight
             // 
-            this.textBox4.Location = new System.Drawing.Point(101, 207);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(191, 26);
-            this.textBox4.TabIndex = 15;
+            this.txtWeight.Location = new System.Drawing.Point(67, 135);
+            this.txtWeight.Name = "txtWeight";
+            this.txtWeight.Size = new System.Drawing.Size(129, 20);
+            this.txtWeight.TabIndex = 17;
+            this.txtWeight.Visible = false;
+            this.txtWeight.TextChanged += new System.EventHandler(this.txtWeight_TextChanged);
             // 
-            // label4
+            // lblX
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(189, 130);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(20, 20);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "X";
+            this.lblX.AutoSize = true;
+            this.lblX.Location = new System.Drawing.Point(126, 84);
+            this.lblX.Name = "lblX";
+            this.lblX.Size = new System.Drawing.Size(14, 13);
+            this.lblX.TabIndex = 14;
+            this.lblX.Text = "X";
+            this.lblX.Visible = false;
             // 
-            // textBox3
+            // txtArea2
             // 
-            this.textBox3.Location = new System.Drawing.Point(224, 127);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(68, 26);
-            this.textBox3.TabIndex = 13;
+            this.txtArea2.Location = new System.Drawing.Point(149, 83);
+            this.txtArea2.Name = "txtArea2";
+            this.txtArea2.Size = new System.Drawing.Size(47, 20);
+            this.txtArea2.TabIndex = 13;
+            this.txtArea2.Visible = false;
+            this.txtArea2.TextChanged += new System.EventHandler(this.txtArea2_TextChanged);
             // 
-            // comboBox2
+            // cboArea
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "ft",
-            "inches"});
-            this.comboBox2.Location = new System.Drawing.Point(332, 125);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(97, 28);
-            this.comboBox2.TabIndex = 12;
+            this.cboArea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboArea.FormattingEnabled = true;
+            this.cboArea.ItemHeight = 13;
+            this.cboArea.Items.AddRange(new object[] {
+            "feet",
+            "inches",
+            "meters",
+            "centimeters",
+            "millimeters"});
+            this.cboArea.Location = new System.Drawing.Point(221, 81);
+            this.cboArea.Name = "cboArea";
+            this.cboArea.Size = new System.Drawing.Size(66, 21);
+            this.cboArea.TabIndex = 12;
+            this.cboArea.Visible = false;
+            this.cboArea.SelectedIndexChanged += new System.EventHandler(this.cboArea_SelectedIndexChanged);
             // 
-            // textBox2
+            // txtArea1
             // 
-            this.textBox2.Location = new System.Drawing.Point(104, 127);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(68, 26);
-            this.textBox2.TabIndex = 11;
+            this.txtArea1.Location = new System.Drawing.Point(69, 83);
+            this.txtArea1.Name = "txtArea1";
+            this.txtArea1.Size = new System.Drawing.Size(47, 20);
+            this.txtArea1.TabIndex = 14;
+            this.txtArea1.Visible = false;
+            this.txtArea1.TextChanged += new System.EventHandler(this.txtArea1_TextChanged);
             // 
-            // comboBox1
+            // cboLength
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "ft",
-            "inches"});
-            this.comboBox1.Location = new System.Drawing.Point(332, 56);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(97, 28);
-            this.comboBox1.TabIndex = 10;
+            this.cboLength.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboLength.FormattingEnabled = true;
+            this.cboLength.Items.AddRange(new object[] {
+            "feet",
+            "inches",
+            "meters",
+            "centimeters",
+            "millimeters"});
+            this.cboLength.Location = new System.Drawing.Point(221, 36);
+            this.cboLength.Name = "cboLength";
+            this.cboLength.Size = new System.Drawing.Size(66, 21);
+            this.cboLength.TabIndex = 9;
+            this.cboLength.Visible = false;
+            this.cboLength.SelectedIndexChanged += new System.EventHandler(this.cboLength_SelectedIndexChanged);
             // 
-            // textBox1
+            // txtLength
             // 
-            this.textBox1.Location = new System.Drawing.Point(101, 58);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(191, 26);
-            this.textBox1.TabIndex = 9;
+            this.txtLength.Location = new System.Drawing.Point(67, 38);
+            this.txtLength.Name = "txtLength";
+            this.txtLength.Size = new System.Drawing.Size(129, 20);
+            this.txtLength.TabIndex = 10;
+            this.txtLength.Visible = false;
+            this.txtLength.TextChanged += new System.EventHandler(this.txtLength_TextChanged);
             // 
-            // label1
+            // lblWeight
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(67, 173);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 20);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Weight:";
+            this.lblWeight.AutoSize = true;
+            this.lblWeight.Location = new System.Drawing.Point(45, 112);
+            this.lblWeight.Name = "lblWeight";
+            this.lblWeight.Size = new System.Drawing.Size(44, 13);
+            this.lblWeight.TabIndex = 18;
+            this.lblWeight.Text = "Weight:";
+            this.lblWeight.Visible = false;
             // 
-            // label3
+            // lblArea
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(80, 101);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 20);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Area:";
+            this.lblArea.AutoSize = true;
+            this.lblArea.Location = new System.Drawing.Point(53, 66);
+            this.lblArea.Name = "lblArea";
+            this.lblArea.Size = new System.Drawing.Size(32, 13);
+            this.lblArea.TabIndex = 15;
+            this.lblArea.Text = "Area:";
+            this.lblArea.Visible = false;
             // 
-            // label2
+            // lblLength
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(67, 29);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 20);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Length:";
+            this.lblLength.AutoSize = true;
+            this.lblLength.Location = new System.Drawing.Point(45, 19);
+            this.lblLength.Name = "lblLength";
+            this.lblLength.Size = new System.Drawing.Size(43, 13);
+            this.lblLength.TabIndex = 11;
+            this.lblLength.Text = "Length:";
+            this.lblLength.Visible = false;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBox4);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.cboUnitMeasure);
-            this.groupBox2.Controls.Add(this.lblUnitMeasure);
-            this.groupBox2.Controls.Add(this.txtName);
+            this.groupBox2.Controls.Add(this.cboActive);
+            this.groupBox2.Controls.Add(this.lblStatus);
+            this.groupBox2.Controls.Add(this.cboSupplyCategory);
+            this.groupBox2.Controls.Add(this.lblSupplyCategory);
+            this.groupBox2.Controls.Add(this.txtItemName);
             this.groupBox2.Controls.Add(this.lblDescription);
-            this.groupBox2.Controls.Add(this.txtDescription);
-            this.groupBox2.Controls.Add(this.lblName);
+            this.groupBox2.Controls.Add(this.txtItemDescription);
+            this.groupBox2.Controls.Add(this.lblItemName);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Location = new System.Drawing.Point(2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(495, 291);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Size = new System.Drawing.Size(292, 190);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Supply Details";
             // 
-            // comboBox4
+            // cboActive
             // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
-            "ft",
-            "inches"});
-            this.comboBox4.Location = new System.Drawing.Point(155, 239);
-            this.comboBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(274, 28);
-            this.comboBox4.TabIndex = 7;
+            this.cboActive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboActive.FormattingEnabled = true;
+            this.cboActive.Items.AddRange(new object[] {
+            "Active",
+            "Inactive"});
+            this.cboActive.Location = new System.Drawing.Point(103, 155);
+            this.cboActive.Name = "cboActive";
+            this.cboActive.Size = new System.Drawing.Size(184, 21);
+            this.cboActive.TabIndex = 7;
+            this.cboActive.SelectedIndexChanged += new System.EventHandler(this.cboActive_SelectedIndexChanged);
             // 
-            // label6
+            // lblStatus
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(87, 242);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 20);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Status:";
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(58, 157);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(40, 13);
+            this.lblStatus.TabIndex = 8;
+            this.lblStatus.Text = "Status:";
             // 
-            // groupBox4
+            // gpButtons
             // 
-            this.groupBox4.Controls.Add(this.btnStockIn);
-            this.groupBox4.Controls.Add(this.btnUpdate);
-            this.groupBox4.Controls.Add(this.btnAdd);
-            this.groupBox4.Controls.Add(this.btnClose);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(3, 682);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(495, 216);
-            this.groupBox4.TabIndex = 2;
-            this.groupBox4.TabStop = false;
+            this.gpButtons.Controls.Add(this.btnStockInSelectedItem);
+            this.gpButtons.Controls.Add(this.btnUpdateDetails);
+            this.gpButtons.Controls.Add(this.btnCreateItem);
+            this.gpButtons.Controls.Add(this.btnClose);
+            this.gpButtons.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gpButtons.Location = new System.Drawing.Point(2, 446);
+            this.gpButtons.Margin = new System.Windows.Forms.Padding(2);
+            this.gpButtons.Name = "gpButtons";
+            this.gpButtons.Padding = new System.Windows.Forms.Padding(2);
+            this.gpButtons.Size = new System.Drawing.Size(292, 142);
+            this.gpButtons.TabIndex = 2;
+            this.gpButtons.TabStop = false;
             // 
-            // btnStockIn
+            // btnStockInSelectedItem
             // 
-            this.btnStockIn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnStockInSelectedItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStockIn.Location = new System.Drawing.Point(117, 118);
-            this.btnStockIn.Name = "btnStockIn";
-            this.btnStockIn.Size = new System.Drawing.Size(264, 37);
-            this.btnStockIn.TabIndex = 33;
-            this.btnStockIn.Text = "Stock In Selected Item";
-            this.btnStockIn.UseVisualStyleBackColor = true;
+            this.btnStockInSelectedItem.Enabled = false;
+            this.btnStockInSelectedItem.Location = new System.Drawing.Point(78, 77);
+            this.btnStockInSelectedItem.Margin = new System.Windows.Forms.Padding(2);
+            this.btnStockInSelectedItem.Name = "btnStockInSelectedItem";
+            this.btnStockInSelectedItem.Size = new System.Drawing.Size(138, 24);
+            this.btnStockInSelectedItem.TabIndex = 25;
+            this.btnStockInSelectedItem.Text = "Stock In Selected Item";
+            this.btnStockInSelectedItem.UseVisualStyleBackColor = true;
+            this.btnStockInSelectedItem.Click += new System.EventHandler(this.btnStockInSelectedItem_Click);
             // 
-            // btnUpdate
+            // btnUpdateDetails
             // 
-            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnUpdateDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdate.Location = new System.Drawing.Point(117, 75);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(264, 37);
-            this.btnUpdate.TabIndex = 32;
-            this.btnUpdate.Text = "Update Details";
-            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdateDetails.Enabled = false;
+            this.btnUpdateDetails.Location = new System.Drawing.Point(78, 49);
+            this.btnUpdateDetails.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUpdateDetails.Name = "btnUpdateDetails";
+            this.btnUpdateDetails.Size = new System.Drawing.Size(138, 24);
+            this.btnUpdateDetails.TabIndex = 24;
+            this.btnUpdateDetails.Text = "Update Details";
+            this.btnUpdateDetails.UseVisualStyleBackColor = true;
+            this.btnUpdateDetails.Click += new System.EventHandler(this.btnUpdateDetails_Click);
             // 
-            // btnAdd
+            // btnCreateItem
             // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnCreateItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(117, 32);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(264, 37);
-            this.btnAdd.TabIndex = 31;
-            this.btnAdd.Text = "Create Item";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnCreateItem.Enabled = false;
+            this.btnCreateItem.Location = new System.Drawing.Point(78, 21);
+            this.btnCreateItem.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCreateItem.Name = "btnCreateItem";
+            this.btnCreateItem.Size = new System.Drawing.Size(138, 24);
+            this.btnCreateItem.TabIndex = 23;
+            this.btnCreateItem.Text = "Create Item";
+            this.btnCreateItem.UseVisualStyleBackColor = true;
+            this.btnCreateItem.Click += new System.EventHandler(this.btnCreateItem_Click);
             // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(117, 161);
+            this.btnClose.Location = new System.Drawing.Point(78, 105);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(264, 37);
-            this.btnClose.TabIndex = 30;
+            this.btnClose.Size = new System.Drawing.Size(138, 24);
+            this.btnClose.TabIndex = 26;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // groupBox5
+            // gpSupplyDetails
             // 
-            this.groupBox5.Controls.Add(this.datagridEmpList);
-            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Location = new System.Drawing.Point(510, 3);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(860, 901);
-            this.groupBox5.TabIndex = 1;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Supply Items";
+            this.gpSupplyDetails.Controls.Add(this.dgSupplyItems);
+            this.gpSupplyDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gpSupplyDetails.Location = new System.Drawing.Point(302, 2);
+            this.gpSupplyDetails.Margin = new System.Windows.Forms.Padding(2);
+            this.gpSupplyDetails.Name = "gpSupplyDetails";
+            this.gpSupplyDetails.Padding = new System.Windows.Forms.Padding(2);
+            this.gpSupplyDetails.Size = new System.Drawing.Size(509, 590);
+            this.gpSupplyDetails.TabIndex = 1;
+            this.gpSupplyDetails.TabStop = false;
+            this.gpSupplyDetails.Text = "Supply Items";
             // 
-            // datagridEmpList
+            // dgSupplyItems
             // 
-            this.datagridEmpList.AllowUserToAddRows = false;
-            this.datagridEmpList.AllowUserToDeleteRows = false;
-            this.datagridEmpList.AllowUserToResizeRows = false;
-            this.datagridEmpList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.datagridEmpList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datagridEmpList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.datagridEmpList.Location = new System.Drawing.Point(3, 22);
-            this.datagridEmpList.Name = "datagridEmpList";
-            this.datagridEmpList.ReadOnly = true;
-            this.datagridEmpList.RowHeadersVisible = false;
-            this.datagridEmpList.RowTemplate.Height = 28;
-            this.datagridEmpList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridEmpList.Size = new System.Drawing.Size(854, 876);
-            this.datagridEmpList.TabIndex = 2;
+            this.dgSupplyItems.AllowUserToAddRows = false;
+            this.dgSupplyItems.AllowUserToDeleteRows = false;
+            this.dgSupplyItems.AllowUserToResizeRows = false;
+            this.dgSupplyItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgSupplyItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSupplyItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgSupplyItems.Location = new System.Drawing.Point(2, 15);
+            this.dgSupplyItems.Margin = new System.Windows.Forms.Padding(2);
+            this.dgSupplyItems.Name = "dgSupplyItems";
+            this.dgSupplyItems.ReadOnly = true;
+            this.dgSupplyItems.RowHeadersVisible = false;
+            this.dgSupplyItems.RowTemplate.Height = 28;
+            this.dgSupplyItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgSupplyItems.Size = new System.Drawing.Size(505, 573);
+            this.dgSupplyItems.TabIndex = 29;
+            this.dgSupplyItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSupplyItems_CellClick);
+            this.dgSupplyItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSupplyItems_CellContentClick);
             // 
             // frmSupplyItems
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1539, 1021);
+            this.ClientSize = new System.Drawing.Size(913, 667);
             this.Controls.Add(this.lblSupplyItemsID);
             this.Controls.Add(this.lblValidate);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmSupplyItems";
             this.Text = "Supply Items";
             this.Load += new System.EventHandler(this.frmSupplyItems_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gpWhole.ResumeLayout(false);
+            this.gpWhole.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.gpMeasurements.ResumeLayout(false);
+            this.gpMeasurements.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.datagridEmpList)).EndInit();
+            this.gpButtons.ResumeLayout(false);
+            this.gpSupplyDetails.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgSupplyItems)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -595,44 +626,44 @@
         #endregion
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.TextBox txtDescription;
-        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtItemDescription;
+        private System.Windows.Forms.TextBox txtItemName;
         private System.Windows.Forms.Label lblDescription;
-        private System.Windows.Forms.Label lblUnitMeasure;
-        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblSupplyCategory;
+        private System.Windows.Forms.Label lblItemName;
         private System.Windows.Forms.Label lblValidate;
         private System.Windows.Forms.Label lblSupplyItemsID;
-        private System.Windows.Forms.ComboBox cboUnitMeasure;
+        private System.Windows.Forms.ComboBox cboSupplyCategory;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gpWhole;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox gpMeasurements;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button btnStockIn;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.GroupBox gpButtons;
+        private System.Windows.Forms.GroupBox gpSupplyDetails;
+        private System.Windows.Forms.Button btnStockInSelectedItem;
+        private System.Windows.Forms.Button btnUpdateDetails;
+        private System.Windows.Forms.Button btnCreateItem;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView datagridEmpList;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblWeight;
+        private System.Windows.Forms.Label lblArea;
+        private System.Windows.Forms.Label lblLength;
+        private System.Windows.Forms.DataGridView dgSupplyItems;
+        private System.Windows.Forms.ComboBox cboWeight;
+        private System.Windows.Forms.TextBox txtWeight;
+        private System.Windows.Forms.Label lblX;
+        private System.Windows.Forms.TextBox txtArea2;
+        private System.Windows.Forms.ComboBox cboArea;
+        private System.Windows.Forms.TextBox txtArea1;
+        private System.Windows.Forms.ComboBox cboLength;
+        private System.Windows.Forms.TextBox txtLength;
+        private System.Windows.Forms.TextBox txtPurchaseUnitPrice;
+        private System.Windows.Forms.Label lblPurchaseUnitPrice;
+        private System.Windows.Forms.ComboBox cboActive;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.ComboBox cboWhole;
+        private System.Windows.Forms.Label lblWhole;
     }
 }

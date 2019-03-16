@@ -16,5 +16,10 @@ namespace PYLsystems
         {
             InitializeComponent();
         }
+
+        private void frmAddSupplierItems_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

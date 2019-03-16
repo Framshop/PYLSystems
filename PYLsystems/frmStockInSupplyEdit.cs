@@ -22,32 +22,12 @@ namespace PYLsystems
 
         private void frmStockInSupplyEdit_Load(object sender, EventArgs e)
         {
-            frmSupplyStockIn mySupplyStockIn = new frmSupplyStockIn();
-            if (mySupplyStockIn.lblActiveUpdate.Text == "Active")
-            {
-                cboActive.SelectedIndex = 1;
-            }
-            else
-            {
-                cboActive.SelectedIndex = 0;
-            }
+        
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            frmSupplyStockIn mySupplyStockIn = new frmSupplyStockIn();
-            myConn.Open();
-            string myQuery = "UPDATE supply_details SET stockin_quantity =  stockin_quantity + " + txtStockInQuantity.Text + ",supply_price =  " +
-                "" + txtUnitPrice.Text + ",active =  " +
-                "" + cboActive.SelectedIndex + ",dateModified = NOW() WHERE supplyID = " + lblSupplyID.Text;
-            MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
-
-            MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
-            DataTable myDt = new DataTable();
-            myAdp.Fill(myDt);
-            myConn.Close();
-            MessageBox.Show("Update Successful!");
-            this.Close();
+     
         }
 
         private void txtUnitPrice_KeyPress(object sender, KeyPressEventArgs e)
@@ -86,17 +66,7 @@ namespace PYLsystems
         }
         public void functionUpdate()
         {
-            int active = cboActive.SelectedIndex;
-            int stock_in_quantity = txtStockInQuantity.TextLength;
-            int unitprice = txtUnitPrice.TextLength;
-            if (active > -1 && stock_in_quantity > 0 && unitprice > 0)
-            {
-                btnSave.Enabled = true;
-            }
-            else
-            {
-                btnSave.Enabled = false;
-            }     
+   
         }
 
         private void cboActive_SelectedIndexChanged(object sender, EventArgs e)
