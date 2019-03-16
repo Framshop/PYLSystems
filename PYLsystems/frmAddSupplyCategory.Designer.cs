@@ -1,6 +1,6 @@
 ﻿namespace PYLsystems
 {
-    partial class frmCreateSupplyCategory
+    partial class frmAddSupplyCategory
     {
         /// <summary>
         /// Required designer variable.

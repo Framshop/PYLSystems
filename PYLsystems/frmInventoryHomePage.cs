@@ -36,7 +36,7 @@ namespace PYLsystems
 
         private void btnFrameDetails_Click(object sender, EventArgs e)
         {
-            frmFrameDetails FrameDetails = new frmFrameDetails();
+            frmFrameList FrameDetails = new frmFrameList();
             FrameDetails.ShowDialog();
         }
 
@@ -48,7 +48,7 @@ namespace PYLsystems
 
         private void btnFrameStockInSupplyStockOut_Click(object sender, EventArgs e)
         {
-            frmFrameStockInSupplyStockOut FrameStockInSupplyStockOut = new frmFrameStockInSupplyStockOut();
+            frmFrameCreate FrameStockInSupplyStockOut = new frmFrameCreate();
             FrameStockInSupplyStockOut.ShowDialog();
         }
 

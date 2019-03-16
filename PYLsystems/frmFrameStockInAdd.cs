@@ -7,14 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace PYLsystems
 {
-    public partial class frmFrameStockInUpdate : Form
+    public partial class frmFrameStockInAdd : Form
     {
-        public frmFrameStockInUpdate()
+        MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
+        public frmFrameStockInAdd()
         {
+
             InitializeComponent();
         }
+        
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PYLsystems
 {
-    public partial class frmCreateSupplyCategory : Form
+    public partial class frmAddSupplyCategory : Form
     {
-        public frmCreateSupplyCategory()
+        public frmAddSupplyCategory()
         {
             InitializeComponent();
         }

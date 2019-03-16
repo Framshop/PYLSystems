@@ -110,7 +110,7 @@
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(274, 81);
             this.txtDescription.TabIndex = 3;
-            this.txtDescription.TextChanged += new System.EventHandler(this.txtDescription_TextChanged);
+            //this.txtDescription.TextChanged += new System.EventHandler(this.txtDescription_TextChanged);
             // 
             // txtName
             // 
@@ -119,7 +119,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(274, 26);
             this.txtName.TabIndex = 1;
-            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
+            //this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // lblDescription
             // 
@@ -573,7 +573,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmSupplyItems";
             this.Text = "Supply Items";
-            this.Load += new System.EventHandler(this.frmSupplyItems_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
