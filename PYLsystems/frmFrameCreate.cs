@@ -16,6 +16,21 @@ namespace PYLsystems
             InitializeComponent();
         }
 
-        
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAddSupply_Click(object sender, EventArgs e)
+        {
+            frmFrameAddSuppliesUsed frmAddSupplies = new frmFrameAddSuppliesUsed();
+            frmAddSupplies.ShowDialog();
+        }
+
+        private void btnEditSupply_Click(object sender, EventArgs e)
+        {
+            frmFrameEditSuppliesUsed frmEditSupplies = new frmFrameEditSuppliesUsed();
+            frmEditSupplies.ShowDialog();
+        }
     }
 }

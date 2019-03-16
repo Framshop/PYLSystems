@@ -28,39 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.lblEmpName = new System.Windows.Forms.Label();
             this.txtBoxEmployeeName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnStockIn = new System.Windows.Forms.Button();
-            this.datagridPayrollCalc = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnStockIn = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.datagridPayrollCalc = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridPayrollCalc)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,17 +126,6 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(443, 799);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.datagridPayrollCalc);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(452, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(680, 799);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Stock In Record of Frame";
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label4);
@@ -152,34 +141,6 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Frame Details";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.textBox5);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.textBox4);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(3, 334);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(437, 284);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Stock In a Frame";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.button1);
-            this.groupBox4.Controls.Add(this.btnClose);
-            this.groupBox4.Controls.Add(this.btnStockIn);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(3, 624);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(437, 172);
-            this.groupBox4.TabIndex = 2;
-            this.groupBox4.TabStop = false;
             // 
             // label4
             // 
@@ -236,98 +197,21 @@
             this.txtBoxEmployeeName.Size = new System.Drawing.Size(218, 26);
             this.txtBoxEmployeeName.TabIndex = 12;
             // 
-            // label1
+            // groupBox3
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 54);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 20);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Employee Name:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(173, 51);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(218, 26);
-            this.textBox1.TabIndex = 14;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 101);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(135, 20);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Stock In Quantity:";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Location = new System.Drawing.Point(173, 98);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(218, 26);
-            this.textBox4.TabIndex = 16;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(93, 123);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(264, 37);
-            this.btnClose.TabIndex = 11;
-            this.btnClose.Text = "Cancel";
-            this.btnClose.UseVisualStyleBackColor = true;
-            // 
-            // btnStockIn
-            // 
-            this.btnStockIn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStockIn.Location = new System.Drawing.Point(93, 19);
-            this.btnStockIn.Name = "btnStockIn";
-            this.btnStockIn.Size = new System.Drawing.Size(264, 37);
-            this.btnStockIn.TabIndex = 10;
-            this.btnStockIn.Text = "Stock In Frame";
-            this.btnStockIn.UseVisualStyleBackColor = true;
-            // 
-            // datagridPayrollCalc
-            // 
-            this.datagridPayrollCalc.AllowUserToAddRows = false;
-            this.datagridPayrollCalc.AllowUserToDeleteRows = false;
-            this.datagridPayrollCalc.AllowUserToResizeRows = false;
-            this.datagridPayrollCalc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.datagridPayrollCalc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.datagridPayrollCalc.DefaultCellStyle = dataGridViewCellStyle4;
-            this.datagridPayrollCalc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.datagridPayrollCalc.Location = new System.Drawing.Point(3, 22);
-            this.datagridPayrollCalc.Name = "datagridPayrollCalc";
-            this.datagridPayrollCalc.ReadOnly = true;
-            this.datagridPayrollCalc.RowHeadersVisible = false;
-            this.datagridPayrollCalc.RowTemplate.Height = 28;
-            this.datagridPayrollCalc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridPayrollCalc.Size = new System.Drawing.Size(674, 774);
-            this.datagridPayrollCalc.TabIndex = 3;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(93, 71);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(264, 37);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Edit Selected Stocked In Frame";
-            this.button1.UseVisualStyleBackColor = true;
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.textBox4);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(3, 334);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(437, 284);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Stock In a Frame";
             // 
             // label5
             // 
@@ -347,6 +231,124 @@
             this.textBox5.Size = new System.Drawing.Size(218, 26);
             this.textBox5.TabIndex = 18;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 101);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(135, 20);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Stock In Quantity:";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox4.Location = new System.Drawing.Point(173, 98);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(218, 26);
+            this.textBox4.TabIndex = 16;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(129, 20);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Employee Name:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(173, 51);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(218, 26);
+            this.textBox1.TabIndex = 14;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btnEdit);
+            this.groupBox4.Controls.Add(this.btnClose);
+            this.groupBox4.Controls.Add(this.btnStockIn);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.Location = new System.Drawing.Point(3, 624);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(437, 172);
+            this.groupBox4.TabIndex = 2;
+            this.groupBox4.TabStop = false;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEdit.Location = new System.Drawing.Point(93, 71);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(264, 37);
+            this.btnEdit.TabIndex = 12;
+            this.btnEdit.Text = "Edit Selected Stocked In Frame";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Location = new System.Drawing.Point(93, 123);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(264, 37);
+            this.btnClose.TabIndex = 11;
+            this.btnClose.Text = "Cancel";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnStockIn
+            // 
+            this.btnStockIn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStockIn.Location = new System.Drawing.Point(93, 19);
+            this.btnStockIn.Name = "btnStockIn";
+            this.btnStockIn.Size = new System.Drawing.Size(264, 37);
+            this.btnStockIn.TabIndex = 10;
+            this.btnStockIn.Text = "Stock In Frame";
+            this.btnStockIn.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.datagridPayrollCalc);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(452, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(680, 799);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Stock In Record of Frame";
+            // 
+            // datagridPayrollCalc
+            // 
+            this.datagridPayrollCalc.AllowUserToAddRows = false;
+            this.datagridPayrollCalc.AllowUserToDeleteRows = false;
+            this.datagridPayrollCalc.AllowUserToResizeRows = false;
+            this.datagridPayrollCalc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.datagridPayrollCalc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.datagridPayrollCalc.DefaultCellStyle = dataGridViewCellStyle2;
+            this.datagridPayrollCalc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.datagridPayrollCalc.Location = new System.Drawing.Point(3, 22);
+            this.datagridPayrollCalc.Name = "datagridPayrollCalc";
+            this.datagridPayrollCalc.ReadOnly = true;
+            this.datagridPayrollCalc.RowHeadersVisible = false;
+            this.datagridPayrollCalc.RowTemplate.Height = 28;
+            this.datagridPayrollCalc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.datagridPayrollCalc.Size = new System.Drawing.Size(674, 774);
+            this.datagridPayrollCalc.TabIndex = 3;
+            // 
             // frmFrameStockInAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -360,12 +362,12 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.datagridPayrollCalc)).EndInit();
             this.ResumeLayout(false);
 
@@ -394,7 +396,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnStockIn;
         private System.Windows.Forms.DataGridView datagridPayrollCalc;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox5;
     }

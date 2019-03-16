@@ -27,7 +27,8 @@ namespace PYLsystems
 
         private void btnSupplies_Click(object sender, EventArgs e)
         {
-            
+            frmSuppliesHomePage formSuppliesNav = new frmSuppliesHomePage();
+            formSuppliesNav.ShowDialog();
         }
 
         private void btnJobOrders_Click(object sender, EventArgs e)
