@@ -422,10 +422,10 @@ namespace PYLsystems
                     this.Close();
                 }
             }
-            else
-            {
-                MessageBox.Show("Employee '" + txtLastName.Text + " " + txtFirstName.Text + "' already exist");
-            }
+            //else
+            //{
+            //    MessageBox.Show("Employee '" + txtLastName.Text + " " + txtFirstName.Text + "' already exist");
+            //}
         }
 
         private void btnClose_Click(object sender, EventArgs e)
