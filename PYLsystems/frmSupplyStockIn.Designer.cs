@@ -55,6 +55,7 @@
             this.startDatePicker = new System.Windows.Forms.DateTimePicker();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dgvStockIn = new System.Windows.Forms.DataGridView();
+            this.lblsupply_itemsID = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -90,6 +91,7 @@
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lblsupply_itemsID, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(47, 2);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
@@ -237,6 +239,7 @@
             this.txtItemName.ReadOnly = true;
             this.txtItemName.Size = new System.Drawing.Size(164, 20);
             this.txtItemName.TabIndex = 6;
+            this.txtItemName.TextChanged += new System.EventHandler(this.txtItemName_TextChanged);
             // 
             // gpSelectSupplier
             // 
@@ -389,7 +392,7 @@
             this.endDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.endDatePicker.CustomFormat = "yyyy/MM/dd";
+            this.endDatePicker.CustomFormat = "yyyy-mm-dd";
             this.endDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.endDatePicker.Location = new System.Drawing.Point(146, 43);
             this.endDatePicker.Margin = new System.Windows.Forms.Padding(2);
@@ -397,13 +400,14 @@
             this.endDatePicker.Size = new System.Drawing.Size(259, 20);
             this.endDatePicker.TabIndex = 20;
             this.endDatePicker.Value = new System.DateTime(2019, 1, 5, 0, 0, 0, 0);
+            this.endDatePicker.ValueChanged += new System.EventHandler(this.endDatePicker_ValueChanged);
             // 
             // startDatePicker
             // 
             this.startDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.startDatePicker.CustomFormat = "yyyy/MM/dd";
+            this.startDatePicker.CustomFormat = "yyyy-MM-dd";
             this.startDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.startDatePicker.Location = new System.Drawing.Point(146, 20);
             this.startDatePicker.Margin = new System.Windows.Forms.Padding(2);
@@ -445,6 +449,14 @@
             this.dgvStockIn.TabIndex = 4;
             this.dgvStockIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStockIn_CellClick);
             // 
+            // lblsupply_itemsID
+            // 
+            this.lblsupply_itemsID.AutoSize = true;
+            this.lblsupply_itemsID.Location = new System.Drawing.Point(3, 0);
+            this.lblsupply_itemsID.Name = "lblsupply_itemsID";
+            this.lblsupply_itemsID.Size = new System.Drawing.Size(0, 13);
+            this.lblsupply_itemsID.TabIndex = 1;
+            // 
             // frmSupplyStockIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -454,8 +466,10 @@
             this.Name = "frmSupplyStockIn";
             this.Text = "Supply Stock In";
             this.Load += new System.EventHandler(this.frmSupplyStockIn_Load);
+            this.ResizeBegin += new System.EventHandler(this.frmSupplyStockIn_ResizeBegin);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.gpSupply.ResumeLayout(false);
@@ -501,5 +515,6 @@
         private System.Windows.Forms.Button btnEditDetails;
         public System.Windows.Forms.TextBox txtItemName;
         public System.Windows.Forms.TextBox txtRawPurchasePrice;
+        public System.Windows.Forms.Label lblsupply_itemsID;
     }
 }

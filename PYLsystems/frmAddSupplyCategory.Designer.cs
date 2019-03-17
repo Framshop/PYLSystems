@@ -149,7 +149,8 @@
             "Length",
             "Area",
             "Weight",
-            "Whole"});
+            "Whole",
+            "Volume"});
             this.cbTypeofMeasure.Location = new System.Drawing.Point(129, 217);
             this.cbTypeofMeasure.Margin = new System.Windows.Forms.Padding(2);
             this.cbTypeofMeasure.Name = "cbTypeofMeasure";

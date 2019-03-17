@@ -13,15 +13,27 @@ namespace PYLsystems
 {
     public partial class frmAddSupplierItems : Form
     {
+
+        public static string add_item_entry = "";
         MySqlConnection conn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
         public frmAddSupplierItems()
         {
             InitializeComponent();
         }
-
+        public void enableAddValidation()
+        {
+            if (add_item_entry != "")
+            {
+                btnAdd.Enabled = true;
+            }
+            else
+            {
+                btnAdd.Enabled = false;
+            }
+        }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void frmAddSupplierItems_Load(object sender, EventArgs e)
@@ -57,6 +69,26 @@ namespace PYLsystems
             myAdp.Fill(myDt);
             dgSupplies.DataSource = myDt;
             conn.Close();
+        }
+
+        private void dgSupplies_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            add_item_entry = dgSupplies.CurrentRow.Cells[0].Value.ToString();
+            frmSupplier.Global.supply_categoryID_passer = dgSupplies.CurrentRow.Cells[0].Value.ToString();
+            frmSupplier.Global.supply_itemsID_passer = dgSupplies.CurrentRow.Cells[1].Value.ToString();
+            frmSupplier.Global.category_name_passer = dgSupplies.CurrentRow.Cells[2].Value.ToString();
+            frmSupplier.Global.supply_name_passer = dgSupplies.CurrentRow.Cells[3].Value.ToString();
+            enableAddValidation();
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

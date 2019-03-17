@@ -18,8 +18,8 @@ namespace PYLsystems
             Application.SetCompatibleTextRenderingDefault(false);
 //             Application.Run(new frmInventoryHomePage());
 // =======
-//
-//             Application.Run(new frmSupplyItems());
+
+             Application.Run(new frmSuppliesHomePage());
 
 
         }

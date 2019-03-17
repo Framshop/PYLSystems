@@ -60,12 +60,15 @@
             this.gpSupplierDetails = new System.Windows.Forms.GroupBox();
             this.gpItemSoldBySupplier = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvItemsSold = new System.Windows.Forms.DataGridView();
             this.gpButtonNewForm = new System.Windows.Forms.GroupBox();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.gpButtons = new System.Windows.Forms.GroupBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.lvwItemSold = new System.Windows.Forms.ListView();
+            this.lvwSupply_Items_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvwSupply_Category_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvwCategoryName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvwSupplyName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tableLayoutPanel1.SuspendLayout();
             this.tlTaskBar.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -83,7 +86,6 @@
             this.gpSupplierDetails.SuspendLayout();
             this.gpItemSoldBySupplier.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvItemsSold)).BeginInit();
             this.gpButtonNewForm.SuspendLayout();
             this.gpButtons.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -200,6 +202,7 @@
             this.msktxtContactNumber.Size = new System.Drawing.Size(155, 20);
             this.msktxtContactNumber.TabIndex = 3;
             this.msktxtContactNumber.TextChanged += new System.EventHandler(this.msktxtContactNumber_TextChanged);
+            this.msktxtContactNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.msktxtContactNumber_KeyPress);
             // 
             // lblSupplierID
             // 
@@ -325,6 +328,7 @@
             this.dgvSuppliers.Size = new System.Drawing.Size(468, 177);
             this.dgvSuppliers.TabIndex = 1;
             this.dgvSuppliers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSuppliers_CellClick);
+            this.dgvSuppliers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSuppliers_CellContentClick);
             // 
             // gpSoldBySelectedSupplier
             // 
@@ -486,8 +490,8 @@
             // 
             this.tableLayoutPanel7.ColumnCount = 1;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Controls.Add(this.dgvItemsSold, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.gpButtonNewForm, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.lvwItemSold, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(2, 15);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(2);
@@ -498,27 +502,8 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(317, 236);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
-            // dgvItemsSold
-            // 
-            this.dgvItemsSold.AllowUserToAddRows = false;
-            this.dgvItemsSold.AllowUserToDeleteRows = false;
-            this.dgvItemsSold.AllowUserToResizeRows = false;
-            this.dgvItemsSold.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvItemsSold.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvItemsSold.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvItemsSold.Location = new System.Drawing.Point(2, 2);
-            this.dgvItemsSold.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvItemsSold.Name = "dgvItemsSold";
-            this.dgvItemsSold.ReadOnly = true;
-            this.dgvItemsSold.RowHeadersVisible = false;
-            this.dgvItemsSold.RowTemplate.Height = 28;
-            this.dgvItemsSold.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvItemsSold.Size = new System.Drawing.Size(313, 175);
-            this.dgvItemsSold.TabIndex = 2;
-            // 
             // gpButtonNewForm
             // 
-            this.gpButtonNewForm.Controls.Add(this.btnDelete);
             this.gpButtonNewForm.Controls.Add(this.btnAdd);
             this.gpButtonNewForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gpButtonNewForm.Location = new System.Drawing.Point(2, 181);
@@ -529,19 +514,8 @@
             this.gpButtonNewForm.TabIndex = 0;
             this.gpButtonNewForm.TabStop = false;
             // 
-            // btnDelete
-            // 
-            this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(199, 16);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(87, 24);
-            this.btnDelete.TabIndex = 9;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            // 
             // btnAdd
             // 
-            this.btnAdd.Enabled = false;
             this.btnAdd.Location = new System.Drawing.Point(67, 16);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(87, 24);
@@ -577,6 +551,43 @@
             this.groupBox10.TabIndex = 1;
             this.groupBox10.TabStop = false;
             // 
+            // lvwItemSold
+            // 
+            this.lvwItemSold.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvwSupply_Items_ID,
+            this.lvwSupply_Category_ID,
+            this.lvwCategoryName,
+            this.lvwSupplyName});
+            this.lvwItemSold.Location = new System.Drawing.Point(3, 3);
+            this.lvwItemSold.Name = "lvwItemSold";
+            this.lvwItemSold.Size = new System.Drawing.Size(311, 173);
+            this.lvwItemSold.TabIndex = 1;
+            this.lvwItemSold.UseCompatibleStateImageBehavior = false;
+            this.lvwItemSold.View = System.Windows.Forms.View.Details;
+            this.lvwItemSold.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.lvwItemSold_RetrieveVirtualItem);
+            // 
+            // lvwSupply_Items_ID
+            // 
+            this.lvwSupply_Items_ID.Text = "supply_items_ID";
+            this.lvwSupply_Items_ID.Width = 0;
+            // 
+            // lvwSupply_Category_ID
+            // 
+            this.lvwSupply_Category_ID.Text = "supply_category_ID";
+            this.lvwSupply_Category_ID.Width = 0;
+            // 
+            // lvwCategoryName
+            // 
+            this.lvwCategoryName.DisplayIndex = 2;
+            this.lvwCategoryName.Text = "Category Name";
+            this.lvwCategoryName.Width = 150;
+            // 
+            // lvwSupplyName
+            // 
+            this.lvwSupplyName.DisplayIndex = 3;
+            this.lvwSupplyName.Text = "Supply Name";
+            this.lvwSupplyName.Width = 150;
+            // 
             // frmSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -606,7 +617,6 @@
             this.gpSupplierDetails.PerformLayout();
             this.gpItemSoldBySupplier.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvItemsSold)).EndInit();
             this.gpButtonNewForm.ResumeLayout(false);
             this.gpButtons.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
@@ -650,11 +660,14 @@
         private System.Windows.Forms.GroupBox gpSupplierDetails;
         private System.Windows.Forms.GroupBox gpItemSoldBySupplier;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.DataGridView dgvItemsSold;
         private System.Windows.Forms.GroupBox gpButtonNewForm;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.GroupBox gpButtons;
         private System.Windows.Forms.GroupBox groupBox10;
+        public System.Windows.Forms.ListView lvwItemSold;
+        private System.Windows.Forms.ColumnHeader lvwSupply_Items_ID;
+        private System.Windows.Forms.ColumnHeader lvwSupply_Category_ID;
+        private System.Windows.Forms.ColumnHeader lvwCategoryName;
+        private System.Windows.Forms.ColumnHeader lvwSupplyName;
     }
 }

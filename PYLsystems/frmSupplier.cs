@@ -16,6 +16,16 @@ namespace PYLsystems
         public static string supplierID = "";
         public static string supply_categoryID = "";
         public static string address = "";
+        public static string maxSupplierID = "";
+        public class Global
+        {
+            public static string supply_categoryID_passer = "";
+            public static string supply_itemsID_passer = "";
+            public static string category_name_passer = "";
+            public static string supply_name_passer = "";
+
+
+        }
         MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
         public frmSupplier()
         {
@@ -24,10 +34,11 @@ namespace PYLsystems
 
         private void addBtn_Click(object sender, EventArgs e)
         {
+            // Check if suppliers exist
             myConn.Open();
             MySqlDataAdapter myAd;
             DataTable myD = new DataTable();
-            MySqlCommand myCom = new MySqlCommand("SELECT * FROM supplier WHERE supplyName = '" + txtSupplierName.Text + "'", myConn);
+            MySqlCommand myCom = new MySqlCommand("SELECT * FROM supplier WHERE supplierName = '" + txtSupplierName.Text + "'", myConn);
             myAd = new MySqlDataAdapter(myCom);
             //ADD ----------
             MySqlDataReader myReader;
@@ -35,26 +46,76 @@ namespace PYLsystems
             //ADD
             myReader = myCom.ExecuteReader();
             myConn.Close();
+            //Check if there is an existing category for that supplier
             if (myD.Rows.Count == 0)
             {
+                myConn.Open();
                 string myQuery = "INSERT INTO supplier(suppliername,supplierdetails,contactdetails,address) VALUES('" + txtSupplierName.Text + "','" + txtDetails.Text + "','" + msktxtContactNumber.Text + "','" + txtAddress.Text + "')";
                 MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                 MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                 DataTable myDt = new DataTable();
                 myAdp.Fill(myDt);
+                myConn.Close();
 
-                MessageBox.Show("Insert Successful");
+                myConn.Open();
+                string myQuer = "SELECT max(supplierID) as 'jOrd_Num' FROM supplier";
+                MySqlCommand xmyCom = new MySqlCommand(myQuer, myConn);
+                MySqlDataAdapter xmyAd = new MySqlDataAdapter(xmyCom);
+                myConn.Close();
+                myConn.Open();
+                MySqlDataReader xmyReader;
+                try
+                {
+                    xmyReader = xmyCom.ExecuteReader();
+                    while (xmyReader.Read())
+                    {
+                        maxSupplierID = xmyReader.GetString(0);
+                    }
+                    myConn.Close();
+
+                }
+                catch { }
+
+                    foreach (ListViewItem lsItem in lvwItemSold.Items)
+                {
+                    myConn.Open();
+                    //INSERT INTO jOrder_Details(jOrd_Num,supply_itemsID,size,unit_measure,quantity,price) VALUES (" + jOrdID + "," + lsItem.SubItems[0].Text + "," + lsItem.SubItems[3].Text + ",'" + lsItem.SubItems[4].Text + "'," + lsItem.SubItems[5].Text + "," + lsItem.SubItems[6].Text + ");"
+                    string query = "INSERT INTO supplier_category(supplierID,supply_categoryID) VALUES(" + maxSupplierID + ","  + lsItem.SubItems[1].Text + ")";
+                    MySqlCommand comm = new MySqlCommand(query, myConn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+                    myConn.Close();
+
+                    myConn.Open();
+                    //INSERT INTO jOrder_Details(jOrd_Num,supply_itemsID,size,unit_measure,quantity,price) VALUES (" + jOrdID + "," + lsItem.SubItems[0].Text + "," + lsItem.SubItems[3].Text + ",'" + lsItem.SubItems[4].Text + "'," + lsItem.SubItems[5].Text + "," + lsItem.SubItems[6].Text + ");"
+                    string quer = "INSERT INTO supplier_items(supplierID,supply_itemsID) VALUES(" + maxSupplierID + "," + lsItem.SubItems[0].Text + ")";
+                    MySqlCommand com = new MySqlCommand(quer, myConn);
+                    MySqlDataAdapter ap = new MySqlDataAdapter(com);
+                    DataTable d = new DataTable();
+                    ap.Fill(d);
+                    myConn.Close();
+
+                }
+
+                MessageBox.Show("Insert Successful!");
                 RefreshDatabase();
-                txtSupplierName.Text = "";
-                txtDetails.Text = "";
-                msktxtContactNumber.Text = "";
-                txtAddress.Text = "";
-                supplierID = "";
+                Global.supply_categoryID_passer = "";
+                Global.supply_itemsID_passer = "";
+                Global.category_name_passer = "";
+                Global.supply_name_passer = "";
+                 supplierID = "";
+                  supply_categoryID = "";
+                  address = "";
+                  maxSupplierID = "";
+                lvwItemSold.Clear();
             }
             else
             {
                 MessageBox.Show("Supplier " + txtSupplierName.Text + " already exist");
             }
+
+            
         }
 
         public void RefreshDatabase()
@@ -68,6 +129,7 @@ namespace PYLsystems
             dgvSuppliers.DataSource = dt;
             myConn.Close();
             dgvSuppliers.Columns["Supplier ID"].Visible = false;
+            dgvsupply_Items.DataSource = null;
         }
 
         private void supplierGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -77,7 +139,8 @@ namespace PYLsystems
 
         private void frmSupplier_Load(object sender, EventArgs e)
         {
-            //SHOW Supplier List
+     
+    
             RefreshDatabase();
         }
 
@@ -85,7 +148,18 @@ namespace PYLsystems
         {
 
         }
-
+        public void RefreshCategory()
+        {
+            string query = "SELECT s_c.supply_categoryID,s_ca.categoryName FROM supplier_category s_c LEFT JOIN supply_category s_ca ON s_ca.supply_categoryID = s_c.supply_categoryID WHERE s_c.supplierID = " + supplierID;
+            MySqlCommand myComm = new MySqlCommand(query, myConn);
+            MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
+            DataTable myDt = new DataTable();
+            myAdp.Fill(myDt);
+            dgvCategories.DataSource = myDt;
+            myConn.Close();
+            dgvCategories.Columns["supply_categoryID"].Visible = false;
+            dgvCategories.Columns["categoryName"].HeaderText = "Category Name";
+        }
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             myConn.Open();
@@ -97,8 +171,8 @@ namespace PYLsystems
             dgvSuppliers.DataSource = dt;
             myConn.Close();
             dgvSuppliers.Columns["Supplier ID"].Visible = false;
-            dgvCategories.DataSource = null;
             dgvsupply_Items.DataSource = null;
+            dgvCategories.DataSource = null;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -125,7 +199,6 @@ namespace PYLsystems
         {
             this.Close();
         }
-    
         private void msktxtContactNumber_TextChanged(object sender, EventArgs e)
         {
             validationAddSuppliers();
@@ -151,14 +224,30 @@ namespace PYLsystems
         {
             frmAddSupplierItems addSupplierCategory = new frmAddSupplierItems();
             addSupplierCategory.ShowDialog();
+            
+            ListViewItem item = new ListViewItem();
+            int max;
+            //Should get Category ID, Supplier ID, Supply Items ID, Category Name, Supply Name
+            max = lvwItemSold.Items.Count;
+            item = lvwItemSold.Items.Add(Global.supply_itemsID_passer);
+            item.SubItems.Add(Global.supply_categoryID_passer);
+            item.SubItems.Add(Global.category_name_passer);
+            item.SubItems.Add(Global.supply_name_passer);
+            supplierID = "";
+            supply_categoryID = "";
+            validationAddSuppliers();
         }
         public void validationAddSuppliers()
         {
+            ListViewItem item = new ListViewItem();
+            int max;
+            //Should get Category ID, Supplier ID, Supply Items ID, Category Name, Supply Name
+            max = lvwItemSold.Items.Count;
             int supplierName = txtSupplierName.TextLength;
             int supplierDetails = txtDetails.TextLength;
             int contactDetails = msktxtContactNumber.TextLength;
             int address = txtAddress.TextLength;
-            if (supplierDetails > 0 && address > 0 && contactDetails == 11 && supplierName > 0)
+            if (supplierDetails > 0 && address > 0 && contactDetails == 11 && supplierName > 0 && max > 0)
             {
                 btnAddSupplier.Enabled = true;
             }
@@ -192,7 +281,8 @@ namespace PYLsystems
 
         private void dgvSuppliers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgvCategories.DataSource = null;
+            dgvsupply_Items.DataSource = null;
+           
             supplierID = dgvSuppliers.CurrentRow.Cells[0].Value.ToString();
             validationUpdateSuppliers();
 
@@ -200,29 +290,45 @@ namespace PYLsystems
             txtDetails.Text = dgvSuppliers.CurrentRow.Cells[2].Value.ToString();
             msktxtContactNumber.Text = dgvSuppliers.CurrentRow.Cells[3].Value.ToString();
             txtAddress.Text = dgvSuppliers.CurrentRow.Cells[4].Value.ToString();
-
-            myConn.Open();
-            string query = "SELECT s_c.supply_categoryID as 'Supply Category ID',s_c.categoryName as 'Category Name' FROM supplier_category sr_c LEFT JOIN supply_category s_c ON s_c.supply_categoryID = sr_c.supply_categoryID WHERE sr_c.supplierID = " + supplierID;
-            MySqlCommand comm = new MySqlCommand(query, myConn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-            DataTable dt = new DataTable();
-            adp.Fill(dt);
-            dgvCategories.DataSource = dt;
-            myConn.Close();
-            dgvCategories.Columns["Supply Category ID"].Visible = false;
+            RefreshCategory();
         }
 
         private void dgvCategories_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             myConn.Open();
-            string query = "SELECT s_i.supplyName as 'Supply Name',s_i.supplyDescription as 'Supply Description' FROM supplier_items sr_i LEFT JOIN supply_items s_i ON s_i.supply_itemsID = sr_i.supply_itemsID";
+            string query = "SELECT s_i.supplyName as 'Supply Name',s_i.supplyDescription as 'Supply Description' FROM supplier_items sr_i LEFT JOIN supply_items s_i ON s_i.supply_itemsID = sr_i.supply_itemsID WHERE supplierID =" + supplierID;
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
             adp.Fill(dt);
             dgvsupply_Items.DataSource = dt;
             myConn.Close();
-            
+            supply_categoryID = dgvCategories.CurrentRow.Cells[0].Value.ToString();
+   
+        }
+
+        private void dgvSuppliers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void lvwItemSold_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
+        {
+ 
+        }
+
+        private void msktxtContactNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

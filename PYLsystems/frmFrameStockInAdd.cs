@@ -30,5 +30,10 @@ namespace PYLsystems
         {
             this.Close();
         }
+
+        private void btnStockIn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -287,16 +287,17 @@
             // 
             // txtVolume
             // 
+            this.txtVolume.Enabled = false;
             this.txtVolume.Location = new System.Drawing.Point(86, 117);
             this.txtVolume.Name = "txtVolume";
             this.txtVolume.Size = new System.Drawing.Size(129, 20);
             this.txtVolume.TabIndex = 25;
-            this.txtVolume.Visible = false;
             this.txtVolume.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVolume_KeyPress);
             // 
             // cboVolume
             // 
             this.cboVolume.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboVolume.Enabled = false;
             this.cboVolume.FormattingEnabled = true;
             this.cboVolume.ItemHeight = 13;
             this.cboVolume.Items.AddRange(new object[] {
@@ -307,21 +308,21 @@
             this.cboVolume.Name = "cboVolume";
             this.cboVolume.Size = new System.Drawing.Size(66, 21);
             this.cboVolume.TabIndex = 24;
-            this.cboVolume.Visible = false;
             // 
             // lblVolume
             // 
             this.lblVolume.AutoSize = true;
+            this.lblVolume.Enabled = false;
             this.lblVolume.Location = new System.Drawing.Point(22, 125);
             this.lblVolume.Name = "lblVolume";
             this.lblVolume.Size = new System.Drawing.Size(45, 13);
             this.lblVolume.TabIndex = 23;
             this.lblVolume.Text = "Volume:";
-            this.lblVolume.Visible = false;
             // 
             // cboWhole
             // 
             this.cboWhole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboWhole.Enabled = false;
             this.cboWhole.FormattingEnabled = true;
             this.cboWhole.ItemHeight = 13;
             this.cboWhole.Items.AddRange(new object[] {
@@ -331,18 +332,17 @@
             this.cboWhole.Name = "cboWhole";
             this.cboWhole.Size = new System.Drawing.Size(66, 21);
             this.cboWhole.TabIndex = 20;
-            this.cboWhole.Visible = false;
             this.cboWhole.SelectedIndexChanged += new System.EventHandler(this.cboWhole_SelectedIndexChanged);
             // 
             // lblWhole
             // 
             this.lblWhole.AutoSize = true;
+            this.lblWhole.Enabled = false;
             this.lblWhole.Location = new System.Drawing.Point(22, 152);
             this.lblWhole.Name = "lblWhole";
             this.lblWhole.Size = new System.Drawing.Size(41, 13);
             this.lblWhole.TabIndex = 20;
             this.lblWhole.Text = "Whole:";
-            this.lblWhole.Visible = false;
             // 
             // txtPurchaseUnitPrice
             // 
@@ -365,6 +365,7 @@
             // cboWeight
             // 
             this.cboWeight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboWeight.Enabled = false;
             this.cboWeight.FormattingEnabled = true;
             this.cboWeight.ItemHeight = 13;
             this.cboWeight.Items.AddRange(new object[] {
@@ -375,42 +376,42 @@
             this.cboWeight.Name = "cboWeight";
             this.cboWeight.Size = new System.Drawing.Size(66, 21);
             this.cboWeight.TabIndex = 16;
-            this.cboWeight.Visible = false;
             this.cboWeight.SelectedIndexChanged += new System.EventHandler(this.cboWeight_SelectedIndexChanged);
             // 
             // txtWeight
             // 
+            this.txtWeight.Enabled = false;
             this.txtWeight.Location = new System.Drawing.Point(86, 91);
             this.txtWeight.Name = "txtWeight";
             this.txtWeight.Size = new System.Drawing.Size(129, 20);
             this.txtWeight.TabIndex = 17;
-            this.txtWeight.Visible = false;
             this.txtWeight.TextChanged += new System.EventHandler(this.txtWeight_TextChanged);
             this.txtWeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWeight_KeyPress);
             // 
             // lblX
             // 
             this.lblX.AutoSize = true;
+            this.lblX.Enabled = false;
             this.lblX.Location = new System.Drawing.Point(139, 68);
             this.lblX.Name = "lblX";
             this.lblX.Size = new System.Drawing.Size(14, 13);
             this.lblX.TabIndex = 14;
             this.lblX.Text = "X";
-            this.lblX.Visible = false;
             // 
             // txtArea2
             // 
+            this.txtArea2.Enabled = false;
             this.txtArea2.Location = new System.Drawing.Point(159, 63);
             this.txtArea2.Name = "txtArea2";
             this.txtArea2.Size = new System.Drawing.Size(47, 20);
             this.txtArea2.TabIndex = 13;
-            this.txtArea2.Visible = false;
             this.txtArea2.TextChanged += new System.EventHandler(this.txtArea2_TextChanged);
             this.txtArea2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtArea2_KeyPress);
             // 
             // cboArea
             // 
             this.cboArea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboArea.Enabled = false;
             this.cboArea.FormattingEnabled = true;
             this.cboArea.ItemHeight = 13;
             this.cboArea.Items.AddRange(new object[] {
@@ -423,22 +424,22 @@
             this.cboArea.Name = "cboArea";
             this.cboArea.Size = new System.Drawing.Size(66, 21);
             this.cboArea.TabIndex = 12;
-            this.cboArea.Visible = false;
             this.cboArea.SelectedIndexChanged += new System.EventHandler(this.cboArea_SelectedIndexChanged);
             // 
             // txtArea1
             // 
+            this.txtArea1.Enabled = false;
             this.txtArea1.Location = new System.Drawing.Point(86, 63);
             this.txtArea1.Name = "txtArea1";
             this.txtArea1.Size = new System.Drawing.Size(47, 20);
             this.txtArea1.TabIndex = 14;
-            this.txtArea1.Visible = false;
             this.txtArea1.TextChanged += new System.EventHandler(this.txtArea1_TextChanged);
             this.txtArea1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtArea1_KeyPress);
             // 
             // cboLength
             // 
             this.cboLength.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboLength.Enabled = false;
             this.cboLength.FormattingEnabled = true;
             this.cboLength.Items.AddRange(new object[] {
             "feet",
@@ -450,48 +451,47 @@
             this.cboLength.Name = "cboLength";
             this.cboLength.Size = new System.Drawing.Size(66, 21);
             this.cboLength.TabIndex = 9;
-            this.cboLength.Visible = false;
             this.cboLength.SelectedIndexChanged += new System.EventHandler(this.cboLength_SelectedIndexChanged);
             // 
             // txtLength
             // 
+            this.txtLength.Enabled = false;
             this.txtLength.Location = new System.Drawing.Point(86, 37);
             this.txtLength.Name = "txtLength";
             this.txtLength.Size = new System.Drawing.Size(129, 20);
             this.txtLength.TabIndex = 10;
-            this.txtLength.Visible = false;
             this.txtLength.TextChanged += new System.EventHandler(this.txtLength_TextChanged);
             this.txtLength.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLength_KeyPress);
             // 
             // lblWeight
             // 
             this.lblWeight.AutoSize = true;
+            this.lblWeight.Enabled = false;
             this.lblWeight.Location = new System.Drawing.Point(22, 98);
             this.lblWeight.Name = "lblWeight";
             this.lblWeight.Size = new System.Drawing.Size(44, 13);
             this.lblWeight.TabIndex = 18;
             this.lblWeight.Text = "Weight:";
-            this.lblWeight.Visible = false;
             // 
             // lblArea
             // 
             this.lblArea.AutoSize = true;
+            this.lblArea.Enabled = false;
             this.lblArea.Location = new System.Drawing.Point(22, 71);
             this.lblArea.Name = "lblArea";
             this.lblArea.Size = new System.Drawing.Size(32, 13);
             this.lblArea.TabIndex = 15;
             this.lblArea.Text = "Area:";
-            this.lblArea.Visible = false;
             // 
             // lblLength
             // 
             this.lblLength.AutoSize = true;
+            this.lblLength.Enabled = false;
             this.lblLength.Location = new System.Drawing.Point(22, 44);
             this.lblLength.Name = "lblLength";
             this.lblLength.Size = new System.Drawing.Size(43, 13);
             this.lblLength.TabIndex = 11;
             this.lblLength.Text = "Length:";
-            this.lblLength.Visible = false;
             // 
             // groupBox2
             // 
@@ -563,6 +563,7 @@
             this.btnDamageItem.TabIndex = 27;
             this.btnDamageItem.Text = "Stock Out as Damage Item";
             this.btnDamageItem.UseVisualStyleBackColor = true;
+            this.btnDamageItem.Click += new System.EventHandler(this.btnDamageItem_Click);
             // 
             // btnStockInSelectedItem
             // 

@@ -158,6 +158,7 @@
             this.dgSupplies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgSupplies.Size = new System.Drawing.Size(533, 252);
             this.dgSupplies.TabIndex = 2;
+            this.dgSupplies.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSupplies_CellClick);
             // 
             // groupBox3
             // 
@@ -171,16 +172,17 @@
             this.groupBox3.Size = new System.Drawing.Size(537, 59);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // btnCancel
             // 
-            this.btnCancel.Enabled = false;
             this.btnCancel.Location = new System.Drawing.Point(437, 23);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(87, 24);
             this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAdd
             // 

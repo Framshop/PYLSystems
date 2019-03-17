@@ -79,7 +79,7 @@ namespace PYLsystems
         {
             frmUpdateEmployee empupdate = new frmUpdateEmployee();
             string empstatus = dgEmpList.CurrentRow.Cells[2].Value.ToString();
-            if (empstatus == "Owner" || empstatus == "Owner/Programmer")
+            if (empstatus == "Owner" || empstatus == "Owner / Programmer")
             {
                 empupdate.cbEmpStatus.SelectedIndex = 0;
             }

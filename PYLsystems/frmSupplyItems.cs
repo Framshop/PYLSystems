@@ -36,7 +36,7 @@ namespace PYLsystems
         public void RefreshDatabase()
         {
             myConn.Open();
-            string query = "SELECT s_i.supply_itemsID as 'Supply ID',s_c.supply_categoryID as 'Supply Category ID',s_i.supplyName as 'Supply Name',s_c.categoryName as 'Category Name',s_c.typeOfMeasure as 'Type of Measure',s_i.supplyDescription as 'Supply Description',s_i.measureA as 'Measurement A',IFNULL(s_i.measureB,'Not Applicable') as 'Measurement B',s_i.unitMeasure as 'Unit Measure',s_i.unitPurchasePrice as 'Purchase Price',IF(active=0,'Active','Inactive') as 'Active' FROM supply_items s_i LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID";
+            string query = "SELECT s_i.supply_itemsID as 'Supply ID',s_c.supply_categoryID as 'Supply Category ID',s_i.supplyName as 'Supply Name',s_c.categoryName as 'Category Name',s_c.typeOfMeasure as 'Type of Measure',s_i.supplyDescription as 'Supply Description',s_i.measureA as 'Measurement A',IFNULL(s_i.measureB,'Not Applicable') as 'Measurement B',case when s_i.measureB is not null then CONCAT(s_i.measureA,' x ',s_i.measureB) else s_i.measureA end as 'Measurement',s_i.unitMeasure as 'Unit Measure',s_i.unitPurchasePrice as 'Purchase Price',IF(active=0,'Active','Inactive') as 'Active' FROM supply_items s_i LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
@@ -45,6 +45,8 @@ namespace PYLsystems
             myConn.Close();
             dgSupplyItems.Columns["Supply ID"].Visible = false;
             dgSupplyItems.Columns["Supply Category ID"].Visible = false;
+            dgSupplyItems.Columns["Measurement A"].Visible = false;
+            dgSupplyItems.Columns["Measurement B"].Visible = false;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -72,7 +74,10 @@ namespace PYLsystems
             adp.Fill(dt);
             dgSupplyItems.DataSource = dt;
             myConn.Close();
-
+            dgSupplyItems.Columns["Supply ID"].Visible = false;
+            dgSupplyItems.Columns["Supply Category ID"].Visible = false;
+            dgSupplyItems.Columns["Measurement A"].Visible = false;
+            dgSupplyItems.Columns["Measurement B"].Visible = false;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -127,156 +132,188 @@ namespace PYLsystems
             if (typeOfMeasure_db == "Area")
             {
                 //TRUE
-                lblArea.Visible = true;
-                txtArea1.Visible = true;
-                txtArea2.Visible = true;
-                cboArea.Visible = true;
-                lblX.Visible = true;
+                lblArea.Enabled = true;
+                txtArea1.Enabled = true;
+                txtArea2.Enabled = true;
+                cboArea.Enabled = true;
+                lblX.Enabled = true;
 
                 //FALSE
 
-                txtLength.Visible = false;
-                cboLength.Visible = false;
-                lblLength.Visible = false;
+                txtLength.Enabled = false;
+                cboLength.Enabled = false;
+                lblLength.Enabled = false;
 
                 txtLength.Text = "";
                 cboLength.Text = "";
 
-                lblWeight.Visible = false;
-                txtWeight.Visible = false;
-                cboWeight.Visible = false;
+                lblWeight.Enabled = false;
+                txtWeight.Enabled = false;
+                cboWeight.Enabled = false;
 
                 txtWeight.Text = "";
                 cboWeight.Text = "";
 
-                cboWhole.Visible = false;
-                lblWhole.Visible = false;
+                cboWhole.Enabled = false;
+                lblWhole.Enabled = false;
 
                 cboWhole.Text = "";
+
+                cboVolume.Enabled = false;
+                lblVolume.Enabled = false;
+                txtVolume.Enabled = false;
+
+                cboVolume.Text = "";
+                txtVolume.Text = "";
             }
             else if (typeOfMeasure_db == "Length")
             {
                 //TRUE
-                txtLength.Visible = true;
-                cboLength.Visible = true;
-                lblLength.Visible = true;
+                txtLength.Enabled = true;
+                cboLength.Enabled = true;
+                lblLength.Enabled = true;
 
                 //FALSE
-                lblArea.Visible = false;
-                txtArea1.Visible = false;
-                txtArea2.Visible = false;
-                cboArea.Visible = false;
-                lblX.Visible = false;
+                lblArea.Enabled = false;
+                txtArea1.Enabled = false;
+                txtArea2.Enabled = false;
+                cboArea.Enabled = false;
+                lblX.Enabled = false;
 
                 txtArea1.Text = "";
                 txtArea2.Text = "";
                 cboArea.Text = "";
 
-                lblWeight.Visible = false;
-                txtWeight.Visible = false;
-                cboWeight.Visible = false;
+                lblWeight.Enabled = false;
+                txtWeight.Enabled = false;
+                cboWeight.Enabled = false;
 
                 txtWeight.Text = "";
                 cboWeight.Text = "";
 
-                cboWhole.Visible = false;
-                lblWhole.Visible = false;
+                cboWhole.Enabled = false;
+                lblWhole.Enabled = false;
 
                 cboWhole.Text = "";
+
+                cboVolume.Enabled = false;
+                lblVolume.Enabled = false;
+                txtVolume.Enabled = false;
+
+                cboVolume.Text = "";
+                txtVolume.Text = "";
             }
             else if (typeOfMeasure_db == "Weight")
             {
                 //TRUE
-                lblWeight.Visible = true;
-                txtWeight.Visible = true;
-                cboWeight.Visible = true;
+                lblWeight.Enabled = true;
+                txtWeight.Enabled = true;
+                cboWeight.Enabled = true;
 
                 //FALSE
-                lblArea.Visible = false;
-                txtArea1.Visible = false;
-                txtArea2.Visible = false;
-                cboArea.Visible = false;
-                lblX.Visible = false;
+                lblArea.Enabled = false;
+                txtArea1.Enabled = false;
+                txtArea2.Enabled = false;
+                cboArea.Enabled = false;
+                lblX.Enabled = false;
 
                 txtArea1.Text = "";
                 txtArea2.Text = "";
                 cboArea.Text = "";
 
-                txtLength.Visible = false;
-                cboLength.Visible = false;
-                lblLength.Visible = false;
+                txtLength.Enabled = false;
+                cboLength.Enabled = false;
+                lblLength.Enabled = false;
 
                 cboLength.Text = "";
                 txtLength.Text = "";
 
-                cboWhole.Visible = false;
-                lblWhole.Visible = false;
+                cboWhole.Enabled = false;
+                lblWhole.Enabled = false;
+
+                cboVolume.Enabled = false;
+                lblVolume.Enabled = false;
+                txtVolume.Enabled = false;
+
+                cboVolume.Text = "";
+                txtVolume.Text = "";
 
                 cboWhole.Text = "";
             }
             else if (typeOfMeasure_db == "Volume")
             {
-                
+                //TRUE
+                cboVolume.Enabled = true;
+                lblVolume.Enabled = true;
+                txtVolume.Enabled = true;
+
                 //FALSE
-                lblWeight.Visible = false;
-                txtWeight.Visible = false;
-                cboWeight.Visible = false;
+                lblWeight.Enabled = false;
+                txtWeight.Enabled = false;
+                cboWeight.Enabled = false;
 
                 txtWeight.Text = "";
                 cboWeight.Text = "";
 
-                lblArea.Visible = false;
-                txtArea1.Visible = false;
-                txtArea2.Visible = false;
-                cboArea.Visible = false;
-                lblX.Visible = false;
+                lblArea.Enabled = false;
+                txtArea1.Enabled = false;
+                txtArea2.Enabled = false;
+                cboArea.Enabled = false;
+                lblX.Enabled = false;
 
                 txtArea1.Text = "";
                 txtArea2.Text = "";
                 cboArea.Text = "";
 
-                txtLength.Visible = false;
-                cboLength.Visible = false;
-                lblLength.Visible = false;
+                txtLength.Enabled = false;
+                cboLength.Enabled = false;
+                lblLength.Enabled = false;
 
                 cboLength.Text = "";
                 txtLength.Text = "";
 
-                cboWhole.Visible = false;
-                lblWhole.Visible = false;
+                cboWhole.Enabled = false;
+                lblWhole.Enabled = false;
 
                 cboWhole.Text = "";
             }
             else
             {
                 //TRUE
-                cboWhole.Visible = true;
-                lblWhole.Visible = true;
+                cboWhole.Enabled = true;
+                lblWhole.Enabled = true;
 
                 //FALSE
-                lblArea.Visible = false;
-                txtArea1.Visible = false;
-                txtArea2.Visible = false;
-                cboArea.Visible = false;
-                lblX.Visible = false;
+                lblArea.Enabled = false;
+                txtArea1.Enabled = false;
+                txtArea2.Enabled = false;
+                cboArea.Enabled = false;
+                lblX.Enabled = false;
 
                 txtArea1.Text = "";
                 txtArea2.Text = "";
                 cboArea.Text = "";
 
-                txtLength.Visible = false;
-                cboLength.Visible = false;
-                lblLength.Visible = false;
+                txtLength.Enabled = false;
+                cboLength.Enabled = false;
+                lblLength.Enabled = false;
 
                 cboLength.Text = "";
                 txtLength.Text = "";
 
-                lblWeight.Visible = false;
-                txtWeight.Visible = false;
-                cboWeight.Visible = false;
+                lblWeight.Enabled = false;
+                txtWeight.Enabled = false;
+                cboWeight.Enabled = false;
 
                 txtWeight.Text = "";
                 cboWeight.Text = "";
+
+                cboVolume.Enabled = false;
+                lblVolume.Enabled = false;
+                txtVolume.Enabled = false;
+
+                cboVolume.Text = "";
+                txtVolume.Text = "";
             }
             myConn.Close();
             
@@ -312,9 +349,10 @@ namespace PYLsystems
         private void btnStockInSelectedItem_Click(object sender, EventArgs e)
         {
             frmSupplyStockIn supplyStockIn = new frmSupplyStockIn();
+            supplyStockIn.lblsupply_itemsID.Text = dgSupplyItems.CurrentRow.Cells[0].Value.ToString();
             frmSupplyStockIn.Global.supplyID = dgSupplyItems.CurrentRow.Cells[0].Value.ToString();
             supplyStockIn.txtItemName.Text = dgSupplyItems.CurrentRow.Cells[2].Value.ToString();
-            supplyStockIn.txtRawPurchasePrice.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+            supplyStockIn.txtRawPurchasePrice.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
             supplyStockIn.ShowDialog();
             RefreshDatabase();
             cboSupplyCategory.SelectedIndex = -1;
@@ -327,25 +365,25 @@ namespace PYLsystems
             typeOfMeasure_db = "";
             supplyID = "";
 
-            lblArea.Visible = false;
-            txtArea1.Visible = false;
-            txtArea2.Visible = false;
-            cboArea.Visible = false;
-            lblX.Visible = false;
+            lblArea.Enabled = false;
+            txtArea1.Enabled = false;
+            txtArea2.Enabled = false;
+            cboArea.Enabled = false;
+            lblX.Enabled = false;
 
-            txtLength.Visible = false;
-            cboLength.Visible = false;
-            lblLength.Visible = false;
+            txtLength.Enabled = false;
+            cboLength.Enabled = false;
+            lblLength.Enabled = false;
 
-            lblWeight.Visible = false;
-            txtWeight.Visible = false;
-            cboWeight.Visible = false;
+            lblWeight.Enabled = false;
+            txtWeight.Enabled = false;
+            cboWeight.Enabled = false;
 
-            cboVolume.Visible = false;
-            lblVolume.Visible = false;
-            txtVolume.Visible = false;
-            cboWhole.Visible = false;
-            lblWhole.Visible = false;
+            cboVolume.Enabled = false;
+            lblVolume.Enabled = false;
+            txtVolume.Enabled = false;
+            cboWhole.Enabled = false;
+            lblWhole.Enabled = false;
             btnStockInSelectedItem.Enabled = false;
             btnUpdateDetails.Enabled = false;
         }
@@ -426,26 +464,32 @@ namespace PYLsystems
                 typeOfMeasure_db = "";
                 supplyID = "";
 
-                lblArea.Visible = false;
-                txtArea1.Visible = false;
-                txtArea2.Visible = false;
-                cboArea.Visible = false;
-                lblX.Visible = false;
+                lblArea.Enabled = false;
+                txtArea1.Enabled = false;
+                txtArea2.Enabled = false;
+                cboArea.Enabled = false;
+                lblX.Enabled = false;
 
-                txtLength.Visible = false;
-                cboLength.Visible = false;
-                lblLength.Visible = false;
+                txtLength.Enabled = false;
+                cboLength.Enabled = false;
+                lblLength.Enabled = false;
 
-                lblWeight.Visible = false;
-                txtWeight.Visible = false;
-                cboWeight.Visible = false;
+                lblWeight.Enabled = false;
+                txtWeight.Enabled = false;
+                cboWeight.Enabled = false;
 
-                cboWhole.Visible = false;
-                lblWhole.Visible = false;
+                cboWhole.Enabled = false;
+                lblWhole.Enabled = false;
 
-                cboVolume.Visible = false;
-                lblVolume.Visible = false;
-                txtVolume.Visible = false;
+                cboVolume.Enabled = false;
+                lblVolume.Enabled = false;
+                txtVolume.Enabled = false;
+
+                cboVolume.Enabled = false;
+                lblVolume.Enabled = false;
+                txtVolume.Enabled = false;
+
+               
             }
             else
             {
@@ -456,11 +500,14 @@ namespace PYLsystems
         {
             if (supplyID != "")
             {
+                btnDamageItem.Enabled = true;
                 btnUpdateDetails.Enabled = true;
                 btnStockInSelectedItem.Enabled = true;
             }
             else
             {
+
+                btnDamageItem.Enabled = false;
                 btnUpdateDetails.Enabled = false;
                 btnStockInSelectedItem.Enabled = false;
             }
@@ -473,7 +520,7 @@ namespace PYLsystems
             int active = cboActive.SelectedIndex;
             int purchasePrice = txtPurchaseUnitPrice.TextLength;
             //Others are for measurements without assigning into another variable
-            if (lblLength.Visible == true)
+            if (lblLength.Enabled == true)
             {
                 if (supply_category > -1 && supply_name > 0 && supply_description > 0 && active > -1 && purchasePrice > 0 && cboLength.SelectedIndex > -1 && txtLength.TextLength > 0)
                 {
@@ -484,7 +531,7 @@ namespace PYLsystems
                     btnCreateItem.Enabled = false;
                 }
             }
-            if (lblWeight.Visible == true)
+            else if (lblWeight.Enabled == true)
             {
                 if (supply_category > -1 && supply_name > 0 && supply_description > 0 && active > -1 && purchasePrice > 0 && cboWeight.SelectedIndex > -1 && txtWeight.TextLength > 0)
                 {
@@ -495,7 +542,7 @@ namespace PYLsystems
                     btnCreateItem.Enabled = false;
                 }
             }
-            if (lblWhole.Visible == true)
+            else if (lblWhole.Enabled == true)
             {
                 if (supply_category > -1 && supply_name > 0 && supply_description > 0 && active > -1 && purchasePrice > 0 && cboWhole.SelectedIndex > -1)
                 {
@@ -506,7 +553,7 @@ namespace PYLsystems
                     btnCreateItem.Enabled = false;
                 }
             }
-            if (lblVolume.Visible == true)
+            else if (lblVolume.Enabled == true)
             {
                 if (supply_category > -1 && supply_name > 0 && supply_description > 0 && active > -1 && purchasePrice > 0 && cboVolume.SelectedIndex > -1 && txtVolume.TextLength > 0)
                 {
@@ -537,6 +584,7 @@ namespace PYLsystems
 
         private void dgSupplyItems_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+         
             supplyID = dgSupplyItems.CurrentRow.Cells[0].Value.ToString();
             validationUpdateItem();
             typeOfMeasure_dbCellClick = dgSupplyItems.CurrentRow.Cells[4].Value.ToString();
@@ -546,20 +594,20 @@ namespace PYLsystems
                 cboSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells[3].Value.ToString();
                 txtItemName.Text = dgSupplyItems.CurrentRow.Cells[2].Value.ToString();
                 txtItemDescription.Text = dgSupplyItems.CurrentRow.Cells[5].Value.ToString();
-                cboActive.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
-                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                cboActive.Text = dgSupplyItems.CurrentRow.Cells[11].Value.ToString();
+                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
 
 
                 //TRUE
-                lblArea.Visible = true;
-                txtArea1.Visible = true;
-                txtArea2.Visible = true;
-                cboArea.Visible = true;
-                lblX.Visible = true;
+                lblArea.Enabled = true;
+                txtArea1.Enabled = true;
+                txtArea2.Enabled = true;
+                cboArea.Enabled = true;
+                lblX.Enabled = true;
 
                 //supplyItemsGrid.DataSource = Dt;
                 //myConn.Close();
-                //supplyItemsGrid.Columns["supply_itemsID"].Visible = false;
+                //supplyItemsGrid.Columns["supply_itemsID"].Enabled = false;
                 //supplyItemsGrid.Columns["supplyName"].HeaderText = "Supply Name";
                 //supplyItemsGrid.Columns["supplyDescription"].HeaderText = "Details";
                 //supplyItemsGrid.Columns["unitMeasure"].HeaderText = "Unit Measure";
@@ -569,24 +617,35 @@ namespace PYLsystems
 
                 txtArea1.Text = dgSupplyItems.CurrentRow.Cells[6].Value.ToString();
                 txtArea2.Text = dgSupplyItems.CurrentRow.Cells[7].Value.ToString();
-                cboArea.Text = dgSupplyItems.CurrentRow.Cells[8].Value.ToString();
+                cboArea.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
 
                 //FALSE
 
-                txtLength.Visible = false;
-                cboLength.Visible = false;
-                lblLength.Visible = false;
+                txtLength.Enabled = false;
+                cboLength.Enabled = false;
+                lblLength.Enabled = false;
 
-                lblWeight.Visible = false;
-                txtWeight.Visible = false;
-                cboWeight.Visible = false;
+                cboLength.SelectedIndex = -1;
+                txtLength.Text = "";
 
-                cboWhole.Visible = false;
-                lblWhole.Visible = false;
+                lblWeight.Enabled = false;
+                txtWeight.Enabled = false;
+                cboWeight.Enabled = false;
 
-                lblVolume.Visible = false;
-                txtVolume.Visible = false;
-                cboVolume.Visible = false;
+                txtWeight.Text = "";
+                cboWeight.SelectedIndex = -1;
+
+                cboWhole.Enabled = false;
+                lblWhole.Enabled = false;
+
+                cboWhole.SelectedIndex = -1;
+
+                lblVolume.Enabled = false;
+                txtVolume.Enabled = false;
+                cboVolume.Enabled = false;
+
+                txtVolume.Text = "";
+                cboVolume.SelectedIndex = -1;
             }
             else if (typeOfMeasure_dbCellClick == "Length")
             {
@@ -594,34 +653,46 @@ namespace PYLsystems
                 cboSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells[3].Value.ToString();
                 txtItemName.Text = dgSupplyItems.CurrentRow.Cells[2].Value.ToString();
                 txtItemDescription.Text = dgSupplyItems.CurrentRow.Cells[5].Value.ToString();
-                cboActive.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
-                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                cboActive.Text = dgSupplyItems.CurrentRow.Cells[11].Value.ToString();
+                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
 
                 //TRUE
-                txtLength.Visible = true;
-                cboLength.Visible = true;
-                lblLength.Visible = true;
+                txtLength.Enabled = true;
+                cboLength.Enabled = true;
+                lblLength.Enabled = true;
 
-                cboLength.Text = dgSupplyItems.CurrentRow.Cells[8].Value.ToString();
+                cboLength.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
                 txtLength.Text = dgSupplyItems.CurrentRow.Cells[6].Value.ToString();
 
                 //FALSE
-                lblArea.Visible = false;
-                txtArea1.Visible = false;
-                txtArea2.Visible = false;
-                cboArea.Visible = false;
-                lblX.Visible = false;
+                lblArea.Enabled = false;
+                txtArea1.Enabled = false;
+                txtArea2.Enabled = false;
+                cboArea.Enabled = false;
+                lblX.Enabled = false;
 
-                lblWeight.Visible = false;
-                txtWeight.Visible = false;
-                cboWeight.Visible = false;
+                txtArea1.Text = "";
+                txtArea2.Text = "";
+                cboArea.SelectedIndex = -1;
 
-                cboWhole.Visible = false;
-                lblWhole.Visible = false;
+                lblWeight.Enabled = false;
+                txtWeight.Enabled = false;
+                cboWeight.Enabled = false;
 
-                lblVolume.Visible = false;
-                txtVolume.Visible = false;
-                cboVolume.Visible = false;
+                txtWeight.Text = "";
+                cboWeight.SelectedIndex = -1;
+
+                cboWhole.Enabled = false;
+                lblWhole.Enabled = false;
+
+                cboWhole.SelectedIndex = -1;
+
+                lblVolume.Enabled = false;
+                txtVolume.Enabled = false;
+                cboVolume.Enabled = false;
+
+                txtVolume.Text = "";
+                cboVolume.SelectedIndex = -1;
             }
             else if (typeOfMeasure_dbCellClick == "Weight")
             {
@@ -629,33 +700,46 @@ namespace PYLsystems
                 cboSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells[3].Value.ToString();
                 txtItemName.Text = dgSupplyItems.CurrentRow.Cells[2].Value.ToString();
                 txtItemDescription.Text = dgSupplyItems.CurrentRow.Cells[5].Value.ToString();
-                cboActive.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
-                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                cboActive.Text = dgSupplyItems.CurrentRow.Cells[11].Value.ToString();
+                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
 
                 //TRUE
-                lblWeight.Visible = true;
-                txtWeight.Visible = true;
-                cboWeight.Visible = true;
+                lblWeight.Enabled = true;
+                txtWeight.Enabled = true;
+                cboWeight.Enabled = true;
 
-                txtWeight.Text = dgSupplyItems.CurrentRow.Cells[8].Value.ToString();
+                txtWeight.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
                 cboWeight.Text = dgSupplyItems.CurrentRow.Cells[6].Value.ToString();
                 //FALSE
-                lblArea.Visible = false;
-                txtArea1.Visible = false;
-                txtArea2.Visible = false;
-                cboArea.Visible = false;
-                lblX.Visible = false;
+                lblArea.Enabled = false;
+                txtArea1.Enabled = false;
+                txtArea2.Enabled = false;
+                cboArea.Enabled = false;
+                lblX.Enabled = false;
 
-                txtLength.Visible = false;
-                cboLength.Visible = false;
-                lblLength.Visible = false;
+                txtArea1.Text = "";
+                txtArea2.Text = "";
+                cboArea.SelectedIndex = -1;
 
-                cboWhole.Visible = false;
-                lblWhole.Visible = false;
 
-                lblVolume.Visible = false;
-                txtVolume.Visible = false;
-                cboVolume.Visible = false;
+                txtLength.Enabled = false;
+                cboLength.Enabled = false;
+                lblLength.Enabled = false;
+
+                cboLength.SelectedIndex = -1;
+                txtLength.Text = "";
+
+                cboWhole.Enabled = false;
+                lblWhole.Enabled = false;
+
+                cboWhole.SelectedIndex = -1;
+
+                lblVolume.Enabled = false;
+                txtVolume.Enabled = false;
+                cboVolume.Enabled = false;
+
+                txtVolume.Text = "";
+                cboVolume.SelectedIndex = -1;
             }
             else if (typeOfMeasure_dbCellClick == "Volume")
             {
@@ -663,33 +747,45 @@ namespace PYLsystems
                 cboSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells[3].Value.ToString();
                 txtItemName.Text = dgSupplyItems.CurrentRow.Cells[2].Value.ToString();
                 txtItemDescription.Text = dgSupplyItems.CurrentRow.Cells[5].Value.ToString();
-                cboActive.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
-                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                cboActive.Text = dgSupplyItems.CurrentRow.Cells[11].Value.ToString();
+                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
                 //TRUE
-                lblVolume.Visible = true;
-                txtVolume.Visible = true;
-                cboVolume.Visible = true;
+                lblVolume.Enabled = true;
+                txtVolume.Enabled = true;
+                cboVolume.Enabled = true;
 
-                txtVolume.Text = dgSupplyItems.CurrentRow.Cells[8].Value.ToString();
-                cboVolume.Text = dgSupplyItems.CurrentRow.Cells[6].Value.ToString();
+                txtVolume.Text = dgSupplyItems.CurrentRow.Cells[6].Value.ToString();
+                cboVolume.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
 
                 //FALSE
-                lblWeight.Visible = false;
-                txtWeight.Visible = false;
-                cboWeight.Visible = false;
+                lblWeight.Enabled = false;
+                txtWeight.Enabled = false;
+                cboWeight.Enabled = false;
 
-                lblArea.Visible = false;
-                txtArea1.Visible = false;
-                txtArea2.Visible = false;
-                cboArea.Visible = false;
-                lblX.Visible = false;
+                txtWeight.Text = "";
+                cboWeight.SelectedIndex = -1;
 
-                txtLength.Visible = false;
-                cboLength.Visible = false;
-                lblLength.Visible = false;
+                lblArea.Enabled = false;
+                txtArea1.Enabled = false;
+                txtArea2.Enabled = false;
+                cboArea.Enabled = false;
+                lblX.Enabled = false;
 
-                cboWhole.Visible = false;
-                lblWhole.Visible = false;
+                txtArea1.Text = "";
+                txtArea2.Text = "";
+                cboArea.SelectedIndex = -1;
+
+                txtLength.Enabled = false;
+                cboLength.Enabled = false;
+                lblLength.Enabled = false;
+
+                cboLength.SelectedIndex = -1;
+                txtLength.Text = "";
+
+                cboWhole.Enabled = false;
+                lblWhole.Enabled = false;
+
+                cboWhole.SelectedIndex = -1;
             }
             else
             {
@@ -697,32 +793,45 @@ namespace PYLsystems
                 cboSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells[3].Value.ToString();
                 txtItemName.Text = dgSupplyItems.CurrentRow.Cells[2].Value.ToString();
                 txtItemDescription.Text = dgSupplyItems.CurrentRow.Cells[5].Value.ToString();
-                cboActive.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
-                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                cboActive.Text = dgSupplyItems.CurrentRow.Cells[11].Value.ToString();
+                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
 
                 //TRUE
-                cboWhole.Visible = true;
-                lblWhole.Visible = true;
+                cboWhole.Enabled = true;
+                lblWhole.Enabled = true;
 
-                cboWhole.Text = dgSupplyItems.CurrentRow.Cells[8].Value.ToString();
+                cboWhole.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
                 //FALSE
-                lblArea.Visible = false;
-                txtArea1.Visible = false;
-                txtArea2.Visible = false;
-                cboArea.Visible = false;
-                lblX.Visible = false;
+                lblArea.Enabled = false;
+                txtArea1.Enabled = false;
+                txtArea2.Enabled = false;
+                cboArea.Enabled = false;
+                lblX.Enabled = false;
 
-                txtLength.Visible = false;
-                cboLength.Visible = false;
-                lblLength.Visible = false;
+                txtArea1.Text = "";
+                txtArea2.Text = "";
+                cboArea.SelectedIndex = -1;
 
-                lblWeight.Visible = false;
-                txtWeight.Visible = false;
-                cboWeight.Visible = false;
+                txtLength.Enabled = false;
+                cboLength.Enabled = false;
+                lblLength.Enabled = false;
 
-                lblVolume.Visible = false;
-                txtVolume.Visible = false;
-                cboVolume.Visible = false;
+                cboLength.SelectedIndex = -1;
+                txtLength.Text = "";
+
+                lblWeight.Enabled = false;
+                txtWeight.Enabled = false;
+                cboWeight.Enabled = false;
+
+                txtWeight.Text = "";
+                cboWeight.SelectedIndex = -1;
+
+                lblVolume.Enabled = false;
+                txtVolume.Enabled = false;
+                cboVolume.Enabled = false;
+
+                txtVolume.Text = "";
+                cboVolume.SelectedIndex = -1;
             }
         }
 
@@ -868,27 +977,40 @@ namespace PYLsystems
                 txtVolume.Text = "";
                 cboVolume.SelectedIndex = -1;
 
-                lblArea.Visible = false;
-                txtArea1.Visible = false;
-                txtArea2.Visible = false;
-                cboArea.Visible = false;
-                lblX.Visible = false;
+                lblArea.Enabled = false;
+                txtArea1.Enabled = false;
+                txtArea2.Enabled = false;
+                cboArea.Enabled = false;
+                lblX.Enabled = false;
 
-                txtLength.Visible = false;
-                cboLength.Visible = false;
-                lblLength.Visible = false;
+            txtArea1.Text = "";
+            txtArea2.Text = "";
+            cboActive.SelectedIndex = -1;
 
-                lblWeight.Visible = false;
-                txtWeight.Visible = false;
-                cboWeight.Visible = false;
+                txtLength.Enabled = false;
+                cboLength.Enabled = false;
+                lblLength.Enabled = false;
 
-                cboWhole.Visible = false;
-                lblWhole.Visible = false;
+            cboLength.SelectedIndex = -1;
+            txtLength.Text = "";
 
-                lblVolume.Visible = false;
-                txtVolume.Visible = false;
-                cboVolume.Visible = false;
+                lblWeight.Enabled = false;
+                txtWeight.Enabled = false;
+                cboWeight.Enabled = false;
+            txtWeight.Text = "";
+            cboWeight.SelectedIndex = -1;
 
+                cboWhole.Enabled = false;
+                lblWhole.Enabled = false;
+
+            cboWhole.SelectedIndex = -1;
+
+                lblVolume.Enabled = false;
+                txtVolume.Enabled = false;
+                cboVolume.Enabled = false;
+
+            cboVolume.SelectedIndex = -1;
+            txtVolume.Text = "";
         }
 
         private void frmSupplyItems_Load_1(object sender, EventArgs e)
@@ -964,6 +1086,48 @@ namespace PYLsystems
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnDamageItem_Click(object sender, EventArgs e)
+        {
+            frmSupplyDamage damagedItems = new frmSupplyDamage();
+            damagedItems.lblsupply_itemsID.Text = dgSupplyItems.CurrentRow.Cells[0].Value.ToString();
+            frmSupplyStockIn.Global.supplyID = dgSupplyItems.CurrentRow.Cells[0].Value.ToString();
+            damagedItems.txtItemName.Text = dgSupplyItems.CurrentRow.Cells[2].Value.ToString();
+            damagedItems.txtRawPurchasePrice.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
+            damagedItems.ShowDialog();
+            RefreshDatabase();
+            cboSupplyCategory.SelectedIndex = -1;
+            txtItemName.Text = "";
+            txtItemDescription.Text = "";
+            cboActive.SelectedIndex = -1;
+
+            txtPurchaseUnitPrice.Text = "";
+            supply_categoryID = "";
+            typeOfMeasure_db = "";
+            supplyID = "";
+
+            lblArea.Enabled = false;
+            txtArea1.Enabled = false;
+            txtArea2.Enabled = false;
+            cboArea.Enabled = false;
+            lblX.Enabled = false;
+
+            txtLength.Enabled = false;
+            cboLength.Enabled = false;
+            lblLength.Enabled = false;
+
+            lblWeight.Enabled = false;
+            txtWeight.Enabled = false;
+            cboWeight.Enabled = false;
+
+            cboVolume.Enabled = false;
+            lblVolume.Enabled = false;
+            txtVolume.Enabled = false;
+            cboWhole.Enabled = false;
+            lblWhole.Enabled = false;
+            btnStockInSelectedItem.Enabled = false;
+            btnUpdateDetails.Enabled = false;
         }
     }
     }
