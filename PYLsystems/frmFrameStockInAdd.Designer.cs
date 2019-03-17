@@ -34,6 +34,10 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.lblEmpName = new System.Windows.Forms.Label();
             this.txtBoxEmployeeName = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -49,10 +53,12 @@
             this.btnStockIn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.datagridPayrollCalc = new System.Windows.Forms.DataGridView();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.gpStockIn = new System.Windows.Forms.GroupBox();
+            this.lblEndDate = new System.Windows.Forms.Label();
+            this.lblStartDate = new System.Windows.Forms.Label();
+            this.endDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.startDatePicker = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -62,6 +68,8 @@
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridPayrollCalc)).BeginInit();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.gpStockIn.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -100,7 +108,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.6347F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.3653F));
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.groupBox1, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 48);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -141,6 +149,43 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Frame Details";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(58, 158);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(93, 20);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Description:";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox3.Location = new System.Drawing.Point(173, 155);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(218, 146);
+            this.textBox3.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(63, 101);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(88, 20);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Dimension:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.Location = new System.Drawing.Point(173, 98);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(218, 26);
+            this.textBox2.TabIndex = 14;
             // 
             // lblEmpName
             // 
@@ -279,10 +324,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.datagridPayrollCalc);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(452, 3);
+            this.groupBox1.Location = new System.Drawing.Point(3, 121);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(680, 799);
+            this.groupBox1.Size = new System.Drawing.Size(674, 675);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Stock In Record of Frame";
@@ -309,45 +353,89 @@
             this.datagridPayrollCalc.RowHeadersVisible = false;
             this.datagridPayrollCalc.RowTemplate.Height = 28;
             this.datagridPayrollCalc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridPayrollCalc.Size = new System.Drawing.Size(674, 774);
+            this.datagridPayrollCalc.Size = new System.Drawing.Size(668, 650);
             this.datagridPayrollCalc.TabIndex = 3;
             // 
-            // textBox2
+            // tableLayoutPanel5
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(173, 98);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(218, 26);
-            this.textBox2.TabIndex = 14;
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.gpStockIn, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.groupBox1, 0, 1);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(452, 3);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.89362F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.10638F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(680, 799);
+            this.tableLayoutPanel5.TabIndex = 1;
             // 
-            // label3
+            // gpStockIn
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(63, 101);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 20);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Dimension:";
+            this.gpStockIn.Controls.Add(this.lblEndDate);
+            this.gpStockIn.Controls.Add(this.lblStartDate);
+            this.gpStockIn.Controls.Add(this.endDatePicker);
+            this.gpStockIn.Controls.Add(this.startDatePicker);
+            this.gpStockIn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gpStockIn.Location = new System.Drawing.Point(3, 3);
+            this.gpStockIn.Name = "gpStockIn";
+            this.gpStockIn.Size = new System.Drawing.Size(674, 112);
+            this.gpStockIn.TabIndex = 1;
+            this.gpStockIn.TabStop = false;
+            this.gpStockIn.Text = "View Stock In Records By Dates";
             // 
-            // textBox3
+            // lblEndDate
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(173, 155);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(218, 146);
-            this.textBox3.TabIndex = 16;
+            this.lblEndDate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblEndDate.AutoSize = true;
+            this.lblEndDate.Location = new System.Drawing.Point(136, 71);
+            this.lblEndDate.Name = "lblEndDate";
+            this.lblEndDate.Size = new System.Drawing.Size(81, 20);
+            this.lblEndDate.TabIndex = 22;
+            this.lblEndDate.Text = "End Date:";
             // 
-            // label4
+            // lblStartDate
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(58, 158);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 20);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Description:";
+            this.lblStartDate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblStartDate.AutoSize = true;
+            this.lblStartDate.Location = new System.Drawing.Point(130, 35);
+            this.lblStartDate.Name = "lblStartDate";
+            this.lblStartDate.Size = new System.Drawing.Size(87, 20);
+            this.lblStartDate.TabIndex = 21;
+            this.lblStartDate.Text = "Start Date:";
+            // 
+            // endDatePicker
+            // 
+            this.endDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.endDatePicker.CustomFormat = "yyyy/MM/dd";
+            this.endDatePicker.Enabled = false;
+            this.endDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.endDatePicker.Location = new System.Drawing.Point(219, 66);
+            this.endDatePicker.Name = "endDatePicker";
+            this.endDatePicker.Size = new System.Drawing.Size(325, 26);
+            this.endDatePicker.TabIndex = 20;
+            this.endDatePicker.Value = new System.DateTime(2019, 1, 5, 0, 0, 0, 0);
+            // 
+            // startDatePicker
+            // 
+            this.startDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.startDatePicker.CustomFormat = "yyyy/MM/dd";
+            this.startDatePicker.Enabled = false;
+            this.startDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.startDatePicker.Location = new System.Drawing.Point(219, 31);
+            this.startDatePicker.Name = "startDatePicker";
+            this.startDatePicker.Size = new System.Drawing.Size(325, 26);
+            this.startDatePicker.TabIndex = 19;
+            this.startDatePicker.Value = new System.DateTime(2019, 1, 4, 0, 0, 0, 0);
             // 
             // frmFrameStockInAdd
             // 
@@ -369,6 +457,9 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.datagridPayrollCalc)).EndInit();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.gpStockIn.ResumeLayout(false);
+            this.gpStockIn.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -399,5 +490,11 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.GroupBox gpStockIn;
+        private System.Windows.Forms.Label lblEndDate;
+        private System.Windows.Forms.Label lblStartDate;
+        private System.Windows.Forms.DateTimePicker endDatePicker;
+        private System.Windows.Forms.DateTimePicker startDatePicker;
     }
 }
