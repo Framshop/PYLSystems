@@ -12,6 +12,11 @@ namespace PYLsystems
 {
     public partial class ___baseForm : Form
     {
+        //--------------Initial Load--------------
+        //----for programming initializer
+        //-------------Process and Calculation Methods--------------
+        //First time load
+        //----------------Event Methods-----------------
         public ___baseForm()
         {
             InitializeComponent();

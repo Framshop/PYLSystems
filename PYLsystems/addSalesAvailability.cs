@@ -54,23 +54,28 @@ namespace PYLsystems
         //-------------Process and Calculation Methods--------------
         //Load default
         private void addSalesAvail_Loader() {
-            this.frameInvGrid.DataSource = null;
-            this.frameInvGrid.Rows.Clear();
-            String frameAvailString = "SELECT FL.frameName AS Frame, FL.Dimension, FL.UnitPrice AS 'Unit Price', IFNULL(FS.Stockin - (IFNULL(SOD.Stockout,0)),0) AS 'Quantity Left', " +
-                "FL.frameItemID FROM frame_list AS FL " +
-                "LEFT JOIN(SELECT FS.frameItemID, SUM(FS.stockinQuantity) AS Stockin FROM framestock_in AS FS GROUP BY FS.frameItemID) " +
-                "AS FS ON FL.frameItemID = FS.frameItemID " +
-                "LEFT JOIN(SELECT SOD.frameItemID, SUM(SOD.sOrd_Quantity) AS Stockout FROM sOrder_details AS SOD LEFT JOIN salesOrder AS SO ON SOD.sOrd_Num=SO.sOrd_Num WHERE SO.sOrd_status>0 GROUP BY SOD.frameItemID) " +
-                "AS SOD ON FL.frameItemID = SOD.frameItemID " +
-                "WHERE FL.active = 'active' ORDER BY FL.frameName; ";
+            try
+            {
+                this.frameInvGrid.DataSource = null;
+                this.frameInvGrid.Rows.Clear();
+                String frameAvailString = "SELECT FL.frameName AS Frame, FL.Dimension, fl.UnitSalesPrice AS 'Unit Price', IFNULL(FS.Stockin - (IFNULL(SOD.Stockout,0)),0) AS 'Quantity Left', " +
+                    "FL.frameItemID FROM frame_list AS FL " +
+                    "LEFT JOIN(SELECT FS.frameItemID, SUM(FS.stockinQuantity) AS Stockin FROM framestock_in AS FS GROUP BY FS.frameItemID) " +
+                    "AS FS ON FL.frameItemID = FS.frameItemID " +
+                    "LEFT JOIN(SELECT SOD.frameItemID, SUM(SOD.sOrd_Quantity) AS Stockout FROM sOrder_details AS SOD LEFT JOIN salesOrder AS SO ON SOD.sOrd_Num=SO.sOrd_Num WHERE SO.sOrd_status>0 GROUP BY SOD.frameItemID) " +
+                    "AS SOD ON FL.frameItemID = SOD.frameItemID " +
+                    "WHERE FL.active = '0' ORDER BY FL.frameName; ";
 
-            MySqlConnection my_conn = new MySqlConnection(connString);
-            MySqlCommand frameAvail_command = new MySqlCommand(frameAvailString, my_conn);
-            MySqlDataAdapter frameAvail_adapter = new MySqlDataAdapter(frameAvail_command);
+                MySqlConnection my_conn = new MySqlConnection(connString);
+                MySqlCommand frameAvail_command = new MySqlCommand(frameAvailString, my_conn);
+                MySqlDataAdapter frameAvail_adapter = new MySqlDataAdapter(frameAvail_command);
 
-            frameAvail_dt = new DataTable();
-            frameAvail_adapter.Fill(frameAvail_dt);
-
+                frameAvail_dt = new DataTable();
+                frameAvail_adapter.Fill(frameAvail_dt);
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.ToString());
+            }
             //frameAvailDefaultFilter = new DataView(frameAvail_dt);
             //frameAvailDefaultFilter.RowFilter = "sOrd_status = 0";
             frameInvGrid.DataSource = frameAvail_dt;
@@ -79,28 +84,33 @@ namespace PYLsystems
         }
         //Load Edit Mode
         private void editAddSalesAvail_Loader() {
-            
-            this.frameInvGrid.DataSource = null;
-            this.frameInvGrid.Rows.Clear();
-            String frameAvailString = "SELECT FL.frameName AS Frame, FL.Dimension, FL.UnitPrice AS 'Unit Price', IFNULL(FS.Stockin - (IFNULL(SOD.Stockout,0)),0) AS 'Quantity Left', " +
-                "FL.frameItemID FROM frame_list AS FL " +
-                "LEFT JOIN(SELECT FS.frameItemID, SUM(FS.stockinQuantity) AS Stockin FROM framestock_in AS FS GROUP BY FS.frameItemID) " +
-                "AS FS ON FL.frameItemID = FS.frameItemID " +
-                "LEFT JOIN(SELECT SOD.frameItemID, SUM(SOD.sOrd_Quantity) AS Stockout FROM sOrder_details AS SOD LEFT JOIN salesOrder AS SO ON SOD.sOrd_Num=SO.sOrd_Num WHERE SO.sOrd_status>0 GROUP BY SOD.frameItemID) " +
-                "AS SOD ON FL.frameItemID = SOD.frameItemID " +
-                "WHERE FL.active = 'active'; ";
+            int rowIndex = 0;
+            try
+            {
+                this.frameInvGrid.DataSource = null;
+                this.frameInvGrid.Rows.Clear();
+                String frameAvailString = "SELECT FL.frameName AS Frame, FL.Dimension, fl.UnitSalesPrice AS 'Unit Price', IFNULL(FS.Stockin - (IFNULL(SOD.Stockout,0)),0) AS 'Quantity Left', " +
+                    "FL.frameItemID FROM frame_list AS FL " +
+                    "LEFT JOIN(SELECT FS.frameItemID, SUM(FS.stockinQuantity) AS Stockin FROM framestock_in AS FS GROUP BY FS.frameItemID) " +
+                    "AS FS ON FL.frameItemID = FS.frameItemID " +
+                    "LEFT JOIN(SELECT SOD.frameItemID, SUM(SOD.sOrd_Quantity) AS Stockout FROM sOrder_details AS SOD LEFT JOIN salesOrder AS SO ON SOD.sOrd_Num=SO.sOrd_Num WHERE SO.sOrd_status>0 GROUP BY SOD.frameItemID) " +
+                    "AS SOD ON FL.frameItemID = SOD.frameItemID " +
+                    "WHERE FL.active = '0'; ";
 
-            MySqlConnection my_conn = new MySqlConnection(connString);
-            MySqlCommand frameAvail_command = new MySqlCommand(frameAvailString, my_conn);
-            MySqlDataAdapter frameAvail_adapter = new MySqlDataAdapter(frameAvail_command);
+                MySqlConnection my_conn = new MySqlConnection(connString);
+                MySqlCommand frameAvail_command = new MySqlCommand(frameAvailString, my_conn);
+                MySqlDataAdapter frameAvail_adapter = new MySqlDataAdapter(frameAvail_command);
 
-            frameAvail_dt = new DataTable();
-            frameAvail_adapter.Fill(frameAvail_dt);
-            int rowIndex = 0;          
-            //frameAvailDefaultFilter = new DataView(frameAvail_dt);
-            //frameAvailDefaultFilter.RowFilter = "sOrd_status = 0";
-            frameInvGrid.DataSource = frameAvail_dt;
-
+                frameAvail_dt = new DataTable();
+                frameAvail_adapter.Fill(frameAvail_dt);
+                rowIndex = 0;          
+                //frameAvailDefaultFilter = new DataView(frameAvail_dt);
+                //frameAvailDefaultFilter.RowFilter = "sOrd_status = 0";
+                frameInvGrid.DataSource = frameAvail_dt;
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.ToString());
+            }
             for (int i = 0; i < frameInvGrid.Rows.Count; i++)
             {
                 //String comp = frameInvGrid.Rows[i].Cells["frameItemID"].Value.ToString();

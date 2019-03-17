@@ -15,8 +15,8 @@ namespace PYLsystems
 {
     public partial class frmPrintPayroll : Form
     {
-        private int encoderID;
-        frmPayrollListcs pFrmPayrollListcs;
+        //private int encoderID;
+        //frmPayrollListcs pFrmPayrollListcs;
         DataTable dtPayroll;
         DataTable dtDeductions;
         //DataTable dtCombine;

@@ -203,11 +203,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(189, 49);
+            this.label1.Location = new System.Drawing.Point(250, 52);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(299, 20);
+            this.label1.Size = new System.Drawing.Size(238, 20);
             this.label1.TabIndex = 18;
-            this.label1.Text = "Calculation of Raw Cost for a Single Unit:";
+            this.label1.Text = "Total Raw Cost for a Single Unit:";
             // 
             // txtBoxAmount
             // 
