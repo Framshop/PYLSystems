@@ -289,6 +289,7 @@
             // 
             this.btnEditDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditDetails.Enabled = false;
             this.btnEditDetails.Location = new System.Drawing.Point(63, 68);
             this.btnEditDetails.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditDetails.Name = "btnEditDetails";
@@ -296,11 +297,13 @@
             this.btnEditDetails.TabIndex = 36;
             this.btnEditDetails.Text = "Edit Details";
             this.btnEditDetails.UseVisualStyleBackColor = true;
+            this.btnEditDetails.Click += new System.EventHandler(this.btnEditDetails_Click);
             // 
             // btnStockInItem
             // 
             this.btnStockInItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStockInItem.Enabled = false;
             this.btnStockInItem.Location = new System.Drawing.Point(63, 34);
             this.btnStockInItem.Margin = new System.Windows.Forms.Padding(2);
             this.btnStockInItem.Name = "btnStockInItem";
@@ -387,7 +390,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.endDatePicker.CustomFormat = "yyyy/MM/dd";
-            this.endDatePicker.Enabled = false;
             this.endDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.endDatePicker.Location = new System.Drawing.Point(146, 43);
             this.endDatePicker.Margin = new System.Windows.Forms.Padding(2);
@@ -402,7 +404,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.startDatePicker.CustomFormat = "yyyy/MM/dd";
-            this.startDatePicker.Enabled = false;
             this.startDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.startDatePicker.Location = new System.Drawing.Point(146, 20);
             this.startDatePicker.Margin = new System.Windows.Forms.Padding(2);
@@ -410,6 +411,7 @@
             this.startDatePicker.Size = new System.Drawing.Size(259, 20);
             this.startDatePicker.TabIndex = 19;
             this.startDatePicker.Value = new System.DateTime(2019, 1, 4, 0, 0, 0, 0);
+            this.startDatePicker.ValueChanged += new System.EventHandler(this.startDatePicker_ValueChanged);
             // 
             // groupBox5
             // 
@@ -441,6 +443,7 @@
             this.dgvStockIn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStockIn.Size = new System.Drawing.Size(486, 454);
             this.dgvStockIn.TabIndex = 4;
+            this.dgvStockIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStockIn_CellClick);
             // 
             // frmSupplyStockIn
             // 
