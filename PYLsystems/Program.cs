@@ -19,7 +19,6 @@ namespace PYLsystems
 
             Application.Run(new frmSupplyItems());
 
-            Application.Run(new frmAddSupplierItems());
 
         }
     }
