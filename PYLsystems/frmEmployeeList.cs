@@ -70,9 +70,7 @@ namespace PYLsystems
         {
             frmViewEmployee empview = new frmViewEmployee();
             empview.empid.Text = dgEmpList.CurrentRow.Cells[0].Value.ToString();
-            
-
-         
+                   
             empview.ShowDialog();
             reload();
         }
@@ -126,16 +124,7 @@ namespace PYLsystems
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            conn.Open();
-            string query = "SELECT emp.employeeid, emp.lastname, emp.firstname, ac.employeePosition FROM employee emp left join accessworkdesc ac on ac.employeeStatus = emp.employeeStatus  where emp.lastname LIKE '%" + txtSearch.Text + "%' OR emp.firstname LIKE '%" + txtSearch.Text + "%' OR ac.employeePosition LIKE '%" + txtSearch.Text + "%'";
-
-            //string query = "SELECT   lastname, firstname FROM employee where lastname LIKE '%" + txtSearch.Text + "%' OR firstname LIKE '%" + txtSearch.Text + "%'";
-            MySqlCommand myComm = new MySqlCommand(query, conn);
-            MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
-            DataTable myDt = new DataTable();
-            myAdp.Fill(myDt);
-            dgEmpList.DataSource = myDt;
-            conn.Close();
+           
         }
 
         private void dgEmpList_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -148,6 +137,20 @@ namespace PYLsystems
             frmArchive archlist = new frmArchive();
             archlist.ShowDialog();
             reload();
+        }
+
+        private void txtSearch_TextChanged_1(object sender, EventArgs e)
+        {
+            conn.Open();
+            string query = "SELECT emp.employeeid, emp.lastname, emp.firstname, ac.employeePosition FROM employee emp left join accessworkdesc ac on ac.employeeStatus = emp.employeeStatus  where emp.lastname LIKE '%" + txtSearch.Text + "%' OR emp.firstname LIKE '%" + txtSearch.Text + "%' OR ac.employeePosition LIKE '%" + txtSearch.Text + "%'";
+
+            //string query = "SELECT   lastname, firstname FROM employee where lastname LIKE '%" + txtSearch.Text + "%' OR firstname LIKE '%" + txtSearch.Text + "%'";
+            MySqlCommand myComm = new MySqlCommand(query, conn);
+            MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
+            DataTable myDt = new DataTable();
+            myAdp.Fill(myDt);
+            dgEmpList.DataSource = myDt;
+            conn.Close();
         }
     }
     class employeeDetailsObj

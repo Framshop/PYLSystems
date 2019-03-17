@@ -62,13 +62,18 @@ namespace PYLsystems
 
         private void btnSet_Click(object sender, EventArgs e)
         {
+          
             string myQuery = "Insert INTO accessworkdesc(employeePosition , workDetailsDesc)  values('" +  txtPosition.Text + "','" + txtDetails.Text + "')"; 
             MySqlCommand myComm = new MySqlCommand(myQuery, conn);
             MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
             DataTable myDt = new DataTable();
             myAdp.Fill(myDt);
+            MySqlDataReader myReader;
+            myReader = myComm.ExecuteReader();
             conn.Close();
-            MessageBox.Show("New Employee Created");
+
+         
+                MessageBox.Show("New Work Description Created");
 
 
             this.Close();

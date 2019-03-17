@@ -70,6 +70,7 @@
             this.dgEmpList.AllowUserToAddRows = false;
             this.dgEmpList.AllowUserToDeleteRows = false;
             this.dgEmpList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgEmpList.BackgroundColor = System.Drawing.Color.Honeydew;
             this.dgEmpList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgEmpList.Location = new System.Drawing.Point(12, 50);
             this.dgEmpList.Name = "dgEmpList";
@@ -82,23 +83,27 @@
             // 
             // btnSet
             // 
+            this.btnSet.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnSet.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSet.Enabled = false;
-            this.btnSet.Location = new System.Drawing.Point(33, 319);
+            this.btnSet.Location = new System.Drawing.Point(12, 319);
             this.btnSet.Name = "btnSet";
-            this.btnSet.Size = new System.Drawing.Size(105, 38);
+            this.btnSet.Size = new System.Drawing.Size(105, 29);
             this.btnSet.TabIndex = 12;
             this.btnSet.Text = "Set as Employee";
-            this.btnSet.UseVisualStyleBackColor = true;
+            this.btnSet.UseVisualStyleBackColor = false;
             this.btnSet.Click += new System.EventHandler(this.btnAtive_Click);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(166, 319);
+            this.btnClose.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.Location = new System.Drawing.Point(145, 319);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(105, 38);
+            this.btnClose.Size = new System.Drawing.Size(105, 29);
             this.btnClose.TabIndex = 13;
             this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // emp_id
@@ -116,6 +121,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(518, 372);
             this.Controls.Add(this.emp_id);
             this.Controls.Add(this.btnClose);
@@ -124,7 +130,11 @@
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgEmpList);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmArchive";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmArchive_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgEmpList)).EndInit();
             this.ResumeLayout(false);

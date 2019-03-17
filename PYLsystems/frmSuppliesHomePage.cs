@@ -36,5 +36,11 @@ namespace PYLsystems
             frmSupplyItems formSupplyItemsList = new frmSupplyItems();
             formSupplyItemsList.ShowDialog();
         }
+
+        private void btnDamage_Click(object sender, EventArgs e)
+        {
+            frmSupplyDamage frmSupplyDmg = new frmSupplyDamage();
+            frmSupplyDmg.ShowDialog();
+        }
     }
 }

@@ -57,5 +57,11 @@ namespace PYLsystems
         {
             this.Close();
         }
+
+        private void btnDamage_Click(object sender, EventArgs e)
+        {
+            frmFrameDamagedItems frmFrameDmg = new frmFrameDamagedItems();
+            frmFrameDmg.ShowDialog();
+        }
     }
 }

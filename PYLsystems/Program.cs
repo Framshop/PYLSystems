@@ -16,7 +16,11 @@ namespace PYLsystems
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             Application.Run(new frmSupplyItems());
+
+            Application.Run(new frmAddSupplierItems());
+
         }
     }
 }

@@ -65,6 +65,7 @@
             this.txtFirstName.Size = new System.Drawing.Size(219, 20);
             this.txtFirstName.TabIndex = 3;
             this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
+            this.txtFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFirstName_KeyPress);
             // 
             // txtSalaryRate
             // 
@@ -191,34 +192,39 @@
             this.txtLastName.Size = new System.Drawing.Size(219, 20);
             this.txtLastName.TabIndex = 2;
             this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
+            this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLastName_KeyPress);
             // 
             // txtHomeAddress
             // 
-            this.txtHomeAddress.Location = new System.Drawing.Point(164, 262);
+            this.txtHomeAddress.Location = new System.Drawing.Point(161, 262);
             this.txtHomeAddress.Multiline = true;
             this.txtHomeAddress.Name = "txtHomeAddress";
-            this.txtHomeAddress.Size = new System.Drawing.Size(219, 56);
+            this.txtHomeAddress.Size = new System.Drawing.Size(222, 56);
             this.txtHomeAddress.TabIndex = 6;
             this.txtHomeAddress.TextChanged += new System.EventHandler(this.txtHomeAddress_TextChanged);
             // 
             // btnCreate
             // 
+            this.btnCreate.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnCreate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCreate.Location = new System.Drawing.Point(163, 506);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(98, 33);
             this.btnCreate.TabIndex = 27;
             this.btnCreate.Text = "Create Employee";
-            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.UseVisualStyleBackColor = false;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.Location = new System.Drawing.Point(281, 506);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(98, 33);
             this.btnCancel.TabIndex = 28;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // status
@@ -258,9 +264,9 @@
             // 
             this.dtpBirthDate.CustomFormat = "yyyy-MM-dd";
             this.dtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpBirthDate.Location = new System.Drawing.Point(164, 216);
+            this.dtpBirthDate.Location = new System.Drawing.Point(161, 216);
             this.dtpBirthDate.Name = "dtpBirthDate";
-            this.dtpBirthDate.Size = new System.Drawing.Size(219, 20);
+            this.dtpBirthDate.Size = new System.Drawing.Size(222, 20);
             this.dtpBirthDate.TabIndex = 5;
             // 
             // label4
@@ -332,6 +338,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(399, 547);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.passwordTextBox);

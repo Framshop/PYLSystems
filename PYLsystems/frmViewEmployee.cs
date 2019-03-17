@@ -31,7 +31,7 @@ namespace PYLsystems
 
             while (reader.Read())
             {
-                string position = reader.GetString(13);
+                string position = reader.GetString(14);
                 string startofEmp = reader.GetString(2);
                 string firstname = reader.GetString(3);
                 string lastname = reader.GetString(4);

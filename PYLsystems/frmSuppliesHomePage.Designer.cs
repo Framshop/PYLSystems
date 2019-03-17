@@ -35,6 +35,7 @@
             this.btnSupplyItemsList = new System.Windows.Forms.Button();
             this.btnSuppliers = new System.Windows.Forms.Button();
             this.btnSupplyCateg = new System.Windows.Forms.Button();
+            this.btnDamage = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -89,17 +90,20 @@
             this.tableLayoutPanel5.Controls.Add(this.btnSupplyItemsList, 0, 5);
             this.tableLayoutPanel5.Controls.Add(this.btnSuppliers, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.btnSupplyCateg, 0, 3);
+            this.tableLayoutPanel5.Controls.Add(this.btnDamage, 0, 7);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 33);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 7;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.31579F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.31579F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.31579F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
+            this.tableLayoutPanel5.RowCount = 9;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.999968F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.99984F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.999968F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.99984F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.999968F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.99984F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.999968F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.00304F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.997568F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(290, 546);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
@@ -108,10 +112,10 @@
             this.btnSupplyItemsList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSupplyItemsList.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSupplyItemsList.Location = new System.Drawing.Point(4, 375);
+            this.btnSupplyItemsList.Location = new System.Drawing.Point(4, 286);
             this.btnSupplyItemsList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSupplyItemsList.Name = "btnSupplyItemsList";
-            this.btnSupplyItemsList.Size = new System.Drawing.Size(282, 129);
+            this.btnSupplyItemsList.Size = new System.Drawing.Size(282, 99);
             this.btnSupplyItemsList.TabIndex = 5;
             this.btnSupplyItemsList.Text = "Supply Items List";
             this.btnSupplyItemsList.UseVisualStyleBackColor = true;
@@ -122,10 +126,10 @@
             this.btnSuppliers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSuppliers.Location = new System.Drawing.Point(4, 33);
+            this.btnSuppliers.Location = new System.Drawing.Point(4, 26);
             this.btnSuppliers.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSuppliers.Name = "btnSuppliers";
-            this.btnSuppliers.Size = new System.Drawing.Size(282, 129);
+            this.btnSuppliers.Size = new System.Drawing.Size(282, 99);
             this.btnSuppliers.TabIndex = 2;
             this.btnSuppliers.Text = "Suppliers";
             this.btnSuppliers.UseVisualStyleBackColor = true;
@@ -136,14 +140,28 @@
             this.btnSupplyCateg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSupplyCateg.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSupplyCateg.Location = new System.Drawing.Point(4, 204);
+            this.btnSupplyCateg.Location = new System.Drawing.Point(4, 156);
             this.btnSupplyCateg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSupplyCateg.Name = "btnSupplyCateg";
-            this.btnSupplyCateg.Size = new System.Drawing.Size(282, 129);
+            this.btnSupplyCateg.Size = new System.Drawing.Size(282, 99);
             this.btnSupplyCateg.TabIndex = 1;
             this.btnSupplyCateg.Text = "Supply Categories";
             this.btnSupplyCateg.UseVisualStyleBackColor = true;
             this.btnSupplyCateg.Click += new System.EventHandler(this.btnSupplyCateg_Click);
+            // 
+            // btnDamage
+            // 
+            this.btnDamage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDamage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDamage.Location = new System.Drawing.Point(4, 416);
+            this.btnDamage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnDamage.Name = "btnDamage";
+            this.btnDamage.Size = new System.Drawing.Size(282, 99);
+            this.btnDamage.TabIndex = 6;
+            this.btnDamage.Text = "Damaged Supplies";
+            this.btnDamage.UseVisualStyleBackColor = true;
+            this.btnDamage.Click += new System.EventHandler(this.btnDamage_Click);
             // 
             // frmSuppliesHomePage
             // 
@@ -170,5 +188,6 @@
         private System.Windows.Forms.Button btnSupplyItemsList;
         public System.Windows.Forms.Button btnSuppliers;
         private System.Windows.Forms.Button btnSupplyCateg;
+        private System.Windows.Forms.Button btnDamage;
     }
 }

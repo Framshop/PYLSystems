@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace PYLsystems
 {
-    public partial class frmFrameArchivedList : Form
+    public partial class frmSupplyDamage : Form
     {
-        public frmFrameArchivedList()
+        public frmSupplyDamage()
         {
             InitializeComponent();
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

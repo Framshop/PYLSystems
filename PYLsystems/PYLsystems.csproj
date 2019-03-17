@@ -160,6 +160,12 @@
     <Compile Include="frmFrameArchivedList.Designer.cs">
       <DependentUpon>frmFrameArchivedList.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmFrameDamagedItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFrameDamagedItems.Designer.cs">
+      <DependentUpon>frmFrameDamagedItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFrameEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -292,6 +298,12 @@
     <Compile Include="frmSuppliesHomePage.Designer.cs">
       <DependentUpon>frmSuppliesHomePage.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSupplyDamage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSupplyDamage.Designer.cs">
+      <DependentUpon>frmSupplyDamage.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSupplyStockIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -414,6 +426,9 @@
     <EmbeddedResource Include="frmFrameArchivedList.resx">
       <DependentUpon>frmFrameArchivedList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmFrameDamagedItems.resx">
+      <DependentUpon>frmFrameDamagedItems.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFrameEdit.resx">
       <DependentUpon>frmFrameEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -476,6 +491,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSuppliesHomePage.resx">
       <DependentUpon>frmSuppliesHomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSupplyDamage.resx">
+      <DependentUpon>frmSupplyDamage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSupplyStockIn.resx">
       <DependentUpon>frmSupplyStockIn.cs</DependentUpon>

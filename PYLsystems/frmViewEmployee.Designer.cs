@@ -53,17 +53,17 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(26, 259);
+            this.label1.Location = new System.Drawing.Point(15, 263);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 20);
+            this.label1.Size = new System.Drawing.Size(156, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Employee Status";
+            this.label1.Text = "Employee Position";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(26, 296);
+            this.label2.Location = new System.Drawing.Point(15, 300);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(173, 20);
             this.label2.TabIndex = 1;
@@ -73,7 +73,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(26, 115);
+            this.label5.Location = new System.Drawing.Point(15, 115);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 20);
             this.label5.TabIndex = 4;
@@ -83,7 +83,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(26, 144);
+            this.label6.Location = new System.Drawing.Point(15, 144);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(91, 20);
             this.label6.TabIndex = 5;
@@ -93,17 +93,17 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(26, 205);
+            this.label7.Location = new System.Drawing.Point(15, 205);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(133, 20);
+            this.label7.Size = new System.Drawing.Size(127, 20);
             this.label7.TabIndex = 6;
-            this.label7.Text = "Homer Address";
+            this.label7.Text = "Home Address";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(26, 330);
+            this.label8.Location = new System.Drawing.Point(15, 334);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(104, 20);
             this.label8.TabIndex = 7;
@@ -113,7 +113,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(26, 174);
+            this.label9.Location = new System.Drawing.Point(15, 174);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(139, 20);
             this.label9.TabIndex = 8;
@@ -133,7 +133,7 @@
             // 
             this.lblSalaryRate.AutoSize = true;
             this.lblSalaryRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSalaryRate.Location = new System.Drawing.Point(216, 330);
+            this.lblSalaryRate.Location = new System.Drawing.Point(216, 334);
             this.lblSalaryRate.Name = "lblSalaryRate";
             this.lblSalaryRate.Size = new System.Drawing.Size(92, 20);
             this.lblSalaryRate.TabIndex = 16;
@@ -193,7 +193,7 @@
             // 
             this.lblStartofEmp.AutoSize = true;
             this.lblStartofEmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStartofEmp.Location = new System.Drawing.Point(216, 296);
+            this.lblStartofEmp.Location = new System.Drawing.Point(216, 300);
             this.lblStartofEmp.Name = "lblStartofEmp";
             this.lblStartofEmp.Size = new System.Drawing.Size(154, 20);
             this.lblStartofEmp.TabIndex = 10;
@@ -203,7 +203,7 @@
             // 
             this.lblEmpStatus.AutoSize = true;
             this.lblEmpStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmpStatus.Location = new System.Drawing.Point(216, 259);
+            this.lblEmpStatus.Location = new System.Drawing.Point(216, 263);
             this.lblEmpStatus.Name = "lblEmpStatus";
             this.lblEmpStatus.Size = new System.Drawing.Size(130, 20);
             this.lblEmpStatus.TabIndex = 9;
@@ -211,12 +211,14 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.PaleGreen;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Location = new System.Drawing.Point(66, 384);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(93, 29);
             this.button1.TabIndex = 18;
             this.button1.Text = "Close";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // empid
@@ -231,19 +233,22 @@
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.PaleGreen;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.ForeColor = System.Drawing.Color.DarkRed;
             this.button2.Location = new System.Drawing.Point(193, 384);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(93, 29);
             this.button2.TabIndex = 20;
             this.button2.Text = "Archive Record";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // frmViewEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(381, 425);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.empid);
@@ -265,6 +270,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmViewEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmViewEmployee_Load);
