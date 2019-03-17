@@ -28,34 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgvFrameStockInDetails = new System.Windows.Forms.DataGridView();
+            this.datagridFrameList = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dgvSupply = new System.Windows.Forms.DataGridView();
+            this.dataGridSuppliesUsed = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnCreateFrame = new System.Windows.Forms.Button();
             this.btnArchiveList = new System.Windows.Forms.Button();
             this.btnStockIn = new System.Windows.Forms.Button();
-            this.btnArchiveFrame = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnArchiveFrame = new System.Windows.Forms.Button();
             this.btnDamage = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFrameStockInDetails)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridFrameList)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSupply)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSuppliesUsed)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -132,7 +132,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgvFrameStockInDetails);
+            this.groupBox1.Controls.Add(this.datagridFrameList);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
@@ -141,34 +141,35 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "List of Frames";
             // 
-            // dgvFrameStockInDetails
+            // datagridFrameList
             // 
-            this.dgvFrameStockInDetails.AllowUserToAddRows = false;
-            this.dgvFrameStockInDetails.AllowUserToDeleteRows = false;
-            this.dgvFrameStockInDetails.AllowUserToResizeRows = false;
-            this.dgvFrameStockInDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvFrameStockInDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFrameStockInDetails.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvFrameStockInDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvFrameStockInDetails.Location = new System.Drawing.Point(3, 22);
-            this.dgvFrameStockInDetails.Name = "dgvFrameStockInDetails";
-            this.dgvFrameStockInDetails.ReadOnly = true;
-            this.dgvFrameStockInDetails.RowHeadersVisible = false;
-            this.dgvFrameStockInDetails.RowTemplate.Height = 28;
-            this.dgvFrameStockInDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFrameStockInDetails.Size = new System.Drawing.Size(1151, 285);
-            this.dgvFrameStockInDetails.TabIndex = 2;
+            this.datagridFrameList.AllowUserToAddRows = false;
+            this.datagridFrameList.AllowUserToDeleteRows = false;
+            this.datagridFrameList.AllowUserToResizeRows = false;
+            this.datagridFrameList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.datagridFrameList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.datagridFrameList.DefaultCellStyle = dataGridViewCellStyle1;
+            this.datagridFrameList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.datagridFrameList.Location = new System.Drawing.Point(3, 22);
+            this.datagridFrameList.Name = "datagridFrameList";
+            this.datagridFrameList.ReadOnly = true;
+            this.datagridFrameList.RowHeadersVisible = false;
+            this.datagridFrameList.RowTemplate.Height = 28;
+            this.datagridFrameList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.datagridFrameList.Size = new System.Drawing.Size(1151, 285);
+            this.datagridFrameList.TabIndex = 2;
+            this.datagridFrameList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridFrameList_CellClick);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dgvSupply);
+            this.groupBox2.Controls.Add(this.dataGridSuppliesUsed);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 319);
             this.groupBox2.Name = "groupBox2";
@@ -177,30 +178,30 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Supplies Used by Selected Frame";
             // 
-            // dgvSupply
+            // dataGridSuppliesUsed
             // 
-            this.dgvSupply.AllowUserToAddRows = false;
-            this.dgvSupply.AllowUserToDeleteRows = false;
-            this.dgvSupply.AllowUserToResizeRows = false;
-            this.dgvSupply.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvSupply.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSupply.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvSupply.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSupply.Location = new System.Drawing.Point(3, 22);
-            this.dgvSupply.Name = "dgvSupply";
-            this.dgvSupply.ReadOnly = true;
-            this.dgvSupply.RowHeadersVisible = false;
-            this.dgvSupply.RowTemplate.Height = 28;
-            this.dgvSupply.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSupply.Size = new System.Drawing.Size(1151, 306);
-            this.dgvSupply.TabIndex = 3;
+            this.dataGridSuppliesUsed.AllowUserToAddRows = false;
+            this.dataGridSuppliesUsed.AllowUserToDeleteRows = false;
+            this.dataGridSuppliesUsed.AllowUserToResizeRows = false;
+            this.dataGridSuppliesUsed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridSuppliesUsed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridSuppliesUsed.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridSuppliesUsed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridSuppliesUsed.Location = new System.Drawing.Point(3, 22);
+            this.dataGridSuppliesUsed.Name = "dataGridSuppliesUsed";
+            this.dataGridSuppliesUsed.ReadOnly = true;
+            this.dataGridSuppliesUsed.RowHeadersVisible = false;
+            this.dataGridSuppliesUsed.RowTemplate.Height = 28;
+            this.dataGridSuppliesUsed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridSuppliesUsed.Size = new System.Drawing.Size(1151, 306);
+            this.dataGridSuppliesUsed.TabIndex = 2;
             // 
             // groupBox3
             // 
@@ -289,18 +290,6 @@
             this.btnStockIn.UseVisualStyleBackColor = true;
             this.btnStockIn.Click += new System.EventHandler(this.btnStockIn_Click);
             // 
-            // btnArchiveFrame
-            // 
-            this.btnArchiveFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnArchiveFrame.Location = new System.Drawing.Point(823, 3);
-            this.btnArchiveFrame.Name = "btnArchiveFrame";
-            this.btnArchiveFrame.Size = new System.Drawing.Size(158, 75);
-            this.btnArchiveFrame.TabIndex = 12;
-            this.btnArchiveFrame.Text = "Archive Frame";
-            this.btnArchiveFrame.UseVisualStyleBackColor = true;
-            // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -313,16 +302,17 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // groupBox4
+            // btnArchiveFrame
             // 
-            this.groupBox4.Controls.Add(this.lblSearch);
-            this.groupBox4.Controls.Add(this.txtSearch);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(3, 3);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1163, 65);
-            this.groupBox4.TabIndex = 1;
-            this.groupBox4.TabStop = false;
+            this.btnArchiveFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnArchiveFrame.Location = new System.Drawing.Point(823, 3);
+            this.btnArchiveFrame.Name = "btnArchiveFrame";
+            this.btnArchiveFrame.Size = new System.Drawing.Size(158, 75);
+            this.btnArchiveFrame.TabIndex = 12;
+            this.btnArchiveFrame.Text = "Archive Frame";
+            this.btnArchiveFrame.UseVisualStyleBackColor = true;
             // 
             // btnDamage
             // 
@@ -337,6 +327,17 @@
             this.btnDamage.UseVisualStyleBackColor = true;
             this.btnDamage.Click += new System.EventHandler(this.btnDamage_Click);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.lblSearch);
+            this.groupBox4.Controls.Add(this.txtSearch);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.Location = new System.Drawing.Point(3, 3);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1163, 65);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            // 
             // frmFrameList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -346,13 +347,14 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmFrameList";
             this.Text = "Frame List";
+            this.Load += new System.EventHandler(this.frmFrameList_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFrameStockInDetails)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridFrameList)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSupply)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSuppliesUsed)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
@@ -371,8 +373,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.DataGridView dgvFrameStockInDetails;
-        private System.Windows.Forms.DataGridView dgvSupply;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button btnStockIn;
         private System.Windows.Forms.Button btnCreateFrame;
@@ -381,5 +381,7 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnDamage;
+        private System.Windows.Forms.DataGridView datagridFrameList;
+        private System.Windows.Forms.DataGridView dataGridSuppliesUsed;
     }
 }

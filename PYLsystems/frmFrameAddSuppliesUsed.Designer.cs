@@ -47,6 +47,7 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
@@ -63,7 +64,9 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -299,6 +302,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.comboBox4);
+            this.groupBox2.Controls.Add(this.textBox5);
+            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.textBox8);
             this.groupBox2.Controls.Add(this.comboBox5);
             this.groupBox2.Controls.Add(this.label7);
@@ -321,6 +327,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Amounts Used";
             // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(74, 281);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(191, 26);
+            this.textBox8.TabIndex = 36;
+            // 
             // comboBox5
             // 
             this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -329,7 +343,7 @@
             this.comboBox5.Items.AddRange(new object[] {
             "sheet",
             "piece"});
-            this.comboBox5.Location = new System.Drawing.Point(305, 310);
+            this.comboBox5.Location = new System.Drawing.Point(305, 279);
             this.comboBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(97, 28);
@@ -338,7 +352,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(45, 273);
+            this.label7.Location = new System.Drawing.Point(45, 242);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 20);
@@ -352,7 +366,7 @@
             this.comboBox3.Items.AddRange(new object[] {
             "ft",
             "inches"});
-            this.comboBox3.Location = new System.Drawing.Point(305, 229);
+            this.comboBox3.Location = new System.Drawing.Point(305, 198);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(97, 28);
@@ -360,7 +374,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(74, 231);
+            this.textBox4.Location = new System.Drawing.Point(74, 200);
             this.textBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(191, 26);
@@ -369,7 +383,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(162, 154);
+            this.label4.Location = new System.Drawing.Point(162, 123);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(20, 20);
@@ -378,7 +392,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(197, 151);
+            this.textBox3.Location = new System.Drawing.Point(197, 120);
             this.textBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(68, 26);
@@ -391,7 +405,7 @@
             this.comboBox2.Items.AddRange(new object[] {
             "ft",
             "inches"});
-            this.comboBox2.Location = new System.Drawing.Point(305, 149);
+            this.comboBox2.Location = new System.Drawing.Point(305, 118);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(97, 28);
@@ -399,7 +413,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(77, 151);
+            this.textBox2.Location = new System.Drawing.Point(77, 120);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(68, 26);
@@ -412,7 +426,7 @@
             this.comboBox1.Items.AddRange(new object[] {
             "ft",
             "inches"});
-            this.comboBox1.Location = new System.Drawing.Point(305, 80);
+            this.comboBox1.Location = new System.Drawing.Point(305, 49);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(97, 28);
@@ -420,7 +434,7 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(74, 82);
+            this.textBox6.Location = new System.Drawing.Point(74, 51);
             this.textBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(191, 26);
@@ -429,7 +443,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 197);
+            this.label3.Location = new System.Drawing.Point(40, 166);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 20);
@@ -439,7 +453,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(53, 125);
+            this.label6.Location = new System.Drawing.Point(53, 94);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 20);
@@ -449,7 +463,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(40, 53);
+            this.label8.Location = new System.Drawing.Point(40, 22);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(63, 20);
@@ -489,13 +503,37 @@
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
-            // textBox8
+            // comboBox4
             // 
-            this.textBox8.Location = new System.Drawing.Point(74, 312);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(191, 26);
-            this.textBox8.TabIndex = 36;
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "ounces",
+            "liters",
+            "milliliters"});
+            this.comboBox4.Location = new System.Drawing.Point(305, 352);
+            this.comboBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(97, 28);
+            this.comboBox4.TabIndex = 39;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(74, 354);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(191, 26);
+            this.textBox5.TabIndex = 38;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(36, 324);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 20);
+            this.label5.TabIndex = 37;
+            this.label5.Text = "Volume:";
             // 
             // frmFrameAddSuppliesUsed
             // 
@@ -561,5 +599,8 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label5;
     }
 }
