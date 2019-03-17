@@ -26,6 +26,8 @@ namespace PYLsystems
 
         DataTable dtSelectSuppliesSaved;
         DataTable dtSuppliesUsedSaved;
+
+        List<int> RemovedSuppliesItemId;
        
         //--------------Initial Load--------------
         //----for programming initializer
@@ -65,6 +67,7 @@ namespace PYLsystems
         }
         private void suppliesUsed_Loader()
         {
+            RemovedSuppliesItemId = new List<int>();
             this.dataGridSuppliesUsed.DataSource = null;
             this.dataGridSuppliesUsed.Rows.Clear();
             dtSuppliesUsed = new DataTable();
@@ -347,6 +350,33 @@ namespace PYLsystems
             }
             return measureConverted;
         }
+        //March 17,2019 - Before Adding a Row, check RemovedSuppliesItemId first if it contains supply_ItemsId being added.
+        private void deleteRowFromDataGrid(int currRowIndex)
+        {
+            bool checkIfInDatabase=false;
+            int suppliesItemId=-1;
+            for(int i=0; i < dtSelectSupplies.Rows.Count; i++)
+            {
+                if (Int32.Parse(dataGridSuppliesUsed.Rows[currRowIndex].Cells["supply_itemsId"].Value.ToString())==Int32.Parse(dtSelectSupplies.Rows[i]["supply_itemsId"].ToString()))
+                {
+                    checkIfInDatabase=true;
+                    suppliesItemId = Int32.Parse(dtSelectSupplies.Rows[i]["supply_itemsId"].ToString());
+                    MessageBox.Show(this.dataGridSuppliesUsed.SelectedRows[0].Index+" "+checkIfInDatabase);
+                }
+            }
+            if (checkIfInDatabase)
+            {
+                if (suppliesItemId > 0) { 
+                    RemovedSuppliesItemId.Add(suppliesItemId);
+                    dataGridSuppliesUsed.Rows.RemoveAt(this.dataGridSuppliesUsed.SelectedRows[0].Index);
+                }
+            }
+            else
+            {
+                dataGridSuppliesUsed.Rows.RemoveAt(this.dataGridSuppliesUsed.SelectedRows[0].Index);
+            }
+            MessageBox.Show(suppliesItemId+" "+RemovedSuppliesItemId[0]+"");
+        }
         //----------------Event Methods-----------------
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -367,7 +397,7 @@ namespace PYLsystems
         private void btnRemove_Click(object sender, EventArgs e)
         {
             int currRowIndex = dataGridSuppliesUsed.SelectedRows[0].Index;
-
+            deleteRowFromDataGrid(currRowIndex);
         }
     }
 }
