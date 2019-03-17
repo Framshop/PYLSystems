@@ -44,6 +44,9 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.gpMeasurements = new System.Windows.Forms.GroupBox();
+            this.txtVolume = new System.Windows.Forms.TextBox();
+            this.cboVolume = new System.Windows.Forms.ComboBox();
+            this.lblVolume = new System.Windows.Forms.Label();
             this.cboWhole = new System.Windows.Forms.ComboBox();
             this.lblWhole = new System.Windows.Forms.Label();
             this.txtPurchaseUnitPrice = new System.Windows.Forms.TextBox();
@@ -70,9 +73,6 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.gpSupplyDetails = new System.Windows.Forms.GroupBox();
             this.dgSupplyItems = new System.Windows.Forms.DataGridView();
-            this.lblVolume = new System.Windows.Forms.Label();
-            this.cboVolume = new System.Windows.Forms.ComboBox();
-            this.txtVolume = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.gpWhole.SuspendLayout();
@@ -284,6 +284,40 @@
             this.gpMeasurements.TabIndex = 1;
             this.gpMeasurements.TabStop = false;
             this.gpMeasurements.Text = "Measurements";
+            // 
+            // txtVolume
+            // 
+            this.txtVolume.Location = new System.Drawing.Point(86, 117);
+            this.txtVolume.Name = "txtVolume";
+            this.txtVolume.Size = new System.Drawing.Size(129, 20);
+            this.txtVolume.TabIndex = 25;
+            this.txtVolume.Visible = false;
+            this.txtVolume.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVolume_KeyPress);
+            // 
+            // cboVolume
+            // 
+            this.cboVolume.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboVolume.FormattingEnabled = true;
+            this.cboVolume.ItemHeight = 13;
+            this.cboVolume.Items.AddRange(new object[] {
+            "ounces",
+            "liters",
+            "mililiters"});
+            this.cboVolume.Location = new System.Drawing.Point(221, 117);
+            this.cboVolume.Name = "cboVolume";
+            this.cboVolume.Size = new System.Drawing.Size(66, 21);
+            this.cboVolume.TabIndex = 24;
+            this.cboVolume.Visible = false;
+            // 
+            // lblVolume
+            // 
+            this.lblVolume.AutoSize = true;
+            this.lblVolume.Location = new System.Drawing.Point(22, 125);
+            this.lblVolume.Name = "lblVolume";
+            this.lblVolume.Size = new System.Drawing.Size(45, 13);
+            this.lblVolume.TabIndex = 23;
+            this.lblVolume.Text = "Volume:";
+            this.lblVolume.Visible = false;
             // 
             // cboWhole
             // 
@@ -527,7 +561,7 @@
             this.btnDamageItem.Name = "btnDamageItem";
             this.btnDamageItem.Size = new System.Drawing.Size(158, 24);
             this.btnDamageItem.TabIndex = 27;
-            this.btnDamageItem.Text = "Damage Items";
+            this.btnDamageItem.Text = "Stock Out as Damage Item";
             this.btnDamageItem.UseVisualStyleBackColor = true;
             // 
             // btnStockInSelectedItem
@@ -617,40 +651,6 @@
             this.dgSupplyItems.TabIndex = 29;
             this.dgSupplyItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSupplyItems_CellClick);
             this.dgSupplyItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSupplyItems_CellContentClick);
-            // 
-            // lblVolume
-            // 
-            this.lblVolume.AutoSize = true;
-            this.lblVolume.Location = new System.Drawing.Point(22, 125);
-            this.lblVolume.Name = "lblVolume";
-            this.lblVolume.Size = new System.Drawing.Size(45, 13);
-            this.lblVolume.TabIndex = 23;
-            this.lblVolume.Text = "Volume:";
-            this.lblVolume.Visible = false;
-            // 
-            // cboVolume
-            // 
-            this.cboVolume.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboVolume.FormattingEnabled = true;
-            this.cboVolume.ItemHeight = 13;
-            this.cboVolume.Items.AddRange(new object[] {
-            "ounces",
-            "liters",
-            "mililiters"});
-            this.cboVolume.Location = new System.Drawing.Point(221, 117);
-            this.cboVolume.Name = "cboVolume";
-            this.cboVolume.Size = new System.Drawing.Size(66, 21);
-            this.cboVolume.TabIndex = 24;
-            this.cboVolume.Visible = false;
-            // 
-            // txtVolume
-            // 
-            this.txtVolume.Location = new System.Drawing.Point(86, 117);
-            this.txtVolume.Name = "txtVolume";
-            this.txtVolume.Size = new System.Drawing.Size(129, 20);
-            this.txtVolume.TabIndex = 25;
-            this.txtVolume.Visible = false;
-            this.txtVolume.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVolume_KeyPress);
             // 
             // frmSupplyItems
             // 
