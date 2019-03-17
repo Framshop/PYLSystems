@@ -456,7 +456,7 @@
             // txtLength
             // 
             this.txtLength.Enabled = false;
-            this.txtLength.Location = new System.Drawing.Point(86, 37);
+            this.txtLength.Location = new System.Drawing.Point(236, -98);
             this.txtLength.Name = "txtLength";
             this.txtLength.Size = new System.Drawing.Size(129, 20);
             this.txtLength.TabIndex = 10;
