@@ -1091,10 +1091,49 @@ namespace PYLsystems
         private void btnDamageItem_Click(object sender, EventArgs e)
         {
             frmSupplyDamage damagedItems = new frmSupplyDamage();
-            damagedItems.lblsupply_itemsID.Text = dgSupplyItems.CurrentRow.Cells[0].Value.ToString();
-            frmSupplyStockIn.Global.supplyID = dgSupplyItems.CurrentRow.Cells[0].Value.ToString();
+
+            frmSupplyDamage.Global.supply_itemsID  = dgSupplyItems.CurrentRow.Cells[0].Value.ToString();
             damagedItems.txtItemName.Text = dgSupplyItems.CurrentRow.Cells[2].Value.ToString();
-            damagedItems.txtRawPurchasePrice.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
+            damagedItems.txtSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells[3].Value.ToString();
+            damagedItems.x.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
+            damagedItems.txtUnitMeasure.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+           
+            if (typeOfMeasure_dbCellClick == "Length")
+            {
+                damagedItems.cboLength.Enabled = true;
+                damagedItems.txtLength.Enabled = true;
+                damagedItems.lblLength.Enabled = true;
+                damagedItems.cboLength.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+            }
+           else if (typeOfMeasure_dbCellClick == "Area")
+            {
+                damagedItems.cboArea.Enabled = true;
+                damagedItems.cboArea.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                damagedItems.txtArea1.Enabled = true;
+                damagedItems.txtArea2.Enabled = true;
+                damagedItems.lblX.Enabled = true;
+                damagedItems.lblArea.Enabled = true;
+            }
+           else if (typeOfMeasure_dbCellClick == "Weight")
+            {
+                damagedItems.txtWeight.Enabled = true;
+                damagedItems.lblWeight.Enabled = true;
+                damagedItems.cboWeight.Enabled = true;
+                damagedItems.cboWeight.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+            }
+           else if (typeOfMeasure_dbCellClick == "Volume")
+            {
+                damagedItems.txtVolume.Enabled = true;
+                damagedItems.lblVolume.Enabled = true;
+                damagedItems.cboVolume.Enabled = true;
+                damagedItems.cboVolume.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+            }
+            else
+            {
+                damagedItems.lblWhole.Enabled = true;
+                damagedItems.cboWhole.Enabled = true;
+                damagedItems.cboWhole.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+            }
             damagedItems.ShowDialog();
             RefreshDatabase();
             cboSupplyCategory.SelectedIndex = -1;
