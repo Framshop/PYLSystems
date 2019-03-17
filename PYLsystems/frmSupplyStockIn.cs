@@ -14,6 +14,7 @@ namespace PYLsystems
     public partial class frmSupplyStockIn : Form
     {
         public static string supplierID = "";
+        public static string supply_detailsID = "";
         public class Global
         {
             public static string supplyID;
@@ -23,7 +24,9 @@ namespace PYLsystems
         public frmSupplyStockIn()
         {
             InitializeComponent();
-           
+            RefreshStockIn();
+
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -59,7 +62,18 @@ namespace PYLsystems
             myConn.Close();
 
         }
-
+        public void RefreshStockIn()
+        {
+            myConn.Open();
+            string query = "SELECT s_d.supplyID as 'Supplier ID',s_i.supplyName as 'Supply Name',s.supplierName as 'Supplied By',s_d.delivery_date as 'Date Delivered',s_d.priceRawTotal 'Calculated Total Purchase Price',s_d.pricePurchaseTotal as 'Actual Total Purchase Price' FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID";
+            MySqlCommand comm = new MySqlCommand(query, myConn);
+            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+            dgvStockIn.DataSource = dt;
+            myConn.Close();
+            dgvStockIn.Columns["Supplier ID"].Visible = false;
+        }
         private void frmSupplyStockIn_Load(object sender, EventArgs e)
         {
             RefreshDatabase();
@@ -179,13 +193,18 @@ namespace PYLsystems
         }
          private void btnStockInItem_Click(object sender, EventArgs e)
         {
-            string myQuery = "INSERT INTO supply_details (supplierID,supply_itemsID,stockin_quantity,priceRawTotal,pricePurchaseTotal,active,delivery_date) values(" + supplierID + "," + Global.supplyID + "" ;
-            MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
+            string myQuery = "INSERT INTO supply_details (supplierID,supply_itemsID,stockin_quantity,priceRawTotal,pricePurchaseTotal,active,delivery_date) values(" + supplierID + "," + Global.supplyID + "," + txtQuantity.Text + "," + float.Parse(txtQuantity.Text) * float.Parse(txtRawPurchasePrice.Text) + "," + float.Parse(txtQuantity.Text) * float.Parse(txtActualPurchasePrice.Text) + ",0,NOW())";
+            MySqlCommand myComm = new MySqlCommand(myQuery, myConn); 
             MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
             DataTable myDt = new DataTable();
             myAdp.Fill(myDt);
             RefreshDatabase();
+            RefreshStockIn();
             MessageBox.Show("Insert Successful");
+            txtQuantity.Text = "";
+            txtActualPurchasePrice.Text = "";
+
+
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)
@@ -206,6 +225,30 @@ namespace PYLsystems
         private void dgvSupplier_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             supplierID = dgvSupplier.CurrentRow.Cells[0].Value.ToString();
+            validationStockInItem();
+        }
+
+        private void startDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            myConn.Open();
+            string query = "SELECT s_d.supplyID as 'Supplier ID',s_i.supplyName as 'Supply Name',s.supplierName as 'Supplied By',s_d.delivery_date as 'Date Delivered',s_d.priceRawTotal 'Calculated Total Purchase Price',s_d.pricePurchaseTotal as 'Actual Total Purchase Price' FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE Date Delivered BETWEEN '" + startDatePicker.Value.Date + "' AND '" + endDatePicker.Value.Date + "'";
+            MySqlCommand comm = new MySqlCommand(query, myConn);
+            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+            dgvSupplier.DataSource = dt;
+            myConn.Close();
+        }
+
+        private void btnEditDetails_Click(object sender, EventArgs e)
+        {
+            frmStockInSupplyEdit stockInSupplyEdit = new frmStockInSupplyEdit();
+            stockInSupplyEdit.ShowDialog();
+        }
+
+        private void dgvStockIn_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            supply_detailsID = dgvStockIn.CurrentRow.Cells[0].Value.ToString();
         }
     }
 }
