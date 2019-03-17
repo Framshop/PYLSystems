@@ -366,7 +366,8 @@ namespace PYLsystems
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            int currRowIndexdataGridSuppliesUsed
+            int currRowIndex = dataGridSuppliesUsed.SelectedRows[0].Index;
+
         }
     }
 }
