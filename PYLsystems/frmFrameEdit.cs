@@ -144,6 +144,7 @@ namespace PYLsystems
             {
                 Console.WriteLine(ex.ToString());
             }
+            dtSelectSuppliesSaved = dtSelectSupplies.Copy();
         }
         //COSTS CALCULATION. FOR SELECTED UNIT PRICE AND RAW COST
         private void costingCalculate()
@@ -199,11 +200,11 @@ namespace PYLsystems
                     else
                     {
 
-                        if (String.Equals(dtSelectSupplies.Rows[i]["typeOfMeasure"].ToString(), "Area"))
+                        if (String.Equals(dtSelectSuppliesSaved.Rows[i]["typeOfMeasure"].ToString(), "Area"))
                         {
-                            double measureA_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureA"].ToString());
-                            double measureB_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureB"].ToString());
-                            //String unitOfMeasure_OG = dtSelectSupplies.Rows[i]["OGUnitMeasure"].ToString();
+                            double measureA_OG = Double.Parse(dtSelectSuppliesSaved.Rows[i]["measureA"].ToString());
+                            double measureB_OG = Double.Parse(dtSelectSuppliesSaved.Rows[i]["measureB"].ToString());
+                            //String unitOfMeasure_OG = dtSelectSuppliesSaved.Rows[i]["OGUnitMeasure"].ToString();
 
                             double measureAConverted = measureConverter(measureA_OG, unitOfMeasure_OG, unitOfMeasure_Used);
                             double measureBConverted = measureConverter(measureB_OG, unitOfMeasure_OG, unitOfMeasure_Used);
@@ -213,8 +214,8 @@ namespace PYLsystems
 
                             double trueUnitPrice = unitPriceOG / area_OG_Converted;
 
-                            double measureAUsed = Double.Parse(dtSelectSupplies.Rows[i]["measureADeduction"].ToString());
-                            double measureBUsed = Double.Parse(dtSelectSupplies.Rows[i]["measureBDeduction"].ToString());
+                            double measureAUsed = Double.Parse(dtSelectSuppliesSaved.Rows[i]["measureADeduction"].ToString());
+                            double measureBUsed = Double.Parse(dtSelectSuppliesSaved.Rows[i]["measureBDeduction"].ToString());
                             double areaOfUsed = measureAUsed * measureBUsed;
 
                             double rawCost = areaOfUsed * trueUnitPrice;
@@ -224,13 +225,13 @@ namespace PYLsystems
                         }
                         else
                         {
-                            //String unitOfMeasure_OG = dtSelectSupplies.Rows[i]["OGUnitMeasure"].ToString();
-                            //String unitOfMeasure_Used = dtSelectSupplies.Rows[i]["Unit Measure"].ToString();
+                            //String unitOfMeasure_OG = dtSelectSuppliesSaved.Rows[i]["OGUnitMeasure"].ToString();
+                            //String unitOfMeasure_Used = dtSelectSuppliesSaved.Rows[i]["Unit Measure"].ToString();
 
-                            double measureA_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureA"].ToString());
+                            double measureA_OG = Double.Parse(dtSelectSuppliesSaved.Rows[i]["measureA"].ToString());
                             double measureA_converted;
 
-                            if (String.Equals(dtSelectSupplies.Rows[i]["typeOfMeasure"].ToString(), "Volume"))
+                            if (String.Equals(dtSelectSuppliesSaved.Rows[i]["typeOfMeasure"].ToString(), "Volume"))
                             {
                                 measureA_converted = measureConverter(measureA_OG, unitOfMeasure_OG, unitOfMeasure_Used, 0);
                             }
@@ -242,7 +243,7 @@ namespace PYLsystems
 
                             double trueUnitPrice = unitPriceOG / measureA_converted;
 
-                            double measureAUsed = Double.Parse(dtSelectSupplies.Rows[i]["measureADeduction"].ToString());
+                            double measureAUsed = Double.Parse(dtSelectSuppliesSaved.Rows[i]["measureADeduction"].ToString());
 
                             double rawCost = measureAUsed * trueUnitPrice;
 
@@ -362,6 +363,10 @@ namespace PYLsystems
             frmFrameEditSuppliesUsed frmEditSupplies = new frmFrameEditSuppliesUsed();
             frmEditSupplies.ShowDialog();
         }
-       
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
