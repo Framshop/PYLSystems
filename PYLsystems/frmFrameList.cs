@@ -117,10 +117,10 @@ namespace PYLsystems
                     "fm.unitMeasure AS `Unit Measure`," +
                     "sui.unitMeasure AS `OGUnitMeasure`, sui.unitPurchasePrice AS `OGUnitPrice`," +
                     "sui.measureA, sui.measureB, fm.measureAtoOG as `ConvertedAtoOG`, fm.measureBtoOG `ConvertedBtoOG` " +
-                    "FROM supply_items AS sui " +
-                    "LEFT JOIN supply_category AS suc ON sui.supply_categoryID = suc.supply_categoryID " +
-                    "LEFT JOIN frame_materials AS fm ON sui.supply_itemsID = fm.supply_itemsID " +
-                    "WHERE fm.frameItemId = @frameItemID; ";
+                    "FROM frame_materials AS fm " +
+                    "LEFT JOIN supply_items AS sui ON sui.supply_itemsID = fm.supply_itemsID " +
+                    "LEFT JOIN supply_category AS suc ON sui.supply_categoryID = suc.supply_categoryID" +
+                    "WHERE fm.frameItemId = @frameItemID AND fm.active=0; ";
 
                 MySqlConnection my_conn = new MySqlConnection(connString);
                 MySqlCommand cmdSuppliesSelect = new MySqlCommand(stringSuppliesSelect, my_conn);
@@ -142,10 +142,10 @@ namespace PYLsystems
                     "SELECT sui.supply_itemsId, sui.supplyName AS `Supply Name`, suc.categoryName AS `Category`, " +
                     "if(suc.typeOfMeasure='area',concat(fm.measureADeduction,' x ',fm.measureBDeduction),fm.measureADeduction) AS `Usage`, " +
                     "fm.unitMeasure AS `Unit Measure` " +
-                    "FROM supply_items AS sui " +
-                    "LEFT JOIN supply_category AS suc ON sui.supply_categoryID = suc.supply_categoryID " +
-                    "LEFT JOIN frame_materials AS fm ON sui.supply_itemsID = fm.supply_itemsID " +
-                    "WHERE fm.frameItemId = @frameItemID; ";
+                    "FROM frame_materials AS fm " +
+                    "LEFT JOIN supply_items AS sui ON sui.supply_itemsID = fm.supply_itemsID " +
+                    "LEFT JOIN supply_category AS suc ON sui.supply_categoryID = suc.supply_categoryID" +
+                    "WHERE fm.frameItemId = @frameItemID AND fm.active=0; ";
 
                 MySqlConnection my_conn = new MySqlConnection(connString);
                 MySqlCommand cmdSuppliesSelect = new MySqlCommand(stringSuppliesSelect, my_conn);
