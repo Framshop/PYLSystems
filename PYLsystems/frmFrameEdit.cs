@@ -28,7 +28,8 @@ namespace PYLsystems
         DataTable dtSuppliesUsedSaved;
 
         List<int> RemovedSuppliesItemId;
-       
+
+        List<suppliesSavedForUpdates> suppliesConvertedtoOG;
         //--------------Initial Load--------------
         //----for programming initializer
 
@@ -398,6 +399,24 @@ namespace PYLsystems
         {
             int currRowIndex = dataGridSuppliesUsed.SelectedRows[0].Index;
             deleteRowFromDataGrid(currRowIndex);
+        }
+    }
+    class suppliesSavedForUpdates
+    {
+        internal int supplyItemsId { get; set; }
+        internal String typeOfMeasure { get; set; }
+        internal double measureAConvertedOG { get; set; }
+        internal double measureBConvertedOG { get; set; }
+
+        // public frame_ItemsforList() {
+        //}
+        public suppliesSavedForUpdates(int supplyItemsId, String typeOfMeasure, double measureAConvertedOG, double measureBConvertedOG)
+        {
+            this.supplyItemsId = supplyItemsId;
+            this.typeOfMeasure = typeOfMeasure;
+            this.measureAConvertedOG = measureAConvertedOG;
+            this.measureBConvertedOG = measureBConvertedOG;
+
         }
     }
 }
