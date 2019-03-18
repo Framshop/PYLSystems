@@ -36,7 +36,7 @@ namespace PYLsystems
         public void RefreshDatabase()
         {
             myConn.Open();
-            string query = "SELECT s_i.supply_itemsID as 'Supply ID',s_c.supply_categoryID as 'Supply Category ID',s_i.supplyName as 'Supply Name',s_c.categoryName as 'Category Name',s_c.typeOfMeasure as 'Type of Measure',s_i.supplyDescription as 'Supply Description',s_i.measureA as 'Measurement A',IFNULL(s_i.measureB,'Not Applicable') as 'Measurement B',case when s_i.measureB is not null then CONCAT(s_i.measureA,' x ',s_i.measureB) else s_i.measureA end as 'Measurement',s_i.unitMeasure as 'Unit Measure',s_i.unitPurchasePrice as 'Purchase Price',IF(active=0,'Active','Inactive') as 'Active' FROM supply_items s_i LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID";
+            string query = "SELECT s_i.supply_itemsID as 'Supply ID',s_c.supply_categoryID as 'Supply Category ID',s_i.supplyName as 'Supply Name',s_c.categoryName as 'Category Name',s_c.typeOfMeasure as 'Type of Measure',s_i.supplyDescription as 'Supply Description',s_i.measureA as 'Measurement A',IFNULL(s_i.measureB,'Not Applicable') as 'Measurement B',case when s_i.measureB is not null then CONCAT(s_i.measureA,' x ',s_i.measureB) else s_i.measureA end as 'Measurement',s_i.unitMeasure as 'Unit Measure',s_i.unitPurchasePrice as 'Purchase Price',IF(active=0,'Active','Inactive') as 'Active',s_c.typeOfMeasure FROM supply_items s_i LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
@@ -47,6 +47,7 @@ namespace PYLsystems
             dgSupplyItems.Columns["Supply Category ID"].Visible = false;
             dgSupplyItems.Columns["Measurement A"].Visible = false;
             dgSupplyItems.Columns["Measurement B"].Visible = false;
+            dgSupplyItems.Columns["typeOfMeasure"].Visible = false;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -67,7 +68,7 @@ namespace PYLsystems
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             myConn.Open();
-            string query = "SELECT s_i.supply_itemsID as 'Supply ID',s_c.supply_categoryID as 'Supply Category ID',s_i.supplyName as 'Supply Name',s_c.categoryName as 'Category Name',s_c.typeOfMeasure as 'Type of Measure',s_i.supplyDescription as 'Supply Description',s_i.measureA as 'Measurement A',IFNULL(s_i.measureB,'Not Applicable') as 'Measurement B',s_i.unitMeasure as 'Unit Measure',s_i.unitPurchasePrice as 'Purchase Price',IF(active=0,'Active','Inactive') as 'Active' FROM supply_items s_i LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_i.supplyName LIKE '%" + txtSearch.Text +  "%' OR s_c.categoryName LIKE '%" + txtSearch.Text + "%'";
+            string query = "SELECT s_i.supply_itemsID as 'Supply ID',s_c.supply_categoryID as 'Supply Category ID',s_i.supplyName as 'Supply Name',s_c.categoryName as 'Category Name',s_c.typeOfMeasure as 'Type of Measure',s_i.supplyDescription as 'Supply Description',s_i.measureA as 'Measurement A',IFNULL(s_i.measureB,'Not Applicable') as 'Measurement B',s_i.unitMeasure as 'Unit Measure',s_i.unitPurchasePrice as 'Purchase Price per unit',IF(active=0,'Active','Inactive') as 'Active',s_c.typeOfMeasure FROM supply_items s_i LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_i.supplyName LIKE '%" + txtSearch.Text +  "%' OR s_c.categoryName LIKE '%" + txtSearch.Text + "%'";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
@@ -78,6 +79,7 @@ namespace PYLsystems
             dgSupplyItems.Columns["Supply Category ID"].Visible = false;
             dgSupplyItems.Columns["Measurement A"].Visible = false;
             dgSupplyItems.Columns["Measurement B"].Visible = false;
+            dgSupplyItems.Columns["typeOfMeasure"].Visible = false;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -1092,11 +1094,15 @@ namespace PYLsystems
         {
             frmSupplyDamage damagedItems = new frmSupplyDamage();
 
+            frmSupplyDamage.Global.supply_category_typeOfMeasure = dgSupplyItems.CurrentRow.Cells[12].Value.ToString();
             frmSupplyDamage.Global.supply_itemsID  = dgSupplyItems.CurrentRow.Cells[0].Value.ToString();
             damagedItems.txtItemName.Text = dgSupplyItems.CurrentRow.Cells[2].Value.ToString();
             damagedItems.txtSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells[3].Value.ToString();
-            damagedItems.x.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
+            frmSupplyDamage.Global.supply_purchase_price = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
+            frmSupplyDamage.Global.measureAOG = dgSupplyItems.CurrentRow.Cells[6].Value.ToString();
+            frmSupplyDamage.Global.measureBOG = dgSupplyItems.CurrentRow.Cells[7].Value.ToString();
             damagedItems.txtUnitMeasure.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+            
            
             if (typeOfMeasure_dbCellClick == "Length")
             {
@@ -1131,11 +1137,16 @@ namespace PYLsystems
             else
             {
                 damagedItems.lblWhole.Enabled = true;
-                damagedItems.cboWhole.Enabled = true;
+                damagedItems.cboWhole.Enabled = false;
                 damagedItems.cboWhole.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
             }
             damagedItems.ShowDialog();
             RefreshDatabase();
+            frmSupplyDamage.Global.supply_category_typeOfMeasure = "";
+            frmSupplyDamage.Global.supply_purchase_price = "";
+            frmSupplyDamage.Global.supply_itemsID = "";
+            frmSupplyDamage.Global.measureAOG = "";
+            frmSupplyDamage.Global.measureBOG = "";
             cboSupplyCategory.SelectedIndex = -1;
             txtItemName.Text = "";
             txtItemDescription.Text = "";
@@ -1167,6 +1178,22 @@ namespace PYLsystems
             lblWhole.Enabled = false;
             btnStockInSelectedItem.Enabled = false;
             btnUpdateDetails.Enabled = false;
+
+            txtArea1.Text = "";
+            txtArea2.Text = "";
+            cboActive.SelectedIndex = -1;
+
+            cboLength.SelectedIndex = -1;
+            txtLength.Text = "";
+
+
+            txtWeight.Text = "";
+            cboWeight.SelectedIndex = -1;
+
+            cboWhole.SelectedIndex = -1;
+
+            cboVolume.SelectedIndex = -1;
+            txtVolume.Text = "";
         }
     }
     }

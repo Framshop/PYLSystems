@@ -79,32 +79,36 @@ namespace PYLsystems
         }
         private void suppliesUsed_Loader()
         {
-            this.dataGridSuppliesUsed.DataSource = null;
-            this.dataGridSuppliesUsed.Rows.Clear();
-            dtSuppliesUsed = new DataTable();
-            dtSuppliesUsed.Columns.Add("supply_itemsId", typeof(int));
-            dtSuppliesUsed.Columns.Add("Supply Name", typeof(String));
-            dtSuppliesUsed.Columns.Add("Category", typeof(String));
-            dtSuppliesUsed.Columns.Add("Usage", typeof(String));
-            dtSuppliesUsed.Columns.Add("Unit Measure", typeof(String));
-            dtSuppliesUsed.Columns.Add("Cost/Unit Measure", typeof(decimal));
-            dtSuppliesUsed.Columns.Add("Raw Cost", typeof(decimal));
+            try
+            {
+                this.dataGridSuppliesUsed.DataSource = null;
+                this.dataGridSuppliesUsed.Rows.Clear();
+                dtSuppliesUsed = new DataTable();
+                dtSuppliesUsed.Columns.Add("supply_itemsId", typeof(int));
+                dtSuppliesUsed.Columns.Add("Supply Name", typeof(String));
+                dtSuppliesUsed.Columns.Add("Category", typeof(String));
+                dtSuppliesUsed.Columns.Add("Usage", typeof(String));
+                dtSuppliesUsed.Columns.Add("Unit Measure", typeof(String));
+                dtSuppliesUsed.Columns.Add("Cost/Unit Measure", typeof(decimal));
+                dtSuppliesUsed.Columns.Add("Raw Cost", typeof(decimal));
 
 
 
-            int currRowIndex = datagridFrameList.SelectedRows[0].Index;
-            int selectedFrameItemId = Int32.Parse(datagridFrameList.Rows[currRowIndex].Cells["frameItemID"].Value.ToString());
+                int currRowIndex = datagridFrameList.SelectedRows[0].Index;
+                int selectedFrameItemId = Int32.Parse(datagridFrameList.Rows[currRowIndex].Cells["frameItemID"].Value.ToString());
 
-            selectSuppliesLoader(selectedFrameItemId);
-            dtSuppliesUsed.Merge(dtSelectSuppliesFiltered);            
-            
-            dataGridSuppliesUsed.DataSource = dtSuppliesUsed;
+                selectSuppliesLoader(selectedFrameItemId);
+                dtSuppliesUsed.Merge(dtSelectSuppliesFiltered);
 
-            costingCalculate();
-            dataGridSuppliesUsed.Columns["Cost/Unit Measure"].DefaultCellStyle.Format = "P0.0000";
-            dataGridSuppliesUsed.Columns["Raw Cost"].DefaultCellStyle.Format = "P0.0000";
-            dataGridSuppliesUsed.Columns["supply_itemsId"].Visible = false;
-            dataGridSuppliesUsed.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells);
+                dataGridSuppliesUsed.DataSource = dtSuppliesUsed;
+
+                costingCalculate();
+                dataGridSuppliesUsed.Columns["Cost/Unit Measure"].DefaultCellStyle.Format = "P0.0000";
+                dataGridSuppliesUsed.Columns["Raw Cost"].DefaultCellStyle.Format = "P0.0000";
+                dataGridSuppliesUsed.Columns["supply_itemsId"].Visible = false;
+                dataGridSuppliesUsed.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells);
+            }
+            catch { }
         }
         private void selectSuppliesLoader(int selectedFrameItemId)
         {

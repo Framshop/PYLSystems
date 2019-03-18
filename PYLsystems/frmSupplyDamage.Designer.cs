@@ -69,7 +69,7 @@
             this.lblArea = new System.Windows.Forms.Label();
             this.lblLength = new System.Windows.Forms.Label();
             this.lblTotalDamageCost = new System.Windows.Forms.Label();
-            this.x = new System.Windows.Forms.TextBox();
+            this.txtTotalDamageCost = new System.Windows.Forms.TextBox();
             this.lblItemName = new System.Windows.Forms.Label();
             this.txtItemName = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -280,7 +280,7 @@
             this.gpStockOutDamageSupplies.Controls.Add(this.lblArea);
             this.gpStockOutDamageSupplies.Controls.Add(this.lblLength);
             this.gpStockOutDamageSupplies.Controls.Add(this.lblTotalDamageCost);
-            this.gpStockOutDamageSupplies.Controls.Add(this.x);
+            this.gpStockOutDamageSupplies.Controls.Add(this.txtTotalDamageCost);
             this.gpStockOutDamageSupplies.Controls.Add(this.lblItemName);
             this.gpStockOutDamageSupplies.Controls.Add(this.txtItemName);
             this.gpStockOutDamageSupplies.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -421,6 +421,7 @@
             this.cboVolume.Name = "cboVolume";
             this.cboVolume.Size = new System.Drawing.Size(66, 21);
             this.cboVolume.TabIndex = 56;
+            this.cboVolume.SelectedIndexChanged += new System.EventHandler(this.cboVolume_SelectedIndexChanged);
             // 
             // txtVolume
             // 
@@ -430,6 +431,7 @@
             this.txtVolume.Name = "txtVolume";
             this.txtVolume.Size = new System.Drawing.Size(129, 20);
             this.txtVolume.TabIndex = 55;
+            this.txtVolume.TextChanged += new System.EventHandler(this.txtVolume_TextChanged);
             // 
             // lblVolume
             // 
@@ -449,6 +451,7 @@
             this.txtWhole.Name = "txtWhole";
             this.txtWhole.Size = new System.Drawing.Size(129, 20);
             this.txtWhole.TabIndex = 53;
+            this.txtWhole.TextChanged += new System.EventHandler(this.txtWhole_TextChanged);
             // 
             // cboWhole
             // 
@@ -457,8 +460,8 @@
             this.cboWhole.Enabled = false;
             this.cboWhole.FormattingEnabled = true;
             this.cboWhole.Items.AddRange(new object[] {
-            "sheet",
-            "piece"});
+            "sheets",
+            "pieces"});
             this.cboWhole.Location = new System.Drawing.Point(290, 237);
             this.cboWhole.Name = "cboWhole";
             this.cboWhole.Size = new System.Drawing.Size(66, 21);
@@ -481,12 +484,14 @@
             this.cboWeight.Enabled = false;
             this.cboWeight.FormattingEnabled = true;
             this.cboWeight.Items.AddRange(new object[] {
-            "ft",
-            "inches"});
+            "ounce",
+            "kilogram/s",
+            "gram/s"});
             this.cboWeight.Location = new System.Drawing.Point(290, 210);
             this.cboWeight.Name = "cboWeight";
             this.cboWeight.Size = new System.Drawing.Size(66, 21);
             this.cboWeight.TabIndex = 50;
+            this.cboWeight.SelectedIndexChanged += new System.EventHandler(this.cboWeight_SelectedIndexChanged);
             // 
             // txtWeight
             // 
@@ -496,6 +501,7 @@
             this.txtWeight.Name = "txtWeight";
             this.txtWeight.Size = new System.Drawing.Size(129, 20);
             this.txtWeight.TabIndex = 49;
+            this.txtWeight.TextChanged += new System.EventHandler(this.txtWeight_TextChanged);
             // 
             // lblX
             // 
@@ -516,6 +522,7 @@
             this.txtArea2.Name = "txtArea2";
             this.txtArea2.Size = new System.Drawing.Size(47, 20);
             this.txtArea2.TabIndex = 47;
+            this.txtArea2.TextChanged += new System.EventHandler(this.txtArea2_TextChanged);
             // 
             // cboArea
             // 
@@ -524,12 +531,16 @@
             this.cboArea.Enabled = false;
             this.cboArea.FormattingEnabled = true;
             this.cboArea.Items.AddRange(new object[] {
-            "ft",
-            "inches"});
+            "feet",
+            "inches",
+            "meters",
+            "centimeters",
+            "millimeters"});
             this.cboArea.Location = new System.Drawing.Point(290, 183);
             this.cboArea.Name = "cboArea";
             this.cboArea.Size = new System.Drawing.Size(66, 21);
             this.cboArea.TabIndex = 46;
+            this.cboArea.SelectedIndexChanged += new System.EventHandler(this.cboArea_SelectedIndexChanged);
             // 
             // txtArea1
             // 
@@ -539,6 +550,7 @@
             this.txtArea1.Name = "txtArea1";
             this.txtArea1.Size = new System.Drawing.Size(47, 20);
             this.txtArea1.TabIndex = 45;
+            this.txtArea1.TextChanged += new System.EventHandler(this.txtArea1_TextChanged);
             // 
             // cboLength
             // 
@@ -547,12 +559,16 @@
             this.cboLength.Enabled = false;
             this.cboLength.FormattingEnabled = true;
             this.cboLength.Items.AddRange(new object[] {
-            "ft",
-            "inches"});
+            "feet",
+            "inches",
+            "meters",
+            "centimeters",
+            "millimeters"});
             this.cboLength.Location = new System.Drawing.Point(290, 156);
             this.cboLength.Name = "cboLength";
             this.cboLength.Size = new System.Drawing.Size(66, 21);
             this.cboLength.TabIndex = 44;
+            this.cboLength.SelectedIndexChanged += new System.EventHandler(this.cboLength_SelectedIndexChanged);
             // 
             // txtLength
             // 
@@ -562,6 +578,7 @@
             this.txtLength.Name = "txtLength";
             this.txtLength.Size = new System.Drawing.Size(129, 20);
             this.txtLength.TabIndex = 43;
+            this.txtLength.TextChanged += new System.EventHandler(this.txtLength_TextChanged);
             // 
             // lblWeight
             // 
@@ -603,15 +620,15 @@
             this.lblTotalDamageCost.TabIndex = 19;
             this.lblTotalDamageCost.Text = "Total Damage Cost:";
             // 
-            // x
+            // txtTotalDamageCost
             // 
-            this.x.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.x.Location = new System.Drawing.Point(172, 358);
-            this.x.Margin = new System.Windows.Forms.Padding(2);
-            this.x.Name = "x";
-            this.x.ReadOnly = true;
-            this.x.Size = new System.Drawing.Size(164, 20);
-            this.x.TabIndex = 18;
+            this.txtTotalDamageCost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotalDamageCost.Location = new System.Drawing.Point(172, 358);
+            this.txtTotalDamageCost.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTotalDamageCost.Name = "txtTotalDamageCost";
+            this.txtTotalDamageCost.ReadOnly = true;
+            this.txtTotalDamageCost.Size = new System.Drawing.Size(164, 20);
+            this.txtTotalDamageCost.TabIndex = 18;
             // 
             // lblItemName
             // 
@@ -653,6 +670,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmSupplyDamage";
             this.Text = "Stock Out Damaged Supplies";
+            this.Load += new System.EventHandler(this.frmSupplyDamage_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -674,7 +692,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.GroupBox gpStockOutDamageSupplies;
         private System.Windows.Forms.Label lblTotalDamageCost;
-        public System.Windows.Forms.TextBox x;
+        public System.Windows.Forms.TextBox txtTotalDamageCost;
         private System.Windows.Forms.Label lblItemName;
         public System.Windows.Forms.TextBox txtItemName;
         private System.Windows.Forms.Button btnEditDetails;
