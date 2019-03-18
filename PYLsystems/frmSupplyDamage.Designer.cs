@@ -196,7 +196,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.endDatePicker.CustomFormat = "yyyy/MM/dd";
-            this.endDatePicker.Enabled = false;
             this.endDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.endDatePicker.Location = new System.Drawing.Point(146, 43);
             this.endDatePicker.Margin = new System.Windows.Forms.Padding(2);
@@ -211,7 +210,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.startDatePicker.CustomFormat = "yyyy/MM/dd";
-            this.startDatePicker.Enabled = false;
             this.startDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.startDatePicker.Location = new System.Drawing.Point(146, 20);
             this.startDatePicker.Margin = new System.Windows.Forms.Padding(2);
@@ -375,6 +373,7 @@
             // 
             this.btnEditDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditDetails.Enabled = false;
             this.btnEditDetails.Location = new System.Drawing.Point(168, 430);
             this.btnEditDetails.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditDetails.Name = "btnEditDetails";
@@ -387,6 +386,7 @@
             // 
             this.btnStockOutItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStockOutItem.Enabled = false;
             this.btnStockOutItem.Location = new System.Drawing.Point(168, 396);
             this.btnStockOutItem.Margin = new System.Windows.Forms.Padding(2);
             this.btnStockOutItem.Name = "btnStockOutItem";
