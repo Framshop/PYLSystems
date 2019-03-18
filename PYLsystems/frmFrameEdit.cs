@@ -300,7 +300,7 @@ namespace PYLsystems
                 }
             }
         }
-        private double measureConverter(double measure_OG, String unitOfMeasure_OG, String unitOfMeasure_Used)
+        private double measureConverter(double measure_forCvt, String unitOfMeasure_OG, String unitOfMeasure_Used)
         {
             double measureConverted = 0;
             Length measureLength = Length.FromMeters(1);
@@ -309,35 +309,35 @@ namespace PYLsystems
             //Initialize
             if (String.Equals(unitOfMeasure_Used, "feet"))
             {
-                measureLength = Length.FromFeet(measure_OG);
+                measureLength = Length.FromFeet(measure_forCvt);
             }
             else if (String.Equals(unitOfMeasure_Used, "meters"))
             {
-                measureLength = Length.FromMeters(measure_OG);
+                measureLength = Length.FromMeters(measure_forCvt);
             }
             else if (String.Equals(unitOfMeasure_Used, "centimeters"))
             {
-                measureLength = Length.FromCentimeters(measure_OG);
+                measureLength = Length.FromCentimeters(measure_forCvt);
             }
             else if (String.Equals(unitOfMeasure_Used, "millimeters"))
             {
-                measureLength = Length.FromMillimeters(measure_OG);
+                measureLength = Length.FromMillimeters(measure_forCvt);
             }
             else if (String.Equals(unitOfMeasure_Used, "inches"))
             {
-                measureLength = Length.FromInches(measure_OG);
+                measureLength = Length.FromInches(measure_forCvt);
             }
             else if (String.Equals(unitOfMeasure_Used, "ounces"))
             {
-                measureMass = Mass.FromOunces(measure_OG);
+                measureMass = Mass.FromOunces(measure_forCvt);
             }
             else if (String.Equals(unitOfMeasure_Used, "gram/s"))
             {
-                measureMass = Mass.FromGrams(measure_OG);
+                measureMass = Mass.FromGrams(measure_forCvt);
             }
             else if (String.Equals(unitOfMeasure_Used, "kilogram/s"))
             {
-                measureMass = Mass.FromKilograms(measure_OG);
+                measureMass = Mass.FromKilograms(measure_forCvt);
             }
 
             //Convert
@@ -375,22 +375,22 @@ namespace PYLsystems
             }
             return measureConverted;
         }
-        private double measureConverter(double measure_OG, String unitOfMeasure_Used, String unitOfMeasure_OG, int overload)
+        private double measureConverter(double measure_forCvt, String unitOfMeasure_Used, String unitOfMeasure_OG, int overload)
         {
             double measureConverted = 0;
             Volume measureVolume = Volume.FromLiters(1);
 
             if (String.Equals(unitOfMeasure_Used, "ounces"))
             {
-                measureVolume = Volume.FromUsOunces(measure_OG);
+                measureVolume = Volume.FromUsOunces(measure_forCvt);
             }
             else if (String.Equals(unitOfMeasure_Used, "liters"))
             {
-                measureVolume = Volume.FromLiters(measure_OG);
+                measureVolume = Volume.FromLiters(measure_forCvt);
             }
             else if (String.Equals(unitOfMeasure_Used, "milliliters"))
             {
-                measureVolume = Volume.FromMilliliters(measure_OG);
+                measureVolume = Volume.FromMilliliters(measure_forCvt);
             }
 
             if (String.Equals(unitOfMeasure_OG, "ounces"))
