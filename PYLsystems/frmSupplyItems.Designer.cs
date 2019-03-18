@@ -556,7 +556,7 @@
             this.btnDamageItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDamageItem.Enabled = false;
-            this.btnDamageItem.Location = new System.Drawing.Point(86, 43);
+            this.btnDamageItem.Location = new System.Drawing.Point(86, 71);
             this.btnDamageItem.Margin = new System.Windows.Forms.Padding(2);
             this.btnDamageItem.Name = "btnDamageItem";
             this.btnDamageItem.Size = new System.Drawing.Size(158, 24);
@@ -598,7 +598,7 @@
             this.btnCreateItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCreateItem.Enabled = false;
-            this.btnCreateItem.Location = new System.Drawing.Point(86, 71);
+            this.btnCreateItem.Location = new System.Drawing.Point(86, 43);
             this.btnCreateItem.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreateItem.Name = "btnCreateItem";
             this.btnCreateItem.Size = new System.Drawing.Size(158, 24);
