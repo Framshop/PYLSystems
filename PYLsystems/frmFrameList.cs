@@ -311,96 +311,108 @@ namespace PYLsystems
 
         private double measureConverter(double measure_OG, String unitOfMeasure_OG, String unitOfMeasure_Used)
         {
-            double measureConverted=0;
+            double measureConverted = 0;
             Length measureLength = Length.FromMeters(1);
             Mass measureMass = Mass.FromGrams(1);
+
             //Initialize
-            if (String.Equals(unitOfMeasure_OG, "feet"))
+            if (String.Equals(unitOfMeasure_Used, "feet"))
             {
                 measureLength = Length.FromFeet(measure_OG);
             }
-            else if (String.Equals(unitOfMeasure_OG, "meters"))
+            else if (String.Equals(unitOfMeasure_Used, "meters"))
             {
                 measureLength = Length.FromMeters(measure_OG);
             }
-            else if (String.Equals(unitOfMeasure_OG, "centimeters"))
+            else if (String.Equals(unitOfMeasure_Used, "centimeters"))
             {
                 measureLength = Length.FromCentimeters(measure_OG);
             }
-            else if (String.Equals(unitOfMeasure_OG, "millimeters"))
+            else if (String.Equals(unitOfMeasure_Used, "millimeters"))
             {
                 measureLength = Length.FromMillimeters(measure_OG);
             }
-            else if (String.Equals(unitOfMeasure_OG, "inches"))
+            else if (String.Equals(unitOfMeasure_Used, "inches"))
             {
                 measureLength = Length.FromInches(measure_OG);
             }
-            else if (String.Equals(unitOfMeasure_OG, "ounces"))
+            else if (String.Equals(unitOfMeasure_Used, "ounces"))
             {
                 measureMass = Mass.FromOunces(measure_OG);
             }
-            else if (String.Equals(unitOfMeasure_OG, "gram/s"))
+            else if (String.Equals(unitOfMeasure_Used, "gram/s"))
             {
                 measureMass = Mass.FromGrams(measure_OG);
             }
-            else if (String.Equals(unitOfMeasure_OG, "kilogram/s"))
+            else if (String.Equals(unitOfMeasure_Used, "kilogram/s"))
             {
                 measureMass = Mass.FromKilograms(measure_OG);
             }
 
             //Convert
-            if (String.Equals(unitOfMeasure_Used, "feet"))
+            if (String.Equals(unitOfMeasure_OG, "feet"))
             {
                 measureConverted = measureLength.Feet;
             }
-            else if (String.Equals(unitOfMeasure_Used, "meters"))
+            else if (String.Equals(unitOfMeasure_OG, "meters"))
             {
                 measureConverted = measureLength.Meters;
             }
-            else if (String.Equals(unitOfMeasure_Used, "centimeters"))
+            else if (String.Equals(unitOfMeasure_OG, "centimeters"))
             {
                 measureConverted = measureLength.Centimeters;
             }
-            else if (String.Equals(unitOfMeasure_Used, "millimeters"))
+            else if (String.Equals(unitOfMeasure_OG, "millimeters"))
             {
                 measureConverted = measureLength.Millimeters;
             }
-            else if (String.Equals(unitOfMeasure_Used, "inches"))
+            else if (String.Equals(unitOfMeasure_OG, "inches"))
             {
                 measureConverted = measureLength.Inches; ;
             }
-            else if (String.Equals(unitOfMeasure_Used, "ounces"))
+            else if (String.Equals(unitOfMeasure_OG, "ounces"))
             {
                 measureConverted = measureMass.Ounces;
             }
-            else if (String.Equals(unitOfMeasure_Used, "gram/s"))
+            else if (String.Equals(unitOfMeasure_OG, "gram/s"))
             {
                 measureConverted = measureMass.Grams;
             }
-            else if (String.Equals(unitOfMeasure_Used, "kilogram/s"))
+            else if (String.Equals(unitOfMeasure_OG, "kilogram/s"))
             {
                 measureConverted = measureMass.Kilograms;
             }
             return measureConverted;
         }
-
-
-        private double measureConverter(double measure_OG, String unitOfMeasure_OG, String unitOfMeasure_Used,int overload)
+        private double measureConverter(double measure_OG, String unitOfMeasure_Used, String unitOfMeasure_OG, int overload)
         {
             double measureConverted = 0;
-            Volume measureVolume;
+            Volume measureVolume = Volume.FromLiters(1);
 
-            if (String.Equals(unitOfMeasure_OG, "ounces"))
+            if (String.Equals(unitOfMeasure_Used, "ounces"))
             {
                 measureVolume = Volume.FromUsOunces(measure_OG);
             }
-            else if (String.Equals(unitOfMeasure_OG, "liters"))
+            else if (String.Equals(unitOfMeasure_Used, "liters"))
             {
                 measureVolume = Volume.FromLiters(measure_OG);
             }
-            else if (String.Equals(unitOfMeasure_OG, "milliliters"))
+            else if (String.Equals(unitOfMeasure_Used, "milliliters"))
             {
                 measureVolume = Volume.FromMilliliters(measure_OG);
+            }
+
+            if (String.Equals(unitOfMeasure_OG, "ounces"))
+            {
+                measureConverted = measureVolume.UsOunces;
+            }
+            else if (String.Equals(unitOfMeasure_OG, "liters"))
+            {
+                measureConverted = measureVolume.Liters;
+            }
+            else if (String.Equals(unitOfMeasure_OG, "milliliters"))
+            {
+                measureConverted = measureVolume.Milliliters;
             }
             return measureConverted;
         }

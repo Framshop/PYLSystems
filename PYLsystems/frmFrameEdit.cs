@@ -151,20 +151,24 @@ namespace PYLsystems
             dtSelectSuppliesSaved = dtSelectSupplies.Copy();
         }
         //COSTS CALCULATION. FOR SELECTED UNIT PRICE AND RAW COST
-        private void costingCalculate()
+        private void originalCostingCalculate()
         {
-            if (dtSelectSuppliesSaved.Rows.Count > 0)
+
+        }
+        private void costingCalculate() //Retrieve from Database and calculate
+        {
+            if (dtSelectSupplies.Rows.Count > 0)
             {
-                for (int i = 0; i < dtSelectSuppliesSaved.Rows.Count; i++)
+                for (int i = 0; i < dtSelectSupplies.Rows.Count; i++)
                 {
-                    String unitOfMeasure_Used = dtSelectSuppliesSaved.Rows[i]["Unit Measure"].ToString();
-                    String unitOfMeasure_OG = dtSelectSuppliesSaved.Rows[i]["OGUnitMeasure"].ToString();
-                    double unitPriceOG = Double.Parse(dtSelectSuppliesSaved.Rows[i]["OGUnitPrice"].ToString());
+                    String unitOfMeasure_Used = dtSelectSupplies.Rows[i]["Unit Measure"].ToString();
+                    String unitOfMeasure_OG = dtSelectSupplies.Rows[i]["OGUnitMeasure"].ToString();
+                    double unitPriceOG = Double.Parse(dtSelectSupplies.Rows[i]["OGUnitPrice"].ToString());
 
 
-                    if (String.Equals(dtSelectSuppliesSaved.Rows[i]["typeOfMeasure"].ToString(), "Whole"))
+                    if (String.Equals(dtSelectSupplies.Rows[i]["typeOfMeasure"].ToString(), "Whole"))
                     {
-                        double measureA = Double.Parse(dtSelectSuppliesSaved.Rows[i]["measureA"].ToString());
+                        double measureA = Double.Parse(dtSelectSupplies.Rows[i]["measureA"].ToString());
 
                         double rawCost = measureA * unitPriceOG;
 
@@ -173,27 +177,29 @@ namespace PYLsystems
                     }
                     else if (String.Equals(unitOfMeasure_Used, unitOfMeasure_OG))
                     {
-                        if (String.Equals(dtSelectSuppliesSaved.Rows[i]["typeOfMeasure"].ToString(), "Area"))
+                        if (String.Equals(dtSelectSupplies.Rows[i]["typeOfMeasure"].ToString(), "Area"))
                         {
-                            double measureA_OG = Double.Parse(dtSelectSuppliesSaved.Rows[i]["measureA"].ToString());
-                            double measureB_OG = Double.Parse(dtSelectSuppliesSaved.Rows[i]["measureB"].ToString());
+                            double measureA_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureA"].ToString());
+                            double measureB_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureB"].ToString());
                             double area_OG = measureA_OG * measureB_OG;
                             double trueUnitPrice = unitPriceOG / area_OG;
-                            double measureAUsed = Double.Parse(dtSelectSuppliesSaved.Rows[i]["measureADeduction"].ToString());
-                            double measureBUsed = Double.Parse(dtSelectSuppliesSaved.Rows[i]["measureBDeduction"].ToString());
+                            double measureAUsed = Double.Parse(dtSelectSupplies.Rows[i]["measureADeduction"].ToString());
+                            double measureBUsed = Double.Parse(dtSelectSupplies.Rows[i]["measureBDeduction"].ToString());
                             double areaOfUsed = measureAUsed * measureBUsed;
 
                             double rawCost = areaOfUsed * trueUnitPrice;
 
                             dataGridSuppliesUsed.Rows[i].Cells["Cost/Unit Measure"].Value = trueUnitPrice;
                             dataGridSuppliesUsed.Rows[i].Cells["Raw Cost"].Value = rawCost;
+                            measureAUsed = measureConverter(measureAUsed, "feet", "inches");
+
                         }
                         else
                         {
-                            double measureA_OG = Double.Parse(dtSelectSuppliesSaved.Rows[i]["measureA"].ToString());
+                            double measureA_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureA"].ToString());
                             double trueUnitPrice = unitPriceOG / measureA_OG;
 
-                            double measureAUsed = Double.Parse(dtSelectSuppliesSaved.Rows[i]["measureADeduction"].ToString());
+                            double measureAUsed = Double.Parse(dtSelectSupplies.Rows[i]["measureADeduction"].ToString());
 
                             double rawCost = measureAUsed * trueUnitPrice;
 
@@ -203,56 +209,92 @@ namespace PYLsystems
                     }
                     else
                     {
-
-                        if (String.Equals(dtSelectSuppliesSaved.Rows[i]["typeOfMeasure"].ToString(), "Area"))
+                        //Jan 18, 2019 to change!!! From used to original measure conversion
+                        if (String.Equals(dtSelectSupplies.Rows[i]["typeOfMeasure"].ToString(), "Area"))
                         {
-                            double measureA_OG = Double.Parse(dtSelectSuppliesSaved.Rows[i]["measureA"].ToString());
-                            double measureB_OG = Double.Parse(dtSelectSuppliesSaved.Rows[i]["measureB"].ToString());
-                            //String unitOfMeasure_OG = dtSelectSuppliesSaved.Rows[i]["OGUnitMeasure"].ToString();
+                            //double measureA_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureA"].ToString());
+                            //double measureB_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureB"].ToString());
+                            ////String unitOfMeasure_OG = dtSelectSupplies.Rows[i]["OGUnitMeasure"].ToString();
 
-                            double measureAConverted = measureConverter(measureA_OG, unitOfMeasure_OG, unitOfMeasure_Used);
-                            double measureBConverted = measureConverter(measureB_OG, unitOfMeasure_OG, unitOfMeasure_Used);
+                            //double measureAConverted = measureConverter(measureA_OG,unitOfMeasure_Used, unitOfMeasure_OG);
+                            //double measureBConverted = measureConverter(measureB_OG, unitOfMeasure_Used, unitOfMeasure_OG);
 
-                            double area_OG_Converted = measureAConverted * measureBConverted;
+                            //double area_OG_Converted = measureAConverted * measureBConverted;
 
 
-                            double trueUnitPrice = unitPriceOG / area_OG_Converted;
+                            //double trueUnitPrice = unitPriceOG / area_OG_Converted;
 
-                            double measureAUsed = Double.Parse(dtSelectSuppliesSaved.Rows[i]["measureADeduction"].ToString());
-                            double measureBUsed = Double.Parse(dtSelectSuppliesSaved.Rows[i]["measureBDeduction"].ToString());
-                            double areaOfUsed = measureAUsed * measureBUsed;
+                            //double measureAUsed = Double.Parse(dtSelectSupplies.Rows[i]["measureADeduction"].ToString());
+                            //double measureBUsed = Double.Parse(dtSelectSupplies.Rows[i]["measureBDeduction"].ToString());
+                            //double areaOfUsed = measureAUsed * measureBUsed;
 
-                            double rawCost = areaOfUsed * trueUnitPrice;
+                            //double rawCost = areaOfUsed * trueUnitPrice;
 
+                            //dataGridSuppliesUsed.Rows[i].Cells["Cost/Unit Measure"].Value = trueUnitPrice;
+                            //dataGridSuppliesUsed.Rows[i].Cells["Raw Cost"].Value = rawCost;
+
+
+                            double measureA_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureA"].ToString()); //Get purchase measures from Supply_Item table
+                            double measureB_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureB"].ToString());
+
+                            double area_OG = measureA_OG * measureB_OG; // Get area of original measures from purchase on Supply_Item table
+
+                            double trueUnitPrice = unitPriceOG / area_OG; // Purchase Unit Price/area_OG to get the true Unit Price of "1" Unit of Measurement
+
+                            //Get the already converted Measurements in frame_materials table.
+                            //The already converted Measurements are calculated and inputted in the database in the FrameCreation and FrameEdited  forms
+                            double measureAConverted = Double.Parse(dtSelectSupplies.Rows[i]["ConvertedAtoOG"].ToString());
+                            double measureBConverted = Double.Parse(dtSelectSupplies.Rows[i]["ConvertedBtoOG"].ToString());
+
+                            double areaOfUsed = measureAConverted * measureBConverted; //Calculate the area of Use of the used up converted measurements
+
+                            double rawCost = areaOfUsed * trueUnitPrice; //Get the raw cost of the item based on 'Area Usage' multiplied by the true Unit Price
                             dataGridSuppliesUsed.Rows[i].Cells["Cost/Unit Measure"].Value = trueUnitPrice;
                             dataGridSuppliesUsed.Rows[i].Cells["Raw Cost"].Value = rawCost;
+
+
                         }
                         else
                         {
-                            //String unitOfMeasure_OG = dtSelectSuppliesSaved.Rows[i]["OGUnitMeasure"].ToString();
-                            //String unitOfMeasure_Used = dtSelectSuppliesSaved.Rows[i]["Unit Measure"].ToString();
+                            //String unitOfMeasure_OG = dtSelectSupplies.Rows[i]["OGUnitMeasure"].ToString();
+                            //String unitOfMeasure_Used = dtSelectSupplies.Rows[i]["Unit Measure"].ToString();
 
-                            double measureA_OG = Double.Parse(dtSelectSuppliesSaved.Rows[i]["measureA"].ToString());
-                            double measureA_converted;
+                            //double measureA_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureA"].ToString());
+                            //double measureA_converted;
 
-                            if (String.Equals(dtSelectSuppliesSaved.Rows[i]["typeOfMeasure"].ToString(), "Volume"))
-                            {
-                                measureA_converted = measureConverter(measureA_OG, unitOfMeasure_OG, unitOfMeasure_Used, 0);
-                            }
-                            else
-                            {
-                                measureA_converted = measureConverter(measureA_OG, unitOfMeasure_OG, unitOfMeasure_Used);
-                            }
+                            //if (String.Equals(dtSelectSupplies.Rows[i]["typeOfMeasure"].ToString(), "Volume"))
+                            //{
+                            //    measureA_converted = measureConverter(measureA_OG, unitOfMeasure_Used, unitOfMeasure_OG, 0);
+                            //}
+                            //else
+                            //{
+                            //    measureA_converted = measureConverter(measureA_OG, unitOfMeasure_Used,unitOfMeasure_OG);
+                            //}
 
 
-                            double trueUnitPrice = unitPriceOG / measureA_converted;
+                            //double trueUnitPrice = unitPriceOG / measureA_converted;
 
-                            double measureAUsed = Double.Parse(dtSelectSuppliesSaved.Rows[i]["measureADeduction"].ToString());
+                            //double measureAUsed = Double.Parse(dtSelectSupplies.Rows[i]["measureADeduction"].ToString());
 
-                            double rawCost = measureAUsed * trueUnitPrice;
+                            //double rawCost = measureAUsed * trueUnitPrice;
+
+                            //dataGridSuppliesUsed.Rows[i].Cells["Cost/Unit Measure"].Value = trueUnitPrice;
+                            //dataGridSuppliesUsed.Rows[i].Cells["Raw Cost"].Value = rawCost;
+
+
+                            double measureA_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureA"].ToString()); //Get purchase measures of A and B from Supply_Item table
+
+                            double trueUnitPrice = unitPriceOG / measureA_OG; // Purchase Unit Price/area_OG to get the true Unit Price of "1" Unit of Measurement
+
+                            //Get the already converted Measurements in frame_materials table.
+                            //The already converted Measurements are calculated and inputted in the database in the FrameCreation and FrameEdited  forms
+                            double measureAConverted = Double.Parse(dtSelectSupplies.Rows[i]["ConvertedAtoOG"].ToString());
+
+                            double rawCost = measureAConverted * trueUnitPrice; //Get the raw cost of the item based on 'Area Usage' multiplied by the true Unit Price
 
                             dataGridSuppliesUsed.Rows[i].Cells["Cost/Unit Measure"].Value = trueUnitPrice;
                             dataGridSuppliesUsed.Rows[i].Cells["Raw Cost"].Value = rawCost;
+
                         }
                     }
                 }
@@ -263,91 +305,105 @@ namespace PYLsystems
             double measureConverted = 0;
             Length measureLength = Length.FromMeters(1);
             Mass measureMass = Mass.FromGrams(1);
+
             //Initialize
-            if (String.Equals(unitOfMeasure_OG, "feet"))
+            if (String.Equals(unitOfMeasure_Used, "feet"))
             {
                 measureLength = Length.FromFeet(measure_OG);
             }
-            else if (String.Equals(unitOfMeasure_OG, "meters"))
+            else if (String.Equals(unitOfMeasure_Used, "meters"))
             {
                 measureLength = Length.FromMeters(measure_OG);
             }
-            else if (String.Equals(unitOfMeasure_OG, "centimeters"))
+            else if (String.Equals(unitOfMeasure_Used, "centimeters"))
             {
                 measureLength = Length.FromCentimeters(measure_OG);
             }
-            else if (String.Equals(unitOfMeasure_OG, "millimeters"))
+            else if (String.Equals(unitOfMeasure_Used, "millimeters"))
             {
                 measureLength = Length.FromMillimeters(measure_OG);
             }
-            else if (String.Equals(unitOfMeasure_OG, "inches"))
+            else if (String.Equals(unitOfMeasure_Used, "inches"))
             {
                 measureLength = Length.FromInches(measure_OG);
             }
-            else if (String.Equals(unitOfMeasure_OG, "ounces"))
+            else if (String.Equals(unitOfMeasure_Used, "ounces"))
             {
                 measureMass = Mass.FromOunces(measure_OG);
             }
-            else if (String.Equals(unitOfMeasure_OG, "gram/s"))
+            else if (String.Equals(unitOfMeasure_Used, "gram/s"))
             {
                 measureMass = Mass.FromGrams(measure_OG);
             }
-            else if (String.Equals(unitOfMeasure_OG, "kilogram/s"))
+            else if (String.Equals(unitOfMeasure_Used, "kilogram/s"))
             {
                 measureMass = Mass.FromKilograms(measure_OG);
             }
 
             //Convert
-            if (String.Equals(unitOfMeasure_Used, "feet"))
+            if (String.Equals(unitOfMeasure_OG, "feet"))
             {
                 measureConverted = measureLength.Feet;
             }
-            else if (String.Equals(unitOfMeasure_Used, "meters"))
+            else if (String.Equals(unitOfMeasure_OG, "meters"))
             {
                 measureConverted = measureLength.Meters;
             }
-            else if (String.Equals(unitOfMeasure_Used, "centimeters"))
+            else if (String.Equals(unitOfMeasure_OG, "centimeters"))
             {
                 measureConverted = measureLength.Centimeters;
             }
-            else if (String.Equals(unitOfMeasure_Used, "millimeters"))
+            else if (String.Equals(unitOfMeasure_OG, "millimeters"))
             {
                 measureConverted = measureLength.Millimeters;
             }
-            else if (String.Equals(unitOfMeasure_Used, "inches"))
+            else if (String.Equals(unitOfMeasure_OG, "inches"))
             {
                 measureConverted = measureLength.Inches; ;
             }
-            else if (String.Equals(unitOfMeasure_Used, "ounces"))
+            else if (String.Equals(unitOfMeasure_OG, "ounces"))
             {
                 measureConverted = measureMass.Ounces;
             }
-            else if (String.Equals(unitOfMeasure_Used, "gram/s"))
+            else if (String.Equals(unitOfMeasure_OG, "gram/s"))
             {
                 measureConverted = measureMass.Grams;
             }
-            else if (String.Equals(unitOfMeasure_Used, "kilogram/s"))
+            else if (String.Equals(unitOfMeasure_OG, "kilogram/s"))
             {
                 measureConverted = measureMass.Kilograms;
             }
             return measureConverted;
         }
-        private double measureConverter(double measure_OG, String unitOfMeasure_OG, String unitOfMeasure_Used, int overload)
+        private double measureConverter(double measure_OG, String unitOfMeasure_Used, String unitOfMeasure_OG, int overload)
         {
             double measureConverted = 0;
-            Volume measureVolume;
+            Volume measureVolume = Volume.FromLiters(1);
 
-            if (String.Equals(unitOfMeasure_OG, "ounces"))
+            if (String.Equals(unitOfMeasure_Used, "ounces"))
             {
                 measureVolume = Volume.FromUsOunces(measure_OG);
             }
-            else if (String.Equals(unitOfMeasure_OG, "liters"))
+            else if (String.Equals(unitOfMeasure_Used, "liters"))
             {
                 measureVolume = Volume.FromLiters(measure_OG);
             }
-            else if (String.Equals(unitOfMeasure_OG, "milliliters"))
+            else if (String.Equals(unitOfMeasure_Used, "milliliters"))
             {
                 measureVolume = Volume.FromMilliliters(measure_OG);
+            }
+
+            if (String.Equals(unitOfMeasure_OG, "ounces"))
+            {
+                measureConverted = measureVolume.UsOunces;
+            }
+            else if (String.Equals(unitOfMeasure_OG, "liters"))
+            {
+                measureConverted = measureVolume.Liters;
+            }
+            else if (String.Equals(unitOfMeasure_OG, "milliliters"))
+            {
+                measureConverted = measureVolume.Milliliters;
             }
             return measureConverted;
         }
@@ -356,6 +412,7 @@ namespace PYLsystems
         {
             bool checkIfInDatabase=false;
             int suppliesItemId=-1;
+            //Check if deleted item is in database or from the datatable retrieved from the database
             for(int i=0; i < dtSelectSupplies.Rows.Count; i++)
             {
                 if (Int32.Parse(dataGridSuppliesUsed.Rows[currRowIndex].Cells["supply_itemsId"].Value.ToString())==Int32.Parse(dtSelectSupplies.Rows[i]["supply_itemsId"].ToString()))
@@ -365,6 +422,7 @@ namespace PYLsystems
                     MessageBox.Show(this.dataGridSuppliesUsed.SelectedRows[0].Index+" "+checkIfInDatabase);
                 }
             }
+            //If it exists, put to a list later for active
             if (checkIfInDatabase)
             {
                 if (suppliesItemId > 0) { 
