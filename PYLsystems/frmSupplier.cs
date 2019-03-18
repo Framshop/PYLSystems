@@ -136,11 +136,8 @@ namespace PYLsystems
         {
 
         }
-
         private void frmSupplier_Load(object sender, EventArgs e)
         {
-     
-    
             RefreshDatabase();
         }
 

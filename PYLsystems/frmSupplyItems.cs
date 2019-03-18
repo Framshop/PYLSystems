@@ -472,6 +472,7 @@ namespace PYLsystems
                 cboArea.Enabled = false;
                 lblX.Enabled = false;
 
+
                 txtLength.Enabled = false;
                 cboLength.Enabled = false;
                 lblLength.Enabled = false;
@@ -491,7 +492,21 @@ namespace PYLsystems
                 lblVolume.Enabled = false;
                 txtVolume.Enabled = false;
 
-               
+                txtArea1.Text = "";
+                txtArea2.Text = "";
+                cboActive.SelectedIndex = -1;
+
+                cboLength.SelectedIndex = -1;
+                txtLength.Text = "";
+
+
+                txtWeight.Text = "";
+                cboWeight.SelectedIndex = -1;
+
+                cboWhole.SelectedIndex = -1;
+
+                cboVolume.SelectedIndex = -1;
+                txtVolume.Text = "";
             }
             else
             {

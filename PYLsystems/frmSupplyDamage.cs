@@ -172,7 +172,7 @@ namespace PYLsystems
                             double rawCost = measureAUsed * trueUnitPrice;
                             rawCostPasser = rawCost;
                             txtTotalDamageCost.Text = rawCostPasser.ToString();
-                            txtCalculatedStockedQuantity.Text = trueUnitPrice.ToString();
+                          //  txtCalculatedStockedQuantity.Text = ;
                         }
                       
                     }

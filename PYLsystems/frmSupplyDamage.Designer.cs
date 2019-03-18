@@ -346,9 +346,9 @@
             this.lblCalculatedStockedQuantity.Location = new System.Drawing.Point(33, 314);
             this.lblCalculatedStockedQuantity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCalculatedStockedQuantity.Name = "lblCalculatedStockedQuantity";
-            this.lblCalculatedStockedQuantity.Size = new System.Drawing.Size(100, 26);
+            this.lblCalculatedStockedQuantity.Size = new System.Drawing.Size(103, 26);
             this.lblCalculatedStockedQuantity.TabIndex = 63;
-            this.lblCalculatedStockedQuantity.Text = "Calculated Stocked\r\nQuantity:";
+            this.lblCalculatedStockedQuantity.Text = "Calculated Stocked \r\nOut Quantity:";
             // 
             // txtCalculatedStockedQuantity
             // 
