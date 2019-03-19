@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -37,9 +37,9 @@
             this.dataGridSuppliesUsed = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBoxSalesPrice = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtBoxAmount = new System.Windows.Forms.TextBox();
+            this.txtBoxRawCostTotal = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAddSupply = new System.Windows.Forms.Button();
@@ -151,14 +151,14 @@
             this.dataGridSuppliesUsed.AllowUserToResizeRows = false;
             this.dataGridSuppliesUsed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridSuppliesUsed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridSuppliesUsed.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridSuppliesUsed.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridSuppliesUsed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridSuppliesUsed.Location = new System.Drawing.Point(3, 22);
             this.dataGridSuppliesUsed.Name = "dataGridSuppliesUsed";
@@ -172,9 +172,9 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Controls.Add(this.textBox1);
+            this.groupBox5.Controls.Add(this.txtBoxSalesPrice);
             this.groupBox5.Controls.Add(this.label1);
-            this.groupBox5.Controls.Add(this.txtBoxAmount);
+            this.groupBox5.Controls.Add(this.txtBoxRawCostTotal);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Location = new System.Drawing.Point(3, 551);
             this.groupBox5.Name = "groupBox5";
@@ -192,13 +192,14 @@
             this.label2.TabIndex = 20;
             this.label2.Text = "Input a Sales Price for a Single Unit:";
             // 
-            // textBox1
+            // txtBoxSalesPrice
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(506, 93);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(320, 26);
-            this.textBox1.TabIndex = 19;
+            this.txtBoxSalesPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxSalesPrice.Location = new System.Drawing.Point(506, 93);
+            this.txtBoxSalesPrice.Name = "txtBoxSalesPrice";
+            this.txtBoxSalesPrice.Size = new System.Drawing.Size(320, 26);
+            this.txtBoxSalesPrice.TabIndex = 19;
+            this.txtBoxSalesPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxSalesPrice_KeyPress);
             // 
             // label1
             // 
@@ -209,14 +210,14 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Calculation of Raw Cost for a Single Unit:";
             // 
-            // txtBoxAmount
+            // txtBoxRawCostTotal
             // 
-            this.txtBoxAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBoxAmount.Location = new System.Drawing.Point(506, 46);
-            this.txtBoxAmount.Name = "txtBoxAmount";
-            this.txtBoxAmount.ReadOnly = true;
-            this.txtBoxAmount.Size = new System.Drawing.Size(320, 26);
-            this.txtBoxAmount.TabIndex = 17;
+            this.txtBoxRawCostTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxRawCostTotal.Location = new System.Drawing.Point(506, 46);
+            this.txtBoxRawCostTotal.Name = "txtBoxRawCostTotal";
+            this.txtBoxRawCostTotal.ReadOnly = true;
+            this.txtBoxRawCostTotal.Size = new System.Drawing.Size(320, 26);
+            this.txtBoxRawCostTotal.TabIndex = 17;
             // 
             // groupBox6
             // 
@@ -414,6 +415,7 @@
             this.btnEdit.TabIndex = 8;
             this.btnEdit.Text = "Edit Frame";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // frmFrameEdit
             // 
@@ -452,9 +454,9 @@
         private System.Windows.Forms.DataGridView dataGridSuppliesUsed;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBoxSalesPrice;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtBoxAmount;
+        private System.Windows.Forms.TextBox txtBoxRawCostTotal;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button btnAddSupply;

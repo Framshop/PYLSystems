@@ -36,44 +36,44 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.datagridEmpList = new System.Windows.Forms.DataGridView();
+            this.datagridSuppliesList = new System.Windows.Forms.DataGridView();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtBoxTypeOfM = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBoxCategory = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtBoxSupplyName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.cboVolumeUnit = new System.Windows.Forms.ComboBox();
+            this.txtBoxVolume = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtBoxWhole = new System.Windows.Forms.TextBox();
+            this.cboWholeUnit = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.cboWeightUnit = new System.Windows.Forms.ComboBox();
+            this.txtBoxWeight = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtBoxAreaWidth = new System.Windows.Forms.TextBox();
+            this.cboAreaUnit = new System.Windows.Forms.ComboBox();
+            this.txtBoxAreaLength = new System.Windows.Forms.TextBox();
+            this.cboLengthUnit = new System.Windows.Forms.ComboBox();
+            this.txtBoxLength = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datagridEmpList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridSuppliesList)).BeginInit();
             this.tableLayoutPanel5.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -92,7 +92,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1424, 840);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1664, 840);
             this.tableLayoutPanel1.TabIndex = 30;
             // 
             // tableLayoutPanel2
@@ -101,20 +101,20 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(74, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(86, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1275, 834);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1491, 834);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.53909F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.46091F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.02357F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.97643F));
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -122,7 +122,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1269, 744);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1485, 744);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -133,13 +133,13 @@
             this.tableLayoutPanel4.Controls.Add(this.groupBox5, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.groupBox6, 0, 2);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(428, 3);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(434, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.375886F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.5461F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.219858F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(838, 738);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1048, 738);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // groupBox4
@@ -149,7 +149,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(3, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(832, 48);
+            this.groupBox4.Size = new System.Drawing.Size(1042, 48);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             // 
@@ -157,7 +157,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(437, 17);
+            this.label1.Location = new System.Drawing.Point(647, 17);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 20);
@@ -167,46 +167,48 @@
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Location = new System.Drawing.Point(509, 14);
+            this.txtSearch.Location = new System.Drawing.Point(719, 14);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(307, 26);
             this.txtSearch.TabIndex = 13;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.datagridEmpList);
+            this.groupBox5.Controls.Add(this.datagridSuppliesList);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Location = new System.Drawing.Point(3, 57);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(832, 609);
+            this.groupBox5.Size = new System.Drawing.Size(1042, 609);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "List of Supplies";
             // 
-            // datagridEmpList
+            // datagridSuppliesList
             // 
-            this.datagridEmpList.AllowUserToAddRows = false;
-            this.datagridEmpList.AllowUserToDeleteRows = false;
-            this.datagridEmpList.AllowUserToResizeRows = false;
-            this.datagridEmpList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.datagridEmpList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datagridEmpList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.datagridEmpList.Location = new System.Drawing.Point(3, 22);
-            this.datagridEmpList.Name = "datagridEmpList";
-            this.datagridEmpList.ReadOnly = true;
-            this.datagridEmpList.RowHeadersVisible = false;
-            this.datagridEmpList.RowTemplate.Height = 28;
-            this.datagridEmpList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridEmpList.Size = new System.Drawing.Size(826, 584);
-            this.datagridEmpList.TabIndex = 3;
+            this.datagridSuppliesList.AllowUserToAddRows = false;
+            this.datagridSuppliesList.AllowUserToDeleteRows = false;
+            this.datagridSuppliesList.AllowUserToResizeRows = false;
+            this.datagridSuppliesList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.datagridSuppliesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagridSuppliesList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.datagridSuppliesList.Location = new System.Drawing.Point(3, 22);
+            this.datagridSuppliesList.Name = "datagridSuppliesList";
+            this.datagridSuppliesList.ReadOnly = true;
+            this.datagridSuppliesList.RowHeadersVisible = false;
+            this.datagridSuppliesList.RowTemplate.Height = 28;
+            this.datagridSuppliesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.datagridSuppliesList.Size = new System.Drawing.Size(1036, 584);
+            this.datagridSuppliesList.TabIndex = 3;
+            this.datagridSuppliesList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridSuppliesList_CellClick);
             // 
             // groupBox6
             // 
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox6.Location = new System.Drawing.Point(3, 672);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(832, 63);
+            this.groupBox6.Size = new System.Drawing.Size(1042, 63);
             this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
             // 
@@ -224,76 +226,76 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.41844F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.91481F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.72215F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(419, 738);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(425, 738);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox7);
+            this.groupBox1.Controls.Add(this.txtBoxTypeOfM);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtBoxCategory);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtName);
+            this.groupBox1.Controls.Add(this.txtBoxSupplyName);
             this.groupBox1.Controls.Add(this.lblName);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(413, 151);
+            this.groupBox1.Size = new System.Drawing.Size(419, 151);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selected Supply Item";
             // 
-            // textBox7
+            // txtBoxTypeOfM
             // 
-            this.textBox7.Location = new System.Drawing.Point(166, 81);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(237, 26);
-            this.textBox7.TabIndex = 9;
+            this.txtBoxTypeOfM.Location = new System.Drawing.Point(166, 72);
+            this.txtBoxTypeOfM.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBoxTypeOfM.Name = "txtBoxTypeOfM";
+            this.txtBoxTypeOfM.ReadOnly = true;
+            this.txtBoxTypeOfM.Size = new System.Drawing.Size(237, 26);
+            this.txtBoxTypeOfM.TabIndex = 9;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(27, 84);
+            this.label9.Location = new System.Drawing.Point(27, 75);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(131, 20);
             this.label9.TabIndex = 10;
             this.label9.Text = "Type of Measure:";
             // 
-            // textBox1
+            // txtBoxCategory
             // 
-            this.textBox1.Location = new System.Drawing.Point(165, 43);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(237, 26);
-            this.textBox1.TabIndex = 5;
+            this.txtBoxCategory.Location = new System.Drawing.Point(165, 34);
+            this.txtBoxCategory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBoxCategory.Name = "txtBoxCategory";
+            this.txtBoxCategory.ReadOnly = true;
+            this.txtBoxCategory.Size = new System.Drawing.Size(237, 26);
+            this.txtBoxCategory.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 46);
+            this.label2.Location = new System.Drawing.Point(29, 37);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(129, 20);
             this.label2.TabIndex = 6;
             this.label2.Text = "Supply Category:";
             // 
-            // txtName
+            // txtBoxSupplyName
             // 
-            this.txtName.Location = new System.Drawing.Point(165, 117);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtName.Name = "txtName";
-            this.txtName.ReadOnly = true;
-            this.txtName.Size = new System.Drawing.Size(237, 26);
-            this.txtName.TabIndex = 3;
+            this.txtBoxSupplyName.Location = new System.Drawing.Point(165, 108);
+            this.txtBoxSupplyName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBoxSupplyName.Name = "txtBoxSupplyName";
+            this.txtBoxSupplyName.ReadOnly = true;
+            this.txtBoxSupplyName.Size = new System.Drawing.Size(237, 26);
+            this.txtBoxSupplyName.TabIndex = 3;
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(15, 120);
+            this.lblName.Location = new System.Drawing.Point(15, 111);
             this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(143, 20);
@@ -302,52 +304,89 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBox4);
-            this.groupBox2.Controls.Add(this.textBox5);
+            this.groupBox2.Controls.Add(this.cboVolumeUnit);
+            this.groupBox2.Controls.Add(this.txtBoxVolume);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.textBox8);
-            this.groupBox2.Controls.Add(this.comboBox5);
+            this.groupBox2.Controls.Add(this.txtBoxWhole);
+            this.groupBox2.Controls.Add(this.cboWholeUnit);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.comboBox3);
-            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.cboWeightUnit);
+            this.groupBox2.Controls.Add(this.txtBoxWeight);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.comboBox2);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.comboBox1);
-            this.groupBox2.Controls.Add(this.textBox6);
+            this.groupBox2.Controls.Add(this.txtBoxAreaWidth);
+            this.groupBox2.Controls.Add(this.cboAreaUnit);
+            this.groupBox2.Controls.Add(this.txtBoxAreaLength);
+            this.groupBox2.Controls.Add(this.cboLengthUnit);
+            this.groupBox2.Controls.Add(this.txtBoxLength);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 160);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(413, 399);
+            this.groupBox2.Size = new System.Drawing.Size(419, 399);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Amounts Used";
             // 
-            // textBox8
+            // cboVolumeUnit
             // 
-            this.textBox8.Location = new System.Drawing.Point(74, 281);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(191, 26);
-            this.textBox8.TabIndex = 36;
+            this.cboVolumeUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboVolumeUnit.Enabled = false;
+            this.cboVolumeUnit.FormattingEnabled = true;
+            this.cboVolumeUnit.Items.AddRange(new object[] {
+            "ounces",
+            "liters",
+            "milliliters"});
+            this.cboVolumeUnit.Location = new System.Drawing.Point(305, 352);
+            this.cboVolumeUnit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboVolumeUnit.Name = "cboVolumeUnit";
+            this.cboVolumeUnit.Size = new System.Drawing.Size(97, 28);
+            this.cboVolumeUnit.TabIndex = 39;
             // 
-            // comboBox5
+            // txtBoxVolume
             // 
-            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox5.Enabled = false;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
-            "sheet",
-            "piece"});
-            this.comboBox5.Location = new System.Drawing.Point(305, 279);
-            this.comboBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(97, 28);
-            this.comboBox5.TabIndex = 35;
+            this.txtBoxVolume.Enabled = false;
+            this.txtBoxVolume.Location = new System.Drawing.Point(74, 354);
+            this.txtBoxVolume.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBoxVolume.Name = "txtBoxVolume";
+            this.txtBoxVolume.Size = new System.Drawing.Size(191, 26);
+            this.txtBoxVolume.TabIndex = 38;
+            this.txtBoxVolume.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxVolume_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(36, 324);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 20);
+            this.label5.TabIndex = 37;
+            this.label5.Text = "Volume:";
+            // 
+            // txtBoxWhole
+            // 
+            this.txtBoxWhole.Enabled = false;
+            this.txtBoxWhole.Location = new System.Drawing.Point(74, 281);
+            this.txtBoxWhole.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBoxWhole.Name = "txtBoxWhole";
+            this.txtBoxWhole.Size = new System.Drawing.Size(191, 26);
+            this.txtBoxWhole.TabIndex = 36;
+            this.txtBoxWhole.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxWhole_KeyPress);
+            // 
+            // cboWholeUnit
+            // 
+            this.cboWholeUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboWholeUnit.Enabled = false;
+            this.cboWholeUnit.FormattingEnabled = true;
+            this.cboWholeUnit.Items.AddRange(new object[] {
+            "sheets",
+            "pieces"});
+            this.cboWholeUnit.Location = new System.Drawing.Point(305, 279);
+            this.cboWholeUnit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboWholeUnit.Name = "cboWholeUnit";
+            this.cboWholeUnit.Size = new System.Drawing.Size(97, 28);
+            this.cboWholeUnit.TabIndex = 35;
             // 
             // label7
             // 
@@ -359,26 +398,30 @@
             this.label7.TabIndex = 34;
             this.label7.Text = "Whole:";
             // 
-            // comboBox3
+            // cboWeightUnit
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "ft",
-            "inches"});
-            this.comboBox3.Location = new System.Drawing.Point(305, 198);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(97, 28);
-            this.comboBox3.TabIndex = 31;
+            this.cboWeightUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboWeightUnit.Enabled = false;
+            this.cboWeightUnit.FormattingEnabled = true;
+            this.cboWeightUnit.Items.AddRange(new object[] {
+            "ounces",
+            "kilogram/s",
+            "gram/s"});
+            this.cboWeightUnit.Location = new System.Drawing.Point(305, 198);
+            this.cboWeightUnit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboWeightUnit.Name = "cboWeightUnit";
+            this.cboWeightUnit.Size = new System.Drawing.Size(97, 28);
+            this.cboWeightUnit.TabIndex = 31;
             // 
-            // textBox4
+            // txtBoxWeight
             // 
-            this.textBox4.Location = new System.Drawing.Point(74, 200);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(191, 26);
-            this.textBox4.TabIndex = 30;
+            this.txtBoxWeight.Enabled = false;
+            this.txtBoxWeight.Location = new System.Drawing.Point(74, 200);
+            this.txtBoxWeight.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBoxWeight.Name = "txtBoxWeight";
+            this.txtBoxWeight.Size = new System.Drawing.Size(191, 26);
+            this.txtBoxWeight.TabIndex = 30;
+            this.txtBoxWeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxWeight_KeyPress);
             // 
             // label4
             // 
@@ -390,55 +433,69 @@
             this.label4.TabIndex = 29;
             this.label4.Text = "X";
             // 
-            // textBox3
+            // txtBoxAreaWidth
             // 
-            this.textBox3.Location = new System.Drawing.Point(197, 120);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(68, 26);
-            this.textBox3.TabIndex = 28;
+            this.txtBoxAreaWidth.Enabled = false;
+            this.txtBoxAreaWidth.Location = new System.Drawing.Point(197, 120);
+            this.txtBoxAreaWidth.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBoxAreaWidth.Name = "txtBoxAreaWidth";
+            this.txtBoxAreaWidth.Size = new System.Drawing.Size(68, 26);
+            this.txtBoxAreaWidth.TabIndex = 28;
+            this.txtBoxAreaWidth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxAreaWidth_KeyPress);
             // 
-            // comboBox2
+            // cboAreaUnit
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "ft",
-            "inches"});
-            this.comboBox2.Location = new System.Drawing.Point(305, 118);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(97, 28);
-            this.comboBox2.TabIndex = 27;
+            this.cboAreaUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAreaUnit.Enabled = false;
+            this.cboAreaUnit.FormattingEnabled = true;
+            this.cboAreaUnit.Items.AddRange(new object[] {
+            "feet",
+            "inches",
+            "meters",
+            "centimeters",
+            "millimeters"});
+            this.cboAreaUnit.Location = new System.Drawing.Point(305, 118);
+            this.cboAreaUnit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboAreaUnit.Name = "cboAreaUnit";
+            this.cboAreaUnit.Size = new System.Drawing.Size(97, 28);
+            this.cboAreaUnit.TabIndex = 27;
             // 
-            // textBox2
+            // txtBoxAreaLength
             // 
-            this.textBox2.Location = new System.Drawing.Point(77, 120);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(68, 26);
-            this.textBox2.TabIndex = 26;
+            this.txtBoxAreaLength.Enabled = false;
+            this.txtBoxAreaLength.Location = new System.Drawing.Point(77, 120);
+            this.txtBoxAreaLength.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBoxAreaLength.Name = "txtBoxAreaLength";
+            this.txtBoxAreaLength.Size = new System.Drawing.Size(68, 26);
+            this.txtBoxAreaLength.TabIndex = 26;
+            this.txtBoxAreaLength.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxAreaLength_KeyPress);
             // 
-            // comboBox1
+            // cboLengthUnit
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "ft",
-            "inches"});
-            this.comboBox1.Location = new System.Drawing.Point(305, 49);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(97, 28);
-            this.comboBox1.TabIndex = 25;
+            this.cboLengthUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboLengthUnit.Enabled = false;
+            this.cboLengthUnit.FormattingEnabled = true;
+            this.cboLengthUnit.Items.AddRange(new object[] {
+            "feet",
+            "inches",
+            "meters",
+            "centimeters",
+            "millimeters"});
+            this.cboLengthUnit.Location = new System.Drawing.Point(305, 49);
+            this.cboLengthUnit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboLengthUnit.Name = "cboLengthUnit";
+            this.cboLengthUnit.Size = new System.Drawing.Size(97, 28);
+            this.cboLengthUnit.TabIndex = 25;
             // 
-            // textBox6
+            // txtBoxLength
             // 
-            this.textBox6.Location = new System.Drawing.Point(74, 51);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(191, 26);
-            this.textBox6.TabIndex = 24;
+            this.txtBoxLength.Enabled = false;
+            this.txtBoxLength.Location = new System.Drawing.Point(74, 51);
+            this.txtBoxLength.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBoxLength.Name = "txtBoxLength";
+            this.txtBoxLength.Size = new System.Drawing.Size(191, 26);
+            this.txtBoxLength.TabIndex = 24;
+            this.txtBoxLength.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxLength_KeyPress);
             // 
             // label3
             // 
@@ -472,25 +529,26 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.btnUpdate);
+            this.groupBox3.Controls.Add(this.btnClose);
             this.groupBox3.Controls.Add(this.btnAdd);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(3, 565);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(413, 170);
+            this.groupBox3.Size = new System.Drawing.Size(419, 170);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             // 
-            // btnUpdate
+            // btnClose
             // 
-            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdate.Location = new System.Drawing.Point(76, 111);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(260, 37);
-            this.btnUpdate.TabIndex = 34;
-            this.btnUpdate.Text = "Cancel";
-            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnClose.Location = new System.Drawing.Point(76, 111);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(266, 37);
+            this.btnClose.TabIndex = 34;
+            this.btnClose.Text = "Cancel";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnAdd
             // 
@@ -498,51 +556,21 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.Location = new System.Drawing.Point(76, 48);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(260, 37);
+            this.btnAdd.Size = new System.Drawing.Size(266, 37);
             this.btnAdd.TabIndex = 33;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
-            "ounces",
-            "liters",
-            "milliliters"});
-            this.comboBox4.Location = new System.Drawing.Point(305, 352);
-            this.comboBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(97, 28);
-            this.comboBox4.TabIndex = 39;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(74, 354);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(191, 26);
-            this.textBox5.TabIndex = 38;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(36, 324);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 20);
-            this.label5.TabIndex = 37;
-            this.label5.Text = "Volume:";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // frmFrameAddSuppliesUsed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1424, 840);
+            this.ClientSize = new System.Drawing.Size(1664, 840);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmFrameAddSuppliesUsed";
             this.Text = "Add a Frame Supply";
+            this.Load += new System.EventHandler(this.frmFrameAddSuppliesUsed_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -550,7 +578,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.datagridEmpList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridSuppliesList)).EndInit();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -574,33 +602,33 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBoxCategory;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtBoxSupplyName;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox cboWholeUnit;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.ComboBox cboWeightUnit;
+        private System.Windows.Forms.TextBox txtBoxWeight;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtBoxAreaWidth;
+        private System.Windows.Forms.ComboBox cboAreaUnit;
+        private System.Windows.Forms.TextBox txtBoxAreaLength;
+        private System.Windows.Forms.ComboBox cboLengthUnit;
+        private System.Windows.Forms.TextBox txtBoxLength;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.DataGridView datagridEmpList;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.DataGridView datagridSuppliesList;
+        private System.Windows.Forms.TextBox txtBoxTypeOfM;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtBoxWhole;
+        private System.Windows.Forms.ComboBox cboVolumeUnit;
+        private System.Windows.Forms.TextBox txtBoxVolume;
         private System.Windows.Forms.Label label5;
     }
 }
