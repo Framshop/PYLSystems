@@ -62,13 +62,14 @@
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.gpButtonNewForm = new System.Windows.Forms.GroupBox();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.gpButtons = new System.Windows.Forms.GroupBox();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.lvwItemSold = new System.Windows.Forms.ListView();
             this.lvwSupply_Items_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvwSupply_Category_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvwCategoryName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvwSupplyName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.gpButtons = new System.Windows.Forms.GroupBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.lblsupply_categoryID = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tlTaskBar.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -455,6 +456,7 @@
             // 
             // gpSupplierDetails
             // 
+            this.gpSupplierDetails.Controls.Add(this.lblsupply_categoryID);
             this.gpSupplierDetails.Controls.Add(this.lblAddress);
             this.gpSupplierDetails.Controls.Add(this.txtDetails);
             this.gpSupplierDetails.Controls.Add(this.txtAddress);
@@ -524,33 +526,6 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // gpButtons
-            // 
-            this.gpButtons.Controls.Add(this.btnAddSupplier);
-            this.gpButtons.Controls.Add(this.btnCancel);
-            this.gpButtons.Controls.Add(this.btnUpdate);
-            this.gpButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gpButtons.Location = new System.Drawing.Point(2, 494);
-            this.gpButtons.Margin = new System.Windows.Forms.Padding(2);
-            this.gpButtons.Name = "gpButtons";
-            this.gpButtons.Padding = new System.Windows.Forms.Padding(2);
-            this.gpButtons.Size = new System.Drawing.Size(321, 89);
-            this.gpButtons.TabIndex = 2;
-            this.gpButtons.TabStop = false;
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.lblSearch);
-            this.groupBox10.Controls.Add(this.txtSearch);
-            this.groupBox10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox10.Location = new System.Drawing.Point(2, 2);
-            this.groupBox10.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox10.Size = new System.Drawing.Size(813, 29);
-            this.groupBox10.TabIndex = 1;
-            this.groupBox10.TabStop = false;
-            // 
             // lvwItemSold
             // 
             this.lvwItemSold.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -578,15 +553,49 @@
             // 
             // lvwCategoryName
             // 
-            this.lvwCategoryName.DisplayIndex = 2;
             this.lvwCategoryName.Text = "Category Name";
             this.lvwCategoryName.Width = 150;
             // 
             // lvwSupplyName
             // 
-            this.lvwSupplyName.DisplayIndex = 3;
             this.lvwSupplyName.Text = "Supply Name";
             this.lvwSupplyName.Width = 150;
+            // 
+            // gpButtons
+            // 
+            this.gpButtons.Controls.Add(this.btnAddSupplier);
+            this.gpButtons.Controls.Add(this.btnCancel);
+            this.gpButtons.Controls.Add(this.btnUpdate);
+            this.gpButtons.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gpButtons.Location = new System.Drawing.Point(2, 494);
+            this.gpButtons.Margin = new System.Windows.Forms.Padding(2);
+            this.gpButtons.Name = "gpButtons";
+            this.gpButtons.Padding = new System.Windows.Forms.Padding(2);
+            this.gpButtons.Size = new System.Drawing.Size(321, 89);
+            this.gpButtons.TabIndex = 2;
+            this.gpButtons.TabStop = false;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.lblSearch);
+            this.groupBox10.Controls.Add(this.txtSearch);
+            this.groupBox10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox10.Location = new System.Drawing.Point(2, 2);
+            this.groupBox10.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox10.Size = new System.Drawing.Size(813, 29);
+            this.groupBox10.TabIndex = 1;
+            this.groupBox10.TabStop = false;
+            // 
+            // lblsupply_categoryID
+            // 
+            this.lblsupply_categoryID.AutoSize = true;
+            this.lblsupply_categoryID.Location = new System.Drawing.Point(63, 193);
+            this.lblsupply_categoryID.Name = "lblsupply_categoryID";
+            this.lblsupply_categoryID.Size = new System.Drawing.Size(0, 13);
+            this.lblsupply_categoryID.TabIndex = 20;
+            this.lblsupply_categoryID.Visible = false;
             // 
             // frmSupplier
             // 
@@ -669,5 +678,6 @@
         private System.Windows.Forms.ColumnHeader lvwSupply_Category_ID;
         private System.Windows.Forms.ColumnHeader lvwCategoryName;
         private System.Windows.Forms.ColumnHeader lvwSupplyName;
+        private System.Windows.Forms.Label lblsupply_categoryID;
     }
 }

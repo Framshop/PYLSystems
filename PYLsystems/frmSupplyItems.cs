@@ -17,6 +17,7 @@ namespace PYLsystems
         public static string typeOfMeasure_dbCellClick = "";
         public static string supply_categoryID = "";
         public static string typeOfMeasure_db = "";
+        public static string quantity_left = "";
         MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
         public frmSupplyItems()
         {
@@ -36,7 +37,46 @@ namespace PYLsystems
         public void RefreshDatabase()
         {
             myConn.Open();
-            string query = "SELECT s_i.supply_itemsID as 'Supply ID',s_c.supply_categoryID as 'Supply Category ID',s_i.supplyName as 'Supply Name',s_c.categoryName as 'Category Name',s_c.typeOfMeasure as 'Type of Measure',s_i.supplyDescription as 'Supply Description',s_i.measureA as 'Measurement A',IFNULL(s_i.measureB,'Not Applicable') as 'Measurement B',case when s_i.measureB is not null then CONCAT(s_i.measureA,' x ',s_i.measureB) else s_i.measureA end as 'Measurement',s_i.unitMeasure as 'Unit Measure',s_i.unitPurchasePrice as 'Purchase Price',IF(active=0,'Active','Inactive') as 'Active',s_c.typeOfMeasure FROM supply_items s_i LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID";
+            string query = "SELECT s_i.supply_itemsID as 'Supply ID',s_c.supply_categoryID as 'Supply Category ID'," +
+"s_i.supplyName as 'Supply Name',s_c.categoryName as 'Category Name',s_c.typeOfMeasure as 'Type of Measure'," +
+"s_i.supplyDescription as 'Supply Description',s_i.measureA as 'Measurement A',IFNULL(s_i.measureB, 'Not Applicable') as " +
+"'Measurement B',case when s_i.measureB is not null then CONCAT(s_i.measureA,' x ',s_i.measureB) else s_i.measureA end" +
+ " as 'Measurement',s_i.unitMeasure as 'Unit Measure',s_i.unitPurchasePrice as 'Purchase Price'," +
+" IF(active = 0, 'Active', 'Inactive') as 'Active',s_c.typeOfMeasure," +
+ " IFNULL(IF(s_c.typeOfMeasure = 'Volume', (1 - ((IFNULL(d_m4.DamagedMaterials, 0) + IFNULL(f_m4.FrameMaterials, 0) + IFNULL(j_d4.JobOrderDetailsMaterials, 0)) / (s_d4.StockInVolume * s_i.measureA))) * (s_d4.StockInVolume), IF(s_c.typeOfMeasure = 'Weight', (1 - ((IFNULL(d_m3.DamagedMaterials, 0) + IFNULL(f_m3.FrameMaterials, 0) + IFNULL(j_d3.JobOrderDetailsMaterials, 0)) / (s_d2.StockInWeight * s_i.measureA))) * (s_d2.StockInWeight), IF(s_c.typeOfMeasure = 'Length', (1 - ((IFNULL(d_m.DamagedMaterials, 0) + IFNULL(f_m.FrameMaterials, 0) + IFNULL(j_d.JobOrderDetailsMaterials, 0)) / (s_d3.StockInLength * s_i.measureA))) * (s_d3.StockInLength), IF(s_c.typeOfMeasure = 'Area', (1 - ((IFNULL(d_m1.DamagedMaterials, 0) + IFNULL(f_m1.FrameMaterials, 0) + IFNULL(j_d1.JobOrderDetailsMaterials, 0)) / (s_d0.StockInArea * (s_i.measureA * s_i.measureB)))) * (s_d0.StockInArea), IF(s_c.typeOfMeasure = 'Whole', IFNULL(s_d1.StockInWhole, 0) - IFNULL(d_m2.DamagedMaterials, 0) + IFNULL(f_m2.FrameMaterials, 0) + IFNULL(j_d2.JobOrderDetailsMaterials, 0), 0))))), 0) as 'Quantity Left'," +
+ "   IFNULL(IF(s_c.typeOfMeasure = 'Volume',(s_i.measureA * s_d4.StockInVolume) - IFNULL(d_m4.DamagedMaterials, 0)+ IFNULL(f_m4.FrameMaterials, 0) + IFNULL(j_d4.JobOrderDetailsMaterials, 0), IF(s_c.typeOfMeasure = 'Weight', (s_i.measureA * s_d2.StockInWeight) - IFNULL(d_m3.DamagedMaterials, 0)+ IFNULL(f_m3.FrameMaterials, 0) + IFNULL(j_d3.JobOrderDetailsMaterials, 0), IF(s_c.typeOfMeasure = 'Length',(s_i.measureA * s_d3.StockInLength) - IFNULL(d_m.DamagedMaterials, 0)+ IFNULL(f_m.FrameMaterials, 0) + IFNULL(j_d.JobOrderDetailsMaterials, 0), IF(s_c.typeOfMeasure = 'Area', ((s_i.measureA * s_i.measureB) * s_d0.StockInArea) - IFNULL(d_m1.DamagedMaterials, 0)+ IFNULL(f_m1.FrameMaterials, 0) + IFNULL(j_d1.JobOrderDetailsMaterials, 0), IF(s_c.typeOfMeasure = 'Whole',s_i.measureA * s_d1.StockInWhole -  IFNULL(d_m2.DamagedMaterials, 0)+ IFNULL(f_m2.FrameMaterials, 0) + IFNULL(j_d2.JobOrderDetailsMaterials, 0), 0))))), 0) as 'Quantity Left in Measurement' " +
+ " FROM supply_items s_i" +
+ " LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(d_m.totalQuantityStockedOut,0)) as 'DamagedMaterials' FROM damaged_materials d_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = d_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Length' GROUP BY s_i.supply_itemsID) " +
+" as d_m ON d_m.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(f_m.measureAtoOG,0)) as 'FrameMaterials' FROM frame_materials f_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = f_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Length' GROUP BY s_i.supply_itemsID) " +
+" as f_m ON f_m.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(j_d.measureAtoOG,0)) as 'JobOrderDetailsMaterials' FROM jorder_details j_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = j_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Length' GROUP BY s_i.supply_itemsID) " +
+" as j_d ON j_d.supply_itemsID = s_i.supply_itemsID" +
+
+" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(d_m.totalQuantityStockedOut,0)) as 'DamagedMaterials' FROM damaged_materials d_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = d_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Area' GROUP BY s_i.supply_itemsID) " +
+" as d_m1 ON d_m1.supply_itemsID = s_i.supply_itemsID  LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(f_m.measureAtoOG,0)) as 'FrameMaterials' FROM frame_materials f_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = f_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Area' GROUP BY s_i.supply_itemsID) " +
+" as f_m1 ON f_m1.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(j_d.measureAtoOG,0)) as 'JobOrderDetailsMaterials' FROM jorder_details j_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = j_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Area' GROUP BY s_i.supply_itemsID) " +
+" as j_d1 ON j_d1.supply_itemsID = s_i.supply_itemsID" +
+
+
+" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(d_m.totalQuantityStockedOut,0)) as 'DamagedMaterials' FROM damaged_materials d_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = d_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Whole' GROUP BY s_i.supply_itemsID) " +
+" as d_m2 ON d_m2.supply_itemsID = s_i.supply_itemsID  LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(f_m.measureAtoOG,0)) as 'FrameMaterials' FROM frame_materials f_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = f_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Whole' GROUP BY s_i.supply_itemsID) " +
+" as f_m2 ON f_m2.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(j_d.measureAtoOG,0)) as 'JobOrderDetailsMaterials' FROM jorder_details j_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = j_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Whole' GROUP BY s_i.supply_itemsID) " +
+" as j_d2 ON j_d2.supply_itemsID = s_i.supply_itemsID" +
+
+" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(d_m.totalQuantityStockedOut,0)) as 'DamagedMaterials' FROM damaged_materials d_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = d_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Weight' GROUP BY s_i.supply_itemsID) " +
+" as d_m3 ON d_m3.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(f_m.measureAtoOG,0)) as 'FrameMaterials' FROM frame_materials f_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = f_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Weight' GROUP BY s_i.supply_itemsID) " +
+" as f_m3 ON f_m3.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(j_d.measureAtoOG,0)) as 'JobOrderDetailsMaterials' FROM jorder_details j_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = j_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Weight' GROUP BY s_i.supply_itemsID) " +
+" as j_d3 ON j_d3.supply_itemsID = s_i.supply_itemsID" +
+
+" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(d_m.totalQuantityStockedOut,0)) as 'DamagedMaterials' FROM damaged_materials d_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = d_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Volume' GROUP BY s_i.supply_itemsID) " +
+" as d_m4 ON d_m4.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(f_m.measureAtoOG,0)) as 'FrameMaterials' FROM frame_materials f_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = f_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Volume' GROUP BY s_i.supply_itemsID) " +
+" as f_m4 ON f_m4.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(j_d.measureAtoOG,0)) as 'JobOrderDetailsMaterials' FROM jorder_details j_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = j_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Volume'GROUP BY s_i.supply_itemsID) " +
+" as j_d4 ON j_d4.supply_itemsID = s_i.supply_itemsID" +
+
+" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(s_d.stockin_quantity,0)) as 'StockInArea' FROM supply_details s_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Area' GROUP BY s_d.supply_itemsID) s_d0 ON s_d0.supply_itemsID = s_i.supply_itemsID" +
+" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(s_d.stockin_quantity,0)) as 'StockInWhole' FROM supply_details s_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Whole' GROUP BY s_d.supply_itemsID) s_d1 ON s_d1.supply_itemsID = s_i.supply_itemsID" +
+" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(s_d.stockin_quantity,0)) as  'StockInWeight'FROM supply_details s_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Weight' GROUP BY s_d.supply_itemsID) s_d2 ON s_d2.supply_itemsID = s_i.supply_itemsID" +
+" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(s_d.stockin_quantity,0)) as 'StockInLength' FROM supply_details s_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Length' GROUP BY s_d.supply_itemsID) s_d3 ON s_d3.supply_itemsID = s_i.supply_itemsID" +
+" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(s_d.stockin_quantity,0)) as 'StockInVolume' FROM supply_details s_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Volume' GROUP BY s_d.supply_itemsID) s_d4 ON s_d4.supply_itemsID = s_i.supply_itemsID WHERE s_i.supplyName LIKE '%" + txtSearch.Text + "%' OR s_c.categoryName LIKE '%" + txtSearch.Text + "%'";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
@@ -48,6 +88,7 @@ namespace PYLsystems
             dgSupplyItems.Columns["Measurement A"].Visible = false;
             dgSupplyItems.Columns["Measurement B"].Visible = false;
             dgSupplyItems.Columns["typeOfMeasure"].Visible = false;
+            dgSupplyItems.Columns["Active"].Visible = false;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -68,7 +109,46 @@ namespace PYLsystems
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             myConn.Open();
-            string query = "SELECT s_i.supply_itemsID as 'Supply ID',s_c.supply_categoryID as 'Supply Category ID',s_i.supplyName as 'Supply Name',s_c.categoryName as 'Category Name',s_c.typeOfMeasure as 'Type of Measure',s_i.supplyDescription as 'Supply Description',s_i.measureA as 'Measurement A',IFNULL(s_i.measureB,'Not Applicable') as 'Measurement B',s_i.unitMeasure as 'Unit Measure',s_i.unitPurchasePrice as 'Purchase Price per unit',IF(active=0,'Active','Inactive') as 'Active',s_c.typeOfMeasure FROM supply_items s_i LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_i.supplyName LIKE '%" + txtSearch.Text +  "%' OR s_c.categoryName LIKE '%" + txtSearch.Text + "%'";
+            string query = "SELECT s_i.supply_itemsID as 'Supply ID',s_c.supply_categoryID as 'Supply Category ID'," +
+"s_i.supplyName as 'Supply Name',s_c.categoryName as 'Category Name',s_c.typeOfMeasure as 'Type of Measure'," +
+"s_i.supplyDescription as 'Supply Description',s_i.measureA as 'Measurement A',IFNULL(s_i.measureB, 'Not Applicable') as "+
+"'Measurement B',case when s_i.measureB is not null then CONCAT(s_i.measureA,' x ',s_i.measureB) else s_i.measureA end"+
+ " as 'Measurement',s_i.unitMeasure as 'Unit Measure',s_i.unitPurchasePrice as 'Purchase Price',"+
+" IF(active = 0, 'Active', 'Inactive') as 'Active',s_c.typeOfMeasure,"+
+ " IFNULL(IF(s_c.typeOfMeasure = 'Volume', (1 - ((IFNULL(d_m4.DamagedMaterials, 0) + IFNULL(f_m4.FrameMaterials, 0) + IFNULL(j_d4.JobOrderDetailsMaterials, 0)) / (s_d4.StockInVolume * s_i.measureA))) * (s_d4.StockInVolume), IF(s_c.typeOfMeasure = 'Weight', (1 - ((IFNULL(d_m3.DamagedMaterials, 0) + IFNULL(f_m3.FrameMaterials, 0) + IFNULL(j_d3.JobOrderDetailsMaterials, 0)) / (s_d2.StockInWeight * s_i.measureA))) * (s_d2.StockInWeight), IF(s_c.typeOfMeasure = 'Length', (1 - ((IFNULL(d_m.DamagedMaterials, 0) + IFNULL(f_m.FrameMaterials, 0) + IFNULL(j_d.JobOrderDetailsMaterials, 0)) / (s_d3.StockInLength * s_i.measureA))) * (s_d3.StockInLength), IF(s_c.typeOfMeasure = 'Area', (1 - ((IFNULL(d_m1.DamagedMaterials, 0) + IFNULL(f_m1.FrameMaterials, 0) + IFNULL(j_d1.JobOrderDetailsMaterials, 0)) / (s_d0.StockInArea * (s_i.measureA * s_i.measureB)))) * (s_d0.StockInArea), IF(s_c.typeOfMeasure = 'Whole', IFNULL(s_d1.StockInWhole, 0) - IFNULL(d_m2.DamagedMaterials, 0) + IFNULL(f_m2.FrameMaterials, 0) + IFNULL(j_d2.JobOrderDetailsMaterials, 0), 0))))), 0) as 'Quantity Left'," +
+ "   IFNULL(IF(s_c.typeOfMeasure = 'Volume',(s_i.measureA * s_d4.StockInVolume) - IFNULL(d_m4.DamagedMaterials, 0)+ IFNULL(f_m4.FrameMaterials, 0) + IFNULL(j_d4.JobOrderDetailsMaterials, 0), IF(s_c.typeOfMeasure = 'Weight', (s_i.measureA * s_d2.StockInWeight) - IFNULL(d_m3.DamagedMaterials, 0)+ IFNULL(f_m3.FrameMaterials, 0) + IFNULL(j_d3.JobOrderDetailsMaterials, 0), IF(s_c.typeOfMeasure = 'Length',(s_i.measureA * s_d3.StockInLength) - IFNULL(d_m.DamagedMaterials, 0)+ IFNULL(f_m.FrameMaterials, 0) + IFNULL(j_d.JobOrderDetailsMaterials, 0), IF(s_c.typeOfMeasure = 'Area', ((s_i.measureA * s_i.measureB) * s_d0.StockInArea) - IFNULL(d_m1.DamagedMaterials, 0)+ IFNULL(f_m1.FrameMaterials, 0) + IFNULL(j_d1.JobOrderDetailsMaterials, 0), IF(s_c.typeOfMeasure = 'Whole',s_i.measureA * s_d1.StockInWhole -  IFNULL(d_m2.DamagedMaterials, 0)+ IFNULL(f_m2.FrameMaterials, 0) + IFNULL(j_d2.JobOrderDetailsMaterials, 0), 0))))), 0) as 'Quantity Left in Measurement' " +
+ " FROM supply_items s_i" +
+ " LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(d_m.totalQuantityStockedOut,0)) as 'DamagedMaterials' FROM damaged_materials d_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = d_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Length' GROUP BY s_i.supply_itemsID) "+
+" as d_m ON d_m.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(f_m.measureAtoOG,0)) as 'FrameMaterials' FROM frame_materials f_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = f_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Length' GROUP BY s_i.supply_itemsID) "+
+" as f_m ON f_m.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(j_d.measureAtoOG,0)) as 'JobOrderDetailsMaterials' FROM jorder_details j_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = j_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Length' GROUP BY s_i.supply_itemsID) "+
+" as j_d ON j_d.supply_itemsID = s_i.supply_itemsID"+
+
+" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(d_m.totalQuantityStockedOut,0)) as 'DamagedMaterials' FROM damaged_materials d_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = d_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Area' GROUP BY s_i.supply_itemsID) "+
+" as d_m1 ON d_m1.supply_itemsID = s_i.supply_itemsID  LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(f_m.measureAtoOG,0)) as 'FrameMaterials' FROM frame_materials f_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = f_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Area' GROUP BY s_i.supply_itemsID) "+
+" as f_m1 ON f_m1.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(j_d.measureAtoOG,0)) as 'JobOrderDetailsMaterials' FROM jorder_details j_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = j_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Area' GROUP BY s_i.supply_itemsID) "+
+" as j_d1 ON j_d1.supply_itemsID = s_i.supply_itemsID"+
+
+
+" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(d_m.totalQuantityStockedOut,0)) as 'DamagedMaterials' FROM damaged_materials d_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = d_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Whole' GROUP BY s_i.supply_itemsID) "+
+" as d_m2 ON d_m2.supply_itemsID = s_i.supply_itemsID  LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(f_m.measureAtoOG,0)) as 'FrameMaterials' FROM frame_materials f_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = f_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Whole' GROUP BY s_i.supply_itemsID) "+
+" as f_m2 ON f_m2.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(j_d.measureAtoOG,0)) as 'JobOrderDetailsMaterials' FROM jorder_details j_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = j_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Whole' GROUP BY s_i.supply_itemsID) "+
+" as j_d2 ON j_d2.supply_itemsID = s_i.supply_itemsID"+
+
+" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(d_m.totalQuantityStockedOut,0)) as 'DamagedMaterials' FROM damaged_materials d_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = d_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Weight' GROUP BY s_i.supply_itemsID) "+
+" as d_m3 ON d_m3.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(f_m.measureAtoOG,0)) as 'FrameMaterials' FROM frame_materials f_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = f_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Weight' GROUP BY s_i.supply_itemsID) "+
+" as f_m3 ON f_m3.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(j_d.measureAtoOG,0)) as 'JobOrderDetailsMaterials' FROM jorder_details j_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = j_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Weight' GROUP BY s_i.supply_itemsID) "+
+" as j_d3 ON j_d3.supply_itemsID = s_i.supply_itemsID"+
+
+" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(d_m.totalQuantityStockedOut,0)) as 'DamagedMaterials' FROM damaged_materials d_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = d_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Volume' GROUP BY s_i.supply_itemsID) "+
+" as d_m4 ON d_m4.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(f_m.measureAtoOG,0)) as 'FrameMaterials' FROM frame_materials f_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = f_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Volume' GROUP BY s_i.supply_itemsID) "+
+" as f_m4 ON f_m4.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(j_d.measureAtoOG,0)) as 'JobOrderDetailsMaterials' FROM jorder_details j_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = j_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Volume'GROUP BY s_i.supply_itemsID) "+
+" as j_d4 ON j_d4.supply_itemsID = s_i.supply_itemsID"+
+
+" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(s_d.stockin_quantity,0)) as 'StockInArea' FROM supply_details s_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Area' GROUP BY s_d.supply_itemsID) s_d0 ON s_d0.supply_itemsID = s_i.supply_itemsID"+
+" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(s_d.stockin_quantity,0)) as 'StockInWhole' FROM supply_details s_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Whole' GROUP BY s_d.supply_itemsID) s_d1 ON s_d1.supply_itemsID = s_i.supply_itemsID"+
+" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(s_d.stockin_quantity,0)) as  'StockInWeight'FROM supply_details s_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Weight' GROUP BY s_d.supply_itemsID) s_d2 ON s_d2.supply_itemsID = s_i.supply_itemsID"+
+" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(s_d.stockin_quantity,0)) as 'StockInLength' FROM supply_details s_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Length' GROUP BY s_d.supply_itemsID) s_d3 ON s_d3.supply_itemsID = s_i.supply_itemsID"+
+" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(s_d.stockin_quantity,0)) as 'StockInVolume' FROM supply_details s_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Volume' GROUP BY s_d.supply_itemsID) s_d4 ON s_d4.supply_itemsID = s_i.supply_itemsID WHERE s_i.supplyName LIKE '%" + txtSearch.Text +  "%' OR s_c.categoryName LIKE '%" + txtSearch.Text + "%'";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
@@ -80,6 +160,7 @@ namespace PYLsystems
             dgSupplyItems.Columns["Measurement A"].Visible = false;
             dgSupplyItems.Columns["Measurement B"].Visible = false;
             dgSupplyItems.Columns["typeOfMeasure"].Visible = false;
+            dgSupplyItems.Columns["Active"].Visible = false;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -147,25 +228,25 @@ namespace PYLsystems
                 lblLength.Enabled = false;
 
                 txtLength.Text = "";
-                cboLength.Text = "";
+                cboLength.SelectedIndex = -1;
 
                 lblWeight.Enabled = false;
                 txtWeight.Enabled = false;
                 cboWeight.Enabled = false;
 
                 txtWeight.Text = "";
-                cboWeight.Text = "";
+                cboWeight.SelectedIndex = -1;
 
                 cboWhole.Enabled = false;
                 lblWhole.Enabled = false;
 
-                cboWhole.Text = "";
+                cboWhole.SelectedIndex = -1;
 
                 cboVolume.Enabled = false;
                 lblVolume.Enabled = false;
                 txtVolume.Enabled = false;
 
-                cboVolume.Text = "";
+                cboVolume.SelectedIndex = -1;
                 txtVolume.Text = "";
             }
             else if (typeOfMeasure_db == "Length")
@@ -184,25 +265,25 @@ namespace PYLsystems
 
                 txtArea1.Text = "";
                 txtArea2.Text = "";
-                cboArea.Text = "";
+                cboArea.SelectedIndex = -1;
 
                 lblWeight.Enabled = false;
                 txtWeight.Enabled = false;
                 cboWeight.Enabled = false;
 
                 txtWeight.Text = "";
-                cboWeight.Text = "";
+                cboWeight.SelectedIndex = -1;
 
                 cboWhole.Enabled = false;
                 lblWhole.Enabled = false;
 
-                cboWhole.Text = "";
+                cboWhole.SelectedIndex = -1;
 
                 cboVolume.Enabled = false;
                 lblVolume.Enabled = false;
                 txtVolume.Enabled = false;
 
-                cboVolume.Text = "";
+                cboVolume.SelectedIndex = -1;
                 txtVolume.Text = "";
             }
             else if (typeOfMeasure_db == "Weight")
@@ -221,13 +302,13 @@ namespace PYLsystems
 
                 txtArea1.Text = "";
                 txtArea2.Text = "";
-                cboArea.Text = "";
+                cboArea.SelectedIndex = -1;
 
                 txtLength.Enabled = false;
                 cboLength.Enabled = false;
                 lblLength.Enabled = false;
 
-                cboLength.Text = "";
+                cboLength.SelectedIndex = -1;
                 txtLength.Text = "";
 
                 cboWhole.Enabled = false;
@@ -237,10 +318,10 @@ namespace PYLsystems
                 lblVolume.Enabled = false;
                 txtVolume.Enabled = false;
 
-                cboVolume.Text = "";
+                cboVolume.SelectedIndex = -1;
                 txtVolume.Text = "";
 
-                cboWhole.Text = "";
+                cboWhole.SelectedIndex = -1;
             }
             else if (typeOfMeasure_db == "Volume")
             {
@@ -255,7 +336,7 @@ namespace PYLsystems
                 cboWeight.Enabled = false;
 
                 txtWeight.Text = "";
-                cboWeight.Text = "";
+                cboWeight.SelectedIndex = -1;
 
                 lblArea.Enabled = false;
                 txtArea1.Enabled = false;
@@ -265,19 +346,19 @@ namespace PYLsystems
 
                 txtArea1.Text = "";
                 txtArea2.Text = "";
-                cboArea.Text = "";
+                cboArea.SelectedIndex = -1;
 
                 txtLength.Enabled = false;
                 cboLength.Enabled = false;
                 lblLength.Enabled = false;
 
-                cboLength.Text = "";
+                cboLength.SelectedIndex = -1;
                 txtLength.Text = "";
 
                 cboWhole.Enabled = false;
                 lblWhole.Enabled = false;
 
-                cboWhole.Text = "";
+                cboWhole.SelectedIndex = -1;
             }
             else
             {
@@ -294,13 +375,13 @@ namespace PYLsystems
 
                 txtArea1.Text = "";
                 txtArea2.Text = "";
-                cboArea.Text = "";
+                cboArea.SelectedIndex = -1;
 
                 txtLength.Enabled = false;
                 cboLength.Enabled = false;
                 lblLength.Enabled = false;
 
-                cboLength.Text = "";
+                cboLength.SelectedIndex = -1;
                 txtLength.Text = "";
 
                 lblWeight.Enabled = false;
@@ -308,13 +389,13 @@ namespace PYLsystems
                 cboWeight.Enabled = false;
 
                 txtWeight.Text = "";
-                cboWeight.Text = "";
+                cboWeight.SelectedIndex = -1;
 
                 cboVolume.Enabled = false;
                 lblVolume.Enabled = false;
                 txtVolume.Enabled = false;
 
-                cboVolume.Text = "";
+                cboVolume.SelectedIndex = -1;
                 txtVolume.Text = "";
             }
             myConn.Close();
@@ -388,6 +469,24 @@ namespace PYLsystems
             lblWhole.Enabled = false;
             btnStockInSelectedItem.Enabled = false;
             btnUpdateDetails.Enabled = false;
+            btnDamageItem.Enabled = false;
+            txtVolume.Text = "";
+            cboVolume.SelectedIndex = -1;
+
+            txtArea1.Text = "";
+            txtArea2.Text = "";
+            cboActive.SelectedIndex = -1;
+
+            cboLength.SelectedIndex = -1;
+            txtLength.Text = "";
+
+            txtWeight.Text = "";
+            cboWeight.SelectedIndex = -1;
+
+            cboWhole.SelectedIndex = -1;
+
+            cboVolume.SelectedIndex = -1;
+            txtVolume.Text = "";
         }
 
         private void btnCreateItem_Click(object sender, EventArgs e)
@@ -415,7 +514,7 @@ namespace PYLsystems
                     RefreshDatabase();
                     MessageBox.Show("Insert Successful");
                 }
-                if (typeOfMeasure_db == "Area")
+                else if (typeOfMeasure_db == "Area")
                 {
                     string myQuery = "INSERT INTO supply_items (supply_categoryID,supplyName,supplyDescription,measureA,measureB,unitMeasure,unitPurchasePrice,active) values(" + supply_categoryID + ",'" + txtItemName.Text + "','" + txtItemDescription.Text + "'," + txtArea1.Text + "," + txtArea2.Text + ",'" + cboArea.Text + "'," + txtPurchaseUnitPrice.Text + "," + cboActive.Text + ")";
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
@@ -425,7 +524,7 @@ namespace PYLsystems
                     RefreshDatabase();
                     MessageBox.Show("Insert Successful");
                 }
-                if (typeOfMeasure_db == "Weight")
+                else if (typeOfMeasure_db == "Weight")
                 {
                     string myQuery = "INSERT INTO supply_items (supply_categoryID,supplyName,supplyDescription,measureA,unitMeasure,unitPurchasePrice,active) values(" + supply_categoryID + ",'" + txtItemName.Text + "','" + txtItemDescription.Text + "'," + txtWeight.Text + ",'" + cboWeight.Text + "'," + txtPurchaseUnitPrice.Text + "," + cboActive.Text + ")";
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
@@ -435,7 +534,7 @@ namespace PYLsystems
                     RefreshDatabase();
                     MessageBox.Show("Insert Successful");
                 }
-                if (typeOfMeasure_db == "Volume")
+                else if (typeOfMeasure_db == "Volume")
                 {
                     string myQuery = "INSERT INTO supply_items (supply_categoryID,supplyName,supplyDescription,measureA,unitMeasure,unitPurchasePrice,active) values(" + supply_categoryID + ",'" + txtItemName.Text + "','" + txtItemDescription.Text + "'," + txtVolume.Text + ",'" + cboVolume.Text + "'," + txtPurchaseUnitPrice.Text + "," + cboActive.Text + ")";
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
@@ -601,8 +700,8 @@ namespace PYLsystems
 
         private void dgSupplyItems_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-         
-            supplyID = dgSupplyItems.CurrentRow.Cells[0].Value.ToString();
+            quantity_left = dgSupplyItems.CurrentRow.Cells[13].Value.ToString();
+           supplyID = dgSupplyItems.CurrentRow.Cells[0].Value.ToString();
             validationUpdateItem();
             typeOfMeasure_dbCellClick = dgSupplyItems.CurrentRow.Cells[4].Value.ToString();
             if (typeOfMeasure_dbCellClick == "Area")
@@ -897,7 +996,7 @@ namespace PYLsystems
 
         private void cboArea_SelectedIndexChanged(object sender, EventArgs e)
         {
-       
+            
             validationCreateItem();
         }
 
@@ -928,7 +1027,9 @@ namespace PYLsystems
 
         private void btnUpdateDetails_Click(object sender, EventArgs e)
         {
-
+            btnUpdateDetails.Enabled = false;
+            btnStockInSelectedItem.Enabled = false;
+            btnDamageItem.Enabled = false;
           
                 if (typeOfMeasure_db == "Length")
                 {
@@ -1107,108 +1208,119 @@ namespace PYLsystems
 
         private void btnDamageItem_Click(object sender, EventArgs e)
         {
-            frmSupplyDamage damagedItems = new frmSupplyDamage();
+            double quantity = double.Parse(quantity_left);
+            if (quantity > 0)
+            {
 
-            frmSupplyDamage.Global.supply_category_typeOfMeasure = dgSupplyItems.CurrentRow.Cells[12].Value.ToString();
-            frmSupplyDamage.Global.supply_itemsID  = dgSupplyItems.CurrentRow.Cells[0].Value.ToString();
-            damagedItems.txtItemName.Text = dgSupplyItems.CurrentRow.Cells[2].Value.ToString();
-            damagedItems.txtSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells[3].Value.ToString();
-            frmSupplyDamage.Global.supply_purchase_price = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
-            frmSupplyDamage.Global.measureAOG = dgSupplyItems.CurrentRow.Cells[6].Value.ToString();
-            frmSupplyDamage.Global.measureBOG = dgSupplyItems.CurrentRow.Cells[7].Value.ToString();
-            damagedItems.txtUnitMeasure.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
-            
-           
-            if (typeOfMeasure_dbCellClick == "Length")
-            {
-                damagedItems.cboLength.Enabled = true;
-                damagedItems.txtLength.Enabled = true;
-                damagedItems.lblLength.Enabled = true;
-                damagedItems.cboLength.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
-            }
-           else if (typeOfMeasure_dbCellClick == "Area")
-            {
-                damagedItems.cboArea.Enabled = true;
-                damagedItems.cboArea.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
-                damagedItems.txtArea1.Enabled = true;
-                damagedItems.txtArea2.Enabled = true;
-                damagedItems.lblX.Enabled = true;
-                damagedItems.lblArea.Enabled = true;
-            }
-           else if (typeOfMeasure_dbCellClick == "Weight")
-            {
-                damagedItems.txtWeight.Enabled = true;
-                damagedItems.lblWeight.Enabled = true;
-                damagedItems.cboWeight.Enabled = true;
-                damagedItems.cboWeight.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
-            }
-           else if (typeOfMeasure_dbCellClick == "Volume")
-            {
-                damagedItems.txtVolume.Enabled = true;
-                damagedItems.lblVolume.Enabled = true;
-                damagedItems.cboVolume.Enabled = true;
-                damagedItems.cboVolume.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                frmSupplyDamage damagedItems = new frmSupplyDamage();
+                frmSupplyDamage.Global.quantity_left = dgSupplyItems.CurrentRow.Cells[13].Value.ToString();
+                frmSupplyDamage.Global.supply_category_typeOfMeasure = dgSupplyItems.CurrentRow.Cells[12].Value.ToString();
+                frmSupplyDamage.Global.supply_itemsID = dgSupplyItems.CurrentRow.Cells[0].Value.ToString();
+                damagedItems.txtItemName.Text = dgSupplyItems.CurrentRow.Cells[2].Value.ToString();
+                damagedItems.txtSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells[3].Value.ToString();
+                frmSupplyDamage.Global.supply_purchase_price = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
+                frmSupplyDamage.Global.measureAOG = dgSupplyItems.CurrentRow.Cells[6].Value.ToString();
+                frmSupplyDamage.Global.measureBOG = dgSupplyItems.CurrentRow.Cells[7].Value.ToString();
+                damagedItems.txtUnitMeasure.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+
+
+                if (typeOfMeasure_dbCellClick == "Length")
+                {
+                    damagedItems.cboLength.Enabled = true;
+                    damagedItems.txtLength.Enabled = true;
+                    damagedItems.lblLength.Enabled = true;
+                    damagedItems.cboLength.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                }
+                else if (typeOfMeasure_dbCellClick == "Area")
+                {
+                    damagedItems.cboArea.Enabled = true;
+                    damagedItems.cboArea.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                    damagedItems.txtArea1.Enabled = true;
+                    damagedItems.txtArea2.Enabled = true;
+                    damagedItems.lblX.Enabled = true;
+                    damagedItems.lblArea.Enabled = true;
+                }
+                else if (typeOfMeasure_dbCellClick == "Weight")
+                {
+                    damagedItems.txtWeight.Enabled = true;
+                    damagedItems.lblWeight.Enabled = true;
+                    damagedItems.cboWeight.Enabled = true;
+                    damagedItems.cboWeight.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                }
+                else if (typeOfMeasure_dbCellClick == "Volume")
+                {
+                    damagedItems.txtVolume.Enabled = true;
+                    damagedItems.lblVolume.Enabled = true;
+                    damagedItems.cboVolume.Enabled = true;
+                    damagedItems.cboVolume.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                }
+                else
+                {
+                    damagedItems.lblWhole.Enabled = true;
+                    damagedItems.cboWhole.Enabled = true;
+                    damagedItems.txtWhole.Enabled = true;
+                    damagedItems.cboWhole.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                }
+                damagedItems.ShowDialog();
+                RefreshDatabase();
+                frmSupplyDamage.Global.quantity_left = "";
+                frmSupplyDamage.Global.supply_category_typeOfMeasure = "";
+                frmSupplyDamage.Global.supply_purchase_price = "";
+                frmSupplyDamage.Global.supply_itemsID = "";
+                frmSupplyDamage.Global.measureAOG = "";
+                frmSupplyDamage.Global.measureBOG = "";
+                cboSupplyCategory.SelectedIndex = -1;
+                txtItemName.Text = "";
+                txtItemDescription.Text = "";
+                cboActive.SelectedIndex = -1;
+
+                txtPurchaseUnitPrice.Text = "";
+                supply_categoryID = "";
+                typeOfMeasure_db = "";
+                supplyID = "";
+
+                lblArea.Enabled = false;
+                txtArea1.Enabled = false;
+                txtArea2.Enabled = false;
+                cboArea.Enabled = false;
+                lblX.Enabled = false;
+
+                txtLength.Enabled = false;
+                cboLength.Enabled = false;
+                lblLength.Enabled = false;
+
+                lblWeight.Enabled = false;
+                txtWeight.Enabled = false;
+                cboWeight.Enabled = false;
+
+                cboVolume.Enabled = false;
+                lblVolume.Enabled = false;
+                txtVolume.Enabled = false;
+                cboWhole.Enabled = false;
+                lblWhole.Enabled = false;
+                btnStockInSelectedItem.Enabled = false;
+                btnUpdateDetails.Enabled = false;
+                btnDamageItem.Enabled = false;
+                txtArea1.Text = "";
+                txtArea2.Text = "";
+                cboActive.SelectedIndex = -1;
+
+                cboLength.SelectedIndex = -1;
+                txtLength.Text = "";
+
+
+                txtWeight.Text = "";
+                cboWeight.SelectedIndex = -1;
+
+                cboWhole.SelectedIndex = -1;
+
+                cboVolume.SelectedIndex = -1;
+                txtVolume.Text = "";
             }
             else
             {
-                damagedItems.lblWhole.Enabled = true;
-                damagedItems.cboWhole.Enabled = false;
-                damagedItems.cboWhole.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                MessageBox.Show(txtItemName.Text + " needs to be stock in first!");
             }
-            damagedItems.ShowDialog();
-            RefreshDatabase();
-            frmSupplyDamage.Global.supply_category_typeOfMeasure = "";
-            frmSupplyDamage.Global.supply_purchase_price = "";
-            frmSupplyDamage.Global.supply_itemsID = "";
-            frmSupplyDamage.Global.measureAOG = "";
-            frmSupplyDamage.Global.measureBOG = "";
-            cboSupplyCategory.SelectedIndex = -1;
-            txtItemName.Text = "";
-            txtItemDescription.Text = "";
-            cboActive.SelectedIndex = -1;
-
-            txtPurchaseUnitPrice.Text = "";
-            supply_categoryID = "";
-            typeOfMeasure_db = "";
-            supplyID = "";
-
-            lblArea.Enabled = false;
-            txtArea1.Enabled = false;
-            txtArea2.Enabled = false;
-            cboArea.Enabled = false;
-            lblX.Enabled = false;
-
-            txtLength.Enabled = false;
-            cboLength.Enabled = false;
-            lblLength.Enabled = false;
-
-            lblWeight.Enabled = false;
-            txtWeight.Enabled = false;
-            cboWeight.Enabled = false;
-
-            cboVolume.Enabled = false;
-            lblVolume.Enabled = false;
-            txtVolume.Enabled = false;
-            cboWhole.Enabled = false;
-            lblWhole.Enabled = false;
-            btnStockInSelectedItem.Enabled = false;
-            btnUpdateDetails.Enabled = false;
-
-            txtArea1.Text = "";
-            txtArea2.Text = "";
-            cboActive.SelectedIndex = -1;
-
-            cboLength.SelectedIndex = -1;
-            txtLength.Text = "";
-
-
-            txtWeight.Text = "";
-            cboWeight.SelectedIndex = -1;
-
-            cboWhole.SelectedIndex = -1;
-
-            cboVolume.SelectedIndex = -1;
-            txtVolume.Text = "";
         }
     }
     }
