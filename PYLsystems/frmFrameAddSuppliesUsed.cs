@@ -256,7 +256,7 @@ namespace PYLsystems
                 typeOfMeasure,supplyName,unitPriceOG,measureA_OG,measureB_OG,category);
             if (pFrmFrameCreate != null)
             {
-                //pFrmFrameCreate.checkIfExistsBeforeCalc(addEditSuppliesVals);
+                pFrmFrameCreate.checkIfExistsBeforeCalc(addEditSuppliesVals);
             }
             else if (pFrmFrameEdit!=null)
             {

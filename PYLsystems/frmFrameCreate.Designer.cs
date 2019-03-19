@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.datagridPayrollCalc = new System.Windows.Forms.DataGridView();
+            this.dataGridSuppliesUsed = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBoxSalesPrice = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtBoxAmount = new System.Windows.Forms.TextBox();
+            this.txtBoxRawCostTotal = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAddSupply = new System.Windows.Forms.Button();
@@ -48,21 +48,23 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtBoxDescription = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBoxDimensionA = new System.Windows.Forms.TextBox();
             this.lblEmpName = new System.Windows.Forms.Label();
-            this.txtBoxEmployeeName = new System.Windows.Forms.TextBox();
+            this.txtBoxFrameName = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
+            this.txtBoxDimensionB = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datagridPayrollCalc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSuppliesUsed)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -135,7 +137,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.datagridPayrollCalc);
+            this.groupBox4.Controls.Add(this.dataGridSuppliesUsed);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(3, 3);
             this.groupBox4.Name = "groupBox4";
@@ -144,37 +146,37 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Supplies Used for A Single Unit of Frame";
             // 
-            // datagridPayrollCalc
+            // dataGridSuppliesUsed
             // 
-            this.datagridPayrollCalc.AllowUserToAddRows = false;
-            this.datagridPayrollCalc.AllowUserToDeleteRows = false;
-            this.datagridPayrollCalc.AllowUserToResizeRows = false;
-            this.datagridPayrollCalc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.datagridPayrollCalc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.datagridPayrollCalc.DefaultCellStyle = dataGridViewCellStyle1;
-            this.datagridPayrollCalc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.datagridPayrollCalc.Location = new System.Drawing.Point(3, 22);
-            this.datagridPayrollCalc.Name = "datagridPayrollCalc";
-            this.datagridPayrollCalc.ReadOnly = true;
-            this.datagridPayrollCalc.RowHeadersVisible = false;
-            this.datagridPayrollCalc.RowTemplate.Height = 28;
-            this.datagridPayrollCalc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridPayrollCalc.Size = new System.Drawing.Size(823, 513);
-            this.datagridPayrollCalc.TabIndex = 2;
+            this.dataGridSuppliesUsed.AllowUserToAddRows = false;
+            this.dataGridSuppliesUsed.AllowUserToDeleteRows = false;
+            this.dataGridSuppliesUsed.AllowUserToResizeRows = false;
+            this.dataGridSuppliesUsed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridSuppliesUsed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridSuppliesUsed.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridSuppliesUsed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridSuppliesUsed.Location = new System.Drawing.Point(3, 22);
+            this.dataGridSuppliesUsed.Name = "dataGridSuppliesUsed";
+            this.dataGridSuppliesUsed.ReadOnly = true;
+            this.dataGridSuppliesUsed.RowHeadersVisible = false;
+            this.dataGridSuppliesUsed.RowTemplate.Height = 28;
+            this.dataGridSuppliesUsed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridSuppliesUsed.Size = new System.Drawing.Size(823, 513);
+            this.dataGridSuppliesUsed.TabIndex = 2;
             // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Controls.Add(this.textBox1);
+            this.groupBox5.Controls.Add(this.txtBoxSalesPrice);
             this.groupBox5.Controls.Add(this.label1);
-            this.groupBox5.Controls.Add(this.txtBoxAmount);
+            this.groupBox5.Controls.Add(this.txtBoxRawCostTotal);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Location = new System.Drawing.Point(3, 547);
             this.groupBox5.Name = "groupBox5";
@@ -192,31 +194,32 @@
             this.label2.TabIndex = 20;
             this.label2.Text = "Input a Sales Price for a Single Unit:";
             // 
-            // textBox1
+            // txtBoxSalesPrice
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(503, 93);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(320, 26);
-            this.textBox1.TabIndex = 19;
+            this.txtBoxSalesPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxSalesPrice.Location = new System.Drawing.Point(503, 93);
+            this.txtBoxSalesPrice.Name = "txtBoxSalesPrice";
+            this.txtBoxSalesPrice.Size = new System.Drawing.Size(320, 26);
+            this.txtBoxSalesPrice.TabIndex = 19;
+            this.txtBoxSalesPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxSalesPrice_KeyPress);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(250, 52);
+            this.label1.Location = new System.Drawing.Point(189, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(238, 20);
+            this.label1.Size = new System.Drawing.Size(299, 20);
             this.label1.TabIndex = 18;
-            this.label1.Text = "Total Raw Cost for a Single Unit:";
+            this.label1.Text = "Calculation of Raw Cost for a Single Unit:";
             // 
-            // txtBoxAmount
+            // txtBoxRawCostTotal
             // 
-            this.txtBoxAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBoxAmount.Location = new System.Drawing.Point(503, 46);
-            this.txtBoxAmount.Name = "txtBoxAmount";
-            this.txtBoxAmount.ReadOnly = true;
-            this.txtBoxAmount.Size = new System.Drawing.Size(320, 26);
-            this.txtBoxAmount.TabIndex = 17;
+            this.txtBoxRawCostTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxRawCostTotal.Location = new System.Drawing.Point(503, 46);
+            this.txtBoxRawCostTotal.Name = "txtBoxRawCostTotal";
+            this.txtBoxRawCostTotal.ReadOnly = true;
+            this.txtBoxRawCostTotal.Size = new System.Drawing.Size(320, 26);
+            this.txtBoxRawCostTotal.TabIndex = 17;
             // 
             // groupBox6
             // 
@@ -282,6 +285,7 @@
             this.btnRemove.TabIndex = 12;
             this.btnRemove.Text = "Remove Supply";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -302,12 +306,14 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.txtBoxDimensionB);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.txtBoxDescription);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.txtBoxDimensionA);
             this.groupBox1.Controls.Add(this.lblEmpName);
-            this.groupBox1.Controls.Add(this.txtBoxEmployeeName);
+            this.groupBox1.Controls.Add(this.txtBoxFrameName);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
@@ -319,20 +325,20 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(48, 173);
+            this.label4.Location = new System.Drawing.Point(60, 173);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 20);
             this.label4.TabIndex = 11;
             this.label4.Text = "Description:";
             // 
-            // textBox3
+            // txtBoxDescription
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(159, 170);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(218, 146);
-            this.textBox3.TabIndex = 10;
+            this.txtBoxDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxDescription.Location = new System.Drawing.Point(159, 170);
+            this.txtBoxDescription.Multiline = true;
+            this.txtBoxDescription.Name = "txtBoxDescription";
+            this.txtBoxDescription.Size = new System.Drawing.Size(218, 146);
+            this.txtBoxDescription.TabIndex = 10;
             // 
             // label3
             // 
@@ -343,13 +349,13 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Dimension:";
             // 
-            // textBox2
+            // txtBoxDimensionA
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(159, 113);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(218, 26);
-            this.textBox2.TabIndex = 8;
+            this.txtBoxDimensionA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxDimensionA.Location = new System.Drawing.Point(159, 113);
+            this.txtBoxDimensionA.Name = "txtBoxDimensionA";
+            this.txtBoxDimensionA.Size = new System.Drawing.Size(85, 26);
+            this.txtBoxDimensionA.TabIndex = 8;
             // 
             // lblEmpName
             // 
@@ -360,13 +366,13 @@
             this.lblEmpName.TabIndex = 7;
             this.lblEmpName.Text = "Frame Name:";
             // 
-            // txtBoxEmployeeName
+            // txtBoxFrameName
             // 
-            this.txtBoxEmployeeName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBoxEmployeeName.Location = new System.Drawing.Point(159, 55);
-            this.txtBoxEmployeeName.Name = "txtBoxEmployeeName";
-            this.txtBoxEmployeeName.Size = new System.Drawing.Size(218, 26);
-            this.txtBoxEmployeeName.TabIndex = 6;
+            this.txtBoxFrameName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxFrameName.Location = new System.Drawing.Point(159, 55);
+            this.txtBoxFrameName.Name = "txtBoxFrameName";
+            this.txtBoxFrameName.Size = new System.Drawing.Size(218, 26);
+            this.txtBoxFrameName.TabIndex = 6;
             // 
             // groupBox2
             // 
@@ -410,6 +416,25 @@
             this.btnCreate.TabIndex = 8;
             this.btnCreate.Text = "Create Frame";
             this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            // 
+            // txtBoxDimensionB
+            // 
+            this.txtBoxDimensionB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxDimensionB.Location = new System.Drawing.Point(292, 113);
+            this.txtBoxDimensionB.Name = "txtBoxDimensionB";
+            this.txtBoxDimensionB.Size = new System.Drawing.Size(85, 26);
+            this.txtBoxDimensionB.TabIndex = 12;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(258, 116);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(20, 20);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "X";
             // 
             // frmFrameCreate
             // 
@@ -420,12 +445,13 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmFrameCreate";
             this.Text = "Create a Frame";
+            this.Load += new System.EventHandler(this.frmFrameCreate_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.datagridPayrollCalc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSuppliesUsed)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -449,23 +475,25 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DataGridView datagridPayrollCalc;
+        private System.Windows.Forms.DataGridView dataGridSuppliesUsed;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBoxSalesPrice;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtBoxAmount;
+        private System.Windows.Forms.TextBox txtBoxRawCostTotal;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button btnAddSupply;
         private System.Windows.Forms.Button btnEditSupply;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtBoxDescription;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtBoxDimensionA;
         private System.Windows.Forms.Label lblEmpName;
-        private System.Windows.Forms.TextBox txtBoxEmployeeName;
+        private System.Windows.Forms.TextBox txtBoxFrameName;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.TextBox txtBoxDimensionB;
+        private System.Windows.Forms.Label label5;
     }
 }

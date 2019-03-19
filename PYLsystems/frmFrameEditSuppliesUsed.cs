@@ -183,7 +183,7 @@ namespace PYLsystems
             
             if (pFrmFrameCreate != null)
             {
-                //pFrmFrameCreate.checkIfExistsBeforeCalc(addEditSuppliesVals);
+                pFrmFrameCreate.editSuppliesSelected(addEditSuppliesVals);
             }
             else if (pFrmFrameEdit != null)
             {

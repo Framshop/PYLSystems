@@ -22,7 +22,7 @@ namespace PYLsystems
         DataTable dtSelectSupplies; //Selected from Database
         DataTable dtSelectSuppliesFiltered; //removed Original UnitMeasure and PURCHASE UnitPrice. Use this for merging
         DataTable dtSuppliesUsed; //Merged DataTable
-        internal List<suppliesCosting> costingListCalc;
+
         //--------------Initial Load--------------
         //----for programming initializer
         public frmFrameList()
@@ -429,6 +429,7 @@ namespace PYLsystems
         {
             frmFrameCreate formCreateAFrame = new frmFrameCreate();
             formCreateAFrame.ShowDialog();
+            frameList_Loader();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -438,8 +439,11 @@ namespace PYLsystems
             String frameName = datagridFrameList.Rows[currRowIndex].Cells["Frame"].Value.ToString();
             String frameDimension = datagridFrameList.Rows[currRowIndex].Cells["Dimension"].Value.ToString();
             String frameDescription = datagridFrameList.Rows[currRowIndex].Cells["frameDescription"].Value.ToString();
-            frmFrameEdit formEditFrame = new frmFrameEdit(selectedFrameItemId, frameName, frameDimension, frameDescription);
+            double unitSalesPrice = Double.Parse(datagridFrameList.Rows[currRowIndex].Cells["Unit Price"].Value.ToString());
+            frmFrameEdit formEditFrame = new frmFrameEdit(selectedFrameItemId, frameName, frameDimension, frameDescription,unitSalesPrice);
             formEditFrame.ShowDialog();
+           
+            suppliesUsed_Loader();
         }
 
         private void btnStockIn_Click(object sender, EventArgs e)
