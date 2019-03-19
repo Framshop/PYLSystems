@@ -47,6 +47,9 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -64,9 +67,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -327,6 +327,38 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Amounts Used";
             // 
+            // comboBox4
+            // 
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "ounces",
+            "liters",
+            "milliliters"});
+            this.comboBox4.Location = new System.Drawing.Point(305, 352);
+            this.comboBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(97, 28);
+            this.comboBox4.TabIndex = 39;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(74, 354);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(191, 26);
+            this.textBox5.TabIndex = 38;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(36, 324);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 20);
+            this.label5.TabIndex = 37;
+            this.label5.Text = "Volume:";
+            // 
             // textBox8
             // 
             this.textBox8.Location = new System.Drawing.Point(74, 281);
@@ -503,38 +535,6 @@
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
-            // comboBox4
-            // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
-            "ounces",
-            "liters",
-            "milliliters"});
-            this.comboBox4.Location = new System.Drawing.Point(305, 352);
-            this.comboBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(97, 28);
-            this.comboBox4.TabIndex = 39;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(74, 354);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(191, 26);
-            this.textBox5.TabIndex = 38;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(36, 324);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 20);
-            this.label5.TabIndex = 37;
-            this.label5.Text = "Volume:";
-            // 
             // frmFrameAddSuppliesUsed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -543,6 +543,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmFrameAddSuppliesUsed";
             this.Text = "Add a Frame Supply";
+            this.Load += new System.EventHandler(this.frmFrameAddSuppliesUsed_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);

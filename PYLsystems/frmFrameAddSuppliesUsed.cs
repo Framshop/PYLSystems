@@ -16,5 +16,10 @@ namespace PYLsystems
         {
             InitializeComponent();
         }
+
+        private void frmFrameAddSuppliesUsed_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
