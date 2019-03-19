@@ -37,9 +37,9 @@
             this.dataGridSuppliesUsed = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBoxSalesPrice = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtBoxAmount = new System.Windows.Forms.TextBox();
+            this.txtBoxRawCostTotal = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAddSupply = new System.Windows.Forms.Button();
@@ -172,9 +172,9 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Controls.Add(this.textBox1);
+            this.groupBox5.Controls.Add(this.txtBoxSalesPrice);
             this.groupBox5.Controls.Add(this.label1);
-            this.groupBox5.Controls.Add(this.txtBoxAmount);
+            this.groupBox5.Controls.Add(this.txtBoxRawCostTotal);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Location = new System.Drawing.Point(3, 551);
             this.groupBox5.Name = "groupBox5";
@@ -192,13 +192,13 @@
             this.label2.TabIndex = 20;
             this.label2.Text = "Input a Sales Price for a Single Unit:";
             // 
-            // textBox1
+            // txtBoxSalesPrice
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(506, 93);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(320, 26);
-            this.textBox1.TabIndex = 19;
+            this.txtBoxSalesPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxSalesPrice.Location = new System.Drawing.Point(506, 93);
+            this.txtBoxSalesPrice.Name = "txtBoxSalesPrice";
+            this.txtBoxSalesPrice.Size = new System.Drawing.Size(320, 26);
+            this.txtBoxSalesPrice.TabIndex = 19;
             // 
             // label1
             // 
@@ -209,14 +209,14 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Calculation of Raw Cost for a Single Unit:";
             // 
-            // txtBoxAmount
+            // txtBoxRawCostTotal
             // 
-            this.txtBoxAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBoxAmount.Location = new System.Drawing.Point(506, 46);
-            this.txtBoxAmount.Name = "txtBoxAmount";
-            this.txtBoxAmount.ReadOnly = true;
-            this.txtBoxAmount.Size = new System.Drawing.Size(320, 26);
-            this.txtBoxAmount.TabIndex = 17;
+            this.txtBoxRawCostTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxRawCostTotal.Location = new System.Drawing.Point(506, 46);
+            this.txtBoxRawCostTotal.Name = "txtBoxRawCostTotal";
+            this.txtBoxRawCostTotal.ReadOnly = true;
+            this.txtBoxRawCostTotal.Size = new System.Drawing.Size(320, 26);
+            this.txtBoxRawCostTotal.TabIndex = 17;
             // 
             // groupBox6
             // 
@@ -452,9 +452,9 @@
         private System.Windows.Forms.DataGridView dataGridSuppliesUsed;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBoxSalesPrice;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtBoxAmount;
+        private System.Windows.Forms.TextBox txtBoxRawCostTotal;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button btnAddSupply;

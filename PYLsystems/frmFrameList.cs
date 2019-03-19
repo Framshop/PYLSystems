@@ -112,7 +112,6 @@ namespace PYLsystems
         }
         private void selectSuppliesLoader(int selectedFrameItemId)
         {
-            
             try
             {
                 String stringSuppliesSelect =
@@ -123,7 +122,7 @@ namespace PYLsystems
                     "sui.measureA, sui.measureB, fm.measureAtoOG as `ConvertedAtoOG`, fm.measureBtoOG `ConvertedBtoOG` " +
                     "FROM frame_materials AS fm " +
                     "LEFT JOIN supply_items AS sui ON sui.supply_itemsID = fm.supply_itemsID " +
-                    "LEFT JOIN supply_category AS suc ON sui.supply_categoryID = suc.supply_categoryID" +
+                    "LEFT JOIN supply_category AS suc ON sui.supply_categoryID = suc.supply_categoryID " +
                     "WHERE fm.frameItemId = @frameItemID AND fm.active=0; ";
 
                 MySqlConnection my_conn = new MySqlConnection(connString);
@@ -134,7 +133,7 @@ namespace PYLsystems
 
                 dtSelectSupplies = new DataTable();
                 my_adapter.Fill(dtSelectSupplies);
-
+                
             }
             catch (Exception ex)
             {
@@ -148,7 +147,7 @@ namespace PYLsystems
                     "fm.unitMeasure AS `Unit Measure` " +
                     "FROM frame_materials AS fm " +
                     "LEFT JOIN supply_items AS sui ON sui.supply_itemsID = fm.supply_itemsID " +
-                    "LEFT JOIN supply_category AS suc ON sui.supply_categoryID = suc.supply_categoryID" +
+                    "LEFT JOIN supply_category AS suc ON sui.supply_categoryID = suc.supply_categoryID " +
                     "WHERE fm.frameItemId = @frameItemID AND fm.active=0; ";
 
                 MySqlConnection my_conn = new MySqlConnection(connString);
@@ -159,6 +158,7 @@ namespace PYLsystems
 
                 dtSelectSuppliesFiltered = new DataTable();
                 my_adapter.Fill(dtSelectSuppliesFiltered);
+                
 
             }
             catch (Exception ex)
@@ -388,7 +388,7 @@ namespace PYLsystems
             }
             return measureConverted;
         }
-        private double measureConverter(double measure_forCvt, String unitOfMeasure_Used, String unitOfMeasure_OG, int overload)
+        private double measureConverter(double measure_forCvt, String unitOfMeasure_OG, String unitOfMeasure_Used, int overload)
         {
             double measureConverted = 0;
             Volume measureVolume = Volume.FromLiters(1);
@@ -433,7 +433,12 @@ namespace PYLsystems
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            frmFrameEdit formEditFrame = new frmFrameEdit();
+            int currRowIndex = datagridFrameList.SelectedRows[0].Index;
+            int selectedFrameItemId = Int32.Parse(datagridFrameList.Rows[currRowIndex].Cells["frameItemID"].Value.ToString());
+            String frameName = datagridFrameList.Rows[currRowIndex].Cells["Frame"].Value.ToString();
+            String frameDimension = datagridFrameList.Rows[currRowIndex].Cells["Dimension"].Value.ToString();
+            String frameDescription = datagridFrameList.Rows[currRowIndex].Cells["frameDescription"].Value.ToString();
+            frmFrameEdit formEditFrame = new frmFrameEdit(selectedFrameItemId, frameName, frameDimension, frameDescription);
             formEditFrame.ShowDialog();
         }
 

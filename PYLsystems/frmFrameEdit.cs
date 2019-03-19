@@ -31,6 +31,7 @@ namespace PYLsystems
         List<int> RemovedFrame_MatItemId;//for Supplies with existing frame_MaterialsId. Set to inactive
         //List<int> UpdateToActiveFrame_Mat;//for Supplies found in database with existing frame_MaterialsId. Set to active. GetDataTableIndexes to update
         List<suppliesSavedForUpdates> updateSuppliesConvertedtoOG; //for Edit Supply with existing frame_MaterialsId. Get DataTable Indexes to update 
+        List<suppliesSavedForUpdates> insertSuppliesConvertedtoOG;
 
         //--------------Initial Load--------------
         //----for programming initializer
@@ -81,6 +82,8 @@ namespace PYLsystems
             dtSuppliesUsed.Columns.Add("Supply Name", typeof(String));
             dtSuppliesUsed.Columns.Add("Category", typeof(String));
             dtSuppliesUsed.Columns.Add("typeOfMeasure", typeof(String));
+            dtSuppliesUsed.Columns.Add("deductedA", typeof(double));
+            dtSuppliesUsed.Columns.Add("deductedB", typeof(double));
             dtSuppliesUsed.Columns.Add("Usage", typeof(String));
             dtSuppliesUsed.Columns.Add("Unit Measure", typeof(String));
             //Original Measures
@@ -88,6 +91,9 @@ namespace PYLsystems
             dtSuppliesUsed.Columns.Add("OGUnitPrice", typeof(double));
             dtSuppliesUsed.Columns.Add("measureAOG", typeof(double));
             dtSuppliesUsed.Columns.Add("measureBOG", typeof(double));
+            dtSuppliesUsed.Columns.Add("measureAtoOG", typeof(double));
+            dtSuppliesUsed.Columns.Add("measureBtoOG", typeof(double));
+
 
             //ADDED Custom Columns
             dtSuppliesUsed.Columns.Add("Cost/Unit Measure", typeof(double));
@@ -100,19 +106,43 @@ namespace PYLsystems
 
             dataGridSuppliesUsed.DataSource = dtSuppliesUsedSaved;
 
-            costingCalculate();
-            //dataGridSuppliesUsed.Columns["Cost/Unit Measure"].DefaultCellStyle.Format = "P0.0000";
-            //dataGridSuppliesUsed.Columns["Raw Cost"].DefaultCellStyle.Format = "P0.0000";
-            //dataGridSuppliesUsed.Columns["supply_itemsId"].Visible = false;
-            //dataGridSuppliesUsed.Columns["frame_MaterialsID"].Visible = false;
-            //dataGridSuppliesUsed.Columns["OGUnitMeasure"].Visible = false;
-            //dataGridSuppliesUsed.Columns["OGUnitPrice"].Visible = false;
-            //dataGridSuppliesUsed.Columns["measureAOG"].Visible = false;
-            //dataGridSuppliesUsed.Columns["measureBOG"].Visible = false;
-            //dataGridSuppliesUsed.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells);
+            
+            dataGridSuppliesUsed.Columns["Cost/Unit Measure"].DefaultCellStyle.Format = "P0.0000";
+            dataGridSuppliesUsed.Columns["Raw Cost"].DefaultCellStyle.Format = "P0.0000";
+            dataGridSuppliesUsed.Columns["supply_itemsId"].Visible = false;
+            dataGridSuppliesUsed.Columns["frame_MaterialsID"].Visible = false;
+            dataGridSuppliesUsed.Columns["OGUnitMeasure"].Visible = false;
+            dataGridSuppliesUsed.Columns["OGUnitPrice"].Visible = false;
+            dataGridSuppliesUsed.Columns["measureAOG"].Visible = false;
+            dataGridSuppliesUsed.Columns["measureBOG"].Visible = false;
+            dataGridSuppliesUsed.Columns["deductedA"].Visible = false;
+            dataGridSuppliesUsed.Columns["deductedB"].Visible = false;
+            dataGridSuppliesUsed.Columns["measureAtoOG"].Visible = false;
+            dataGridSuppliesUsed.Columns["measureBtoOG"].Visible = false;
+            dataGridSuppliesUsed.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells);
 
-
-
+            if (dtSuppliesUsedSaved.Rows.Count > 0)
+            {
+                for (int i = 0; i < dtSuppliesUsedSaved.Rows.Count; i++)
+                {
+                    forAddEditSupplies calculateCost = new forAddEditSupplies();
+                    calculateCost.typeOfMeasure = dtSuppliesUsedSaved.Rows[i]["typeOfMeasure"].ToString();
+                    calculateCost.measureAUsed = Double.Parse(dtSuppliesUsedSaved.Rows[i]["deductedA"].ToString());
+                    if (!String.IsNullOrEmpty(dtSuppliesUsedSaved.Rows[i]["deductedB"].ToString()))
+                    {
+                        calculateCost.measureBUsed = Double.Parse(dtSuppliesUsedSaved.Rows[i]["deductedB"].ToString());
+                        calculateCost.measureB_OG = Double.Parse(dtSuppliesUsedSaved.Rows[i]["measureBOG"].ToString());
+                    }
+                    calculateCost.unitMeasureUsed = dtSuppliesUsedSaved.Rows[i]["Unit Measure"].ToString();
+                    calculateCost.unitMeasure_OG = dtSuppliesUsedSaved.Rows[i]["OGUnitMeasure"].ToString();
+                    calculateCost.measureA_OG = Double.Parse(dtSuppliesUsedSaved.Rows[i]["measureAOG"].ToString());
+                    calculateCost.unitPriceOG = Double.Parse(dtSuppliesUsedSaved.Rows[i]["OGUnitPrice"].ToString());
+                    trueCostCalculationPutDataGrid(calculateCost, i);
+                    refreshDataGrid();
+                }
+            }
+            
+            
             //FOR TESTING PURPOSES ONLY
             //public forAddEditSupplies(int frameItemId, int supplyItemsId, double measureAUsed, double measureBUsed, String unitMeasureUsed, String unitMeasure_OG,
             //    String typeOfMeasure, String supplyName, double unitPriceOG, double measureA_OG, double measureB_OG, String category)
@@ -130,7 +160,7 @@ namespace PYLsystems
             //    this.measureB_OG = measureB_OG;
             //    this.category = category;
             //}
-            //forAddEditSupplies testing = new forAddEditSupplies(1, 7, 0.25, -1, "gram/s", "gram/s", "Weight", "D-Ring Hook 20mm", 200.0, 500, -1,"Hooks");
+            //forAddEditSupplies testing = new forAddEditSupplies(1, 7, 0.25, -1, "gram/s", "gram/s", "Weight", "D-Ring Hook 20mm", 200.0, 500, -1, "Hooks");
             //forAddEditSupplies testingv2 = new forAddEditSupplies(1, 8, 0.02, -1, "liters", "liters", "Volume", "Rugby All-Purpose Contact Cement", 200.0, 1, -1, "Adhesive Liquds");
             //checkIfExistsBeforeCalc(testing);
             //checkIfExistsBeforeCalc(testingv2);
@@ -147,43 +177,22 @@ namespace PYLsystems
         {
             try
             {
+                //        "SELECT fm.frame_MaterialsID,sui.supply_itemsId, sui.supplyName AS `Supply Name`, suc.categoryName AS `Category`,suc.typeOfMeasure, " +
+                //        "if(suc.typeOfMeasure='area',concat(fm.measureADeduction,' x ',fm.measureBDeduction),fm.measureADeduction) AS `Usage`, " +
+                //        "fm.unitMeasure AS `Unit Measure`, " +
+                //        "sui.unitMeasure AS `OGUnitMeasure`, sui.unitPurchasePrice AS `OGUnitPrice`," +
+                //        "sui.measureA AS `measureAOG`, sui.measureB `measureBOG` " +
                 String stringSuppliesSelect =
-                    "SELECT fm.frame_MaterialsID,sui.supply_itemsId, suc.typeOfMeasure, " +
-                    "fm.measureADeduction, fm.measureBDeduction, " +
-                    "fm.unitMeasure AS `Unit Measure`," +
-                    "sui.unitMeasure AS `OGUnitMeasure`, sui.unitPurchasePrice AS `OGUnitPrice`," +
-                    "sui.measureA, sui.measureB, fm.measureAtoOG as `ConvertedAtoOG`, fm.measureBtoOG `ConvertedBtoOG` " +
-                    "FROM frame_materials AS fm " +
-                    "LEFT JOIN supply_items AS sui ON sui.supply_itemsID = fm.supply_itemsID " +
-                    "LEFT JOIN supply_category AS suc ON sui.supply_categoryID = suc.supply_categoryID " +
-                    "WHERE fm.frameItemId = @frameItemID AND fm.active=0; ";
-
-                MySqlConnection my_conn = new MySqlConnection(connString);
-                MySqlCommand cmdSuppliesSelect = new MySqlCommand(stringSuppliesSelect, my_conn);
-                cmdSuppliesSelect.Parameters.AddWithValue("@frameItemID", selectedFrameItemId);
-                //cmdSuppliesSelect.Parameters.AddWithValue("@DateEnd", DateEnd);
-                MySqlDataAdapter my_adapter = new MySqlDataAdapter(cmdSuppliesSelect);
-
-                dtSelectSupplies = new DataTable();
-                my_adapter.Fill(dtSelectSupplies);
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-            try
-            {
-                String stringSuppliesSelect =
-                    "SELECT fm.frame_MaterialsID,sui.supply_itemsId, sui.supplyName AS `Supply Name`, suc.categoryName AS `Category`,suc.typeOfMeasure, " +
-                    "if(suc.typeOfMeasure='area',concat(fm.measureADeduction,' x ',fm.measureBDeduction),fm.measureADeduction) AS `Usage`, " +
+                    "SELECT fm.frame_MaterialsID,sui.supply_itemsId, sui.supplyName AS `Supply Name`, suc.categoryName AS `Category`, suc.typeOfMeasure, " +
+                    "if (suc.typeOfMeasure = 'Area',concat(fm.measureADeduction, ' x ', fm.measureBDeduction),fm.measureADeduction) AS `Usage`," +
                     "fm.unitMeasure AS `Unit Measure`, " +
-                    "sui.unitMeasure AS `OGUnitMeasure`, sui.unitPurchasePrice AS `OGUnitPrice`," +
-                    "sui.measureA AS `measureAOG`, sui.measureB `measureBOG` " +
+                    "sui.unitMeasure AS `OGUnitMeasure`, sui.unitPurchasePrice AS `OGUnitPrice`,  " +
+                    "sui.measureA AS `measureAOG`, sui.measureB AS `measureBOG`, fm.measureAtoOG, " +
+                    "fm.measureBtoOG,fm.measureADeduction AS `deductedA`,  fm.measureBDeduction AS `deductedB`   " +
                     "FROM frame_materials AS fm " +
                     "LEFT JOIN supply_items AS sui ON sui.supply_itemsID = fm.supply_itemsID " +
                     "LEFT JOIN supply_category AS suc ON sui.supply_categoryID = suc.supply_categoryID " +
-                    "WHERE fm.frameItemId = @frameItemID AND fm.active=0; ";
+                    "WHERE fm.frameItemId = @frameItemID AND fm.active = 0; ";
 
                 MySqlConnection my_conn = new MySqlConnection(connString);
                 MySqlCommand cmdSuppliesSelect = new MySqlCommand(stringSuppliesSelect, my_conn);
@@ -199,7 +208,34 @@ namespace PYLsystems
             {
                 Console.WriteLine(ex.ToString());
             }
-            dtSelectSuppliesSaved = dtSelectSupplies.Copy();
+            //try
+            //{
+            //    String stringSuppliesSelect =
+            //        "SELECT fm.frame_MaterialsID,sui.supply_itemsId, sui.supplyName AS `Supply Name`, suc.categoryName AS `Category`,suc.typeOfMeasure, " +
+            //        "if(suc.typeOfMeasure='area',concat(fm.measureADeduction,' x ',fm.measureBDeduction),fm.measureADeduction) AS `Usage`, " +
+            //        "fm.unitMeasure AS `Unit Measure`, " +
+            //        "sui.unitMeasure AS `OGUnitMeasure`, sui.unitPurchasePrice AS `OGUnitPrice`," +
+            //        "sui.measureA AS `measureAOG`, sui.measureB `measureBOG` " +
+            //        "FROM frame_materials AS fm " +
+            //        "LEFT JOIN supply_items AS sui ON sui.supply_itemsID = fm.supply_itemsID " +
+            //        "LEFT JOIN supply_category AS suc ON sui.supply_categoryID = suc.supply_categoryID " +
+            //        "WHERE fm.frameItemId = @frameItemID AND fm.active=0; ";
+
+            //    MySqlConnection my_conn = new MySqlConnection(connString);
+            //    MySqlCommand cmdSuppliesSelect = new MySqlCommand(stringSuppliesSelect, my_conn);
+            //    cmdSuppliesSelect.Parameters.AddWithValue("@frameItemID", selectedFrameItemId);
+            //    //cmdSuppliesSelect.Parameters.AddWithValue("@DateEnd", DateEnd);
+            //    MySqlDataAdapter my_adapter = new MySqlDataAdapter(cmdSuppliesSelect);
+
+            //    dtSelectSuppliesFiltered = new DataTable();
+            //    my_adapter.Fill(dtSelectSuppliesFiltered);
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.ToString());
+            //}
+            //dtSelectSuppliesSaved = dtSelectSupplies.Copy();
 
             
 
@@ -208,17 +244,25 @@ namespace PYLsystems
         {
             dataGridSuppliesUsed.DataSource = null;
             dataGridSuppliesUsed.DataSource = dtSuppliesUsedSaved;
-            //dataGridSuppliesUsed.Columns["Cost/Unit Measure"].DefaultCellStyle.Format = "P0.0000";
-            //dataGridSuppliesUsed.Columns["Raw Cost"].DefaultCellStyle.Format = "P0.0000";
-            //dataGridSuppliesUsed.Columns["supply_itemsId"].Visible = false;
-            //dataGridSuppliesUsed.Columns["frame_MaterialsID"].Visible = false;
-            //dataGridSuppliesUsed.Columns["OGUnitMeasure"].Visible = false;
+            dataGridSuppliesUsed.Columns["Cost/Unit Measure"].DefaultCellStyle.Format = "P0.0000";
+            dataGridSuppliesUsed.Columns["Raw Cost"].DefaultCellStyle.Format = "P0.0000";
+            dataGridSuppliesUsed.Columns["supply_itemsId"].Visible = false;
+            dataGridSuppliesUsed.Columns["frame_MaterialsID"].Visible = false;
+            dataGridSuppliesUsed.Columns["OGUnitMeasure"].Visible = false;
             //dataGridSuppliesUsed.Columns["OGUnitPrice"].Visible = false;
-            //dataGridSuppliesUsed.Columns["measureAOG"].Visible = false;
-            //dataGridSuppliesUsed.Columns["measureBOG"].Visible = false;
-            //dataGridSuppliesUsed.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells);
+            dataGridSuppliesUsed.Columns["measureAOG"].Visible = false;
+            dataGridSuppliesUsed.Columns["measureBOG"].Visible = false;
+            dataGridSuppliesUsed.Columns["deductedA"].Visible = false;
+            dataGridSuppliesUsed.Columns["deductedB"].Visible = false;
+            dataGridSuppliesUsed.Columns["measureAtoOG"].Visible = false;
+            dataGridSuppliesUsed.Columns["measureBtoOG"].Visible = false;
+            dataGridSuppliesUsed.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells);
         }
-        internal void checkIfExistsBeforeCalc(forAddEditSupplies addEditSuppliesVals)
+        internal void updateSupplyDet(forAddEditSupplies addEditSuppliesVals)
+        {
+
+        }
+        internal void checkIfExistsBeforeCalc(forAddEditSupplies addEditSuppliesVals) //for adding supply
         {
             DataTable dtcheckIfFrame_MatExists = new DataTable();
             if (String.Equals(addEditSuppliesVals.typeOfMeasure, "Area"))
@@ -331,8 +375,6 @@ namespace PYLsystems
         }
         private void addToInsertList(forAddEditSupplies addEditSuppliesVals) //Insert List is the DataGrid NOTE: FOR INSERTING converted units, call measureConverter again
         {
-
-
             if (String.Equals(addEditSuppliesVals.typeOfMeasure, "Area"))
             {
 
@@ -353,6 +395,12 @@ namespace PYLsystems
                 dtSuppliesUsedSaved.Rows[indexdtInsert]["measureAOG"] = addEditSuppliesVals.measureA_OG;
                 dtSuppliesUsedSaved.Rows[indexdtInsert]["measureBOG"] = addEditSuppliesVals.measureB_OG;
 
+                dtSuppliesUsedSaved.Rows[indexdtInsert]["deductedA"] = addEditSuppliesVals.measureAUsed;
+                dtSuppliesUsedSaved.Rows[indexdtInsert]["deductedB"] = addEditSuppliesVals.measureBUsed;
+
+                dtSuppliesUsedSaved.Rows[indexdtInsert]["measureAtoOG"] = measureConverter(addEditSuppliesVals.measureAUsed, addEditSuppliesVals.unitMeasure_OG, addEditSuppliesVals.unitMeasureUsed);
+                dtSuppliesUsedSaved.Rows[indexdtInsert]["measureBtoOG"] = measureConverter(addEditSuppliesVals.measureBUsed, addEditSuppliesVals.unitMeasure_OG, addEditSuppliesVals.unitMeasureUsed); 
+
             }
             else
             {
@@ -372,6 +420,11 @@ namespace PYLsystems
                 dtSuppliesUsedSaved.Rows[indexdtInsert]["OGUnitMeasure"] = addEditSuppliesVals.unitMeasure_OG;
                 dtSuppliesUsedSaved.Rows[indexdtInsert]["OGUnitPrice"] = addEditSuppliesVals.unitPriceOG;
                 dtSuppliesUsedSaved.Rows[indexdtInsert]["measureAOG"] = addEditSuppliesVals.measureA_OG;
+
+
+                dtSuppliesUsedSaved.Rows[indexdtInsert]["deductedA"] = addEditSuppliesVals.measureAUsed;
+
+                dtSuppliesUsedSaved.Rows[indexdtInsert]["measureAtoOG"] = measureConverter(addEditSuppliesVals.measureAUsed, addEditSuppliesVals.unitMeasure_OG, addEditSuppliesVals.unitMeasureUsed);
             }
 
             int dtSuppliesSavedLastIndex = dtSuppliesUsedSaved.Rows.Count - 1;
@@ -419,6 +472,11 @@ namespace PYLsystems
                 dtSuppliesUsedSaved.Rows[indexdtInsert]["measureAOG"] = addEditSuppliesVals.measureA_OG;
                 dtSuppliesUsedSaved.Rows[indexdtInsert]["measureBOG"] = addEditSuppliesVals.measureB_OG;
 
+                dtSuppliesUsedSaved.Rows[indexdtInsert]["deductedA"] = addEditSuppliesVals.measureAUsed;
+                dtSuppliesUsedSaved.Rows[indexdtInsert]["deductedB"] = addEditSuppliesVals.measureBUsed;
+
+                dtSuppliesUsedSaved.Rows[indexdtInsert]["measureAtoOG"] = measureConverter(addEditSuppliesVals.measureAUsed, addEditSuppliesVals.unitMeasure_OG, addEditSuppliesVals.unitMeasureUsed);
+                dtSuppliesUsedSaved.Rows[indexdtInsert]["measureBtoOG"] = measureConverter(addEditSuppliesVals.measureBUsed, addEditSuppliesVals.unitMeasure_OG, addEditSuppliesVals.unitMeasureUsed);
             }
             else
             {
@@ -438,6 +496,10 @@ namespace PYLsystems
                 dtSuppliesUsedSaved.Rows[indexdtInsert]["OGUnitMeasure"] = addEditSuppliesVals.unitMeasure_OG;
                 dtSuppliesUsedSaved.Rows[indexdtInsert]["OGUnitPrice"] = addEditSuppliesVals.unitPriceOG;
                 dtSuppliesUsedSaved.Rows[indexdtInsert]["measureAOG"] = addEditSuppliesVals.measureA_OG;
+
+                dtSuppliesUsedSaved.Rows[indexdtInsert]["deductedA"] = addEditSuppliesVals.measureAUsed;
+
+                dtSuppliesUsedSaved.Rows[indexdtInsert]["measureAtoOG"] = measureConverter(addEditSuppliesVals.measureAUsed, addEditSuppliesVals.unitMeasure_OG, addEditSuppliesVals.unitMeasureUsed);
             }
 
 
@@ -571,13 +633,20 @@ namespace PYLsystems
                     }
                 }
             }
+            double rawCostTotal = 0;
+            for (int i = 0; i < dtSuppliesUsedSaved.Rows.Count; i++)
+            {
+                rawCostTotal += Double.Parse(dataGridSuppliesUsed.Rows[i].Cells["Raw Cost"].Value.ToString());
+            }
+
+            txtBoxRawCostTotal.Text = rawCostTotal.ToString();
         }
         //Calculation Cost only. Then put to datagrid
         internal void trueCostCalculationPutDataGrid(forAddEditSupplies addEditSuppliesVals,int dataGridIndex)
         {
+            
             if (String.Equals(addEditSuppliesVals.typeOfMeasure, "Whole"))
             {
-
                 double rawCost = addEditSuppliesVals.measureAUsed * addEditSuppliesVals.unitPriceOG;
 
                 dtSuppliesUsedSaved.Rows[dataGridIndex]["Cost/Unit Measure"] = addEditSuppliesVals.unitPriceOG;
@@ -589,7 +658,6 @@ namespace PYLsystems
             {
                 if (String.Equals(addEditSuppliesVals.typeOfMeasure, "Area"))
                 {
-                    
                     double area_OG = addEditSuppliesVals.measureA_OG * addEditSuppliesVals.measureB_OG;
                     double trueUnitPrice = addEditSuppliesVals.unitPriceOG / area_OG;
 
@@ -646,7 +714,17 @@ namespace PYLsystems
 
                     //Get the already converted Measurements in frame_materials table.
                     //The already converted Measurements are calculated and inputted in the database in the FrameCreation and FrameEdited  forms
-                    double measureAConvertedUse = measureConverter(addEditSuppliesVals.measureAUsed, addEditSuppliesVals.unitMeasure_OG, addEditSuppliesVals.unitMeasureUsed);
+                    double measureAConvertedUse;
+                    
+                    if (String.Equals(addEditSuppliesVals.typeOfMeasure,"Volume"))
+                    {
+                        measureAConvertedUse = measureConverter(addEditSuppliesVals.measureAUsed, addEditSuppliesVals.unitMeasure_OG, addEditSuppliesVals.unitMeasureUsed,0);
+                    }
+                    else
+                    {
+                        measureAConvertedUse = measureConverter(addEditSuppliesVals.measureAUsed, addEditSuppliesVals.unitMeasure_OG, addEditSuppliesVals.unitMeasureUsed);
+                    }
+                    
                    
                     double rawCost = measureAConvertedUse * trueUnitPrice; //Get the raw cost of the item based on 'Area Usage' multiplied by the true Unit Price
 
@@ -654,9 +732,20 @@ namespace PYLsystems
                     dtSuppliesUsedSaved.Rows[dataGridIndex]["Raw Cost"] = rawCost;
                     refreshDataGrid();
                     
-
                 }
-            }      
+                
+            }
+            double rawCostTotal = 0;
+            for (int i = 0; i < dtSuppliesUsedSaved.Rows.Count; i++)
+            {
+                if(!String.IsNullOrEmpty(dtSuppliesUsedSaved.Rows[i]["Raw Cost"].ToString()))
+                {
+                    rawCostTotal += Double.Parse(dtSuppliesUsedSaved.Rows[i]["Raw Cost"].ToString());
+                }
+                
+            }
+
+            txtBoxRawCostTotal.Text = rawCostTotal.ToString();
         }
         private double measureConverter(double measure_forCvt, String unitOfMeasure_OG, String unitOfMeasure_Used)
         {
@@ -734,10 +823,10 @@ namespace PYLsystems
             {
                 measureConverted = measureMass.Kilograms;
             }
-
+            
             return measureConverted;
         }
-        private double measureConverter(double measure_forCvt, String unitOfMeasure_Used, String unitOfMeasure_OG, int overload)
+        private double measureConverter(double measure_forCvt, String unitOfMeasure_OG, String unitOfMeasure_Used,  int overload)
         {
             double measureConverted = 0;
             Volume measureVolume = Volume.FromLiters(1);
@@ -767,6 +856,7 @@ namespace PYLsystems
             {
                 measureConverted = measureVolume.Milliliters;
             }
+            
             return measureConverted;
         }
         //March 17,2019 - Before Adding a Row, check RemovedFrame_MatItemId first if it contains RemovedFrame_MatItemId being added.
@@ -775,17 +865,52 @@ namespace PYLsystems
             bool checkIfInDatabase=false;
             int frame_MaterialsID =-1;
             //Check if deleted item is in database or from the datatable retrieved from the database
-            for(int i=0; i < dtSelectSupplies.Rows.Count; i++)
+            //for(int i=0; i < dtSelectSupplies.Rows.Count; i++)
+            //{
+            //    if (!String.IsNullOrEmpty(dataGridSuppliesUsed.Rows[currRowIndex].Cells["frame_MaterialsID"].Value.ToString()))
+            //    {
+            //        if (Int32.Parse(dataGridSuppliesUsed.Rows[currRowIndex].Cells["frame_MaterialsID"].Value.ToString()) == Int32.Parse(dtSelectSupplies.Rows[i]["frame_MaterialsID"].ToString()))
+            //        {
+            //            checkIfInDatabase = true;
+            //            frame_MaterialsID = Int32.Parse(dtSelectSupplies.Rows[i]["frame_MaterialsID"].ToString());
+            //            //MessageBox.Show(this.dataGridSuppliesUsed.SelectedRows[0].Index+" "+checkIfInDatabase);
+            //        }
+            //    }               
+            //}
+            if (!String.IsNullOrEmpty(dataGridSuppliesUsed.Rows[currRowIndex].Cells["frame_MaterialsID"].Value.ToString()))
             {
-                if (!String.IsNullOrEmpty(dataGridSuppliesUsed.Rows[currRowIndex].Cells["frame_MaterialsID"].Value.ToString()))
+                frame_MaterialsID = Int32.Parse(dataGridSuppliesUsed.Rows[currRowIndex].Cells["frame_MaterialsID"].Value.ToString());
+                DataTable checkIfRemovedWasActive = new DataTable();
+                try
                 {
-                    if (Int32.Parse(dataGridSuppliesUsed.Rows[currRowIndex].Cells["frame_MaterialsID"].Value.ToString()) == Int32.Parse(dtSelectSupplies.Rows[i]["frame_MaterialsID"].ToString()))
-                    {
-                        checkIfInDatabase = true;
-                        frame_MaterialsID = Int32.Parse(dtSelectSupplies.Rows[i]["frame_MaterialsID"].ToString());
-                        //MessageBox.Show(this.dataGridSuppliesUsed.SelectedRows[0].Index+" "+checkIfInDatabase);
-                    }
-                }               
+                    //        "SELECT fm.frame_MaterialsID,sui.supply_itemsId, sui.supplyName AS `Supply Name`, suc.categoryName AS `Category`,suc.typeOfMeasure, " +
+                    //        "if(suc.typeOfMeasure='area',concat(fm.measureADeduction,' x ',fm.measureBDeduction),fm.measureADeduction) AS `Usage`, " +
+                    //        "fm.unitMeasure AS `Unit Measure`, " +
+                    //        "sui.unitMeasure AS `OGUnitMeasure`, sui.unitPurchasePrice AS `OGUnitPrice`," +
+                    //        "sui.measureA AS `measureAOG`, sui.measureB `measureBOG` " +
+                    String stringSuppliesSelect =
+                        "SELECT fm.frame_MaterialsID   " +
+                        "FROM frame_materials AS fm " +
+                        "WHERE fm.frame_MaterialsID=@frame_MaterialsID AND fm.active = 0; ";
+
+                    MySqlConnection my_conn = new MySqlConnection(connString);
+                    MySqlCommand cmdSuppliesSelect = new MySqlCommand(stringSuppliesSelect, my_conn);
+                    cmdSuppliesSelect.Parameters.AddWithValue("@frame_MaterialsID", frame_MaterialsID);
+                    //cmdSuppliesSelect.Parameters.AddWithValue("@DateEnd", DateEnd);
+                    MySqlDataAdapter my_adapter = new MySqlDataAdapter(cmdSuppliesSelect);
+
+                    
+                    my_adapter.Fill(checkIfRemovedWasActive);
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+                if (checkIfRemovedWasActive.Rows.Count > 0)
+                {
+                    checkIfInDatabase = true;
+                }
             }
             //If it exists, put to a list later for active
             if (checkIfInDatabase)
@@ -830,7 +955,6 @@ namespace PYLsystems
                     }
                 }
             }
-            MessageBox.Show(updateSuppliesConvertIndex + "");
             if (updateSuppliesConvertIndex > -1)
             {
                 //If deleted updated existing frame_materials is not the last row
@@ -849,6 +973,57 @@ namespace PYLsystems
             //    MessageBox.Show("dt index: "+updateSuppliesConvertedtoOG[i].dataTableIndex+" " +updateSuppliesConvertedtoOG[i].frameMaterialsId + " " + updateSuppliesConvertedtoOG[i].typeOfMeasure);
             //}
             //MessageBox.Show(frame_MaterialsID+" "+RemovedFrame_MatItemId[0]+"");
+            double rawCostTotal = 0;
+            for (int i = 0; i < dtSuppliesUsedSaved.Rows.Count; i++)
+            {
+                if (!String.IsNullOrEmpty(dtSuppliesUsedSaved.Rows[i]["Raw Cost"].ToString()))
+                {
+                    rawCostTotal += Double.Parse(dtSuppliesUsedSaved.Rows[i]["Raw Cost"].ToString());
+                }
+
+            }
+
+            txtBoxRawCostTotal.Text = rawCostTotal.ToString();
+
+        }
+        internal void editSuppliesSelected(forAddEditSupplies editSuppliesVal)
+        {
+            int currRowIndexDataGrid = dataGridSuppliesUsed.SelectedRows[0].Index;
+            int currRowIndexDt = -1;
+            for (int i = 0; i < dtSuppliesUsedSaved.Rows.Count; i++)
+            {
+                if (Int32.Parse(dataGridSuppliesUsed.Rows[currRowIndexDataGrid].Cells["supply_itemsId"].Value.ToString()) == Int32.Parse(dtSuppliesUsedSaved.Rows[i]["supply_itemsId"].ToString()))
+                {
+                    currRowIndexDt = i;
+                }
+            }
+            if (currRowIndexDt > -1)
+            {
+                if (String.Equals(editSuppliesVal.typeOfMeasure, "Area"))
+                {
+                    String Dimension = editSuppliesVal.measureAUsed +" x "+ editSuppliesVal.measureBUsed;
+                    dtSuppliesUsedSaved.Rows[currRowIndexDt]["Usage"] = Dimension;
+                    dtSuppliesUsedSaved.Rows[currRowIndexDt]["Unit Measure"] = editSuppliesVal.unitMeasureUsed;
+
+                    dtSuppliesUsedSaved.Rows[currRowIndexDt]["deductedA"] = editSuppliesVal.measureAUsed;
+                    dtSuppliesUsedSaved.Rows[currRowIndexDt]["deductedB"] = editSuppliesVal.measureBUsed;
+
+                    dtSuppliesUsedSaved.Rows[currRowIndexDt]["measureAtoOG"] = measureConverter(editSuppliesVal.measureAUsed, editSuppliesVal.unitMeasure_OG, editSuppliesVal.unitMeasureUsed);
+                    dtSuppliesUsedSaved.Rows[currRowIndexDt]["measureBtoOG"] = measureConverter(editSuppliesVal.measureBUsed, editSuppliesVal.unitMeasure_OG, editSuppliesVal.unitMeasureUsed);
+                }
+                else
+                {
+                    dtSuppliesUsedSaved.Rows[currRowIndexDt]["Usage"] = editSuppliesVal.measureAUsed;
+                    dtSuppliesUsedSaved.Rows[currRowIndexDt]["Unit Measure"] = editSuppliesVal.unitMeasureUsed;
+
+                    dtSuppliesUsedSaved.Rows[currRowIndexDt]["deductedA"] = editSuppliesVal.measureAUsed;
+
+                    dtSuppliesUsedSaved.Rows[currRowIndexDt]["measureAtoOG"] = measureConverter(editSuppliesVal.measureAUsed, editSuppliesVal.unitMeasure_OG, editSuppliesVal.unitMeasureUsed);
+                }
+                trueCostCalculationPutDataGrid(editSuppliesVal, currRowIndexDt);
+            }
+            
+
         }
         //----------------Event Methods-----------------
         private void btnClose_Click(object sender, EventArgs e)
@@ -857,13 +1032,29 @@ namespace PYLsystems
         }
         private void btnAddSupply_Click(object sender, EventArgs e)
         {
-            frmFrameAddSuppliesUsed frmAddSupplies = new frmFrameAddSuppliesUsed();
+            frmFrameAddSuppliesUsed frmAddSupplies = new frmFrameAddSuppliesUsed(this,frameItemId);
             frmAddSupplies.ShowDialog();
         }
 
         private void btnEditSupply_Click(object sender, EventArgs e)
         {
-            frmFrameEditSuppliesUsed frmEditSupplies = new frmFrameEditSuppliesUsed();
+            forAddEditSupplies addEditSuppliesval = new forAddEditSupplies();
+            int currRowIndex = dataGridSuppliesUsed.SelectedRows[0].Index;
+            //Get currRowIndex. NOTE: get currRowIndex of datagrid, loop through dtSuppliesUsedSaved and find the same supply_ItemId.Then replace
+            //with edited values
+            addEditSuppliesval.supplyItemsId = Int32.Parse(dataGridSuppliesUsed.Rows[currRowIndex].Cells["supply_itemsId"].Value.ToString());
+            addEditSuppliesval.unitMeasureUsed = dataGridSuppliesUsed.Rows[currRowIndex].Cells["Unit Measure"].Value.ToString();
+            addEditSuppliesval.unitMeasure_OG = dataGridSuppliesUsed.Rows[currRowIndex].Cells["OGUnitMeasure"].Value.ToString();
+            addEditSuppliesval.typeOfMeasure = dataGridSuppliesUsed.Rows[currRowIndex].Cells["typeOfMeasure"].Value.ToString();
+            addEditSuppliesval.supplyName = dataGridSuppliesUsed.Rows[currRowIndex].Cells["Supply Name"].Value.ToString();
+            addEditSuppliesval.category = dataGridSuppliesUsed.Rows[currRowIndex].Cells["Category"].Value.ToString();
+            addEditSuppliesval.unitPriceOG = Double.Parse(dataGridSuppliesUsed.Rows[currRowIndex].Cells["OGUnitPrice"].Value.ToString());
+            addEditSuppliesval.measureA_OG = Double.Parse(dataGridSuppliesUsed.Rows[currRowIndex].Cells["measureAOG"].Value.ToString());
+            if (!String.IsNullOrEmpty(dataGridSuppliesUsed.Rows[currRowIndex].Cells["measureBOG"].Value.ToString()))
+            {
+                addEditSuppliesval.measureB_OG = Double.Parse(dataGridSuppliesUsed.Rows[currRowIndex].Cells["measureBOG"].Value.ToString());
+            }
+            frmFrameEditSuppliesUsed frmEditSupplies = new frmFrameEditSuppliesUsed(addEditSuppliesval,this);
             frmEditSupplies.ShowDialog();
         }
 
@@ -894,43 +1085,6 @@ namespace PYLsystems
             //NOTE CHANGE updates int List of ACTIVE TO this class
         }
     }
-    //ALL BASIC INFORMATION PASSED FROM ADD AND EDIT SUPPLIES  USED
-    class forAddEditSupplies
-    {
-        internal int frameItemId { get; set; }
-        internal int supplyItemsId { get; set; }
-        internal double measureAUsed { get; set; }
-        internal double measureBUsed { get; set; }
-        internal String unitMeasureUsed { get; set; }
-        internal String unitMeasure_OG { get; set; }
-        internal String typeOfMeasure { get; set; }
-        internal String supplyName { get; set; }
-        internal String category { get; set; }
-        internal double unitPriceOG { get; set; }
-        internal double measureA_OG { get; set; }
-        internal double measureB_OG { get; set; }
+   
 
-        // public frame_ItemsforList() {
-        //}
-        public forAddEditSupplies(int frameItemId, int supplyItemsId, double measureAUsed, double measureBUsed, String unitMeasureUsed, String unitMeasure_OG,
-            String typeOfMeasure, String supplyName, double unitPriceOG, double measureA_OG, double measureB_OG, String category)
-        {
-            this.frameItemId = frameItemId;
-            this.supplyItemsId = supplyItemsId;
-            this.measureAUsed = measureAUsed;
-            this.measureBUsed = measureBUsed;
-
-            this.unitMeasureUsed = unitMeasureUsed;
-            this.unitMeasure_OG = unitMeasure_OG;
-
-            this.typeOfMeasure = typeOfMeasure;
-
-            this.supplyName = supplyName;
-
-            this.unitPriceOG = unitPriceOG;
-            this.measureA_OG = measureA_OG;
-            this.measureB_OG = measureB_OG;
-            this.category = category;
-        }
-    }
 }

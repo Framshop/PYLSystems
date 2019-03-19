@@ -94,6 +94,7 @@
     <Compile Include="e_frmEditAttendance.Designer.cs">
       <DependentUpon>e_frmEditAttendance.cs</DependentUpon>
     </Compile>
+    <Compile Include="forAddEditSupplies.cs" />
     <Compile Include="frmAddSupplierItems.cs">
       <SubType>Form</SubType>
     </Compile>

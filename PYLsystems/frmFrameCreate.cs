@@ -23,7 +23,7 @@ namespace PYLsystems
 
         private void btnAddSupply_Click(object sender, EventArgs e)
         {
-            frmFrameAddSuppliesUsed frmAddSupplies = new frmFrameAddSuppliesUsed();
+            frmFrameAddSuppliesUsed frmAddSupplies = new frmFrameAddSuppliesUsed(this);
             frmAddSupplies.ShowDialog();
         }
 
