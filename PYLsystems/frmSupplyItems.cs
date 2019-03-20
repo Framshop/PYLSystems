@@ -73,7 +73,7 @@ namespace PYLsystems
                 "LEFT JOIN(" +
                 "        SELECT sui.supply_itemsID, SUM(IFNULL(dm.totalStockedOut,0)+IFNULL(fm.stockedOutArea, 0) + IFNULL(jo.stockedOutArea, 0)) AS `stockOut` " +
                 "		 FROM supply_items AS sui" +
-                "        LEFT JOIN(SELECT supply_itemsID, SUM(totalQuantityStockedOut) AS `totalStockedOut`" +
+                "        LEFT JOIN(SELECT supply_itemsID, SUM(measureADeducted*measureBDeducted*totalQuantityStockedOut) AS `totalStockedOut`" +
                 "                    FROM damaged_materials GROUP BY supply_itemsID) AS dm ON sui.supply_itemsID = dm.supply_itemsID" +
                 "        LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureADeduction* sfm.measureBDeduction* fs.stockinQuantity) as `stockedOutArea`" +
                 "					FROM frame_materials as sfm" +
@@ -155,7 +155,7 @@ namespace PYLsystems
                 "LEFT JOIN(" +
                 "        SELECT sui.supply_itemsID, SUM(IFNULL(dm.totalStockedOut,0)+IFNULL(fm.stockedOutArea, 0) + IFNULL(jo.stockedOutArea, 0)) AS `stockOut` " +
                 "		 FROM supply_items AS sui" +
-                "        LEFT JOIN(SELECT supply_itemsID, SUM(totalQuantityStockedOut) AS `totalStockedOut`" +
+                "        LEFT JOIN(SELECT supply_itemsID, SUM(measureADeducted*measureBDeducted*totalQuantityStockedOut) AS `totalStockedOut`" +
                 "                    FROM damaged_materials GROUP BY supply_itemsID) AS dm ON sui.supply_itemsID = dm.supply_itemsID" +
                 "        LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureADeduction* sfm.measureBDeduction* fs.stockinQuantity) as `stockedOutArea`" +
                 "					FROM frame_materials as sfm" +

@@ -23,6 +23,8 @@ namespace PYLsystems
             public static string supply_itemsID;
 
         }
+        DateTime DateStart;
+        DateTime DateEnd;
         public double rawPurchasePriceInitial;
         MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
         public frmSupplyStockIn()
@@ -54,6 +56,13 @@ namespace PYLsystems
         private void msktxtDeliveryDate_TextChanged(object sender, EventArgs e)
         { 
         }
+        private void DefaultDatesInitializer()
+        {
+            DateStart = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddHours(0).AddMinutes(0).AddSeconds(0);
+            DateEnd = DateStart.AddMonths(1).AddDays(-1).AddHours(23).AddMinutes(59).AddSeconds(59);
+            startDatePicker.Value = DateStart;
+            endDatePicker.Value = DateEnd;
+        }
         public void RefreshDatabase()
         {
             myConn.Open();
@@ -70,14 +79,14 @@ namespace PYLsystems
         public void RefreshStockIn()
         {
             myConn.Open();
-            string query = "SELECT s_d.supplyID as 'Supplier ID',s_i.supplyName as 'Supply Name',s.supplierName as 'Supplied By',s_d.delivery_date as 'Date Delivered',s_d.stockin_quantity,s_d.priceRawTotal,s_d.pricePurchaseTotal,IF(s_d.active=0,'Active','Inactive') as 'active',s_i.unitPurchasePrice * s_d.stockin_quantity 'Calculated Total Purchase Price',s_d.pricePurchaseTotal as 'Actual Total Purchase Price' FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.supply_itemsID = " + lblsupply_itemsID.Text;
+            string query = "SELECT s_d.supplyID as 'Supply ID',s_i.supplyName as 'Supply Name',s.supplierName as 'Supplied By',s_d.delivery_date as 'Date Delivered',s_d.stockin_quantity AS 'Stock In Quantity',s_d.priceRawTotal,s_d.pricePurchaseTotal,IF(s_d.active=0,'Active','Inactive') as 'active',s_i.unitPurchasePrice * s_d.stockin_quantity 'Calculated Total Purchase Price',s_d.pricePurchaseTotal as 'Actual Total Purchase Price' FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.supply_itemsID = " + lblsupply_itemsID.Text;
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
             adp.Fill(dt);
             dgvStockIn.DataSource = dt;
             myConn.Close();
-            dgvStockIn.Columns["Supplier ID"].Visible = false;
+            dgvStockIn.Columns["Supply ID"].Visible = false;
             dgvStockIn.Columns["pricePurchaseTotal"].Visible = false;
             dgvStockIn.Columns["priceRawTotal"].Visible = false;
             dgvStockIn.Columns["active"].Visible = false;
@@ -86,7 +95,9 @@ namespace PYLsystems
         private void frmSupplyStockIn_Load(object sender, EventArgs e)
         {
             supply_itemsID_passer = Global.supply_itemsID;
+            //DefaultDatesInitializer();
             RefreshDatabase();
+
 
         }
 
@@ -261,14 +272,14 @@ namespace PYLsystems
         private void startDatePicker_ValueChanged(object sender, EventArgs e)
         {
             myConn.Open();
-            string query = "SELECT s_d.supplyID as 'Supplier ID',s_i.supplyName as 'Supply Name',s.supplierName as 'Supplied By',s_d.delivery_date as 'Date Delivered',s_d.stockin_quantity,s_d.priceRawTotal,s_d.pricePurchaseTotal,IF(s_d.active=0,'Active','Inactive') as 'active',s_i.unitPurchasePrice * s_d.stockin_quantity 'Calculated Total Purchase Price',s_d.pricePurchaseTotal as 'Actual Total Purchase Price' FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.delivery_date BETWEEN '" + startDatePicker.Value.ToString("yyyy-MM-dd") + "' AND '" + endDatePicker.Value.ToString("yyyy-MM-dd") + "' AND s_d.supply_itemsID = " + lblsupply_itemsID.Text;
+            string query = "SELECT s_d.supplyID as 'Supply ID',s_i.supplyName as 'Supply Name',s.supplierName as 'Supplied By',s_d.delivery_date as 'Date Delivered',s_d.stockin_quantity AS 'Stock In Quantity',s_d.priceRawTotal,s_d.pricePurchaseTotal,IF(s_d.active=0,'Active','Inactive') as 'active',s_i.unitPurchasePrice * s_d.stockin_quantity 'Calculated Total Purchase Price',s_d.pricePurchaseTotal as 'Actual Total Purchase Price' FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.delivery_date BETWEEN '" + startDatePicker.Value.ToString("yyyy-MM-dd") + "' AND '" + endDatePicker.Value.ToString("yyyy-MM-dd") + "' AND s_d.supply_itemsID = " + lblsupply_itemsID.Text;
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
             adp.Fill(dt);
             dgvStockIn.DataSource = dt;
             myConn.Close();
-            dgvStockIn.Columns["Supplier ID"].Visible = false;
+            dgvStockIn.Columns["Supply ID"].Visible = false;
             dgvStockIn.Columns["pricePurchaseTotal"].Visible = false;
             dgvStockIn.Columns["priceRawTotal"].Visible = false;
             dgvStockIn.Columns["active"].Visible = false;
@@ -295,6 +306,7 @@ namespace PYLsystems
             stockInSupplyEdit.txtDeliveryDate.Text =  dgvStockIn.CurrentRow.Cells["Date Delivered"].Value.ToString();
             stockInSupplyEdit.txtQuantity.Text =  dgvStockIn.CurrentRow.Cells["Stock In Quantity"].Value.ToString();
             stockInSupplyEdit.txtRawPurchasePrice.Text =  dgvStockIn.CurrentRow.Cells["priceRawTotal"].Value.ToString();
+            stockInSupplyEdit.rawPurchasePriceInitial = Double.Parse(dgvStockIn.CurrentRow.Cells["priceRawTotal"].Value.ToString());
             stockInSupplyEdit.txtActualPurchasePrice.Text =  dgvStockIn.CurrentRow.Cells["pricePurchaseTotal"].Value.ToString();
             stockInSupplyEdit.cboActive.Text =  dgvStockIn.CurrentRow.Cells["active"].Value.ToString();
             stockInSupplyEdit.ShowDialog();
@@ -313,14 +325,14 @@ namespace PYLsystems
         private void endDatePicker_ValueChanged(object sender, EventArgs e)
         {
             myConn.Open();
-            string query = "SELECT s_d.supplyID as 'Supplier ID',s_i.supplyName as 'Supply Name',s.supplierName as 'Supplied By',s_d.delivery_date as 'Date Delivered',s_d.stockin_quantity,s_d.priceRawTotal,s_d.pricePurchaseTotal,IF(s_d.active=0,'Active','Inactive') as 'active',s_i.unitPurchasePrice * s_d.stockin_quantity 'Calculated Total Purchase Price',s_d.pricePurchaseTotal as 'Actual Total Purchase Price' FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.delivery_date BETWEEN '" + startDatePicker.Value.ToString("yyyy-MM-dd") + "' AND '" + endDatePicker.Value.ToString("yyyy-MM-dd") + "'AND s_d.supply_itemsID = " + lblsupply_itemsID.Text;
+            string query = "SELECT s_d.supplyID as 'Supply ID',s_i.supplyName as 'Supply Name',s.supplierName as 'Supplied By',s_d.delivery_date as 'Date Delivered',s_d.stockin_quantity AS 'Stock In Quantity',s_d.priceRawTotal,s_d.pricePurchaseTotal,IF(s_d.active=0,'Active','Inactive') as 'active',s_i.unitPurchasePrice * s_d.stockin_quantity 'Calculated Total Purchase Price',s_d.pricePurchaseTotal as 'Actual Total Purchase Price' FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.delivery_date BETWEEN '" + startDatePicker.Value.ToString("yyyy-MM-dd") + "' AND '" + endDatePicker.Value.ToString("yyyy-MM-dd") + "'AND s_d.supply_itemsID = " + lblsupply_itemsID.Text;
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
             adp.Fill(dt);
             dgvStockIn.DataSource = dt;
             myConn.Close();
-            dgvStockIn.Columns["Supplier ID"].Visible = false;
+            dgvStockIn.Columns["Supply ID"].Visible = false;
             dgvStockIn.Columns["pricePurchaseTotal"].Visible = false;
             dgvStockIn.Columns["priceRawTotal"].Visible = false;
             dgvStockIn.Columns["active"].Visible = false;
