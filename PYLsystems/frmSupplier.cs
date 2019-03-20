@@ -14,6 +14,7 @@ namespace PYLsystems
     public partial class frmSupplier : Form
     {
         public static string supplierID = "";
+        public static string supplyItemID = "";
         public static string supply_categoryID = "";
         public static string address = "";
         public static string maxSupplierID = "";
@@ -193,7 +194,7 @@ namespace PYLsystems
         public void RefreshDatabase()
         {
             myConn.Open();
-            string query = "SELECT supplierID as 'Supplier ID',supplierName as 'Supplier Name',supplierDetails as 'Supplier Details',contactDetails as 'Contact Details',address as 'Address' FROM supplier";
+            string query = "SELECT supplierID as 'Supplier ID',supplierName as 'Supplier Name',supplierDetails as 'Supplier Details',contactDetails as 'Contact Details',address as 'Address' FROM supplier where active = 0";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
@@ -232,7 +233,7 @@ namespace PYLsystems
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             myConn.Open();
-            string query = "SELECT supplierID as 'Supplier ID',supplierName as 'Supplier Name',supplierDetails as 'Supplier Details',contactDetails as 'Contact Details',address as 'Address' FROM supplier WHERE supplierName LIKE  '%" + txtSearch.Text + "%'";
+            string query = "SELECT supplierID as 'Supplier ID',supplierName as 'Supplier Name',supplierDetails as 'Supplier Details',contactDetails as 'Contact Details',address as 'Address' FROM supplier WHERE supplierName LIKE  '%" + txtSearch.Text + "%' AND active = 0";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
@@ -497,6 +498,7 @@ namespace PYLsystems
             msktxtContactNumber.Text = dgvSuppliers.CurrentRow.Cells[3].Value.ToString();
             txtAddress.Text = dgvSuppliers.CurrentRow.Cells[4].Value.ToString();
             RefreshCategory();
+            btnArchiveSupplier.Enabled = true;
         }
 
         private void dgvCategories_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -504,7 +506,7 @@ namespace PYLsystems
             try
             {
                 myConn.Open();
-                string query = "SELECT s_i.supplyName as 'Supply Name',s_i.supplyDescription as 'Supply Description' FROM supplier_items sr_i LEFT JOIN supply_items s_i ON s_i.supply_itemsID = sr_i.supply_itemsID WHERE supplierID =" + supplierID;
+                string query = "SELECT s_i.supply_itemsID,s_i.supplyName as 'Supply Name',s_i.supplyDescription as 'Supply Description' FROM supplier_items sr_i LEFT JOIN supply_items s_i ON s_i.supply_itemsID = sr_i.supply_itemsID WHERE supplierID =" + supplierID;
                 MySqlCommand comm = new MySqlCommand(query, myConn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
@@ -559,6 +561,73 @@ namespace PYLsystems
             {
                 lvwItemSold.Items.Remove(item);
             }
+        }
+
+        private void btnArchiveSupplier_Click(object sender, EventArgs e)
+        {
+            string myQuery = "update supplier set active = 1 where supplierID =  " + supplierID;
+            MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
+            MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
+            DataTable myDt = new DataTable();
+            myAdp.Fill(myDt);
+            myConn.Close();
+            MessageBox.Show("Archive Success");
+            RefreshDatabase();
+            btnArchiveSupplier.Enabled = false;
+
+            dgvCategories.DataSource = null;
+
+            txtSupplierName.Clear();
+            txtAddress.Clear();
+            msktxtContactNumber.Clear();
+            txtDetails.Clear();
+            btnUpdate.Enabled = false;
+            btnAdd.Enabled = false;
+        }
+
+        private void btnSupplyItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("SupplyItemID:"+supplyItemID+" supplierID:"+ supplierID);
+
+            string myQuery = "update supplier_items set active = 1 where supplierID =  " + supplierID + " AND supply_itemsID =" + supplyItemID;
+            MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
+            MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
+            DataTable myDt = new DataTable();
+            myAdp.Fill(myDt);
+            myConn.Close();
+            MessageBox.Show("Archive Success");
+
+            btnArchiveSupplier.Enabled = false;
+            dgvCategories.DataSource = null;
+            RefreshDatabase();
+
+
+            txtSupplierName.Clear();
+            txtAddress.Clear();
+            msktxtContactNumber.Clear();
+            txtDetails.Clear();
+            btnUpdate.Enabled = false;
+            btnAdd.Enabled = false;
+            btnSupplyItem.Enabled = false;
+        }
+
+        private void btnArchiveSupplierList_Click(object sender, EventArgs e)
+        {
+            frmArchiveSupplier supplier = new frmArchiveSupplier();
+            supplier.ShowDialog();
+            RefreshDatabase();
+        }
+
+        private void btnArchiveSupplyItem_Click(object sender, EventArgs e)
+        {
+            frmArchiveSupplytItem supply = new frmArchiveSupplytItem();
+            supply.ShowDialog();
+        }
+
+        private void dgvsupply_Items_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            supplyItemID = dgvsupply_Items.CurrentRow.Cells[0].Value.ToString();
+            btnSupplyItem.Enabled = true;
         }
     }
 }
