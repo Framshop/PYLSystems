@@ -41,6 +41,9 @@ namespace PYLsystems
         {
             frameList_Loader();
             suppliesUsed_Loader();
+
+            //Hide stockout dmg for now
+            btnDamage.Visible = false;
         }
 
         //-------------Process and Calculation Methods--------------
@@ -448,7 +451,9 @@ namespace PYLsystems
 
         private void btnStockIn_Click(object sender, EventArgs e)
         {
-            frmFrameStockInAdd formFrameStockIn = new frmFrameStockInAdd();
+            int currRowIndex = datagridFrameList.SelectedRows[0].Index;
+            int selectedFrameItemId = Int32.Parse(datagridFrameList.Rows[currRowIndex].Cells["frameItemID"].Value.ToString());
+            frmFrameStockInAdd formFrameStockIn = new frmFrameStockInAdd(selectedFrameItemId,this.employeeId);
             formFrameStockIn.ShowDialog();
         }
 

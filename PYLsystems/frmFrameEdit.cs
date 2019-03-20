@@ -300,6 +300,11 @@ namespace PYLsystems
                 dtSuppliesUsedSaved.Rows[indexdtInsert]["measureBtoOG"] = measureConverter(addEditSuppliesVals.measureBUsed, addEditSuppliesVals.unitMeasure_OG, addEditSuppliesVals.unitMeasureUsed);
 
             }
+            else if (String.Equals(addEditSuppliesVals.typeOfMeasure, "Whole")) ////NOTE: MAJOR BUG UPDATE. PLEASE TELL BEN ABOUT THIS. 3/20/2019 8:35AM
+            {
+                dtSuppliesUsedSaved.Rows[indexdtInsert]["Usage"] = measure;
+                dtSuppliesUsedSaved.Rows[indexdtInsert]["measureAtoOG"] = addEditSuppliesVals.measureAUsed;
+            }
             else if (String.Equals(addEditSuppliesVals.typeOfMeasure, "Volume"))
             {
                 dtSuppliesUsedSaved.Rows[indexdtInsert]["Usage"] = measure;
@@ -629,6 +634,10 @@ namespace PYLsystems
                     {
                         dtSuppliesUsedSaved.Rows[currRowIndexDt]["measureAtoOG"] = measureConverter(editSuppliesVal.measureAUsed, editSuppliesVal.unitMeasure_OG, editSuppliesVal.unitMeasureUsed,0);
 
+                    }
+                    else if(String.Equals(editSuppliesVal.typeOfMeasure, "Whole")) //////NOTE: MAJOR BUG UPDATE. PLEASE TELL BEN ABOUT THIS. 3/20/2019 8:35AM
+                    {
+                        dtSuppliesUsedSaved.Rows[currRowIndexDt]["measureAtoOG"] = editSuppliesVal.measureAUsed;
                     }
                     else
                     {
