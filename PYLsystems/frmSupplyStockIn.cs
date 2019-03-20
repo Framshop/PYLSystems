@@ -23,6 +23,7 @@ namespace PYLsystems
             public static string supply_itemsID;
 
         }
+        public double rawPurchasePriceInitial;
         MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
         public frmSupplyStockIn()
         {
@@ -69,7 +70,7 @@ namespace PYLsystems
         public void RefreshStockIn()
         {
             myConn.Open();
-            string query = "SELECT s_d.supplyID as 'Supplier ID',s_i.supplyName as 'Supply Name',s.supplierName as 'Supplied By',s_d.delivery_date as 'Date Delivered',s_d.stockin_quantity,s_d.priceRawTotal,s_d.pricePurchaseTotal,IF(s_d.active=0,'Active','Inactive') as 'active',s_d.priceRawTotal * s_d.stockin_quantity 'Calculated Total Purchase Price',s_d.pricePurchaseTotal * s_d.stockin_quantity as 'Actual Total Purchase Price' FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.supply_itemsID = " + lblsupply_itemsID.Text;
+            string query = "SELECT s_d.supplyID as 'Supplier ID',s_i.supplyName as 'Supply Name',s.supplierName as 'Supplied By',s_d.delivery_date as 'Date Delivered',s_d.stockin_quantity,s_d.priceRawTotal,s_d.pricePurchaseTotal,IF(s_d.active=0,'Active','Inactive') as 'active',s_i.unitPurchasePrice * s_d.stockin_quantity 'Calculated Total Purchase Price',s_d.pricePurchaseTotal as 'Actual Total Purchase Price' FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.supply_itemsID = " + lblsupply_itemsID.Text;
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
@@ -221,9 +222,28 @@ namespace PYLsystems
         {
 
         }
-
+        private void calculateTotalRaw()
+        {
+            double rawPurchaseTotal = 0;
+            double quantity = 0;
+            if (String.IsNullOrEmpty(txtQuantity.Text))
+            {
+                quantity = 0;
+            }
+            else
+            {
+                quantity = Double.Parse(txtQuantity.Text);
+            }
+            //if (!String.IsNullOrEmpty(txtRawPurchasePrice.Text))
+            //{
+            //    rawPurchaseTotal = 0;
+            //}
+            rawPurchaseTotal = quantity * rawPurchasePriceInitial;
+            txtRawPurchasePrice.Text = rawPurchaseTotal.ToString();
+        }
         private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
+            calculateTotalRaw();
             validationStockInItem();
         }
 
@@ -241,7 +261,7 @@ namespace PYLsystems
         private void startDatePicker_ValueChanged(object sender, EventArgs e)
         {
             myConn.Open();
-            string query = "SELECT s_d.supplyID as 'Supplier ID',s_i.supplyName as 'Supply Name',s.supplierName as 'Supplied By',s_d.delivery_date as 'Date Delivered',s_d.stockin_quantity,s_d.priceRawTotal,s_d.pricePurchaseTotal,IF(s_d.active=0,'Active','Inactive') as 'active',s_d.priceRawTotal * s_d.stockin_quantity 'Calculated Total Purchase Price',s_d.pricePurchaseTotal * s_d.stockin_quantity as 'Actual Total Purchase Price' FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.delivery_date BETWEEN '" + startDatePicker.Value.ToString("yyyy-MM-dd") + "' AND '" + endDatePicker.Value.ToString("yyyy-MM-dd") + "' AND s_d.supply_itemsID = " + lblsupply_itemsID.Text;
+            string query = "SELECT s_d.supplyID as 'Supplier ID',s_i.supplyName as 'Supply Name',s.supplierName as 'Supplied By',s_d.delivery_date as 'Date Delivered',s_d.stockin_quantity,s_d.priceRawTotal,s_d.pricePurchaseTotal,IF(s_d.active=0,'Active','Inactive') as 'active',s_i.unitPurchasePrice * s_d.stockin_quantity 'Calculated Total Purchase Price',s_d.pricePurchaseTotal as 'Actual Total Purchase Price' FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.delivery_date BETWEEN '" + startDatePicker.Value.ToString("yyyy-MM-dd") + "' AND '" + endDatePicker.Value.ToString("yyyy-MM-dd") + "' AND s_d.supply_itemsID = " + lblsupply_itemsID.Text;
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
@@ -293,7 +313,7 @@ namespace PYLsystems
         private void endDatePicker_ValueChanged(object sender, EventArgs e)
         {
             myConn.Open();
-            string query = "SELECT s_d.supplyID as 'Supplier ID',s_i.supplyName as 'Supply Name',s.supplierName as 'Supplied By',s_d.delivery_date as 'Date Delivered',s_d.stockin_quantity,s_d.priceRawTotal,s_d.pricePurchaseTotal,IF(s_d.active=0,'Active','Inactive') as 'active',s_d.priceRawTotal * s_d.stockin_quantity 'Calculated Total Purchase Price',s_d.pricePurchaseTotal * s_d.stockin_quantity as 'Actual Total Purchase Price' FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.delivery_date BETWEEN '" + startDatePicker.Value.ToString("yyyy-MM-dd") + "' AND '" + endDatePicker.Value.ToString("yyyy-MM-dd") + "'AND s_d.supply_itemsID = " + lblsupply_itemsID.Text;
+            string query = "SELECT s_d.supplyID as 'Supplier ID',s_i.supplyName as 'Supply Name',s.supplierName as 'Supplied By',s_d.delivery_date as 'Date Delivered',s_d.stockin_quantity,s_d.priceRawTotal,s_d.pricePurchaseTotal,IF(s_d.active=0,'Active','Inactive') as 'active',s_i.unitPurchasePrice * s_d.stockin_quantity 'Calculated Total Purchase Price',s_d.pricePurchaseTotal as 'Actual Total Purchase Price' FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.delivery_date BETWEEN '" + startDatePicker.Value.ToString("yyyy-MM-dd") + "' AND '" + endDatePicker.Value.ToString("yyyy-MM-dd") + "'AND s_d.supply_itemsID = " + lblsupply_itemsID.Text;
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();

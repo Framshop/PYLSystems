@@ -145,7 +145,9 @@ namespace PYLsystems
                     measureAUsed = measureConverter(measureAUsed, txtUnitMeasure.Text, cboArea.Text);
                     measureBUsed = measureConverter(measureBUsed, txtUnitMeasure.Text, cboArea.Text);
                     txtTotalDamageCost.Text = rawCost.ToString();
-                        txtCalculatedStockedQuantity.Text = (double.Parse(Global.quantity_left) - (1 - areaOfUsed / (double.Parse(Global.quantity_left) * area_OG)) * double.Parse(Global.quantity_left)).ToString();
+                    double qLeft = double.Parse(Global.quantity_left);
+                    double qLeftInMeasure = area_OG * double.Parse(Global.quantity_left);
+                    txtCalculatedStockedQuantity.Text = (qLeft - ((1 - (areaOfUsed / qLeftInMeasure)) * qLeft)).ToString();
                 }
                 else
                 {
@@ -166,7 +168,9 @@ namespace PYLsystems
                             double rawCost = measureAUsed * trueUnitPrice;
                             rawCostPasser = rawCost;
                             txtTotalDamageCost.Text = rawCostPasser.ToString();
-                        txtCalculatedStockedQuantity.Text = (double.Parse(Global.quantity_left) - ((1 - (measureAUsed / (double.Parse(Global.measureAOG)))) * double.Parse(Global.quantity_left))).ToString();
+                        double qLeft = double.Parse(Global.quantity_left);
+                        double qLeftInMeasure = double.Parse(Global.measureAOG) * double.Parse(Global.quantity_left);
+                        txtCalculatedStockedQuantity.Text = (qLeft-((1-(measureAUsed/qLeftInMeasure))*qLeft)).ToString();
 
                     }
                      else if (String.Equals(Global.supply_category_typeOfMeasure, "Length") && String.Equals(unitOfMeasure_Used, unitOfMeasure_OG))
@@ -181,8 +185,9 @@ namespace PYLsystems
                             double rawCost = measureAUsed * trueUnitPrice;
                             rawCostPasser = rawCost;
                             txtTotalDamageCost.Text = rawCostPasser.ToString();
-                        txtCalculatedStockedQuantity.Text = (double.Parse(Global.quantity_left) - ((1 - (measureAUsed / (double.Parse(Global.measureAOG)))) * double.Parse(Global.quantity_left))).ToString();
-
+                        double qLeft = double.Parse(Global.quantity_left);
+                        double qLeftInMeasure = double.Parse(Global.measureAOG) * double.Parse(Global.quantity_left);
+                        txtCalculatedStockedQuantity.Text = (qLeft - ((1 - (measureAUsed / qLeftInMeasure)) * qLeft)).ToString();
 
                     }
                     else if (String.Equals(Global.supply_category_typeOfMeasure, "Weight") && String.Equals(unitOfMeasure_Used, unitOfMeasure_OG))
@@ -197,8 +202,9 @@ namespace PYLsystems
                             double rawCost = measureAUsed * trueUnitPrice;
                             rawCostPasser = rawCost;
                             txtTotalDamageCost.Text = rawCostPasser.ToString();
-                        txtCalculatedStockedQuantity.Text = (double.Parse(Global.quantity_left) - ((1 - (measureAUsed / (double.Parse(Global.measureAOG)))) * double.Parse(Global.quantity_left))).ToString();
-
+                        double qLeft = double.Parse(Global.quantity_left);
+                        double qLeftInMeasure = double.Parse(Global.measureAOG) * double.Parse(Global.quantity_left);
+                        txtCalculatedStockedQuantity.Text = (qLeft - ((1 - (measureAUsed / qLeftInMeasure)) * qLeft)).ToString();
                     }
 
 
@@ -236,8 +242,9 @@ namespace PYLsystems
                    
                     txtTotalDamageCost.Text = rawCost.ToString();
                     double calcout = double.Parse(Global.quantity_left) + ((1 - (areaOfUsed / (area_of_OG))) * double.Parse(Global.quantity_left));
-                        txtCalculatedStockedQuantity.Text = (double.Parse(Global.quantity_left) - ((1 - (areaOfUsed / (area_of_OG))) * double.Parse(Global.quantity_left))).ToString();
-
+                    double qLeft = double.Parse(Global.quantity_left);
+                    double qLeftInMeasure = area_OG * double.Parse(Global.quantity_left);
+                    txtCalculatedStockedQuantity.Text = (qLeft - ((1 - (areaOfUsed / qLeftInMeasure)) * qLeft)).ToString();
                     
        
                 }
@@ -258,18 +265,25 @@ namespace PYLsystems
                             measureAConverted = measureConverter(measureAConverted, txtUnitMeasure.Text, cboVolume.Text, 1);
                             double rawCost = measureAConverted * trueUnitPrice; //Get the raw cost of the item based on 'Area Usage' multiplied by the true Unit Price
                             txtTotalDamageCost.Text = rawCost.ToString();
-                            txtCalculatedStockedQuantity.Text = (double.Parse(Global.quantity_left) - ((1 - (measureAConverted / (measureA_OG))) * double.Parse(Global.quantity_left))).ToString();
+
+                            double qLeft = double.Parse(Global.quantity_left);
+                            double qLeftInMeasure = double.Parse(Global.measureAOG) * double.Parse(Global.quantity_left);
+                            txtCalculatedStockedQuantity.Text = (qLeft - ((1 - (measureAConverted / qLeftInMeasure)) * qLeft)).ToString();
+
                             // txtCalculatedStockedQuantity.Text = (double.Parse(Global.quantity_left) - ((1 - (measureAUsed / measureA_OG))) * double.Parse(Global.quantity_left))).ToString();
                         }
-                         if (String.Equals(Global.supply_category_typeOfMeasure, "Weight"))
+                        if (String.Equals(Global.supply_category_typeOfMeasure, "Weight"))
                         {
                             double measureAConverted = Double.Parse(txtWeight.Text);
                             measureAConverted = measureConverter(measureAConverted, txtUnitMeasure.Text, cboWeight.Text);
                             double rawCost = measureAConverted * trueUnitPrice; //Get the raw cost of the item based on 'Area Usage' multiplied by the true Unit Price
                             txtTotalDamageCost.Text = rawCost.ToString();
-                            txtCalculatedStockedQuantity.Text = (double.Parse(Global.quantity_left) - ((1 - (measureAConverted / (measureA_OG))) * double.Parse(Global.quantity_left))).ToString();
+                            double qLeft = double.Parse(Global.quantity_left);
+                            double qLeftInMeasure = double.Parse(Global.measureAOG) * double.Parse(Global.quantity_left);
+                            txtCalculatedStockedQuantity.Text = (qLeft - ((1 - (measureAConverted / qLeftInMeasure)) * qLeft)).ToString();
+
                         }
-                         if (String.Equals(Global.supply_category_typeOfMeasure, "Length"))
+                        if (String.Equals(Global.supply_category_typeOfMeasure, "Length"))
                         {
                             
                             double measureAConverted = Double.Parse(txtLength.Text);
@@ -278,7 +292,10 @@ namespace PYLsystems
 
                             double rawCost = measureAConverted * trueUnitPrice; //Get the raw cost of the item based on 'Area Usage' multiplied by the true Unit Price
                             txtTotalDamageCost.Text = rawCost.ToString();
-                            txtCalculatedStockedQuantity.Text = (double.Parse(Global.quantity_left) - ((1 - (measureAConverted / (measureA_OG))) * double.Parse(Global.quantity_left))).ToString();
+                            double qLeft = double.Parse(Global.quantity_left);
+                            double qLeftInMeasure = double.Parse(Global.measureAOG) * double.Parse(Global.quantity_left);
+                            txtCalculatedStockedQuantity.Text = (qLeft - ((1 - (measureAConverted / qLeftInMeasure)) * qLeft)).ToString();
+
                         }
                     }
                     catch { }

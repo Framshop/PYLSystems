@@ -35,7 +35,6 @@
             this.btnSupplyItemsList = new System.Windows.Forms.Button();
             this.btnSuppliers = new System.Windows.Forms.Button();
             this.btnSupplyCateg = new System.Windows.Forms.Button();
-            this.btnDamage = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -90,7 +89,6 @@
             this.tableLayoutPanel5.Controls.Add(this.btnSupplyItemsList, 0, 5);
             this.tableLayoutPanel5.Controls.Add(this.btnSuppliers, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.btnSupplyCateg, 0, 3);
-            this.tableLayoutPanel5.Controls.Add(this.btnDamage, 0, 7);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 33);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -149,20 +147,6 @@
             this.btnSupplyCateg.UseVisualStyleBackColor = true;
             this.btnSupplyCateg.Click += new System.EventHandler(this.btnSupplyCateg_Click);
             // 
-            // btnDamage
-            // 
-            this.btnDamage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDamage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDamage.Location = new System.Drawing.Point(4, 416);
-            this.btnDamage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnDamage.Name = "btnDamage";
-            this.btnDamage.Size = new System.Drawing.Size(282, 99);
-            this.btnDamage.TabIndex = 6;
-            this.btnDamage.Text = "Damaged Supplies";
-            this.btnDamage.UseVisualStyleBackColor = true;
-            this.btnDamage.Click += new System.EventHandler(this.btnDamage_Click);
-            // 
             // frmSuppliesHomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -188,6 +172,5 @@
         private System.Windows.Forms.Button btnSupplyItemsList;
         public System.Windows.Forms.Button btnSuppliers;
         private System.Windows.Forms.Button btnSupplyCateg;
-        private System.Windows.Forms.Button btnDamage;
     }
 }

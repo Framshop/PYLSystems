@@ -17,7 +17,7 @@ namespace PYLsystems
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-             Application.Run(new frmSuppliesHomePage());
+             Application.Run(new Home());
 
 
         }

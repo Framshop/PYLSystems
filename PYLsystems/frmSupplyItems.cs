@@ -37,46 +37,56 @@ namespace PYLsystems
         public void RefreshDatabase()
         {
             myConn.Open();
-            string query = "SELECT s_i.supply_itemsID as 'Supply ID',s_c.supply_categoryID as 'Supply Category ID'," +
-"s_i.supplyName as 'Supply Name',s_c.categoryName as 'Category Name',s_c.typeOfMeasure as 'Type of Measure'," +
-"s_i.supplyDescription as 'Supply Description',s_i.measureA as 'Measurement A',IFNULL(s_i.measureB, 'Not Applicable') as " +
-"'Measurement B',case when s_i.measureB is not null then CONCAT(s_i.measureA,' x ',s_i.measureB) else s_i.measureA end" +
- " as 'Measurement',s_i.unitMeasure as 'Unit Measure',s_i.unitPurchasePrice as 'Purchase Price'," +
-" IF(active = 0, 'Active', 'Inactive') as 'Active',s_c.typeOfMeasure," +
- " IFNULL(IF(s_c.typeOfMeasure = 'Volume', (1 - ((IFNULL(d_m4.DamagedMaterials, 0) + IFNULL(f_m4.FrameMaterials, 0) + IFNULL(j_d4.JobOrderDetailsMaterials, 0)) / (s_d4.StockInVolume * s_i.measureA))) * (s_d4.StockInVolume), IF(s_c.typeOfMeasure = 'Weight', (1 - ((IFNULL(d_m3.DamagedMaterials, 0) + IFNULL(f_m3.FrameMaterials, 0) + IFNULL(j_d3.JobOrderDetailsMaterials, 0)) / (s_d2.StockInWeight * s_i.measureA))) * (s_d2.StockInWeight), IF(s_c.typeOfMeasure = 'Length', (1 - ((IFNULL(d_m.DamagedMaterials, 0) + IFNULL(f_m.FrameMaterials, 0) + IFNULL(j_d.JobOrderDetailsMaterials, 0)) / (s_d3.StockInLength * s_i.measureA))) * (s_d3.StockInLength), IF(s_c.typeOfMeasure = 'Area', (1 - ((IFNULL(d_m1.DamagedMaterials, 0) + IFNULL(f_m1.FrameMaterials, 0) + IFNULL(j_d1.JobOrderDetailsMaterials, 0)) / (s_d0.StockInArea * (s_i.measureA * s_i.measureB)))) * (s_d0.StockInArea), IF(s_c.typeOfMeasure = 'Whole', IFNULL(s_d1.StockInWhole, 0) - IFNULL(d_m2.DamagedMaterials, 0) + IFNULL(f_m2.FrameMaterials, 0) + IFNULL(j_d2.JobOrderDetailsMaterials, 0), 0))))), 0) as 'Quantity Left'," +
- "   IFNULL(IF(s_c.typeOfMeasure = 'Volume',(s_i.measureA * s_d4.StockInVolume) - IFNULL(d_m4.DamagedMaterials, 0)+ IFNULL(f_m4.FrameMaterials, 0) + IFNULL(j_d4.JobOrderDetailsMaterials, 0), IF(s_c.typeOfMeasure = 'Weight', (s_i.measureA * s_d2.StockInWeight) - IFNULL(d_m3.DamagedMaterials, 0)+ IFNULL(f_m3.FrameMaterials, 0) + IFNULL(j_d3.JobOrderDetailsMaterials, 0), IF(s_c.typeOfMeasure = 'Length',(s_i.measureA * s_d3.StockInLength) - IFNULL(d_m.DamagedMaterials, 0)+ IFNULL(f_m.FrameMaterials, 0) + IFNULL(j_d.JobOrderDetailsMaterials, 0), IF(s_c.typeOfMeasure = 'Area', ((s_i.measureA * s_i.measureB) * s_d0.StockInArea) - IFNULL(d_m1.DamagedMaterials, 0)+ IFNULL(f_m1.FrameMaterials, 0) + IFNULL(j_d1.JobOrderDetailsMaterials, 0), IF(s_c.typeOfMeasure = 'Whole',s_i.measureA * s_d1.StockInWhole -  IFNULL(d_m2.DamagedMaterials, 0)+ IFNULL(f_m2.FrameMaterials, 0) + IFNULL(j_d2.JobOrderDetailsMaterials, 0), 0))))), 0) as 'Quantity Left in Measurement' " +
- " FROM supply_items s_i" +
- " LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(d_m.totalQuantityStockedOut,0)) as 'DamagedMaterials' FROM damaged_materials d_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = d_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Length' GROUP BY s_i.supply_itemsID) " +
-" as d_m ON d_m.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(f_m.measureAtoOG,0)) as 'FrameMaterials' FROM frame_materials f_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = f_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Length' GROUP BY s_i.supply_itemsID) " +
-" as f_m ON f_m.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(j_d.measureAtoOG,0)) as 'JobOrderDetailsMaterials' FROM jorder_details j_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = j_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Length' GROUP BY s_i.supply_itemsID) " +
-" as j_d ON j_d.supply_itemsID = s_i.supply_itemsID" +
-
-" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(d_m.totalQuantityStockedOut,0)) as 'DamagedMaterials' FROM damaged_materials d_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = d_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Area' GROUP BY s_i.supply_itemsID) " +
-" as d_m1 ON d_m1.supply_itemsID = s_i.supply_itemsID  LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(f_m.measureAtoOG,0)) as 'FrameMaterials' FROM frame_materials f_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = f_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Area' GROUP BY s_i.supply_itemsID) " +
-" as f_m1 ON f_m1.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(j_d.measureAtoOG,0)) as 'JobOrderDetailsMaterials' FROM jorder_details j_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = j_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Area' GROUP BY s_i.supply_itemsID) " +
-" as j_d1 ON j_d1.supply_itemsID = s_i.supply_itemsID" +
-
-
-" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(d_m.totalQuantityStockedOut,0)) as 'DamagedMaterials' FROM damaged_materials d_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = d_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Whole' GROUP BY s_i.supply_itemsID) " +
-" as d_m2 ON d_m2.supply_itemsID = s_i.supply_itemsID  LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(f_m.measureAtoOG,0)) as 'FrameMaterials' FROM frame_materials f_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = f_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Whole' GROUP BY s_i.supply_itemsID) " +
-" as f_m2 ON f_m2.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(j_d.measureAtoOG,0)) as 'JobOrderDetailsMaterials' FROM jorder_details j_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = j_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Whole' GROUP BY s_i.supply_itemsID) " +
-" as j_d2 ON j_d2.supply_itemsID = s_i.supply_itemsID" +
-
-" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(d_m.totalQuantityStockedOut,0)) as 'DamagedMaterials' FROM damaged_materials d_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = d_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Weight' GROUP BY s_i.supply_itemsID) " +
-" as d_m3 ON d_m3.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(f_m.measureAtoOG,0)) as 'FrameMaterials' FROM frame_materials f_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = f_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Weight' GROUP BY s_i.supply_itemsID) " +
-" as f_m3 ON f_m3.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(j_d.measureAtoOG,0)) as 'JobOrderDetailsMaterials' FROM jorder_details j_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = j_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Weight' GROUP BY s_i.supply_itemsID) " +
-" as j_d3 ON j_d3.supply_itemsID = s_i.supply_itemsID" +
-
-" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(d_m.totalQuantityStockedOut,0)) as 'DamagedMaterials' FROM damaged_materials d_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = d_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Volume' GROUP BY s_i.supply_itemsID) " +
-" as d_m4 ON d_m4.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(f_m.measureAtoOG,0)) as 'FrameMaterials' FROM frame_materials f_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = f_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Volume' GROUP BY s_i.supply_itemsID) " +
-" as f_m4 ON f_m4.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(j_d.measureAtoOG,0)) as 'JobOrderDetailsMaterials' FROM jorder_details j_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = j_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Volume'GROUP BY s_i.supply_itemsID) " +
-" as j_d4 ON j_d4.supply_itemsID = s_i.supply_itemsID" +
-
-" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(s_d.stockin_quantity,0)) as 'StockInArea' FROM supply_details s_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Area' GROUP BY s_d.supply_itemsID) s_d0 ON s_d0.supply_itemsID = s_i.supply_itemsID" +
-" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(s_d.stockin_quantity,0)) as 'StockInWhole' FROM supply_details s_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Whole' GROUP BY s_d.supply_itemsID) s_d1 ON s_d1.supply_itemsID = s_i.supply_itemsID" +
-" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(s_d.stockin_quantity,0)) as  'StockInWeight'FROM supply_details s_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Weight' GROUP BY s_d.supply_itemsID) s_d2 ON s_d2.supply_itemsID = s_i.supply_itemsID" +
-" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(s_d.stockin_quantity,0)) as 'StockInLength' FROM supply_details s_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Length' GROUP BY s_d.supply_itemsID) s_d3 ON s_d3.supply_itemsID = s_i.supply_itemsID" +
-" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(s_d.stockin_quantity,0)) as 'StockInVolume' FROM supply_details s_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Volume' GROUP BY s_d.supply_itemsID) s_d4 ON s_d4.supply_itemsID = s_i.supply_itemsID WHERE s_i.supplyName LIKE '%" + txtSearch.Text + "%' OR s_c.categoryName LIKE '%" + txtSearch.Text + "%'";
+            string query = "SELECT si.supply_itemsID `Supply ID`, si.supplyName AS `Supply Name`, sc.categoryName AS `Category Name`, sc.typeOfMeasure AS `Type Of Measure`," +
+                "si.supplyDescription AS `Supply Descripton`, sc.supply_categoryID AS `Supply Category ID`,  " +
+                "si.measureA AS `Measurement A`,si.measureB AS `Measurement B`,sc.typeOfMeasure,si.Active, " +
+                "if (sc.typeOfMeasure = 'Area',concat(si.measureA, ' x ', si.measureB),si.measureA) AS `Measurement`,  " +
+                "si.unitMeasure AS `Unit Measure`, " +
+                "ifnull( if (sc.typeOfMeasure = 'Area',((1 - (supsoA.stockOut / (si.measureA * si.measureB * supsiA.stockIn))) * supsiA.stockIn)," +
+                "                							if (sc.typeOfMeasure = 'Whole',supsi.stockIn - supso.stockOut," +
+                "                															((1 - (supso.stockOut / (si.measureA * supsi.stockIn))) * supsi.stockIn))), 0) AS `Quantity Left`," +
+                "ifnull( if (sc.typeOfMeasure = 'Area',((si.measureA * si.measureB * supsiA.stockIn) - supsoA.stockOut)," +
+                "                							if (sc.typeOfMeasure = 'Whole',supsi.stockIn - supso.stockOut," +
+                "                															((si.measureA * supsi.stockIn) - supso.stockOut))), 0) AS `Quantity Left in Measurement`," +
+                "si.unitPurchasePrice AS `Purchase Price` " +
+                "FROM supply_items AS si " +
+                "LEFT JOIN supply_Category AS sc ON si.supply_categoryID = sc.supply_categoryID " +
+                "LEFT JOIN(SELECT supply_itemsID, SUM(stockin_quantity) AS `stockIn` FROM supply_details GROUP BY supply_itemsID) AS supsi ON si.supply_itemsID = supsi.supply_itemsID " +
+                "LEFT JOIN(SELECT sui.supply_itemsID, SUM(IFNULL(dm.totalStockedOut,0)+IFNULL(fm.stockedOut, 0) + IFNULL(jo.stockedOut, 0)) AS `stockOut` " +
+                "FROM supply_items AS sui " +
+                "LEFT JOIN(SELECT supply_itemsID, SUM(totalQuantityStockedOut) AS `totalStockedOut` " +
+                "          FROM damaged_materials GROUP BY supply_itemsID) AS dm ON sui.supply_itemsID = dm.supply_itemsID " +
+                "          LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureADeduction* fs.stockinQuantity) as `stockedOut` " +
+                "					FROM frame_materials as sfm" +
+                "                    LEFT JOIN frame_list as fl ON sfm.frameItemID = fl.frameItemID" +
+                "                    LEFT JOIN frameStock_In as fs ON fl.frameItemID = fs.frameItemID" +
+                "                    GROUP BY supply_itemsID) AS fm ON sui.supply_ItemsID = fm.supply_ItemsID" +
+                "          LEFT JOIN(SELECT sjo.supply_itemsID, SUM(sjo.measureADeduction* job.jobOrderQuantity) as `stockedOut` " +
+                "					FROM jOrder_Details as sjo" +
+                "                    LEFT JOIN jobOrder as job ON sjo.jOrd_Num = job.jOrd_Num" +
+                "                    GROUP BY supply_itemsID) AS jo ON sui.supply_ItemsID = jo.supply_ItemsID" +
+                "          GROUP BY sui.supply_itemsID" +
+                "		) AS supso ON si.supply_itemsID = supso.supply_itemsID " +
+                "LEFT JOIN(" +
+                "            SELECT supply_itemsID, SUM(stockin_quantity) AS `stockIn` FROM supply_details GROUP BY supply_itemsID" +
+                "            )AS supsiA ON si.supply_itemsID = supsiA.supply_itemsID " +
+                "LEFT JOIN(" +
+                "        SELECT sui.supply_itemsID, SUM(IFNULL(dm.totalStockedOut,0)+IFNULL(fm.stockedOutArea, 0) + IFNULL(jo.stockedOutArea, 0)) AS `stockOut` " +
+                "		 FROM supply_items AS sui" +
+                "        LEFT JOIN(SELECT supply_itemsID, SUM(totalQuantityStockedOut) AS `totalStockedOut`" +
+                "                    FROM damaged_materials GROUP BY supply_itemsID) AS dm ON sui.supply_itemsID = dm.supply_itemsID" +
+                "        LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureADeduction* sfm.measureBDeduction* fs.stockinQuantity) as `stockedOutArea`" +
+                "					FROM frame_materials as sfm" +
+                "                    LEFT JOIN frame_list as fl ON sfm.frameItemID = fl.frameItemID" +
+                "                    LEFT JOIN frameStock_In as fs ON fl.frameItemID = fs.frameItemID" +
+                "                    GROUP BY supply_itemsID) AS fm ON sui.supply_ItemsID = fm.supply_ItemsID" +
+                "        LEFT JOIN(SELECT sjo.supply_itemsID, SUM(sjo.measureADeduction* sjo.measureBDeduction* job.jobOrderQuantity) as `stockedOutArea` " +
+                "					FROM jOrder_Details as sjo" +
+                "                    LEFT JOIN jobOrder as job ON sjo.jOrd_Num = job.jOrd_Num" +
+                "                    GROUP BY supply_itemsID) AS jo ON sui.supply_ItemsID = jo.supply_ItemsID" +
+                "        GROUP BY sui.supply_itemsID " +
+                ")AS supsoA ON si.supply_itemsID = supsoA.supply_itemsID WHERE si.supplyName LIKE '%" + txtSearch.Text + "%' OR sc.categoryName LIKE '%" + txtSearch.Text + "%' " +
+                "ORDER BY sc.categoryName, si.supplyName;";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
@@ -109,46 +119,56 @@ namespace PYLsystems
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             myConn.Open();
-            string query = "SELECT s_i.supply_itemsID as 'Supply ID',s_c.supply_categoryID as 'Supply Category ID'," +
-"s_i.supplyName as 'Supply Name',s_c.categoryName as 'Category Name',s_c.typeOfMeasure as 'Type of Measure'," +
-"s_i.supplyDescription as 'Supply Description',s_i.measureA as 'Measurement A',IFNULL(s_i.measureB, 'Not Applicable') as "+
-"'Measurement B',case when s_i.measureB is not null then CONCAT(s_i.measureA,' x ',s_i.measureB) else s_i.measureA end"+
- " as 'Measurement',s_i.unitMeasure as 'Unit Measure',s_i.unitPurchasePrice as 'Purchase Price',"+
-" IF(active = 0, 'Active', 'Inactive') as 'Active',s_c.typeOfMeasure,"+
- " IFNULL(IF(s_c.typeOfMeasure = 'Volume', (1 - ((IFNULL(d_m4.DamagedMaterials, 0) + IFNULL(f_m4.FrameMaterials, 0) + IFNULL(j_d4.JobOrderDetailsMaterials, 0)) / (s_d4.StockInVolume * s_i.measureA))) * (s_d4.StockInVolume), IF(s_c.typeOfMeasure = 'Weight', (1 - ((IFNULL(d_m3.DamagedMaterials, 0) + IFNULL(f_m3.FrameMaterials, 0) + IFNULL(j_d3.JobOrderDetailsMaterials, 0)) / (s_d2.StockInWeight * s_i.measureA))) * (s_d2.StockInWeight), IF(s_c.typeOfMeasure = 'Length', (1 - ((IFNULL(d_m.DamagedMaterials, 0) + IFNULL(f_m.FrameMaterials, 0) + IFNULL(j_d.JobOrderDetailsMaterials, 0)) / (s_d3.StockInLength * s_i.measureA))) * (s_d3.StockInLength), IF(s_c.typeOfMeasure = 'Area', (1 - ((IFNULL(d_m1.DamagedMaterials, 0) + IFNULL(f_m1.FrameMaterials, 0) + IFNULL(j_d1.JobOrderDetailsMaterials, 0)) / (s_d0.StockInArea * (s_i.measureA * s_i.measureB)))) * (s_d0.StockInArea), IF(s_c.typeOfMeasure = 'Whole', IFNULL(s_d1.StockInWhole, 0) - IFNULL(d_m2.DamagedMaterials, 0) + IFNULL(f_m2.FrameMaterials, 0) + IFNULL(j_d2.JobOrderDetailsMaterials, 0), 0))))), 0) as 'Quantity Left'," +
- "   IFNULL(IF(s_c.typeOfMeasure = 'Volume',(s_i.measureA * s_d4.StockInVolume) - IFNULL(d_m4.DamagedMaterials, 0)+ IFNULL(f_m4.FrameMaterials, 0) + IFNULL(j_d4.JobOrderDetailsMaterials, 0), IF(s_c.typeOfMeasure = 'Weight', (s_i.measureA * s_d2.StockInWeight) - IFNULL(d_m3.DamagedMaterials, 0)+ IFNULL(f_m3.FrameMaterials, 0) + IFNULL(j_d3.JobOrderDetailsMaterials, 0), IF(s_c.typeOfMeasure = 'Length',(s_i.measureA * s_d3.StockInLength) - IFNULL(d_m.DamagedMaterials, 0)+ IFNULL(f_m.FrameMaterials, 0) + IFNULL(j_d.JobOrderDetailsMaterials, 0), IF(s_c.typeOfMeasure = 'Area', ((s_i.measureA * s_i.measureB) * s_d0.StockInArea) - IFNULL(d_m1.DamagedMaterials, 0)+ IFNULL(f_m1.FrameMaterials, 0) + IFNULL(j_d1.JobOrderDetailsMaterials, 0), IF(s_c.typeOfMeasure = 'Whole',s_i.measureA * s_d1.StockInWhole -  IFNULL(d_m2.DamagedMaterials, 0)+ IFNULL(f_m2.FrameMaterials, 0) + IFNULL(j_d2.JobOrderDetailsMaterials, 0), 0))))), 0) as 'Quantity Left in Measurement' " +
- " FROM supply_items s_i" +
- " LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(d_m.totalQuantityStockedOut,0)) as 'DamagedMaterials' FROM damaged_materials d_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = d_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Length' GROUP BY s_i.supply_itemsID) "+
-" as d_m ON d_m.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(f_m.measureAtoOG,0)) as 'FrameMaterials' FROM frame_materials f_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = f_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Length' GROUP BY s_i.supply_itemsID) "+
-" as f_m ON f_m.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(j_d.measureAtoOG,0)) as 'JobOrderDetailsMaterials' FROM jorder_details j_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = j_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Length' GROUP BY s_i.supply_itemsID) "+
-" as j_d ON j_d.supply_itemsID = s_i.supply_itemsID"+
-
-" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(d_m.totalQuantityStockedOut,0)) as 'DamagedMaterials' FROM damaged_materials d_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = d_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Area' GROUP BY s_i.supply_itemsID) "+
-" as d_m1 ON d_m1.supply_itemsID = s_i.supply_itemsID  LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(f_m.measureAtoOG,0)) as 'FrameMaterials' FROM frame_materials f_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = f_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Area' GROUP BY s_i.supply_itemsID) "+
-" as f_m1 ON f_m1.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(j_d.measureAtoOG,0)) as 'JobOrderDetailsMaterials' FROM jorder_details j_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = j_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Area' GROUP BY s_i.supply_itemsID) "+
-" as j_d1 ON j_d1.supply_itemsID = s_i.supply_itemsID"+
-
-
-" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(d_m.totalQuantityStockedOut,0)) as 'DamagedMaterials' FROM damaged_materials d_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = d_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Whole' GROUP BY s_i.supply_itemsID) "+
-" as d_m2 ON d_m2.supply_itemsID = s_i.supply_itemsID  LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(f_m.measureAtoOG,0)) as 'FrameMaterials' FROM frame_materials f_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = f_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Whole' GROUP BY s_i.supply_itemsID) "+
-" as f_m2 ON f_m2.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(j_d.measureAtoOG,0)) as 'JobOrderDetailsMaterials' FROM jorder_details j_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = j_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Whole' GROUP BY s_i.supply_itemsID) "+
-" as j_d2 ON j_d2.supply_itemsID = s_i.supply_itemsID"+
-
-" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(d_m.totalQuantityStockedOut,0)) as 'DamagedMaterials' FROM damaged_materials d_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = d_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Weight' GROUP BY s_i.supply_itemsID) "+
-" as d_m3 ON d_m3.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(f_m.measureAtoOG,0)) as 'FrameMaterials' FROM frame_materials f_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = f_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Weight' GROUP BY s_i.supply_itemsID) "+
-" as f_m3 ON f_m3.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(j_d.measureAtoOG,0)) as 'JobOrderDetailsMaterials' FROM jorder_details j_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = j_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Weight' GROUP BY s_i.supply_itemsID) "+
-" as j_d3 ON j_d3.supply_itemsID = s_i.supply_itemsID"+
-
-" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(d_m.totalQuantityStockedOut,0)) as 'DamagedMaterials' FROM damaged_materials d_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = d_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Volume' GROUP BY s_i.supply_itemsID) "+
-" as d_m4 ON d_m4.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(f_m.measureAtoOG,0)) as 'FrameMaterials' FROM frame_materials f_m LEFT JOIN supply_items s_i ON s_i.supply_itemsID = f_m.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Volume' GROUP BY s_i.supply_itemsID) "+
-" as f_m4 ON f_m4.supply_itemsID = s_i.supply_itemsID LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(j_d.measureAtoOG,0)) as 'JobOrderDetailsMaterials' FROM jorder_details j_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = j_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Volume'GROUP BY s_i.supply_itemsID) "+
-" as j_d4 ON j_d4.supply_itemsID = s_i.supply_itemsID"+
-
-" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(s_d.stockin_quantity,0)) as 'StockInArea' FROM supply_details s_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Area' GROUP BY s_d.supply_itemsID) s_d0 ON s_d0.supply_itemsID = s_i.supply_itemsID"+
-" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(s_d.stockin_quantity,0)) as 'StockInWhole' FROM supply_details s_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Whole' GROUP BY s_d.supply_itemsID) s_d1 ON s_d1.supply_itemsID = s_i.supply_itemsID"+
-" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(s_d.stockin_quantity,0)) as  'StockInWeight'FROM supply_details s_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Weight' GROUP BY s_d.supply_itemsID) s_d2 ON s_d2.supply_itemsID = s_i.supply_itemsID"+
-" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(s_d.stockin_quantity,0)) as 'StockInLength' FROM supply_details s_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Length' GROUP BY s_d.supply_itemsID) s_d3 ON s_d3.supply_itemsID = s_i.supply_itemsID"+
-" LEFT JOIN(SELECT s_i.supply_itemsID, SUM(IFNULL(s_d.stockin_quantity,0)) as 'StockInVolume' FROM supply_details s_d LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID LEFT JOIN supply_category s_c ON s_c.supply_categoryID = s_i.supply_categoryID WHERE s_c.typeOfMeasure = 'Volume' GROUP BY s_d.supply_itemsID) s_d4 ON s_d4.supply_itemsID = s_i.supply_itemsID WHERE s_i.supplyName LIKE '%" + txtSearch.Text +  "%' OR s_c.categoryName LIKE '%" + txtSearch.Text + "%'";
+            string query = "SELECT si.supply_itemsID `Supply ID`, si.supplyName AS `Supply Name`, sc.categoryName AS `Category Name`, sc.typeOfMeasure AS `Type Of Measure`," +
+                "si.supplyDescription AS `Supply Descripton`, sc.supply_categoryID AS `Supply Category ID`,  " +
+                "si.measureA AS `Measurement A`,si.measureB AS `Measurement B`,sc.typeOfMeasure,si.Active, " +
+                "if (sc.typeOfMeasure = 'Area',concat(si.measureA, ' x ', si.measureB),si.measureA) AS `Measurement`,  " +
+                "si.unitMeasure AS `Unit Measure`, " +
+                "ifnull( if (sc.typeOfMeasure = 'Area',((1 - (supsoA.stockOut / (si.measureA * si.measureB * supsiA.stockIn))) * supsiA.stockIn)," +
+                "                							if (sc.typeOfMeasure = 'Whole',supsi.stockIn - supso.stockOut," +
+                "                															((1 - (supso.stockOut / (si.measureA * supsi.stockIn))) * supsi.stockIn))), 0) AS `Quantity Left`," +
+                "ifnull( if (sc.typeOfMeasure = 'Area',((si.measureA * si.measureB * supsiA.stockIn) - supsoA.stockOut)," +
+                "                							if (sc.typeOfMeasure = 'Whole',supsi.stockIn - supso.stockOut," +
+                "                															((si.measureA * supsi.stockIn) - supso.stockOut))), 0) AS `Quantity Left in Measurement`," +
+                "si.unitPurchasePrice AS `Purchase Price` " +
+                "FROM supply_items AS si " +
+                "LEFT JOIN supply_Category AS sc ON si.supply_categoryID = sc.supply_categoryID " +
+                "LEFT JOIN(SELECT supply_itemsID, SUM(stockin_quantity) AS `stockIn` FROM supply_details GROUP BY supply_itemsID) AS supsi ON si.supply_itemsID = supsi.supply_itemsID " +
+                "LEFT JOIN(SELECT sui.supply_itemsID, SUM(IFNULL(dm.totalStockedOut,0)+IFNULL(fm.stockedOut, 0) + IFNULL(jo.stockedOut, 0)) AS `stockOut` " +
+                "FROM supply_items AS sui " +
+                "LEFT JOIN(SELECT supply_itemsID, SUM(totalQuantityStockedOut) AS `totalStockedOut` " +
+                "          FROM damaged_materials GROUP BY supply_itemsID) AS dm ON sui.supply_itemsID = dm.supply_itemsID " +
+                "          LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureADeduction* fs.stockinQuantity) as `stockedOut` " +
+                "					FROM frame_materials as sfm" +
+                "                    LEFT JOIN frame_list as fl ON sfm.frameItemID = fl.frameItemID" +
+                "                    LEFT JOIN frameStock_In as fs ON fl.frameItemID = fs.frameItemID" +
+                "                    GROUP BY supply_itemsID) AS fm ON sui.supply_ItemsID = fm.supply_ItemsID" +
+                "          LEFT JOIN(SELECT sjo.supply_itemsID, SUM(sjo.measureADeduction* job.jobOrderQuantity) as `stockedOut` " +
+                "					FROM jOrder_Details as sjo" +
+                "                    LEFT JOIN jobOrder as job ON sjo.jOrd_Num = job.jOrd_Num" +
+                "                    GROUP BY supply_itemsID) AS jo ON sui.supply_ItemsID = jo.supply_ItemsID" +
+                "          GROUP BY sui.supply_itemsID" +
+                "		) AS supso ON si.supply_itemsID = supso.supply_itemsID " +
+                "LEFT JOIN(" +
+                "            SELECT supply_itemsID, SUM(stockin_quantity) AS `stockIn` FROM supply_details GROUP BY supply_itemsID" +
+                "            )AS supsiA ON si.supply_itemsID = supsiA.supply_itemsID " +
+                "LEFT JOIN(" +
+                "        SELECT sui.supply_itemsID, SUM(IFNULL(dm.totalStockedOut,0)+IFNULL(fm.stockedOutArea, 0) + IFNULL(jo.stockedOutArea, 0)) AS `stockOut` " +
+                "		 FROM supply_items AS sui" +
+                "        LEFT JOIN(SELECT supply_itemsID, SUM(totalQuantityStockedOut) AS `totalStockedOut`" +
+                "                    FROM damaged_materials GROUP BY supply_itemsID) AS dm ON sui.supply_itemsID = dm.supply_itemsID" +
+                "        LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureADeduction* sfm.measureBDeduction* fs.stockinQuantity) as `stockedOutArea`" +
+                "					FROM frame_materials as sfm" +
+                "                    LEFT JOIN frame_list as fl ON sfm.frameItemID = fl.frameItemID" +
+                "                    LEFT JOIN frameStock_In as fs ON fl.frameItemID = fs.frameItemID" +
+                "                    GROUP BY supply_itemsID) AS fm ON sui.supply_ItemsID = fm.supply_ItemsID" +
+                "        LEFT JOIN(SELECT sjo.supply_itemsID, SUM(sjo.measureADeduction* sjo.measureBDeduction* job.jobOrderQuantity) as `stockedOutArea` " +
+                "					FROM jOrder_Details as sjo" +
+                "                    LEFT JOIN jobOrder as job ON sjo.jOrd_Num = job.jOrd_Num" +
+                "                    GROUP BY supply_itemsID) AS jo ON sui.supply_ItemsID = jo.supply_ItemsID" +
+                "        GROUP BY sui.supply_itemsID " +
+                ")AS supsoA ON si.supply_itemsID = supsoA.supply_itemsID WHERE si.supplyName LIKE '%" + txtSearch.Text + "%' OR sc.categoryName LIKE '%" + txtSearch.Text + "%' " +
+                "ORDER BY sc.categoryName, si.supplyName;";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
@@ -436,6 +456,7 @@ namespace PYLsystems
             frmSupplyStockIn.Global.supplyID = dgSupplyItems.CurrentRow.Cells[0].Value.ToString();
             supplyStockIn.txtItemName.Text = dgSupplyItems.CurrentRow.Cells[2].Value.ToString();
             supplyStockIn.txtRawPurchasePrice.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
+            supplyStockIn.rawPurchasePriceInitial = Double.Parse(dgSupplyItems.CurrentRow.Cells[10].Value.ToString());
             supplyStockIn.ShowDialog();
             RefreshDatabase();
             cboSupplyCategory.SelectedIndex = -1;

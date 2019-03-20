@@ -423,9 +423,62 @@ namespace PYLsystems
             }
             return measureConverted;
         }
+        private void archiveFrame(int selectedFrameItemId)
+        {
+            try
+            {
+                String updateFrameListStat = "UPDATE frame_list " +
+                    "SET active = '1' " +
+                    "WHERE frameItemID = @frameItemID; ";
+                MySqlConnection my_conn = new MySqlConnection(connString);
+                MySqlCommand cmdUpdateFrameListStat = new MySqlCommand(updateFrameListStat, my_conn);
+                cmdUpdateFrameListStat.Parameters.AddWithValue("@frameItemID", selectedFrameItemId);
+
+                MySqlDataReader dataReader;
+                my_conn.Open();
+                dataReader = cmdUpdateFrameListStat.ExecuteReader();
+                while (dataReader.Read())
+                {
+                }
+                my_conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
         //----------------Event Methods-----------------
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
+            try
+            {
+                String stringSuppliesList =
+                    "SELECT FL.frameName AS Frame, FL.Dimension, FL.frameDescription, fl.UnitSalesPrice AS 'Unit Price', IFNULL(FS.Stockin - (IFNULL(SOD.Stockout,0)),0) AS 'Quantity Left', " +
+                    "FL.frameItemID FROM frame_list AS FL " +
+                    "LEFT JOIN(SELECT FS.frameItemID, SUM(FS.stockinQuantity) AS Stockin FROM framestock_in AS FS GROUP BY FS.frameItemID) " +
+                    "AS FS ON FL.frameItemID = FS.frameItemID " +
+                    "LEFT JOIN(SELECT SOD.frameItemID, SUM(SOD.sOrd_Quantity) AS Stockout FROM sOrder_details AS SOD LEFT JOIN salesOrder AS SO ON SOD.sOrd_Num=SO.sOrd_Num WHERE SO.sOrd_status>0 GROUP BY SOD.frameItemID) " +
+                    "AS SOD ON FL.frameItemID = SOD.frameItemID " +
+                    "WHERE FL.active = '0' " +
+                    "AND FL.frameName LIKE @txtSearch " +
+                    "ORDER BY FL.frameName;";
+                MySqlConnection my_conn = new MySqlConnection(connString);
+                MySqlCommand cmdSuppliesSelect = new MySqlCommand(stringSuppliesList, my_conn);
+                //cmdSuppliesSelect.Parameters.AddWithValue("@frameItemID", selectedFrameItemId);
+                cmdSuppliesSelect.Parameters.AddWithValue("@txtSearch", "%" + txtSearch.Text + "%");
+                MySqlDataAdapter my_adapter = new MySqlDataAdapter(cmdSuppliesSelect);
+
+                dtFrameList = new DataTable();
+                my_adapter.Fill(dtFrameList);
+                datagridFrameList.DataSource = dtFrameList;
+                datagridFrameList.Columns["frameItemID"].Visible = false;
+                datagridFrameList.Columns["Unit Price"].DefaultCellStyle.Format = "0.00";
+                datagridFrameList.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
         private void btnCreateFrame_Click(object sender, EventArgs e)
@@ -461,6 +514,7 @@ namespace PYLsystems
         {
             frmFrameArchivedList formFrameArchiveL = new frmFrameArchivedList();
             formFrameArchiveL.ShowDialog();
+            frameList_Loader();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -477,6 +531,23 @@ namespace PYLsystems
         private void datagridFrameList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             suppliesUsed_Loader();
+        }
+
+        private void btnArchiveFrame_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to archive frame?","Confirm",MessageBoxButtons.YesNo);
+            if(result== System.Windows.Forms.DialogResult.Yes)
+            {
+                int currRowIndex = datagridFrameList.SelectedRows[0].Index;
+                int selectedFrameItemId = Int32.Parse(datagridFrameList.Rows[currRowIndex].Cells["frameItemID"].Value.ToString());
+                archiveFrame(selectedFrameItemId);
+                frameList_Loader();
+            }
+            else
+            {
+                return;
+            }
+            
         }
     }
     class suppliesCosting

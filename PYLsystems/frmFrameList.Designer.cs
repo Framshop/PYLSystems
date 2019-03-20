@@ -313,6 +313,7 @@
             this.btnArchiveFrame.TabIndex = 12;
             this.btnArchiveFrame.Text = "Archive Frame";
             this.btnArchiveFrame.UseVisualStyleBackColor = true;
+            this.btnArchiveFrame.Click += new System.EventHandler(this.btnArchiveFrame_Click);
             // 
             // btnDamage
             // 

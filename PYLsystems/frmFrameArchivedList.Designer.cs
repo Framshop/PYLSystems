@@ -34,15 +34,15 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.datagridPayrollCalc = new System.Windows.Forms.DataGridView();
+            this.datagridArchivedFrames = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnStockIn = new System.Windows.Forms.Button();
+            this.btnRestore = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datagridPayrollCalc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridArchivedFrames)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,7 +105,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.datagridPayrollCalc);
+            this.groupBox2.Controls.Add(this.datagridArchivedFrames);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 70);
             this.groupBox2.Name = "groupBox2";
@@ -114,13 +114,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Archived Frame List";
             // 
-            // datagridPayrollCalc
+            // datagridArchivedFrames
             // 
-            this.datagridPayrollCalc.AllowUserToAddRows = false;
-            this.datagridPayrollCalc.AllowUserToDeleteRows = false;
-            this.datagridPayrollCalc.AllowUserToResizeRows = false;
-            this.datagridPayrollCalc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.datagridPayrollCalc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagridArchivedFrames.AllowUserToAddRows = false;
+            this.datagridArchivedFrames.AllowUserToDeleteRows = false;
+            this.datagridArchivedFrames.AllowUserToResizeRows = false;
+            this.datagridArchivedFrames.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.datagridArchivedFrames.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -128,21 +128,21 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.datagridPayrollCalc.DefaultCellStyle = dataGridViewCellStyle1;
-            this.datagridPayrollCalc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.datagridPayrollCalc.Location = new System.Drawing.Point(3, 22);
-            this.datagridPayrollCalc.Name = "datagridPayrollCalc";
-            this.datagridPayrollCalc.ReadOnly = true;
-            this.datagridPayrollCalc.RowHeadersVisible = false;
-            this.datagridPayrollCalc.RowTemplate.Height = 28;
-            this.datagridPayrollCalc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridPayrollCalc.Size = new System.Drawing.Size(735, 560);
-            this.datagridPayrollCalc.TabIndex = 4;
+            this.datagridArchivedFrames.DefaultCellStyle = dataGridViewCellStyle1;
+            this.datagridArchivedFrames.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.datagridArchivedFrames.Location = new System.Drawing.Point(3, 22);
+            this.datagridArchivedFrames.Name = "datagridArchivedFrames";
+            this.datagridArchivedFrames.ReadOnly = true;
+            this.datagridArchivedFrames.RowHeadersVisible = false;
+            this.datagridArchivedFrames.RowTemplate.Height = 28;
+            this.datagridArchivedFrames.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.datagridArchivedFrames.Size = new System.Drawing.Size(735, 560);
+            this.datagridArchivedFrames.TabIndex = 4;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnClose);
-            this.groupBox3.Controls.Add(this.btnStockIn);
+            this.groupBox3.Controls.Add(this.btnRestore);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(3, 661);
             this.groupBox3.Name = "groupBox3";
@@ -162,16 +162,17 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // btnStockIn
+            // btnRestore
             // 
-            this.btnStockIn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnRestore.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStockIn.Location = new System.Drawing.Point(38, 66);
-            this.btnStockIn.Name = "btnStockIn";
-            this.btnStockIn.Size = new System.Drawing.Size(319, 37);
-            this.btnStockIn.TabIndex = 12;
-            this.btnStockIn.Text = "Restore Frame Item";
-            this.btnStockIn.UseVisualStyleBackColor = true;
+            this.btnRestore.Location = new System.Drawing.Point(38, 66);
+            this.btnRestore.Name = "btnRestore";
+            this.btnRestore.Size = new System.Drawing.Size(319, 37);
+            this.btnRestore.TabIndex = 12;
+            this.btnRestore.Text = "Restore Frame Item";
+            this.btnRestore.UseVisualStyleBackColor = true;
+            this.btnRestore.Click += new System.EventHandler(this.btnStockIn_Click);
             // 
             // frmFrameArchivedList
             // 
@@ -181,11 +182,12 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmFrameArchivedList";
             this.Text = "frmFrameArchivedList";
+            this.Load += new System.EventHandler(this.frmFrameArchivedList_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.datagridPayrollCalc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridArchivedFrames)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -200,7 +202,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnStockIn;
-        private System.Windows.Forms.DataGridView datagridPayrollCalc;
+        private System.Windows.Forms.Button btnRestore;
+        private System.Windows.Forms.DataGridView datagridArchivedFrames;
     }
 }

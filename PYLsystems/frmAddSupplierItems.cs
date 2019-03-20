@@ -33,14 +33,20 @@ namespace PYLsystems
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            
             this.Close();
         }
            
 
         private void frmAddSupplierItems_Load(object sender, EventArgs e)
         {
+            frmSupplier.Global.supply_categoryID_passer = "";
+            frmSupplier.Global.supply_itemsID_passer = "";
+            frmSupplier.Global.category_name_passer = "";
+            frmSupplier.Global.supply_name_passer = "";
             reload();
         }
+
 
         public void reload()
         {
