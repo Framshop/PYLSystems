@@ -81,7 +81,7 @@ namespace PYLsystems
             dgvStockIn.Columns["pricePurchaseTotal"].Visible = false;
             dgvStockIn.Columns["priceRawTotal"].Visible = false;
             dgvStockIn.Columns["active"].Visible = false;
-            dgvStockIn.Columns["stockin_quantity"].Visible = false;
+            
         }
         private void frmSupplyStockIn_Load(object sender, EventArgs e)
         {
@@ -272,7 +272,7 @@ namespace PYLsystems
             dgvStockIn.Columns["pricePurchaseTotal"].Visible = false;
             dgvStockIn.Columns["priceRawTotal"].Visible = false;
             dgvStockIn.Columns["active"].Visible = false;
-            dgvStockIn.Columns["stockin_quantity"].Visible = false;
+            
         }
         public void editDetails()
         {
@@ -288,15 +288,15 @@ namespace PYLsystems
         private void btnEditDetails_Click(object sender, EventArgs e)
         {
             frmStockInSupplyEdit stockInSupplyEdit = new frmStockInSupplyEdit();
-            frmStockInSupplyEdit.Global.supplyID = dgvStockIn.CurrentRow.Cells[0].Value.ToString();
-            frmStockInSupplyEdit.Global.supplierID = dgvStockIn.CurrentRow.Cells[8].Value.ToString();
-            stockInSupplyEdit.lblsupplierID.Text = dgvStockIn.CurrentRow.Cells[8].Value.ToString();
-            stockInSupplyEdit.txtItemName.Text = dgvStockIn.CurrentRow.Cells[1].Value.ToString();
-            stockInSupplyEdit.txtDeliveryDate.Text = dgvStockIn.CurrentRow.Cells[3].Value.ToString();
-            stockInSupplyEdit.txtQuantity.Text = dgvStockIn.CurrentRow.Cells[4].Value.ToString();
-            stockInSupplyEdit.txtRawPurchasePrice.Text = dgvStockIn.CurrentRow.Cells[5].Value.ToString();
-            stockInSupplyEdit.txtActualPurchasePrice.Text = dgvStockIn.CurrentRow.Cells[6].Value.ToString();
-            stockInSupplyEdit.cboActive.Text = dgvStockIn.CurrentRow.Cells[7].Value.ToString();
+            frmStockInSupplyEdit.Global.supplyID = dgvStockIn.CurrentRow.Cells["Supply ID"].Value.ToString();
+            frmStockInSupplyEdit.Global.supplierID = dgvStockIn.CurrentRow.Cells["Calculated Total Purchase Price"].Value.ToString();
+            stockInSupplyEdit.lblsupplierID.Text = dgvStockIn.CurrentRow.Cells["Calculated Total Purchase Price"].Value.ToString();
+            stockInSupplyEdit.txtItemName.Text = dgvStockIn.CurrentRow.Cells["Supply Name"].Value.ToString();
+            stockInSupplyEdit.txtDeliveryDate.Text =  dgvStockIn.CurrentRow.Cells["Date Delivered"].Value.ToString();
+            stockInSupplyEdit.txtQuantity.Text =  dgvStockIn.CurrentRow.Cells["Stock In Quantity"].Value.ToString();
+            stockInSupplyEdit.txtRawPurchasePrice.Text =  dgvStockIn.CurrentRow.Cells["priceRawTotal"].Value.ToString();
+            stockInSupplyEdit.txtActualPurchasePrice.Text =  dgvStockIn.CurrentRow.Cells["pricePurchaseTotal"].Value.ToString();
+            stockInSupplyEdit.cboActive.Text =  dgvStockIn.CurrentRow.Cells["active"].Value.ToString();
             stockInSupplyEdit.ShowDialog();
             RefreshStockIn();
             RefreshDatabase();
@@ -306,7 +306,7 @@ namespace PYLsystems
 
         private void dgvStockIn_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            supply_detailsID = dgvStockIn.CurrentRow.Cells[0].Value.ToString();
+            supply_detailsID = dgvStockIn.CurrentRow.Cells["Supply ID"].Value.ToString();
             editDetails();
         }
 
@@ -324,7 +324,7 @@ namespace PYLsystems
             dgvStockIn.Columns["pricePurchaseTotal"].Visible = false;
             dgvStockIn.Columns["priceRawTotal"].Visible = false;
             dgvStockIn.Columns["active"].Visible = false;
-            dgvStockIn.Columns["stockin_quantity"].Visible = false;
+            
         }
 
         private void frmSupplyStockIn_ResizeBegin(object sender, EventArgs e)

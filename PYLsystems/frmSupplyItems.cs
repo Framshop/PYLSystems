@@ -1062,9 +1062,9 @@ namespace PYLsystems
                     RefreshDatabase();
                     MessageBox.Show("Update Successful");
                 }
-                if (typeOfMeasure_db == "Area")
+                else if (typeOfMeasure_db == "Area")
                 {
-                    string myQuery = "UPDATE supply_items SET supply_categoryID = " + supply_categoryID + ", supplyName = '" + txtItemName.Text + "', supplyDescription = '" + txtItemDescription.Text + "', measureA = " + txtArea1.Text + ", measureB = " + txtArea2.Text + ", unitMeasure = '" + cboLength.Text + "', unitPurchasePrice = " + txtPurchaseUnitPrice.Text + ", active = " + cboActive.SelectedIndex + " WHERE supply_itemsID = " + supplyID;
+                    string myQuery = "UPDATE supply_items SET supply_categoryID = " + supply_categoryID + ", supplyName = '" + txtItemName.Text + "', supplyDescription = '" + txtItemDescription.Text + "', measureA = " + txtArea1.Text + ", measureB = " + txtArea2.Text + ", unitMeasure = '" + cboArea.Text + "', unitPurchasePrice = " + txtPurchaseUnitPrice.Text + ", active = " + cboActive.SelectedIndex + " WHERE supply_itemsID = " + supplyID;
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
@@ -1072,7 +1072,7 @@ namespace PYLsystems
                     RefreshDatabase();
                     MessageBox.Show("Update Successful");
                 }
-                if (typeOfMeasure_db == "Weight")
+                else if (typeOfMeasure_db == "Weight")
                 {
                     string myQuery = "UPDATE supply_items SET supply_categoryID = " + supply_categoryID + ", supplyName = '" + txtItemName.Text + "', supplyDescription = '" + txtItemDescription.Text + "', measureA = " + txtWeight.Text + ", unitMeasure = '" + cboWeight.Text + "', unitPurchasePrice = " + txtPurchaseUnitPrice.Text + ", active = " + cboActive.SelectedIndex + " WHERE supply_itemsID = " + supplyID;
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
@@ -1082,7 +1082,7 @@ namespace PYLsystems
                     RefreshDatabase();
                     MessageBox.Show("Update Successful");
                 }
-            if (typeOfMeasure_db == "Volume")
+            else if (typeOfMeasure_db == "Volume")
             {
                 string myQuery = "UPDATE supply_items SET supply_categoryID = " + supply_categoryID + ", supplyName = '" + txtItemName.Text + "', supplyDescription = '" + txtItemDescription.Text + "', measureA = " + txtVolume.Text + ", unitMeasure = '" + cboVolume.Text + "', unitPurchasePrice = " + txtPurchaseUnitPrice.Text + ", active = " + cboActive.SelectedIndex + " WHERE supply_itemsID = " + supplyID;
                 MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
