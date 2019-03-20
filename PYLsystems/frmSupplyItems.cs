@@ -38,7 +38,7 @@ namespace PYLsystems
         {
             myConn.Open();
             string query = "SELECT si.supply_itemsID `Supply ID`, si.supplyName AS `Supply Name`, sc.categoryName AS `Category Name`, sc.typeOfMeasure AS `Type Of Measure`," +
-                "si.supplyDescription AS `Supply Descripton`, sc.supply_categoryID AS `Supply Category ID`,  " +
+                "si.supplyDescription AS `Supply Description`, sc.supply_categoryID AS `Supply Category ID`,  " +
                 "si.measureA AS `Measurement A`,si.measureB AS `Measurement B`,sc.typeOfMeasure,si.Active, " +
                 "if (sc.typeOfMeasure = 'Area',concat(si.measureA, ' x ', si.measureB),si.measureA) AS `Measurement`,  " +
                 "si.unitMeasure AS `Unit Measure`, " +
@@ -120,7 +120,7 @@ namespace PYLsystems
         {
             myConn.Open();
             string query = "SELECT si.supply_itemsID `Supply ID`, si.supplyName AS `Supply Name`, sc.categoryName AS `Category Name`, sc.typeOfMeasure AS `Type Of Measure`," +
-                "si.supplyDescription AS `Supply Descripton`, sc.supply_categoryID AS `Supply Category ID`,  " +
+                "si.supplyDescription AS `Supply Description`, sc.supply_categoryID AS `Supply Category ID`,  " +
                 "si.measureA AS `Measurement A`,si.measureB AS `Measurement B`,sc.typeOfMeasure,si.Active, " +
                 "if (sc.typeOfMeasure = 'Area',concat(si.measureA, ' x ', si.measureB),si.measureA) AS `Measurement`,  " +
                 "si.unitMeasure AS `Unit Measure`, " +
@@ -452,11 +452,11 @@ namespace PYLsystems
         private void btnStockInSelectedItem_Click(object sender, EventArgs e)
         {
             frmSupplyStockIn supplyStockIn = new frmSupplyStockIn();
-            supplyStockIn.lblsupply_itemsID.Text = dgSupplyItems.CurrentRow.Cells[0].Value.ToString();
-            frmSupplyStockIn.Global.supplyID = dgSupplyItems.CurrentRow.Cells[0].Value.ToString();
-            supplyStockIn.txtItemName.Text = dgSupplyItems.CurrentRow.Cells[2].Value.ToString();
-            supplyStockIn.txtRawPurchasePrice.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
-            supplyStockIn.rawPurchasePriceInitial = Double.Parse(dgSupplyItems.CurrentRow.Cells[10].Value.ToString());
+            supplyStockIn.lblsupply_itemsID.Text = dgSupplyItems.CurrentRow.Cells["Supply ID"].Value.ToString();
+            frmSupplyStockIn.Global.supplyID = dgSupplyItems.CurrentRow.Cells["Supply ID"].Value.ToString();
+            supplyStockIn.txtItemName.Text = dgSupplyItems.CurrentRow.Cells["Supply Name"].Value.ToString();
+            supplyStockIn.txtRawPurchasePrice.Text = dgSupplyItems.CurrentRow.Cells["Purchase Price"].Value.ToString();
+            supplyStockIn.rawPurchasePriceInitial = Double.Parse(dgSupplyItems.CurrentRow.Cells["Purchase Price"].Value.ToString());
             supplyStockIn.ShowDialog();
             RefreshDatabase();
             cboSupplyCategory.SelectedIndex = -1;
@@ -721,18 +721,18 @@ namespace PYLsystems
 
         private void dgSupplyItems_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            quantity_left = dgSupplyItems.CurrentRow.Cells[13].Value.ToString();
-           supplyID = dgSupplyItems.CurrentRow.Cells[0].Value.ToString();
+            quantity_left = dgSupplyItems.CurrentRow.Cells["Quantity Left"].Value.ToString();
+           supplyID = dgSupplyItems.CurrentRow.Cells["Supply ID"].Value.ToString();
             validationUpdateItem();
-            typeOfMeasure_dbCellClick = dgSupplyItems.CurrentRow.Cells[4].Value.ToString();
+            typeOfMeasure_dbCellClick = dgSupplyItems.CurrentRow.Cells["Type of Measure"].Value.ToString();
             if (typeOfMeasure_dbCellClick == "Area")
             {
-                supply_categoryID = dgSupplyItems.CurrentRow.Cells[1].Value.ToString();
-                cboSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells[3].Value.ToString();
-                txtItemName.Text = dgSupplyItems.CurrentRow.Cells[2].Value.ToString();
-                txtItemDescription.Text = dgSupplyItems.CurrentRow.Cells[5].Value.ToString();
-                cboActive.Text = dgSupplyItems.CurrentRow.Cells[11].Value.ToString();
-                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
+                supply_categoryID = dgSupplyItems.CurrentRow.Cells["Supply Category ID"].Value.ToString();
+                cboSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells["Category Name"].Value.ToString();
+                txtItemName.Text = dgSupplyItems.CurrentRow.Cells["Supply Name"].Value.ToString();
+                txtItemDescription.Text = dgSupplyItems.CurrentRow.Cells["Supply Description"].Value.ToString();
+                cboActive.Text = dgSupplyItems.CurrentRow.Cells["Active"].Value.ToString();
+                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells["Purchase Price"].Value.ToString();
 
 
                 //TRUE
@@ -752,9 +752,9 @@ namespace PYLsystems
 
 
 
-                txtArea1.Text = dgSupplyItems.CurrentRow.Cells[6].Value.ToString();
-                txtArea2.Text = dgSupplyItems.CurrentRow.Cells[7].Value.ToString();
-                cboArea.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                txtArea1.Text = dgSupplyItems.CurrentRow.Cells["Measurement A"].Value.ToString();
+                txtArea2.Text = dgSupplyItems.CurrentRow.Cells["Measurement B"].Value.ToString();
+                cboArea.Text = dgSupplyItems.CurrentRow.Cells["Unit Measure"].Value.ToString();
 
                 //FALSE
 
@@ -786,20 +786,20 @@ namespace PYLsystems
             }
             else if (typeOfMeasure_dbCellClick == "Length")
             {
-                supply_categoryID = dgSupplyItems.CurrentRow.Cells[1].Value.ToString();
-                cboSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells[3].Value.ToString();
-                txtItemName.Text = dgSupplyItems.CurrentRow.Cells[2].Value.ToString();
-                txtItemDescription.Text = dgSupplyItems.CurrentRow.Cells[5].Value.ToString();
-                cboActive.Text = dgSupplyItems.CurrentRow.Cells[11].Value.ToString();
-                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
+                supply_categoryID = dgSupplyItems.CurrentRow.Cells["Supply Category ID"].Value.ToString();
+                cboSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells["Category Name"].Value.ToString();
+                txtItemName.Text = dgSupplyItems.CurrentRow.Cells["Supply Name"].Value.ToString();
+                txtItemDescription.Text = dgSupplyItems.CurrentRow.Cells["Supply Description"].Value.ToString();
+                cboActive.Text = dgSupplyItems.CurrentRow.Cells["Active"].Value.ToString();
+                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells["Purchase Price"].Value.ToString();
 
                 //TRUE
                 txtLength.Enabled = true;
                 cboLength.Enabled = true;
                 lblLength.Enabled = true;
 
-                cboLength.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
-                txtLength.Text = dgSupplyItems.CurrentRow.Cells[6].Value.ToString();
+                cboLength.Text = dgSupplyItems.CurrentRow.Cells["Unit Measure"].Value.ToString();
+                txtLength.Text = dgSupplyItems.CurrentRow.Cells["Measurement A"].Value.ToString();
 
                 //FALSE
                 lblArea.Enabled = false;
@@ -833,20 +833,20 @@ namespace PYLsystems
             }
             else if (typeOfMeasure_dbCellClick == "Weight")
             {
-                supply_categoryID = dgSupplyItems.CurrentRow.Cells[1].Value.ToString();
-                cboSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells[3].Value.ToString();
-                txtItemName.Text = dgSupplyItems.CurrentRow.Cells[2].Value.ToString();
-                txtItemDescription.Text = dgSupplyItems.CurrentRow.Cells[5].Value.ToString();
-                cboActive.Text = dgSupplyItems.CurrentRow.Cells[11].Value.ToString();
-                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
+                supply_categoryID = dgSupplyItems.CurrentRow.Cells["Supply Category ID"].Value.ToString();
+                cboSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells["Category Name"].Value.ToString();
+                txtItemName.Text = dgSupplyItems.CurrentRow.Cells["Supply Name"].Value.ToString();
+                txtItemDescription.Text = dgSupplyItems.CurrentRow.Cells["Supply Description"].Value.ToString();
+                cboActive.Text = dgSupplyItems.CurrentRow.Cells["Active"].Value.ToString();
+                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells["Purchase Price"].Value.ToString();
 
                 //TRUE
                 lblWeight.Enabled = true;
                 txtWeight.Enabled = true;
                 cboWeight.Enabled = true;
 
-                txtWeight.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
-                cboWeight.Text = dgSupplyItems.CurrentRow.Cells[6].Value.ToString();
+                txtWeight.Text = dgSupplyItems.CurrentRow.Cells["Unit Measure"].Value.ToString();
+                cboWeight.Text = dgSupplyItems.CurrentRow.Cells["Measurement A"].Value.ToString();
                 //FALSE
                 lblArea.Enabled = false;
                 txtArea1.Enabled = false;
@@ -880,19 +880,19 @@ namespace PYLsystems
             }
             else if (typeOfMeasure_dbCellClick == "Volume")
             {
-                supply_categoryID = dgSupplyItems.CurrentRow.Cells[1].Value.ToString();
-                cboSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells[3].Value.ToString();
-                txtItemName.Text = dgSupplyItems.CurrentRow.Cells[2].Value.ToString();
-                txtItemDescription.Text = dgSupplyItems.CurrentRow.Cells[5].Value.ToString();
-                cboActive.Text = dgSupplyItems.CurrentRow.Cells[11].Value.ToString();
-                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
+                supply_categoryID = dgSupplyItems.CurrentRow.Cells["Supply Category ID"].Value.ToString();
+                cboSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells["Category Name"].Value.ToString();
+                txtItemName.Text = dgSupplyItems.CurrentRow.Cells["Supply Name"].Value.ToString();
+                txtItemDescription.Text = dgSupplyItems.CurrentRow.Cells["Supply Description"].Value.ToString();
+                cboActive.Text = dgSupplyItems.CurrentRow.Cells["Active"].Value.ToString();
+                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells["Purchase Price"].Value.ToString();
                 //TRUE
                 lblVolume.Enabled = true;
                 txtVolume.Enabled = true;
                 cboVolume.Enabled = true;
 
-                txtVolume.Text = dgSupplyItems.CurrentRow.Cells[6].Value.ToString();
-                cboVolume.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                txtVolume.Text = dgSupplyItems.CurrentRow.Cells["Measurement A"].Value.ToString();
+                cboVolume.Text = dgSupplyItems.CurrentRow.Cells["Unit Measure"].Value.ToString();
 
                 //FALSE
                 lblWeight.Enabled = false;
@@ -926,18 +926,18 @@ namespace PYLsystems
             }
             else
             {
-                supply_categoryID = dgSupplyItems.CurrentRow.Cells[1].Value.ToString();
-                cboSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells[3].Value.ToString();
-                txtItemName.Text = dgSupplyItems.CurrentRow.Cells[2].Value.ToString();
-                txtItemDescription.Text = dgSupplyItems.CurrentRow.Cells[5].Value.ToString();
-                cboActive.Text = dgSupplyItems.CurrentRow.Cells[11].Value.ToString();
-                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
+                supply_categoryID = dgSupplyItems.CurrentRow.Cells["Supply Category ID"].Value.ToString();
+                cboSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells["Category Name"].Value.ToString();
+                txtItemName.Text = dgSupplyItems.CurrentRow.Cells["Supply Name"].Value.ToString();
+                txtItemDescription.Text = dgSupplyItems.CurrentRow.Cells["Supply Description"].Value.ToString();
+                cboActive.Text = dgSupplyItems.CurrentRow.Cells["Active"].Value.ToString();
+                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells["Purchase Price"].Value.ToString();
 
                 //TRUE
                 cboWhole.Enabled = true;
                 lblWhole.Enabled = true;
 
-                cboWhole.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                cboWhole.Text = dgSupplyItems.CurrentRow.Cells["Unit Measure"].Value.ToString();
                 //FALSE
                 lblArea.Enabled = false;
                 txtArea1.Enabled = false;
@@ -1234,15 +1234,15 @@ namespace PYLsystems
             {
 
                 frmSupplyDamage damagedItems = new frmSupplyDamage();
-                frmSupplyDamage.Global.quantity_left = dgSupplyItems.CurrentRow.Cells[13].Value.ToString();
-                frmSupplyDamage.Global.supply_category_typeOfMeasure = dgSupplyItems.CurrentRow.Cells[12].Value.ToString();
-                frmSupplyDamage.Global.supply_itemsID = dgSupplyItems.CurrentRow.Cells[0].Value.ToString();
-                damagedItems.txtItemName.Text = dgSupplyItems.CurrentRow.Cells[2].Value.ToString();
-                damagedItems.txtSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells[3].Value.ToString();
-                frmSupplyDamage.Global.supply_purchase_price = dgSupplyItems.CurrentRow.Cells[10].Value.ToString();
-                frmSupplyDamage.Global.measureAOG = dgSupplyItems.CurrentRow.Cells[6].Value.ToString();
-                frmSupplyDamage.Global.measureBOG = dgSupplyItems.CurrentRow.Cells[7].Value.ToString();
-                damagedItems.txtUnitMeasure.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                frmSupplyDamage.Global.quantity_left = dgSupplyItems.CurrentRow.Cells["Quantity Left"].Value.ToString();
+                frmSupplyDamage.Global.supply_category_typeOfMeasure = dgSupplyItems.CurrentRow.Cells["typeOfMeasure"].Value.ToString();
+                frmSupplyDamage.Global.supply_itemsID = dgSupplyItems.CurrentRow.Cells["Supply ID"].Value.ToString();
+                damagedItems.txtItemName.Text = dgSupplyItems.CurrentRow.Cells["Supply Name"].Value.ToString();
+                damagedItems.txtSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells["Category Name"].Value.ToString();
+                frmSupplyDamage.Global.supply_purchase_price = dgSupplyItems.CurrentRow.Cells["Purchase Price"].Value.ToString();
+                frmSupplyDamage.Global.measureAOG = dgSupplyItems.CurrentRow.Cells["Measurement A"].Value.ToString();
+                frmSupplyDamage.Global.measureBOG = dgSupplyItems.CurrentRow.Cells["Measurement B"].Value.ToString();
+                damagedItems.txtUnitMeasure.Text = dgSupplyItems.CurrentRow.Cells["Unit Measure"].Value.ToString();
 
 
                 if (typeOfMeasure_dbCellClick == "Length")
@@ -1250,12 +1250,12 @@ namespace PYLsystems
                     damagedItems.cboLength.Enabled = true;
                     damagedItems.txtLength.Enabled = true;
                     damagedItems.lblLength.Enabled = true;
-                    damagedItems.cboLength.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                    damagedItems.cboLength.Text = dgSupplyItems.CurrentRow.Cells["Unit Measure"].Value.ToString();
                 }
                 else if (typeOfMeasure_dbCellClick == "Area")
                 {
                     damagedItems.cboArea.Enabled = true;
-                    damagedItems.cboArea.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                    damagedItems.cboArea.Text = dgSupplyItems.CurrentRow.Cells["Unit Measure"].Value.ToString();
                     damagedItems.txtArea1.Enabled = true;
                     damagedItems.txtArea2.Enabled = true;
                     damagedItems.lblX.Enabled = true;
@@ -1266,21 +1266,21 @@ namespace PYLsystems
                     damagedItems.txtWeight.Enabled = true;
                     damagedItems.lblWeight.Enabled = true;
                     damagedItems.cboWeight.Enabled = true;
-                    damagedItems.cboWeight.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                    damagedItems.cboWeight.Text = dgSupplyItems.CurrentRow.Cells["Unit Measure"].Value.ToString();
                 }
                 else if (typeOfMeasure_dbCellClick == "Volume")
                 {
                     damagedItems.txtVolume.Enabled = true;
                     damagedItems.lblVolume.Enabled = true;
                     damagedItems.cboVolume.Enabled = true;
-                    damagedItems.cboVolume.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                    damagedItems.cboVolume.Text = dgSupplyItems.CurrentRow.Cells["Unit Measure"].Value.ToString();
                 }
                 else
                 {
                     damagedItems.lblWhole.Enabled = true;
                     damagedItems.cboWhole.Enabled = true;
                     damagedItems.txtWhole.Enabled = true;
-                    damagedItems.cboWhole.Text = dgSupplyItems.CurrentRow.Cells[9].Value.ToString();
+                    damagedItems.cboWhole.Text = dgSupplyItems.CurrentRow.Cells["Unit Measure"].Value.ToString();
                 }
                 damagedItems.ShowDialog();
                 RefreshDatabase();
