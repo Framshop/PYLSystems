@@ -14,6 +14,7 @@ namespace PYLsystems
     public partial class frmStockInSupplyEdit : Form
     {
         MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
+        public double rawPurchasePriceInitial;
         public class Global
         {
             public static string supplyID = "";
@@ -82,10 +83,29 @@ namespace PYLsystems
             MessageBox.Show("Update Successful");
             this.Close();
         }
-
+        private void calculateTotalRaw()
+        {
+            double rawPurchaseTotal = 0;
+            double quantity = 0;
+            if (String.IsNullOrEmpty(txtQuantity.Text))
+            {
+                quantity = 0;
+            }
+            else
+            {
+                quantity = Double.Parse(txtQuantity.Text);
+            }
+            //if (!String.IsNullOrEmpty(txtRawPurchasePrice.Text))
+            //{
+            //    rawPurchaseTotal = 0;
+            //}
+            rawPurchaseTotal = quantity * rawPurchasePriceInitial;
+            txtRawPurchasePrice.Text = rawPurchaseTotal.ToString();
+        }
         private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
             btnSaveValidation();
+            calculateTotalRaw();
         }
 
         private void txtActualPurchasePrice_TextChanged(object sender, EventArgs e)

@@ -598,7 +598,7 @@ namespace PYLsystems
                 }
                else if (String.Equals(Global.supply_category_typeOfMeasure, "Volume"))
                 {
-                    string myQuery = "INSERT INTO damaged_materials(description,supply_itemsID,measureADeducted,totalQuantityStockedOut,totalCostStockedOut,unitMeasure,measureAtoOGUni,date_created) VALUES('" + txtDamageReason.Text + "'," + Global.supply_itemsID + "," + txtVolume.Text +  "," + txtCalculatedStockedQuantity.Text + "," + txtTotalDamageCost.Text + ",'" + cboVolume.Text + "'," + Global.measureAOG + ",NOW())";
+                    string myQuery = "INSERT INTO damaged_materials(description,supply_itemsID,measureADeducted,totalQuantityStockedOut,totalCostStockedOut,unitMeasure,measureAtoOGUnit,date_created) VALUES('" + txtDamageReason.Text + "'," + Global.supply_itemsID + "," + txtVolume.Text +  "," + txtCalculatedStockedQuantity.Text + "," + txtTotalDamageCost.Text + ",'" + cboVolume.Text + "'," + Global.measureAOG + ",NOW())";
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
