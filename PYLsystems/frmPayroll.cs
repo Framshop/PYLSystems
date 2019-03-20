@@ -396,34 +396,42 @@ namespace PYLsystems
             return validForms;
         }
         private void saveTempSave() {
-            int dataGridSelectedIndex = datagridPayrollCalc.SelectedRows[0].Index;
-            int employeeId = Int32.Parse(datagridPayrollCalc.Rows[dataGridSelectedIndex].Cells["employeeID"].Value.ToString());
-            int indexTempSaveList=-1;
-            if (txtBoxPhilhealth.Text == null || txtBoxPhilhealth.Text == "" ||
-                txtBoxSSS.Text == null || txtBoxSSS.Text == "") {
-                MessageBox.Show("Please type in PhilHealth and SSS values");
-                return;
-            }
-            for (int i = 0; i < tempSave.Count; i++) {
-                if (tempSave[i].employeeID == employeeId) {
-                    indexTempSaveList = i;
+            try
+            {
+                int dataGridSelectedIndex = datagridPayrollCalc.SelectedRows[0].Index;
+                int employeeId = Int32.Parse(datagridPayrollCalc.Rows[dataGridSelectedIndex].Cells["employeeID"].Value.ToString());
+                int indexTempSaveList = -1;
+                if (txtBoxPhilhealth.Text == null || txtBoxPhilhealth.Text == "" ||
+                    txtBoxSSS.Text == null || txtBoxSSS.Text == "")
+                {
+                    MessageBox.Show("Please type in PhilHealth and SSS values");
+                    return;
                 }
-            }           
-            if (indexTempSaveList >= 0) {
-                tempSave[indexTempSaveList].philHealth = Double.Parse(txtBoxPhilhealth.Text.ToString()) ;
-                tempSave[indexTempSaveList].sss = Double.Parse(txtBoxSSS.Text.ToString());
-                tempSave[indexTempSaveList].receiverName = txtBoxReceiver.Text.ToString();
-                tempSave[indexTempSaveList].totalAmountReceived = Double.Parse(txtBoxAmount.Text.ToString());
-                datagridPayrollCalc.Rows[indexTempSaveList].Cells["PhilHealth"].Value = Double.Parse(txtBoxPhilhealth.Text.ToString());
-                datagridPayrollCalc.Rows[indexTempSaveList].Cells["SSS"].Value = Double.Parse(txtBoxSSS.Text.ToString());
-                datagridPayrollCalc.Rows[indexTempSaveList].Cells["Net Amount"].Value = Double.Parse(txtBoxAmount.Text.ToString());
-                txtBoxSSS.ReadOnly = true;
-                txtBoxPhilhealth.ReadOnly = true;
-                txtBoxReceiver.ReadOnly = true;
-                btnSave.Enabled = false;
-                btnEdit.Enabled = true;
-                MessageBox.Show("Saved!");
+                for (int i = 0; i < tempSave.Count; i++)
+                {
+                    if (tempSave[i].employeeID == employeeId)
+                    {
+                        indexTempSaveList = i;
+                    }
+                }
+                if (indexTempSaveList >= 0)
+                {
+                    tempSave[indexTempSaveList].philHealth = Double.Parse(txtBoxPhilhealth.Text.ToString());
+                    tempSave[indexTempSaveList].sss = Double.Parse(txtBoxSSS.Text.ToString());
+                    tempSave[indexTempSaveList].receiverName = txtBoxReceiver.Text.ToString();
+                    tempSave[indexTempSaveList].totalAmountReceived = Double.Parse(txtBoxAmount.Text.ToString());
+                    datagridPayrollCalc.Rows[indexTempSaveList].Cells["PhilHealth"].Value = Double.Parse(txtBoxPhilhealth.Text.ToString());
+                    datagridPayrollCalc.Rows[indexTempSaveList].Cells["SSS"].Value = Double.Parse(txtBoxSSS.Text.ToString());
+                    datagridPayrollCalc.Rows[indexTempSaveList].Cells["Net Amount"].Value = Double.Parse(txtBoxAmount.Text.ToString());
+                    txtBoxSSS.ReadOnly = true;
+                    txtBoxPhilhealth.ReadOnly = true;
+                    txtBoxReceiver.ReadOnly = true;
+                    btnSave.Enabled = false;
+                    btnEdit.Enabled = true;
+                    MessageBox.Show("Saved!");
+                }
             }
+            catch { }
         }
         private void totalAmountSolver() {
             double valPhilHealth;
