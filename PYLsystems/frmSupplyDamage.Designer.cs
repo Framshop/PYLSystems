@@ -38,17 +38,15 @@
             this.endDatePicker = new System.Windows.Forms.DateTimePicker();
             this.startDatePicker = new System.Windows.Forms.DateTimePicker();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.dgvStockOut = new System.Windows.Forms.DataGridView();
             this.gpStockOutDamageSupplies = new System.Windows.Forms.GroupBox();
             this.txtUnitMeasure = new System.Windows.Forms.TextBox();
             this.lblUnitMeasure = new System.Windows.Forms.Label();
             this.txtSupplyCategory = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtDamageReason = new System.Windows.Forms.TextBox();
             this.lblDamageReason = new System.Windows.Forms.Label();
             this.lblCalculatedStockedQuantity = new System.Windows.Forms.Label();
             this.txtCalculatedStockedQuantity = new System.Windows.Forms.TextBox();
             this.lblSupplyCategory = new System.Windows.Forms.Label();
-            this.btnEditDetails = new System.Windows.Forms.Button();
             this.btnStockOutItem = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.cboVolume = new System.Windows.Forms.ComboBox();
@@ -73,14 +71,15 @@
             this.lblItemName = new System.Windows.Forms.Label();
             this.txtItemName = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dgvStockOut = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.gpStockOut.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStockOut)).BeginInit();
             this.gpStockOutDamageSupplies.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStockOut)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -96,7 +95,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(890, 533);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(890, 554);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -113,7 +112,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.291391F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.63135F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(797, 529);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(797, 550);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -124,12 +123,12 @@
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.gpStockOutDamageSupplies, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 35);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 36);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(793, 465);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(793, 483);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // tableLayoutPanel5
@@ -145,7 +144,7 @@
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.04113F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.95887F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(397, 461);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(397, 479);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // gpStockOut
@@ -159,7 +158,7 @@
             this.gpStockOut.Margin = new System.Windows.Forms.Padding(2);
             this.gpStockOut.Name = "gpStockOut";
             this.gpStockOut.Padding = new System.Windows.Forms.Padding(2);
-            this.gpStockOut.Size = new System.Drawing.Size(393, 65);
+            this.gpStockOut.Size = new System.Drawing.Size(393, 68);
             this.gpStockOut.TabIndex = 0;
             this.gpStockOut.TabStop = false;
             this.gpStockOut.Text = "View Stock Out Records By Dates";
@@ -195,7 +194,7 @@
             this.endDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.endDatePicker.CustomFormat = "yyyy/MM/dd";
+            this.endDatePicker.CustomFormat = "yyyy-MM-dd";
             this.endDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.endDatePicker.Location = new System.Drawing.Point(146, 43);
             this.endDatePicker.Margin = new System.Windows.Forms.Padding(2);
@@ -203,13 +202,14 @@
             this.endDatePicker.Size = new System.Drawing.Size(161, 20);
             this.endDatePicker.TabIndex = 20;
             this.endDatePicker.Value = new System.DateTime(2019, 1, 5, 0, 0, 0, 0);
+            this.endDatePicker.ValueChanged += new System.EventHandler(this.endDatePicker_ValueChanged);
             // 
             // startDatePicker
             // 
             this.startDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.startDatePicker.CustomFormat = "yyyy/MM/dd";
+            this.startDatePicker.CustomFormat = "yyyy-MM-dd";
             this.startDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.startDatePicker.Location = new System.Drawing.Point(146, 20);
             this.startDatePicker.Margin = new System.Windows.Forms.Padding(2);
@@ -217,49 +217,31 @@
             this.startDatePicker.Size = new System.Drawing.Size(161, 20);
             this.startDatePicker.TabIndex = 19;
             this.startDatePicker.Value = new System.DateTime(2019, 1, 4, 0, 0, 0, 0);
+            this.startDatePicker.ValueChanged += new System.EventHandler(this.startDatePicker_ValueChanged);
             // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.dgvStockOut);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Location = new System.Drawing.Point(2, 71);
+            this.groupBox5.Location = new System.Drawing.Point(2, 74);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox5.Size = new System.Drawing.Size(393, 388);
+            this.groupBox5.Size = new System.Drawing.Size(393, 403);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Stock Out Records";
-            // 
-            // dgvStockOut
-            // 
-            this.dgvStockOut.AllowUserToAddRows = false;
-            this.dgvStockOut.AllowUserToDeleteRows = false;
-            this.dgvStockOut.AllowUserToResizeRows = false;
-            this.dgvStockOut.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvStockOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStockOut.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvStockOut.Location = new System.Drawing.Point(2, 15);
-            this.dgvStockOut.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvStockOut.Name = "dgvStockOut";
-            this.dgvStockOut.ReadOnly = true;
-            this.dgvStockOut.RowHeadersVisible = false;
-            this.dgvStockOut.RowTemplate.Height = 28;
-            this.dgvStockOut.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStockOut.Size = new System.Drawing.Size(389, 371);
-            this.dgvStockOut.TabIndex = 4;
             // 
             // gpStockOutDamageSupplies
             // 
             this.gpStockOutDamageSupplies.Controls.Add(this.txtUnitMeasure);
             this.gpStockOutDamageSupplies.Controls.Add(this.lblUnitMeasure);
             this.gpStockOutDamageSupplies.Controls.Add(this.txtSupplyCategory);
-            this.gpStockOutDamageSupplies.Controls.Add(this.textBox7);
+            this.gpStockOutDamageSupplies.Controls.Add(this.txtDamageReason);
             this.gpStockOutDamageSupplies.Controls.Add(this.lblDamageReason);
             this.gpStockOutDamageSupplies.Controls.Add(this.lblCalculatedStockedQuantity);
             this.gpStockOutDamageSupplies.Controls.Add(this.txtCalculatedStockedQuantity);
             this.gpStockOutDamageSupplies.Controls.Add(this.lblSupplyCategory);
-            this.gpStockOutDamageSupplies.Controls.Add(this.btnEditDetails);
             this.gpStockOutDamageSupplies.Controls.Add(this.btnStockOutItem);
             this.gpStockOutDamageSupplies.Controls.Add(this.btnClose);
             this.gpStockOutDamageSupplies.Controls.Add(this.cboVolume);
@@ -288,7 +270,7 @@
             this.gpStockOutDamageSupplies.Margin = new System.Windows.Forms.Padding(2);
             this.gpStockOutDamageSupplies.Name = "gpStockOutDamageSupplies";
             this.gpStockOutDamageSupplies.Padding = new System.Windows.Forms.Padding(2);
-            this.gpStockOutDamageSupplies.Size = new System.Drawing.Size(388, 461);
+            this.gpStockOutDamageSupplies.Size = new System.Drawing.Size(388, 479);
             this.gpStockOutDamageSupplies.TabIndex = 1;
             this.gpStockOutDamageSupplies.TabStop = false;
             this.gpStockOutDamageSupplies.Text = "Stock Out Damaged Supplies";
@@ -322,13 +304,14 @@
             this.txtSupplyCategory.Size = new System.Drawing.Size(185, 20);
             this.txtSupplyCategory.TabIndex = 66;
             // 
-            // textBox7
+            // txtDamageReason
             // 
-            this.textBox7.Location = new System.Drawing.Point(172, 99);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(185, 49);
-            this.textBox7.TabIndex = 65;
+            this.txtDamageReason.Location = new System.Drawing.Point(172, 99);
+            this.txtDamageReason.Multiline = true;
+            this.txtDamageReason.Name = "txtDamageReason";
+            this.txtDamageReason.Size = new System.Drawing.Size(185, 49);
+            this.txtDamageReason.TabIndex = 65;
+            this.txtDamageReason.TextChanged += new System.EventHandler(this.txtDamageReason_TextChanged);
             // 
             // lblDamageReason
             // 
@@ -359,6 +342,7 @@
             this.txtCalculatedStockedQuantity.ReadOnly = true;
             this.txtCalculatedStockedQuantity.Size = new System.Drawing.Size(164, 20);
             this.txtCalculatedStockedQuantity.TabIndex = 62;
+            this.txtCalculatedStockedQuantity.TextChanged += new System.EventHandler(this.txtCalculatedStockedQuantity_TextChanged);
             // 
             // lblSupplyCategory
             // 
@@ -368,19 +352,6 @@
             this.lblSupplyCategory.Size = new System.Drawing.Size(87, 13);
             this.lblSupplyCategory.TabIndex = 61;
             this.lblSupplyCategory.Text = "Supply Category:";
-            // 
-            // btnEditDetails
-            // 
-            this.btnEditDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditDetails.Enabled = false;
-            this.btnEditDetails.Location = new System.Drawing.Point(168, 430);
-            this.btnEditDetails.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEditDetails.Name = "btnEditDetails";
-            this.btnEditDetails.Size = new System.Drawing.Size(192, 24);
-            this.btnEditDetails.TabIndex = 59;
-            this.btnEditDetails.Text = "Edit Details";
-            this.btnEditDetails.UseVisualStyleBackColor = true;
             // 
             // btnStockOutItem
             // 
@@ -394,18 +365,20 @@
             this.btnStockOutItem.TabIndex = 58;
             this.btnStockOutItem.Text = "Stock Out Item";
             this.btnStockOutItem.UseVisualStyleBackColor = true;
+            this.btnStockOutItem.Click += new System.EventHandler(this.btnStockOutItem_Click);
             // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(168, 463);
+            this.btnClose.Location = new System.Drawing.Point(168, 424);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(192, 24);
             this.btnClose.TabIndex = 57;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // cboVolume
             // 
@@ -432,6 +405,7 @@
             this.txtVolume.Size = new System.Drawing.Size(129, 20);
             this.txtVolume.TabIndex = 55;
             this.txtVolume.TextChanged += new System.EventHandler(this.txtVolume_TextChanged);
+            this.txtVolume.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVolume_KeyPress);
             // 
             // lblVolume
             // 
@@ -452,6 +426,7 @@
             this.txtWhole.Size = new System.Drawing.Size(129, 20);
             this.txtWhole.TabIndex = 53;
             this.txtWhole.TextChanged += new System.EventHandler(this.txtWhole_TextChanged);
+            this.txtWhole.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWhole_KeyPress);
             // 
             // cboWhole
             // 
@@ -502,6 +477,7 @@
             this.txtWeight.Size = new System.Drawing.Size(129, 20);
             this.txtWeight.TabIndex = 49;
             this.txtWeight.TextChanged += new System.EventHandler(this.txtWeight_TextChanged);
+            this.txtWeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWeight_KeyPress);
             // 
             // lblX
             // 
@@ -523,6 +499,7 @@
             this.txtArea2.Size = new System.Drawing.Size(47, 20);
             this.txtArea2.TabIndex = 47;
             this.txtArea2.TextChanged += new System.EventHandler(this.txtArea2_TextChanged);
+            this.txtArea2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtArea2_KeyPress);
             // 
             // cboArea
             // 
@@ -551,6 +528,7 @@
             this.txtArea1.Size = new System.Drawing.Size(47, 20);
             this.txtArea1.TabIndex = 45;
             this.txtArea1.TextChanged += new System.EventHandler(this.txtArea1_TextChanged);
+            this.txtArea1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtArea1_KeyPress);
             // 
             // cboLength
             // 
@@ -579,6 +557,7 @@
             this.txtLength.Size = new System.Drawing.Size(129, 20);
             this.txtLength.TabIndex = 43;
             this.txtLength.TextChanged += new System.EventHandler(this.txtLength_TextChanged);
+            this.txtLength.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLength_KeyPress);
             // 
             // lblWeight
             // 
@@ -629,6 +608,7 @@
             this.txtTotalDamageCost.ReadOnly = true;
             this.txtTotalDamageCost.Size = new System.Drawing.Size(164, 20);
             this.txtTotalDamageCost.TabIndex = 18;
+            this.txtTotalDamageCost.TextChanged += new System.EventHandler(this.txtTotalDamageCost_TextChanged);
             // 
             // lblItemName
             // 
@@ -657,15 +637,33 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox3.Size = new System.Drawing.Size(793, 29);
+            this.groupBox3.Size = new System.Drawing.Size(793, 30);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
+            // 
+            // dgvStockOut
+            // 
+            this.dgvStockOut.AllowUserToAddRows = false;
+            this.dgvStockOut.AllowUserToDeleteRows = false;
+            this.dgvStockOut.AllowUserToResizeRows = false;
+            this.dgvStockOut.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvStockOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStockOut.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvStockOut.Location = new System.Drawing.Point(2, 15);
+            this.dgvStockOut.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvStockOut.Name = "dgvStockOut";
+            this.dgvStockOut.ReadOnly = true;
+            this.dgvStockOut.RowHeadersVisible = false;
+            this.dgvStockOut.RowTemplate.Height = 28;
+            this.dgvStockOut.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvStockOut.Size = new System.Drawing.Size(389, 386);
+            this.dgvStockOut.TabIndex = 5;
             // 
             // frmSupplyDamage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(890, 533);
+            this.ClientSize = new System.Drawing.Size(890, 554);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmSupplyDamage";
@@ -678,9 +676,9 @@
             this.gpStockOut.ResumeLayout(false);
             this.gpStockOut.PerformLayout();
             this.groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStockOut)).EndInit();
             this.gpStockOutDamageSupplies.ResumeLayout(false);
             this.gpStockOutDamageSupplies.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStockOut)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -695,7 +693,6 @@
         public System.Windows.Forms.TextBox txtTotalDamageCost;
         private System.Windows.Forms.Label lblItemName;
         public System.Windows.Forms.TextBox txtItemName;
-        private System.Windows.Forms.Button btnEditDetails;
         private System.Windows.Forms.Button btnStockOutItem;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -707,10 +704,9 @@
         private System.Windows.Forms.DateTimePicker endDatePicker;
         private System.Windows.Forms.DateTimePicker startDatePicker;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.DataGridView dgvStockOut;
         private System.Windows.Forms.Label lblCalculatedStockedQuantity;
         public System.Windows.Forms.TextBox txtCalculatedStockedQuantity;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtDamageReason;
         private System.Windows.Forms.Label lblDamageReason;
         public System.Windows.Forms.TextBox txtUnitMeasure;
         private System.Windows.Forms.Label lblUnitMeasure;
@@ -732,5 +728,6 @@
         public System.Windows.Forms.Label lblWeight;
         public System.Windows.Forms.Label lblArea;
         public System.Windows.Forms.Label lblLength;
+        private System.Windows.Forms.DataGridView dgvStockOut;
     }
 }
