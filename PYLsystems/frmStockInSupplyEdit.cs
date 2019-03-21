@@ -75,7 +75,7 @@ namespace PYLsystems
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string myQuery = "UPDATE supply_details SET supplierID = " + lblsupplierID.Text + ", delivery_date = '" + txtDeliveryDate.Value.ToString("yyyy-MM-dd") + "',stockin_quantity = " + txtQuantity.Text + ", pricePurchaseTotal = " +  txtActualPurchasePrice.Text + ",active = " + cboActive.SelectedIndex + ", dateModified = NOW() WHERE supplyID = " + Global.supplyID;
+            string myQuery = "UPDATE supply_details SET supplierID = " + lblsupplierID.Text + ", delivery_date = '" + txtDeliveryDate.Value.ToString("yyyy-MM-dd") + "',stockin_quantity = " + txtQuantity.Text + ", pricePurchaseTotal = " +  txtActualPurchasePrice.Text + ", dateModified = NOW() WHERE supplyID = " + Global.supplyID;
             MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
             MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
             DataTable myDt = new DataTable();
@@ -85,22 +85,24 @@ namespace PYLsystems
         }
         private void calculateTotalRaw()
         {
-            double rawPurchaseTotal = 0;
-            double quantity = 0;
-            if (String.IsNullOrEmpty(txtQuantity.Text))
-            {
-                quantity = 0;
-            }
-            else
-            {
-                quantity = Double.Parse(txtQuantity.Text);
-            }
-            //if (!String.IsNullOrEmpty(txtRawPurchasePrice.Text))
-            //{
-            //    rawPurchaseTotal = 0;
-            //}
-            rawPurchaseTotal = quantity * rawPurchasePriceInitial;
-            txtRawPurchasePrice.Text = rawPurchaseTotal.ToString();
+            
+                double quantity = 0;
+                if (String.IsNullOrEmpty(txtQuantity.Text))
+                {
+                    quantity = 0;
+
+                }
+                else
+                {
+                    quantity = Double.Parse(txtQuantity.Text);
+                }
+                //if (!String.IsNullOrEmpty(txtRawPurchasePrice.Text))
+                //{
+                //    rawPurchaseTotal = 0;
+                //}
+
+                txtActualPurchasePrice.Text = (quantity * double.Parse(txtRawPurchasePrice.Text)).ToString();
+            
         }
         private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
@@ -151,6 +153,43 @@ namespace PYLsystems
         private void dgvSupplier_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void txtRawPurchasePrice_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (String.IsNullOrEmpty(txtRawPurchasePrice.Text))
+                {
+                    txtRawPurchasePrice.Text = "0";
+                }
+                else
+                {
+                    txtRawPurchasePrice.Text = (Double.Parse(txtRawPurchasePrice.Text)).ToString();
+
+                }
+                //if (!String.IsNullOrEmpty(txtRawPurchasePrice.Text))
+                //{
+                //    rawPurchaseTotal = 0;
+                //}
+                txtActualPurchasePrice.Text = (double.Parse(txtQuantity.Text) * double.Parse(txtRawPurchasePrice.Text)).ToString();
+            }
+            catch { }
+        }
+
+        private void txtRawPurchasePrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

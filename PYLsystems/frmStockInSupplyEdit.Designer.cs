@@ -32,8 +32,6 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cboActive = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtDeliveryDate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -73,7 +71,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(650, 615);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(650, 680);
             this.tableLayoutPanel1.TabIndex = 17;
             // 
             // tableLayoutPanel2
@@ -89,7 +87,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(581, 611);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(581, 676);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -100,7 +98,7 @@
             this.tableLayoutPanel4.Controls.Add(this.groupBox2, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.groupBox3, 0, 2);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 32);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 35);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
@@ -108,13 +106,11 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34.53145F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.47112F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(577, 545);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(577, 604);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cboActive);
-            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtDeliveryDate);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
@@ -130,32 +126,10 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(573, 202);
+            this.groupBox1.Size = new System.Drawing.Size(573, 225);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Supply Details";
-            // 
-            // cboActive
-            // 
-            this.cboActive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboActive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboActive.FormattingEnabled = true;
-            this.cboActive.Items.AddRange(new object[] {
-            "Active",
-            "Inactive"});
-            this.cboActive.Location = new System.Drawing.Point(306, 175);
-            this.cboActive.Name = "cboActive";
-            this.cboActive.Size = new System.Drawing.Size(238, 21);
-            this.cboActive.TabIndex = 18;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(75, 175);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 13);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "Status:";
             // 
             // txtDeliveryDate
             // 
@@ -195,6 +169,7 @@
             this.txtActualPurchasePrice.Location = new System.Drawing.Point(306, 114);
             this.txtActualPurchasePrice.Margin = new System.Windows.Forms.Padding(2);
             this.txtActualPurchasePrice.Name = "txtActualPurchasePrice";
+            this.txtActualPurchasePrice.ReadOnly = true;
             this.txtActualPurchasePrice.Size = new System.Drawing.Size(238, 20);
             this.txtActualPurchasePrice.TabIndex = 12;
             this.txtActualPurchasePrice.TextChanged += new System.EventHandler(this.txtActualPurchasePrice_TextChanged);
@@ -216,9 +191,10 @@
             this.txtRawPurchasePrice.Location = new System.Drawing.Point(306, 81);
             this.txtRawPurchasePrice.Margin = new System.Windows.Forms.Padding(2);
             this.txtRawPurchasePrice.Name = "txtRawPurchasePrice";
-            this.txtRawPurchasePrice.ReadOnly = true;
             this.txtRawPurchasePrice.Size = new System.Drawing.Size(238, 20);
             this.txtRawPurchasePrice.TabIndex = 10;
+            this.txtRawPurchasePrice.TextChanged += new System.EventHandler(this.txtRawPurchasePrice_TextChanged);
+            this.txtRawPurchasePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRawPurchasePrice_KeyPress);
             // 
             // label1
             // 
@@ -265,11 +241,11 @@
             // 
             this.groupBox2.Controls.Add(this.dgvSupplier);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(2, 208);
+            this.groupBox2.Location = new System.Drawing.Point(2, 231);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(573, 184);
+            this.groupBox2.Size = new System.Drawing.Size(573, 204);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Select Supplier";
@@ -289,7 +265,7 @@
             this.dgvSupplier.RowHeadersVisible = false;
             this.dgvSupplier.RowTemplate.Height = 28;
             this.dgvSupplier.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSupplier.Size = new System.Drawing.Size(569, 167);
+            this.dgvSupplier.Size = new System.Drawing.Size(569, 187);
             this.dgvSupplier.TabIndex = 3;
             this.dgvSupplier.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSupplier_CellClick);
             this.dgvSupplier.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSupplier_CellContentClick);
@@ -299,11 +275,11 @@
             this.groupBox3.Controls.Add(this.btnSave);
             this.groupBox3.Controls.Add(this.btnClose);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(2, 396);
+            this.groupBox3.Location = new System.Drawing.Point(2, 439);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox3.Size = new System.Drawing.Size(573, 147);
+            this.groupBox3.Size = new System.Drawing.Size(573, 163);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             // 
@@ -348,7 +324,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.ClientSize = new System.Drawing.Size(650, 615);
+            this.ClientSize = new System.Drawing.Size(650, 680);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmStockInSupplyEdit";
             this.Text = "Stock In Supply Edit";
@@ -381,13 +357,11 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label6;
         public System.Windows.Forms.TextBox txtActualPurchasePrice;
         public System.Windows.Forms.TextBox txtRawPurchasePrice;
         public System.Windows.Forms.TextBox txtQuantity;
         public System.Windows.Forms.TextBox txtItemName;
         public System.Windows.Forms.DateTimePicker txtDeliveryDate;
-        public System.Windows.Forms.ComboBox cboActive;
         public System.Windows.Forms.Label lblsupplierID;
     }
 }

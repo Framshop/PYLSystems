@@ -669,9 +669,9 @@ namespace PYLsystems
             //Others are for measurements without assigning into another variable
             if (lblLength.Enabled == true)
             {
-                if (supply_category > -1 && supply_name > 0 && supply_description > 0 &&  reoOrderPoint > 0 && cboLength.SelectedIndex > -1 && txtLength.TextLength > 0)
+                if (supply_category > -1 && supply_name > 0 && supply_description > 0 && reoOrderPoint > 0 && cboLength.SelectedIndex > -1 && txtLength.TextLength > 0)
                 {
-                    btnCreateItem.Enabled = true; 
+                    btnCreateItem.Enabled = true;
                 }
                 else
                 {
@@ -691,7 +691,7 @@ namespace PYLsystems
             }
             else if (lblWhole.Enabled == true)
             {
-                if (supply_category > -1 && supply_name > 0 && supply_description > 0  && reoOrderPoint > 0 && cboWhole.SelectedIndex > -1)
+                if (supply_category > -1 && supply_name > 0 && supply_description > 0 && reoOrderPoint > 0 && cboWhole.SelectedIndex > -1)
                 {
                     btnCreateItem.Enabled = true;
                 }
@@ -711,9 +711,9 @@ namespace PYLsystems
                     btnCreateItem.Enabled = false;
                 }
             }
-             else if (lblArea.Enabled == true)
+            else if (lblArea.Enabled == true)
             {
-                if (supply_category > -1 && supply_name > 0 && supply_description > 0  && reoOrderPoint > 0 && cboArea.SelectedIndex > -1 && txtArea1.TextLength > 0 && txtArea2.TextLength > 0)
+                if (supply_category > -1 && supply_name > 0 && supply_description > 0 && reoOrderPoint > 0 && cboArea.SelectedIndex > -1 && txtArea1.TextLength > 0 && txtArea2.TextLength > 0)
                 {
                     btnCreateItem.Enabled = true;
                 }
@@ -721,6 +721,10 @@ namespace PYLsystems
                 {
                     btnCreateItem.Enabled = false;
                 }
+            }
+            else
+            {
+
             }
         }
 
