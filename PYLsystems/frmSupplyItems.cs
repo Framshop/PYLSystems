@@ -557,7 +557,7 @@ namespace PYLsystems
                 }
                 else if (typeOfMeasure_db == "Weight")
                 {
-                    string myQuery = "INSERT INTO supply_items (supply_categoryID,supplyName,supplyDescription,measureA,unitMeasure,reOrder_quantity) values(" + supply_categoryID + ",'" + txtItemName.Text + "','" + txtItemDescription.Text + "'," + txtLength.Text + ",'" + cboLength.Text + "'," + txtReOrderPoint.Text + ")";
+                    string myQuery = "INSERT INTO supply_items (supply_categoryID,supplyName,supplyDescription,measureA,unitMeasure,reOrder_quantity) values(" + supply_categoryID + ",'" + txtItemName.Text + "','" + txtItemDescription.Text + "'," + txtWeight.Text + ",'" + cboWeight.Text + "'," + txtReOrderPoint.Text + ")";
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
@@ -567,7 +567,7 @@ namespace PYLsystems
                 }
                 else if (typeOfMeasure_db == "Volume")
                 {
-                    string myQuery = "INSERT INTO supply_items (supply_categoryID,supplyName,supplyDescription,measureA,unitMeasure,reOrder_quantity) values(" + supply_categoryID + ",'" + txtItemName.Text + "','" + txtItemDescription.Text + "'," + txtLength.Text + ",'" + cboLength.Text + "'," + txtReOrderPoint.Text + ")";
+                    string myQuery = "INSERT INTO supply_items (supply_categoryID,supplyName,supplyDescription,measureA,unitMeasure,reOrder_quantity) values(" + supply_categoryID + ",'" + txtItemName.Text + "','" + txtItemDescription.Text + "'," + txtVolume.Text + ",'" + cboVolume.Text + "'," + txtReOrderPoint.Text + ")";
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
@@ -577,7 +577,7 @@ namespace PYLsystems
                 }
                 else
                 {
-                    string myQuery = "INSERT INTO supply_items (supply_categoryID,supplyName,supplyDescription,measureA,unitMeasure,reOrder_quantity) values(" + supply_categoryID + ",'" + txtItemName.Text + "','" + txtItemDescription.Text + "'," + txtLength.Text + ",'" + cboLength.Text + "'," + txtReOrderPoint.Text + ")";
+                    string myQuery = "INSERT INTO supply_items (supply_categoryID,supplyName,supplyDescription,measureA,unitMeasure,reOrder_quantity) values(" + supply_categoryID + ",'" + txtItemName.Text + "','" + txtItemDescription.Text + "'," + 1 + ",'" + cboWhole.Text + "'," + txtReOrderPoint.Text + ")";
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
@@ -678,7 +678,7 @@ namespace PYLsystems
                     btnCreateItem.Enabled = false;
                 }
             }
-            else if (lblWeight.Enabled == true)
+             if (lblWeight.Enabled == true)
             {
                 if (supply_category > -1 && supply_name > 0 && supply_description > 0 && reoOrderPoint > 0 && cboWeight.SelectedIndex > -1 && txtWeight.TextLength > 0)
                 {
@@ -689,7 +689,7 @@ namespace PYLsystems
                     btnCreateItem.Enabled = false;
                 }
             }
-            else if (lblWhole.Enabled == true)
+             if (lblWhole.Enabled == true)
             {
                 if (supply_category > -1 && supply_name > 0 && supply_description > 0  && reoOrderPoint > 0 && cboWhole.SelectedIndex > -1)
                 {
@@ -700,7 +700,7 @@ namespace PYLsystems
                     btnCreateItem.Enabled = false;
                 }
             }
-            else if (lblVolume.Enabled == true)
+              if (lblVolume.Enabled == true)
             {
                 if (supply_category > -1 && supply_name > 0 && supply_description > 0 && reoOrderPoint > 0 && cboVolume.SelectedIndex > -1 && txtVolume.TextLength > 0)
                 {
@@ -711,7 +711,7 @@ namespace PYLsystems
                     btnCreateItem.Enabled = false;
                 }
             }
-            else if (lblArea.Enabled == true)
+              if (lblArea.Enabled == true)
             {
                 if (supply_category > -1 && supply_name > 0 && supply_description > 0  && reoOrderPoint > 0 && cboArea.SelectedIndex > -1 && txtArea1.TextLength > 0 && txtArea2.TextLength > 0)
                 {
@@ -1165,7 +1165,21 @@ namespace PYLsystems
 
         private void frmSupplyItems_Load_1(object sender, EventArgs e)
         {
+            String showStockInNeed = "";
             RefreshDatabase();
+            for (int i = 0; i < dgSupplyItems.Rows.Count; i++)
+            {
+                if (float.Parse(dgSupplyItems.Rows[i].Cells["Quantity Left"].Value.ToString()) <= float.Parse(dgSupplyItems.Rows[i].Cells["Re-Order Point"].Value.ToString()))
+                {
+                    showStockInNeed = showStockInNeed + " " +  dgSupplyItems.Rows[i].Cells["Supply Name"].Value.ToString();
+                }
+
+                else
+                {
+                    dgSupplyItems.Rows[i].DefaultCellStyle.BackColor = Color.LightGreen;
+                }
+            }
+            MessageBox.Show("List of need of stock " + showStockInNeed);
         }
 
         private void txtLength_KeyPress(object sender, KeyPressEventArgs e)

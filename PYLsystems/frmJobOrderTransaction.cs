@@ -28,8 +28,8 @@ namespace PYLsystems
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmJobOrderDetails jobOrderDetails = new frmJobOrderDetails();
-            jobOrderDetails.ShowDialog();
+            //frmJobOrderDetails jobOrderDetails = new frmJobOrderDetails();
+           // jobOrderDetails.ShowDialog();
             RefreshJobOrder();
         }
         public void RefreshJobOrder()

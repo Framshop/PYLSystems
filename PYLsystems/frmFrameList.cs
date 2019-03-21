@@ -490,24 +490,32 @@ namespace PYLsystems
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            int currRowIndex = datagridFrameList.SelectedRows[0].Index;
-            int selectedFrameItemId = Int32.Parse(datagridFrameList.Rows[currRowIndex].Cells["frameItemID"].Value.ToString());
-            String frameName = datagridFrameList.Rows[currRowIndex].Cells["Frame"].Value.ToString();
-            String frameDimension = datagridFrameList.Rows[currRowIndex].Cells["Dimension"].Value.ToString();
-            String frameDescription = datagridFrameList.Rows[currRowIndex].Cells["frameDescription"].Value.ToString();
-            double unitSalesPrice = Double.Parse(datagridFrameList.Rows[currRowIndex].Cells["Unit Price"].Value.ToString());
-            frmFrameEdit formEditFrame = new frmFrameEdit(selectedFrameItemId, frameName, frameDimension, frameDescription,unitSalesPrice);
-            formEditFrame.ShowDialog();
-           
-            suppliesUsed_Loader();
+            try
+            {
+                int currRowIndex = datagridFrameList.SelectedRows[0].Index;
+                int selectedFrameItemId = Int32.Parse(datagridFrameList.Rows[currRowIndex].Cells["frameItemID"].Value.ToString());
+                String frameName = datagridFrameList.Rows[currRowIndex].Cells["Frame"].Value.ToString();
+                String frameDimension = datagridFrameList.Rows[currRowIndex].Cells["Dimension"].Value.ToString();
+                String frameDescription = datagridFrameList.Rows[currRowIndex].Cells["frameDescription"].Value.ToString();
+                double unitSalesPrice = Double.Parse(datagridFrameList.Rows[currRowIndex].Cells["Unit Price"].Value.ToString());
+                frmFrameEdit formEditFrame = new frmFrameEdit(selectedFrameItemId, frameName, frameDimension, frameDescription, unitSalesPrice);
+                formEditFrame.ShowDialog();
+
+                suppliesUsed_Loader();
+            }
+            catch { }
         }
 
         private void btnStockIn_Click(object sender, EventArgs e)
         {
-            int currRowIndex = datagridFrameList.SelectedRows[0].Index;
-            int selectedFrameItemId = Int32.Parse(datagridFrameList.Rows[currRowIndex].Cells["frameItemID"].Value.ToString());
-            frmFrameStockInAdd formFrameStockIn = new frmFrameStockInAdd(selectedFrameItemId,this.employeeId);
-            formFrameStockIn.ShowDialog();
+            try
+            {
+                int currRowIndex = datagridFrameList.SelectedRows[0].Index;
+                int selectedFrameItemId = Int32.Parse(datagridFrameList.Rows[currRowIndex].Cells["frameItemID"].Value.ToString());
+                frmFrameStockInAdd formFrameStockIn = new frmFrameStockInAdd(selectedFrameItemId, this.employeeId);
+                formFrameStockIn.ShowDialog();
+            }
+            catch { }
         }
 
         private void btnArchiveList_Click(object sender, EventArgs e)
