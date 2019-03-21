@@ -64,16 +64,16 @@ namespace PYLsystems
             dataGridSuppliesUsed.DataSource = dtSuppliesUsedSaved;
             dataGridSuppliesUsed.Columns["Cost/Unit Measure"].DefaultCellStyle.Format = "P0.0000";
             dataGridSuppliesUsed.Columns["Raw Cost"].DefaultCellStyle.Format = "P0.0000";
-            dataGridSuppliesUsed.Columns["supply_itemsId"].Visible = false;
-            dataGridSuppliesUsed.Columns["OGUnitMeasure"].Visible = false;
-            dataGridSuppliesUsed.Columns["OGUnitPrice"].Visible = false;
-            dataGridSuppliesUsed.Columns["measureAOG"].Visible = false;
-            dataGridSuppliesUsed.Columns["measureBOG"].Visible = false;
-            dataGridSuppliesUsed.Columns["deductedA"].Visible = false;
-            dataGridSuppliesUsed.Columns["deductedB"].Visible = false;
-            dataGridSuppliesUsed.Columns["measureAtoOG"].Visible = false;
-            dataGridSuppliesUsed.Columns["measureBtoOG"].Visible = false;
-            dataGridSuppliesUsed.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells);
+            //dataGridSuppliesUsed.Columns["supply_itemsId"].Visible = false;
+            //dataGridSuppliesUsed.Columns["OGUnitMeasure"].Visible = false;
+            //dataGridSuppliesUsed.Columns["OGUnitPrice"].Visible = false;
+            //dataGridSuppliesUsed.Columns["measureAOG"].Visible = false;
+            //dataGridSuppliesUsed.Columns["measureBOG"].Visible = false;
+            //dataGridSuppliesUsed.Columns["deductedA"].Visible = false;
+            //dataGridSuppliesUsed.Columns["deductedB"].Visible = false;
+            //dataGridSuppliesUsed.Columns["measureAtoOG"].Visible = false;
+            //dataGridSuppliesUsed.Columns["measureBtoOG"].Visible = false;
+            //dataGridSuppliesUsed.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells);
         }
         //Used by frmFrameAddSupplies. Before adding to datagrid, object from frmFrameAddSupplies is 
         //being checked if it exists in datatable(this dtSuppliesUsedSaved is source of datagrid)

@@ -51,10 +51,12 @@ namespace PYLsystems
         {
             DefaultDatesInitializer();
             jobOrder_ReceiptsLoader();
-
-            int currRowIndex = datagridJOList.SelectedRows[0].Index;
-            int jobOrderID = Int32.Parse(datagridJOList.Rows[currRowIndex].Cells["Receipt Number"].Value.ToString());
-            jobOrder_SuppliesUsedLoader(jobOrderID);
+            if (datagridJOList.Rows.Count > 0)
+            {           
+                int currRowIndex = datagridJOList.SelectedRows[0].Index;
+                int jobOrderID = Int32.Parse(datagridJOList.Rows[currRowIndex].Cells["Receipt Number"].Value.ToString());
+                jobOrder_SuppliesUsedLoader(jobOrderID);
+            }
         }
         private void jobOrder_ReceiptsLoader()
         {   //Hide Columns from Employee Name to the Last Column and jobOrderdescription. These fields will be inputted in the TextBoxes
@@ -268,6 +270,11 @@ namespace PYLsystems
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (datagridJOList.Rows.Count == 0)
+            {
+                MessageBox.Show("There's nothing to update.");
+                return;
+            }
             int currRowIndex = datagridJOList.SelectedRows[0].Index;
             int jobOrderID = Int32.Parse(datagridJOList.Rows[currRowIndex].Cells["Receipt Number"].Value.ToString());
             frmJobOrderEdit frmJOUpdate = new frmJobOrderEdit(this.employeeID,this.employeeStatus,jobOrderID);

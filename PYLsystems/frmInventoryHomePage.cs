@@ -33,8 +33,8 @@ namespace PYLsystems
 
         private void btnJobOrders_Click(object sender, EventArgs e)
         {
-            //frmJobOrderTransaction formJobOrder = new frmJobOrderTransaction();
-            //formJobOrder.ShowDialog();
+            frmJobOrder frmJobOrder = new frmJobOrder(this.employeeId,this.employeeStatus);
+            frmJobOrder.ShowDialog();
         }
     }
 }
