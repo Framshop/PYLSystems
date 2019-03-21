@@ -39,7 +39,7 @@ namespace PYLsystems
             myConn.Open();
             string query = "SELECT si.supply_itemsID `Supply ID`, si.supplyName AS `Supply Name`, sc.categoryName AS `Category Name`, sc.typeOfMeasure AS `Type Of Measure`," +
                 "si.supplyDescription AS `Supply Description`, sc.supply_categoryID AS `Supply Category ID`,  " +
-                "si.measureA AS `Measurement A`,si.measureB AS `Measurement B`,sc.typeOfMeasure,si.Active, " +
+                "si.measureA AS `Measurement A`,si.measureB AS `Measurement B`,sc.typeOfMeasure, " +
                 "if (sc.typeOfMeasure = 'Area',concat(si.measureA, ' x ', si.measureB),si.measureA) AS `Measurement`,  " +
                 "si.unitMeasure AS `Unit Measure`, " +
                 "ifnull( if (sc.typeOfMeasure = 'Area',((1 - (supsoA.stockOut / (si.measureA * si.measureB * supsiA.stockIn))) * supsiA.stockIn)," +
@@ -48,7 +48,7 @@ namespace PYLsystems
                 "ifnull( if (sc.typeOfMeasure = 'Area',((si.measureA * si.measureB * supsiA.stockIn) - supsoA.stockOut)," +
                 "                							if (sc.typeOfMeasure = 'Whole',supsi.stockIn - supso.stockOut," +
                 "                															((si.measureA * supsi.stockIn) - supso.stockOut))), 0) AS `Quantity Left in Measurement`," +
-                "si.unitPurchasePrice AS `Purchase Price` " +
+                  "si.reorder_quantity as 'Re-Order Point'" +
                 "FROM supply_items AS si " +
                 "LEFT JOIN supply_Category AS sc ON si.supply_categoryID = sc.supply_categoryID " +
                 "LEFT JOIN(SELECT supply_itemsID, SUM(stockin_quantity) AS `stockIn` FROM supply_details GROUP BY supply_itemsID) AS supsi ON si.supply_itemsID = supsi.supply_itemsID " +
@@ -92,13 +92,25 @@ namespace PYLsystems
             DataTable dt = new DataTable();
             adp.Fill(dt);
             dgSupplyItems.DataSource = dt;
+            for (int i = 0; i < dgSupplyItems.Rows.Count; i++)
+            {
+                if (float.Parse(dgSupplyItems.Rows[i].Cells["Quantity Left"].Value.ToString()) <= float.Parse(dgSupplyItems.Rows[i].Cells["Re-Order Point"].Value.ToString()))
+                {
+                    dgSupplyItems.Rows[i].DefaultCellStyle.BackColor = Color.LightSalmon;
+                }
+
+                else
+                {
+                    dgSupplyItems.Rows[i].DefaultCellStyle.BackColor = Color.LightGreen;
+                }
+            }
             myConn.Close();
             dgSupplyItems.Columns["Supply ID"].Visible = false;
             dgSupplyItems.Columns["Supply Category ID"].Visible = false;
             dgSupplyItems.Columns["Measurement A"].Visible = false;
             dgSupplyItems.Columns["Measurement B"].Visible = false;
             dgSupplyItems.Columns["typeOfMeasure"].Visible = false;
-            dgSupplyItems.Columns["Active"].Visible = false;
+    
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -121,7 +133,7 @@ namespace PYLsystems
             myConn.Open();
             string query = "SELECT si.supply_itemsID `Supply ID`, si.supplyName AS `Supply Name`, sc.categoryName AS `Category Name`, sc.typeOfMeasure AS `Type Of Measure`," +
                 "si.supplyDescription AS `Supply Description`, sc.supply_categoryID AS `Supply Category ID`,  " +
-                "si.measureA AS `Measurement A`,si.measureB AS `Measurement B`,sc.typeOfMeasure,si.Active, " +
+                "si.measureA AS `Measurement A`,si.measureB AS `Measurement B`,sc.typeOfMeasure, " +
                 "if (sc.typeOfMeasure = 'Area',concat(si.measureA, ' x ', si.measureB),si.measureA) AS `Measurement`,  " +
                 "si.unitMeasure AS `Unit Measure`, " +
                 "ifnull( if (sc.typeOfMeasure = 'Area',((1 - (supsoA.stockOut / (si.measureA * si.measureB * supsiA.stockIn))) * supsiA.stockIn)," +
@@ -130,7 +142,7 @@ namespace PYLsystems
                 "ifnull( if (sc.typeOfMeasure = 'Area',((si.measureA * si.measureB * supsiA.stockIn) - supsoA.stockOut)," +
                 "                							if (sc.typeOfMeasure = 'Whole',supsi.stockIn - supso.stockOut," +
                 "                															((si.measureA * supsi.stockIn) - supso.stockOut))), 0) AS `Quantity Left in Measurement`," +
-                "si.unitPurchasePrice AS `Purchase Price` " +
+               "si.reorder_quantity as 'Re-Order Point'" + 
                 "FROM supply_items AS si " +
                 "LEFT JOIN supply_Category AS sc ON si.supply_categoryID = sc.supply_categoryID " +
                 "LEFT JOIN(SELECT supply_itemsID, SUM(stockin_quantity) AS `stockIn` FROM supply_details GROUP BY supply_itemsID) AS supsi ON si.supply_itemsID = supsi.supply_itemsID " +
@@ -180,7 +192,7 @@ namespace PYLsystems
             dgSupplyItems.Columns["Measurement A"].Visible = false;
             dgSupplyItems.Columns["Measurement B"].Visible = false;
             dgSupplyItems.Columns["typeOfMeasure"].Visible = false;
-            dgSupplyItems.Columns["Active"].Visible = false;
+      
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -447,24 +459,22 @@ namespace PYLsystems
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
+        } 
 
         private void btnStockInSelectedItem_Click(object sender, EventArgs e)
         {
             frmSupplyStockIn supplyStockIn = new frmSupplyStockIn();
             supplyStockIn.lblsupply_itemsID.Text = dgSupplyItems.CurrentRow.Cells["Supply ID"].Value.ToString();
             frmSupplyStockIn.Global.supplyID = dgSupplyItems.CurrentRow.Cells["Supply ID"].Value.ToString();
-            supplyStockIn.txtItemName.Text = dgSupplyItems.CurrentRow.Cells["Supply Name"].Value.ToString();
-            supplyStockIn.txtRawPurchasePrice.Text = dgSupplyItems.CurrentRow.Cells["Purchase Price"].Value.ToString();
-            supplyStockIn.rawPurchasePriceInitial = Double.Parse(dgSupplyItems.CurrentRow.Cells["Purchase Price"].Value.ToString());
+            supplyStockIn.txtItemName.Text = dgSupplyItems.CurrentRow.Cells["Supply Name"].Value.ToString();     
             supplyStockIn.ShowDialog();
             RefreshDatabase();
             cboSupplyCategory.SelectedIndex = -1;
             txtItemName.Text = "";
             txtItemDescription.Text = "";
-            cboActive.SelectedIndex = -1;
 
-            txtPurchaseUnitPrice.Text = "";
+
+            txtReOrderPoint.Text = "";
             supply_categoryID = "";
             typeOfMeasure_db = "";
             supplyID = "";
@@ -496,7 +506,7 @@ namespace PYLsystems
 
             txtArea1.Text = "";
             txtArea2.Text = "";
-            cboActive.SelectedIndex = -1;
+            cboArea.SelectedIndex = -1;
 
             cboLength.SelectedIndex = -1;
             txtLength.Text = "";
@@ -527,7 +537,7 @@ namespace PYLsystems
             {
                 if (typeOfMeasure_db == "Length")
                 {
-                    string myQuery = "INSERT INTO supply_items (supply_categoryID,supplyName,supplyDescription,measureA,unitMeasure,unitPurchasePrice,active) values(" + supply_categoryID + ",'" + txtItemName.Text + "','" + txtItemDescription.Text + "'," + txtLength.Text + ",'" + cboLength.Text + "'," + txtPurchaseUnitPrice.Text + "," + cboActive.Text + ")";
+                    string myQuery = "INSERT INTO supply_items (supply_categoryID,supplyName,supplyDescription,measureA,unitMeasure,reOrder_quantity) values(" + supply_categoryID + ",'" + txtItemName.Text + "','" + txtItemDescription.Text + "'," + txtLength.Text + ",'" + cboLength.Text + "'," + txtReOrderPoint.Text + ")";
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
@@ -537,7 +547,7 @@ namespace PYLsystems
                 }
                 else if (typeOfMeasure_db == "Area")
                 {
-                    string myQuery = "INSERT INTO supply_items (supply_categoryID,supplyName,supplyDescription,measureA,measureB,unitMeasure,unitPurchasePrice,active) values(" + supply_categoryID + ",'" + txtItemName.Text + "','" + txtItemDescription.Text + "'," + txtArea1.Text + "," + txtArea2.Text + ",'" + cboArea.Text + "'," + txtPurchaseUnitPrice.Text + "," + cboActive.Text + ")";
+                    string myQuery = "INSERT INTO supply_items (supply_categoryID,supplyName,supplyDescription,measureA,measureB,unitMeasure,reOrder_quantity) values(" + supply_categoryID + ",'" + txtItemName.Text + "','" + txtItemDescription.Text + "'," + txtArea1.Text + "," + txtArea2.Text + ",'" + cboArea.Text + "'," + txtReOrderPoint.Text + ")";
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
@@ -547,7 +557,7 @@ namespace PYLsystems
                 }
                 else if (typeOfMeasure_db == "Weight")
                 {
-                    string myQuery = "INSERT INTO supply_items (supply_categoryID,supplyName,supplyDescription,measureA,unitMeasure,unitPurchasePrice,active) values(" + supply_categoryID + ",'" + txtItemName.Text + "','" + txtItemDescription.Text + "'," + txtWeight.Text + ",'" + cboWeight.Text + "'," + txtPurchaseUnitPrice.Text + "," + cboActive.Text + ")";
+                    string myQuery = "INSERT INTO supply_items (supply_categoryID,supplyName,supplyDescription,measureA,unitMeasure,reOrder_quantity) values(" + supply_categoryID + ",'" + txtItemName.Text + "','" + txtItemDescription.Text + "'," + txtLength.Text + ",'" + cboLength.Text + "'," + txtReOrderPoint.Text + ")";
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
@@ -557,7 +567,7 @@ namespace PYLsystems
                 }
                 else if (typeOfMeasure_db == "Volume")
                 {
-                    string myQuery = "INSERT INTO supply_items (supply_categoryID,supplyName,supplyDescription,measureA,unitMeasure,unitPurchasePrice,active) values(" + supply_categoryID + ",'" + txtItemName.Text + "','" + txtItemDescription.Text + "'," + txtVolume.Text + ",'" + cboVolume.Text + "'," + txtPurchaseUnitPrice.Text + "," + cboActive.Text + ")";
+                    string myQuery = "INSERT INTO supply_items (supply_categoryID,supplyName,supplyDescription,measureA,unitMeasure,reOrder_quantity) values(" + supply_categoryID + ",'" + txtItemName.Text + "','" + txtItemDescription.Text + "'," + txtLength.Text + ",'" + cboLength.Text + "'," + txtReOrderPoint.Text + ")";
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
@@ -567,7 +577,7 @@ namespace PYLsystems
                 }
                 else
                 {
-                    string myQuery = "INSERT INTO supply_items (supply_categoryID,supplyName,supplyDescription,measureA,unitMeasure,unitPurchasePrice,active) values(" + supply_categoryID + ",'" + txtItemName.Text + "','" + txtItemDescription.Text + "'," + 1 + ",'" + cboWhole.Text + "'," + txtPurchaseUnitPrice.Text + "," + cboActive.Text + ")";
+                    string myQuery = "INSERT INTO supply_items (supply_categoryID,supplyName,supplyDescription,measureA,unitMeasure,reOrder_quantity) values(" + supply_categoryID + ",'" + txtItemName.Text + "','" + txtItemDescription.Text + "'," + txtLength.Text + ",'" + cboLength.Text + "'," + txtReOrderPoint.Text + ")";
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
@@ -579,9 +589,9 @@ namespace PYLsystems
                 cboSupplyCategory.SelectedIndex = -1;
                 txtItemName.Text = "";
                 txtItemDescription.Text = "";
-                cboActive.SelectedIndex = -1;
 
-                txtPurchaseUnitPrice.Text = "";
+
+                txtReOrderPoint.Text = "";
                 supply_categoryID = "";
                 typeOfMeasure_db = "";
                 supplyID = "";
@@ -614,8 +624,8 @@ namespace PYLsystems
 
                 txtArea1.Text = "";
                 txtArea2.Text = "";
-                cboActive.SelectedIndex = -1;
-
+                cboArea.SelectedIndex = -1;
+               
                 cboLength.SelectedIndex = -1;
                 txtLength.Text = "";
 
@@ -654,12 +664,12 @@ namespace PYLsystems
             int supply_category = cboSupplyCategory.SelectedIndex;
             int supply_name = txtItemName.TextLength;
             int supply_description = txtItemDescription.TextLength;
-            int active = cboActive.SelectedIndex;
-            int purchasePrice = txtPurchaseUnitPrice.TextLength;
+     
+            int reoOrderPoint = txtReOrderPoint.TextLength;
             //Others are for measurements without assigning into another variable
             if (lblLength.Enabled == true)
             {
-                if (supply_category > -1 && supply_name > 0 && supply_description > 0 && active > -1 && purchasePrice > 0 && cboLength.SelectedIndex > -1 && txtLength.TextLength > 0)
+                if (supply_category > -1 && supply_name > 0 && supply_description > 0 &&  reoOrderPoint > 0 && cboLength.SelectedIndex > -1 && txtLength.TextLength > 0)
                 {
                     btnCreateItem.Enabled = true; 
                 }
@@ -670,7 +680,7 @@ namespace PYLsystems
             }
             else if (lblWeight.Enabled == true)
             {
-                if (supply_category > -1 && supply_name > 0 && supply_description > 0 && active > -1 && purchasePrice > 0 && cboWeight.SelectedIndex > -1 && txtWeight.TextLength > 0)
+                if (supply_category > -1 && supply_name > 0 && supply_description > 0 && reoOrderPoint > 0 && cboWeight.SelectedIndex > -1 && txtWeight.TextLength > 0)
                 {
                     btnCreateItem.Enabled = true;
                 }
@@ -681,7 +691,7 @@ namespace PYLsystems
             }
             else if (lblWhole.Enabled == true)
             {
-                if (supply_category > -1 && supply_name > 0 && supply_description > 0 && active > -1 && purchasePrice > 0 && cboWhole.SelectedIndex > -1)
+                if (supply_category > -1 && supply_name > 0 && supply_description > 0  && reoOrderPoint > 0 && cboWhole.SelectedIndex > -1)
                 {
                     btnCreateItem.Enabled = true;
                 }
@@ -692,7 +702,7 @@ namespace PYLsystems
             }
             else if (lblVolume.Enabled == true)
             {
-                if (supply_category > -1 && supply_name > 0 && supply_description > 0 && active > -1 && purchasePrice > 0 && cboVolume.SelectedIndex > -1 && txtVolume.TextLength > 0)
+                if (supply_category > -1 && supply_name > 0 && supply_description > 0 && reoOrderPoint > 0 && cboVolume.SelectedIndex > -1 && txtVolume.TextLength > 0)
                 {
                     btnCreateItem.Enabled = true;
                 }
@@ -701,9 +711,9 @@ namespace PYLsystems
                     btnCreateItem.Enabled = false;
                 }
             }
-            else
+            else if (lblArea.Enabled == true)
             {
-                if (supply_category > -1 && supply_name > 0 && supply_description > 0 && active > -1 && purchasePrice > 0 && cboArea.SelectedIndex > -1 && txtArea1.TextLength > 0 && txtArea2.TextLength > 0)
+                if (supply_category > -1 && supply_name > 0 && supply_description > 0  && reoOrderPoint > 0 && cboArea.SelectedIndex > -1 && txtArea1.TextLength > 0 && txtArea2.TextLength > 0)
                 {
                     btnCreateItem.Enabled = true;
                 }
@@ -723,6 +733,7 @@ namespace PYLsystems
         {
             quantity_left = dgSupplyItems.CurrentRow.Cells["Quantity Left"].Value.ToString();
            supplyID = dgSupplyItems.CurrentRow.Cells["Supply ID"].Value.ToString();
+            txtReOrderPoint.Text = dgSupplyItems.CurrentRow.Cells["Re-Order Point"].Value.ToString();
             validationUpdateItem();
             typeOfMeasure_dbCellClick = dgSupplyItems.CurrentRow.Cells["Type of Measure"].Value.ToString();
             if (typeOfMeasure_dbCellClick == "Area")
@@ -731,8 +742,8 @@ namespace PYLsystems
                 cboSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells["Category Name"].Value.ToString();
                 txtItemName.Text = dgSupplyItems.CurrentRow.Cells["Supply Name"].Value.ToString();
                 txtItemDescription.Text = dgSupplyItems.CurrentRow.Cells["Supply Description"].Value.ToString();
-                cboActive.Text = dgSupplyItems.CurrentRow.Cells["Active"].Value.ToString();
-                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells["Purchase Price"].Value.ToString();
+          
+              
 
 
                 //TRUE
@@ -790,8 +801,8 @@ namespace PYLsystems
                 cboSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells["Category Name"].Value.ToString();
                 txtItemName.Text = dgSupplyItems.CurrentRow.Cells["Supply Name"].Value.ToString();
                 txtItemDescription.Text = dgSupplyItems.CurrentRow.Cells["Supply Description"].Value.ToString();
-                cboActive.Text = dgSupplyItems.CurrentRow.Cells["Active"].Value.ToString();
-                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells["Purchase Price"].Value.ToString();
+            
+         
 
                 //TRUE
                 txtLength.Enabled = true;
@@ -837,8 +848,8 @@ namespace PYLsystems
                 cboSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells["Category Name"].Value.ToString();
                 txtItemName.Text = dgSupplyItems.CurrentRow.Cells["Supply Name"].Value.ToString();
                 txtItemDescription.Text = dgSupplyItems.CurrentRow.Cells["Supply Description"].Value.ToString();
-                cboActive.Text = dgSupplyItems.CurrentRow.Cells["Active"].Value.ToString();
-                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells["Purchase Price"].Value.ToString();
+             
+
 
                 //TRUE
                 lblWeight.Enabled = true;
@@ -884,8 +895,8 @@ namespace PYLsystems
                 cboSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells["Category Name"].Value.ToString();
                 txtItemName.Text = dgSupplyItems.CurrentRow.Cells["Supply Name"].Value.ToString();
                 txtItemDescription.Text = dgSupplyItems.CurrentRow.Cells["Supply Description"].Value.ToString();
-                cboActive.Text = dgSupplyItems.CurrentRow.Cells["Active"].Value.ToString();
-                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells["Purchase Price"].Value.ToString();
+                
+               
                 //TRUE
                 lblVolume.Enabled = true;
                 txtVolume.Enabled = true;
@@ -930,8 +941,8 @@ namespace PYLsystems
                 cboSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells["Category Name"].Value.ToString();
                 txtItemName.Text = dgSupplyItems.CurrentRow.Cells["Supply Name"].Value.ToString();
                 txtItemDescription.Text = dgSupplyItems.CurrentRow.Cells["Supply Description"].Value.ToString();
-                cboActive.Text = dgSupplyItems.CurrentRow.Cells["Active"].Value.ToString();
-                txtPurchaseUnitPrice.Text = dgSupplyItems.CurrentRow.Cells["Purchase Price"].Value.ToString();
+     
+  
 
                 //TRUE
                 cboWhole.Enabled = true;
@@ -1054,7 +1065,7 @@ namespace PYLsystems
           
                 if (typeOfMeasure_db == "Length")
                 {
-                    string myQuery = "UPDATE supply_items SET supply_categoryID = " + supply_categoryID + ", supplyName = '" + txtItemName.Text + "', supplyDescription = '" + txtItemDescription.Text + "', measureA = " + txtLength.Text + ", unitMeasure = '" + cboLength.Text + "', unitPurchasePrice = " + txtPurchaseUnitPrice.Text + ", active = " + cboActive.SelectedIndex + " WHERE supply_itemsID = " + supplyID;
+                    string myQuery = "UPDATE supply_items SET supply_categoryID = " + supply_categoryID + ", supplyName = '" + txtItemName.Text + "', supplyDescription = '" + txtItemDescription.Text + "', measureA = " + txtLength.Text + ", unitMeasure = '" + cboLength.Text + "', reorder_quantity = " + txtReOrderPoint.Text + " WHERE supply_itemsID = " + supplyID;
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
@@ -1064,7 +1075,7 @@ namespace PYLsystems
                 }
                 else if (typeOfMeasure_db == "Area")
                 {
-                    string myQuery = "UPDATE supply_items SET supply_categoryID = " + supply_categoryID + ", supplyName = '" + txtItemName.Text + "', supplyDescription = '" + txtItemDescription.Text + "', measureA = " + txtArea1.Text + ", measureB = " + txtArea2.Text + ", unitMeasure = '" + cboArea.Text + "', unitPurchasePrice = " + txtPurchaseUnitPrice.Text + ", active = " + cboActive.SelectedIndex + " WHERE supply_itemsID = " + supplyID;
+                    string myQuery = "UPDATE supply_items SET supply_categoryID = " + supply_categoryID + ", supplyName = '" + txtItemName.Text + "', supplyDescription = '" + txtItemDescription.Text + "', measureA = " + txtArea1.Text + ", measureB = " + txtArea2.Text + ", unitMeasure = '" + cboArea.Text + "', reorder_quantity = " + txtReOrderPoint.Text + " WHERE supply_itemsID = " + supplyID;
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
@@ -1074,7 +1085,7 @@ namespace PYLsystems
                 }
                 else if (typeOfMeasure_db == "Weight")
                 {
-                    string myQuery = "UPDATE supply_items SET supply_categoryID = " + supply_categoryID + ", supplyName = '" + txtItemName.Text + "', supplyDescription = '" + txtItemDescription.Text + "', measureA = " + txtWeight.Text + ", unitMeasure = '" + cboWeight.Text + "', unitPurchasePrice = " + txtPurchaseUnitPrice.Text + ", active = " + cboActive.SelectedIndex + " WHERE supply_itemsID = " + supplyID;
+                    string myQuery = "UPDATE supply_items SET supply_categoryID = " + supply_categoryID + ", supplyName = '" + txtItemName.Text + "', supplyDescription = '" + txtItemDescription.Text + "', measureA = " + txtWeight.Text + ", unitMeasure = '" + cboWeight.Text + "', reorder_quantity = " + txtReOrderPoint.Text + " WHERE supply_itemsID = " + supplyID;
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
@@ -1084,7 +1095,7 @@ namespace PYLsystems
                 }
             else if (typeOfMeasure_db == "Volume")
             {
-                string myQuery = "UPDATE supply_items SET supply_categoryID = " + supply_categoryID + ", supplyName = '" + txtItemName.Text + "', supplyDescription = '" + txtItemDescription.Text + "', measureA = " + txtVolume.Text + ", unitMeasure = '" + cboVolume.Text + "', unitPurchasePrice = " + txtPurchaseUnitPrice.Text + ", active = " + cboActive.SelectedIndex + " WHERE supply_itemsID = " + supplyID;
+                string myQuery = "UPDATE supply_items SET supply_categoryID = " + supply_categoryID + ", supplyName = '" + txtItemName.Text + "', supplyDescription = '" + txtItemDescription.Text + "', measureA = " + txtVolume.Text + ", unitMeasure = '" + cboVolume.Text + "', reorder_quantity =" + txtReOrderPoint.Text + " WHERE supply_itemsID = " + supplyID;
                 MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                 MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                 DataTable myDt = new DataTable();
@@ -1094,7 +1105,7 @@ namespace PYLsystems
             }
             else
                 {
-                    string myQuery = "UPDATE supply_items SET supply_categoryID = " + supply_categoryID + ", supplyName = '" + txtItemName.Text + "', supplyDescription = '" + txtItemDescription.Text + "', measureA = " + 1 + ", unitMeasure = '" + cboWhole.Text + "', unitPurchasePrice = " + txtPurchaseUnitPrice.Text + ", active = " + cboActive.SelectedIndex + " WHERE supply_itemsID = " + supplyID;
+                    string myQuery = "UPDATE supply_items SET supply_categoryID = " + supply_categoryID + ", supplyName = '" + txtItemName.Text + "', supplyDescription = '" + txtItemDescription.Text + "', measureA = " + 1 + ", unitMeasure = '" + cboWhole.Text + "', reorder_quantity = " + txtReOrderPoint.Text + " WHERE supply_itemsID = " + supplyID;
                     MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
                     MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
                     DataTable myDt = new DataTable();
@@ -1106,9 +1117,9 @@ namespace PYLsystems
                 cboSupplyCategory.SelectedIndex = -1;
                 txtItemName.Text = "";
                 txtItemDescription.Text = "";
-                cboActive.SelectedIndex = -1;
+             
 
-                txtPurchaseUnitPrice.Text = "";
+            txtReOrderPoint.Text = "";
                 supply_categoryID = "";
                 typeOfMeasure_db = "";
                 supplyID = "";
@@ -1124,7 +1135,7 @@ namespace PYLsystems
 
             txtArea1.Text = "";
             txtArea2.Text = "";
-            cboActive.SelectedIndex = -1;
+            cboArea.SelectedIndex = -1;
 
                 txtLength.Enabled = false;
                 cboLength.Enabled = false;
@@ -1293,9 +1304,9 @@ namespace PYLsystems
                 cboSupplyCategory.SelectedIndex = -1;
                 txtItemName.Text = "";
                 txtItemDescription.Text = "";
-                cboActive.SelectedIndex = -1;
+  
 
-                txtPurchaseUnitPrice.Text = "";
+                txtReOrderPoint.Text = "";
                 supply_categoryID = "";
                 typeOfMeasure_db = "";
                 supplyID = "";
@@ -1324,7 +1335,7 @@ namespace PYLsystems
                 btnDamageItem.Enabled = false;
                 txtArea1.Text = "";
                 txtArea2.Text = "";
-                cboActive.SelectedIndex = -1;
+     
 
                 cboLength.SelectedIndex = -1;
                 txtLength.Text = "";
@@ -1341,6 +1352,20 @@ namespace PYLsystems
             else
             {
                 MessageBox.Show(txtItemName.Text + " needs to be stock in first!");
+            }
+        }
+
+        private void txtReOrderPoint_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
             }
         }
     }
