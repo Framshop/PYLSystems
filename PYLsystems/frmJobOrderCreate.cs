@@ -102,6 +102,11 @@ namespace PYLsystems
                 int receiptNum = 1;
                 this.txtBoxReceipt.Text = receiptNum.ToString("0000000");
             }
+            else if (String.IsNullOrEmpty(receiptNumberPrev_dt.Rows[0][0].ToString()))
+            {
+                int receiptNum = 1;
+                this.txtBoxReceipt.Text = receiptNum.ToString("0000000");
+            }
             else
             {
                 int receiptNum = Int32.Parse(receiptNumberPrev_dt.Rows[0][0].ToString())+1;
@@ -786,6 +791,11 @@ namespace PYLsystems
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
