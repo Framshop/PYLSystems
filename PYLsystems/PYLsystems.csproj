@@ -239,17 +239,23 @@
     <Compile Include="frmInventoryHomePage.Designer.cs">
       <DependentUpon>frmInventoryHomePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmJobOrderDetails.cs">
+    <Compile Include="frmJobOrder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmJobOrderDetails.Designer.cs">
-      <DependentUpon>frmJobOrderDetails.cs</DependentUpon>
+    <Compile Include="frmJobOrder.Designer.cs">
+      <DependentUpon>frmJobOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmJobOrderTransaction.cs">
+    <Compile Include="frmJobOrderCreate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmJobOrderTransaction.Designer.cs">
-      <DependentUpon>frmJobOrderTransaction.cs</DependentUpon>
+    <Compile Include="frmJobOrderCreate.Designer.cs">
+      <DependentUpon>frmJobOrderCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmJobOrderEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmJobOrderEdit.Designer.cs">
+      <DependentUpon>frmJobOrderEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="frmNewEmployee.cs">
       <SubType>Form</SubType>
@@ -481,11 +487,14 @@
     <EmbeddedResource Include="frmInventoryHomePage.resx">
       <DependentUpon>frmInventoryHomePage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmJobOrderDetails.resx">
-      <DependentUpon>frmJobOrderDetails.cs</DependentUpon>
+    <EmbeddedResource Include="frmJobOrder.resx">
+      <DependentUpon>frmJobOrder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmJobOrderTransaction.resx">
-      <DependentUpon>frmJobOrderTransaction.cs</DependentUpon>
+    <EmbeddedResource Include="frmJobOrderCreate.resx">
+      <DependentUpon>frmJobOrderCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmJobOrderEdit.resx">
+      <DependentUpon>frmJobOrderEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewEmployee.resx">
       <DependentUpon>frmNewEmployee.cs</DependentUpon>

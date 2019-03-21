@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.productsSoldBtn = new System.Windows.Forms.Button();
@@ -78,8 +78,8 @@
             this.modEmpLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.updateBtn = new System.Windows.Forms.Button();
-            this.resetBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
+            this.resetBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -115,8 +115,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainer1.Panel2MinSize = 0;
-            this.splitContainer1.Size = new System.Drawing.Size(1218, 718);
-            this.splitContainer1.SplitterDistance = 370;
+            this.splitContainer1.Size = new System.Drawing.Size(1475, 960);
+            this.splitContainer1.SplitterDistance = 448;
             this.splitContainer1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -140,7 +140,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(370, 718);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(448, 960);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // productsSoldBtn
@@ -149,9 +149,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.productsSoldBtn.FlatAppearance.BorderSize = 0;
-            this.productsSoldBtn.Location = new System.Drawing.Point(3, 73);
+            this.productsSoldBtn.Location = new System.Drawing.Point(3, 99);
             this.productsSoldBtn.Name = "productsSoldBtn";
-            this.productsSoldBtn.Size = new System.Drawing.Size(364, 29);
+            this.productsSoldBtn.Size = new System.Drawing.Size(442, 42);
             this.productsSoldBtn.TabIndex = 5;
             this.productsSoldBtn.Text = "Products Sold";
             this.productsSoldBtn.UseVisualStyleBackColor = true;
@@ -163,9 +163,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.totalProfitBtn.FlatAppearance.BorderSize = 0;
-            this.totalProfitBtn.Location = new System.Drawing.Point(3, 38);
+            this.totalProfitBtn.Location = new System.Drawing.Point(3, 51);
             this.totalProfitBtn.Name = "totalProfitBtn";
-            this.totalProfitBtn.Size = new System.Drawing.Size(364, 29);
+            this.totalProfitBtn.Size = new System.Drawing.Size(442, 42);
             this.totalProfitBtn.TabIndex = 4;
             this.totalProfitBtn.Text = "Total Profit";
             this.totalProfitBtn.UseVisualStyleBackColor = true;
@@ -175,9 +175,9 @@
             // 
             this.salesOrderGB.Controls.Add(this.salesOrdersGrid);
             this.salesOrderGB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.salesOrderGB.Location = new System.Drawing.Point(3, 286);
+            this.salesOrderGB.Location = new System.Drawing.Point(3, 387);
             this.salesOrderGB.Name = "salesOrderGB";
-            this.salesOrderGB.Size = new System.Drawing.Size(364, 429);
+            this.salesOrderGB.Size = new System.Drawing.Size(442, 570);
             this.salesOrderGB.TabIndex = 0;
             this.salesOrderGB.TabStop = false;
             this.salesOrderGB.Text = "Sales Orders List";
@@ -187,39 +187,39 @@
             this.salesOrdersGrid.AllowUserToAddRows = false;
             this.salesOrdersGrid.AllowUserToDeleteRows = false;
             this.salesOrdersGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.salesOrdersGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.salesOrdersGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.salesOrdersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.salesOrdersGrid.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.salesOrdersGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.salesOrdersGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.salesOrdersGrid.Location = new System.Drawing.Point(3, 22);
             this.salesOrdersGrid.Name = "salesOrdersGrid";
             this.salesOrdersGrid.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.salesOrdersGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.salesOrdersGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.salesOrdersGrid.RowHeadersVisible = false;
             this.salesOrdersGrid.RowTemplate.Height = 28;
             this.salesOrdersGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.salesOrdersGrid.Size = new System.Drawing.Size(358, 404);
+            this.salesOrdersGrid.Size = new System.Drawing.Size(436, 545);
             this.salesOrdersGrid.TabIndex = 0;
             this.salesOrdersGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.salesOrdersGrid_CellClick);
             this.salesOrdersGrid.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.salesOrdersGrid_DataBindingComplete);
@@ -229,11 +229,11 @@
             this.filterGB.Controls.Add(this.hideActiveSOCheckB);
             this.filterGB.Controls.Add(this.shCancelSOCheckB);
             this.filterGB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.filterGB.Location = new System.Drawing.Point(0, 194);
+            this.filterGB.Location = new System.Drawing.Point(0, 264);
             this.filterGB.Margin = new System.Windows.Forms.Padding(0);
             this.filterGB.Name = "filterGB";
             this.filterGB.Padding = new System.Windows.Forms.Padding(0);
-            this.filterGB.Size = new System.Drawing.Size(370, 89);
+            this.filterGB.Size = new System.Drawing.Size(448, 120);
             this.filterGB.TabIndex = 0;
             this.filterGB.TabStop = false;
             this.filterGB.Text = "Filters";
@@ -267,11 +267,11 @@
             this.dateSelect.Controls.Add(this.endDatePicker);
             this.dateSelect.Controls.Add(this.startDatePicker);
             this.dateSelect.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateSelect.Location = new System.Drawing.Point(0, 105);
+            this.dateSelect.Location = new System.Drawing.Point(0, 144);
             this.dateSelect.Margin = new System.Windows.Forms.Padding(0);
             this.dateSelect.Name = "dateSelect";
             this.dateSelect.Padding = new System.Windows.Forms.Padding(0);
-            this.dateSelect.Size = new System.Drawing.Size(370, 89);
+            this.dateSelect.Size = new System.Drawing.Size(448, 120);
             this.dateSelect.TabIndex = 2;
             this.dateSelect.TabStop = false;
             this.dateSelect.Text = "Select Dates";
@@ -314,7 +314,7 @@
             this.endDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.endDatePicker.Location = new System.Drawing.Point(116, 60);
             this.endDatePicker.Name = "endDatePicker";
-            this.endDatePicker.Size = new System.Drawing.Size(200, 26);
+            this.endDatePicker.Size = new System.Drawing.Size(278, 26);
             this.endDatePicker.TabIndex = 1;
             this.endDatePicker.Value = new System.DateTime(2019, 1, 5, 0, 0, 0, 0);
             this.endDatePicker.ValueChanged += new System.EventHandler(this.endDatePicker_EnabledChanged);
@@ -330,7 +330,7 @@
             this.startDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.startDatePicker.Location = new System.Drawing.Point(116, 25);
             this.startDatePicker.Name = "startDatePicker";
-            this.startDatePicker.Size = new System.Drawing.Size(200, 26);
+            this.startDatePicker.Size = new System.Drawing.Size(278, 26);
             this.startDatePicker.TabIndex = 0;
             this.startDatePicker.Value = new System.DateTime(2019, 1, 4, 0, 0, 0, 0);
             this.startDatePicker.ValueChanged += new System.EventHandler(this.startDatePicker_EnabledChanged);
@@ -344,7 +344,7 @@
             this.addSalesOrder.FlatAppearance.BorderSize = 0;
             this.addSalesOrder.Location = new System.Drawing.Point(3, 3);
             this.addSalesOrder.Name = "addSalesOrder";
-            this.addSalesOrder.Size = new System.Drawing.Size(364, 29);
+            this.addSalesOrder.Size = new System.Drawing.Size(442, 42);
             this.addSalesOrder.TabIndex = 3;
             this.addSalesOrder.Text = "New Sales Order";
             this.addSalesOrder.UseVisualStyleBackColor = true;
@@ -363,7 +363,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.039F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.961F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(844, 718);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1023, 960);
             this.tableLayoutPanel2.TabIndex = 11;
             // 
             // salesOrdDetailsGB
@@ -372,7 +372,7 @@
             this.salesOrdDetailsGB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.salesOrdDetailsGB.Location = new System.Drawing.Point(3, 3);
             this.salesOrdDetailsGB.Name = "salesOrdDetailsGB";
-            this.salesOrdDetailsGB.Size = new System.Drawing.Size(838, 382);
+            this.salesOrdDetailsGB.Size = new System.Drawing.Size(1017, 512);
             this.salesOrdDetailsGB.TabIndex = 0;
             this.salesOrdDetailsGB.TabStop = false;
             this.salesOrdDetailsGB.Text = "Details";
@@ -382,37 +382,37 @@
             this.sOrdDetGrid.AllowUserToAddRows = false;
             this.sOrdDetGrid.AllowUserToDeleteRows = false;
             this.sOrdDetGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.sOrdDetGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.sOrdDetGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.sOrdDetGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.sOrdDetGrid.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.sOrdDetGrid.DefaultCellStyle = dataGridViewCellStyle5;
             this.sOrdDetGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sOrdDetGrid.Location = new System.Drawing.Point(3, 22);
             this.sOrdDetGrid.Name = "sOrdDetGrid";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.sOrdDetGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.sOrdDetGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.sOrdDetGrid.RowHeadersVisible = false;
             this.sOrdDetGrid.RowTemplate.Height = 28;
-            this.sOrdDetGrid.Size = new System.Drawing.Size(832, 357);
+            this.sOrdDetGrid.Size = new System.Drawing.Size(1011, 487);
             this.sOrdDetGrid.TabIndex = 0;
             this.sOrdDetGrid.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.sOrdDetGrid_CellBeginEdit);
             this.sOrdDetGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.sOrdDetGrid_CellValueChanged);
@@ -427,12 +427,12 @@
             this.tableLayoutPanel3.Controls.Add(this.updatedInfo, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 1, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 391);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 521);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.03704F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.96296F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(838, 324);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1017, 436);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // bottomGroupBox
@@ -451,7 +451,7 @@
             this.bottomGroupBox.Margin = new System.Windows.Forms.Padding(0);
             this.bottomGroupBox.Name = "bottomGroupBox";
             this.bottomGroupBox.Padding = new System.Windows.Forms.Padding(0);
-            this.bottomGroupBox.Size = new System.Drawing.Size(419, 201);
+            this.bottomGroupBox.Size = new System.Drawing.Size(508, 270);
             this.bottomGroupBox.TabIndex = 0;
             this.bottomGroupBox.TabStop = false;
             this.bottomGroupBox.Text = "Totals";
@@ -535,11 +535,11 @@
             this.infoOthers.Controls.Add(this.employeeTextBox);
             this.infoOthers.Controls.Add(this.empLabel);
             this.infoOthers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.infoOthers.Location = new System.Drawing.Point(419, 0);
+            this.infoOthers.Location = new System.Drawing.Point(508, 0);
             this.infoOthers.Margin = new System.Windows.Forms.Padding(0);
             this.infoOthers.Name = "infoOthers";
             this.infoOthers.Padding = new System.Windows.Forms.Padding(0);
-            this.infoOthers.Size = new System.Drawing.Size(419, 201);
+            this.infoOthers.Size = new System.Drawing.Size(509, 270);
             this.infoOthers.TabIndex = 2;
             this.infoOthers.TabStop = false;
             this.infoOthers.Text = "Info";
@@ -619,11 +619,11 @@
             this.updatedInfo.Controls.Add(this.modEmployeeTextBox);
             this.updatedInfo.Controls.Add(this.modEmpLabel);
             this.updatedInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.updatedInfo.Location = new System.Drawing.Point(0, 201);
+            this.updatedInfo.Location = new System.Drawing.Point(0, 270);
             this.updatedInfo.Margin = new System.Windows.Forms.Padding(0);
             this.updatedInfo.Name = "updatedInfo";
             this.updatedInfo.Padding = new System.Windows.Forms.Padding(0);
-            this.updatedInfo.Size = new System.Drawing.Size(419, 123);
+            this.updatedInfo.Size = new System.Drawing.Size(508, 166);
             this.updatedInfo.TabIndex = 10;
             this.updatedInfo.TabStop = false;
             this.updatedInfo.Text = "Updates";
@@ -671,13 +671,13 @@
             this.tableLayoutPanel4.Controls.Add(this.cancelBtn, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.resetBtn, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(422, 204);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(511, 273);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.69492F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.30508F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(413, 117);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(503, 160);
             this.tableLayoutPanel4.TabIndex = 11;
             // 
             // updateBtn
@@ -687,13 +687,28 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.updateBtn.Enabled = false;
             this.updateBtn.FlatAppearance.BorderSize = 0;
-            this.updateBtn.Location = new System.Drawing.Point(206, 3);
+            this.updateBtn.Location = new System.Drawing.Point(250, 3);
             this.updateBtn.Name = "updateBtn";
-            this.updateBtn.Size = new System.Drawing.Size(204, 54);
+            this.updateBtn.Size = new System.Drawing.Size(250, 76);
             this.updateBtn.TabIndex = 0;
             this.updateBtn.Text = "Update";
             this.updateBtn.UseVisualStyleBackColor = true;
             this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
+            // 
+            // cancelBtn
+            // 
+            this.cancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelBtn.Enabled = false;
+            this.cancelBtn.FlatAppearance.BorderSize = 0;
+            this.cancelBtn.Location = new System.Drawing.Point(250, 85);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(250, 72);
+            this.cancelBtn.TabIndex = 2;
+            this.cancelBtn.Text = "Cancel S.O";
+            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // resetBtn
             // 
@@ -704,33 +719,18 @@
             this.resetBtn.FlatAppearance.BorderSize = 0;
             this.resetBtn.Location = new System.Drawing.Point(3, 3);
             this.resetBtn.Name = "resetBtn";
-            this.resetBtn.Size = new System.Drawing.Size(197, 54);
+            this.resetBtn.Size = new System.Drawing.Size(241, 76);
             this.resetBtn.TabIndex = 1;
             this.resetBtn.Text = "Reset";
             this.resetBtn.UseVisualStyleBackColor = true;
             this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
-            // 
-            // cancelBtn
-            // 
-            this.cancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelBtn.Enabled = false;
-            this.cancelBtn.FlatAppearance.BorderSize = 0;
-            this.cancelBtn.Location = new System.Drawing.Point(206, 63);
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(204, 51);
-            this.cancelBtn.TabIndex = 2;
-            this.cancelBtn.Text = "Cancel S.O";
-            this.cancelBtn.UseVisualStyleBackColor = true;
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // checkSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1218, 718);
+            this.ClientSize = new System.Drawing.Size(1475, 960);
             this.Controls.Add(this.splitContainer1);
             this.Name = "checkSales";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

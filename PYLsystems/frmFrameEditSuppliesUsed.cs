@@ -21,6 +21,8 @@ namespace PYLsystems
         DataTable dtRemainingVals;
         frmFrameCreate pFrmFrameCreate;
         frmFrameEdit pFrmFrameEdit;
+        frmJobOrderCreate pFrmJobOrderCreate;
+        frmJobOrderEdit pFrmJobOrderEdit;
         int supplyItemsId;
         double measureAOG =0;
         double measureBOG=0;
@@ -42,6 +44,24 @@ namespace PYLsystems
             InitializeComponent();
             this.addEditSuppliesVals = addEditSuppliesVals;
             this.pFrmFrameCreate = pfrmFrameCreate;
+            this.supplyItemsId = addEditSuppliesVals.supplyItemsId;
+            this.measureAOG = addEditSuppliesVals.measureA_OG;
+            this.measureBOG = addEditSuppliesVals.measureB_OG;
+        }
+        public frmFrameEditSuppliesUsed(forAddEditSupplies addEditSuppliesVals, frmJobOrderCreate pFrmJobOrderCreate)
+        {
+            InitializeComponent();
+            this.addEditSuppliesVals = addEditSuppliesVals;
+            this.pFrmJobOrderCreate = pFrmJobOrderCreate;
+            this.supplyItemsId = addEditSuppliesVals.supplyItemsId;
+            this.measureAOG = addEditSuppliesVals.measureA_OG;
+            this.measureBOG = addEditSuppliesVals.measureB_OG;
+        }
+        public frmFrameEditSuppliesUsed(forAddEditSupplies addEditSuppliesVals, frmJobOrderEdit pFrmJobOrderEdit)
+        {
+            InitializeComponent();
+            this.addEditSuppliesVals = addEditSuppliesVals;
+            this.pFrmJobOrderEdit = pFrmJobOrderEdit;
             this.supplyItemsId = addEditSuppliesVals.supplyItemsId;
             this.measureAOG = addEditSuppliesVals.measureA_OG;
             this.measureBOG = addEditSuppliesVals.measureB_OG;
@@ -188,6 +208,14 @@ namespace PYLsystems
             else if (pFrmFrameEdit != null)
             {
                 pFrmFrameEdit.editSuppliesSelected(addEditSuppliesVals);
+            }
+            else if (pFrmJobOrderCreate != null)
+            {
+                pFrmJobOrderCreate.editSuppliesSelected(addEditSuppliesVals);
+            }
+            else if (pFrmJobOrderEdit != null)
+            {
+                pFrmJobOrderEdit.editSuppliesSelected(addEditSuppliesVals);
             }
             this.Close();
         }

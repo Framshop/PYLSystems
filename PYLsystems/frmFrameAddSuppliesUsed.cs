@@ -16,8 +16,11 @@ namespace PYLsystems
         private int employeeId;
         private int employeeStatus;
         private int frameItemId;
+        private int jobOrderID;
         frmFrameEdit pFrmFrameEdit;
         frmFrameCreate pFrmFrameCreate;
+        frmJobOrderCreate pFrmJobOrderCreate;
+        frmJobOrderEdit pFrmJobOrderEdit;
         String connString = "Server=localhost;Database=frameshopdb;Uid=root;Pwd=root";
         DataTable dtSuppliesList;
         DataTable dtSuppliesListView;
@@ -35,6 +38,18 @@ namespace PYLsystems
             InitializeComponent();
             this.pFrmFrameCreate = pFrmFrameCreate;
             this.frameItemId = -1;
+        }
+        public frmFrameAddSuppliesUsed(frmJobOrderCreate pFrmJobOrderCreate)
+        {
+            InitializeComponent();
+            this.pFrmJobOrderCreate = pFrmJobOrderCreate;
+            this.jobOrderID = -1;
+        }
+        public frmFrameAddSuppliesUsed(frmJobOrderEdit pFrmJobOrderEdit,int jobOrderID)
+        {
+            InitializeComponent();
+            this.pFrmJobOrderEdit = pFrmJobOrderEdit;
+            this.jobOrderID = jobOrderID;
         }
         private void frmFrameAddSuppliesUsed_Load(object sender, EventArgs e)
         {
@@ -195,6 +210,7 @@ namespace PYLsystems
             //supply_ItemsId, Supply Name, Description, Category, Base Measurements, Base Unit Measure, Cost per Unit, typeOfMeasure, measureAOG, measureBOG
             int currRowIndex = datagridSuppliesList.SelectedRows[0].Index;
             int frameItemId =-1;
+            int jobOrderID = -1;
             int supplyItemsId = Int32.Parse(datagridSuppliesList.Rows[currRowIndex].Cells["supply_ItemsId"].Value.ToString());
 
             double measureAUsed=-1;
@@ -213,6 +229,10 @@ namespace PYLsystems
             if (this.frameItemId>-1)
             {
                 frameItemId = this.frameItemId;
+            }
+            if (this.jobOrderID > -1)
+            {
+                jobOrderID = this.jobOrderID;
             }
             if (String.Equals(typeOfMeasure, "Area"))
             {
@@ -254,6 +274,12 @@ namespace PYLsystems
 
             forAddEditSupplies addEditSuppliesVals = new forAddEditSupplies(frameItemId,supplyItemsId,measureAUsed,measureBUsed,unitMeasureUsed,unitMeasure_OG,
                 typeOfMeasure,supplyName,unitPriceOG,measureA_OG,measureB_OG,category);
+            if (pFrmJobOrderEdit != null || pFrmJobOrderCreate != null)
+            {
+                addEditSuppliesVals = new forAddEditSupplies(jobOrderID, supplyItemsId, measureAUsed, measureBUsed, unitMeasureUsed, unitMeasure_OG,
+                typeOfMeasure, supplyName, unitPriceOG, measureA_OG, measureB_OG, category);
+            }
+
             if (pFrmFrameCreate != null)
             {
                 pFrmFrameCreate.checkIfExistsBeforeCalc(addEditSuppliesVals);
@@ -261,6 +287,14 @@ namespace PYLsystems
             else if (pFrmFrameEdit!=null)
             {
                 pFrmFrameEdit.checkIfExistsBeforeCalc(addEditSuppliesVals);
+            }
+            else if (pFrmJobOrderCreate != null)
+            {
+                pFrmJobOrderCreate.checkIfExistsBeforeCalc(addEditSuppliesVals);
+            }
+            else if (pFrmJobOrderEdit != null)
+            {
+                pFrmJobOrderEdit.checkIfExistsBeforeCalc(addEditSuppliesVals);
             }
             this.Close();
         }
