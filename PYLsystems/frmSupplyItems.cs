@@ -678,7 +678,7 @@ namespace PYLsystems
                     btnCreateItem.Enabled = false;
                 }
             }
-             if (lblWeight.Enabled == true)
+            else if (lblWeight.Enabled == true)
             {
                 if (supply_category > -1 && supply_name > 0 && supply_description > 0 && reoOrderPoint > 0 && cboWeight.SelectedIndex > -1 && txtWeight.TextLength > 0)
                 {
@@ -689,7 +689,7 @@ namespace PYLsystems
                     btnCreateItem.Enabled = false;
                 }
             }
-             if (lblWhole.Enabled == true)
+            else if (lblWhole.Enabled == true)
             {
                 if (supply_category > -1 && supply_name > 0 && supply_description > 0  && reoOrderPoint > 0 && cboWhole.SelectedIndex > -1)
                 {
@@ -700,7 +700,7 @@ namespace PYLsystems
                     btnCreateItem.Enabled = false;
                 }
             }
-              if (lblVolume.Enabled == true)
+            else if (lblVolume.Enabled == true)
             {
                 if (supply_category > -1 && supply_name > 0 && supply_description > 0 && reoOrderPoint > 0 && cboVolume.SelectedIndex > -1 && txtVolume.TextLength > 0)
                 {
@@ -711,7 +711,7 @@ namespace PYLsystems
                     btnCreateItem.Enabled = false;
                 }
             }
-              if (lblArea.Enabled == true)
+             else if (lblArea.Enabled == true)
             {
                 if (supply_category > -1 && supply_name > 0 && supply_description > 0  && reoOrderPoint > 0 && cboArea.SelectedIndex > -1 && txtArea1.TextLength > 0 && txtArea2.TextLength > 0)
                 {
