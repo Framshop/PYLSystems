@@ -79,7 +79,7 @@ namespace PYLsystems
         public void RefreshStockIn()
         {
             myConn.Open();
-            string query = "SELECT s_d.supplyID as 'Supply ID',s_i.supplyName as 'Supply Name',s.supplierName as 'Supplied By',s_d.delivery_date as 'Date Delivered',s_d.stockin_quantity AS 'Stock In Quantity',s_d.priceRawTotal,s_d.pricePurchaseTotal,IF(s_d.active=0,'Active','Inactive') as 'active',s_i.unitPurchasePrice * s_d.stockin_quantity 'Calculated Total Purchase Price',s_d.pricePurchaseTotal as 'Actual Total Purchase Price' FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.supply_itemsID = " + lblsupply_itemsID.Text;
+            string query = "SELECT s_d.supplyID as 'Supply ID',s_i.supplyName as 'Supply Name',s.supplierName as 'Supplied By',s_d.delivery_date as 'Date Delivered',s_d.stockin_quantity AS 'Stock In Quantity',s_d.priceRawTotal,s_d.pricePurchaseTotal,IF(s_d.active=0,'Active','Inactive') as 'active', s_d.stockin_quantity 'Calculated Total Purchase Price',s_d.pricePurchaseTotal as 'Actual Total Purchase Price' FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.supply_itemsID = " + lblsupply_itemsID.Text;
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
@@ -90,7 +90,6 @@ namespace PYLsystems
             dgvStockIn.Columns["pricePurchaseTotal"].Visible = false;
             dgvStockIn.Columns["priceRawTotal"].Visible = false;
             dgvStockIn.Columns["active"].Visible = false;
-            
         }
         private void frmSupplyStockIn_Load(object sender, EventArgs e)
         {
@@ -204,7 +203,8 @@ namespace PYLsystems
         {
             int quantity = txtQuantity.TextLength;
             int purchasePrice = txtActualPurchasePrice.TextLength;
-            if (quantity > 0 && purchasePrice > 0 &&   supplierID != "")
+            int rawPurchasePrice = txtRawPurchasePrice.TextLength;
+            if (quantity > 0 && purchasePrice > 0 &&   supplierID != "" && (rawPurchasePrice > 0 && txtRawPurchasePrice.Text != "0"))
             {
                 btnStockInItem.Enabled = true;
             }
@@ -225,7 +225,7 @@ namespace PYLsystems
             MessageBox.Show("Insert Successful");
             txtQuantity.Text = "";
             txtActualPurchasePrice.Text = "";
-
+            txtRawPurchasePrice.Text = "";
 
         }
 
@@ -234,12 +234,12 @@ namespace PYLsystems
 
         }
         private void calculateTotalRaw()
-        {
-            double rawPurchaseTotal = 0;
+        { 
             double quantity = 0;
             if (String.IsNullOrEmpty(txtQuantity.Text))
             {
                 quantity = 0;
+          
             }
             else
             {
@@ -249,8 +249,8 @@ namespace PYLsystems
             //{
             //    rawPurchaseTotal = 0;
             //}
-            rawPurchaseTotal = quantity * rawPurchasePriceInitial;
-            txtRawPurchasePrice.Text = rawPurchaseTotal.ToString();
+
+            txtActualPurchasePrice.Text = (quantity * double.Parse(txtRawPurchasePrice.Text)).ToString();
         }
         private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
@@ -271,18 +271,22 @@ namespace PYLsystems
 
         private void startDatePicker_ValueChanged(object sender, EventArgs e)
         {
-            myConn.Open();
-            string query = "SELECT s_d.supplyID as 'Supply ID',s_i.supplyName as 'Supply Name',s.supplierName as 'Supplied By',s_d.delivery_date as 'Date Delivered',s_d.stockin_quantity AS 'Stock In Quantity',s_d.priceRawTotal,s_d.pricePurchaseTotal,IF(s_d.active=0,'Active','Inactive') as 'active',s_i.unitPurchasePrice * s_d.stockin_quantity 'Calculated Total Purchase Price',s_d.pricePurchaseTotal as 'Actual Total Purchase Price' FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.delivery_date BETWEEN '" + startDatePicker.Value.ToString("yyyy-MM-dd") + "' AND '" + endDatePicker.Value.ToString("yyyy-MM-dd") + "' AND s_d.supply_itemsID = " + lblsupply_itemsID.Text;
-            MySqlCommand comm = new MySqlCommand(query, myConn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-            DataTable dt = new DataTable();
-            adp.Fill(dt);
-            dgvStockIn.DataSource = dt;
-            myConn.Close();
-            dgvStockIn.Columns["Supply ID"].Visible = false;
-            dgvStockIn.Columns["pricePurchaseTotal"].Visible = false;
-            dgvStockIn.Columns["priceRawTotal"].Visible = false;
-            dgvStockIn.Columns["active"].Visible = false;
+            try
+            {
+                myConn.Open();
+                string query = "SELECT s_d.supplyID as 'Supply ID',s_i.supplyName as 'Supply Name',s.supplierName as 'Supplied By',s_d.delivery_date as 'Date Delivered',s_d.stockin_quantity AS 'Stock In Quantity',s_d.priceRawTotal,s_d.pricePurchaseTotal,IF(s_d.active=0,'Active','Inactive') as 'active', s_d.priceRawTotal 'Purchase Price',s_d.pricePurchaseTotal as 'Actual Total Purchase Price' FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.delivery_date BETWEEN '" + startDatePicker.Value.ToString("yyyy-MM-dd") + "' AND '" + endDatePicker.Value.ToString("yyyy-MM-dd") + "' AND s_d.supply_itemsID = " + lblsupply_itemsID.Text;
+                MySqlCommand comm = new MySqlCommand(query, myConn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                dgvStockIn.DataSource = dt;
+                myConn.Close();
+                dgvStockIn.Columns["Supply ID"].Visible = false;
+                dgvStockIn.Columns["pricePurchaseTotal"].Visible = false;
+                dgvStockIn.Columns["priceRawTotal"].Visible = false;
+                dgvStockIn.Columns["active"].Visible = false;
+            }
+            catch { }
             
         }
         public void editDetails()
@@ -325,7 +329,7 @@ namespace PYLsystems
         private void endDatePicker_ValueChanged(object sender, EventArgs e)
         {
             myConn.Open();
-            string query = "SELECT s_d.supplyID as 'Supply ID',s_i.supplyName as 'Supply Name',s.supplierName as 'Supplied By',s_d.delivery_date as 'Date Delivered',s_d.stockin_quantity AS 'Stock In Quantity',s_d.priceRawTotal,s_d.pricePurchaseTotal,IF(s_d.active=0,'Active','Inactive') as 'active',s_i.unitPurchasePrice * s_d.stockin_quantity 'Calculated Total Purchase Price',s_d.pricePurchaseTotal as 'Actual Total Purchase Price' FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.delivery_date BETWEEN '" + startDatePicker.Value.ToString("yyyy-MM-dd") + "' AND '" + endDatePicker.Value.ToString("yyyy-MM-dd") + "'AND s_d.supply_itemsID = " + lblsupply_itemsID.Text;
+            string query = "SELECT s_d.supplyID as 'Supply ID',s_i.supplyName as 'Supply Name',s.supplierName as 'Supplied By',s_d.delivery_date as 'Date Delivered',s_d.stockin_quantity AS 'Stock In Quantity',s_d.priceRawTotal,s_d.pricePurchaseTotal,IF(s_d.active=0,'Active','Inactive') as 'active', s_d.priceRawTotal 'Purchase Price',s_d.pricePurchaseTotal as 'Actual Total Purchase Price' FROM supply_details s_d LEFT JOIN supplier s ON s.supplierID = s_d.supplierID LEFT JOIN supply_items s_i ON s_i.supply_itemsID = s_d.supply_itemsID WHERE s_d.delivery_date BETWEEN '" + startDatePicker.Value.ToString("yyyy-MM-dd") + "' AND '" + endDatePicker.Value.ToString("yyyy-MM-dd") + "'AND s_d.supply_itemsID = " + lblsupply_itemsID.Text;
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
@@ -348,6 +352,43 @@ namespace PYLsystems
         {
             lblsupply_itemsID.Visible = false;
             RefreshStockIn();
+        }
+
+        private void txtRawPurchasePrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtRawPurchasePrice_TextChanged(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (String.IsNullOrEmpty(txtRawPurchasePrice.Text))
+                {
+                    txtRawPurchasePrice.Text = "0";
+                }
+                else
+                {
+                    txtRawPurchasePrice.Text = (Double.Parse(txtRawPurchasePrice.Text)).ToString();
+
+                }
+                //if (!String.IsNullOrEmpty(txtRawPurchasePrice.Text))
+                //{
+                //    rawPurchaseTotal = 0;
+                //}
+                txtActualPurchasePrice.Text = (double.Parse(txtQuantity.Text) * double.Parse(txtRawPurchasePrice.Text)).ToString();
+            }
+            catch { }
         }
     }
 }

@@ -24,8 +24,6 @@ namespace PYLsystems
             public static string supply_itemsID_passer = "";
             public static string category_name_passer = "";
             public static string supply_name_passer = "";
-
-
         }
         MySqlConnection myConn = new MySqlConnection("Server=localhost;Database=frameshopdb;Uid=root;Pwd=root");
         public frmSupplier()
@@ -54,7 +52,14 @@ namespace PYLsystems
             {
 
                 int max = lvwItemSold.Items.Count;
-
+                myConn.Open();
+                //INSERT INTO jOrder_Details(jOrd_Num,supply_itemsID,size,unit_measure,quantity,price) VALUES (" + jOrdID + "," + lsItem.SubItems[0].Text + "," + lsItem.SubItems[3].Text + ",'" + lsItem.SubItems[4].Text + "'," + lsItem.SubItems[5].Text + "," + lsItem.SubItems[6].Text + ");"
+                string quer = "INSERT INTO supplier(supplierName,supplierDetails,contactDetails,address,active) VALUES('" + txtSupplierName.Text + "','" + txtDetails.Text + "','" + msktxtContactNumber.Text + "','" + txtAddress.Text + "',0)";
+                MySqlCommand com = new MySqlCommand(quer, myConn);
+                MySqlDataAdapter ap = new MySqlDataAdapter(com);
+                DataTable d = new DataTable();
+                ap.Fill(d);
+                myConn.Close();
 
 
                 if (max > 0)
@@ -70,7 +75,7 @@ namespace PYLsystems
                         }
                         else
                         {
-                            string supplierID_passer = "";
+                            string supplierID_passer = "0";
                             myConn.Open();
                             string myQuer = "SELECT max(supplierID) as 'jOrd_Num' FROM supplier";
                             MySqlCommand my1 = new MySqlCommand(myQuer, myConn);
@@ -84,21 +89,26 @@ namespace PYLsystems
                                 while (myReader1.Read())
                                 {
                                     supplierID_passer = myReader1.GetString(0);
+                          
                                 }
                                 myConn.Close();
                             }
                             catch { }
-                                myConn.Open();
-                          
-                            DataTable my = new DataTable();
-                            MySqlCommand myCo = new MySqlCommand("SELECT * FROM supplier_category WHERE supply_categoryID = " + lsItem.SubItems[1].Text + " AND supplierID = " + supplierID_passer, myConn);
-                            myAd = new MySqlDataAdapter(myCo);
-                            //ADD ----------
-                            MySqlDataReader myReade;
-                            myAd.Fill(myD);
-                            //ADD
-                            myReade = myCo.ExecuteReader();
 
+
+                            DataTable my = new DataTable();
+                            myConn.Close();
+                            myConn.Open();
+                                MySqlCommand myCo = new MySqlCommand("SELECT * FROM supplier_category WHERE supply_categoryID = " + lsItem.SubItems[1].Text + " AND supplierID = " + supplierID_passer, myConn);
+                                myAd = new MySqlDataAdapter(myCo);
+                                //ADD ----------
+                                MySqlDataReader myReade;
+                                myAd.Fill(myD);
+
+                                //ADD
+                                myReade = myCo.ExecuteReader();
+                            myConn.Close();
+                            
                             //Check if there is an existing category for that supplier
 
                             if (myD.Rows.Count == 0)
@@ -116,11 +126,11 @@ namespace PYLsystems
 
                                 myConn.Open();
                                 //INSERT INTO jOrder_Details(jOrd_Num,supply_itemsID,size,unit_measure,quantity,price) VALUES (" + jOrdID + "," + lsItem.SubItems[0].Text + "," + lsItem.SubItems[3].Text + ",'" + lsItem.SubItems[4].Text + "'," + lsItem.SubItems[5].Text + "," + lsItem.SubItems[6].Text + ");"
-                                string quer = "INSERT INTO supplier_items(supplierID,supply_itemsID,active) VALUES(" + supplierID_passer + "," + lsItem.SubItems[0].Text + ",0)";
-                                MySqlCommand com = new MySqlCommand(quer, myConn);
-                                MySqlDataAdapter ap = new MySqlDataAdapter(com);
-                                DataTable d = new DataTable();
-                                ap.Fill(d);
+                                string quer1 = "INSERT INTO supplier_items(supplierID,supply_itemsID,active) VALUES(" + supplierID_passer + "," + lsItem.SubItems[0].Text + ",0)";
+                                MySqlCommand com1 = new MySqlCommand(quer1, myConn);
+                                MySqlDataAdapter ap1 = new MySqlDataAdapter(com1);
+                                DataTable d1 = new DataTable();
+                                ap1.Fill(d1);
                                 myConn.Close();
                             }
                             else
@@ -144,11 +154,11 @@ namespace PYLsystems
                                 {
                                     myConn.Open();
                                     //INSERT INTO jOrder_Details(jOrd_Num,supply_itemsID,size,unit_measure,quantity,price) VALUES (" + jOrdID + "," + lsItem.SubItems[0].Text + "," + lsItem.SubItems[3].Text + ",'" + lsItem.SubItems[4].Text + "'," + lsItem.SubItems[5].Text + "," + lsItem.SubItems[6].Text + ");"
-                                    string quer = "INSERT INTO supplier_items(supplierID,supply_itemsID,active) VALUES(" + supplierID_passer + "," + lsItem.SubItems[0].Text + ",0)";
-                                    MySqlCommand com = new MySqlCommand(quer, myConn);
-                                    MySqlDataAdapter ap = new MySqlDataAdapter(com);
-                                    DataTable d = new DataTable();
-                                    ap.Fill(d);
+                                    string quer2 = "INSERT INTO supplier_items(supplierID,supply_itemsID,active) VALUES(" + supplierID_passer + "," + lsItem.SubItems[0].Text + ",0)";
+                                    MySqlCommand com2 = new MySqlCommand(quer2, myConn);
+                                    MySqlDataAdapter ap2 = new MySqlDataAdapter(com2);
+                                    DataTable d2 = new DataTable();
+                                    ap2.Fill(d2);
                                     myConn.Close();
                                     MessageBox.Show("x");
                                 }
@@ -157,9 +167,10 @@ namespace PYLsystems
                                     // DISREGARD the existing one which will not be inserted
                                 }
                             }
+
                         }
                     }
-                    MessageBox.Show("Update Successful");
+                    MessageBox.Show("Insert Successful");
 
 
                 }
@@ -512,7 +523,9 @@ namespace PYLsystems
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
                 dgvsupply_Items.DataSource = dt;
+                dgvsupply_Items.Columns["supply_itemsID"].Visible = false;
                 myConn.Close();
+               
                 supply_categoryID = dgvCategories.CurrentRow.Cells[0].Value.ToString();
             }
             catch { }

@@ -104,106 +104,111 @@ namespace PYLsystems
         }
         private void selectedItemLoader()
         {
-            int currRowIndex = datagridSuppliesList.SelectedRows[0].Index;
-            txtBoxCategory.Text = datagridSuppliesList.Rows[currRowIndex].Cells["Category"].Value.ToString();
-            txtBoxSupplyName.Text = datagridSuppliesList.Rows[currRowIndex].Cells["Supply Name"].Value.ToString();
-            txtBoxTypeOfM.Text = datagridSuppliesList.Rows[currRowIndex].Cells["typeOfMeasure"].Value.ToString();
-            txtBoxLength.Text = "";
-            txtBoxAreaLength.Text = "";
-            txtBoxAreaWidth.Text = "";
-            txtBoxVolume.Text = "";
-            txtBoxWhole.Text = "";
-            txtBoxWeight.Text= "";
-            if (String.Equals(txtBoxTypeOfM.Text, "Length"))
+            try
             {
-                txtBoxLength.Enabled = true;
-                cboLengthUnit.Enabled = true;
 
-                txtBoxAreaLength.Enabled = false;
-                txtBoxAreaWidth.Enabled = false;
-                cboAreaUnit.Enabled = false;
+                int currRowIndex = datagridSuppliesList.SelectedRows[0].Index;
+                txtBoxCategory.Text = datagridSuppliesList.Rows[currRowIndex].Cells["Category"].Value.ToString();
+                txtBoxSupplyName.Text = datagridSuppliesList.Rows[currRowIndex].Cells["Supply Name"].Value.ToString();
+                txtBoxTypeOfM.Text = datagridSuppliesList.Rows[currRowIndex].Cells["typeOfMeasure"].Value.ToString();
+                txtBoxLength.Text = "";
+                txtBoxAreaLength.Text = "";
+                txtBoxAreaWidth.Text = "";
+                txtBoxVolume.Text = "";
+                txtBoxWhole.Text = "";
+                txtBoxWeight.Text = "";
+                if (String.Equals(txtBoxTypeOfM.Text, "Length"))
+                {
+                    txtBoxLength.Enabled = true;
+                    cboLengthUnit.Enabled = true;
 
-                txtBoxWeight.Enabled = false;
-                cboWeightUnit.Enabled = false;
+                    txtBoxAreaLength.Enabled = false;
+                    txtBoxAreaWidth.Enabled = false;
+                    cboAreaUnit.Enabled = false;
 
-                txtBoxWhole.Enabled = false;
-                cboWholeUnit.Enabled = false;
+                    txtBoxWeight.Enabled = false;
+                    cboWeightUnit.Enabled = false;
 
-                txtBoxVolume.Enabled = false;
-                cboVolumeUnit.Enabled = false;
+                    txtBoxWhole.Enabled = false;
+                    cboWholeUnit.Enabled = false;
+
+                    txtBoxVolume.Enabled = false;
+                    cboVolumeUnit.Enabled = false;
+                }
+                else if (String.Equals(txtBoxTypeOfM.Text, "Area"))
+                {
+                    txtBoxLength.Enabled = false;
+                    cboLengthUnit.Enabled = false;
+
+                    txtBoxAreaLength.Enabled = true;
+                    txtBoxAreaWidth.Enabled = true;
+                    cboAreaUnit.Enabled = true;
+
+                    txtBoxWeight.Enabled = false;
+                    cboWeightUnit.Enabled = false;
+
+                    txtBoxWhole.Enabled = false;
+                    cboWholeUnit.Enabled = false;
+
+                    txtBoxVolume.Enabled = false;
+                    cboVolumeUnit.Enabled = false;
+                }
+                else if (String.Equals(txtBoxTypeOfM.Text, "Weight"))
+                {
+                    txtBoxLength.Enabled = false;
+                    cboLengthUnit.Enabled = false;
+
+                    txtBoxAreaLength.Enabled = false;
+                    txtBoxAreaWidth.Enabled = false;
+                    cboAreaUnit.Enabled = false;
+
+                    txtBoxWeight.Enabled = true;
+                    cboWeightUnit.Enabled = true;
+
+                    txtBoxWhole.Enabled = false;
+                    cboWholeUnit.Enabled = false;
+
+                    txtBoxVolume.Enabled = false;
+                    cboVolumeUnit.Enabled = false;
+                }
+                else if (String.Equals(txtBoxTypeOfM.Text, "Whole"))
+                {
+                    txtBoxLength.Enabled = false;
+                    cboLengthUnit.Enabled = false;
+
+                    txtBoxAreaLength.Enabled = false;
+                    txtBoxAreaWidth.Enabled = false;
+                    cboAreaUnit.Enabled = false;
+
+                    txtBoxWeight.Enabled = false;
+                    cboWeightUnit.Enabled = false;
+
+                    txtBoxWhole.Enabled = true;
+                    cboWholeUnit.Enabled = false;
+
+                    txtBoxVolume.Enabled = false;
+                    cboVolumeUnit.Enabled = false;
+                }
+                else if (String.Equals(txtBoxTypeOfM.Text, "Volume"))
+                {
+                    txtBoxLength.Enabled = false;
+                    cboLengthUnit.Enabled = false;
+
+                    txtBoxAreaLength.Enabled = false;
+                    txtBoxAreaWidth.Enabled = false;
+                    cboAreaUnit.Enabled = false;
+
+                    txtBoxWeight.Enabled = false;
+                    cboWeightUnit.Enabled = false;
+
+                    txtBoxWhole.Enabled = false;
+                    cboWholeUnit.Enabled = false;
+
+                    txtBoxVolume.Enabled = true;
+                    cboVolumeUnit.Enabled = true;
+                }
             }
-            else if (String.Equals(txtBoxTypeOfM.Text, "Area"))
-            {
-                txtBoxLength.Enabled = false;
-                cboLengthUnit.Enabled = false;
-
-                txtBoxAreaLength.Enabled = true;
-                txtBoxAreaWidth.Enabled = true;
-                cboAreaUnit.Enabled = true;
-
-                txtBoxWeight.Enabled = false;
-                cboWeightUnit.Enabled = false;
-
-                txtBoxWhole.Enabled = false;
-                cboWholeUnit.Enabled = false;
-
-                txtBoxVolume.Enabled = false;
-                cboVolumeUnit.Enabled = false;
-            }
-            else if (String.Equals(txtBoxTypeOfM.Text, "Weight"))
-            {
-                txtBoxLength.Enabled = false;
-                cboLengthUnit.Enabled = false;
-
-                txtBoxAreaLength.Enabled = false;
-                txtBoxAreaWidth.Enabled = false;
-                cboAreaUnit.Enabled = false;
-
-                txtBoxWeight.Enabled = true;
-                cboWeightUnit.Enabled = true;
-
-                txtBoxWhole.Enabled = false;
-                cboWholeUnit.Enabled = false;
-
-                txtBoxVolume.Enabled = false;
-                cboVolumeUnit.Enabled = false;
-            }
-            else if (String.Equals(txtBoxTypeOfM.Text, "Whole"))
-            {
-                txtBoxLength.Enabled = false;
-                cboLengthUnit.Enabled = false;
-
-                txtBoxAreaLength.Enabled = false;
-                txtBoxAreaWidth.Enabled = false;
-                cboAreaUnit.Enabled = false;
-
-                txtBoxWeight.Enabled = false;
-                cboWeightUnit.Enabled = false;
-
-                txtBoxWhole.Enabled = true;
-                cboWholeUnit.Enabled = false;
-
-                txtBoxVolume.Enabled = false;
-                cboVolumeUnit.Enabled = false;
-            }
-            else if (String.Equals(txtBoxTypeOfM.Text, "Volume"))
-            {
-                txtBoxLength.Enabled = false;
-                cboLengthUnit.Enabled = false;
-
-                txtBoxAreaLength.Enabled = false;
-                txtBoxAreaWidth.Enabled = false;
-                cboAreaUnit.Enabled = false;
-
-                txtBoxWeight.Enabled = false;
-                cboWeightUnit.Enabled = false;
-
-                txtBoxWhole.Enabled = false;
-                cboWholeUnit.Enabled = false;
-
-                txtBoxVolume.Enabled = true;
-                cboVolumeUnit.Enabled = true;
-            }
+            catch { }
         }
         private void sendToParentForm()
         {

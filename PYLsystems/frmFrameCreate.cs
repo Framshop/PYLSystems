@@ -604,8 +604,12 @@ namespace PYLsystems
         //Remove Supply Button
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            int currRowIndex = dataGridSuppliesUsed.SelectedRows[0].Index;
-            deleteRowFromDataGrid(currRowIndex);
+            try
+            {
+                int currRowIndex = dataGridSuppliesUsed.SelectedRows[0].Index;
+                deleteRowFromDataGrid(currRowIndex);
+            }
+            catch { }
         }
         //Create Frame button
         private void btnCreate_Click(object sender, EventArgs e)
