@@ -52,9 +52,6 @@
             this.txtBoxRawCostTotal = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnAddSupply = new System.Windows.Forms.Button();
-            this.btnEditSupply = new System.Windows.Forms.Button();
-            this.btnRemove = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -73,7 +70,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSuppliesUsed)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -306,6 +302,7 @@
             // 
             this.txtBoxQuantity.Location = new System.Drawing.Point(231, 38);
             this.txtBoxQuantity.Name = "txtBoxQuantity";
+            this.txtBoxQuantity.ReadOnly = true;
             this.txtBoxQuantity.Size = new System.Drawing.Size(230, 26);
             this.txtBoxQuantity.TabIndex = 33;
             this.txtBoxQuantity.Text = "1";
@@ -357,9 +354,6 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0008F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0008F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0008F));
-            this.tableLayoutPanel6.Controls.Add(this.btnAddSupply, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.btnEditSupply, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.btnRemove, 2, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 22);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -367,45 +361,6 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(917, 80);
             this.tableLayoutPanel6.TabIndex = 1;
-            // 
-            // btnAddSupply
-            // 
-            this.btnAddSupply.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddSupply.Location = new System.Drawing.Point(3, 3);
-            this.btnAddSupply.Name = "btnAddSupply";
-            this.btnAddSupply.Size = new System.Drawing.Size(299, 74);
-            this.btnAddSupply.TabIndex = 8;
-            this.btnAddSupply.Text = "Add a Supply";
-            this.btnAddSupply.UseVisualStyleBackColor = true;
-            this.btnAddSupply.Click += new System.EventHandler(this.btnAddSupply_Click);
-            // 
-            // btnEditSupply
-            // 
-            this.btnEditSupply.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditSupply.Location = new System.Drawing.Point(308, 3);
-            this.btnEditSupply.Name = "btnEditSupply";
-            this.btnEditSupply.Size = new System.Drawing.Size(299, 74);
-            this.btnEditSupply.TabIndex = 9;
-            this.btnEditSupply.Text = "Edit Supply";
-            this.btnEditSupply.UseVisualStyleBackColor = true;
-            this.btnEditSupply.Click += new System.EventHandler(this.btnEditSupply_Click);
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemove.Location = new System.Drawing.Point(613, 3);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(301, 74);
-            this.btnRemove.TabIndex = 12;
-            this.btnRemove.Text = "Remove Supply";
-            this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -537,7 +492,6 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
-            this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -557,9 +511,6 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Button btnAddSupply;
-        private System.Windows.Forms.Button btnEditSupply;
-        private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;

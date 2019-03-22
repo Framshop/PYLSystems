@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -53,7 +53,6 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAddSupply = new System.Windows.Forms.Button();
-            this.btnEditSupply = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -159,14 +158,14 @@
             this.dataGridSuppliesUsed.AllowUserToResizeRows = false;
             this.dataGridSuppliesUsed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridSuppliesUsed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridSuppliesUsed.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridSuppliesUsed.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridSuppliesUsed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridSuppliesUsed.Location = new System.Drawing.Point(3, 22);
             this.dataGridSuppliesUsed.Name = "dataGridSuppliesUsed";
@@ -359,7 +358,6 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0008F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0008F));
             this.tableLayoutPanel6.Controls.Add(this.btnAddSupply, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.btnEditSupply, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.btnRemove, 2, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 22);
@@ -381,19 +379,6 @@
             this.btnAddSupply.Text = "Add a Supply";
             this.btnAddSupply.UseVisualStyleBackColor = true;
             this.btnAddSupply.Click += new System.EventHandler(this.btnAddSupply_Click);
-            // 
-            // btnEditSupply
-            // 
-            this.btnEditSupply.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditSupply.Location = new System.Drawing.Point(316, 3);
-            this.btnEditSupply.Name = "btnEditSupply";
-            this.btnEditSupply.Size = new System.Drawing.Size(307, 80);
-            this.btnEditSupply.TabIndex = 9;
-            this.btnEditSupply.Text = "Edit Supply";
-            this.btnEditSupply.UseVisualStyleBackColor = true;
-            this.btnEditSupply.Click += new System.EventHandler(this.btnEditSupply_Click);
             // 
             // btnRemove
             // 
@@ -559,7 +544,6 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button btnAddSupply;
-        private System.Windows.Forms.Button btnEditSupply;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.GroupBox groupBox1;

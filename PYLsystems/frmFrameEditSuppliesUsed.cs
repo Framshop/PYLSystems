@@ -211,6 +211,7 @@ namespace PYLsystems
             }
             else if (pFrmJobOrderCreate != null)
             {
+
                 pFrmJobOrderCreate.editSuppliesSelected(addEditSuppliesVals);
             }
             else if (pFrmJobOrderEdit != null)
@@ -227,29 +228,30 @@ namespace PYLsystems
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (String.Equals(txtBoxTypeOfM.Text, "Area") && (String.IsNullOrEmpty(txtBoxAreaLength.Text) || String.IsNullOrEmpty(txtBoxAreaWidth.Text)))
+            if (String.Equals(txtBoxTypeOfM.Text, "Area") && ((String.IsNullOrEmpty(txtBoxAreaLength.Text) || String.IsNullOrEmpty(txtBoxAreaWidth.Text))
+                && ((Double.Parse(txtBoxAreaLength.Text) == 0 || Double.Parse(txtBoxAreaWidth.Text) == 0))))
             {
                 MessageBox.Show("Please Enter the Values");
                 return;
             }
             else
             {
-                if (String.Equals(txtBoxTypeOfM.Text, "Length") && String.IsNullOrEmpty(txtBoxLength.Text))
+                if (String.Equals(txtBoxTypeOfM.Text, "Length") && (String.IsNullOrEmpty(txtBoxLength.Text) || Double.Parse(txtBoxLength.Text) == 0))
                 {
                     MessageBox.Show("Please Enter a Value");
                     return;
                 }
-                else if (String.Equals(txtBoxTypeOfM.Text, "Weight") && String.IsNullOrEmpty(txtBoxWeight.Text))
+                else if (String.Equals(txtBoxTypeOfM.Text, "Weight") && (String.IsNullOrEmpty(txtBoxWeight.Text) || Double.Parse(txtBoxWeight.Text) == 0))
                 {
                     MessageBox.Show("Please Enter a Value");
                     return;
                 }
-                else if (String.Equals(txtBoxTypeOfM.Text, "Volume") && String.IsNullOrEmpty(txtBoxVolume.Text))
+                else if (String.Equals(txtBoxTypeOfM.Text, "Volume") && (String.IsNullOrEmpty(txtBoxVolume.Text) || Double.Parse(txtBoxVolume.Text) == 0))
                 {
                     MessageBox.Show("Please Enter a Value");
                     return;
                 }
-                else if (String.Equals(txtBoxTypeOfM.Text, "Whole") && String.IsNullOrEmpty(txtBoxWhole.Text))
+                else if (String.Equals(txtBoxTypeOfM.Text, "Whole") && (String.IsNullOrEmpty(txtBoxWhole.Text) || Double.Parse(txtBoxWhole.Text) == 0))
                 {
                     MessageBox.Show("Please Enter a Value");
                     return;

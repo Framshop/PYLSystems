@@ -132,7 +132,7 @@ namespace PYLsystems
             }
             if (existsInDataGrid)
             {
-                MessageBox.Show("You've already added the item in the list. \n Please use Edit Supply for any changes.");
+                MessageBox.Show("You've already added the item in the list. \n Please use Remove the Supply button and re-add it again for any changes.");
                 return;
             }
             //If confirmed that it doesn't exist, pass to addToDataTable method to put Data in DataTable

@@ -42,12 +42,12 @@ namespace PYLsystems
                 "si.measureA AS `Measurement A`,si.measureB AS `Measurement B`,sc.typeOfMeasure, " +
                 "if (sc.typeOfMeasure = 'Area',concat(si.measureA, ' x ', si.measureB),si.measureA) AS `Measurement`,  " +
                 "si.unitMeasure AS `Unit Measure`, " +
-                "ifnull( if (sc.typeOfMeasure = 'Area',((1 - (supsoA.stockOut / (si.measureA * si.measureB * supsiA.stockIn))) * supsiA.stockIn)," +
+                "ifnull( if (sc.typeOfMeasure = 'Area',ROUND(((1 - (supsoA.stockOut / (si.measureA * si.measureB * supsiA.stockIn))) * supsiA.stockIn),3)," +
                 "                							if (sc.typeOfMeasure = 'Whole',supsi.stockIn - supso.stockOut," +
-                "                															((1 - (supso.stockOut / (si.measureA * supsi.stockIn))) * supsi.stockIn))), 0) AS `Quantity Left`," +
-                "ifnull( if (sc.typeOfMeasure = 'Area',((si.measureA * si.measureB * supsiA.stockIn) - supsoA.stockOut)," +
+                "                															ROUND(((1 - (supso.stockOut / (si.measureA * supsi.stockIn))) * supsi.stockIn),3))), 0) AS `Quantity Left`," +
+                "ifnull( if (sc.typeOfMeasure = 'Area',ROUND(((si.measureA * si.measureB * supsiA.stockIn) - supsoA.stockOut),3)," +
                 "                							if (sc.typeOfMeasure = 'Whole',supsi.stockIn - supso.stockOut," +
-                "                															((si.measureA * supsi.stockIn) - supso.stockOut))), 0) AS `Quantity Left in Measurement`," +
+                "                															ROUND(((si.measureA * supsi.stockIn) - supso.stockOut),3))), 0) AS `Quantity Left in Measurement`," +
                 "ifnull(supsi.unitPrice,0 ) AS `Purchase Price`, si.reorder_quantity as 'Re-Order Point'" +
                 "FROM supply_items AS si " +
                 "LEFT JOIN supply_Category AS sc ON si.supply_categoryID = sc.supply_categoryID " +
@@ -136,12 +136,12 @@ namespace PYLsystems
                 "si.measureA AS `Measurement A`,si.measureB AS `Measurement B`,sc.typeOfMeasure, " +
                 "if (sc.typeOfMeasure = 'Area',concat(si.measureA, ' x ', si.measureB),si.measureA) AS `Measurement`,  " +
                 "si.unitMeasure AS `Unit Measure`, " +
-                "ifnull( if (sc.typeOfMeasure = 'Area',((1 - (supsoA.stockOut / (si.measureA * si.measureB * supsiA.stockIn))) * supsiA.stockIn)," +
+                "ifnull( if (sc.typeOfMeasure = 'Area',ROUND(((1 - (supsoA.stockOut / (si.measureA * si.measureB * supsiA.stockIn))) * supsiA.stockIn),3)," +
                 "                							if (sc.typeOfMeasure = 'Whole',supsi.stockIn - supso.stockOut," +
-                "                															((1 - (supso.stockOut / (si.measureA * supsi.stockIn))) * supsi.stockIn))), 0) AS `Quantity Left`," +
-                "ifnull( if (sc.typeOfMeasure = 'Area',((si.measureA * si.measureB * supsiA.stockIn) - supsoA.stockOut)," +
+                "                															ROUND(((1 - (supso.stockOut / (si.measureA * supsi.stockIn))) * supsi.stockIn),3))), 0) AS `Quantity Left`," +
+                "ifnull( if (sc.typeOfMeasure = 'Area',ROUND(((si.measureA * si.measureB * supsiA.stockIn) - supsoA.stockOut),3)," +
                 "                							if (sc.typeOfMeasure = 'Whole',supsi.stockIn - supso.stockOut," +
-                "                															((si.measureA * supsi.stockIn) - supso.stockOut))), 0) AS `Quantity Left in Measurement`," +
+                "                															ROUND(((si.measureA * supsi.stockIn) - supso.stockOut),3))), 0) AS `Quantity Left in Measurement`," +
                "si.reorder_quantity as 'Re-Order Point'" + 
                 "FROM supply_items AS si " +
                 "LEFT JOIN supply_Category AS sc ON si.supply_categoryID = sc.supply_categoryID " +
@@ -1254,6 +1254,7 @@ namespace PYLsystems
             {
                 frmSupplyDamage supplyDamageWin = new frmSupplyDamage(supply_itemsId,quantityLeft, quantityLeftinMeasure);
                 supplyDamageWin.ShowDialog();
+                RefreshDatabase();
             }
             else
             {

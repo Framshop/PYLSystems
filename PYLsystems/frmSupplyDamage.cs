@@ -23,7 +23,10 @@ namespace PYLsystems
         DataTable dtSupplyInfo;
         DateTime DateStart;
         DateTime DateEnd;
+        String typeOfMeasure;
 
+        //--------------Initial Load--------------
+        //----for programming initializer
         public frmSupplyDamage()
         {
             InitializeComponent();
@@ -46,11 +49,13 @@ namespace PYLsystems
             supplyInfoLoader();
             //MessageBox.Show(DateStart+" "+DateEnd);
         }
+        //-------------Process and Calculation Methods--------------
+        //First time load
         public void damage_materialsLoader() {
             try
             {
-                String stringDamageList = "SELECT sui.supply_itemsID,sui.supplyName AS `Supply Name`, " +
-                    "if (suc.categoryName = 'Area', concat(dm.measureADeducted, ' x ', measureBDeducted),dm.measureADeducted) AS `Measures Deducted`," +
+                String stringDamageList = "SELECT sui.supply_itemsID,sui.supplyName AS `Supply Name`, dm.Description, " +
+                    "if (suc.typeOfMeasure = 'Area', concat(dm.measureADeducted, ' x ', measureBDeducted),dm.measureADeducted) AS `Measures Deducted`," +
                     "     dm.unitMeasure AS `Unit Measure`, dm.totalQuantityStockedOut AS `Quantity Stocked Out`, dm.date_created AS `Date Stocked Out`," +
                     "dm.totalCostStockedOut AS `Cost of Stock Out` " +
                     "FROM damaged_Materials AS dm " +
@@ -184,7 +189,7 @@ namespace PYLsystems
         }
         private void controlsLimit()
         {
-            String typeOfMeasure = dtSuppliesList.Rows[0]["typeOfMeasure"].ToString();
+            typeOfMeasure = dtSuppliesList.Rows[0]["typeOfMeasure"].ToString();
 
             if(String.Equals(typeOfMeasure, "Length"))
                 {
@@ -276,6 +281,11 @@ namespace PYLsystems
                 txtBoxVolume.Enabled = true;
                 cboVolumeUnit.Enabled = true;
             }
+            cboAreaUnit.SelectedIndex = 1;
+            cboLengthUnit.SelectedIndex = 1;
+            cboVolumeUnit.SelectedIndex = 0;
+            cboWeightUnit.SelectedIndex = 0;
+            cboWholeUnit.SelectedIndex = 0;
         }
         private double measureConverter(double measure_forCvt, String unitOfMeasure_OG, String unitOfMeasure_Used)
         {
@@ -384,7 +394,460 @@ namespace PYLsystems
             }
             return measureConverted;
         }
+        private void trueCostCalculation()
+        {
+            typeOfMeasure = dtSuppliesList.Rows[0]["typeOfMeasure"].ToString();
+            double unitPriceOG = Double.Parse(dtSuppliesList.Rows[0]["Cost per Unit"].ToString());
+            double trueUnitPrice=0;
+            double rawCost=0;//get the trueUnitPrice first.
+            double quantityConverted=0;//theQuantityConverted
+            double quantityLeft = this.quantityLeft;
+            double quantityLeftinMeasurement = this.quantityLeftinMeasurement;
+            String unitMeasure_OG = dtSuppliesList.Rows[0]["Base Unit Measure"].ToString();
+            String unitMeasureUsed="";
 
+            double measureAOG=Double.Parse(dtSuppliesList.Rows[0]["measureAOG"].ToString());
+            double measureBOG=0;
+            double measureAUsed=0;
+            double measureBUsed=0;
+            double areaOfUsed = 0;
+            double area_OG = 0;
+
+            //Initializing Variables
+            if (String.Equals(typeOfMeasure, "Whole"))
+            {
+                if (String.IsNullOrEmpty(txtBoxWhole.Text))
+                {
+                    measureAUsed = 0;
+                }
+                else
+                {
+                    measureAUsed = Double.Parse(txtBoxWhole.Text);
+                }                                
+            }
+            else if (String.Equals(typeOfMeasure, "Area"))
+            {
+                if (String.IsNullOrEmpty(txtBoxAreaLength.Text))
+                {
+                    measureAUsed = 0;
+                }
+                else
+                {
+                    measureAUsed = Double.Parse(txtBoxAreaLength.Text);
+
+                }
+                if (String.IsNullOrEmpty(txtBoxAreaWidth.Text))
+                {
+                    measureBUsed = 0;
+                }
+                else
+                {
+                    measureBUsed = Double.Parse(txtBoxAreaWidth.Text);
+                }
+                measureBOG = Double.Parse(dtSuppliesList.Rows[0]["measureBOG"].ToString());
+                area_OG = measureAOG * measureBOG;
+                trueUnitPrice = unitPriceOG / area_OG;
+                unitMeasureUsed = cboAreaUnit.Text;
+            }
+            else if (String.Equals(typeOfMeasure, "Volume"))
+            {
+                if (String.IsNullOrEmpty(txtBoxVolume.Text))
+                {
+                    measureAUsed = 0;
+                }
+                else
+                {
+                    measureAUsed = Double.Parse(txtBoxVolume.Text);
+                }
+                trueUnitPrice = unitPriceOG / measureAOG;
+                unitMeasureUsed = cboVolumeUnit.Text;
+            }
+            else if (String.Equals(typeOfMeasure, "Length"))
+            {
+                if (String.IsNullOrEmpty(txtBoxLength.Text))
+                {
+                    measureAUsed = 0;
+                }
+                else
+                {
+                    measureAUsed = Double.Parse(txtBoxLength.Text);
+                }
+                trueUnitPrice = unitPriceOG / measureAOG;
+                unitMeasureUsed = cboLengthUnit.Text;
+            }
+            else if (String.Equals(typeOfMeasure, "Weight"))
+            {
+                if (String.IsNullOrEmpty(txtBoxWeight.Text))
+                {
+                    measureAUsed = 0;
+                }
+                else
+                {
+                    measureAUsed = Double.Parse(txtBoxWeight.Text);
+                }
+                trueUnitPrice = unitPriceOG / measureAOG;
+                unitMeasureUsed = cboWeightUnit.Text;
+            }
+
+            //Calculation
+            if (String.Equals(typeOfMeasure, "Whole"))
+            {
+                rawCost = measureAUsed * unitPriceOG;
+                quantityConverted = measureAUsed;
+            }
+            else if (String.Equals(unitMeasureUsed, unitMeasure_OG))
+            {
+                if(String.Equals(typeOfMeasure, "Area")){
+                    areaOfUsed = measureAUsed * measureBUsed;
+                    
+                    rawCost = areaOfUsed * trueUnitPrice;
+
+                    quantityConverted = quantityLeft - ((1-(areaOfUsed/quantityLeftinMeasurement))*quantityLeft);
+                }
+                else{
+                    trueUnitPrice = unitPriceOG /measureAOG;
+                    rawCost = measureAUsed * trueUnitPrice;
+
+                    quantityConverted = quantityLeft - ((1 - (measureAUsed / quantityLeftinMeasurement)) * quantityLeft);
+                }
+            }
+            else
+            {
+                if (String.Equals(typeOfMeasure, "Area"))
+                {
+                    double measureAConvertedUse = measureConverter(measureAUsed, unitMeasure_OG, unitMeasureUsed);
+                    double measureBConvertedUse = measureConverter(measureBUsed, unitMeasure_OG, unitMeasureUsed);
+
+                    areaOfUsed = measureAConvertedUse * measureBConvertedUse; //Calculate the area of Use of the used up converted measurements
+
+                    rawCost = areaOfUsed * trueUnitPrice; //Get the raw cost of the item based on 'Area Usage' multiplied by the true Unit Price
+
+                    quantityConverted = quantityLeft - ((1 - (areaOfUsed / quantityLeftinMeasurement)) * quantityLeft);
+                    //NOTE: To be used for inserting:
+                    //double measureAUsedtoOGConvert = measureConverter(measureAUsed, unitMeasure_OG, unitMeasureUsed);
+                    //double measureBUsedtoOGConvert = measureConverter(measureBUsed, unitMeasure_OG, unitMeasureUsed);
+                }
+                else
+                {
+                    //Get the already converted Measurements in frame_materials table.
+                    //The already converted Measurements are calculated and inputted in the database in the FrameCreation and FrameEdited  forms
+                    double measureAConvertedUse;
+                    if (String.Equals(typeOfMeasure, "Volume"))
+                    {
+                        measureAConvertedUse = measureConverter(measureAUsed, unitMeasure_OG, unitMeasureUsed, 0);
+                    }
+                    else
+                    {
+                        measureAConvertedUse = measureConverter(measureAUsed, unitMeasure_OG, unitMeasureUsed);                    }
+
+                    quantityConverted = quantityLeft - ((1 - (measureAConvertedUse / quantityLeftinMeasurement)) * quantityLeft);
+                    rawCost = measureAConvertedUse * trueUnitPrice; //Get the raw cost of the item based on 'Area Usage' multiplied by the true Unit Price
+                }
+            }
+
+            txtCalculatedStockedQuantity.Text = quantityConverted.ToString();
+            txtTotalDamageCost.Text = rawCost.ToString();
+        }
+        private void sendToDatabase()
+        {
+            double measureAUsed = 0;
+            double measureBUsed = 0;
+            double measureAtoOG = 0;
+            double measureBtoOG = 0;
+            String unitMeasureUsed = "";
+            String unitMeasureOG = dtSuppliesList.Rows[0]["Base Unit Measure"].ToString();
+            //Initializing Variables
+            if (String.Equals(typeOfMeasure, "Whole"))
+            {
+                measureAUsed = Double.Parse(txtBoxWhole.Text);
+                measureAtoOG = measureAUsed;
+            }
+            else if (String.Equals(typeOfMeasure, "Area"))
+            {
+                measureAUsed = Double.Parse(txtBoxAreaLength.Text);
+                measureBUsed = Double.Parse(txtBoxAreaWidth.Text);             
+                unitMeasureUsed = cboAreaUnit.Text;
+
+                measureAtoOG = measureConverter(measureAUsed, unitMeasureOG, unitMeasureUsed);
+                measureBtoOG = measureConverter(measureBUsed, unitMeasureOG, unitMeasureUsed);
+            }
+            else if (String.Equals(typeOfMeasure, "Volume"))
+            {
+                measureAUsed = Double.Parse(txtBoxVolume.Text);
+                unitMeasureUsed = cboVolumeUnit.Text;
+
+                measureAtoOG = measureConverter(measureAUsed, unitMeasureOG, unitMeasureUsed,0);
+
+                //MessageBox.Show("measureAUsed: "+measureAUsed+" measureAtoOG: "+measureAtoOG);
+            }
+            else if (String.Equals(typeOfMeasure, "Length"))
+            {
+                measureAUsed = Double.Parse(txtBoxLength.Text);
+                unitMeasureUsed = cboLengthUnit.Text;
+
+                measureAtoOG = measureConverter(measureAUsed, unitMeasureOG, unitMeasureUsed);
+            }
+            else if (String.Equals(typeOfMeasure, "Weight"))
+            {
+                measureAUsed = Double.Parse(txtBoxWeight.Text);
+                unitMeasureUsed = cboWeightUnit.Text;
+
+                measureAtoOG = measureConverter(measureAUsed, unitMeasureOG, unitMeasureUsed);
+            }
+            //Sending to insert methods
+            if (String.Equals(typeOfMeasure, "Area"))
+            {
+                insertAreaToDataBase(measureAUsed,measureBUsed,measureAtoOG,measureBtoOG,unitMeasureUsed);
+            }
+            else
+            {
+                insertToDataBase(measureAUsed,measureAtoOG,unitMeasureUsed);
+            }
+            MessageBox.Show("Supply has been Stocked Out.");
+        }
+        private void insertAreaToDataBase(double measureAUsed, double measureBused, double measureAtoOG, double measureBtoOG, String unitMeasureUsed)
+        {
+            try
+            {
+                String stringInsertToFrameStockIn =
+                    "INSERT INTO damaged_materials (description,supply_itemsID,date_created," +
+                    "measureADeducted,measureBDeducted,totalQuantityStockedOut,totalCostStockedOut,unitMeasure," +
+                    "measureAtoOGUnit,measureBtoOGUnit) " +
+                    "VALUES(@description, @supply_itemsID, curdate()," +
+                    "@measureAUsed, @measureBUsed, @totalQuantity, @totalCost, @unitMeasure, @measureAtoOG, @measureBtoOG) ";
+                MySqlConnection my_conn = new MySqlConnection(connString);
+                MySqlCommand cmdInsertToFrameStockIn = new MySqlCommand(stringInsertToFrameStockIn, my_conn);
+                cmdInsertToFrameStockIn.Parameters.AddWithValue("@description", this.txtDamageReason.Text);
+                cmdInsertToFrameStockIn.Parameters.AddWithValue("@supply_itemsID", this.supply_itemsId);
+                cmdInsertToFrameStockIn.Parameters.AddWithValue("@measureAUsed", measureAUsed);
+                cmdInsertToFrameStockIn.Parameters.AddWithValue("@measureBUsed", measureBused);
+                cmdInsertToFrameStockIn.Parameters.AddWithValue("@totalQuantity", Double.Parse(this.txtCalculatedStockedQuantity.Text));
+                cmdInsertToFrameStockIn.Parameters.AddWithValue("@totalCost", Double.Parse(this.txtTotalDamageCost.Text));
+                cmdInsertToFrameStockIn.Parameters.AddWithValue("@unitMeasure", unitMeasureUsed);
+                cmdInsertToFrameStockIn.Parameters.AddWithValue("@measureAtoOG", measureAtoOG);
+                cmdInsertToFrameStockIn.Parameters.AddWithValue("@measureBtoOG", measureBtoOG);
+                my_conn.Open();
+                cmdInsertToFrameStockIn.ExecuteNonQuery();
+                my_conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            
+            damage_materialsLoader();
+            txtDamageReason.Text = "";
+            txtBoxAreaLength.Text = "";
+            txtBoxAreaWidth.Text = "";
+            txtCalculatedStockedQuantity.Text = "";
+            txtTotalDamageCost.Text = "";
+        }
+        private void insertToDataBase(double measureAUsed, double measureAtoOG, String unitMeasureUsed)
+        {
+            try
+            {
+                String stringInsertToFrameStockIn =
+                    "INSERT INTO damaged_materials (description,supply_itemsID,date_created," +
+                    "measureADeducted,totalQuantityStockedOut,totalCostStockedOut,unitMeasure," +
+                    "measureAtoOGUnit) " +
+                    "VALUES(@description, @supply_itemsID, curdate()," +
+                    "@measureAUsed, @totalQuantity, @totalCost, @unitMeasure, @measureAtoOG) ";
+                MySqlConnection my_conn = new MySqlConnection(connString);
+                MySqlCommand cmdInsertToFrameStockIn = new MySqlCommand(stringInsertToFrameStockIn, my_conn);
+                cmdInsertToFrameStockIn.Parameters.AddWithValue("@description", this.txtDamageReason.Text);
+                cmdInsertToFrameStockIn.Parameters.AddWithValue("@supply_itemsID", this.supply_itemsId);
+                cmdInsertToFrameStockIn.Parameters.AddWithValue("@measureAUsed", measureAUsed);
+                cmdInsertToFrameStockIn.Parameters.AddWithValue("@totalQuantity", Double.Parse(this.txtCalculatedStockedQuantity.Text));
+                cmdInsertToFrameStockIn.Parameters.AddWithValue("@totalCost", Double.Parse(this.txtTotalDamageCost.Text));
+                cmdInsertToFrameStockIn.Parameters.AddWithValue("@unitMeasure", unitMeasureUsed);
+                cmdInsertToFrameStockIn.Parameters.AddWithValue("@measureAtoOG", measureAtoOG);
+                my_conn.Open();
+                cmdInsertToFrameStockIn.ExecuteNonQuery();
+                my_conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            damage_materialsLoader();
+            txtDamageReason.Text = "";
+            txtBoxLength.Text = "";
+            txtBoxVolume.Text = "";
+            txtBoxWeight.Text = "";
+            txtBoxWhole.Text = "";
+            txtCalculatedStockedQuantity.Text = "";
+            txtTotalDamageCost.Text = "";
+        }
+        private bool quantityChecker()
+        {
+            double quantityLeftinMeasure = this.quantityLeftinMeasurement;
+            double quantityCheck;
+
+            String unitMeasure_OG = dtSuppliesList.Rows[0]["Base Unit Measure"].ToString();
+            String unitMeasureUsed = "";
+
+            double measureAOG = Double.Parse(dtSuppliesList.Rows[0]["measureAOG"].ToString());
+            double measureBOG = 0;
+            double measureAUsed = 0;
+            double measureBUsed = 0;
+            double areaOfUsed = 0;
+            double area_OG = 0;
+            double measureAConvertedUse=0;
+            double measureBConvertedUse=0;
+            //Initializing Variables
+            if (String.Equals(typeOfMeasure, "Whole"))
+            {
+                if (String.IsNullOrEmpty(txtBoxWhole.Text))
+                {
+                    measureAUsed = 0;
+                }
+                else
+                {
+                    measureAUsed = Double.Parse(txtBoxWhole.Text);
+                }
+            }
+            else if (String.Equals(typeOfMeasure, "Area"))
+            {
+                if (String.IsNullOrEmpty(txtBoxAreaLength.Text))
+                {
+                    measureAUsed = 0;
+                }
+                else
+                {
+                    measureAUsed = Double.Parse(txtBoxAreaLength.Text);
+
+                }
+                if (String.IsNullOrEmpty(txtBoxAreaWidth.Text))
+                {
+                    measureBUsed = 0;
+                }
+                else
+                {
+                    measureBUsed = Double.Parse(txtBoxAreaWidth.Text);
+                }
+                measureBOG = Double.Parse(dtSuppliesList.Rows[0]["measureBOG"].ToString());
+                area_OG = measureAOG * measureBOG;
+
+                unitMeasureUsed = cboAreaUnit.Text;
+            }
+            else if (String.Equals(typeOfMeasure, "Volume"))
+            {
+                if (String.IsNullOrEmpty(txtBoxVolume.Text))
+                {
+                    measureAUsed = 0;
+                }
+                else
+                {
+                    measureAUsed = Double.Parse(txtBoxVolume.Text);
+                }
+
+                unitMeasureUsed = cboVolumeUnit.Text;
+            }
+            else if (String.Equals(typeOfMeasure, "Length"))
+            {
+                if (String.IsNullOrEmpty(txtBoxLength.Text))
+                {
+                    measureAUsed = 0;
+                }
+                else
+                {
+                    measureAUsed = Double.Parse(txtBoxLength.Text);
+                }
+
+                unitMeasureUsed = cboLengthUnit.Text;
+            }
+            else if (String.Equals(typeOfMeasure, "Weight"))
+            {
+                if (String.IsNullOrEmpty(txtBoxWeight.Text))
+                {
+                    measureAUsed = 0;
+                }
+                else
+                {
+                    measureAUsed = Double.Parse(txtBoxWeight.Text);
+                }
+                unitMeasureUsed = cboWeightUnit.Text;
+            }
+
+            //Calculation for Quantity Checking
+            if (String.Equals(typeOfMeasure, "Whole"))
+            {
+                quantityCheck = quantityLeftinMeasurement - measureAUsed;
+            }
+            else if (String.Equals(unitMeasureUsed, unitMeasure_OG))
+            {
+                if (String.Equals(typeOfMeasure, "Area"))
+                {
+                    areaOfUsed = measureAUsed * measureBUsed;
+                    quantityCheck = quantityLeftinMeasurement - areaOfUsed;
+                }
+                else
+                {
+                    quantityCheck = quantityLeftinMeasurement - measureAUsed;
+                }
+            }
+            else
+            {
+                if (String.Equals(typeOfMeasure, "Area"))
+                {
+                    measureAConvertedUse = measureConverter(measureAUsed, unitMeasure_OG, unitMeasureUsed);
+                    measureBConvertedUse = measureConverter(measureBUsed, unitMeasure_OG, unitMeasureUsed);
+
+                    areaOfUsed = measureAConvertedUse * measureBConvertedUse; //Calculate the area of Use of the used up converted measurements
+
+                    quantityCheck = quantityLeftinMeasurement - areaOfUsed;
+                    //NOTE: To be used for inserting:
+                    //double measureAUsedtoOGConvert = measureConverter(measureAUsed, unitMeasure_OG, unitMeasureUsed);
+                    //double measureBUsedtoOGConvert = measureConverter(measureBUsed, unitMeasure_OG, unitMeasureUsed);
+                }
+                else
+                {
+                    //Get the already converted Measurements in frame_materials table.
+                    //The already converted Measurements are calculated and inputted in the database in the FrameCreation and FrameEdited  forms
+
+                    if (String.Equals(typeOfMeasure, "Volume"))
+                    {
+                        measureAConvertedUse = measureConverter(measureAUsed, unitMeasure_OG, unitMeasureUsed, 0);
+                    }
+                    else
+                    {
+                        measureAConvertedUse = measureConverter(measureAUsed, unitMeasure_OG, unitMeasureUsed);
+                    }
+
+                    quantityCheck = quantityLeftinMeasurement - measureAConvertedUse; //Get the raw cost of the item based on 'Area Usage' multiplied by the true Unit Price
+                }
+            }
+
+            //if (String.Equals(typeOfMeasure, "Area"))
+            //{
+            //    MessageBox.Show("Quantity Left in Measurements: "+quantityLeftinMeasure
+            //        + "\n Subtracted Area: "+areaOfUsed
+            //        + "\n measureAUsed: "+measureAUsed
+            //        + "\n measureBUsed: "+measureBUsed
+            //        + "\n measureAtoOG: "+ measureAConvertedUse
+            //        + "\n measureBtoOG: " + measureBConvertedUse
+            //        + "\n quantityCheck: " + quantityCheck);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Quantity Left in Measurements: " + quantityLeftinMeasure
+            //       + "\n Subtracted Area: " + areaOfUsed
+            //       + "\n measureAUsed: " + measureAUsed
+            //       + "\n measureAtoOG: " + measureAConvertedUse
+            //       + "\n quantityCheck: " + quantityCheck);
+            //}
+            if (quantityCheck < 0)
+            {
+
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        //----------------Event Methods-----------------
         private void startDatePicker_ValueChanged(object sender, EventArgs e)
         {
             if (startDatePicker.Enabled)
@@ -401,6 +864,149 @@ namespace PYLsystems
                 DateEnd = endDatePicker.Value;
                 damage_materialsLoader();
             }
+        }
+
+        private void txtBoxLength_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                    (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtBoxAreaLength_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                    (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtBoxAreaWidth_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtBoxWeight_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                    (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtBoxWhole_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtBoxVolume_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnStockOutItem_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtDamageReason.Text))
+            {
+                MessageBox.Show("Please Enter a Description");
+                return;
+            }
+            if (String.Equals(typeOfMeasure, "Area") && ((String.IsNullOrEmpty(txtBoxAreaLength.Text) || String.IsNullOrEmpty(txtBoxAreaWidth.Text))
+            && ((Double.Parse(txtBoxAreaLength.Text) == 0 || Double.Parse(txtBoxAreaWidth.Text) == 0))))
+            {
+                MessageBox.Show("Please Enter the Values");
+                return;
+            }
+            else
+            {
+                if (String.Equals(typeOfMeasure, "Length") && (String.IsNullOrEmpty(txtBoxLength.Text) || Double.Parse(txtBoxLength.Text) == 0))
+                {
+                    MessageBox.Show("Please Enter a Value");
+                    return;
+                }
+                else if (String.Equals(typeOfMeasure, "Weight") && (String.IsNullOrEmpty(txtBoxWeight.Text) || Double.Parse(txtBoxWeight.Text) == 0))
+                {
+                    MessageBox.Show("Please Enter a Value");
+                    return;
+                }
+                else if (String.Equals(typeOfMeasure, "Volume") && (String.IsNullOrEmpty(txtBoxVolume.Text) || Double.Parse(txtBoxVolume.Text) == 0))
+                {
+                    MessageBox.Show("Please Enter a Value");
+                    return;
+                }
+                else if (String.Equals(typeOfMeasure, "Whole") && (String.IsNullOrEmpty(txtBoxWhole.Text) || Double.Parse(txtBoxWhole.Text) == 0))
+                {
+                    MessageBox.Show("Please Enter a Value");
+                    return;
+                }
+            }
+            bool quantityValidation = quantityChecker();
+            if (quantityValidation == false)
+            {
+                MessageBox.Show("Insufficient Supplies. Cannot Stock Out more than Stocked In Materials");
+                return;
+            }
+            sendToDatabase();
+        }
+
+        private void txtBoxValueChange(object sender, EventArgs e)
+        {
+            trueCostCalculation();
+        }
+
+        private void cboValueChanged(object sender, EventArgs e)
+        {
+            trueCostCalculation();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -86,8 +86,10 @@ namespace PYLsystems
 
         private void jOrderBtn_Click(object sender, EventArgs e)
         {
-            frmJobOrderTransaction jOrderDlg = new frmJobOrderTransaction();
-            jOrderDlg.ShowDialog();
+            //frmJobOrderTransaction jOrderDlg = new frmJobOrderTransaction();
+            //jOrderDlg.ShowDialog();
+            frmJobOrder jOrderDlg = new frmJobOrder(this.employeeId,this.employeeStatus);
+            jOrderDlg.Show();
         }
 
         private void inventoryBtn_Click(object sender, EventArgs e)

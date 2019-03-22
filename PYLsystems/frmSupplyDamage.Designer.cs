@@ -310,6 +310,7 @@
             // 
             // txtDamageReason
             // 
+            this.txtDamageReason.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDamageReason.Location = new System.Drawing.Point(258, 152);
             this.txtDamageReason.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDamageReason.Multiline = true;
@@ -359,13 +360,13 @@
             // 
             this.btnStockOutItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStockOutItem.Enabled = false;
             this.btnStockOutItem.Location = new System.Drawing.Point(252, 609);
             this.btnStockOutItem.Name = "btnStockOutItem";
             this.btnStockOutItem.Size = new System.Drawing.Size(288, 37);
             this.btnStockOutItem.TabIndex = 58;
             this.btnStockOutItem.Text = "Stock Out Item";
             this.btnStockOutItem.UseVisualStyleBackColor = true;
+            this.btnStockOutItem.Click += new System.EventHandler(this.btnStockOutItem_Click);
             // 
             // btnClose
             // 
@@ -377,6 +378,7 @@
             this.btnClose.TabIndex = 57;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // cboVolumeUnit
             // 
@@ -393,6 +395,7 @@
             this.cboVolumeUnit.Name = "cboVolumeUnit";
             this.cboVolumeUnit.Size = new System.Drawing.Size(97, 28);
             this.cboVolumeUnit.TabIndex = 56;
+            this.cboVolumeUnit.SelectedIndexChanged += new System.EventHandler(this.cboValueChanged);
             // 
             // txtBoxVolume
             // 
@@ -403,6 +406,8 @@
             this.txtBoxVolume.Name = "txtBoxVolume";
             this.txtBoxVolume.Size = new System.Drawing.Size(192, 26);
             this.txtBoxVolume.TabIndex = 55;
+            this.txtBoxVolume.TextChanged += new System.EventHandler(this.txtBoxValueChange);
+            this.txtBoxVolume.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxVolume_KeyPress);
             // 
             // lblVolume
             // 
@@ -423,6 +428,8 @@
             this.txtBoxWhole.Name = "txtBoxWhole";
             this.txtBoxWhole.Size = new System.Drawing.Size(192, 26);
             this.txtBoxWhole.TabIndex = 53;
+            this.txtBoxWhole.TextChanged += new System.EventHandler(this.txtBoxValueChange);
+            this.txtBoxWhole.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxWhole_KeyPress);
             // 
             // cboWholeUnit
             // 
@@ -438,6 +445,7 @@
             this.cboWholeUnit.Name = "cboWholeUnit";
             this.cboWholeUnit.Size = new System.Drawing.Size(97, 28);
             this.cboWholeUnit.TabIndex = 52;
+            this.cboWholeUnit.SelectedIndexChanged += new System.EventHandler(this.cboValueChanged);
             // 
             // lblWhole
             // 
@@ -464,6 +472,7 @@
             this.cboWeightUnit.Name = "cboWeightUnit";
             this.cboWeightUnit.Size = new System.Drawing.Size(97, 28);
             this.cboWeightUnit.TabIndex = 50;
+            this.cboWeightUnit.SelectedIndexChanged += new System.EventHandler(this.cboValueChanged);
             // 
             // txtBoxWeight
             // 
@@ -474,13 +483,15 @@
             this.txtBoxWeight.Name = "txtBoxWeight";
             this.txtBoxWeight.Size = new System.Drawing.Size(192, 26);
             this.txtBoxWeight.TabIndex = 49;
+            this.txtBoxWeight.TextChanged += new System.EventHandler(this.txtBoxValueChange);
+            this.txtBoxWeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxWeight_KeyPress);
             // 
             // lblX
             // 
             this.lblX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblX.AutoSize = true;
             this.lblX.Enabled = false;
-            this.lblX.Location = new System.Drawing.Point(284, 298);
+            this.lblX.Location = new System.Drawing.Point(291, 292);
             this.lblX.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblX.Name = "lblX";
             this.lblX.Size = new System.Drawing.Size(20, 20);
@@ -491,11 +502,13 @@
             // 
             this.txtBoxAreaWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBoxAreaWidth.Enabled = false;
-            this.txtBoxAreaWidth.Location = new System.Drawing.Point(314, 288);
+            this.txtBoxAreaWidth.Location = new System.Drawing.Point(328, 288);
             this.txtBoxAreaWidth.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBoxAreaWidth.Name = "txtBoxAreaWidth";
             this.txtBoxAreaWidth.Size = new System.Drawing.Size(68, 26);
             this.txtBoxAreaWidth.TabIndex = 47;
+            this.txtBoxAreaWidth.TextChanged += new System.EventHandler(this.txtBoxValueChange);
+            this.txtBoxAreaWidth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxAreaWidth_KeyPress);
             // 
             // cboAreaUnit
             // 
@@ -514,6 +527,7 @@
             this.cboAreaUnit.Name = "cboAreaUnit";
             this.cboAreaUnit.Size = new System.Drawing.Size(97, 28);
             this.cboAreaUnit.TabIndex = 46;
+            this.cboAreaUnit.SelectedIndexChanged += new System.EventHandler(this.cboValueChanged);
             // 
             // txtBoxAreaLength
             // 
@@ -524,6 +538,8 @@
             this.txtBoxAreaLength.Name = "txtBoxAreaLength";
             this.txtBoxAreaLength.Size = new System.Drawing.Size(68, 26);
             this.txtBoxAreaLength.TabIndex = 45;
+            this.txtBoxAreaLength.TextChanged += new System.EventHandler(this.txtBoxValueChange);
+            this.txtBoxAreaLength.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxAreaLength_KeyPress);
             // 
             // cboLengthUnit
             // 
@@ -542,6 +558,7 @@
             this.cboLengthUnit.Name = "cboLengthUnit";
             this.cboLengthUnit.Size = new System.Drawing.Size(97, 28);
             this.cboLengthUnit.TabIndex = 44;
+            this.cboLengthUnit.SelectedIndexChanged += new System.EventHandler(this.cboValueChanged);
             // 
             // txtBoxLength
             // 
@@ -552,6 +569,8 @@
             this.txtBoxLength.Name = "txtBoxLength";
             this.txtBoxLength.Size = new System.Drawing.Size(192, 26);
             this.txtBoxLength.TabIndex = 43;
+            this.txtBoxLength.TextChanged += new System.EventHandler(this.txtBoxValueChange);
+            this.txtBoxLength.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxLength_KeyPress);
             // 
             // lblWeight
             // 
@@ -636,6 +655,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmSupplyDamage";
             this.Text = "Stock Out Damaged Supplies";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmSupplyDamage_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
