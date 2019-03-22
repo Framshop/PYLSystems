@@ -185,6 +185,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "addSalesAvailability";
             this.Text = "Frame Stock";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.addSalesAvailability_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.frameListGB.ResumeLayout(false);

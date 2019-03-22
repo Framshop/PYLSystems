@@ -724,6 +724,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmJobOrder";
             this.Text = "Job Order";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmJobOrder_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

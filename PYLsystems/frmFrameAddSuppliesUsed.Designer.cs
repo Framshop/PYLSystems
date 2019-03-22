@@ -570,6 +570,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmFrameAddSuppliesUsed";
             this.Text = "Add a Frame Supply";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmFrameAddSuppliesUsed_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

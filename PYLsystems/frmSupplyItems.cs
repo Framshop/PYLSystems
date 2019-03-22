@@ -48,20 +48,20 @@ namespace PYLsystems
                 "ifnull( if (sc.typeOfMeasure = 'Area',((si.measureA * si.measureB * supsiA.stockIn) - supsoA.stockOut)," +
                 "                							if (sc.typeOfMeasure = 'Whole',supsi.stockIn - supso.stockOut," +
                 "                															((si.measureA * supsi.stockIn) - supso.stockOut))), 0) AS `Quantity Left in Measurement`," +
-                  "si.reorder_quantity as 'Re-Order Point'" +
+                "ifnull(supsi.unitPrice,0 ) AS `Purchase Price`, si.reorder_quantity as 'Re-Order Point'" +
                 "FROM supply_items AS si " +
                 "LEFT JOIN supply_Category AS sc ON si.supply_categoryID = sc.supply_categoryID " +
-                "LEFT JOIN(SELECT supply_itemsID, SUM(stockin_quantity) AS `stockIn` FROM supply_details GROUP BY supply_itemsID) AS supsi ON si.supply_itemsID = supsi.supply_itemsID " +
-                "LEFT JOIN(SELECT sui.supply_itemsID, SUM(IFNULL(dm.totalStockedOut,0)+IFNULL(fm.stockedOut, 0) + IFNULL(jo.stockedOut, 0)) AS `stockOut` " +
+                "LEFT JOIN(SELECT supply_itemsID, SUM(stockin_quantity) `stockIn`,MAX(delivery_date) AS `Latest`,priceRawTotal AS `UnitPrice` FROM supply_details GROUP BY supply_itemsID) AS supsi ON si.supply_itemsID = supsi.supply_itemsID " +
+                "LEFT JOIN(SELECT sui.supply_itemsID, SUM(IFNULL(dm.stockedOut,0)+IFNULL(fm.stockedOut, 0) + IFNULL(jo.stockedOut, 0)) AS `stockOut` " +
                 "FROM supply_items AS sui " +
-                "LEFT JOIN(SELECT supply_itemsID, SUM(totalQuantityStockedOut) AS `totalStockedOut` " +
+                "LEFT JOIN(SELECT supply_itemsID, SUM(totalQuantityStockedOut) AS `totalStockedOut`, SUM(measureAtoOGUnit)  AS `stockedOut` " +
                 "          FROM damaged_materials GROUP BY supply_itemsID) AS dm ON sui.supply_itemsID = dm.supply_itemsID " +
-                "          LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureADeduction* fs.stockinQuantity) as `stockedOut` " +
+                "          LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureAtoOG)*SUM(fs.stockinQuantity) as `stockedOut` " +
                 "					FROM frame_materials as sfm" +
                 "                    LEFT JOIN frame_list as fl ON sfm.frameItemID = fl.frameItemID" +
                 "                    LEFT JOIN frameStock_In as fs ON fl.frameItemID = fs.frameItemID" +
                 "                    GROUP BY supply_itemsID) AS fm ON sui.supply_ItemsID = fm.supply_ItemsID" +
-                "          LEFT JOIN(SELECT sjo.supply_itemsID, SUM(sjo.measureADeduction* job.jobOrderQuantity) as `stockedOut` " +
+                "          LEFT JOIN(SELECT sjo.supply_itemsID, SUM(sjo.measureAtoOG)* SUM(job.jobOrderQuantity) as `stockedOut` " +
                 "					FROM jOrder_Details as sjo" +
                 "                    LEFT JOIN jobOrder as job ON sjo.jOrd_Num = job.jOrd_Num" +
                 "                    GROUP BY supply_itemsID) AS jo ON sui.supply_ItemsID = jo.supply_ItemsID" +
@@ -71,16 +71,16 @@ namespace PYLsystems
                 "            SELECT supply_itemsID, SUM(stockin_quantity) AS `stockIn` FROM supply_details GROUP BY supply_itemsID" +
                 "            )AS supsiA ON si.supply_itemsID = supsiA.supply_itemsID " +
                 "LEFT JOIN(" +
-                "        SELECT sui.supply_itemsID, SUM(IFNULL(dm.totalStockedOut,0)+IFNULL(fm.stockedOutArea, 0) + IFNULL(jo.stockedOutArea, 0)) AS `stockOut` " +
+                "        SELECT sui.supply_itemsID, SUM(IFNULL(dm.stockedOutArea,0)+IFNULL(fm.stockedOutArea, 0) + IFNULL(jo.stockedOutArea, 0)) AS `stockOut` " +
                 "		 FROM supply_items AS sui" +
-                "        LEFT JOIN(SELECT supply_itemsID, SUM(measureADeducted*measureBDeducted*totalQuantityStockedOut) AS `totalStockedOut`" +
+                "        LEFT JOIN(SELECT supply_itemsID, SUM(totalQuantityStockedOut) AS `totalStockedOut`, SUM(measureAtoOGUnit*measureBtoOGUnit) AS `stockedOutArea`" +
                 "                    FROM damaged_materials GROUP BY supply_itemsID) AS dm ON sui.supply_itemsID = dm.supply_itemsID" +
-                "        LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureADeduction* sfm.measureBDeduction* fs.stockinQuantity) as `stockedOutArea`" +
+                "        LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureAtoOG* sfm.measureBtoOG)*SUM(fs.stockinQuantity) as `stockedOutArea`" +
                 "					FROM frame_materials as sfm" +
                 "                    LEFT JOIN frame_list as fl ON sfm.frameItemID = fl.frameItemID" +
                 "                    LEFT JOIN frameStock_In as fs ON fl.frameItemID = fs.frameItemID" +
                 "                    GROUP BY supply_itemsID) AS fm ON sui.supply_ItemsID = fm.supply_ItemsID" +
-                "        LEFT JOIN(SELECT sjo.supply_itemsID, SUM(sjo.measureADeduction* sjo.measureBDeduction* job.jobOrderQuantity) as `stockedOutArea` " +
+                "       LEFT JOIN(SELECT sjo.supply_itemsID, SUM(sjo.measureAtoOG* sjo.measureBtoOG)*SUM(job.jobOrderQuantity) as `stockedOutArea` " +
                 "					FROM jOrder_Details as sjo" +
                 "                    LEFT JOIN jobOrder as job ON sjo.jOrd_Num = job.jOrd_Num" +
                 "                    GROUP BY supply_itemsID) AS jo ON sui.supply_ItemsID = jo.supply_ItemsID" +
@@ -146,16 +146,16 @@ namespace PYLsystems
                 "FROM supply_items AS si " +
                 "LEFT JOIN supply_Category AS sc ON si.supply_categoryID = sc.supply_categoryID " +
                 "LEFT JOIN(SELECT supply_itemsID, SUM(stockin_quantity) AS `stockIn` FROM supply_details GROUP BY supply_itemsID) AS supsi ON si.supply_itemsID = supsi.supply_itemsID " +
-                "LEFT JOIN(SELECT sui.supply_itemsID, SUM(IFNULL(dm.totalStockedOut,0)+IFNULL(fm.stockedOut, 0) + IFNULL(jo.stockedOut, 0)) AS `stockOut` " +
+                "LEFT JOIN(SELECT sui.supply_itemsID, SUM(IFNULL(dm.stockedOut,0)+IFNULL(fm.stockedOut, 0) + IFNULL(jo.stockedOut, 0)) AS `stockOut` " +
                 "FROM supply_items AS sui " +
-                "LEFT JOIN(SELECT supply_itemsID, SUM(totalQuantityStockedOut) AS `totalStockedOut` " +
+                "LEFT JOIN(SELECT supply_itemsID, SUM(totalQuantityStockedOut) AS `totalStockedOut`, SUM(measureAtoOGUnit)  AS `stockedOut` " +
                 "          FROM damaged_materials GROUP BY supply_itemsID) AS dm ON sui.supply_itemsID = dm.supply_itemsID " +
-                "          LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureADeduction* fs.stockinQuantity) as `stockedOut` " +
+                "          LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureAtoOG)*SUM(fs.stockinQuantity) as `stockedOut` " +
                 "					FROM frame_materials as sfm" +
                 "                    LEFT JOIN frame_list as fl ON sfm.frameItemID = fl.frameItemID" +
                 "                    LEFT JOIN frameStock_In as fs ON fl.frameItemID = fs.frameItemID" +
                 "                    GROUP BY supply_itemsID) AS fm ON sui.supply_ItemsID = fm.supply_ItemsID" +
-                "          LEFT JOIN(SELECT sjo.supply_itemsID, SUM(sjo.measureADeduction* job.jobOrderQuantity) as `stockedOut` " +
+                "          LEFT JOIN(SELECT sjo.supply_itemsID, SUM(sjo.measureAtoOG)* SUM(job.jobOrderQuantity) as `stockedOut` " +
                 "					FROM jOrder_Details as sjo" +
                 "                    LEFT JOIN jobOrder as job ON sjo.jOrd_Num = job.jOrd_Num" +
                 "                    GROUP BY supply_itemsID) AS jo ON sui.supply_ItemsID = jo.supply_ItemsID" +
@@ -165,16 +165,16 @@ namespace PYLsystems
                 "            SELECT supply_itemsID, SUM(stockin_quantity) AS `stockIn` FROM supply_details GROUP BY supply_itemsID" +
                 "            )AS supsiA ON si.supply_itemsID = supsiA.supply_itemsID " +
                 "LEFT JOIN(" +
-                "        SELECT sui.supply_itemsID, SUM(IFNULL(dm.totalStockedOut,0)+IFNULL(fm.stockedOutArea, 0) + IFNULL(jo.stockedOutArea, 0)) AS `stockOut` " +
+                "        SELECT sui.supply_itemsID, SUM(IFNULL(dm.stockedOutArea,0)+IFNULL(fm.stockedOutArea, 0) + IFNULL(jo.stockedOutArea, 0)) AS `stockOut` " +
                 "		 FROM supply_items AS sui" +
-                "        LEFT JOIN(SELECT supply_itemsID, SUM(measureADeducted*measureBDeducted*totalQuantityStockedOut) AS `totalStockedOut`" +
+                "             LEFT JOIN(SELECT supply_itemsID, SUM(totalQuantityStockedOut) AS `totalStockedOut`, SUM(measureAtoOGUnit*measureBtoOGUnit) AS `stockedOutArea`" +
                 "                    FROM damaged_materials GROUP BY supply_itemsID) AS dm ON sui.supply_itemsID = dm.supply_itemsID" +
-                "        LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureADeduction* sfm.measureBDeduction* fs.stockinQuantity) as `stockedOutArea`" +
+                "        LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureAtoOG* sfm.measureBtoOG)*SUM(fs.stockinQuantity) as `stockedOutArea`" +
                 "					FROM frame_materials as sfm" +
                 "                    LEFT JOIN frame_list as fl ON sfm.frameItemID = fl.frameItemID" +
                 "                    LEFT JOIN frameStock_In as fs ON fl.frameItemID = fs.frameItemID" +
                 "                    GROUP BY supply_itemsID) AS fm ON sui.supply_ItemsID = fm.supply_ItemsID" +
-                "        LEFT JOIN(SELECT sjo.supply_itemsID, SUM(sjo.measureADeduction* sjo.measureBDeduction* job.jobOrderQuantity) as `stockedOutArea` " +
+                "       LEFT JOIN(SELECT sjo.supply_itemsID, SUM(sjo.measureAtoOG* sjo.measureBtoOG)*SUM(job.jobOrderQuantity) as `stockedOutArea` " +
                 "					FROM jOrder_Details as sjo" +
                 "                    LEFT JOIN jobOrder as job ON sjo.jOrd_Num = job.jOrd_Num" +
                 "                    GROUP BY supply_itemsID) AS jo ON sui.supply_ItemsID = jo.supply_ItemsID" +
@@ -1169,21 +1169,9 @@ namespace PYLsystems
 
         private void frmSupplyItems_Load_1(object sender, EventArgs e)
         {
-            String showStockInNeed = "";
+            
             RefreshDatabase();
-            for (int i = 0; i < dgSupplyItems.Rows.Count; i++)
-            {
-                if (float.Parse(dgSupplyItems.Rows[i].Cells["Quantity Left"].Value.ToString()) <= float.Parse(dgSupplyItems.Rows[i].Cells["Re-Order Point"].Value.ToString()))
-                {
-                    showStockInNeed = showStockInNeed + " " +  dgSupplyItems.Rows[i].Cells["Supply Name"].Value.ToString();
-                }
-
-                else
-                {
-                    dgSupplyItems.Rows[i].DefaultCellStyle.BackColor = Color.LightGreen;
-                }
-            }
-            MessageBox.Show("List of need of stock " + showStockInNeed);
+            
         }
 
         private void txtLength_KeyPress(object sender, KeyPressEventArgs e)
@@ -1258,118 +1246,18 @@ namespace PYLsystems
 
         private void btnDamageItem_Click(object sender, EventArgs e)
         {
-            double quantity = double.Parse(quantity_left);
-            if (quantity > 0)
+            int currRowIndex = dgSupplyItems.SelectedRows[0].Index;
+            double quantityLeft = double.Parse(dgSupplyItems.Rows[currRowIndex].Cells["Quantity Left"].Value.ToString());
+            double quantityLeftinMeasure = double.Parse(dgSupplyItems.Rows[currRowIndex].Cells["Quantity Left in Measurement"].Value.ToString());
+            int supply_itemsId = Int32.Parse(dgSupplyItems.Rows[currRowIndex].Cells["Supply ID"].Value.ToString());
+            if (quantityLeft > 0)
             {
-
-                frmSupplyDamage damagedItems = new frmSupplyDamage();
-                frmSupplyDamage.Global.quantity_left = dgSupplyItems.CurrentRow.Cells["Quantity Left"].Value.ToString();
-                frmSupplyDamage.Global.supply_category_typeOfMeasure = dgSupplyItems.CurrentRow.Cells["typeOfMeasure"].Value.ToString();
-                frmSupplyDamage.Global.supply_itemsID = dgSupplyItems.CurrentRow.Cells["Supply ID"].Value.ToString();
-                damagedItems.txtItemName.Text = dgSupplyItems.CurrentRow.Cells["Supply Name"].Value.ToString();
-                damagedItems.txtSupplyCategory.Text = dgSupplyItems.CurrentRow.Cells["Category Name"].Value.ToString();
-                frmSupplyDamage.Global.supply_purchase_price = dgSupplyItems.CurrentRow.Cells["Purchase Price"].Value.ToString();
-                frmSupplyDamage.Global.measureAOG = dgSupplyItems.CurrentRow.Cells["Measurement A"].Value.ToString();
-                frmSupplyDamage.Global.measureBOG = dgSupplyItems.CurrentRow.Cells["Measurement B"].Value.ToString();
-                damagedItems.txtUnitMeasure.Text = dgSupplyItems.CurrentRow.Cells["Unit Measure"].Value.ToString();
-
-
-                if (typeOfMeasure_dbCellClick == "Length")
-                {
-                    damagedItems.cboLength.Enabled = true;
-                    damagedItems.txtLength.Enabled = true;
-                    damagedItems.lblLength.Enabled = true;
-                    damagedItems.cboLength.Text = dgSupplyItems.CurrentRow.Cells["Unit Measure"].Value.ToString();
-                }
-                else if (typeOfMeasure_dbCellClick == "Area")
-                {
-                    damagedItems.cboArea.Enabled = true;
-                    damagedItems.cboArea.Text = dgSupplyItems.CurrentRow.Cells["Unit Measure"].Value.ToString();
-                    damagedItems.txtArea1.Enabled = true;
-                    damagedItems.txtArea2.Enabled = true;
-                    damagedItems.lblX.Enabled = true;
-                    damagedItems.lblArea.Enabled = true;
-                }
-                else if (typeOfMeasure_dbCellClick == "Weight")
-                {
-                    damagedItems.txtWeight.Enabled = true;
-                    damagedItems.lblWeight.Enabled = true;
-                    damagedItems.cboWeight.Enabled = true;
-                    damagedItems.cboWeight.Text = dgSupplyItems.CurrentRow.Cells["Unit Measure"].Value.ToString();
-                }
-                else if (typeOfMeasure_dbCellClick == "Volume")
-                {
-                    damagedItems.txtVolume.Enabled = true;
-                    damagedItems.lblVolume.Enabled = true;
-                    damagedItems.cboVolume.Enabled = true;
-                    damagedItems.cboVolume.Text = dgSupplyItems.CurrentRow.Cells["Unit Measure"].Value.ToString();
-                }
-                else
-                {
-                    damagedItems.lblWhole.Enabled = true;
-                    damagedItems.cboWhole.Enabled = true;
-                    damagedItems.txtWhole.Enabled = true;
-                    damagedItems.cboWhole.Text = dgSupplyItems.CurrentRow.Cells["Unit Measure"].Value.ToString();
-                }
-                damagedItems.ShowDialog();
-                RefreshDatabase();
-                frmSupplyDamage.Global.quantity_left = "";
-                frmSupplyDamage.Global.supply_category_typeOfMeasure = "";
-                frmSupplyDamage.Global.supply_purchase_price = "";
-                frmSupplyDamage.Global.supply_itemsID = "";
-                frmSupplyDamage.Global.measureAOG = "";
-                frmSupplyDamage.Global.measureBOG = "";
-                cboSupplyCategory.SelectedIndex = -1;
-                txtItemName.Text = "";
-                txtItemDescription.Text = "";
-  
-
-                txtReOrderPoint.Text = "";
-                supply_categoryID = "";
-                typeOfMeasure_db = "";
-                supplyID = "";
-
-                lblArea.Enabled = false;
-                txtArea1.Enabled = false;
-                txtArea2.Enabled = false;
-                cboArea.Enabled = false;
-                lblX.Enabled = false;
-
-                txtLength.Enabled = false;
-                cboLength.Enabled = false;
-                lblLength.Enabled = false;
-
-                lblWeight.Enabled = false;
-                txtWeight.Enabled = false;
-                cboWeight.Enabled = false;
-
-                cboVolume.Enabled = false;
-                lblVolume.Enabled = false;
-                txtVolume.Enabled = false;
-                cboWhole.Enabled = false;
-                lblWhole.Enabled = false;
-                btnStockInSelectedItem.Enabled = false;
-                btnUpdateDetails.Enabled = false;
-                btnDamageItem.Enabled = false;
-                txtArea1.Text = "";
-                txtArea2.Text = "";
-     
-
-                cboLength.SelectedIndex = -1;
-                txtLength.Text = "";
-
-
-                txtWeight.Text = "";
-                cboWeight.SelectedIndex = -1;
-
-                cboWhole.SelectedIndex = -1;
-
-                cboVolume.SelectedIndex = -1;
-                txtVolume.Text = "";
+                frmSupplyDamage supplyDamageWin = new frmSupplyDamage(supply_itemsId,quantityLeft, quantityLeftinMeasure);
+                supplyDamageWin.ShowDialog();
             }
             else
             {
-                MessageBox.Show(txtItemName.Text + " needs to be stock in first!");
+                MessageBox.Show(txtItemName.Text + " needs to be stocked in first!");
             }
         }
 
@@ -1385,6 +1273,24 @@ namespace PYLsystems
             {
                 e.Handled = true;
             }
+        }
+
+        private void frmSupplyItems_Shown(object sender, EventArgs e)
+        {
+            String showStockInNeed = "";
+            for (int i = 0; i < dgSupplyItems.Rows.Count; i++)
+            {
+                if (float.Parse(dgSupplyItems.Rows[i].Cells["Quantity Left"].Value.ToString()) <= float.Parse(dgSupplyItems.Rows[i].Cells["Re-Order Point"].Value.ToString()))
+                {
+                    showStockInNeed += "\n *" + dgSupplyItems.Rows[i].Cells["Supply Name"].Value.ToString();
+                }
+
+                else
+                {
+                    dgSupplyItems.Rows[i].DefaultCellStyle.BackColor = Color.LightGreen;
+                }
+            }
+            MessageBox.Show("The following supplies have reached on or below the Re-Order Point. Please Stock-in the folowing items: " + showStockInNeed);
         }
     }
     }

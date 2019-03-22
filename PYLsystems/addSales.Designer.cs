@@ -327,6 +327,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "addSales";
             this.Text = "AddSales";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.addSales_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

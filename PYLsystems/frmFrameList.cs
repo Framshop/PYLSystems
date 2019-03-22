@@ -22,7 +22,7 @@ namespace PYLsystems
         DataTable dtSelectSupplies; //Selected from Database
         DataTable dtSelectSuppliesFiltered; //removed Original UnitMeasure and PURCHASE UnitPrice. Use this for merging
         DataTable dtSuppliesUsed; //Merged DataTable
-
+        DataTable dtSuppliesUsedSaved;
         //--------------Initial Load--------------
         //----for programming initializer
         public frmFrameList()
@@ -80,78 +80,106 @@ namespace PYLsystems
             datagridFrameList.Columns["Unit Price"].DefaultCellStyle.Format = "0.00";
             datagridFrameList.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells);
         }
+        private void refreshDataGrid()
+        {
+            dataGridSuppliesUsed.DataSource = null;
+            dataGridSuppliesUsed.DataSource = dtSuppliesUsedSaved;
+            dataGridSuppliesUsed.Columns["Cost/Unit Measure"].DefaultCellStyle.Format = "P0.0000";
+            dataGridSuppliesUsed.Columns["Cost/Selected Unit Measure"].DefaultCellStyle.Format = "P0.0000";
+            dataGridSuppliesUsed.Columns["Raw Cost"].DefaultCellStyle.Format = "P0.0000";
+            dataGridSuppliesUsed.Columns["supply_itemsId"].Visible = false;
+            dataGridSuppliesUsed.Columns["frame_MaterialsID"].Visible = false;
+            dataGridSuppliesUsed.Columns["OGUnitMeasure"].Visible = false;
+            dataGridSuppliesUsed.Columns["OGUnitPrice"].Visible = false;
+            dataGridSuppliesUsed.Columns["measureAOG"].Visible = false;
+            dataGridSuppliesUsed.Columns["measureBOG"].Visible = false;
+            dataGridSuppliesUsed.Columns["deductedA"].Visible = false;
+            dataGridSuppliesUsed.Columns["deductedB"].Visible = false;
+            dataGridSuppliesUsed.Columns["measureAtoOG"].Visible = false;
+            dataGridSuppliesUsed.Columns["measureBtoOG"].Visible = false;
+            dataGridSuppliesUsed.Columns["Latest_Stock_In"].Visible = false;
+            dataGridSuppliesUsed.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells);
+        }
         private void suppliesUsed_Loader()
         {
-            try
+            this.dataGridSuppliesUsed.DataSource = null;
+            this.dataGridSuppliesUsed.Rows.Clear();
+            dtSuppliesUsed = new DataTable();
+            dtSuppliesUsed.Columns.Add("frame_MaterialsID", typeof(int));
+            dtSuppliesUsed.Columns.Add("supply_itemsId", typeof(int));
+            dtSuppliesUsed.Columns.Add("Supply Name", typeof(String));
+            dtSuppliesUsed.Columns.Add("Category", typeof(String));
+            dtSuppliesUsed.Columns.Add("typeOfMeasure", typeof(String));
+            dtSuppliesUsed.Columns.Add("deductedA", typeof(double));
+            dtSuppliesUsed.Columns.Add("deductedB", typeof(double));
+            dtSuppliesUsed.Columns.Add("Usage", typeof(String));
+            dtSuppliesUsed.Columns.Add("Unit Measure", typeof(String));
+            //Original Measures
+            dtSuppliesUsed.Columns.Add("OGUnitMeasure", typeof(String));
+            dtSuppliesUsed.Columns.Add("OGUnitPrice", typeof(double));
+            dtSuppliesUsed.Columns.Add("measureAOG", typeof(double));
+            dtSuppliesUsed.Columns.Add("measureBOG", typeof(double));
+            dtSuppliesUsed.Columns.Add("measureAtoOG", typeof(double));
+            dtSuppliesUsed.Columns.Add("measureBtoOG", typeof(double));
+
+
+            //ADDED Custom Columns
+            dtSuppliesUsed.Columns.Add("Cost/Unit Measure", typeof(double));
+            dtSuppliesUsed.Columns.Add("Cost/Selected Unit Measure", typeof(double));
+            dtSuppliesUsed.Columns.Add("Raw Cost", typeof(double));
+
+            if (datagridFrameList.Rows.Count > 0)
             {
-                this.dataGridSuppliesUsed.DataSource = null;
-                this.dataGridSuppliesUsed.Rows.Clear();
-                dtSuppliesUsed = new DataTable();
-                dtSuppliesUsed.Columns.Add("supply_itemsId", typeof(int));
-                dtSuppliesUsed.Columns.Add("Supply Name", typeof(String));
-                dtSuppliesUsed.Columns.Add("Category", typeof(String));
-                dtSuppliesUsed.Columns.Add("Usage", typeof(String));
-                dtSuppliesUsed.Columns.Add("Unit Measure", typeof(String));
-                dtSuppliesUsed.Columns.Add("Cost/Unit Measure", typeof(decimal));
-                dtSuppliesUsed.Columns.Add("Raw Cost", typeof(decimal));
-
-
-
                 int currRowIndex = datagridFrameList.SelectedRows[0].Index;
                 int selectedFrameItemId = Int32.Parse(datagridFrameList.Rows[currRowIndex].Cells["frameItemID"].Value.ToString());
 
                 selectSuppliesLoader(selectedFrameItemId);
                 dtSuppliesUsed.Merge(dtSelectSuppliesFiltered);
 
-                dataGridSuppliesUsed.DataSource = dtSuppliesUsed;
+                dtSuppliesUsedSaved = dtSuppliesUsed.Copy();
 
-                costingCalculate();
-                dataGridSuppliesUsed.Columns["Cost/Unit Measure"].DefaultCellStyle.Format = "P0.0000";
-                dataGridSuppliesUsed.Columns["Raw Cost"].DefaultCellStyle.Format = "P0.0000";
-                dataGridSuppliesUsed.Columns["supply_itemsId"].Visible = false;
-                dataGridSuppliesUsed.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells);
+                dataGridSuppliesUsed.DataSource = dtSuppliesUsedSaved;
+
+
+                if (dtSuppliesUsedSaved.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dtSuppliesUsedSaved.Rows.Count; i++)
+                    {
+                        forAddEditSupplies calculateCost = new forAddEditSupplies();
+                        calculateCost.typeOfMeasure = dtSuppliesUsedSaved.Rows[i]["typeOfMeasure"].ToString();
+                        calculateCost.measureAUsed = Double.Parse(dtSuppliesUsedSaved.Rows[i]["deductedA"].ToString());
+                        if (!String.IsNullOrEmpty(dtSuppliesUsedSaved.Rows[i]["deductedB"].ToString()))
+                        {
+                            calculateCost.measureBUsed = Double.Parse(dtSuppliesUsedSaved.Rows[i]["deductedB"].ToString());
+                            calculateCost.measureB_OG = Double.Parse(dtSuppliesUsedSaved.Rows[i]["measureBOG"].ToString());
+                        }
+                        calculateCost.unitMeasureUsed = dtSuppliesUsedSaved.Rows[i]["Unit Measure"].ToString();
+                        calculateCost.unitMeasure_OG = dtSuppliesUsedSaved.Rows[i]["OGUnitMeasure"].ToString();
+                        calculateCost.measureA_OG = Double.Parse(dtSuppliesUsedSaved.Rows[i]["measureAOG"].ToString());
+                        calculateCost.unitPriceOG = Double.Parse(dtSuppliesUsedSaved.Rows[i]["OGUnitPrice"].ToString());
+                        trueCostCalculationPutDataGrid(calculateCost, i);
+                        refreshDataGrid();
+                    }
+                }
             }
-            catch { }
         }
         private void selectSuppliesLoader(int selectedFrameItemId)
         {
             try
             {
                 String stringSuppliesSelect =
-                    "SELECT sui.supply_itemsId, suc.typeOfMeasure, " +
-                    "fm.measureADeduction, fm.measureBDeduction, " +
-                    "fm.unitMeasure AS `Unit Measure`," +
-                    "sui.unitMeasure AS `OGUnitMeasure`, sui.unitPurchasePrice AS `OGUnitPrice`," +
-                    "sui.measureA, sui.measureB, fm.measureAtoOG as `ConvertedAtoOG`, fm.measureBtoOG `ConvertedBtoOG` " +
-                    "FROM frame_materials AS fm " +
-                    "LEFT JOIN supply_items AS sui ON sui.supply_itemsID = fm.supply_itemsID " +
-                    "LEFT JOIN supply_category AS suc ON sui.supply_categoryID = suc.supply_categoryID " +
-                    "WHERE fm.frameItemId = @frameItemID AND fm.active=0; ";
-
-                MySqlConnection my_conn = new MySqlConnection(connString);
-                MySqlCommand cmdSuppliesSelect = new MySqlCommand(stringSuppliesSelect, my_conn);
-                cmdSuppliesSelect.Parameters.AddWithValue("@frameItemID", selectedFrameItemId);
-                //cmdSuppliesSelect.Parameters.AddWithValue("@DateEnd", DateEnd);
-                MySqlDataAdapter my_adapter = new MySqlDataAdapter(cmdSuppliesSelect);
-
-                dtSelectSupplies = new DataTable();
-                my_adapter.Fill(dtSelectSupplies);
-                
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-            try
-            {
-                String stringSuppliesSelect =
-                    "SELECT sui.supply_itemsId, sui.supplyName AS `Supply Name`, suc.categoryName AS `Category`, " +
-                    "if(suc.typeOfMeasure='area',concat(fm.measureADeduction,' x ',fm.measureBDeduction),fm.measureADeduction) AS `Usage`, " +
-                    "fm.unitMeasure AS `Unit Measure` " +
-                    "FROM frame_materials AS fm " +
-                    "LEFT JOIN supply_items AS sui ON sui.supply_itemsID = fm.supply_itemsID " +
-                    "LEFT JOIN supply_category AS suc ON sui.supply_categoryID = suc.supply_categoryID " +
-                    "WHERE fm.frameItemId = @frameItemID AND fm.active=0; ";
+                    "SELECT fm.frame_MaterialsID,sui.supply_itemsId, sui.supplyName AS `Supply Name`, suc.categoryName AS `Category`, suc.typeOfMeasure,  " +
+                    "                    if (suc.typeOfMeasure = 'Area',concat(fm.measureADeduction, ' x ', fm.measureBDeduction),fm.measureADeduction) AS `Usage`, " +
+                    "                    fm.unitMeasure AS `Unit Measure`," +
+                    "                    sui.unitMeasure AS `OGUnitMeasure`, IFNULL(sud.priceRawTotal, 0) AS `OGUnitPrice`, IFNULL(MAX(sud.delivery_date), 'None') AS `Latest_Stock_In`," +
+                    "                    sui.measureA AS `measureAOG`, sui.measureB AS `measureBOG`, fm.measureAtoOG,  " +
+                    "                    fm.measureBtoOG,fm.measureADeduction AS `deductedA`,  fm.measureBDeduction AS `deductedB`    " +
+                    "                    FROM frame_materials AS fm" +
+                    "                    LEFT JOIN supply_items AS sui ON sui.supply_itemsID = fm.supply_itemsID" +
+                    "                    LEFT JOIN supply_category AS suc ON sui.supply_categoryID = suc.supply_categoryID" +
+                    "                    LEFT JOIN supply_details AS sud ON sui.supply_itemsId = sud.supply_itemsID" +
+                    "                    WHERE fm.frameItemId = @frameItemID AND fm.active = 0" +
+                                        "                    GROUP BY frame_materialsID; ";
 
                 MySqlConnection my_conn = new MySqlConnection(connString);
                 MySqlCommand cmdSuppliesSelect = new MySqlCommand(stringSuppliesSelect, my_conn);
@@ -161,7 +189,6 @@ namespace PYLsystems
 
                 dtSelectSuppliesFiltered = new DataTable();
                 my_adapter.Fill(dtSelectSuppliesFiltered);
-                
 
             }
             catch (Exception ex)
@@ -170,149 +197,109 @@ namespace PYLsystems
             }
         }
         //COSTS CALCULATION. FOR SELECTED UNIT PRICE AND RAW COST
-        private void costingCalculate()
+        internal void trueCostCalculationPutDataGrid(forAddEditSupplies addEditSuppliesVals, int dtSuppliesUsedSavedIndex)
         {
-            if (dtSelectSupplies.Rows.Count > 0)
+
+            if (String.Equals(addEditSuppliesVals.typeOfMeasure, "Whole"))
             {
-                for (int i = 0; i < dtSelectSupplies.Rows.Count; i++)
+                double rawCost = addEditSuppliesVals.measureAUsed * addEditSuppliesVals.unitPriceOG;
+
+                dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Selected Unit Measure"] = addEditSuppliesVals.unitPriceOG;
+                dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Unit Measure"] = addEditSuppliesVals.unitPriceOG;
+                dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Raw Cost"] = rawCost;
+                refreshDataGrid();
+
+            }
+            else if (String.Equals(addEditSuppliesVals.unitMeasureUsed, addEditSuppliesVals.unitMeasure_OG))
+            {
+                if (String.Equals(addEditSuppliesVals.typeOfMeasure, "Area"))
                 {
-                    String unitOfMeasure_Used = dtSelectSupplies.Rows[i]["Unit Measure"].ToString();
-                    String unitOfMeasure_OG = dtSelectSupplies.Rows[i]["OGUnitMeasure"].ToString();
-                    double unitPriceOG = Double.Parse(dtSelectSupplies.Rows[i]["OGUnitPrice"].ToString());
+                    double area_OG = addEditSuppliesVals.measureA_OG * addEditSuppliesVals.measureB_OG;
+                    double trueUnitPrice = addEditSuppliesVals.unitPriceOG / area_OG;
+
+                    double areaOfUsed = addEditSuppliesVals.measureAUsed * addEditSuppliesVals.measureBUsed;
+
+                    double rawCost = areaOfUsed * trueUnitPrice;
+
+                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Selected Unit Measure"] = trueUnitPrice;
+                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Unit Measure"] = trueUnitPrice;
+                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Raw Cost"] = rawCost;
+                    refreshDataGrid();
+                }
+                else
+                {
+                    double trueUnitPrice = addEditSuppliesVals.unitPriceOG / addEditSuppliesVals.measureA_OG;
+
+                    double rawCost = addEditSuppliesVals.measureAUsed * trueUnitPrice;
+
+                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Selected Unit Measure"] = trueUnitPrice;
+                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Unit Measure"] = trueUnitPrice;
+                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Raw Cost"] = rawCost;
+                    refreshDataGrid();
+
+                }
+            }
+            else
+            {
+                if (String.Equals(addEditSuppliesVals.typeOfMeasure, "Area"))
+                {
+
+                    double area_OG = addEditSuppliesVals.measureA_OG * addEditSuppliesVals.measureB_OG; // Get area of original measures from purchase from Object
+
+                    double trueUnitPrice = addEditSuppliesVals.unitPriceOG / area_OG; // Purchase Unit Price/area_OG to get the true Unit Price of "1" Unit of Measurement
 
 
-                    if (String.Equals(dtSelectSupplies.Rows[i]["typeOfMeasure"].ToString(), "Whole"))
+                    double measureAConvertedUse = measureConverter(addEditSuppliesVals.measureAUsed, addEditSuppliesVals.unitMeasure_OG, addEditSuppliesVals.unitMeasureUsed);
+                    double measureBConvertedUse = measureConverter(addEditSuppliesVals.measureBUsed, addEditSuppliesVals.unitMeasure_OG, addEditSuppliesVals.unitMeasureUsed);
+
+                    double areaOfUsed = measureAConvertedUse * measureBConvertedUse; //Calculate the area of Use of the used up converted measurements
+
+                    double rawCost = areaOfUsed * trueUnitPrice; //Get the raw cost of the item based on 'Area Usage' multiplied by the true Unit Price
+
+                    double measureAOGConvert = measureConverter(addEditSuppliesVals.measureA_OG, addEditSuppliesVals.unitMeasureUsed, addEditSuppliesVals.unitMeasure_OG);
+                    double measureBOGConvert = measureConverter(addEditSuppliesVals.measureB_OG, addEditSuppliesVals.unitMeasureUsed, addEditSuppliesVals.unitMeasure_OG);
+                    double area_OGDisplay = measureAOGConvert * measureBOGConvert;
+                    double displayPrice = addEditSuppliesVals.unitPriceOG / area_OGDisplay;
+
+                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Selected Unit Measure"] = displayPrice;
+                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Unit Measure"] = trueUnitPrice;
+                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Raw Cost"] = rawCost;
+                    refreshDataGrid();
+
+
+
+                }
+                else
+                {
+                    double trueUnitPrice = addEditSuppliesVals.unitPriceOG / addEditSuppliesVals.measureA_OG; // Purchase Unit Price/area_OG to get the true Unit Price of "1" Unit of Measurement
+
+                    //Get the already converted Measurements in frame_materials table.
+                    //The already converted Measurements are calculated and inputted in the database in the FrameCreation and FrameEdited  forms
+                    double measureAConvertedUse;
+                    double displayPrice;
+                    if (String.Equals(addEditSuppliesVals.typeOfMeasure, "Volume"))
                     {
-                        double measureA = Double.Parse(dtSelectSupplies.Rows[i]["measureA"].ToString());
+                        measureAConvertedUse = measureConverter(addEditSuppliesVals.measureAUsed, addEditSuppliesVals.unitMeasure_OG, addEditSuppliesVals.unitMeasureUsed, 0);
+                        displayPrice = addEditSuppliesVals.unitPriceOG / measureConverter(addEditSuppliesVals.measureA_OG, addEditSuppliesVals.unitMeasureUsed, addEditSuppliesVals.unitMeasure_OG, 0);
 
-                        double rawCost = measureA * unitPriceOG;
-
-                        dataGridSuppliesUsed.Rows[i].Cells["Cost/Unit Measure"].Value = unitPriceOG;
-                        dataGridSuppliesUsed.Rows[i].Cells["Raw Cost"].Value = rawCost;
-                    }
-                    else if (String.Equals(unitOfMeasure_Used, unitOfMeasure_OG))
-                    {                                       
-                        if (String.Equals(dtSelectSupplies.Rows[i]["typeOfMeasure"].ToString(), "Area"))
-                        {
-                            double measureA_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureA"].ToString());
-                            double measureB_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureB"].ToString());
-                            double area_OG = measureA_OG * measureB_OG;
-                            double trueUnitPrice = unitPriceOG / area_OG;
-                            double measureAUsed = Double.Parse(dtSelectSupplies.Rows[i]["measureADeduction"].ToString());
-                            double measureBUsed = Double.Parse(dtSelectSupplies.Rows[i]["measureBDeduction"].ToString());
-                            double areaOfUsed = measureAUsed * measureBUsed;
-
-                            double rawCost = areaOfUsed * trueUnitPrice;
-
-                            dataGridSuppliesUsed.Rows[i].Cells["Cost/Unit Measure"].Value = trueUnitPrice;
-                            dataGridSuppliesUsed.Rows[i].Cells["Raw Cost"].Value = rawCost;
-                            measureAUsed = measureConverter(measureAUsed, "feet", "inches");
-                            
-                        }
-                        else
-                        {
-                            double measureA_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureA"].ToString());
-                            double trueUnitPrice = unitPriceOG / measureA_OG;
-
-                            double measureAUsed = Double.Parse(dtSelectSupplies.Rows[i]["measureADeduction"].ToString());
-
-                            double rawCost = measureAUsed * trueUnitPrice;
-
-                            dataGridSuppliesUsed.Rows[i].Cells["Cost/Unit Measure"].Value = trueUnitPrice;
-                            dataGridSuppliesUsed.Rows[i].Cells["Raw Cost"].Value = rawCost;
-                        }
                     }
                     else
                     {
-                        //Jan 18, 2019 to change!!! From used to original measure conversion
-                        if (String.Equals(dtSelectSupplies.Rows[i]["typeOfMeasure"].ToString(), "Area"))
-                        {
-                            //double measureA_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureA"].ToString());
-                            //double measureB_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureB"].ToString());
-                            ////String unitOfMeasure_OG = dtSelectSupplies.Rows[i]["OGUnitMeasure"].ToString();
+                        measureAConvertedUse = measureConverter(addEditSuppliesVals.measureAUsed, addEditSuppliesVals.unitMeasure_OG, addEditSuppliesVals.unitMeasureUsed);
+                        displayPrice = addEditSuppliesVals.unitPriceOG / measureConverter(addEditSuppliesVals.measureA_OG, addEditSuppliesVals.unitMeasureUsed, addEditSuppliesVals.unitMeasure_OG);
 
-                            //double measureAConverted = measureConverter(measureA_OG,unitOfMeasure_OG, unitOfMeasure_Used);
-                            //double measureBConverted = measureConverter(measureB_OG, unitOfMeasure_OG, unitOfMeasure_Used);
-
-                            //double area_OG_Converted = measureAConverted * measureBConverted;
-
-
-                            //double trueUnitPrice = unitPriceOG / area_OG_Converted;
-
-                            //double measureAUsed = Double.Parse(dtSelectSupplies.Rows[i]["measureADeduction"].ToString());
-                            //double measureBUsed = Double.Parse(dtSelectSupplies.Rows[i]["measureBDeduction"].ToString());
-                            //double areaOfUsed = measureAUsed * measureBUsed;
-
-                            //double rawCost = areaOfUsed * trueUnitPrice;
-
-                            //dataGridSuppliesUsed.Rows[i].Cells["Cost/Unit Measure"].Value = trueUnitPrice;
-                            //dataGridSuppliesUsed.Rows[i].Cells["Raw Cost"].Value = rawCost;
-
-
-                            double measureA_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureA"].ToString()); //Get purchase measures from Supply_Item table
-                            double measureB_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureB"].ToString());
-
-                            double area_OG = measureA_OG * measureB_OG; // Get area of original measures from purchase on Supply_Item table
-
-                            double trueUnitPrice = unitPriceOG / area_OG; // Purchase Unit Price/area_OG to get the true Unit Price of "1" Unit of Measurement
-
-                            //Get the already converted Measurements in frame_materials table.
-                            //The already converted Measurements are calculated and inputted in the database in the FrameCreation and FrameEdited  forms
-                            double measureAConverted = Double.Parse(dtSelectSupplies.Rows[i]["ConvertedAtoOG"].ToString()); 
-                            double measureBConverted = Double.Parse(dtSelectSupplies.Rows[i]["ConvertedBtoOG"].ToString());
-
-                            double areaOfUsed = measureAConverted * measureBConverted; //Calculate the area of Use of the used up converted measurements
-
-                            double rawCost = areaOfUsed * trueUnitPrice; //Get the raw cost of the item based on 'Area Usage' multiplied by the true Unit Price
-                            dataGridSuppliesUsed.Rows[i].Cells["Cost/Unit Measure"].Value = trueUnitPrice;
-                            dataGridSuppliesUsed.Rows[i].Cells["Raw Cost"].Value = rawCost;
-
-
-                        }
-                        else
-                        {
-                            //String unitOfMeasure_OG = dtSelectSupplies.Rows[i]["OGUnitMeasure"].ToString();
-                            //String unitOfMeasure_Used = dtSelectSupplies.Rows[i]["Unit Measure"].ToString();
-
-                            //double measureA_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureA"].ToString());
-                            //double measureA_converted;
-
-                            //if (String.Equals(dtSelectSupplies.Rows[i]["typeOfMeasure"].ToString(), "Volume"))
-                            //{
-                            //    measureA_converted = measureConverter(measureA_OG, unitOfMeasure_OG, unitOfMeasure_Used, 0);
-                            //}
-                            //else
-                            //{
-                            //    measureA_converted = measureConverter(measureA_OG, unitOfMeasure_OG, unitOfMeasure_Used);
-                            //}
-
-
-                            //double trueUnitPrice = unitPriceOG / measureA_converted;
-
-                            //double measureAUsed = Double.Parse(dtSelectSupplies.Rows[i]["measureADeduction"].ToString());
-
-                            //double rawCost = measureAUsed * trueUnitPrice;
-
-                            //dataGridSuppliesUsed.Rows[i].Cells["Cost/Unit Measure"].Value = trueUnitPrice;
-                            //dataGridSuppliesUsed.Rows[i].Cells["Raw Cost"].Value = rawCost;
-
-
-                            double measureA_OG = Double.Parse(dtSelectSupplies.Rows[i]["measureA"].ToString()); //Get purchase measures of A and B from Supply_Item table
-
-                            double trueUnitPrice = unitPriceOG / measureA_OG; // Purchase Unit Price/area_OG to get the true Unit Price of "1" Unit of Measurement
-
-                            //Get the already converted Measurements in frame_materials table.
-                            //The already converted Measurements are calculated and inputted in the database in the FrameCreation and FrameEdited  forms
-                            double measureAConverted = Double.Parse(dtSelectSupplies.Rows[i]["ConvertedAtoOG"].ToString());
-
-                            double rawCost = measureAConverted * trueUnitPrice; //Get the raw cost of the item based on 'Area Usage' multiplied by the true Unit Price
-
-                            dataGridSuppliesUsed.Rows[i].Cells["Cost/Unit Measure"].Value = trueUnitPrice;
-                            dataGridSuppliesUsed.Rows[i].Cells["Raw Cost"].Value = rawCost;
-
-                        }
                     }
+
+
+                    double rawCost = measureAConvertedUse * trueUnitPrice; //Get the raw cost of the item based on 'Area Usage' multiplied by the true Unit Price
+
+                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Selected Unit Measure"] = displayPrice;
+                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Unit Measure"] = trueUnitPrice;
+                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Raw Cost"] = rawCost;
+                    refreshDataGrid();
+
                 }
+
             }
         }
 
@@ -516,6 +503,8 @@ namespace PYLsystems
                 formFrameStockIn.ShowDialog();
             }
             catch { }
+            frameList_Loader();
+            suppliesUsed_Loader();
         }
 
         private void btnArchiveList_Click(object sender, EventArgs e)

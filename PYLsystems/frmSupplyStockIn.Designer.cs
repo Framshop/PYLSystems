@@ -79,11 +79,10 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(913, 607);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1370, 934);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -93,14 +92,13 @@
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.lblsupply_itemsID, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(47, 2);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(71, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(817, 603);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1227, 928);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -111,12 +109,11 @@
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 32);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 49);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(813, 538);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1221, 829);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -127,15 +124,14 @@
             this.tableLayoutPanel4.Controls.Add(this.gpSelectSupplier, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.groupBox3, 0, 2);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(311, 534);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(467, 823);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // gpSupply
@@ -149,11 +145,9 @@
             this.gpSupply.Controls.Add(this.lblItemName);
             this.gpSupply.Controls.Add(this.txtItemName);
             this.gpSupply.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gpSupply.Location = new System.Drawing.Point(2, 2);
-            this.gpSupply.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpSupply.Location = new System.Drawing.Point(3, 3);
             this.gpSupply.Name = "gpSupply";
-            this.gpSupply.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gpSupply.Size = new System.Drawing.Size(307, 174);
+            this.gpSupply.Size = new System.Drawing.Size(461, 268);
             this.gpSupply.TabIndex = 0;
             this.gpSupply.TabStop = false;
             this.gpSupply.Text = "Supply";
@@ -161,21 +155,19 @@
             // lblActualPurchasePrice
             // 
             this.lblActualPurchasePrice.AutoSize = true;
-            this.lblActualPurchasePrice.Location = new System.Drawing.Point(11, 134);
-            this.lblActualPurchasePrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblActualPurchasePrice.Location = new System.Drawing.Point(16, 206);
             this.lblActualPurchasePrice.Name = "lblActualPurchasePrice";
-            this.lblActualPurchasePrice.Size = new System.Drawing.Size(115, 13);
+            this.lblActualPurchasePrice.Size = new System.Drawing.Size(168, 20);
             this.lblActualPurchasePrice.TabIndex = 13;
             this.lblActualPurchasePrice.Text = "Actual Purchase Price:";
             // 
             // txtActualPurchasePrice
             // 
             this.txtActualPurchasePrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtActualPurchasePrice.Location = new System.Drawing.Point(133, 132);
-            this.txtActualPurchasePrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtActualPurchasePrice.Location = new System.Drawing.Point(201, 203);
             this.txtActualPurchasePrice.Name = "txtActualPurchasePrice";
             this.txtActualPurchasePrice.ReadOnly = true;
-            this.txtActualPurchasePrice.Size = new System.Drawing.Size(164, 20);
+            this.txtActualPurchasePrice.Size = new System.Drawing.Size(244, 26);
             this.txtActualPurchasePrice.TabIndex = 12;
             this.txtActualPurchasePrice.TextChanged += new System.EventHandler(this.txtActualPurchasePrice_TextChanged);
             this.txtActualPurchasePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
@@ -183,20 +175,18 @@
             // lblRawPurchasePrice
             // 
             this.lblRawPurchasePrice.AutoSize = true;
-            this.lblRawPurchasePrice.Location = new System.Drawing.Point(19, 101);
-            this.lblRawPurchasePrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRawPurchasePrice.Location = new System.Drawing.Point(28, 155);
             this.lblRawPurchasePrice.Name = "lblRawPurchasePrice";
-            this.lblRawPurchasePrice.Size = new System.Drawing.Size(82, 13);
+            this.lblRawPurchasePrice.Size = new System.Drawing.Size(119, 20);
             this.lblRawPurchasePrice.TabIndex = 11;
             this.lblRawPurchasePrice.Text = "Purchase Price:";
             // 
             // txtRawPurchasePrice
             // 
             this.txtRawPurchasePrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRawPurchasePrice.Location = new System.Drawing.Point(133, 99);
-            this.txtRawPurchasePrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtRawPurchasePrice.Location = new System.Drawing.Point(201, 152);
             this.txtRawPurchasePrice.Name = "txtRawPurchasePrice";
-            this.txtRawPurchasePrice.Size = new System.Drawing.Size(164, 20);
+            this.txtRawPurchasePrice.Size = new System.Drawing.Size(244, 26);
             this.txtRawPurchasePrice.TabIndex = 10;
             this.txtRawPurchasePrice.Text = "0";
             this.txtRawPurchasePrice.TextChanged += new System.EventHandler(this.txtRawPurchasePrice_TextChanged);
@@ -205,20 +195,18 @@
             // lblQuantity
             // 
             this.lblQuantity.AutoSize = true;
-            this.lblQuantity.Location = new System.Drawing.Point(75, 68);
-            this.lblQuantity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblQuantity.Location = new System.Drawing.Point(112, 105);
             this.lblQuantity.Name = "lblQuantity";
-            this.lblQuantity.Size = new System.Drawing.Size(49, 13);
+            this.lblQuantity.Size = new System.Drawing.Size(72, 20);
             this.lblQuantity.TabIndex = 9;
             this.lblQuantity.Text = "Quantity:";
             // 
             // txtQuantity
             // 
             this.txtQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtQuantity.Location = new System.Drawing.Point(133, 66);
-            this.txtQuantity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtQuantity.Location = new System.Drawing.Point(201, 102);
             this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(164, 20);
+            this.txtQuantity.Size = new System.Drawing.Size(244, 26);
             this.txtQuantity.TabIndex = 8;
             this.txtQuantity.Text = "0";
             this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
@@ -227,21 +215,19 @@
             // lblItemName
             // 
             this.lblItemName.AutoSize = true;
-            this.lblItemName.Location = new System.Drawing.Point(60, 32);
-            this.lblItemName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblItemName.Location = new System.Drawing.Point(90, 49);
             this.lblItemName.Name = "lblItemName";
-            this.lblItemName.Size = new System.Drawing.Size(61, 13);
+            this.lblItemName.Size = new System.Drawing.Size(91, 20);
             this.lblItemName.TabIndex = 7;
             this.lblItemName.Text = "Item Name:";
             // 
             // txtItemName
             // 
             this.txtItemName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtItemName.Location = new System.Drawing.Point(133, 31);
-            this.txtItemName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtItemName.Location = new System.Drawing.Point(201, 48);
             this.txtItemName.Name = "txtItemName";
             this.txtItemName.ReadOnly = true;
-            this.txtItemName.Size = new System.Drawing.Size(164, 20);
+            this.txtItemName.Size = new System.Drawing.Size(244, 26);
             this.txtItemName.TabIndex = 6;
             this.txtItemName.TextChanged += new System.EventHandler(this.txtItemName_TextChanged);
             // 
@@ -249,11 +235,9 @@
             // 
             this.gpSelectSupplier.Controls.Add(this.dgvSupplier);
             this.gpSelectSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gpSelectSupplier.Location = new System.Drawing.Point(2, 180);
-            this.gpSelectSupplier.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpSelectSupplier.Location = new System.Drawing.Point(3, 277);
             this.gpSelectSupplier.Name = "gpSelectSupplier";
-            this.gpSelectSupplier.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gpSelectSupplier.Size = new System.Drawing.Size(307, 174);
+            this.gpSelectSupplier.Size = new System.Drawing.Size(461, 268);
             this.gpSelectSupplier.TabIndex = 1;
             this.gpSelectSupplier.TabStop = false;
             this.gpSelectSupplier.Text = "Select Supplier";
@@ -266,14 +250,13 @@
             this.dgvSupplier.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSupplier.Location = new System.Drawing.Point(2, 15);
-            this.dgvSupplier.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvSupplier.Location = new System.Drawing.Point(3, 22);
             this.dgvSupplier.Name = "dgvSupplier";
             this.dgvSupplier.ReadOnly = true;
             this.dgvSupplier.RowHeadersVisible = false;
             this.dgvSupplier.RowTemplate.Height = 28;
             this.dgvSupplier.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSupplier.Size = new System.Drawing.Size(303, 157);
+            this.dgvSupplier.Size = new System.Drawing.Size(455, 243);
             this.dgvSupplier.TabIndex = 3;
             this.dgvSupplier.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSupplier_CellClick);
             // 
@@ -283,11 +266,9 @@
             this.groupBox3.Controls.Add(this.btnStockInItem);
             this.groupBox3.Controls.Add(this.btnClose);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(2, 358);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Location = new System.Drawing.Point(3, 551);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox3.Size = new System.Drawing.Size(307, 174);
+            this.groupBox3.Size = new System.Drawing.Size(461, 269);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
@@ -297,10 +278,9 @@
             this.btnEditDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditDetails.Enabled = false;
-            this.btnEditDetails.Location = new System.Drawing.Point(63, 68);
-            this.btnEditDetails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEditDetails.Location = new System.Drawing.Point(94, 105);
             this.btnEditDetails.Name = "btnEditDetails";
-            this.btnEditDetails.Size = new System.Drawing.Size(182, 24);
+            this.btnEditDetails.Size = new System.Drawing.Size(274, 37);
             this.btnEditDetails.TabIndex = 36;
             this.btnEditDetails.Text = "Edit Details";
             this.btnEditDetails.UseVisualStyleBackColor = true;
@@ -311,10 +291,9 @@
             this.btnStockInItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStockInItem.Enabled = false;
-            this.btnStockInItem.Location = new System.Drawing.Point(63, 34);
-            this.btnStockInItem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStockInItem.Location = new System.Drawing.Point(94, 52);
             this.btnStockInItem.Name = "btnStockInItem";
-            this.btnStockInItem.Size = new System.Drawing.Size(182, 24);
+            this.btnStockInItem.Size = new System.Drawing.Size(274, 37);
             this.btnStockInItem.TabIndex = 35;
             this.btnStockInItem.Text = "Stock In Item";
             this.btnStockInItem.UseVisualStyleBackColor = true;
@@ -324,10 +303,9 @@
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(63, 101);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Location = new System.Drawing.Point(94, 155);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(182, 24);
+            this.btnClose.Size = new System.Drawing.Size(274, 37);
             this.btnClose.TabIndex = 34;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -340,13 +318,12 @@
             this.tableLayoutPanel5.Controls.Add(this.gpStockIn, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.groupBox5, 0, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(317, 2);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(476, 3);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.04113F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.95887F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(494, 534);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(742, 823);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // gpStockIn
@@ -356,11 +333,9 @@
             this.gpStockIn.Controls.Add(this.endDatePicker);
             this.gpStockIn.Controls.Add(this.startDatePicker);
             this.gpStockIn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gpStockIn.Location = new System.Drawing.Point(2, 2);
-            this.gpStockIn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpStockIn.Location = new System.Drawing.Point(3, 3);
             this.gpStockIn.Name = "gpStockIn";
-            this.gpStockIn.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gpStockIn.Size = new System.Drawing.Size(490, 76);
+            this.gpStockIn.Size = new System.Drawing.Size(736, 117);
             this.gpStockIn.TabIndex = 0;
             this.gpStockIn.TabStop = false;
             this.gpStockIn.Text = "View Stock In Records By Delivery Dates";
@@ -371,10 +346,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblEndDate.AutoSize = true;
-            this.lblEndDate.Location = new System.Drawing.Point(91, 46);
-            this.lblEndDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEndDate.Location = new System.Drawing.Point(136, 71);
             this.lblEndDate.Name = "lblEndDate";
-            this.lblEndDate.Size = new System.Drawing.Size(55, 13);
+            this.lblEndDate.Size = new System.Drawing.Size(81, 20);
             this.lblEndDate.TabIndex = 22;
             this.lblEndDate.Text = "End Date:";
             // 
@@ -384,10 +358,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblStartDate.AutoSize = true;
-            this.lblStartDate.Location = new System.Drawing.Point(87, 23);
-            this.lblStartDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblStartDate.Location = new System.Drawing.Point(130, 35);
             this.lblStartDate.Name = "lblStartDate";
-            this.lblStartDate.Size = new System.Drawing.Size(58, 13);
+            this.lblStartDate.Size = new System.Drawing.Size(87, 20);
             this.lblStartDate.TabIndex = 21;
             this.lblStartDate.Text = "Start Date:";
             // 
@@ -398,10 +371,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.endDatePicker.CustomFormat = "yyyy-MM-dd";
             this.endDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.endDatePicker.Location = new System.Drawing.Point(146, 43);
-            this.endDatePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.endDatePicker.Location = new System.Drawing.Point(219, 66);
             this.endDatePicker.Name = "endDatePicker";
-            this.endDatePicker.Size = new System.Drawing.Size(258, 20);
+            this.endDatePicker.Size = new System.Drawing.Size(386, 26);
             this.endDatePicker.TabIndex = 20;
             this.endDatePicker.Value = new System.DateTime(2019, 1, 5, 0, 0, 0, 0);
             this.endDatePicker.ValueChanged += new System.EventHandler(this.endDatePicker_ValueChanged);
@@ -413,10 +385,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.startDatePicker.CustomFormat = "yyyy-MM-dd";
             this.startDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.startDatePicker.Location = new System.Drawing.Point(146, 20);
-            this.startDatePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.startDatePicker.Location = new System.Drawing.Point(219, 31);
             this.startDatePicker.Name = "startDatePicker";
-            this.startDatePicker.Size = new System.Drawing.Size(258, 20);
+            this.startDatePicker.Size = new System.Drawing.Size(386, 26);
             this.startDatePicker.TabIndex = 19;
             this.startDatePicker.Value = new System.DateTime(2019, 1, 4, 0, 0, 0, 0);
             this.startDatePicker.ValueChanged += new System.EventHandler(this.startDatePicker_ValueChanged);
@@ -425,11 +396,9 @@
             // 
             this.groupBox5.Controls.Add(this.dgvStockIn);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Location = new System.Drawing.Point(2, 82);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Location = new System.Drawing.Point(3, 126);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox5.Size = new System.Drawing.Size(490, 450);
+            this.groupBox5.Size = new System.Drawing.Size(736, 694);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Stock In Records";
@@ -442,33 +411,35 @@
             this.dgvStockIn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvStockIn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStockIn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvStockIn.Location = new System.Drawing.Point(2, 15);
-            this.dgvStockIn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvStockIn.Location = new System.Drawing.Point(3, 22);
             this.dgvStockIn.Name = "dgvStockIn";
             this.dgvStockIn.ReadOnly = true;
             this.dgvStockIn.RowHeadersVisible = false;
             this.dgvStockIn.RowTemplate.Height = 28;
             this.dgvStockIn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStockIn.Size = new System.Drawing.Size(486, 433);
+            this.dgvStockIn.Size = new System.Drawing.Size(730, 669);
             this.dgvStockIn.TabIndex = 4;
             this.dgvStockIn.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStockIn_CellClick);
             // 
             // lblsupply_itemsID
             // 
             this.lblsupply_itemsID.AutoSize = true;
-            this.lblsupply_itemsID.Location = new System.Drawing.Point(3, 0);
+            this.lblsupply_itemsID.Location = new System.Drawing.Point(4, 0);
+            this.lblsupply_itemsID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblsupply_itemsID.Name = "lblsupply_itemsID";
-            this.lblsupply_itemsID.Size = new System.Drawing.Size(0, 13);
+            this.lblsupply_itemsID.Size = new System.Drawing.Size(0, 20);
             this.lblsupply_itemsID.TabIndex = 1;
             // 
             // frmSupplyStockIn
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 607);
+            this.ClientSize = new System.Drawing.Size(1370, 934);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmSupplyStockIn";
             this.Text = "Supply Stock In";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmSupplyStockIn_Load);
             this.ResizeBegin += new System.EventHandler(this.frmSupplyStockIn_ResizeBegin);
             this.tableLayoutPanel1.ResumeLayout(false);

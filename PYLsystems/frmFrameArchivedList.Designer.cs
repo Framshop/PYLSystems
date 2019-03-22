@@ -182,6 +182,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmFrameArchivedList";
             this.Text = "frmFrameArchivedList";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmFrameArchivedList_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

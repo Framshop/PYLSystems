@@ -312,7 +312,7 @@ namespace PYLsystems
             stockInSupplyEdit.txtRawPurchasePrice.Text =  dgvStockIn.CurrentRow.Cells["priceRawTotal"].Value.ToString();
             stockInSupplyEdit.rawPurchasePriceInitial = Double.Parse(dgvStockIn.CurrentRow.Cells["priceRawTotal"].Value.ToString());
             stockInSupplyEdit.txtActualPurchasePrice.Text =  dgvStockIn.CurrentRow.Cells["pricePurchaseTotal"].Value.ToString();
-            stockInSupplyEdit.cboActive.Text =  dgvStockIn.CurrentRow.Cells["active"].Value.ToString();
+           // stockInSupplyEdit.cboActive.Text =  dgvStockIn.CurrentRow.Cells["active"].Value.ToString();
             stockInSupplyEdit.ShowDialog();
             RefreshStockIn();
             RefreshDatabase();

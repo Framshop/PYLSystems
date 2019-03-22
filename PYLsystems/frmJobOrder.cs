@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using UnitsNet;
+
 namespace PYLsystems
 {
     public partial class frmJobOrder : Form
@@ -51,7 +53,7 @@ namespace PYLsystems
         {
             DefaultDatesInitializer();
             jobOrder_ReceiptsLoader();
-            if (datagridJOList.Rows.Count > 0)
+            if (datagridJOList.Rows.Count > 0 && dataGridSuppliesUsed.Rows.Count > 0)
             {           
                 int currRowIndex = datagridJOList.SelectedRows[0].Index;
                 int jobOrderID = Int32.Parse(datagridJOList.Rows[currRowIndex].Cells["Receipt Number"].Value.ToString());
@@ -106,13 +108,16 @@ namespace PYLsystems
                     "SELECT jod.jOrder_detailsID, job.jOrd_Num, sui.supply_itemsId, sui.supplyName AS `Supply Name`, sc.categoryName AS `Category`," +
                     "sc.typeOfMeasure, jod.measureAdeduction AS `deductedA`, jod.measureBdeduction AS `deductedB`," +
                     "if (sc.categoryName = 'Area',concat(jod.measureAdeduction, ' x ', jod.measureBdeduction),jod.measureAdeduction) AS `Usage`," +
-                    "jod.unit_measure AS `Unit Measure`, sui.unitMeasure AS `OGUnitMeasure`, sui.unitPurchasePrice AS `OGUnitPrice`," +
+                    "jod.unit_measure AS `Unit Measure`, sui.unitMeasure AS `OGUnitMeasure`, IFNULL(sud.priceRawTotal,0) AS `OGUnitPrice`," +
+                    "IFNULL(MAX(sud.delivery_date),'None') AS `Latest_Stock_In`," +
                     "sui.measureA AS `measureAOG`, sui.measureB AS `measureBOG`, jod.measureAtoOG, jod.measureBtoOG " +
                     "FROM jOrder_details AS jod " +
                     "LEFT JOIN jobOrder AS job ON jod.jOrd_Num = job.jOrd_Num " +
                     "LEFT JOIN supply_items AS sui ON jod.supply_itemsID = sui.supply_itemsID " +
                     "LEFT JOIN supply_category AS sc ON sui.supply_categoryID = sc.supply_categoryID " +
-                    "WHERE jod.jOrd_Num = @jOrd_Num AND jod.active = 0;";
+                    "LEFT JOIN supply_details AS sud ON sui.supply_itemsId=sud.supply_itemsID " +
+                    "WHERE jod.jOrd_Num = @jOrd_Num AND jod.active = 0 " +
+                    "GROUP BY jod.jOrder_detailsID;";
 
                 MySqlConnection my_conn = new MySqlConnection(connString);
                 MySqlCommand cmdJOSuppliesList = new MySqlCommand(stringJOSuppliesList, my_conn);
@@ -148,6 +153,7 @@ namespace PYLsystems
             dtRawCostMerger.Columns.Add("measureBtoOG", typeof(double));
             //ADDED Custom Columns
             dtRawCostMerger.Columns.Add("Cost/Unit Measure", typeof(double));
+            dtRawCostMerger.Columns.Add("Cost/Selected Unit Measure", typeof(double));
             dtRawCostMerger.Columns.Add("Raw Cost", typeof(double));
             dtRawCostMerger.Merge(dtRawCost);
             
@@ -156,7 +162,10 @@ namespace PYLsystems
             {
                 for (int i = 0; i < dtRawCostMerger.Rows.Count; i++)
                 {
-                    trueCostCalculationPutDataGrid(i);
+                    if (!String.IsNullOrEmpty(dtRawCostMerger.Rows[i]["jOrder_detailsID"].ToString()))
+                    {
+                        trueCostCalculationPutDataGrid(i);
+                    }
                 }
             }
             dataGridSuppliesUsed.DataSource = null;
@@ -175,6 +184,7 @@ namespace PYLsystems
             dataGridSuppliesUsed.Columns["deductedB"].Visible = false;
             dataGridSuppliesUsed.Columns["measureAtoOG"].Visible = false;
             dataGridSuppliesUsed.Columns["measureBtoOG"].Visible = false;
+            dataGridSuppliesUsed.Columns["Latest_Stock_In"].Visible = false;
             dataGridSuppliesUsed.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells);
         }
         internal void jobOrderOtherDetailsLoader()
@@ -215,15 +225,45 @@ namespace PYLsystems
                 double areaOfUsed = Double.Parse(dtRawCostMerger.Rows[dtTableIndex]["measureAtoOG"].ToString()) * Double.Parse(dtRawCostMerger.Rows[dtTableIndex]["measureBtoOG"].ToString());
 
                 double rawCost = areaOfUsed * trueUnitPrice;
+                double displayPrice;
 
                 dtRawCostMerger.Rows[dtTableIndex]["Cost/Unit Measure"] = trueUnitPrice;
                 dtRawCostMerger.Rows[dtTableIndex]["Raw Cost"] = rawCost;
+                if(String.Equals(dtRawCostMerger.Rows[dtTableIndex]["OGUnitMeasure"].ToString(), dtRawCostMerger.Rows[dtTableIndex]["Unit Measure"].ToString()))
+                {
+                    displayPrice = trueUnitPrice;
+                    dtRawCostMerger.Rows[dtTableIndex]["Cost/Selected Unit Measure"] = displayPrice;
+                }
+                else
+                {
+                    double measureAOGConvert = measureConverter(Double.Parse(dtRawCostMerger.Rows[dtTableIndex]["measureAOG"].ToString()),
+                        dtRawCostMerger.Rows[dtTableIndex]["Unit Measure"].ToString(), dtRawCostMerger.Rows[dtTableIndex]["OGUnitMeasure"].ToString());
+                    double measureBOGConvert = measureConverter(Double.Parse(dtRawCostMerger.Rows[dtTableIndex]["measureBOG"].ToString()),
+                        dtRawCostMerger.Rows[dtTableIndex]["Unit Measure"].ToString(), dtRawCostMerger.Rows[dtTableIndex]["OGUnitMeasure"].ToString());
+                    double area_OGDisplay = measureAOGConvert * measureBOGConvert;
+                    displayPrice = Double.Parse(dtRawCostMerger.Rows[dtTableIndex]["OGUnitPrice"].ToString()) / area_OGDisplay;
+                    dtRawCostMerger.Rows[dtTableIndex]["Cost/Selected Unit Measure"] = displayPrice;
+                }
             }
             else
             {
                 double trueUnitPrice = Double.Parse(dtRawCostMerger.Rows[dtTableIndex]["OGUnitPrice"].ToString()) / Double.Parse(dtRawCostMerger.Rows[dtTableIndex]["measureAOG"].ToString());
 
                 double rawCost = Double.Parse(dtRawCostMerger.Rows[dtTableIndex]["measureAtoOG"].ToString()) * trueUnitPrice;
+
+                double displayPrice;
+                if (String.Equals(dtRawCostMerger.Rows[dtTableIndex]["typeOfMeasure"].ToString(), "Volume"))
+                {
+                    displayPrice = Double.Parse(dtRawCostMerger.Rows[dtTableIndex]["OGUnitPrice"].ToString()) /
+                        measureConverter(Double.Parse(dtRawCostMerger.Rows[dtTableIndex]["measureAOG"].ToString()),
+                        dtRawCostMerger.Rows[dtTableIndex]["Unit Measure"].ToString(), dtRawCostMerger.Rows[dtTableIndex]["OGUnitMeasure"].ToString(),0);
+                }
+                else
+                {
+                    displayPrice = Double.Parse(dtRawCostMerger.Rows[dtTableIndex]["OGUnitPrice"].ToString()) /
+                        measureConverter(Double.Parse(dtRawCostMerger.Rows[dtTableIndex]["measureAOG"].ToString()),
+                        dtRawCostMerger.Rows[dtTableIndex]["Unit Measure"].ToString(), dtRawCostMerger.Rows[dtTableIndex]["OGUnitMeasure"].ToString());
+                }
 
                 dtRawCostMerger.Rows[dtTableIndex]["Cost/Unit Measure"] = trueUnitPrice;
                 dtRawCostMerger.Rows[dtTableIndex]["Raw Cost"] = rawCost;
@@ -265,6 +305,119 @@ namespace PYLsystems
             Double totalRawCost = this.rawCostInitial * quantityInput;
 
             txtBoxRawCost.Text = totalRawCost.ToString();
+        }
+        private double measureConverter(double measure_forCvt, String unitOfMeasure_OG, String unitOfMeasure_Used)
+        {
+            double measureConverted = 0;
+            Length measureLength = Length.FromMeters(1);
+            Mass measureMass = Mass.FromGrams(1);
+
+
+            //Initialize
+            if (String.Equals(unitOfMeasure_Used, "feet"))
+            {
+                measureLength = Length.FromFeet(measure_forCvt);
+            }
+            else if (String.Equals(unitOfMeasure_Used, "meters"))
+            {
+                measureLength = Length.FromMeters(measure_forCvt);
+            }
+            else if (String.Equals(unitOfMeasure_Used, "centimeters"))
+            {
+                measureLength = Length.FromCentimeters(measure_forCvt);
+            }
+            else if (String.Equals(unitOfMeasure_Used, "millimeters"))
+            {
+                measureLength = Length.FromMillimeters(measure_forCvt);
+            }
+            else if (String.Equals(unitOfMeasure_Used, "inches"))
+            {
+                measureLength = Length.FromInches(measure_forCvt);
+            }
+            else if (String.Equals(unitOfMeasure_Used, "ounces"))
+            {
+                measureMass = Mass.FromOunces(measure_forCvt);
+            }
+            else if (String.Equals(unitOfMeasure_Used, "gram/s"))
+            {
+                measureMass = Mass.FromGrams(measure_forCvt);
+            }
+            else if (String.Equals(unitOfMeasure_Used, "kilogram/s"))
+            {
+                measureMass = Mass.FromKilograms(measure_forCvt);
+            }
+
+            //Convert
+            if (String.Equals(unitOfMeasure_OG, "feet"))
+            {
+                measureConverted = measureLength.Feet;
+            }
+            else if (String.Equals(unitOfMeasure_OG, "meters"))
+            {
+                measureConverted = measureLength.Meters;
+            }
+            else if (String.Equals(unitOfMeasure_OG, "centimeters"))
+            {
+                measureConverted = measureLength.Centimeters;
+            }
+            else if (String.Equals(unitOfMeasure_OG, "millimeters"))
+            {
+                measureConverted = measureLength.Millimeters;
+            }
+            else if (String.Equals(unitOfMeasure_OG, "inches"))
+            {
+                measureConverted = measureLength.Inches; ;
+            }
+            else if (String.Equals(unitOfMeasure_OG, "ounces"))
+            {
+                measureConverted = measureMass.Ounces;
+            }
+            else if (String.Equals(unitOfMeasure_OG, "gram/s"))
+            {
+
+                measureConverted = measureMass.Grams;
+
+            }
+            else if (String.Equals(unitOfMeasure_OG, "kilogram/s"))
+            {
+                measureConverted = measureMass.Kilograms;
+            }
+
+            return measureConverted;
+        }
+        //Converting Measures for Volume
+        private double measureConverter(double measure_forCvt, String unitOfMeasure_OG, String unitOfMeasure_Used, int overload)
+        {
+            double measureConverted = 0;
+            Volume measureVolume = Volume.FromLiters(1);
+
+            if (String.Equals(unitOfMeasure_Used, "ounces"))
+            {
+                measureVolume = Volume.FromUsOunces(measure_forCvt);
+            }
+            else if (String.Equals(unitOfMeasure_Used, "liters"))
+            {
+                measureVolume = Volume.FromLiters(measure_forCvt);
+            }
+            else if (String.Equals(unitOfMeasure_Used, "milliliters"))
+            {
+                measureVolume = Volume.FromMilliliters(measure_forCvt);
+            }
+
+            if (String.Equals(unitOfMeasure_OG, "ounces"))
+            {
+                measureConverted = measureVolume.UsOunces;
+            }
+            else if (String.Equals(unitOfMeasure_OG, "liters"))
+            {
+                measureConverted = measureVolume.Liters;
+            }
+            else if (String.Equals(unitOfMeasure_OG, "milliliters"))
+            {
+                measureConverted = measureVolume.Milliliters;
+            }
+
+            return measureConverted;
         }
         //----------------Event Methods-----------------
 

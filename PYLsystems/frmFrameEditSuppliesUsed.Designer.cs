@@ -34,33 +34,30 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblSupplyCost = new System.Windows.Forms.Label();
+            this.lblSupplyBaseUM = new System.Windows.Forms.Label();
+            this.lblSupplyBaseM = new System.Windows.Forms.Label();
+            this.lblSupplyTypeOfM = new System.Windows.Forms.Label();
+            this.lblSupplyDesc = new System.Windows.Forms.Label();
+            this.lblSupplyCateg = new System.Windows.Forms.Label();
+            this.lblSupplyName = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.lblSupplyName = new System.Windows.Forms.Label();
-            this.lblSupplyCateg = new System.Windows.Forms.Label();
-            this.lblSupplyDesc = new System.Windows.Forms.Label();
-            this.lblSupplyTypeOfM = new System.Windows.Forms.Label();
-            this.lblSupplyBaseM = new System.Windows.Forms.Label();
-            this.lblSupplyBaseUM = new System.Windows.Forms.Label();
-            this.lblSupplyCost = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtBoxTypeOfM = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtBoxCategory = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBoxSupplyName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cboVolumeUnit = new System.Windows.Forms.ComboBox();
             this.txtBoxVolume = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -78,6 +75,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -184,6 +184,150 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Supply Info";
             // 
+            // lblSupplyCost
+            // 
+            this.lblSupplyCost.AutoSize = true;
+            this.lblSupplyCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSupplyCost.Location = new System.Drawing.Point(234, 524);
+            this.lblSupplyCost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSupplyCost.Name = "lblSupplyCost";
+            this.lblSupplyCost.Size = new System.Drawing.Size(29, 29);
+            this.lblSupplyCost.TabIndex = 22;
+            this.lblSupplyCost.Text = "``";
+            // 
+            // lblSupplyBaseUM
+            // 
+            this.lblSupplyBaseUM.AutoSize = true;
+            this.lblSupplyBaseUM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSupplyBaseUM.Location = new System.Drawing.Point(234, 442);
+            this.lblSupplyBaseUM.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSupplyBaseUM.Name = "lblSupplyBaseUM";
+            this.lblSupplyBaseUM.Size = new System.Drawing.Size(29, 29);
+            this.lblSupplyBaseUM.TabIndex = 21;
+            this.lblSupplyBaseUM.Text = "``";
+            // 
+            // lblSupplyBaseM
+            // 
+            this.lblSupplyBaseM.AutoSize = true;
+            this.lblSupplyBaseM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSupplyBaseM.Location = new System.Drawing.Point(234, 366);
+            this.lblSupplyBaseM.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSupplyBaseM.Name = "lblSupplyBaseM";
+            this.lblSupplyBaseM.Size = new System.Drawing.Size(29, 29);
+            this.lblSupplyBaseM.TabIndex = 20;
+            this.lblSupplyBaseM.Text = "``";
+            // 
+            // lblSupplyTypeOfM
+            // 
+            this.lblSupplyTypeOfM.AutoSize = true;
+            this.lblSupplyTypeOfM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSupplyTypeOfM.Location = new System.Drawing.Point(234, 294);
+            this.lblSupplyTypeOfM.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSupplyTypeOfM.Name = "lblSupplyTypeOfM";
+            this.lblSupplyTypeOfM.Size = new System.Drawing.Size(29, 29);
+            this.lblSupplyTypeOfM.TabIndex = 19;
+            this.lblSupplyTypeOfM.Text = "``";
+            // 
+            // lblSupplyDesc
+            // 
+            this.lblSupplyDesc.AutoEllipsis = true;
+            this.lblSupplyDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSupplyDesc.Location = new System.Drawing.Point(234, 154);
+            this.lblSupplyDesc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSupplyDesc.Name = "lblSupplyDesc";
+            this.lblSupplyDesc.Size = new System.Drawing.Size(425, 135);
+            this.lblSupplyDesc.TabIndex = 18;
+            this.lblSupplyDesc.Text = "``";
+            // 
+            // lblSupplyCateg
+            // 
+            this.lblSupplyCateg.AutoSize = true;
+            this.lblSupplyCateg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSupplyCateg.Location = new System.Drawing.Point(234, 103);
+            this.lblSupplyCateg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSupplyCateg.Name = "lblSupplyCateg";
+            this.lblSupplyCateg.Size = new System.Drawing.Size(29, 29);
+            this.lblSupplyCateg.TabIndex = 17;
+            this.lblSupplyCateg.Text = "``";
+            // 
+            // lblSupplyName
+            // 
+            this.lblSupplyName.AutoEllipsis = true;
+            this.lblSupplyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSupplyName.Location = new System.Drawing.Point(234, 47);
+            this.lblSupplyName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSupplyName.Name = "lblSupplyName";
+            this.lblSupplyName.Size = new System.Drawing.Size(425, 29);
+            this.lblSupplyName.TabIndex = 16;
+            this.lblSupplyName.Text = "``";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(82, 161);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(145, 20);
+            this.label16.TabIndex = 15;
+            this.label16.Text = "Supply Description:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(96, 301);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(131, 20);
+            this.label13.TabIndex = 14;
+            this.label13.Text = "Type of Measure:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(97, 110);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(129, 20);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "Supply Category:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(84, 54);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(143, 20);
+            this.label15.TabIndex = 10;
+            this.label15.Text = "Item Supply Name:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(121, 531);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(106, 20);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Cost per Unit:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(78, 449);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(149, 20);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Base Unit Measure:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(67, 373);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(160, 20);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Base Measurements:";
+            // 
             // groupBox6
             // 
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -225,212 +369,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selected Supply Item";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.cboVolumeUnit);
-            this.groupBox2.Controls.Add(this.txtBoxVolume);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.txtBoxWhole);
-            this.groupBox2.Controls.Add(this.cboWholeUnit);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.cboWeightUnit);
-            this.groupBox2.Controls.Add(this.txtBoxWeight);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.txtBoxAreaWidth);
-            this.groupBox2.Controls.Add(this.cboAreaUnit);
-            this.groupBox2.Controls.Add(this.txtBoxAreaLength);
-            this.groupBox2.Controls.Add(this.cboLengthUnit);
-            this.groupBox2.Controls.Add(this.txtBoxLength);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(3, 160);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(431, 399);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Amounts Used";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.btnClose);
-            this.groupBox3.Controls.Add(this.btnEdit);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(3, 565);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(431, 170);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(76, 111);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(278, 37);
-            this.btnClose.TabIndex = 34;
-            this.btnClose.Text = "Cancel";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Location = new System.Drawing.Point(76, 48);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(278, 37);
-            this.btnEdit.TabIndex = 33;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(67, 373);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(160, 20);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Base Measurements:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(78, 449);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(149, 20);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "Base Unit Measure:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(121, 531);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(106, 20);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Cost per Unit:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(96, 301);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(131, 20);
-            this.label13.TabIndex = 14;
-            this.label13.Text = "Type of Measure:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(97, 110);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(129, 20);
-            this.label14.TabIndex = 12;
-            this.label14.Text = "Supply Category:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(84, 54);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(143, 20);
-            this.label15.TabIndex = 10;
-            this.label15.Text = "Item Supply Name:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(82, 161);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(145, 20);
-            this.label16.TabIndex = 15;
-            this.label16.Text = "Supply Description:";
-            // 
-            // lblSupplyName
-            // 
-            this.lblSupplyName.AutoEllipsis = true;
-            this.lblSupplyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSupplyName.Location = new System.Drawing.Point(234, 47);
-            this.lblSupplyName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSupplyName.Name = "lblSupplyName";
-            this.lblSupplyName.Size = new System.Drawing.Size(425, 29);
-            this.lblSupplyName.TabIndex = 16;
-            this.lblSupplyName.Text = "``";
-            // 
-            // lblSupplyCateg
-            // 
-            this.lblSupplyCateg.AutoSize = true;
-            this.lblSupplyCateg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSupplyCateg.Location = new System.Drawing.Point(234, 103);
-            this.lblSupplyCateg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSupplyCateg.Name = "lblSupplyCateg";
-            this.lblSupplyCateg.Size = new System.Drawing.Size(29, 29);
-            this.lblSupplyCateg.TabIndex = 17;
-            this.lblSupplyCateg.Text = "``";
-            // 
-            // lblSupplyDesc
-            // 
-            this.lblSupplyDesc.AutoEllipsis = true;
-            this.lblSupplyDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSupplyDesc.Location = new System.Drawing.Point(234, 154);
-            this.lblSupplyDesc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSupplyDesc.Name = "lblSupplyDesc";
-            this.lblSupplyDesc.Size = new System.Drawing.Size(425, 135);
-            this.lblSupplyDesc.TabIndex = 18;
-            this.lblSupplyDesc.Text = "``";
-            // 
-            // lblSupplyTypeOfM
-            // 
-            this.lblSupplyTypeOfM.AutoSize = true;
-            this.lblSupplyTypeOfM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSupplyTypeOfM.Location = new System.Drawing.Point(234, 294);
-            this.lblSupplyTypeOfM.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSupplyTypeOfM.Name = "lblSupplyTypeOfM";
-            this.lblSupplyTypeOfM.Size = new System.Drawing.Size(29, 29);
-            this.lblSupplyTypeOfM.TabIndex = 19;
-            this.lblSupplyTypeOfM.Text = "``";
-            // 
-            // lblSupplyBaseM
-            // 
-            this.lblSupplyBaseM.AutoSize = true;
-            this.lblSupplyBaseM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSupplyBaseM.Location = new System.Drawing.Point(234, 366);
-            this.lblSupplyBaseM.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSupplyBaseM.Name = "lblSupplyBaseM";
-            this.lblSupplyBaseM.Size = new System.Drawing.Size(29, 29);
-            this.lblSupplyBaseM.TabIndex = 20;
-            this.lblSupplyBaseM.Text = "``";
-            // 
-            // lblSupplyBaseUM
-            // 
-            this.lblSupplyBaseUM.AutoSize = true;
-            this.lblSupplyBaseUM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSupplyBaseUM.Location = new System.Drawing.Point(234, 442);
-            this.lblSupplyBaseUM.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSupplyBaseUM.Name = "lblSupplyBaseUM";
-            this.lblSupplyBaseUM.Size = new System.Drawing.Size(29, 29);
-            this.lblSupplyBaseUM.TabIndex = 21;
-            this.lblSupplyBaseUM.Text = "``";
-            // 
-            // lblSupplyCost
-            // 
-            this.lblSupplyCost.AutoSize = true;
-            this.lblSupplyCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSupplyCost.Location = new System.Drawing.Point(234, 524);
-            this.lblSupplyCost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSupplyCost.Name = "lblSupplyCost";
-            this.lblSupplyCost.Size = new System.Drawing.Size(29, 29);
-            this.lblSupplyCost.TabIndex = 22;
-            this.lblSupplyCost.Text = "``";
             // 
             // txtBoxTypeOfM
             // 
@@ -488,6 +426,33 @@
             this.lblName.Size = new System.Drawing.Size(143, 20);
             this.lblName.TabIndex = 12;
             this.lblName.Text = "Item Supply Name:";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.cboVolumeUnit);
+            this.groupBox2.Controls.Add(this.txtBoxVolume);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.txtBoxWhole);
+            this.groupBox2.Controls.Add(this.cboWholeUnit);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.cboWeightUnit);
+            this.groupBox2.Controls.Add(this.txtBoxWeight);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.txtBoxAreaWidth);
+            this.groupBox2.Controls.Add(this.cboAreaUnit);
+            this.groupBox2.Controls.Add(this.txtBoxAreaLength);
+            this.groupBox2.Controls.Add(this.cboLengthUnit);
+            this.groupBox2.Controls.Add(this.txtBoxLength);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(3, 160);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(431, 399);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Amounts Used";
             // 
             // cboVolumeUnit
             // 
@@ -687,6 +652,41 @@
             this.label8.TabIndex = 41;
             this.label8.Text = "Length:";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnClose);
+            this.groupBox3.Controls.Add(this.btnEdit);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(3, 565);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(431, 170);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Location = new System.Drawing.Point(76, 111);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(278, 37);
+            this.btnClose.TabIndex = 34;
+            this.btnClose.Text = "Cancel";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEdit.Location = new System.Drawing.Point(76, 48);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(278, 37);
+            this.btnEdit.TabIndex = 33;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // frmFrameEditSuppliesUsed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -695,6 +695,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmFrameEditSuppliesUsed";
             this.Text = "Edit Frame Supply";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmFrameEditSuppliesUsed_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
