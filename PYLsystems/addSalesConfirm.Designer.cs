@@ -35,22 +35,24 @@
             // 
             // backBtn
             // 
+            this.backBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.backBtn.Location = new System.Drawing.Point(263, 161);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(130, 37);
             this.backBtn.TabIndex = 6;
             this.backBtn.Text = "Back";
-            this.backBtn.UseVisualStyleBackColor = true;
+            this.backBtn.UseVisualStyleBackColor = false;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
             // confirmBtn
             // 
+            this.confirmBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.confirmBtn.Location = new System.Drawing.Point(51, 161);
             this.confirmBtn.Name = "confirmBtn";
             this.confirmBtn.Size = new System.Drawing.Size(130, 37);
             this.confirmBtn.TabIndex = 5;
             this.confirmBtn.Text = "Confirm";
-            this.confirmBtn.UseVisualStyleBackColor = true;
+            this.confirmBtn.UseVisualStyleBackColor = false;
             this.confirmBtn.Click += new System.EventHandler(this.confirmBtn_Click);
             // 
             // cancelTextLabel
@@ -67,6 +69,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(446, 264);
             this.ControlBox = false;
             this.Controls.Add(this.backBtn);

@@ -97,6 +97,8 @@ namespace PYLsystems
             dtSuppliesUsed.Columns.Add("Supply Name", typeof(String));
             dtSuppliesUsed.Columns.Add("Category", typeof(String));
             dtSuppliesUsed.Columns.Add("typeOfMeasure", typeof(String));
+            dtSuppliesUsed.Columns.Add("Cost/Base Unit Measure", typeof(double));
+            dtSuppliesUsed.Columns.Add("Base Unit Measure", typeof(String));
             dtSuppliesUsed.Columns.Add("deductedA", typeof(double));
             dtSuppliesUsed.Columns.Add("deductedB", typeof(double));
             dtSuppliesUsed.Columns.Add("Usage", typeof(String));
@@ -111,7 +113,6 @@ namespace PYLsystems
 
 
             //ADDED Custom Columns
-            dtSuppliesUsed.Columns.Add("Cost/Unit Measure", typeof(double));
             dtSuppliesUsed.Columns.Add("Cost/Selected Unit Measure", typeof(double));
             dtSuppliesUsed.Columns.Add("Raw Cost", typeof(double));
 
@@ -125,7 +126,7 @@ namespace PYLsystems
 
             if (dtSuppliesUsedSaved.Rows.Count > 0)
             {
-                MessageBox.Show(dtSuppliesUsedSaved.Rows.Count+"");
+                //MessageBox.Show(dtSuppliesUsedSaved.Rows.Count+"");
                 for (int i = 0; i < dtSuppliesUsedSaved.Rows.Count; i++)
                 {
                     if (!String.IsNullOrEmpty(dtSuppliesUsedSaved.Rows[i]["jOrder_detailsID"].ToString())){
@@ -155,6 +156,7 @@ namespace PYLsystems
                 String stringSuppliesSelect =
                     "SELECT jod.jOrder_detailsID, job.jOrd_Num, sui.supply_itemsId, sui.supplyName AS `Supply Name`, sc.categoryName AS `Category`," +
                     "sc.typeOfMeasure, jod.measureAdeduction AS `deductedA`, jod.measureBdeduction AS `deductedB`," +
+                    "if(sc.typeOfMeasure = 'Area',concat('1 ',sui.unitMeasure,'²'),concat('1 ',sui.unitMeasure)) AS `Base Unit Measure`," +
                     "if (sc.categoryName = 'Area',concat(jod.measureAdeduction, ' x ', jod.measureBdeduction),jod.measureAdeduction) AS `Usage`," +
                     "jod.unit_measure AS `Unit Measure`, sui.unitMeasure AS `OGUnitMeasure`, IFNULL(sud.priceRawTotal,0) AS `OGUnitPrice`," +
                     "IFNULL(MAX(sud.delivery_date),'None') AS `Latest_Stock_In`," +
@@ -186,7 +188,8 @@ namespace PYLsystems
         {
             dataGridSuppliesUsed.DataSource = null;
             dataGridSuppliesUsed.DataSource = dtSuppliesUsedSaved;
-            dataGridSuppliesUsed.Columns["Cost/Unit Measure"].DefaultCellStyle.Format = "P0.0000";
+            dataGridSuppliesUsed.Columns["Cost/Base Unit Measure"].DefaultCellStyle.Format = "P0.0000000";
+            dataGridSuppliesUsed.Columns["Cost/Selected Unit Measure"].DefaultCellStyle.Format = "P0.0000000";
             dataGridSuppliesUsed.Columns["Raw Cost"].DefaultCellStyle.Format = "P0.0000";
             dataGridSuppliesUsed.Columns["supply_itemsId"].Visible = false;
             dataGridSuppliesUsed.Columns["jOrder_detailsID"].Visible = false;
@@ -310,6 +313,7 @@ namespace PYLsystems
 
             dtSuppliesUsedSaved.Rows[indexdtInsert]["Unit Measure"] = addEditSuppliesVals.unitMeasureUsed;
 
+            dtSuppliesUsedSaved.Rows[indexdtInsert]["Base Unit Measure"] = "1 " + addEditSuppliesVals.unitMeasure_OG;
             dtSuppliesUsedSaved.Rows[indexdtInsert]["OGUnitMeasure"] = addEditSuppliesVals.unitMeasure_OG;
             dtSuppliesUsedSaved.Rows[indexdtInsert]["OGUnitPrice"] = addEditSuppliesVals.unitPriceOG;
             dtSuppliesUsedSaved.Rows[indexdtInsert]["measureAOG"] = addEditSuppliesVals.measureA_OG;
@@ -326,7 +330,7 @@ namespace PYLsystems
                 dtSuppliesUsedSaved.Rows[indexdtInsert]["measureBOG"] = addEditSuppliesVals.measureB_OG;
                 dtSuppliesUsedSaved.Rows[indexdtInsert]["deductedB"] = addEditSuppliesVals.measureBUsed;
                 dtSuppliesUsedSaved.Rows[indexdtInsert]["measureBtoOG"] = measureConverter(addEditSuppliesVals.measureBUsed, addEditSuppliesVals.unitMeasure_OG, addEditSuppliesVals.unitMeasureUsed);
-
+                dtSuppliesUsedSaved.Rows[indexdtInsert]["Base Unit Measure"] = "1 " + addEditSuppliesVals.unitMeasure_OG + "²";
             }
             else if (String.Equals(addEditSuppliesVals.typeOfMeasure, "Whole")) ////NOTE: MAJOR BUG UPDATE. PLEASE TELL BEN ABOUT THIS. 3/20/2019 8:35AM
             {
@@ -426,7 +430,7 @@ namespace PYLsystems
                 double rawCost = addEditSuppliesVals.measureAUsed * addEditSuppliesVals.unitPriceOG;
 
                 dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Selected Unit Measure"] = addEditSuppliesVals.unitPriceOG;
-                dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Unit Measure"] = addEditSuppliesVals.unitPriceOG;
+                dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Base Unit Measure"] = addEditSuppliesVals.unitPriceOG;
                 dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Raw Cost"] = rawCost;
                 refreshDataGrid();
 
@@ -443,7 +447,7 @@ namespace PYLsystems
                     double rawCost = areaOfUsed * trueUnitPrice;
 
                     dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Selected Unit Measure"] = trueUnitPrice;
-                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Unit Measure"] = trueUnitPrice;
+                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Base Unit Measure"] = trueUnitPrice;
                     dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Raw Cost"] = rawCost;
                     refreshDataGrid();
                 }
@@ -454,7 +458,7 @@ namespace PYLsystems
                     double rawCost = addEditSuppliesVals.measureAUsed * trueUnitPrice;
 
                     dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Selected Unit Measure"] = trueUnitPrice;
-                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Unit Measure"] = trueUnitPrice;
+                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Base Unit Measure"] = trueUnitPrice;
                     dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Raw Cost"] = rawCost;
                     refreshDataGrid();
 
@@ -483,7 +487,7 @@ namespace PYLsystems
                     double displayPrice = addEditSuppliesVals.unitPriceOG / area_OGDisplay;
 
                     dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Selected Unit Measure"] = displayPrice;
-                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Unit Measure"] = trueUnitPrice;
+                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Base Unit Measure"] = trueUnitPrice;
                     dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Raw Cost"] = rawCost;
                     refreshDataGrid();
 
@@ -515,7 +519,7 @@ namespace PYLsystems
                     double rawCost = measureAConvertedUse * trueUnitPrice; //Get the raw cost of the item based on 'Area Usage' multiplied by the true Unit Price
 
                     dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Selected Unit Measure"] = displayPrice;
-                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Unit Measure"] = trueUnitPrice;
+                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Base Unit Measure"] = trueUnitPrice;
                     dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Raw Cost"] = rawCost;
                     refreshDataGrid();
 
@@ -984,6 +988,8 @@ namespace PYLsystems
         private void btnEditJO_Click(object sender, EventArgs e)
         {
             int validation = 0;
+            double jobPrice;
+            double totalPaid;
             if (dtSuppliesUsedSaved.Rows.Count == 0)
             {
                 MessageBox.Show("Please Add Supplies to be used for the Frame.");
@@ -998,10 +1004,26 @@ namespace PYLsystems
             {
                 MessageBox.Show("Please Input a Job Order Price.");
                 validation++;
+                jobPrice = 0;
+            }
+            else
+            {
+                jobPrice = Double.Parse(txtBoxJobPrice.Text);
             }
             if (String.IsNullOrEmpty(txtBoxTotalPaid.Text))
             {
                 MessageBox.Show("Please Input a Payment.");
+                validation++;
+                totalPaid = 0;
+            }
+            else
+            {
+                totalPaid = Double.Parse(txtBoxTotalPaid.Text);
+            }
+
+            if ((totalPaid >= 0 || jobPrice >= 0) && (totalPaid < jobPrice))
+            {
+                MessageBox.Show("Please Input a proper payment amount");
                 validation++;
             }
             if (String.IsNullOrEmpty(txtBoxDiscount.Text))

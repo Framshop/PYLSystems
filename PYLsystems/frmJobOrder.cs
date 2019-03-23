@@ -53,7 +53,7 @@ namespace PYLsystems
         {
             DefaultDatesInitializer();
             jobOrder_ReceiptsLoader();
-            if (datagridJOList.Rows.Count > 0 && dataGridSuppliesUsed.Rows.Count > 0)
+            if (datagridJOList.Rows.Count > 0)
             {           
                 int currRowIndex = datagridJOList.SelectedRows[0].Index;
                 int jobOrderID = Int32.Parse(datagridJOList.Rows[currRowIndex].Cells["Receipt Number"].Value.ToString());
@@ -107,6 +107,7 @@ namespace PYLsystems
                 String stringJOSuppliesList =
                     "SELECT jod.jOrder_detailsID, job.jOrd_Num, sui.supply_itemsId, sui.supplyName AS `Supply Name`, sc.categoryName AS `Category`," +
                     "sc.typeOfMeasure, jod.measureAdeduction AS `deductedA`, jod.measureBdeduction AS `deductedB`," +
+                    "if(sc.typeOfMeasure = 'Area',concat('1 ',sui.unitMeasure,'²'),concat('1 ',sui.unitMeasure)) AS `Base Unit Measure`," +
                     "if (sc.categoryName = 'Area',concat(jod.measureAdeduction, ' x ', jod.measureBdeduction),jod.measureAdeduction) AS `Usage`," +
                     "jod.unit_measure AS `Unit Measure`, sui.unitMeasure AS `OGUnitMeasure`, IFNULL(sud.priceRawTotal,0) AS `OGUnitPrice`," +
                     "IFNULL(MAX(sud.delivery_date),'None') AS `Latest_Stock_In`," +
@@ -140,6 +141,8 @@ namespace PYLsystems
             dtRawCostMerger.Columns.Add("Supply Name", typeof(String));
             dtRawCostMerger.Columns.Add("Category", typeof(String));
             dtRawCostMerger.Columns.Add("typeOfMeasure", typeof(String));
+            dtRawCostMerger.Columns.Add("Cost/Base Unit Measure", typeof(double));
+            dtRawCostMerger.Columns.Add("Base Unit Measure", typeof(String));
             dtRawCostMerger.Columns.Add("deductedA", typeof(double));
             dtRawCostMerger.Columns.Add("deductedB", typeof(double));
             dtRawCostMerger.Columns.Add("Usage", typeof(String));
@@ -152,7 +155,7 @@ namespace PYLsystems
             dtRawCostMerger.Columns.Add("measureAtoOG", typeof(double));
             dtRawCostMerger.Columns.Add("measureBtoOG", typeof(double));
             //ADDED Custom Columns
-            dtRawCostMerger.Columns.Add("Cost/Unit Measure", typeof(double));
+
             dtRawCostMerger.Columns.Add("Cost/Selected Unit Measure", typeof(double));
             dtRawCostMerger.Columns.Add("Raw Cost", typeof(double));
             dtRawCostMerger.Merge(dtRawCost);
@@ -170,7 +173,8 @@ namespace PYLsystems
             }
             dataGridSuppliesUsed.DataSource = null;
             dataGridSuppliesUsed.DataSource = dtRawCostMerger;
-            dataGridSuppliesUsed.Columns["Cost/Unit Measure"].DefaultCellStyle.Format = "P0.0000";
+            dataGridSuppliesUsed.Columns["Cost/Base Unit Measure"].DefaultCellStyle.Format = "P0.0000000";
+            dataGridSuppliesUsed.Columns["Cost/Selected Unit Measure"].DefaultCellStyle.Format = "P0.0000000";
             dataGridSuppliesUsed.Columns["Raw Cost"].DefaultCellStyle.Format = "P0.0000";
             dataGridSuppliesUsed.Columns["supply_itemsId"].Visible = false;
             dataGridSuppliesUsed.Columns["jOrder_detailsID"].Visible = false;
@@ -213,8 +217,9 @@ namespace PYLsystems
             {
                 double rawCost = Double.Parse(dtRawCostMerger.Rows[dtTableIndex]["measureAtoOG"].ToString()) * Double.Parse(dtRawCostMerger.Rows[dtTableIndex]["OGUnitPrice"].ToString());
 
-                dtRawCostMerger.Rows[dtTableIndex]["Cost/Unit Measure"] = Double.Parse(dtRawCostMerger.Rows[dtTableIndex]["OGUnitPrice"].ToString());
+                dtRawCostMerger.Rows[dtTableIndex]["Cost/Base Unit Measure"] = Double.Parse(dtRawCostMerger.Rows[dtTableIndex]["OGUnitPrice"].ToString());
                 dtRawCostMerger.Rows[dtTableIndex]["Raw Cost"] = rawCost;
+                dtRawCostMerger.Rows[dtTableIndex]["Cost/Selected Unit Measure"] = Double.Parse(dtRawCostMerger.Rows[dtTableIndex]["OGUnitPrice"].ToString());
 
             }
             else if (String.Equals(dtRawCostMerger.Rows[dtTableIndex]["typeOfMeasure"].ToString(), "Area"))
@@ -227,7 +232,7 @@ namespace PYLsystems
                 double rawCost = areaOfUsed * trueUnitPrice;
                 double displayPrice;
 
-                dtRawCostMerger.Rows[dtTableIndex]["Cost/Unit Measure"] = trueUnitPrice;
+                dtRawCostMerger.Rows[dtTableIndex]["Cost/Base Unit Measure"] = trueUnitPrice;
                 dtRawCostMerger.Rows[dtTableIndex]["Raw Cost"] = rawCost;
                 if(String.Equals(dtRawCostMerger.Rows[dtTableIndex]["OGUnitMeasure"].ToString(), dtRawCostMerger.Rows[dtTableIndex]["Unit Measure"].ToString()))
                 {
@@ -244,6 +249,7 @@ namespace PYLsystems
                     displayPrice = Double.Parse(dtRawCostMerger.Rows[dtTableIndex]["OGUnitPrice"].ToString()) / area_OGDisplay;
                     dtRawCostMerger.Rows[dtTableIndex]["Cost/Selected Unit Measure"] = displayPrice;
                 }
+                
             }
             else
             {
@@ -264,10 +270,12 @@ namespace PYLsystems
                         measureConverter(Double.Parse(dtRawCostMerger.Rows[dtTableIndex]["measureAOG"].ToString()),
                         dtRawCostMerger.Rows[dtTableIndex]["Unit Measure"].ToString(), dtRawCostMerger.Rows[dtTableIndex]["OGUnitMeasure"].ToString());
                 }
-
-                dtRawCostMerger.Rows[dtTableIndex]["Cost/Unit Measure"] = trueUnitPrice;
+                dtRawCostMerger.Rows[dtTableIndex]["Cost/Selected Unit Measure"] = displayPrice;
+                dtRawCostMerger.Rows[dtTableIndex]["Cost/Base Unit Measure"] = trueUnitPrice;
                 dtRawCostMerger.Rows[dtTableIndex]["Raw Cost"] = rawCost;
+                
             }
+            
             rawCostSingleUnitCalc();
         }
         private void rawCostSingleUnitCalc()
@@ -432,12 +440,14 @@ namespace PYLsystems
             int jobOrderID = Int32.Parse(datagridJOList.Rows[currRowIndex].Cells["Receipt Number"].Value.ToString());
             frmJobOrderEdit frmJOUpdate = new frmJobOrderEdit(this.employeeID,this.employeeStatus,jobOrderID);
             frmJOUpdate.ShowDialog();
+            jobOrder_Loader();
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
             frmJobOrderCreate frmJOCreate = new frmJobOrderCreate(this.employeeID,this.employeeStatus);
             frmJOCreate.ShowDialog();
+            jobOrder_Loader();
             jobOrder_Loader();
         }
 

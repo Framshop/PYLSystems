@@ -360,24 +360,26 @@
             // 
             this.btnStockOutItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStockOutItem.BackColor = System.Drawing.Color.PaleGreen;
             this.btnStockOutItem.Location = new System.Drawing.Point(252, 609);
             this.btnStockOutItem.Name = "btnStockOutItem";
             this.btnStockOutItem.Size = new System.Drawing.Size(288, 37);
             this.btnStockOutItem.TabIndex = 58;
             this.btnStockOutItem.Text = "Stock Out Item";
-            this.btnStockOutItem.UseVisualStyleBackColor = true;
+            this.btnStockOutItem.UseVisualStyleBackColor = false;
             this.btnStockOutItem.Click += new System.EventHandler(this.btnStockOutItem_Click);
             // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.PaleGreen;
             this.btnClose.Location = new System.Drawing.Point(252, 652);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(288, 37);
             this.btnClose.TabIndex = 57;
             this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // cboVolumeUnit
@@ -651,6 +653,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1335, 852);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmSupplyDamage";

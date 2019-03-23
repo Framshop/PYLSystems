@@ -109,6 +109,7 @@
             // 
             this.btnSupplyItemsList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSupplyItemsList.BackColor = System.Drawing.Color.PaleGreen;
             this.btnSupplyItemsList.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSupplyItemsList.Location = new System.Drawing.Point(4, 286);
             this.btnSupplyItemsList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -116,13 +117,14 @@
             this.btnSupplyItemsList.Size = new System.Drawing.Size(282, 99);
             this.btnSupplyItemsList.TabIndex = 5;
             this.btnSupplyItemsList.Text = "Supply Items List";
-            this.btnSupplyItemsList.UseVisualStyleBackColor = true;
+            this.btnSupplyItemsList.UseVisualStyleBackColor = false;
             this.btnSupplyItemsList.Click += new System.EventHandler(this.btnSupplyItemsList_Click);
             // 
             // btnSuppliers
             // 
             this.btnSuppliers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSuppliers.BackColor = System.Drawing.Color.PaleGreen;
             this.btnSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSuppliers.Location = new System.Drawing.Point(4, 26);
             this.btnSuppliers.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -130,13 +132,14 @@
             this.btnSuppliers.Size = new System.Drawing.Size(282, 99);
             this.btnSuppliers.TabIndex = 2;
             this.btnSuppliers.Text = "Suppliers";
-            this.btnSuppliers.UseVisualStyleBackColor = true;
+            this.btnSuppliers.UseVisualStyleBackColor = false;
             this.btnSuppliers.Click += new System.EventHandler(this.btnSuppliers_Click);
             // 
             // btnSupplyCateg
             // 
             this.btnSupplyCateg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSupplyCateg.BackColor = System.Drawing.Color.PaleGreen;
             this.btnSupplyCateg.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSupplyCateg.Location = new System.Drawing.Point(4, 156);
             this.btnSupplyCateg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -144,16 +147,18 @@
             this.btnSupplyCateg.Size = new System.Drawing.Size(282, 99);
             this.btnSupplyCateg.TabIndex = 1;
             this.btnSupplyCateg.Text = "Supply Categories";
-            this.btnSupplyCateg.UseVisualStyleBackColor = true;
+            this.btnSupplyCateg.UseVisualStyleBackColor = false;
             this.btnSupplyCateg.Click += new System.EventHandler(this.btnSupplyCateg_Click);
             // 
             // frmSuppliesHomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(627, 645);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmSuppliesHomePage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSuppliesHomePage";
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);

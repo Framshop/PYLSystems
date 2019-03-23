@@ -34,30 +34,33 @@
             // 
             // btnEmpList
             // 
+            this.btnEmpList.BackColor = System.Drawing.Color.PaleGreen;
             this.btnEmpList.Location = new System.Drawing.Point(217, 79);
             this.btnEmpList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEmpList.Name = "btnEmpList";
             this.btnEmpList.Size = new System.Drawing.Size(188, 80);
             this.btnEmpList.TabIndex = 0;
             this.btnEmpList.Text = "EmployeeList";
-            this.btnEmpList.UseVisualStyleBackColor = true;
+            this.btnEmpList.UseVisualStyleBackColor = false;
             this.btnEmpList.Click += new System.EventHandler(this.btnEmpList_Click);
             // 
             // payrollBtn
             // 
+            this.payrollBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.payrollBtn.Location = new System.Drawing.Point(217, 210);
             this.payrollBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.payrollBtn.Name = "payrollBtn";
             this.payrollBtn.Size = new System.Drawing.Size(188, 80);
             this.payrollBtn.TabIndex = 1;
             this.payrollBtn.Text = "Payroll";
-            this.payrollBtn.UseVisualStyleBackColor = true;
+            this.payrollBtn.UseVisualStyleBackColor = false;
             this.payrollBtn.Click += new System.EventHandler(this.payrollBtn_Click);
             // 
             // frmEmployeeMgt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(627, 371);
             this.Controls.Add(this.payrollBtn);
             this.Controls.Add(this.btnEmpList);

@@ -99,7 +99,7 @@
             // 
             // empManBtn
             // 
-            this.empManBtn.BackColor = System.Drawing.Color.YellowGreen;
+            this.empManBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.empManBtn.Enabled = false;
             this.empManBtn.Location = new System.Drawing.Point(74, 46);
             this.empManBtn.Name = "empManBtn";
@@ -122,7 +122,7 @@
             // 
             // inventoryBtn
             // 
-            this.inventoryBtn.BackColor = System.Drawing.Color.YellowGreen;
+            this.inventoryBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.inventoryBtn.Enabled = false;
             this.inventoryBtn.Location = new System.Drawing.Point(74, 43);
             this.inventoryBtn.Name = "inventoryBtn";
@@ -145,7 +145,7 @@
             // 
             // jOrderBtn
             // 
-            this.jOrderBtn.BackColor = System.Drawing.Color.YellowGreen;
+            this.jOrderBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.jOrderBtn.Enabled = false;
             this.jOrderBtn.Location = new System.Drawing.Point(74, 42);
             this.jOrderBtn.Name = "jOrderBtn";
@@ -168,7 +168,7 @@
             // 
             // salesOrderBtn
             // 
-            this.salesOrderBtn.BackColor = System.Drawing.Color.YellowGreen;
+            this.salesOrderBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.salesOrderBtn.Enabled = false;
             this.salesOrderBtn.Location = new System.Drawing.Point(74, 45);
             this.salesOrderBtn.Name = "salesOrderBtn";

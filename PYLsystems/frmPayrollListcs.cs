@@ -237,7 +237,9 @@ namespace PYLsystems
 
         private void btnCashAdv_Click(object sender, EventArgs e)
         {
-            frmCashAdvancecs cashAdvForm = new frmCashAdvancecs(this.employeeId,this);
+            int currRowIndex = datagridEmpList.SelectedRows[0].Index;
+            int selectedEmpId = Int32.Parse(datagridEmpList.Rows[currRowIndex].Cells["employeeID"].Value.ToString());
+            frmCashAdvancecs cashAdvForm = new frmCashAdvancecs(this.employeeId,this,selectedEmpId);
             cashAdvForm.ShowDialog();
             employeeListLoader();
         }

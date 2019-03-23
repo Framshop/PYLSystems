@@ -453,30 +453,33 @@
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.PaleGreen;
             this.btnClose.Location = new System.Drawing.Point(78, 109);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(313, 37);
             this.btnClose.TabIndex = 9;
             this.btnClose.Text = "Cancel";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnEditJO
             // 
             this.btnEditJO.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditJO.BackColor = System.Drawing.Color.PaleGreen;
             this.btnEditJO.Location = new System.Drawing.Point(78, 36);
             this.btnEditJO.Name = "btnEditJO";
             this.btnEditJO.Size = new System.Drawing.Size(313, 37);
             this.btnEditJO.TabIndex = 8;
             this.btnEditJO.Text = "Update Job Order";
-            this.btnEditJO.UseVisualStyleBackColor = true;
+            this.btnEditJO.UseVisualStyleBackColor = false;
             this.btnEditJO.Click += new System.EventHandler(this.btnEditJO_Click);
             // 
             // frmJobOrderEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1595, 1018);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmJobOrderEdit";

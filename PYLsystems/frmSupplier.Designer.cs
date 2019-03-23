@@ -149,6 +149,7 @@
             // 
             // btnAddSupplier
             // 
+            this.btnAddSupplier.BackColor = System.Drawing.Color.PaleGreen;
             this.btnAddSupplier.Enabled = false;
             this.btnAddSupplier.Location = new System.Drawing.Point(20, 28);
             this.btnAddSupplier.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -156,11 +157,12 @@
             this.btnAddSupplier.Size = new System.Drawing.Size(168, 37);
             this.btnAddSupplier.TabIndex = 7;
             this.btnAddSupplier.Text = "Add Supplier";
-            this.btnAddSupplier.UseVisualStyleBackColor = true;
+            this.btnAddSupplier.UseVisualStyleBackColor = false;
             this.btnAddSupplier.Click += new System.EventHandler(this.addBtn_Click);
             // 
             // btnUpdate
             // 
+            this.btnUpdate.BackColor = System.Drawing.Color.PaleGreen;
             this.btnUpdate.Enabled = false;
             this.btnUpdate.Location = new System.Drawing.Point(20, 74);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -168,7 +170,7 @@
             this.btnUpdate.Size = new System.Drawing.Size(168, 37);
             this.btnUpdate.TabIndex = 8;
             this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // txtSearch
@@ -192,13 +194,14 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.Color.PaleGreen;
             this.btnCancel.Location = new System.Drawing.Point(20, 146);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(168, 37);
             this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // lblValidate
@@ -524,6 +527,7 @@
             // 
             // btnRemove
             // 
+            this.btnRemove.BackColor = System.Drawing.Color.PaleGreen;
             this.btnRemove.Enabled = false;
             this.btnRemove.Location = new System.Drawing.Point(255, 25);
             this.btnRemove.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -531,18 +535,19 @@
             this.btnRemove.Size = new System.Drawing.Size(130, 37);
             this.btnRemove.TabIndex = 9;
             this.btnRemove.Text = "Remove";
-            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.UseVisualStyleBackColor = false;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnAdd
             // 
+            this.btnAdd.BackColor = System.Drawing.Color.PaleGreen;
             this.btnAdd.Location = new System.Drawing.Point(33, 25);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(130, 37);
             this.btnAdd.TabIndex = 8;
             this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lvwItemSold
@@ -602,28 +607,31 @@
             // 
             // btnArchiveSupplyItem
             // 
+            this.btnArchiveSupplyItem.BackColor = System.Drawing.Color.PaleGreen;
             this.btnArchiveSupplyItem.Location = new System.Drawing.Point(372, 74);
             this.btnArchiveSupplyItem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnArchiveSupplyItem.Name = "btnArchiveSupplyItem";
             this.btnArchiveSupplyItem.Size = new System.Drawing.Size(168, 37);
             this.btnArchiveSupplyItem.TabIndex = 13;
             this.btnArchiveSupplyItem.Text = "Archive Item List";
-            this.btnArchiveSupplyItem.UseVisualStyleBackColor = true;
+            this.btnArchiveSupplyItem.UseVisualStyleBackColor = false;
             this.btnArchiveSupplyItem.Click += new System.EventHandler(this.btnArchiveSupplyItem_Click);
             // 
             // btnArchiveSupplierList
             // 
+            this.btnArchiveSupplierList.BackColor = System.Drawing.Color.PaleGreen;
             this.btnArchiveSupplierList.Location = new System.Drawing.Point(372, 28);
             this.btnArchiveSupplierList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnArchiveSupplierList.Name = "btnArchiveSupplierList";
             this.btnArchiveSupplierList.Size = new System.Drawing.Size(168, 37);
             this.btnArchiveSupplierList.TabIndex = 12;
             this.btnArchiveSupplierList.Text = "Archive Supplier List";
-            this.btnArchiveSupplierList.UseVisualStyleBackColor = true;
+            this.btnArchiveSupplierList.UseVisualStyleBackColor = false;
             this.btnArchiveSupplierList.Click += new System.EventHandler(this.btnArchiveSupplierList_Click);
             // 
             // btnSupplyItem
             // 
+            this.btnSupplyItem.BackColor = System.Drawing.Color.PaleGreen;
             this.btnSupplyItem.Enabled = false;
             this.btnSupplyItem.Location = new System.Drawing.Point(196, 74);
             this.btnSupplyItem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -631,11 +639,12 @@
             this.btnSupplyItem.Size = new System.Drawing.Size(168, 37);
             this.btnSupplyItem.TabIndex = 11;
             this.btnSupplyItem.Text = "Archive Item";
-            this.btnSupplyItem.UseVisualStyleBackColor = true;
+            this.btnSupplyItem.UseVisualStyleBackColor = false;
             this.btnSupplyItem.Click += new System.EventHandler(this.btnSupplyItem_Click);
             // 
             // btnArchiveSupplier
             // 
+            this.btnArchiveSupplier.BackColor = System.Drawing.Color.PaleGreen;
             this.btnArchiveSupplier.Enabled = false;
             this.btnArchiveSupplier.Location = new System.Drawing.Point(196, 28);
             this.btnArchiveSupplier.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -643,7 +652,7 @@
             this.btnArchiveSupplier.Size = new System.Drawing.Size(168, 37);
             this.btnArchiveSupplier.TabIndex = 10;
             this.btnArchiveSupplier.Text = "Archive Supplier";
-            this.btnArchiveSupplier.UseVisualStyleBackColor = true;
+            this.btnArchiveSupplier.UseVisualStyleBackColor = false;
             this.btnArchiveSupplier.Click += new System.EventHandler(this.btnArchiveSupplier_Click);
             // 
             // groupBox10
@@ -661,6 +670,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1548, 957);
             this.Controls.Add(this.lblSupplierID);
             this.Controls.Add(this.lblValidate);

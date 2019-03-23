@@ -114,12 +114,13 @@
             // 
             // cancelBtn
             // 
+            this.cancelBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.cancelBtn.Location = new System.Drawing.Point(40, 78);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(130, 37);
             this.cancelBtn.TabIndex = 2;
             this.cancelBtn.Text = "Cancel";
-            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.UseVisualStyleBackColor = false;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // receiptTextBox
@@ -133,12 +134,13 @@
             // 
             // confirmBtn
             // 
+            this.confirmBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.confirmBtn.Location = new System.Drawing.Point(201, 78);
             this.confirmBtn.Name = "confirmBtn";
             this.confirmBtn.Size = new System.Drawing.Size(130, 37);
             this.confirmBtn.TabIndex = 1;
             this.confirmBtn.Text = "Save";
-            this.confirmBtn.UseVisualStyleBackColor = true;
+            this.confirmBtn.UseVisualStyleBackColor = false;
             this.confirmBtn.Click += new System.EventHandler(this.confirmBtn_Click);
             // 
             // TotalGB
@@ -186,32 +188,35 @@
             // 
             // deleteBtn
             // 
+            this.deleteBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.deleteBtn.Location = new System.Drawing.Point(22, 89);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(130, 37);
             this.deleteBtn.TabIndex = 19;
             this.deleteBtn.Text = "Delete Item";
-            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.UseVisualStyleBackColor = false;
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // editBtn
             // 
+            this.editBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.editBtn.Location = new System.Drawing.Point(22, 36);
             this.editBtn.Name = "editBtn";
             this.editBtn.Size = new System.Drawing.Size(130, 37);
             this.editBtn.TabIndex = 18;
             this.editBtn.Text = "Edit Item";
-            this.editBtn.UseVisualStyleBackColor = true;
+            this.editBtn.UseVisualStyleBackColor = false;
             this.editBtn.Click += new System.EventHandler(this.editBtn_Click);
             // 
             // addItemBtn
             // 
+            this.addItemBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.addItemBtn.Location = new System.Drawing.Point(158, 36);
             this.addItemBtn.Name = "addItemBtn";
             this.addItemBtn.Size = new System.Drawing.Size(130, 37);
             this.addItemBtn.TabIndex = 3;
             this.addItemBtn.Text = "Add Item";
-            this.addItemBtn.UseVisualStyleBackColor = true;
+            this.addItemBtn.UseVisualStyleBackColor = false;
             this.addItemBtn.Click += new System.EventHandler(this.addItemBtn_Click);
             // 
             // totalPaidLabel
@@ -323,6 +328,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1055, 745);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "addSales";

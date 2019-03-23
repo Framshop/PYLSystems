@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -50,7 +50,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtBoxEmpName = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnEdit = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnStockIn = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -300,7 +299,6 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.btnEdit);
             this.groupBox4.Controls.Add(this.btnClose);
             this.groupBox4.Controls.Add(this.btnStockIn);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -310,40 +308,30 @@
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             // 
-            // btnEdit
-            // 
-            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Location = new System.Drawing.Point(93, 71);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(265, 37);
-            this.btnEdit.TabIndex = 12;
-            this.btnEdit.Text = "Edit Selected Stocked In Frame";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.PaleGreen;
             this.btnClose.Location = new System.Drawing.Point(93, 123);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(265, 37);
             this.btnClose.TabIndex = 11;
             this.btnClose.Text = "Cancel";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnStockIn
             // 
             this.btnStockIn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStockIn.Location = new System.Drawing.Point(93, 18);
+            this.btnStockIn.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnStockIn.Location = new System.Drawing.Point(93, 62);
             this.btnStockIn.Name = "btnStockIn";
             this.btnStockIn.Size = new System.Drawing.Size(265, 37);
             this.btnStockIn.TabIndex = 10;
             this.btnStockIn.Text = "Stock In Frame";
-            this.btnStockIn.UseVisualStyleBackColor = true;
+            this.btnStockIn.UseVisualStyleBackColor = false;
             this.btnStockIn.Click += new System.EventHandler(this.btnStockIn_Click);
             // 
             // tableLayoutPanel5
@@ -447,14 +435,14 @@
             this.datagridFrameStockIn.AllowUserToResizeRows = false;
             this.datagridFrameStockIn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.datagridFrameStockIn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.datagridFrameStockIn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.datagridFrameStockIn.DefaultCellStyle = dataGridViewCellStyle3;
             this.datagridFrameStockIn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.datagridFrameStockIn.Location = new System.Drawing.Point(3, 22);
             this.datagridFrameStockIn.Name = "datagridFrameStockIn";
@@ -469,6 +457,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1275, 928);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -513,7 +502,6 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnStockIn;
         private System.Windows.Forms.DataGridView datagridFrameStockIn;
-        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtBoxCost;
         private System.Windows.Forms.Label label4;

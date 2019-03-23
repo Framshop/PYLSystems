@@ -16,6 +16,7 @@ namespace PYLsystems
         String connString = "server=localhost;uid=root;pwd=root;database=frameshopdb;";
 
         private int employeeId;
+        private int selectedEmpId;
         frmPayrollListcs pFrmPayrollListcs;
         DateTime DateStart;
         DateTime DateEnd;
@@ -25,11 +26,12 @@ namespace PYLsystems
         {
             InitializeComponent();
         }
-        public frmCashAdvancecs(int employeeId, frmPayrollListcs pFrmPayrollListcs)
+        public frmCashAdvancecs(int employeeId, frmPayrollListcs pFrmPayrollListcs,int selectedEmpId)
         {
             InitializeComponent();
             this.employeeId = employeeId;
             this.pFrmPayrollListcs = pFrmPayrollListcs;
+            this.selectedEmpId = selectedEmpId;
         }
         private void frmCashAdvancecs_Load(object sender, EventArgs e)
         {
@@ -88,9 +90,20 @@ namespace PYLsystems
 
                 MySqlDataAdapter my_adapter = new MySqlDataAdapter(cmdComboBoxEmpNames);
                 my_adapter.Fill(dtComboBoxEmpNames);
+                int comboBoxIndex=0;
+                if (dtComboBoxEmpNames.Rows.Count > 0) {
+                    for (int i = 0; i < dtComboBoxEmpNames.Rows.Count; i++)
+                    {
+                        if (Int32.Parse(dtComboBoxEmpNames.Rows[i]["employeeId"].ToString()) == selectedEmpId)
+                        {
+                            comboBoxIndex = i;
+                        }
+                }
+                }
                 comboBoxEmp.DisplayMember = dtComboBoxEmpNames.Columns["Employee Name"].ToString();
                 comboBoxEmp.ValueMember = "employeeID";
                 comboBoxEmp.DataSource = dtComboBoxEmpNames;
+                comboBoxEmp.SelectedIndex = comboBoxIndex;
                 txtBoxReceivedBy.Text = comboBoxEmp.Text;
             }
             catch (Exception ex)

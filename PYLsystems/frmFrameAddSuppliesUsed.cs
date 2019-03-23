@@ -260,6 +260,8 @@ namespace PYLsystems
 
                     txtBoxVolume.Enabled = false;
                     cboVolumeUnit.Enabled = false;
+
+                    
                 }
                 else if (String.Equals(txtBoxTypeOfM.Text, "Whole"))
                 {
@@ -278,6 +280,8 @@ namespace PYLsystems
 
                     txtBoxVolume.Enabled = false;
                     cboVolumeUnit.Enabled = false;
+
+                    cboWholeUnit.Text = datagridSuppliesList.Rows[currRowIndex].Cells["Base Unit Measure"].Value.ToString();
                 }
                 else if (String.Equals(txtBoxTypeOfM.Text, "Volume"))
                 {

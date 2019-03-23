@@ -148,13 +148,14 @@
             this.productsSoldBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.productsSoldBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.productsSoldBtn.FlatAppearance.BorderSize = 0;
             this.productsSoldBtn.Location = new System.Drawing.Point(3, 99);
             this.productsSoldBtn.Name = "productsSoldBtn";
             this.productsSoldBtn.Size = new System.Drawing.Size(442, 42);
             this.productsSoldBtn.TabIndex = 5;
             this.productsSoldBtn.Text = "Products Sold";
-            this.productsSoldBtn.UseVisualStyleBackColor = true;
+            this.productsSoldBtn.UseVisualStyleBackColor = false;
             this.productsSoldBtn.Click += new System.EventHandler(this.productsSoldBtn_Click);
             // 
             // totalProfitBtn
@@ -162,13 +163,14 @@
             this.totalProfitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalProfitBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.totalProfitBtn.FlatAppearance.BorderSize = 0;
             this.totalProfitBtn.Location = new System.Drawing.Point(3, 51);
             this.totalProfitBtn.Name = "totalProfitBtn";
             this.totalProfitBtn.Size = new System.Drawing.Size(442, 42);
             this.totalProfitBtn.TabIndex = 4;
             this.totalProfitBtn.Text = "Total Profit";
-            this.totalProfitBtn.UseVisualStyleBackColor = true;
+            this.totalProfitBtn.UseVisualStyleBackColor = false;
             this.totalProfitBtn.Click += new System.EventHandler(this.totalProfitBtn_Click);
             // 
             // salesOrderGB
@@ -341,13 +343,14 @@
             this.addSalesOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.addSalesOrder.BackColor = System.Drawing.Color.PaleGreen;
             this.addSalesOrder.FlatAppearance.BorderSize = 0;
             this.addSalesOrder.Location = new System.Drawing.Point(3, 3);
             this.addSalesOrder.Name = "addSalesOrder";
             this.addSalesOrder.Size = new System.Drawing.Size(442, 42);
             this.addSalesOrder.TabIndex = 3;
             this.addSalesOrder.Text = "New Sales Order";
-            this.addSalesOrder.UseVisualStyleBackColor = true;
+            this.addSalesOrder.UseVisualStyleBackColor = false;
             this.addSalesOrder.Click += new System.EventHandler(this.addSalesOrder_Click);
             // 
             // tableLayoutPanel2
@@ -685,6 +688,7 @@
             this.updateBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.updateBtn.Enabled = false;
             this.updateBtn.FlatAppearance.BorderSize = 0;
             this.updateBtn.Location = new System.Drawing.Point(250, 3);
@@ -692,7 +696,7 @@
             this.updateBtn.Size = new System.Drawing.Size(250, 76);
             this.updateBtn.TabIndex = 0;
             this.updateBtn.Text = "Update";
-            this.updateBtn.UseVisualStyleBackColor = true;
+            this.updateBtn.UseVisualStyleBackColor = false;
             this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
             // 
             // cancelBtn
@@ -700,6 +704,7 @@
             this.cancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.cancelBtn.Enabled = false;
             this.cancelBtn.FlatAppearance.BorderSize = 0;
             this.cancelBtn.Location = new System.Drawing.Point(250, 85);
@@ -707,7 +712,7 @@
             this.cancelBtn.Size = new System.Drawing.Size(250, 72);
             this.cancelBtn.TabIndex = 2;
             this.cancelBtn.Text = "Cancel S.O";
-            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.UseVisualStyleBackColor = false;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // resetBtn
@@ -715,6 +720,7 @@
             this.resetBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.resetBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.resetBtn.Enabled = false;
             this.resetBtn.FlatAppearance.BorderSize = 0;
             this.resetBtn.Location = new System.Drawing.Point(3, 3);
@@ -722,7 +728,7 @@
             this.resetBtn.Size = new System.Drawing.Size(241, 76);
             this.resetBtn.TabIndex = 1;
             this.resetBtn.Text = "Reset";
-            this.resetBtn.UseVisualStyleBackColor = true;
+            this.resetBtn.UseVisualStyleBackColor = false;
             this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
             // checkSales
@@ -730,6 +736,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1475, 960);
             this.Controls.Add(this.splitContainer1);
             this.Name = "checkSales";

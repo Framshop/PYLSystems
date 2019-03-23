@@ -94,7 +94,7 @@ namespace PYLsystems
             datagridFrameStockIn.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells);
 
             //Hide edit Stock In for now
-            btnEdit.Visible = false;
+            
         }
         private void frameDetailsLoader()
         {

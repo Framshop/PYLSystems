@@ -35,6 +35,8 @@ namespace PYLsystems
             dtSuppliesUsedSaved.Columns.Add("Supply Name", typeof(String));
             dtSuppliesUsedSaved.Columns.Add("Category", typeof(String));
             dtSuppliesUsedSaved.Columns.Add("typeOfMeasure", typeof(String));
+            dtSuppliesUsedSaved.Columns.Add("Cost/Base Unit Measure", typeof(double));
+            dtSuppliesUsedSaved.Columns.Add("Base Unit Measure", typeof(String));
             dtSuppliesUsedSaved.Columns.Add("deductedA", typeof(double));
             dtSuppliesUsedSaved.Columns.Add("deductedB", typeof(double));
             dtSuppliesUsedSaved.Columns.Add("Usage", typeof(String));
@@ -49,7 +51,6 @@ namespace PYLsystems
 
 
             //ADDED Custom Columns
-            dtSuppliesUsedSaved.Columns.Add("Cost/Unit Measure", typeof(double));
             dtSuppliesUsedSaved.Columns.Add("Cost/Selected Unit Measure", typeof(double));
             dtSuppliesUsedSaved.Columns.Add("Raw Cost", typeof(double));
 
@@ -63,8 +64,8 @@ namespace PYLsystems
         {
             dataGridSuppliesUsed.DataSource = null;
             dataGridSuppliesUsed.DataSource = dtSuppliesUsedSaved;
-            dataGridSuppliesUsed.Columns["Cost/Unit Measure"].DefaultCellStyle.Format = "P0.0000";
-            dataGridSuppliesUsed.Columns["Cost/Selected Unit Measure"].DefaultCellStyle.Format = "P0.0000";
+            dataGridSuppliesUsed.Columns["Cost/Base Unit Measure"].DefaultCellStyle.Format = "P0.0000000";
+            dataGridSuppliesUsed.Columns["Cost/Selected Unit Measure"].DefaultCellStyle.Format = "P0.0000000";
             dataGridSuppliesUsed.Columns["Raw Cost"].DefaultCellStyle.Format = "P0.0000";
             dataGridSuppliesUsed.Columns["supply_itemsId"].Visible = false;
             dataGridSuppliesUsed.Columns["OGUnitMeasure"].Visible = false;
@@ -118,6 +119,7 @@ namespace PYLsystems
 
             dtSuppliesUsedSaved.Rows[indexdtInsert]["Unit Measure"] = addEditSuppliesVals.unitMeasureUsed;
 
+            dtSuppliesUsedSaved.Rows[indexdtInsert]["Base Unit Measure"] = "1 " + addEditSuppliesVals.unitMeasure_OG;
             dtSuppliesUsedSaved.Rows[indexdtInsert]["OGUnitMeasure"] = addEditSuppliesVals.unitMeasure_OG;
             dtSuppliesUsedSaved.Rows[indexdtInsert]["OGUnitPrice"] = addEditSuppliesVals.unitPriceOG;
             dtSuppliesUsedSaved.Rows[indexdtInsert]["measureAOG"] = addEditSuppliesVals.measureA_OG;
@@ -134,6 +136,7 @@ namespace PYLsystems
                 dtSuppliesUsedSaved.Rows[indexdtInsert]["measureBOG"] = addEditSuppliesVals.measureB_OG;
                 dtSuppliesUsedSaved.Rows[indexdtInsert]["deductedB"] = addEditSuppliesVals.measureBUsed;
                 dtSuppliesUsedSaved.Rows[indexdtInsert]["measureBtoOG"] = measureConverter(addEditSuppliesVals.measureBUsed, addEditSuppliesVals.unitMeasure_OG, addEditSuppliesVals.unitMeasureUsed);
+                dtSuppliesUsedSaved.Rows[indexdtInsert]["Base Unit Measure"] = "1 " + addEditSuppliesVals.unitMeasure_OG + "²";
 
             }
             else if (String.Equals(addEditSuppliesVals.typeOfMeasure, "Whole")) ////NOTE: MAJOR BUG UPDATE. PLEASE TELL BEN ABOUT THIS. 3/20/2019 8:35AM
@@ -165,7 +168,7 @@ namespace PYLsystems
             refreshDataGrid();
             rawCostCalculation();
         }
-        //COST/UNIT MEASURE(trueUnitPrice) AND RAW COST CALCULATOR, pass data and indexInDataTable
+        //Cost/Base Unit Measure(trueUnitPrice) AND RAW COST CALCULATOR, pass data and indexInDataTable
         internal void trueCostCalculationPutDataGrid(forAddEditSupplies addEditSuppliesVals, int dtSuppliesUsedSavedIndex)
         {
 
@@ -174,7 +177,7 @@ namespace PYLsystems
                 double rawCost = addEditSuppliesVals.measureAUsed * addEditSuppliesVals.unitPriceOG;
 
                 dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Selected Unit Measure"] = addEditSuppliesVals.unitPriceOG;
-                dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Unit Measure"] = addEditSuppliesVals.unitPriceOG;
+                dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Base Unit Measure"] = addEditSuppliesVals.unitPriceOG;
                 dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Raw Cost"] = rawCost;
                 refreshDataGrid();
 
@@ -191,7 +194,7 @@ namespace PYLsystems
                     double rawCost = areaOfUsed * trueUnitPrice;
 
                     dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Selected Unit Measure"] = trueUnitPrice;
-                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Unit Measure"] = trueUnitPrice;
+                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Base Unit Measure"] = trueUnitPrice;
                     dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Raw Cost"] = rawCost;
                     refreshDataGrid();
                 }
@@ -202,7 +205,7 @@ namespace PYLsystems
                     double rawCost = addEditSuppliesVals.measureAUsed * trueUnitPrice;
 
                     dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Selected Unit Measure"] = trueUnitPrice;
-                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Unit Measure"] = trueUnitPrice;
+                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Base Unit Measure"] = trueUnitPrice;
                     dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Raw Cost"] = rawCost;
                     refreshDataGrid();
 
@@ -231,7 +234,7 @@ namespace PYLsystems
                     double displayPrice = addEditSuppliesVals.unitPriceOG/area_OGDisplay;
 
                     dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Selected Unit Measure"] = displayPrice;
-                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Unit Measure"] = trueUnitPrice;
+                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Base Unit Measure"] = trueUnitPrice;
                     dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Raw Cost"] = rawCost;
                     refreshDataGrid();
 
@@ -262,7 +265,7 @@ namespace PYLsystems
                     double rawCost = measureAConvertedUse * trueUnitPrice; //Get the raw cost of the item based on 'Area Usage' multiplied by the true Unit Price
 
                     dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Selected Unit Measure"] = displayPrice;
-                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Unit Measure"] = trueUnitPrice;
+                    dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Cost/Base Unit Measure"] = trueUnitPrice;
                     dtSuppliesUsedSaved.Rows[dtSuppliesUsedSavedIndex]["Raw Cost"] = rawCost;
                     refreshDataGrid();
 

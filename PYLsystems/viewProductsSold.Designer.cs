@@ -96,12 +96,13 @@
             // 
             // closeBtn
             // 
+            this.closeBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.closeBtn.Location = new System.Drawing.Point(94, 68);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Size = new System.Drawing.Size(130, 37);
             this.closeBtn.TabIndex = 2;
             this.closeBtn.Text = "Close";
-            this.closeBtn.UseVisualStyleBackColor = true;
+            this.closeBtn.UseVisualStyleBackColor = false;
             this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
             // datePickerGB
@@ -251,6 +252,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1055, 745);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "viewProductsSold";

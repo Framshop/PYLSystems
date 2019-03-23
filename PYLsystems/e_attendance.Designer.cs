@@ -49,20 +49,20 @@
             this.dateNowTextBox = new System.Windows.Forms.TextBox();
             this.othersGB = new System.Windows.Forms.GroupBox();
             this.closeBtn = new System.Windows.Forms.Button();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.attendanceDatesGB = new System.Windows.Forms.GroupBox();
             this.attendanceGridView = new System.Windows.Forms.DataGridView();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.dateSelectionGB.SuspendLayout();
             this.timeInOutGB.SuspendLayout();
             this.infoGB.SuspendLayout();
             this.othersGB.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.attendanceDatesGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.attendanceGridView)).BeginInit();
-            this.tableLayoutPanel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -206,26 +206,28 @@
             // 
             this.timeInBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.timeInBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.timeInBtn.Enabled = false;
             this.timeInBtn.Location = new System.Drawing.Point(72, 45);
             this.timeInBtn.Name = "timeInBtn";
             this.timeInBtn.Size = new System.Drawing.Size(310, 37);
             this.timeInBtn.TabIndex = 3;
             this.timeInBtn.Text = "Time In";
-            this.timeInBtn.UseVisualStyleBackColor = true;
+            this.timeInBtn.UseVisualStyleBackColor = false;
             this.timeInBtn.Click += new System.EventHandler(this.timeInBtn_Click);
             // 
             // timeOutBtn
             // 
             this.timeOutBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.timeOutBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.timeOutBtn.Enabled = false;
             this.timeOutBtn.Location = new System.Drawing.Point(72, 105);
             this.timeOutBtn.Name = "timeOutBtn";
             this.timeOutBtn.Size = new System.Drawing.Size(310, 37);
             this.timeOutBtn.TabIndex = 4;
             this.timeOutBtn.Text = "Time Out";
-            this.timeOutBtn.UseVisualStyleBackColor = true;
+            this.timeOutBtn.UseVisualStyleBackColor = false;
             this.timeOutBtn.Click += new System.EventHandler(this.timeOutBtn_Click);
             // 
             // infoGB
@@ -327,13 +329,29 @@
             // 
             this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.closeBtn.Location = new System.Drawing.Point(72, 99);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Size = new System.Drawing.Size(310, 37);
             this.closeBtn.TabIndex = 5;
             this.closeBtn.Text = "Close";
-            this.closeBtn.UseVisualStyleBackColor = true;
+            this.closeBtn.UseVisualStyleBackColor = false;
             this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.attendanceDatesGB, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.groupBox1, 0, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(487, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.75F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.25F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(951, 800);
+            this.tableLayoutPanel3.TabIndex = 1;
             // 
             // attendanceDatesGB
             // 
@@ -363,33 +381,6 @@
             this.attendanceGridView.Size = new System.Drawing.Size(939, 679);
             this.attendanceGridView.TabIndex = 2;
             // 
-            // btnEdit
-            // 
-            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Location = new System.Drawing.Point(26, 25);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(310, 37);
-            this.btnEdit.TabIndex = 6;
-            this.btnEdit.Text = "Edit Attendance";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.attendanceDatesGB, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.groupBox1, 0, 1);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(487, 3);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.75F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.25F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(951, 800);
-            this.tableLayoutPanel3.TabIndex = 1;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnEdit);
@@ -400,14 +391,29 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEdit.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnEdit.Location = new System.Drawing.Point(26, 25);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(310, 37);
+            this.btnEdit.TabIndex = 6;
+            this.btnEdit.Text = "Edit Attendance";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // e_attendance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1441, 806);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "e_attendance";
             this.Text = "Attendance";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.e_attendance_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -417,9 +423,9 @@
             this.infoGB.ResumeLayout(false);
             this.infoGB.PerformLayout();
             this.othersGB.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.attendanceDatesGB.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.attendanceGridView)).EndInit();
-            this.tableLayoutPanel3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 

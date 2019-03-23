@@ -544,64 +544,69 @@
             // 
             this.btnDamageItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDamageItem.BackColor = System.Drawing.Color.PaleGreen;
             this.btnDamageItem.Enabled = false;
             this.btnDamageItem.Location = new System.Drawing.Point(116, 155);
             this.btnDamageItem.Name = "btnDamageItem";
             this.btnDamageItem.Size = new System.Drawing.Size(215, 37);
             this.btnDamageItem.TabIndex = 27;
             this.btnDamageItem.Text = "Stock Out as Damage Item";
-            this.btnDamageItem.UseVisualStyleBackColor = true;
+            this.btnDamageItem.UseVisualStyleBackColor = false;
             this.btnDamageItem.Click += new System.EventHandler(this.btnDamageItem_Click);
             // 
             // btnStockInSelectedItem
             // 
             this.btnStockInSelectedItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStockInSelectedItem.BackColor = System.Drawing.Color.PaleGreen;
             this.btnStockInSelectedItem.Enabled = false;
             this.btnStockInSelectedItem.Location = new System.Drawing.Point(116, 112);
             this.btnStockInSelectedItem.Name = "btnStockInSelectedItem";
             this.btnStockInSelectedItem.Size = new System.Drawing.Size(215, 37);
             this.btnStockInSelectedItem.TabIndex = 25;
             this.btnStockInSelectedItem.Text = "Stock In Selected Item";
-            this.btnStockInSelectedItem.UseVisualStyleBackColor = true;
+            this.btnStockInSelectedItem.UseVisualStyleBackColor = false;
             this.btnStockInSelectedItem.Click += new System.EventHandler(this.btnStockInSelectedItem_Click);
             // 
             // btnUpdateDetails
             // 
             this.btnUpdateDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdateDetails.BackColor = System.Drawing.Color.PaleGreen;
             this.btnUpdateDetails.Enabled = false;
             this.btnUpdateDetails.Location = new System.Drawing.Point(116, 69);
             this.btnUpdateDetails.Name = "btnUpdateDetails";
             this.btnUpdateDetails.Size = new System.Drawing.Size(215, 37);
             this.btnUpdateDetails.TabIndex = 24;
             this.btnUpdateDetails.Text = "Update Details";
-            this.btnUpdateDetails.UseVisualStyleBackColor = true;
+            this.btnUpdateDetails.UseVisualStyleBackColor = false;
             this.btnUpdateDetails.Click += new System.EventHandler(this.btnUpdateDetails_Click);
             // 
             // btnCreateItem
             // 
             this.btnCreateItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCreateItem.BackColor = System.Drawing.Color.PaleGreen;
             this.btnCreateItem.Enabled = false;
             this.btnCreateItem.Location = new System.Drawing.Point(116, 26);
             this.btnCreateItem.Name = "btnCreateItem";
             this.btnCreateItem.Size = new System.Drawing.Size(215, 37);
             this.btnCreateItem.TabIndex = 23;
             this.btnCreateItem.Text = "Create Item";
-            this.btnCreateItem.UseVisualStyleBackColor = true;
+            this.btnCreateItem.UseVisualStyleBackColor = false;
             this.btnCreateItem.Click += new System.EventHandler(this.btnCreateItem_Click);
             // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.PaleGreen;
             this.btnClose.Location = new System.Drawing.Point(116, 198);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(215, 37);
             this.btnClose.TabIndex = 26;
             this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // gpSupplyDetails
@@ -638,6 +643,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1370, 1152);
             this.Controls.Add(this.lblSupplyItemsID);
             this.Controls.Add(this.lblValidate);

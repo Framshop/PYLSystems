@@ -31,11 +31,12 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.GBButtons = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnGenerateReport = new System.Windows.Forms.Button();
             this.btnEditPayment = new System.Windows.Forms.Button();
             this.btnCreatePayroll = new System.Windows.Forms.Button();
-            this.closeBtn = new System.Windows.Forms.Button();
             this.btnVoidCashAdv = new System.Windows.Forms.Button();
             this.btnCashAdv = new System.Windows.Forms.Button();
+            this.closeBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.GBPayrollDet = new System.Windows.Forms.GroupBox();
             this.datagridPayrollDet = new System.Windows.Forms.DataGridView();
@@ -49,7 +50,6 @@
             this.startDatePicker = new System.Windows.Forms.DateTimePicker();
             this.GBEmplist = new System.Windows.Forms.GroupBox();
             this.datagridEmpList = new System.Windows.Forms.DataGridView();
-            this.btnGenerateReport = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.GBButtons.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -118,17 +118,32 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1285, 65);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
+            // btnGenerateReport
+            // 
+            this.btnGenerateReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenerateReport.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnGenerateReport.Location = new System.Drawing.Point(859, 3);
+            this.btnGenerateReport.Name = "btnGenerateReport";
+            this.btnGenerateReport.Size = new System.Drawing.Size(208, 59);
+            this.btnGenerateReport.TabIndex = 8;
+            this.btnGenerateReport.Text = "Print Report";
+            this.btnGenerateReport.UseVisualStyleBackColor = false;
+            this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
+            // 
             // btnEditPayment
             // 
             this.btnEditPayment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditPayment.BackColor = System.Drawing.Color.PaleGreen;
             this.btnEditPayment.Location = new System.Drawing.Point(3, 3);
             this.btnEditPayment.Name = "btnEditPayment";
             this.btnEditPayment.Size = new System.Drawing.Size(208, 59);
             this.btnEditPayment.TabIndex = 7;
             this.btnEditPayment.Text = "Edit Payment";
-            this.btnEditPayment.UseVisualStyleBackColor = true;
+            this.btnEditPayment.UseVisualStyleBackColor = false;
             this.btnEditPayment.Click += new System.EventHandler(this.btnEditPayment_Click);
             // 
             // btnCreatePayroll
@@ -136,38 +151,28 @@
             this.btnCreatePayroll.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCreatePayroll.BackColor = System.Drawing.Color.PaleGreen;
             this.btnCreatePayroll.Location = new System.Drawing.Point(217, 3);
             this.btnCreatePayroll.Name = "btnCreatePayroll";
             this.btnCreatePayroll.Size = new System.Drawing.Size(208, 59);
             this.btnCreatePayroll.TabIndex = 4;
             this.btnCreatePayroll.Text = "Create Payroll";
-            this.btnCreatePayroll.UseVisualStyleBackColor = true;
+            this.btnCreatePayroll.UseVisualStyleBackColor = false;
             this.btnCreatePayroll.Click += new System.EventHandler(this.btnCreatePayroll_Click);
-            // 
-            // closeBtn
-            // 
-            this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeBtn.Location = new System.Drawing.Point(1086, 3);
-            this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(196, 59);
-            this.closeBtn.TabIndex = 3;
-            this.closeBtn.Text = "Close";
-            this.closeBtn.UseVisualStyleBackColor = true;
-            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
             // btnVoidCashAdv
             // 
             this.btnVoidCashAdv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVoidCashAdv.BackColor = System.Drawing.Color.PaleGreen;
             this.btnVoidCashAdv.Enabled = false;
             this.btnVoidCashAdv.Location = new System.Drawing.Point(645, 3);
             this.btnVoidCashAdv.Name = "btnVoidCashAdv";
             this.btnVoidCashAdv.Size = new System.Drawing.Size(208, 59);
             this.btnVoidCashAdv.TabIndex = 6;
             this.btnVoidCashAdv.Text = "Void Cash Advance";
-            this.btnVoidCashAdv.UseVisualStyleBackColor = true;
+            this.btnVoidCashAdv.UseVisualStyleBackColor = false;
             this.btnVoidCashAdv.Click += new System.EventHandler(this.btnVoidCashAdv_Click);
             // 
             // btnCashAdv
@@ -175,13 +180,27 @@
             this.btnCashAdv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCashAdv.BackColor = System.Drawing.Color.PaleGreen;
             this.btnCashAdv.Location = new System.Drawing.Point(431, 3);
             this.btnCashAdv.Name = "btnCashAdv";
             this.btnCashAdv.Size = new System.Drawing.Size(208, 59);
             this.btnCashAdv.TabIndex = 5;
             this.btnCashAdv.Text = "Create Cash Advance";
-            this.btnCashAdv.UseVisualStyleBackColor = true;
+            this.btnCashAdv.UseVisualStyleBackColor = false;
             this.btnCashAdv.Click += new System.EventHandler(this.btnCashAdv_Click);
+            // 
+            // closeBtn
+            // 
+            this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeBtn.BackColor = System.Drawing.Color.PaleGreen;
+            this.closeBtn.Location = new System.Drawing.Point(1086, 3);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.Size = new System.Drawing.Size(196, 59);
+            this.closeBtn.TabIndex = 3;
+            this.closeBtn.Text = "Close";
+            this.closeBtn.UseVisualStyleBackColor = false;
+            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -369,27 +388,16 @@
             this.datagridEmpList.TabIndex = 0;
             this.datagridEmpList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridEmpList_CellClick);
             // 
-            // btnGenerateReport
-            // 
-            this.btnGenerateReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenerateReport.Location = new System.Drawing.Point(859, 3);
-            this.btnGenerateReport.Name = "btnGenerateReport";
-            this.btnGenerateReport.Size = new System.Drawing.Size(208, 59);
-            this.btnGenerateReport.TabIndex = 8;
-            this.btnGenerateReport.Text = "Print Report";
-            this.btnGenerateReport.UseVisualStyleBackColor = true;
-            this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
-            // 
             // frmPayrollListcs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1438, 976);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmPayrollListcs";
             this.Text = "frmPayrollList";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmPayrollListcs_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.GBButtons.ResumeLayout(false);

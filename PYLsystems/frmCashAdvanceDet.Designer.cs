@@ -31,6 +31,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.GBCashAdvanceDet = new System.Windows.Forms.GroupBox();
+            this.textBoxCashAdvDesc = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lblTotalAmount = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@
             this.endLabel = new System.Windows.Forms.Label();
             this.lblPayrollDate = new System.Windows.Forms.Label();
             this.closeBtn = new System.Windows.Forms.Button();
-            this.textBoxCashAdvDesc = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.GBCashAdvanceDet.SuspendLayout();
@@ -105,6 +105,15 @@
             this.GBCashAdvanceDet.TabIndex = 0;
             this.GBCashAdvanceDet.TabStop = false;
             this.GBCashAdvanceDet.Text = "Cash Advance Details";
+            // 
+            // textBoxCashAdvDesc
+            // 
+            this.textBoxCashAdvDesc.Location = new System.Drawing.Point(248, 339);
+            this.textBoxCashAdvDesc.Multiline = true;
+            this.textBoxCashAdvDesc.Name = "textBoxCashAdvDesc";
+            this.textBoxCashAdvDesc.ReadOnly = true;
+            this.textBoxCashAdvDesc.Size = new System.Drawing.Size(306, 229);
+            this.textBoxCashAdvDesc.TabIndex = 32;
             // 
             // label12
             // 
@@ -259,27 +268,20 @@
             // closeBtn
             // 
             this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.closeBtn.Location = new System.Drawing.Point(434, 669);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Size = new System.Drawing.Size(196, 59);
             this.closeBtn.TabIndex = 4;
             this.closeBtn.Text = "Close";
-            this.closeBtn.UseVisualStyleBackColor = true;
+            this.closeBtn.UseVisualStyleBackColor = false;
             this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
-            // 
-            // textBoxCashAdvDesc
-            // 
-            this.textBoxCashAdvDesc.Location = new System.Drawing.Point(248, 339);
-            this.textBoxCashAdvDesc.Multiline = true;
-            this.textBoxCashAdvDesc.Name = "textBoxCashAdvDesc";
-            this.textBoxCashAdvDesc.ReadOnly = true;
-            this.textBoxCashAdvDesc.Size = new System.Drawing.Size(306, 229);
-            this.textBoxCashAdvDesc.TabIndex = 32;
             // 
             // frmCashAdvanceDet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(811, 829);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;

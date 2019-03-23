@@ -253,12 +253,13 @@
             this.btnAddSupply.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddSupply.BackColor = System.Drawing.Color.PaleGreen;
             this.btnAddSupply.Location = new System.Drawing.Point(3, 3);
             this.btnAddSupply.Name = "btnAddSupply";
             this.btnAddSupply.Size = new System.Drawing.Size(268, 67);
             this.btnAddSupply.TabIndex = 8;
             this.btnAddSupply.Text = "Add a Supply";
-            this.btnAddSupply.UseVisualStyleBackColor = true;
+            this.btnAddSupply.UseVisualStyleBackColor = false;
             this.btnAddSupply.Click += new System.EventHandler(this.btnAddSupply_Click);
             // 
             // btnEditSupply
@@ -266,12 +267,13 @@
             this.btnEditSupply.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditSupply.BackColor = System.Drawing.Color.PaleGreen;
             this.btnEditSupply.Location = new System.Drawing.Point(277, 3);
             this.btnEditSupply.Name = "btnEditSupply";
             this.btnEditSupply.Size = new System.Drawing.Size(268, 67);
             this.btnEditSupply.TabIndex = 9;
             this.btnEditSupply.Text = "Edit Supply";
-            this.btnEditSupply.UseVisualStyleBackColor = true;
+            this.btnEditSupply.UseVisualStyleBackColor = false;
             this.btnEditSupply.Click += new System.EventHandler(this.btnEditSupply_Click);
             // 
             // btnRemove
@@ -279,12 +281,13 @@
             this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemove.BackColor = System.Drawing.Color.PaleGreen;
             this.btnRemove.Location = new System.Drawing.Point(551, 3);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(269, 67);
             this.btnRemove.TabIndex = 12;
             this.btnRemove.Text = "Remove Supply";
-            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.UseVisualStyleBackColor = false;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // tableLayoutPanel5
@@ -416,30 +419,33 @@
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.PaleGreen;
             this.btnClose.Location = new System.Drawing.Point(78, 109);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(264, 37);
             this.btnClose.TabIndex = 9;
             this.btnClose.Text = "Cancel";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnCreate
             // 
             this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCreate.BackColor = System.Drawing.Color.PaleGreen;
             this.btnCreate.Location = new System.Drawing.Point(78, 36);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(264, 37);
             this.btnCreate.TabIndex = 8;
             this.btnCreate.Text = "Create Frame";
-            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.UseVisualStyleBackColor = false;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // frmFrameCreate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1436, 959);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

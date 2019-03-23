@@ -277,38 +277,41 @@
             // 
             this.btnEditDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditDetails.BackColor = System.Drawing.Color.PaleGreen;
             this.btnEditDetails.Enabled = false;
             this.btnEditDetails.Location = new System.Drawing.Point(94, 105);
             this.btnEditDetails.Name = "btnEditDetails";
             this.btnEditDetails.Size = new System.Drawing.Size(274, 37);
             this.btnEditDetails.TabIndex = 36;
             this.btnEditDetails.Text = "Edit Details";
-            this.btnEditDetails.UseVisualStyleBackColor = true;
+            this.btnEditDetails.UseVisualStyleBackColor = false;
             this.btnEditDetails.Click += new System.EventHandler(this.btnEditDetails_Click);
             // 
             // btnStockInItem
             // 
             this.btnStockInItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStockInItem.BackColor = System.Drawing.Color.PaleGreen;
             this.btnStockInItem.Enabled = false;
             this.btnStockInItem.Location = new System.Drawing.Point(94, 52);
             this.btnStockInItem.Name = "btnStockInItem";
             this.btnStockInItem.Size = new System.Drawing.Size(274, 37);
             this.btnStockInItem.TabIndex = 35;
             this.btnStockInItem.Text = "Stock In Item";
-            this.btnStockInItem.UseVisualStyleBackColor = true;
+            this.btnStockInItem.UseVisualStyleBackColor = false;
             this.btnStockInItem.Click += new System.EventHandler(this.btnStockInItem_Click);
             // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.PaleGreen;
             this.btnClose.Location = new System.Drawing.Point(94, 155);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(274, 37);
             this.btnClose.TabIndex = 34;
             this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // tableLayoutPanel5
@@ -434,6 +437,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1370, 934);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

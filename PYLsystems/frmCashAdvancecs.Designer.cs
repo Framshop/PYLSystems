@@ -176,35 +176,34 @@
             // 
             // btnClose
             // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.PaleGreen;
             this.btnClose.Location = new System.Drawing.Point(565, 643);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(130, 37);
             this.btnClose.TabIndex = 31;
             this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnAddCashAdv
             // 
-            this.btnAddCashAdv.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddCashAdv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddCashAdv.BackColor = System.Drawing.Color.PaleGreen;
             this.btnAddCashAdv.Location = new System.Drawing.Point(409, 643);
             this.btnAddCashAdv.Name = "btnAddCashAdv";
             this.btnAddCashAdv.Size = new System.Drawing.Size(130, 37);
             this.btnAddCashAdv.TabIndex = 30;
             this.btnAddCashAdv.Text = "Add";
-            this.btnAddCashAdv.UseVisualStyleBackColor = true;
+            this.btnAddCashAdv.UseVisualStyleBackColor = false;
             this.btnAddCashAdv.Click += new System.EventHandler(this.btnAddCashAdv_Click);
             // 
             // label6
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(241, 541);
+            this.label6.Location = new System.Drawing.Point(124, 541);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(176, 20);
             this.label6.TabIndex = 27;
@@ -212,12 +211,11 @@
             // 
             // txtBoxCAAmount
             // 
-            this.txtBoxCAAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtBoxCAAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBoxCAAmount.Location = new System.Drawing.Point(433, 538);
+            this.txtBoxCAAmount.Location = new System.Drawing.Point(306, 538);
             this.txtBoxCAAmount.Name = "txtBoxCAAmount";
-            this.txtBoxCAAmount.Size = new System.Drawing.Size(262, 26);
+            this.txtBoxCAAmount.Size = new System.Drawing.Size(389, 26);
             this.txtBoxCAAmount.TabIndex = 26;
             this.txtBoxCAAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxCAAmount_KeyPress);
             // 
@@ -330,10 +328,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1113, 856);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmCashAdvancecs";
             this.Text = "frmCashAdvancecs";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmCashAdvancecs_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

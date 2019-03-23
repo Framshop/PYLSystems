@@ -49,6 +49,7 @@
             // 
             this.btnFrameList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFrameList.BackColor = System.Drawing.Color.PaleGreen;
             this.btnFrameList.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnFrameList.Location = new System.Drawing.Point(4, 204);
             this.btnFrameList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -56,13 +57,14 @@
             this.btnFrameList.Size = new System.Drawing.Size(275, 129);
             this.btnFrameList.TabIndex = 1;
             this.btnFrameList.Text = "Frames List";
-            this.btnFrameList.UseVisualStyleBackColor = true;
+            this.btnFrameList.UseVisualStyleBackColor = false;
             this.btnFrameList.Click += new System.EventHandler(this.btnFrameList_Click);
             // 
             // btnSupplies
             // 
             this.btnSupplies.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSupplies.BackColor = System.Drawing.Color.PaleGreen;
             this.btnSupplies.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSupplies.Location = new System.Drawing.Point(4, 33);
             this.btnSupplies.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -70,13 +72,14 @@
             this.btnSupplies.Size = new System.Drawing.Size(275, 129);
             this.btnSupplies.TabIndex = 2;
             this.btnSupplies.Text = "Supplies";
-            this.btnSupplies.UseVisualStyleBackColor = true;
+            this.btnSupplies.UseVisualStyleBackColor = false;
             this.btnSupplies.Click += new System.EventHandler(this.btnSupplies_Click);
             // 
             // btnJobOrder
             // 
             this.btnJobOrder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnJobOrder.BackColor = System.Drawing.Color.PaleGreen;
             this.btnJobOrder.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnJobOrder.Location = new System.Drawing.Point(4, 375);
             this.btnJobOrder.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -84,7 +87,7 @@
             this.btnJobOrder.Size = new System.Drawing.Size(275, 129);
             this.btnJobOrder.TabIndex = 5;
             this.btnJobOrder.Text = "Job Orders";
-            this.btnJobOrder.UseVisualStyleBackColor = true;
+            this.btnJobOrder.UseVisualStyleBackColor = false;
             this.btnJobOrder.Click += new System.EventHandler(this.btnJobOrders_Click);
             // 
             // tableLayoutPanel1
@@ -183,11 +186,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(695, 730);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmInventoryHomePage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " Inventory and Job Orders";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

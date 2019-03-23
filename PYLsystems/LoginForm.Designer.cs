@@ -56,22 +56,24 @@
             // 
             // loginButton
             // 
+            this.loginButton.BackColor = System.Drawing.Color.PaleGreen;
             this.loginButton.Location = new System.Drawing.Point(261, 287);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(103, 46);
             this.loginButton.TabIndex = 2;
             this.loginButton.Text = "Login";
-            this.loginButton.UseVisualStyleBackColor = true;
+            this.loginButton.UseVisualStyleBackColor = false;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // cancelButton
             // 
+            this.cancelButton.BackColor = System.Drawing.Color.PaleGreen;
             this.cancelButton.Location = new System.Drawing.Point(385, 287);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(103, 46);
             this.cancelButton.TabIndex = 3;
             this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // label1
@@ -105,6 +107,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(578, 379);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);

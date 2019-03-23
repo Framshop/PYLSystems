@@ -430,6 +430,9 @@
     <EmbeddedResource Include="frmAddSupplyCategory.resx">
       <DependentUpon>frmAddSupplyCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmArchive.resx">
+      <DependentUpon>frmArchive.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmArchiveSupplier.resx">
       <DependentUpon>frmArchiveSupplier.cs</DependentUpon>
     </EmbeddedResource>
