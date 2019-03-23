@@ -722,10 +722,7 @@ namespace PYLsystems
                     btnCreateItem.Enabled = false;
                 }
             }
-            else
-            {
-
-            }
+          
         }
 
         private void dgSupplyItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1292,6 +1289,11 @@ namespace PYLsystems
                 }
             }
             MessageBox.Show("The following supplies have reached on or below the Re-Order Point. Please Stock-in the folowing items: " + showStockInNeed);
+        }
+
+        private void txtReOrderPoint_TextChanged(object sender, EventArgs e)
+        {
+            validationCreateItem();
         }
     }
     }

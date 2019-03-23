@@ -33,7 +33,7 @@ namespace PYLsystems
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            
+              
 
             // Check if suppliers exist
             myConn.Open();
@@ -47,10 +47,10 @@ namespace PYLsystems
             //ADD
             myReader = myCom.ExecuteReader();
             myConn.Close();
-            //Check if there is an existing category for that supplier
+            //If supplier does not exist insert supplier
             if (myD.Rows.Count == 0)
             {
-
+                //count total supplier in list view
                 int max = lvwItemSold.Items.Count;
                 myConn.Open();
                 //INSERT INTO jOrder_Details(jOrd_Num,supply_itemsID,size,unit_measure,quantity,price) VALUES (" + jOrdID + "," + lsItem.SubItems[0].Text + "," + lsItem.SubItems[3].Text + ",'" + lsItem.SubItems[4].Text + "'," + lsItem.SubItems[5].Text + "," + lsItem.SubItems[6].Text + ");"
@@ -77,7 +77,7 @@ namespace PYLsystems
                         {
                             string supplierID_passer = "0";
                             myConn.Open();
-                            string myQuer = "SELECT max(supplierID) as 'jOrd_Num' FROM supplier";
+                            string myQuer = "SELECT max(supplierID) as 'supplierID' FROM supplier";
                             MySqlCommand my1 = new MySqlCommand(myQuer, myConn);
                             MySqlDataAdapter my2 = new MySqlDataAdapter(my1);
                             myConn.Close();
@@ -96,11 +96,12 @@ namespace PYLsystems
                             catch { }
 
 
-                            DataTable my = new DataTable();
+                           
                             myConn.Close();
                             myConn.Open();
                                 MySqlCommand myCo = new MySqlCommand("SELECT * FROM supplier_category WHERE supply_categoryID = " + lsItem.SubItems[1].Text + " AND supplierID = " + supplierID_passer, myConn);
                                 myAd = new MySqlDataAdapter(myCo);
+                             DataTable my = new DataTable();
                                 //ADD ----------
                                 MySqlDataReader myReade;
                                 myAd.Fill(myD);
@@ -183,7 +184,7 @@ namespace PYLsystems
                     myAdp.Fill(myDt);
                     MessageBox.Show("Update Successful");
                 }
-                lvwItemSold.Clear();
+             
                 RefreshDatabase();
                 btnUpdate.Enabled = false;
                 txtSupplierName.Text = "";
@@ -193,13 +194,35 @@ namespace PYLsystems
                 supplierID = "";
                 dgvCategories.DataSource = null;
                 validationUpdateSuppliers();
+                 ListViewItem item1 = new ListViewItem();
+                for (int index = 0; index < max; index++)
+                {
+
+
+                    try
+                    {
+                        //4 
+                        lvwItemSold.Items.Remove(lvwItemSold.Items[index]);
+                        lvwItemSold.Items[index].SubItems.Remove(item1.SubItems[index]);
+                        lvwItemSold.Items[index].SubItems.Remove(item1.SubItems[index]);
+                        lvwItemSold.Items[index].SubItems.Remove(item1.SubItems[index]);
+                        lvwItemSold.Items[index].SubItems.Remove(item1.SubItems[index]);
+                        lvwItemSold.Items[index].SubItems.Remove(item1.SubItems[index]);
+                        lvwItemSold.Items[index].SubItems.Remove(item1.SubItems[index]);
+
+
+                    }
+                    catch { }
+                }
             }
+            //If supplier exist prompt this message
             else
             {
                 MessageBox.Show("Supplier " + txtSupplierName.Text + " already exist");
             }
+            ListViewItem item = new ListViewItem();
+         
 
-            
         }
 
         public void RefreshDatabase()
@@ -231,14 +254,14 @@ namespace PYLsystems
         }
         public void RefreshCategory()
         {
-            string query = "SELECT s_c.supply_categoryID,s_ca.categoryName FROM supplier_category s_c LEFT JOIN supply_category s_ca ON s_ca.supply_categoryID = s_c.supply_categoryID WHERE s_c.supplierID = " + supplierID;
+            string query = "SELECT s_c.supply_categoryID as 'Supply Category ID',s_ca.categoryName FROM supplier_category s_c LEFT JOIN supply_category s_ca ON s_ca.supply_categoryID = s_c.supply_categoryID WHERE s_c.supplierID = " + supplierID;
             MySqlCommand myComm = new MySqlCommand(query, myConn);
             MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
             DataTable myDt = new DataTable();
             myAdp.Fill(myDt);
             dgvCategories.DataSource = myDt;
             myConn.Close();
-            dgvCategories.Columns["supply_categoryID"].Visible = false;
+            dgvCategories.Columns["Supply Category ID"].Visible = false;
             dgvCategories.Columns["categoryName"].HeaderText = "Category Name";
         }
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -365,7 +388,31 @@ namespace PYLsystems
                 myAdp.Fill(myDt);
                 MessageBox.Show("Update Successful");
             }
-            lvwItemSold.Clear();
+            //lvwItemSold.Clear();
+            ListViewItem item = new ListViewItem();
+            for (int index = 0; index < max; index++)
+            {
+
+             
+                    try
+                    {
+                        //4 
+                        lvwItemSold.Items.Remove(lvwItemSold.Items[index]);
+                        lvwItemSold.Items[index].SubItems.Remove(item.SubItems[index]);
+                        lvwItemSold.Items[index].SubItems.Remove(item.SubItems[index]);
+                        lvwItemSold.Items[index].SubItems.Remove(item.SubItems[index]);
+                        lvwItemSold.Items[index].SubItems.Remove(item.SubItems[index]);
+                        lvwItemSold.Items[index].SubItems.Remove(item.SubItems[index]);
+                        lvwItemSold.Items[index].SubItems.Remove(item.SubItems[index]);
+
+         
+                    }
+                    catch { }
+                }
+
+
+                //Should get Category ID, Supplier ID, Supply Items ID, Category Name, Supply Name
+
             RefreshDatabase();
             btnUpdate.Enabled = false;
             txtSupplierName.Text = "";
@@ -501,7 +548,7 @@ namespace PYLsystems
             dgvsupply_Items.DataSource = null;
            
             supplierID = dgvSuppliers.CurrentRow.Cells[0].Value.ToString();
-       
+            
             validationUpdateSuppliers();
 
             txtSupplierName.Text = dgvSuppliers.CurrentRow.Cells[1].Value.ToString();
@@ -514,21 +561,21 @@ namespace PYLsystems
 
         private void dgvCategories_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
+            supply_categoryID = dgvCategories.CurrentRow.Cells[0].Value.ToString();
+          
                 myConn.Open();
-                string query = "SELECT s_i.supply_itemsID,s_i.supplyName as 'Supply Name',s_i.supplyDescription as 'Supply Description' FROM supplier_items sr_i LEFT JOIN supply_items s_i ON s_i.supply_itemsID = sr_i.supply_itemsID WHERE supplierID =" + supplierID;
+                string query = "SELECT s_t.supplyName as 'Supply Name',s_t.supplyDescription as 'Supply Description' FROM supplier s LEFT JOIN supplier_items s_i ON s_i.supplierID = s.supplierID LEFT JOIN supplier_category s_c ON s_c.supplierID = s.supplierID LEFT JOIN supply_items s_t ON s_t.supply_itemsID = s_i.supply_itemsID  WHERE s.supplierID =" + supplierID + " AND s_c.supply_categoryID =" + supply_categoryID;
+;
                 MySqlCommand comm = new MySqlCommand(query, myConn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
                 dgvsupply_Items.DataSource = dt;
-                dgvsupply_Items.Columns["supply_itemsID"].Visible = false;
+
                 myConn.Close();
                
-                supply_categoryID = dgvCategories.CurrentRow.Cells[0].Value.ToString();
-            }
-            catch { }
+               
+           
    
         }
 
