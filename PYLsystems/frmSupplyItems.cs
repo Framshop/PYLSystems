@@ -48,45 +48,45 @@ namespace PYLsystems
                 "ifnull( if (sc.typeOfMeasure = 'Area',ROUND(((si.measureA * si.measureB * supsiA.stockIn) - supsoA.stockOut),3)," +
                 "                							if (sc.typeOfMeasure = 'Whole',supsi.stockIn - supso.stockOut," +
                 "                															ROUND(((si.measureA * supsi.stockIn) - supso.stockOut),3))), 0) AS `Quantity Left in Measurement`," +
-                "ifnull(supsi.unitPrice,0 ) AS `Purchase Price`, si.reorder_quantity as 'Re-Order Point'" +
-                "FROM supply_items AS si " +
-                "LEFT JOIN supply_Category AS sc ON si.supply_categoryID = sc.supply_categoryID " +
-                "LEFT JOIN(SELECT supply_itemsID, SUM(stockin_quantity) `stockIn`,MAX(delivery_date) AS `Latest`,priceRawTotal AS `UnitPrice` FROM supply_details GROUP BY supply_itemsID) AS supsi ON si.supply_itemsID = supsi.supply_itemsID " +
-                "LEFT JOIN(SELECT sui.supply_itemsID, SUM(IFNULL(dm.stockedOut,0)+IFNULL(fm.stockedOut, 0) + IFNULL(jo.stockedOut, 0)) AS `stockOut` " +
-                "FROM supply_items AS sui " +
-                "LEFT JOIN(SELECT supply_itemsID, SUM(totalQuantityStockedOut) AS `totalStockedOut`, SUM(measureAtoOGUnit)  AS `stockedOut` " +
-                "          FROM damaged_materials GROUP BY supply_itemsID) AS dm ON sui.supply_itemsID = dm.supply_itemsID " +
-                "          LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureAtoOG)*SUM(fs.stockinQuantity) as `stockedOut` " +
-                "					FROM frame_materials as sfm" +
-                "                    LEFT JOIN frame_list as fl ON sfm.frameItemID = fl.frameItemID" +
-                "                    LEFT JOIN frameStock_In as fs ON fl.frameItemID = fs.frameItemID" +
-                "                    GROUP BY supply_itemsID) AS fm ON sui.supply_ItemsID = fm.supply_ItemsID" +
-                "          LEFT JOIN(SELECT sjo.supply_itemsID, SUM(sjo.measureAtoOG)* SUM(job.jobOrderQuantity) as `stockedOut` " +
-                "					FROM jOrder_Details as sjo" +
-                "                    LEFT JOIN jobOrder as job ON sjo.jOrd_Num = job.jOrd_Num" +
-                "                    GROUP BY supply_itemsID) AS jo ON sui.supply_ItemsID = jo.supply_ItemsID" +
-                "          GROUP BY sui.supply_itemsID" +
-                "		) AS supso ON si.supply_itemsID = supso.supply_itemsID " +
-                "LEFT JOIN(" +
-                "            SELECT supply_itemsID, SUM(stockin_quantity) AS `stockIn` FROM supply_details GROUP BY supply_itemsID" +
-                "            )AS supsiA ON si.supply_itemsID = supsiA.supply_itemsID " +
-                "LEFT JOIN(" +
-                "        SELECT sui.supply_itemsID, SUM(IFNULL(dm.stockedOutArea,0)+IFNULL(fm.stockedOutArea, 0) + IFNULL(jo.stockedOutArea, 0)) AS `stockOut` " +
-                "		 FROM supply_items AS sui" +
-                "        LEFT JOIN(SELECT supply_itemsID, SUM(totalQuantityStockedOut) AS `totalStockedOut`, SUM(measureAtoOGUnit*measureBtoOGUnit) AS `stockedOutArea`" +
-                "                    FROM damaged_materials GROUP BY supply_itemsID) AS dm ON sui.supply_itemsID = dm.supply_itemsID" +
-                "        LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureAtoOG* sfm.measureBtoOG)*SUM(fs.stockinQuantity) as `stockedOutArea`" +
-                "					FROM frame_materials as sfm" +
-                "                    LEFT JOIN frame_list as fl ON sfm.frameItemID = fl.frameItemID" +
-                "                    LEFT JOIN frameStock_In as fs ON fl.frameItemID = fs.frameItemID" +
-                "                    GROUP BY supply_itemsID) AS fm ON sui.supply_ItemsID = fm.supply_ItemsID" +
-                "       LEFT JOIN(SELECT sjo.supply_itemsID, SUM(sjo.measureAtoOG* sjo.measureBtoOG)*SUM(job.jobOrderQuantity) as `stockedOutArea` " +
-                "					FROM jOrder_Details as sjo" +
-                "                    LEFT JOIN jobOrder as job ON sjo.jOrd_Num = job.jOrd_Num" +
-                "                    GROUP BY supply_itemsID) AS jo ON sui.supply_ItemsID = jo.supply_ItemsID" +
-                "        GROUP BY sui.supply_itemsID " +
-                ")AS supsoA ON si.supply_itemsID = supsoA.supply_itemsID WHERE si.supplyName LIKE '%" + txtSearch.Text + "%' OR sc.categoryName LIKE '%" + txtSearch.Text + "%' " +
-                "ORDER BY sc.categoryName, si.supplyName;";
+                " si.reorder_quantity as `Re-Order Point`,ifnull(supsi.unitPrice, 0) AS `Unit Price` " +
+                "                FROM supply_items AS si" +
+                "                LEFT JOIN supply_Category AS sc ON si.supply_categoryID = sc.supply_categoryID" +
+                "                                    LEFT JOIN(SELECT supply_itemsID, SUM(stockin_quantity) `stockIn`, MAX(delivery_date) AS `Latest`, priceRawTotal AS `UnitPrice` FROM supply_details GROUP BY supply_itemsID) AS supsi ON si.supply_itemsID = supsi.supply_itemsID" +
+                "                                    LEFT JOIN(SELECT sui.supply_itemsID, SUM(IFNULL(dm.stockedOut,0)+IFNULL(fm.stockedOut, 0) + IFNULL(jo.stockedOut, 0)) AS `stockOut` " +
+                "                                    FROM supply_items AS sui" +
+                "                                            LEFT JOIN(SELECT supply_itemsID, SUM(totalQuantityStockedOut) AS `totalStockedOut`, SUM(measureAtoOGUnit) AS `stockedOut`" +
+                "                                                      FROM damaged_materials GROUP BY supply_itemsID) AS dm ON sui.supply_itemsID = dm.supply_itemsID" +
+                "                                                      LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureAtoOG) * (SUM(fs.stockinQuantity)) as `stockedOut` /*Measurements*/" +
+                "                    											FROM frame_materials as sfm" +
+                "                                                                LEFT JOIN frame_list as fl ON sfm.frameItemID = fl.frameItemID" +
+                "                                                                LEFT JOIN frameStock_In as fs ON fl.frameItemID = fs.frameItemID" +
+                "                                                                GROUP BY supply_itemsID,fl.frameItemID) AS fm ON sui.supply_ItemsID = fm.supply_ItemsID" +
+                "                                                      LEFT JOIN(SELECT sjo.supply_itemsID, SUM(sjo.measureAtoOG) * SUM(job.jobOrderQuantity) as `stockedOut` /*Measurements*/" +
+                "                    											FROM jOrder_Details as sjo" +
+                "                                                                LEFT JOIN jobOrder as job ON sjo.jOrd_Num = job.jOrd_Num" +
+                "                                                                GROUP BY supply_itemsID) AS jo ON sui.supply_ItemsID = jo.supply_ItemsID" +
+                "                                                      GROUP BY sui.supply_itemsID" +
+                "                    								) AS supso ON si.supply_itemsID = supso.supply_itemsID" +
+                "                                    LEFT JOIN(" +
+                "                                                SELECT supply_itemsID, SUM(stockin_quantity) AS `stockIn` FROM supply_details GROUP BY supply_itemsID" +
+                "                                                )AS supsiA ON si.supply_itemsID = supsiA.supply_itemsID" +
+                "                                    LEFT JOIN(" +
+                "                                            SELECT sui.supply_itemsID, SUM(IFNULL(dm.stockedOutArea,0)+IFNULL(fm.stockedOutArea, 0) + IFNULL(jo.stockedOutArea, 0)) AS `stockOut` " +
+                "                    						 FROM supply_items AS sui" +
+                "                                            LEFT JOIN(SELECT supply_itemsID, SUM(totalQuantityStockedOut) AS `totalStockedOut`, SUM(measureAtoOGUnit* measureBtoOGUnit) AS `stockedOutArea`" +
+                "                                                        FROM damaged_materials GROUP BY supply_itemsID) AS dm ON sui.supply_itemsID = dm.supply_itemsID" +
+                "                                            LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureAtoOG* sfm.measureBtoOG)*(SUM(fs.stockinQuantity)) as `stockedOutArea` /*Measurements*/" +
+                "                    									FROM frame_materials as sfm" +
+                "                                                        LEFT JOIN frame_list as fl ON sfm.frameItemID = fl.frameItemID" +
+                "                                                        LEFT JOIN frameStock_In as fs ON fl.frameItemID = fs.frameItemID" +
+                "                                                        GROUP BY supply_itemsID) AS fm ON sui.supply_ItemsID = fm.supply_ItemsID" +
+                "                                            LEFT JOIN(SELECT sjo.supply_itemsID, SUM(sjo.measureAtoOG* sjo.measureBtoOG)*SUM(job.jobOrderQuantity) as `stockedOutArea` /*Measurements*/" +
+                "                    									FROM jOrder_Details as sjo" +
+                "                                                        LEFT JOIN jobOrder as job ON sjo.jOrd_Num = job.jOrd_Num" +
+                "                                                        GROUP BY supply_itemsID) AS jo ON sui.supply_ItemsID = jo.supply_ItemsID" +
+                "                                            GROUP BY sui.supply_itemsID" +
+                "                    				)AS supsoA ON si.supply_itemsID = supsoA.supply_itemsID  WHERE si.supplyName LIKE '%" + txtSearch.Text + "%' OR sc.categoryName LIKE '%" + txtSearch.Text + "%' " +
+                "                                   ORDER BY sc.categoryName, si.supplyName;";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
@@ -142,51 +142,63 @@ namespace PYLsystems
                 "ifnull( if (sc.typeOfMeasure = 'Area',ROUND(((si.measureA * si.measureB * supsiA.stockIn) - supsoA.stockOut),3)," +
                 "                							if (sc.typeOfMeasure = 'Whole',supsi.stockIn - supso.stockOut," +
                 "                															ROUND(((si.measureA * supsi.stockIn) - supso.stockOut),3))), 0) AS `Quantity Left in Measurement`," +
-               "si.reorder_quantity as 'Re-Order Point'" + 
-                "FROM supply_items AS si " +
-                "LEFT JOIN supply_Category AS sc ON si.supply_categoryID = sc.supply_categoryID " +
-                "LEFT JOIN(SELECT supply_itemsID, SUM(stockin_quantity) AS `stockIn` FROM supply_details GROUP BY supply_itemsID) AS supsi ON si.supply_itemsID = supsi.supply_itemsID " +
-                "LEFT JOIN(SELECT sui.supply_itemsID, SUM(IFNULL(dm.stockedOut,0)+IFNULL(fm.stockedOut, 0) + IFNULL(jo.stockedOut, 0)) AS `stockOut` " +
-                "FROM supply_items AS sui " +
-                "LEFT JOIN(SELECT supply_itemsID, SUM(totalQuantityStockedOut) AS `totalStockedOut`, SUM(measureAtoOGUnit)  AS `stockedOut` " +
-                "          FROM damaged_materials GROUP BY supply_itemsID) AS dm ON sui.supply_itemsID = dm.supply_itemsID " +
-                "          LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureAtoOG)*SUM(fs.stockinQuantity) as `stockedOut` " +
-                "					FROM frame_materials as sfm" +
-                "                    LEFT JOIN frame_list as fl ON sfm.frameItemID = fl.frameItemID" +
-                "                    LEFT JOIN frameStock_In as fs ON fl.frameItemID = fs.frameItemID" +
-                "                    GROUP BY supply_itemsID) AS fm ON sui.supply_ItemsID = fm.supply_ItemsID" +
-                "          LEFT JOIN(SELECT sjo.supply_itemsID, SUM(sjo.measureAtoOG)* SUM(job.jobOrderQuantity) as `stockedOut` " +
-                "					FROM jOrder_Details as sjo" +
-                "                    LEFT JOIN jobOrder as job ON sjo.jOrd_Num = job.jOrd_Num" +
-                "                    GROUP BY supply_itemsID) AS jo ON sui.supply_ItemsID = jo.supply_ItemsID" +
-                "          GROUP BY sui.supply_itemsID" +
-                "		) AS supso ON si.supply_itemsID = supso.supply_itemsID " +
-                "LEFT JOIN(" +
-                "            SELECT supply_itemsID, SUM(stockin_quantity) AS `stockIn` FROM supply_details GROUP BY supply_itemsID" +
-                "            )AS supsiA ON si.supply_itemsID = supsiA.supply_itemsID " +
-                "LEFT JOIN(" +
-                "        SELECT sui.supply_itemsID, SUM(IFNULL(dm.stockedOutArea,0)+IFNULL(fm.stockedOutArea, 0) + IFNULL(jo.stockedOutArea, 0)) AS `stockOut` " +
-                "		 FROM supply_items AS sui" +
-                "             LEFT JOIN(SELECT supply_itemsID, SUM(totalQuantityStockedOut) AS `totalStockedOut`, SUM(measureAtoOGUnit*measureBtoOGUnit) AS `stockedOutArea`" +
-                "                    FROM damaged_materials GROUP BY supply_itemsID) AS dm ON sui.supply_itemsID = dm.supply_itemsID" +
-                "        LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureAtoOG* sfm.measureBtoOG)*SUM(fs.stockinQuantity) as `stockedOutArea`" +
-                "					FROM frame_materials as sfm" +
-                "                    LEFT JOIN frame_list as fl ON sfm.frameItemID = fl.frameItemID" +
-                "                    LEFT JOIN frameStock_In as fs ON fl.frameItemID = fs.frameItemID" +
-                "                    GROUP BY supply_itemsID) AS fm ON sui.supply_ItemsID = fm.supply_ItemsID" +
-                "       LEFT JOIN(SELECT sjo.supply_itemsID, SUM(sjo.measureAtoOG* sjo.measureBtoOG)*SUM(job.jobOrderQuantity) as `stockedOutArea` " +
-                "					FROM jOrder_Details as sjo" +
-                "                    LEFT JOIN jobOrder as job ON sjo.jOrd_Num = job.jOrd_Num" +
-                "                    GROUP BY supply_itemsID) AS jo ON sui.supply_ItemsID = jo.supply_ItemsID" +
-                "        GROUP BY sui.supply_itemsID " +
-                ")AS supsoA ON si.supply_itemsID = supsoA.supply_itemsID WHERE si.supplyName LIKE '%" + txtSearch.Text + "%' OR sc.categoryName LIKE '%" + txtSearch.Text + "%' " +
-                "ORDER BY sc.categoryName, si.supplyName;";
+                " si.reorder_quantity as `Re-Order Point`,ifnull(supsi.unitPrice, 0) AS `Unit Price` " +
+                "                FROM supply_items AS si" +
+                "                LEFT JOIN supply_Category AS sc ON si.supply_categoryID = sc.supply_categoryID" +
+                "                                    LEFT JOIN(SELECT supply_itemsID, SUM(stockin_quantity) `stockIn`, MAX(delivery_date) AS `Latest`, priceRawTotal AS `UnitPrice` FROM supply_details GROUP BY supply_itemsID) AS supsi ON si.supply_itemsID = supsi.supply_itemsID" +
+                "                                    LEFT JOIN(SELECT sui.supply_itemsID, SUM(IFNULL(dm.stockedOut,0)+IFNULL(fm.stockedOut, 0) + IFNULL(jo.stockedOut, 0)) AS `stockOut` " +
+                "                                    FROM supply_items AS sui" +
+                "                                            LEFT JOIN(SELECT supply_itemsID, SUM(totalQuantityStockedOut) AS `totalStockedOut`, SUM(measureAtoOGUnit) AS `stockedOut`" +
+                "                                                      FROM damaged_materials GROUP BY supply_itemsID) AS dm ON sui.supply_itemsID = dm.supply_itemsID" +
+                "                                                      LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureAtoOG) * (SUM(fs.stockinQuantity)) as `stockedOut` /*Measurements*/" +
+                "                    											FROM frame_materials as sfm" +
+                "                                                                LEFT JOIN frame_list as fl ON sfm.frameItemID = fl.frameItemID" +
+                "                                                                LEFT JOIN frameStock_In as fs ON fl.frameItemID = fs.frameItemID" +
+                "                                                                GROUP BY supply_itemsID,fl.frameItemID) AS fm ON sui.supply_ItemsID = fm.supply_ItemsID" +
+                "                                                      LEFT JOIN(SELECT sjo.supply_itemsID, SUM(sjo.measureAtoOG) * SUM(job.jobOrderQuantity) as `stockedOut` /*Measurements*/" +
+                "                    											FROM jOrder_Details as sjo" +
+                "                                                                LEFT JOIN jobOrder as job ON sjo.jOrd_Num = job.jOrd_Num" +
+                "                                                                GROUP BY supply_itemsID) AS jo ON sui.supply_ItemsID = jo.supply_ItemsID" +
+                "                                                      GROUP BY sui.supply_itemsID" +
+                "                    								) AS supso ON si.supply_itemsID = supso.supply_itemsID" +
+                "                                    LEFT JOIN(" +
+                "                                                SELECT supply_itemsID, SUM(stockin_quantity) AS `stockIn` FROM supply_details GROUP BY supply_itemsID" +
+                "                                                )AS supsiA ON si.supply_itemsID = supsiA.supply_itemsID" +
+                "                                    LEFT JOIN(" +
+                "                                            SELECT sui.supply_itemsID, SUM(IFNULL(dm.stockedOutArea,0)+IFNULL(fm.stockedOutArea, 0) + IFNULL(jo.stockedOutArea, 0)) AS `stockOut` " +
+                "                    						 FROM supply_items AS sui" +
+                "                                            LEFT JOIN(SELECT supply_itemsID, SUM(totalQuantityStockedOut) AS `totalStockedOut`, SUM(measureAtoOGUnit* measureBtoOGUnit) AS `stockedOutArea`" +
+                "                                                        FROM damaged_materials GROUP BY supply_itemsID) AS dm ON sui.supply_itemsID = dm.supply_itemsID" +
+                "                                            LEFT JOIN(SELECT sfm.supply_itemsID, SUM(sfm.measureAtoOG* sfm.measureBtoOG)*(SUM(fs.stockinQuantity)) as `stockedOutArea` /*Measurements*/" +
+                "                    									FROM frame_materials as sfm" +
+                "                                                        LEFT JOIN frame_list as fl ON sfm.frameItemID = fl.frameItemID" +
+                "                                                        LEFT JOIN frameStock_In as fs ON fl.frameItemID = fs.frameItemID" +
+                "                                                        GROUP BY supply_itemsID) AS fm ON sui.supply_ItemsID = fm.supply_ItemsID" +
+                "                                            LEFT JOIN(SELECT sjo.supply_itemsID, SUM(sjo.measureAtoOG* sjo.measureBtoOG)*SUM(job.jobOrderQuantity) as `stockedOutArea` /*Measurements*/" +
+                "                    									FROM jOrder_Details as sjo" +
+                "                                                        LEFT JOIN jobOrder as job ON sjo.jOrd_Num = job.jOrd_Num" +
+                "                                                        GROUP BY supply_itemsID) AS jo ON sui.supply_ItemsID = jo.supply_ItemsID" +
+                "                                            GROUP BY sui.supply_itemsID" +
+                "                    				)AS supsoA ON si.supply_itemsID = supsoA.supply_itemsID  WHERE si.supplyName LIKE '%" + txtSearch.Text + "%' OR sc.categoryName LIKE '%" + txtSearch.Text + "%' " +
+                "                                   ORDER BY sc.categoryName, si.supplyName;";
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();
             adp.Fill(dt);
             dgSupplyItems.DataSource = dt;
             myConn.Close();
+            for (int i = 0; i < dgSupplyItems.Rows.Count; i++)
+            {
+                if (float.Parse(dgSupplyItems.Rows[i].Cells["Quantity Left"].Value.ToString()) <= float.Parse(dgSupplyItems.Rows[i].Cells["Re-Order Point"].Value.ToString()))
+                {
+                    dgSupplyItems.Rows[i].DefaultCellStyle.BackColor = Color.LightSalmon;
+                }
+
+                else
+                {
+                    dgSupplyItems.Rows[i].DefaultCellStyle.BackColor = Color.LightGreen;
+                }
+            }
             dgSupplyItems.Columns["Supply ID"].Visible = false;
             dgSupplyItems.Columns["Supply Category ID"].Visible = false;
             dgSupplyItems.Columns["Measurement A"].Visible = false;
