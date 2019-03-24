@@ -249,7 +249,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tlTaskBar, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -264,7 +264,7 @@
             this.tlTaskBar.Controls.Add(this.groupBox10, 0, 0);
             this.tlTaskBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlTaskBar.Location = new System.Drawing.Point(47, 2);
-            this.tlTaskBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tlTaskBar.Margin = new System.Windows.Forms.Padding(2);
             this.tlTaskBar.Name = "tlTaskBar";
             this.tlTaskBar.RowCount = 3;
             this.tlTaskBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
@@ -282,7 +282,7 @@
             this.tableLayoutPanel3.Controls.Add(this.gpCreateSupplier, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 32);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -297,7 +297,7 @@
             this.tableLayoutPanel4.Controls.Add(this.gpSoldBySelectedSupplier, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(335, 2);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.97619F));
@@ -310,9 +310,9 @@
             this.gpListOfSuppliers.Controls.Add(this.dgvSuppliers);
             this.gpListOfSuppliers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gpListOfSuppliers.Location = new System.Drawing.Point(2, 2);
-            this.gpListOfSuppliers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpListOfSuppliers.Margin = new System.Windows.Forms.Padding(2);
             this.gpListOfSuppliers.Name = "gpListOfSuppliers";
-            this.gpListOfSuppliers.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpListOfSuppliers.Padding = new System.Windows.Forms.Padding(2);
             this.gpListOfSuppliers.Size = new System.Drawing.Size(472, 171);
             this.gpListOfSuppliers.TabIndex = 0;
             this.gpListOfSuppliers.TabStop = false;
@@ -328,7 +328,7 @@
             this.dgvSuppliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSuppliers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSuppliers.Location = new System.Drawing.Point(2, 15);
-            this.dgvSuppliers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvSuppliers.Margin = new System.Windows.Forms.Padding(2);
             this.dgvSuppliers.Name = "dgvSuppliers";
             this.dgvSuppliers.ReadOnly = true;
             this.dgvSuppliers.RowHeadersVisible = false;
@@ -344,9 +344,9 @@
             this.gpSoldBySelectedSupplier.Controls.Add(this.tableLayoutPanel5);
             this.gpSoldBySelectedSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gpSoldBySelectedSupplier.Location = new System.Drawing.Point(2, 177);
-            this.gpSoldBySelectedSupplier.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpSoldBySelectedSupplier.Margin = new System.Windows.Forms.Padding(2);
             this.gpSoldBySelectedSupplier.Name = "gpSoldBySelectedSupplier";
-            this.gpSoldBySelectedSupplier.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpSoldBySelectedSupplier.Padding = new System.Windows.Forms.Padding(2);
             this.gpSoldBySelectedSupplier.Size = new System.Drawing.Size(472, 353);
             this.gpSoldBySelectedSupplier.TabIndex = 1;
             this.gpSoldBySelectedSupplier.TabStop = false;
@@ -361,7 +361,7 @@
             this.tableLayoutPanel5.Controls.Add(this.gpItems, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(2, 15);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -373,9 +373,9 @@
             this.gpCategories.Controls.Add(this.dgvCategories);
             this.gpCategories.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gpCategories.Location = new System.Drawing.Point(2, 2);
-            this.gpCategories.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpCategories.Margin = new System.Windows.Forms.Padding(2);
             this.gpCategories.Name = "gpCategories";
-            this.gpCategories.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpCategories.Padding = new System.Windows.Forms.Padding(2);
             this.gpCategories.Size = new System.Drawing.Size(137, 332);
             this.gpCategories.TabIndex = 0;
             this.gpCategories.TabStop = false;
@@ -390,7 +390,7 @@
             this.dgvCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategories.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCategories.Location = new System.Drawing.Point(2, 15);
-            this.dgvCategories.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvCategories.Margin = new System.Windows.Forms.Padding(2);
             this.dgvCategories.Name = "dgvCategories";
             this.dgvCategories.ReadOnly = true;
             this.dgvCategories.RowHeadersVisible = false;
@@ -399,15 +399,16 @@
             this.dgvCategories.Size = new System.Drawing.Size(133, 315);
             this.dgvCategories.TabIndex = 1;
             this.dgvCategories.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategories_CellClick);
+            this.dgvCategories.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategories_CellContentClick);
             // 
             // gpItems
             // 
             this.gpItems.Controls.Add(this.dgvsupply_Items);
             this.gpItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gpItems.Location = new System.Drawing.Point(143, 2);
-            this.gpItems.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpItems.Margin = new System.Windows.Forms.Padding(2);
             this.gpItems.Name = "gpItems";
-            this.gpItems.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpItems.Padding = new System.Windows.Forms.Padding(2);
             this.gpItems.Size = new System.Drawing.Size(323, 332);
             this.gpItems.TabIndex = 1;
             this.gpItems.TabStop = false;
@@ -422,7 +423,7 @@
             this.dgvsupply_Items.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvsupply_Items.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvsupply_Items.Location = new System.Drawing.Point(2, 15);
-            this.dgvsupply_Items.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvsupply_Items.Margin = new System.Windows.Forms.Padding(2);
             this.dgvsupply_Items.Name = "dgvsupply_Items";
             this.dgvsupply_Items.ReadOnly = true;
             this.dgvsupply_Items.RowHeadersVisible = false;
@@ -437,9 +438,9 @@
             this.gpCreateSupplier.Controls.Add(this.tableLayoutPanel6);
             this.gpCreateSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gpCreateSupplier.Location = new System.Drawing.Point(2, 2);
-            this.gpCreateSupplier.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpCreateSupplier.Margin = new System.Windows.Forms.Padding(2);
             this.gpCreateSupplier.Name = "gpCreateSupplier";
-            this.gpCreateSupplier.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpCreateSupplier.Padding = new System.Windows.Forms.Padding(2);
             this.gpCreateSupplier.Size = new System.Drawing.Size(329, 532);
             this.gpCreateSupplier.TabIndex = 1;
             this.gpCreateSupplier.TabStop = false;
@@ -454,7 +455,7 @@
             this.tableLayoutPanel6.Controls.Add(this.gpButtons, 0, 2);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(2, 15);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 3;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.58004F));
@@ -476,9 +477,9 @@
             this.gpSupplierDetails.Controls.Add(this.lblContactNumber);
             this.gpSupplierDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gpSupplierDetails.Location = new System.Drawing.Point(2, 2);
-            this.gpSupplierDetails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpSupplierDetails.Margin = new System.Windows.Forms.Padding(2);
             this.gpSupplierDetails.Name = "gpSupplierDetails";
-            this.gpSupplierDetails.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpSupplierDetails.Padding = new System.Windows.Forms.Padding(2);
             this.gpSupplierDetails.Size = new System.Drawing.Size(321, 163);
             this.gpSupplierDetails.TabIndex = 0;
             this.gpSupplierDetails.TabStop = false;
@@ -498,9 +499,9 @@
             this.gpItemSoldBySupplier.Controls.Add(this.tableLayoutPanel7);
             this.gpItemSoldBySupplier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gpItemSoldBySupplier.Location = new System.Drawing.Point(2, 169);
-            this.gpItemSoldBySupplier.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpItemSoldBySupplier.Margin = new System.Windows.Forms.Padding(2);
             this.gpItemSoldBySupplier.Name = "gpItemSoldBySupplier";
-            this.gpItemSoldBySupplier.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpItemSoldBySupplier.Padding = new System.Windows.Forms.Padding(2);
             this.gpItemSoldBySupplier.Size = new System.Drawing.Size(321, 208);
             this.gpItemSoldBySupplier.TabIndex = 1;
             this.gpItemSoldBySupplier.TabStop = false;
@@ -514,7 +515,7 @@
             this.tableLayoutPanel7.Controls.Add(this.lvwItemSold, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(2, 15);
-            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 2;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.02524F));
@@ -528,9 +529,9 @@
             this.gpButtonNewForm.Controls.Add(this.btnAdd);
             this.gpButtonNewForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gpButtonNewForm.Location = new System.Drawing.Point(2, 147);
-            this.gpButtonNewForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpButtonNewForm.Margin = new System.Windows.Forms.Padding(2);
             this.gpButtonNewForm.Name = "gpButtonNewForm";
-            this.gpButtonNewForm.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpButtonNewForm.Padding = new System.Windows.Forms.Padding(2);
             this.gpButtonNewForm.Size = new System.Drawing.Size(313, 42);
             this.gpButtonNewForm.TabIndex = 0;
             this.gpButtonNewForm.TabStop = false;
@@ -607,9 +608,9 @@
             this.gpButtons.Controls.Add(this.btnUpdate);
             this.gpButtons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gpButtons.Location = new System.Drawing.Point(2, 381);
-            this.gpButtons.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpButtons.Margin = new System.Windows.Forms.Padding(2);
             this.gpButtons.Name = "gpButtons";
-            this.gpButtons.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpButtons.Padding = new System.Windows.Forms.Padding(2);
             this.gpButtons.Size = new System.Drawing.Size(321, 132);
             this.gpButtons.TabIndex = 2;
             this.gpButtons.TabStop = false;
@@ -666,9 +667,9 @@
             this.groupBox10.Controls.Add(this.txtSearch);
             this.groupBox10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox10.Location = new System.Drawing.Point(2, 2);
-            this.groupBox10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox10.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox10.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox10.Size = new System.Drawing.Size(813, 26);
             this.groupBox10.TabIndex = 1;
             this.groupBox10.TabStop = false;
