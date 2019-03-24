@@ -564,13 +564,14 @@ namespace PYLsystems
             supply_categoryID = dgvCategories.CurrentRow.Cells[0].Value.ToString();
           
                 myConn.Open();
-                string query = "SELECT s_t.supplyName as 'Supply Name',s_t.supplyDescription as 'Supply Description' FROM supplier s LEFT JOIN supplier_items s_i ON s_i.supplierID = s.supplierID LEFT JOIN supplier_category s_c ON s_c.supplierID = s.supplierID LEFT JOIN supply_items s_t ON s_t.supply_itemsID = s_i.supply_itemsID  WHERE s.supplierID =" + supplierID + " AND s_c.supply_categoryID =" + supply_categoryID;
+                string query = "SELECT s_i.supply_itemsID,s_t.supplyName as 'Supply Name',s_t.supplyDescription as 'Supply Description' FROM supplier s LEFT JOIN supplier_items s_i ON s_i.supplierID = s.supplierID LEFT JOIN supplier_category s_c ON s_c.supplierID = s.supplierID LEFT JOIN supply_items s_t ON s_t.supply_itemsID = s_i.supply_itemsID  WHERE s_i.active = 0 AND s.supplierID =" + supplierID + " AND s_c.supply_categoryID =" + supply_categoryID;
 ;
                 MySqlCommand comm = new MySqlCommand(query, myConn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
                 dgvsupply_Items.DataSource = dt;
+            dgvsupply_Items.Columns["supply_itemsID"].Visible = false;
 
                 myConn.Close();
                
@@ -649,7 +650,7 @@ namespace PYLsystems
         {
             MessageBox.Show("SupplyItemID:"+supplyItemID+" supplierID:"+ supplierID);
 
-            string myQuery = "update supplier_items set active = 1 where supplierID =  " + supplierID + " AND supply_itemsID =" + supplyItemID;
+            string myQuery = "update supplier_items SET active = 1 where supplierID =  " + supplierID + " AND supply_itemsID =" + supplyItemID;
             MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
             MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
             DataTable myDt = new DataTable();
@@ -688,6 +689,11 @@ namespace PYLsystems
         {
             supplyItemID = dgvsupply_Items.CurrentRow.Cells[0].Value.ToString();
             btnSupplyItem.Enabled = true;
+        }
+
+        private void dgvCategories_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

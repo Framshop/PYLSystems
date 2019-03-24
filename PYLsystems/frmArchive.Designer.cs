@@ -41,19 +41,17 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1125, 75);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(750, 49);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 20);
+            this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 11;
             this.label2.Text = "Search";
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(1196, 71);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtSearch.Location = new System.Drawing.Point(797, 46);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(240, 26);
+            this.txtSearch.Size = new System.Drawing.Size(161, 20);
             this.txtSearch.TabIndex = 10;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -61,10 +59,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(332, 14);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(221, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 29);
+            this.label1.Size = new System.Drawing.Size(90, 20);
             this.label1.TabIndex = 9;
             this.label1.Text = "Archive List";
             // 
@@ -75,13 +72,12 @@
             this.dgEmpList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgEmpList.BackgroundColor = System.Drawing.Color.Honeydew;
             this.dgEmpList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgEmpList.Location = new System.Drawing.Point(18, 77);
-            this.dgEmpList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgEmpList.Location = new System.Drawing.Point(12, 50);
             this.dgEmpList.Name = "dgEmpList";
             this.dgEmpList.ReadOnly = true;
             this.dgEmpList.RowHeadersVisible = false;
             this.dgEmpList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgEmpList.Size = new System.Drawing.Size(742, 391);
+            this.dgEmpList.Size = new System.Drawing.Size(495, 254);
             this.dgEmpList.TabIndex = 8;
             this.dgEmpList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgEmpList_CellClick);
             // 
@@ -90,10 +86,9 @@
             this.btnSet.BackColor = System.Drawing.Color.PaleGreen;
             this.btnSet.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSet.Enabled = false;
-            this.btnSet.Location = new System.Drawing.Point(18, 491);
-            this.btnSet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSet.Location = new System.Drawing.Point(12, 319);
             this.btnSet.Name = "btnSet";
-            this.btnSet.Size = new System.Drawing.Size(158, 45);
+            this.btnSet.Size = new System.Drawing.Size(105, 29);
             this.btnSet.TabIndex = 12;
             this.btnSet.Text = "Set as Employee";
             this.btnSet.UseVisualStyleBackColor = false;
@@ -103,10 +98,9 @@
             // 
             this.btnClose.BackColor = System.Drawing.Color.PaleGreen;
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.Location = new System.Drawing.Point(218, 491);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnClose.Location = new System.Drawing.Point(145, 319);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(158, 45);
+            this.btnClose.Size = new System.Drawing.Size(105, 29);
             this.btnClose.TabIndex = 13;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -115,10 +109,9 @@
             // emp_id
             // 
             this.emp_id.AutoSize = true;
-            this.emp_id.Location = new System.Drawing.Point(976, 75);
-            this.emp_id.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.emp_id.Location = new System.Drawing.Point(651, 49);
             this.emp_id.Name = "emp_id";
-            this.emp_id.Size = new System.Drawing.Size(51, 20);
+            this.emp_id.Size = new System.Drawing.Size(35, 13);
             this.emp_id.TabIndex = 14;
             this.emp_id.Text = "label3";
             this.emp_id.Visible = false;
@@ -126,10 +119,10 @@
             // 
             // frmArchive
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(777, 572);
+            this.ClientSize = new System.Drawing.Size(518, 372);
             this.Controls.Add(this.emp_id);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSet);
@@ -138,12 +131,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgEmpList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmArchive";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmArchive_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgEmpList)).EndInit();
             this.ResumeLayout(false);
