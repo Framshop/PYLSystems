@@ -47,6 +47,7 @@
             this.btnStockIn = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnArchiveFrame = new System.Windows.Forms.Button();
+            this.btnStockOut = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -228,6 +229,7 @@
             this.tableLayoutPanel4.Controls.Add(this.btnStockIn, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnClose, 6, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnArchiveFrame, 5, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btnStockOut, 4, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 22);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -319,6 +321,20 @@
             this.btnArchiveFrame.UseVisualStyleBackColor = false;
             this.btnArchiveFrame.Click += new System.EventHandler(this.btnArchiveFrame_Click);
             // 
+            // btnStockOut
+            // 
+            this.btnStockOut.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStockOut.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnStockOut.Location = new System.Drawing.Point(659, 3);
+            this.btnStockOut.Name = "btnStockOut";
+            this.btnStockOut.Size = new System.Drawing.Size(158, 60);
+            this.btnStockOut.TabIndex = 14;
+            this.btnStockOut.Text = "Stock Out Damaged Frame";
+            this.btnStockOut.UseVisualStyleBackColor = false;
+            this.btnStockOut.Click += new System.EventHandler(this.btnStockOut_Click);
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.lblSearch);
@@ -376,5 +392,6 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.DataGridView datagridFrameList;
         private System.Windows.Forms.DataGridView dataGridSuppliesUsed;
+        private System.Windows.Forms.Button btnStockOut;
     }
 }

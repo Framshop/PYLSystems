@@ -54,12 +54,14 @@ namespace PYLsystems
             {
                 this.datagridFrameList.DataSource = null;
                 this.datagridFrameList.Rows.Clear();
-                String frameAvailString = "SELECT FL.frameName AS Frame, FL.Dimension, FL.frameDescription, fl.UnitSalesPrice AS 'Unit Price', IFNULL(FS.Stockin - (IFNULL(SOD.Stockout,0)),0) AS 'Quantity Left', " +
+                String frameAvailString = "SELECT FL.frameName AS Frame, FL.Dimension, FL.frameDescription, fl.UnitSalesPrice AS 'Unit Price', " +
+                    "IFNULL(FS.Stockin - (IFNULL(SOD.Stockout,0)+IFNULL(DMF.damageStockOut,0)),0) AS 'Quantity Left',  " +
                     "FL.frameItemID FROM frame_list AS FL " +
                     "LEFT JOIN(SELECT FS.frameItemID, SUM(FS.stockinQuantity) AS Stockin FROM framestock_in AS FS GROUP BY FS.frameItemID) " +
                     "AS FS ON FL.frameItemID = FS.frameItemID " +
                     "LEFT JOIN(SELECT SOD.frameItemID, SUM(SOD.sOrd_Quantity) AS Stockout FROM sOrder_details AS SOD LEFT JOIN salesOrder AS SO ON SOD.sOrd_Num=SO.sOrd_Num WHERE SO.sOrd_status>0 GROUP BY SOD.frameItemID) " +
                     "AS SOD ON FL.frameItemID = SOD.frameItemID " +
+                    "LEFT JOIN(SELECT DMF.frameItemID, SUM(DMF.quantity) AS damageStockOut FROM damaged_items AS DMF GROUP BY DMF.frameItemID) AS DMF ON FL.frameItemID = DMF.frameItemID " +
                     "WHERE FL.active = '0' ORDER BY FL.frameName; ";
 
                 MySqlConnection my_conn = new MySqlConnection(connString);
@@ -548,6 +550,20 @@ namespace PYLsystems
                 return;
             }
             
+        }
+
+        private void btnStockOut_Click(object sender, EventArgs e)
+        {
+            int currRowIndex = datagridFrameList.SelectedRows[0].Index;
+
+            int frameItemID = Int32.Parse(datagridFrameList.Rows[currRowIndex].Cells["frameItemID"].Value.ToString());
+            int quantityLeft = Int32.Parse(datagridFrameList.Rows[currRowIndex].Cells["Quantity Left"].Value.ToString());
+            double unitPrice = Double.Parse(datagridFrameList.Rows[currRowIndex].Cells["Unit Price"].Value.ToString());
+            String frameName = datagridFrameList.Rows[currRowIndex].Cells["Frame"].Value.ToString();
+            String frameDimension = datagridFrameList.Rows[currRowIndex].Cells["Dimension"].Value.ToString();
+            frmFrameDamagedItems damage = new frmFrameDamagedItems(frameItemID,quantityLeft,frameName,frameDimension,unitPrice);
+            damage.ShowDialog();
+            frameList_Loader();
         }
     }
     class suppliesCosting

@@ -60,6 +60,7 @@
             this.startDatePicker = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.datagridFrameStockIn = new System.Windows.Forms.DataGridView();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -299,6 +300,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnEdit);
             this.groupBox4.Controls.Add(this.btnClose);
             this.groupBox4.Controls.Add(this.btnStockIn);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -326,7 +328,7 @@
             this.btnStockIn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStockIn.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnStockIn.Location = new System.Drawing.Point(93, 62);
+            this.btnStockIn.Location = new System.Drawing.Point(93, 25);
             this.btnStockIn.Name = "btnStockIn";
             this.btnStockIn.Size = new System.Drawing.Size(265, 37);
             this.btnStockIn.TabIndex = 10;
@@ -453,6 +455,19 @@
             this.datagridFrameStockIn.Size = new System.Drawing.Size(668, 665);
             this.datagridFrameStockIn.TabIndex = 3;
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEdit.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnEdit.Location = new System.Drawing.Point(93, 73);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(265, 37);
+            this.btnEdit.TabIndex = 12;
+            this.btnEdit.Text = "Edit Stock In Details";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // frmFrameStockInAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -516,5 +531,6 @@
         private System.Windows.Forms.DateTimePicker startDatePicker;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtBoxSales;
+        private System.Windows.Forms.Button btnEdit;
     }
 }

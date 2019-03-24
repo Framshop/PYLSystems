@@ -38,35 +38,31 @@
             this.endDatePicker = new System.Windows.Forms.DateTimePicker();
             this.startDatePicker = new System.Windows.Forms.DateTimePicker();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.dgvStockIn = new System.Windows.Forms.DataGridView();
+            this.datagridFrameStockOut = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBoxQuantityLeft = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtBoxDescription = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.btnEditDetails = new System.Windows.Forms.Button();
-            this.btnStockInItem = new System.Windows.Forms.Button();
+            this.txtBoxDimension = new System.Windows.Forms.TextBox();
+            this.btnStockOutItem = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtBoxQuantity = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.lblRawPurchasePrice = new System.Windows.Forms.Label();
-            this.txtRawPurchasePrice = new System.Windows.Forms.TextBox();
+            this.txtTotalDamageCost = new System.Windows.Forms.TextBox();
             this.lblItemName = new System.Windows.Forms.Label();
-            this.txtItemName = new System.Windows.Forms.TextBox();
+            this.txtBoxFrameName = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.lblSearch = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.gpStockIn.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStockIn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridFrameStockOut)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -181,6 +177,7 @@
             this.endDatePicker.Size = new System.Drawing.Size(222, 26);
             this.endDatePicker.TabIndex = 20;
             this.endDatePicker.Value = new System.DateTime(2019, 1, 5, 0, 0, 0, 0);
+            this.endDatePicker.ValueChanged += new System.EventHandler(this.endDatePicker_ValueChanged);
             // 
             // startDatePicker
             // 
@@ -195,10 +192,11 @@
             this.startDatePicker.Size = new System.Drawing.Size(222, 26);
             this.startDatePicker.TabIndex = 19;
             this.startDatePicker.Value = new System.DateTime(2019, 1, 4, 0, 0, 0, 0);
+            this.startDatePicker.ValueChanged += new System.EventHandler(this.startDatePicker_ValueChanged);
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.dgvStockIn);
+            this.groupBox5.Controls.Add(this.datagridFrameStockOut);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Location = new System.Drawing.Point(3, 121);
             this.groupBox5.Name = "groupBox5";
@@ -207,40 +205,39 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Stock Out Records";
             // 
-            // dgvStockIn
+            // datagridFrameStockOut
             // 
-            this.dgvStockIn.AllowUserToAddRows = false;
-            this.dgvStockIn.AllowUserToDeleteRows = false;
-            this.dgvStockIn.AllowUserToResizeRows = false;
-            this.dgvStockIn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvStockIn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStockIn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvStockIn.Location = new System.Drawing.Point(3, 22);
-            this.dgvStockIn.Name = "dgvStockIn";
-            this.dgvStockIn.ReadOnly = true;
-            this.dgvStockIn.RowHeadersVisible = false;
-            this.dgvStockIn.RowTemplate.Height = 28;
-            this.dgvStockIn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStockIn.Size = new System.Drawing.Size(566, 641);
-            this.dgvStockIn.TabIndex = 4;
+            this.datagridFrameStockOut.AllowUserToAddRows = false;
+            this.datagridFrameStockOut.AllowUserToDeleteRows = false;
+            this.datagridFrameStockOut.AllowUserToResizeRows = false;
+            this.datagridFrameStockOut.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.datagridFrameStockOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagridFrameStockOut.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.datagridFrameStockOut.Location = new System.Drawing.Point(3, 22);
+            this.datagridFrameStockOut.Name = "datagridFrameStockOut";
+            this.datagridFrameStockOut.ReadOnly = true;
+            this.datagridFrameStockOut.RowHeadersVisible = false;
+            this.datagridFrameStockOut.RowTemplate.Height = 28;
+            this.datagridFrameStockOut.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.datagridFrameStockOut.Size = new System.Drawing.Size(566, 641);
+            this.datagridFrameStockOut.TabIndex = 4;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.txtBoxQuantityLeft);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.txtBoxDescription);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.btnEditDetails);
-            this.groupBox2.Controls.Add(this.btnStockInItem);
+            this.groupBox2.Controls.Add(this.txtBoxDimension);
+            this.groupBox2.Controls.Add(this.btnStockOutItem);
             this.groupBox2.Controls.Add(this.btnClose);
-            this.groupBox2.Controls.Add(this.textBox6);
+            this.groupBox2.Controls.Add(this.txtBoxQuantity);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.lblRawPurchasePrice);
-            this.groupBox2.Controls.Add(this.txtRawPurchasePrice);
+            this.groupBox2.Controls.Add(this.txtTotalDamageCost);
             this.groupBox2.Controls.Add(this.lblItemName);
-            this.groupBox2.Controls.Add(this.txtItemName);
+            this.groupBox2.Controls.Add(this.txtBoxFrameName);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
@@ -249,15 +246,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Stock Out Damage Frames";
             // 
-            // textBox1
+            // txtBoxQuantityLeft
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(218, 425);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(306, 26);
-            this.textBox1.TabIndex = 65;
+            this.txtBoxQuantityLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxQuantityLeft.Location = new System.Drawing.Point(218, 425);
+            this.txtBoxQuantityLeft.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBoxQuantityLeft.Name = "txtBoxQuantityLeft";
+            this.txtBoxQuantityLeft.ReadOnly = true;
+            this.txtBoxQuantityLeft.Size = new System.Drawing.Size(306, 26);
+            this.txtBoxQuantityLeft.TabIndex = 65;
             // 
             // label1
             // 
@@ -272,21 +269,20 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(50, 185);
+            this.label4.Location = new System.Drawing.Point(8, 182);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 20);
+            this.label4.Size = new System.Drawing.Size(134, 20);
             this.label4.TabIndex = 63;
-            this.label4.Text = "Description:";
+            this.label4.Text = "Damage Reason:";
             // 
-            // textBox3
+            // txtBoxDescription
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(218, 182);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(306, 146);
-            this.textBox3.TabIndex = 62;
+            this.txtBoxDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxDescription.Location = new System.Drawing.Point(218, 182);
+            this.txtBoxDescription.Multiline = true;
+            this.txtBoxDescription.Name = "txtBoxDescription";
+            this.txtBoxDescription.Size = new System.Drawing.Size(306, 146);
+            this.txtBoxDescription.TabIndex = 62;
             // 
             // label3
             // 
@@ -297,38 +293,27 @@
             this.label3.TabIndex = 61;
             this.label3.Text = "Dimension:";
             // 
-            // textBox2
+            // txtBoxDimension
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(218, 125);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(306, 26);
-            this.textBox2.TabIndex = 60;
+            this.txtBoxDimension.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxDimension.Location = new System.Drawing.Point(218, 125);
+            this.txtBoxDimension.Name = "txtBoxDimension";
+            this.txtBoxDimension.ReadOnly = true;
+            this.txtBoxDimension.Size = new System.Drawing.Size(306, 26);
+            this.txtBoxDimension.TabIndex = 60;
             // 
-            // btnEditDetails
+            // btnStockOutItem
             // 
-            this.btnEditDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnStockOutItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditDetails.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnEditDetails.Location = new System.Drawing.Point(252, 642);
-            this.btnEditDetails.Name = "btnEditDetails";
-            this.btnEditDetails.Size = new System.Drawing.Size(272, 37);
-            this.btnEditDetails.TabIndex = 59;
-            this.btnEditDetails.Text = "Edit Details";
-            this.btnEditDetails.UseVisualStyleBackColor = false;
-            // 
-            // btnStockInItem
-            // 
-            this.btnStockInItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStockInItem.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnStockInItem.Location = new System.Drawing.Point(252, 589);
-            this.btnStockInItem.Name = "btnStockInItem";
-            this.btnStockInItem.Size = new System.Drawing.Size(272, 37);
-            this.btnStockInItem.TabIndex = 58;
-            this.btnStockInItem.Text = "Stock Out Item";
-            this.btnStockInItem.UseVisualStyleBackColor = false;
+            this.btnStockOutItem.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnStockOutItem.Location = new System.Drawing.Point(251, 623);
+            this.btnStockOutItem.Name = "btnStockOutItem";
+            this.btnStockOutItem.Size = new System.Drawing.Size(272, 37);
+            this.btnStockOutItem.TabIndex = 58;
+            this.btnStockOutItem.Text = "Stock Out Item";
+            this.btnStockOutItem.UseVisualStyleBackColor = false;
+            this.btnStockOutItem.Click += new System.EventHandler(this.btnStockOutItem_Click);
             // 
             // btnClose
             // 
@@ -341,15 +326,19 @@
             this.btnClose.TabIndex = 57;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // textBox6
+            // txtBoxQuantity
             // 
-            this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox6.Location = new System.Drawing.Point(218, 365);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(306, 26);
-            this.textBox6.TabIndex = 43;
+            this.txtBoxQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxQuantity.Location = new System.Drawing.Point(218, 365);
+            this.txtBoxQuantity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBoxQuantity.Name = "txtBoxQuantity";
+            this.txtBoxQuantity.Size = new System.Drawing.Size(306, 26);
+            this.txtBoxQuantity.TabIndex = 43;
+            this.txtBoxQuantity.Text = "0";
+            this.txtBoxQuantity.TextChanged += new System.EventHandler(this.txtBoxQuantity_TextChanged);
+            this.txtBoxQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxQuantity_KeyPress);
             // 
             // label8
             // 
@@ -370,14 +359,14 @@
             this.lblRawPurchasePrice.TabIndex = 19;
             this.lblRawPurchasePrice.Text = "Total Damage Cost:";
             // 
-            // txtRawPurchasePrice
+            // txtTotalDamageCost
             // 
-            this.txtRawPurchasePrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRawPurchasePrice.Location = new System.Drawing.Point(279, 528);
-            this.txtRawPurchasePrice.Name = "txtRawPurchasePrice";
-            this.txtRawPurchasePrice.ReadOnly = true;
-            this.txtRawPurchasePrice.Size = new System.Drawing.Size(244, 26);
-            this.txtRawPurchasePrice.TabIndex = 18;
+            this.txtTotalDamageCost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotalDamageCost.Location = new System.Drawing.Point(279, 528);
+            this.txtTotalDamageCost.Name = "txtTotalDamageCost";
+            this.txtTotalDamageCost.ReadOnly = true;
+            this.txtTotalDamageCost.Size = new System.Drawing.Size(244, 26);
+            this.txtTotalDamageCost.TabIndex = 18;
             // 
             // lblItemName
             // 
@@ -388,45 +377,23 @@
             this.lblItemName.TabIndex = 15;
             this.lblItemName.Text = "Frame Name:";
             // 
-            // txtItemName
+            // txtBoxFrameName
             // 
-            this.txtItemName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtItemName.Location = new System.Drawing.Point(218, 75);
-            this.txtItemName.Name = "txtItemName";
-            this.txtItemName.ReadOnly = true;
-            this.txtItemName.Size = new System.Drawing.Size(306, 26);
-            this.txtItemName.TabIndex = 14;
+            this.txtBoxFrameName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxFrameName.Location = new System.Drawing.Point(218, 75);
+            this.txtBoxFrameName.Name = "txtBoxFrameName";
+            this.txtBoxFrameName.ReadOnly = true;
+            this.txtBoxFrameName.Size = new System.Drawing.Size(306, 26);
+            this.txtBoxFrameName.TabIndex = 14;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.txtSearch);
-            this.groupBox3.Controls.Add(this.lblSearch);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(1156, 50);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Location = new System.Drawing.Point(747, 17);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(400, 26);
-            this.txtSearch.TabIndex = 29;
-            // 
-            // lblSearch
-            // 
-            this.lblSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(651, 20);
-            this.lblSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(64, 20);
-            this.lblSearch.TabIndex = 30;
-            this.lblSearch.Text = "Search:";
             // 
             // frmFrameDamagedItems
             // 
@@ -437,6 +404,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmFrameDamagedItems";
             this.Text = "Stock Out Damaged Frames";
+            this.Load += new System.EventHandler(this.frmFrameDamagedItems_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -444,11 +412,9 @@
             this.gpStockIn.ResumeLayout(false);
             this.gpStockIn.PerformLayout();
             this.groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStockIn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridFrameStockOut)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -459,22 +425,19 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnEditDetails;
-        private System.Windows.Forms.Button btnStockInItem;
+        private System.Windows.Forms.Button btnStockOutItem;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtBoxQuantity;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblRawPurchasePrice;
-        public System.Windows.Forms.TextBox txtRawPurchasePrice;
+        public System.Windows.Forms.TextBox txtTotalDamageCost;
         private System.Windows.Forms.Label lblItemName;
-        public System.Windows.Forms.TextBox txtItemName;
+        public System.Windows.Forms.TextBox txtBoxFrameName;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtBoxDescription;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtBoxDimension;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.GroupBox gpStockIn;
         private System.Windows.Forms.Label lblEndDate;
@@ -482,8 +445,8 @@
         private System.Windows.Forms.DateTimePicker endDatePicker;
         private System.Windows.Forms.DateTimePicker startDatePicker;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.DataGridView dgvStockIn;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridView datagridFrameStockOut;
+        private System.Windows.Forms.TextBox txtBoxQuantityLeft;
         private System.Windows.Forms.Label label1;
     }
 }

@@ -418,19 +418,21 @@ namespace PYLsystems
 
                 quantityCheck = quantityLeftinMeasure - (measureAUsedConverted * quantityUsed);
             }
-            if (String.Equals(typeOfMeasure, "Area"))
-            {
-                MessageBox.Show("Quantity Left in Measure= " + quantityLeftinMeasure + "\n QuantityCheck= " + quantityCheck +
-                "\n measureAUsed= " + measureAUsedConverted +
-                "\n measureBUsed= "+measureBUsedConverted +
-                "\n totalAreaUsed= "+totalAreaUsed);
-            }
-            else
-            {
-                MessageBox.Show("Quantity Left in Measure= " + quantityLeftinMeasure + "\n QuantityCheck= " + quantityCheck +
-                "\n measureAUsed= " + measureAUsedConverted +
-                "\n typeOfmeasure= "+ typeOfMeasure);
-            }
+
+
+            //if (String.Equals(typeOfMeasure, "Area"))
+            //{
+            //    MessageBox.Show("Quantity Left in Measure= " + quantityLeftinMeasure + "\n QuantityCheck= " + quantityCheck +
+            //    "\n measureAUsed= " + measureAUsedConverted +
+            //    "\n measureBUsed= "+measureBUsedConverted +
+            //    "\n totalAreaUsed= "+totalAreaUsed);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Quantity Left in Measure= " + quantityLeftinMeasure + "\n QuantityCheck= " + quantityCheck +
+            //    "\n measureAUsed= " + measureAUsedConverted +
+            //    "\n typeOfmeasure= "+ typeOfMeasure);
+            //}
             
 
             if (quantityCheck < 0)
@@ -446,8 +448,18 @@ namespace PYLsystems
         //----------------Event Methods-----------------
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            frmFrameStockInUpdate UpdateStockIn = new frmFrameStockInUpdate();
+            if (datagridFrameStockIn.Rows.Count == 0)
+            {
+                MessageBox.Show("There's nothing to edit.");
+                return;
+            }
+            int currRowIndex = datagridFrameStockIn.SelectedRows[0].Index;
+            int selectedInventoryID = Int32.Parse(datagridFrameStockIn.Rows[currRowIndex].Cells["inventoryID"].Value.ToString());
+            int quantityInputted = Int32.Parse(datagridFrameStockIn.Rows[currRowIndex].Cells["Stock In Quantity"].Value.ToString());
+            frmFrameStockInUpdate UpdateStockIn = new frmFrameStockInUpdate(this.employeeID,selectedInventoryID,this.rawCostInitial,quantityInputted,
+                txtBoxFrameName.Text,txtBoxDescription.Text,txtBoxDimension.Text,txtBoxEmpName.Text,dtRawCostMerger,this.salesPriceInitial);
             UpdateStockIn.ShowDialog();
+            frmFrameStockInAdd_Loader();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
