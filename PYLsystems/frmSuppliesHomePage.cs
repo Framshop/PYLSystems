@@ -42,5 +42,11 @@ namespace PYLsystems
             frmSupplyDamage frmSupplyDmg = new frmSupplyDamage();
             frmSupplyDmg.ShowDialog();
         }
+
+        private void btnPrintReport_Click(object sender, EventArgs e)
+        {
+            frmSuppliesPrint print = new frmSuppliesPrint();
+            print.ShowDialog();
+        }
     }
 }

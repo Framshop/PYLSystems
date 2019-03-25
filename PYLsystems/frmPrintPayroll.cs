@@ -59,6 +59,7 @@ namespace PYLsystems
                 File.Create(filePath).Dispose();
             }
             string stringPayRollReportGen = "<html><head><style>table {border-collapse: collapse;} table, th, td {  border: 1px solid black;}</style></head><body>";
+            stringPayRollReportGen += "<h3> Payroll for " + DateStart.ToString("yyyy-MM-dd") + " - " + DateEnd.ToString("yyyy-MM-dd") + "</h3><hr>";
             stringPayRollReportGen += "<table><tr><th> Employee Name </th><th> Hourly Rate </th><th> Total Work Hours </th><th> Gross Amount </th><th> Deductions </th><th> Net Amount </th></tr>";
             if (dtPayroll.Rows.Count > 0)
             {               

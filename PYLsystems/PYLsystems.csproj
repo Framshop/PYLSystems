@@ -257,6 +257,12 @@
     <Compile Include="frmJobOrderEdit.Designer.cs">
       <DependentUpon>frmJobOrderEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmJobOrdersPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmJobOrdersPrint.Designer.cs">
+      <DependentUpon>frmJobOrdersPrint.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmNewEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -322,6 +328,12 @@
     </Compile>
     <Compile Include="frmSuppliesHomePage.Designer.cs">
       <DependentUpon>frmSuppliesHomePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSuppliesPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSuppliesPrint.Designer.cs">
+      <DependentUpon>frmSuppliesPrint.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSupplyDamage.cs">
       <SubType>Form</SubType>
@@ -499,6 +511,9 @@
     <EmbeddedResource Include="frmJobOrderEdit.resx">
       <DependentUpon>frmJobOrderEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmJobOrdersPrint.resx">
+      <DependentUpon>frmJobOrdersPrint.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmNewEmployee.resx">
       <DependentUpon>frmNewEmployee.cs</DependentUpon>
     </EmbeddedResource>
@@ -528,6 +543,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSuppliesHomePage.resx">
       <DependentUpon>frmSuppliesHomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSuppliesPrint.resx">
+      <DependentUpon>frmSuppliesPrint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSupplyDamage.resx">
       <DependentUpon>frmSupplyDamage.cs</DependentUpon>

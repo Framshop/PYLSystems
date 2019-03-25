@@ -458,5 +458,23 @@ namespace PYLsystems
             jobOrder_SuppliesUsedLoader(jobOrderID);
             jobOrderOtherDetailsLoader();
         }
+
+        private void startDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            if (startDatePicker.Enabled)
+            {
+                DateStart = startDatePicker.Value;
+                jobOrder_ReceiptsLoader();
+            }
+        }
+
+        private void endDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            if (endDatePicker.Enabled)
+            {
+                DateEnd = endDatePicker.Value;
+                jobOrder_ReceiptsLoader();
+            }
+        }
     }
 }
