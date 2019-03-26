@@ -98,7 +98,7 @@ namespace PYLsystems
             this.startDatePicker.Enabled = true;
             this.endDatePicker.Enabled = true;
             datagridPayrollCalc.Columns["Gross Amount"].DefaultCellStyle.Format = "0.00";
-            //MessageBox.Show(datagridPayrollCalc.Rows.Count+"");
+            //MessageBox.Show(datagridPayrollCalc.Rows.Count + "");
             if (datagridPayrollCalc.Rows.Count > 0)
             {
                 //MessageBox.Show(dtPayrollCalc.Rows[0]["employeeID"].ToString());
@@ -141,23 +141,27 @@ namespace PYLsystems
             }
             int kCAcheck = 0;
             //MessageBox.Show(dtCashAdvChecker.Rows.Count + "");
-            if (dtCashAdvChecker.Rows.Count > 0) { 
+            if (dtPayrollCalc.Rows.Count > 0) { 
                 for (int i=0;i < dtPayrollCalc.Rows.Count; i++)
                 {
-                    if (Int32.Parse(dtPayrollCalc.Rows[i]["employeeID"].ToString()) == Int32.Parse(dtCashAdvChecker.Rows[kCAcheck]["employeeID"].ToString()))
+                    if (dtCashAdvChecker.Rows.Count > 0)
                     {
-                        UpdateEmpPayrollList.Add(new payRollList(Int32.Parse(dtPayrollCalc.Rows[i]["employeeID"].ToString()), encoderID, DateStart, DateEnd,
-                             Double.Parse(dtPayrollCalc.Rows[i]["Gross Amount"].ToString()),
-                             Int32.Parse(dtCashAdvChecker.Rows[kCAcheck]["payrollID"].ToString())));
-                        datagridPayrollCalc.Rows[i].Cells["Cash Advance"].Value = dtCashAdvChecker.Rows[kCAcheck]["amount"].ToString();
-                        txtBoxCashAdv.Text = datagridPayrollCalc.Rows[i].Cells["Cash Advance"].Value.ToString();
-                        kCAcheck++;
-                        if (kCAcheck == dtCashAdvChecker.Rows.Count)
+                        if (Int32.Parse(dtPayrollCalc.Rows[i]["employeeID"].ToString()) == Int32.Parse(dtCashAdvChecker.Rows[kCAcheck]["employeeID"].ToString()))
                         {
-                            break;
+                            UpdateEmpPayrollList.Add(new payRollList(Int32.Parse(dtPayrollCalc.Rows[i]["employeeID"].ToString()), encoderID, DateStart, DateEnd,
+                                 Double.Parse(dtPayrollCalc.Rows[i]["Gross Amount"].ToString()),
+                                 Int32.Parse(dtCashAdvChecker.Rows[kCAcheck]["payrollID"].ToString())));
+                            datagridPayrollCalc.Rows[i].Cells["Cash Advance"].Value = dtCashAdvChecker.Rows[kCAcheck]["amount"].ToString();
+                            txtBoxCashAdv.Text = datagridPayrollCalc.Rows[i].Cells["Cash Advance"].Value.ToString();
+                            kCAcheck++;
+                            if (kCAcheck == dtCashAdvChecker.Rows.Count)
+                            {
+                                break;
+                            }
                         }
                     }
-                    else { 
+                    else
+                    {
                         InsertEmpPayrollList.Add(new payRollList(Int32.Parse(dtPayrollCalc.Rows[i]["employeeID"].ToString()), encoderID, DateStart, DateEnd,
                              Double.Parse(dtPayrollCalc.Rows[i]["Gross Amount"].ToString())));
                     }
@@ -191,6 +195,7 @@ namespace PYLsystems
                         }
                     }
                 }
+                
                 try
                 {
                     StringBuilder stringAddPayroll = new StringBuilder("INSERT INTO payroll (employeeIDReceiver, employeeIDProvider, payRollStartDate,payRollEndDate,dateReceived,amountReceived,nameOfReceiver) VALUES ");
@@ -437,7 +442,7 @@ namespace PYLsystems
             double valPhilHealth;
             double valSss;
             double valcashAdv; //temporary value
-            double tempTotalAmount;
+            double tempTotalAmount = 0;
             double totalAmount = 0;
             int dataGridSelectedIndex = datagridPayrollCalc.SelectedRows[0].Index;
             int employeeId = Int32.Parse(datagridPayrollCalc.Rows[dataGridSelectedIndex].Cells["employeeID"].Value.ToString());
@@ -450,7 +455,7 @@ namespace PYLsystems
                     indexInsertPayrollList = i;
                 }
             }
-            for (int i = 0;i < UpdateEmpPayrollList.Count; i++)
+            for (int i = 0; i < UpdateEmpPayrollList.Count; i++)
             {
                 if (UpdateEmpPayrollList[i].employeeID == employeeId)
                 {
@@ -479,16 +484,28 @@ namespace PYLsystems
             {
                 valcashAdv = Double.Parse(txtBoxCashAdv.Text.ToString());
             }
-            if (indexInsertPayrollList >= 0) {
-                tempTotalAmount = InsertEmpPayrollList[indexInsertPayrollList].grossTotal;
+            //if (indexInsertPayrollList >= 0) {
+            //    tempTotalAmount = InsertEmpPayrollList[indexInsertPayrollList].grossTotal;
+            //    totalAmount = tempTotalAmount - (valPhilHealth + valSss);
+            //}
+            //else if (indexUpdatePayrollList >= 0) {
+            //    tempTotalAmount = UpdateEmpPayrollList[indexUpdatePayrollList].grossTotal;
+            //    totalAmount = tempTotalAmount - (valPhilHealth + valSss + valcashAdv);
+            //}
+            if (datagridPayrollCalc.Rows.Count > 0)
+            {
+                tempTotalAmount = Double.Parse(datagridPayrollCalc.Rows[dataGridSelectedIndex].Cells["Gross Amount"].Value.ToString());
+            }
+            if(String.IsNullOrEmpty(datagridPayrollCalc.Rows[dataGridSelectedIndex].Cells["Cash Advance"].Value.ToString()))
+            {
                 totalAmount = tempTotalAmount - (valPhilHealth + valSss);
             }
-            else if (indexUpdatePayrollList >= 0) {
-                tempTotalAmount = UpdateEmpPayrollList[indexUpdatePayrollList].grossTotal;
+            else
+            {
                 totalAmount = tempTotalAmount - (valPhilHealth + valSss + valcashAdv);
             }
             txtBoxAmount.Text = totalAmount.ToString();
-            //MessageBox.Show(txtBoxCashAdv.Text.ToString());
+            //MessageBox.Show(tempTotalAmount.ToString());
 
         }
         private bool validateDates()
@@ -601,6 +618,7 @@ namespace PYLsystems
 
             if (PhilHealthSSSValidate && dateValidate)
             {
+               // MessageBox.Show(InsertEmpPayrollList.Count + "");
                 addPayroll();
                 MessageBox.Show("Payroll Added.");
                 this.Close();
@@ -680,6 +698,36 @@ namespace PYLsystems
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (datagridPayrollCalc.Rows.Count > 0)
+            {
+                int currRowIndex = datagridPayrollCalc.SelectedRows[0].Index;
+                double grossamount = Double.Parse(datagridPayrollCalc.Rows[currRowIndex].Cells["Gross Amount"].Value.ToString());
+                double cashadv = 0;
+                double philhealth = 0;
+                double sss = 0;
+                if (!String.IsNullOrEmpty(txtBoxCashAdv.Text))
+                {
+                    cashadv = Double.Parse(txtBoxCashAdv.Text);
+                }
+                if (!String.IsNullOrEmpty(txtBoxPhilhealth.Text))
+                {
+                    philhealth = Double.Parse(txtBoxPhilhealth.Text);
+                }
+                if (!String.IsNullOrEmpty(txtBoxSSS.Text))
+                {
+                    sss = Double.Parse(txtBoxSSS.Text);
+                }
+                if ((grossamount - (cashadv + philhealth + sss)) < 0)
+                {
+                    MessageBox.Show("Please enter a valid amount. Cannot have a net amount less than 0.");
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Employee Selected.");
+                return;
+            }
             saveTempSave();
         }
 

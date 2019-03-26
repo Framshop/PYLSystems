@@ -66,7 +66,7 @@ namespace PYLsystems
         public void RefreshDatabase()
         {
             myConn.Open();
-            string query = "SELECT s.supplierID,s.supplierName as 'Supplier Name',s.supplierDetails as 'Supplier Details',s.address as 'Address' FROM supplier_items s_i LEFT JOIN supplier s ON s.supplierID = s_i.supplierID WHERE s_i.supply_itemsID = " + lblsupply_itemsID.Text;
+            string query = "SELECT s.supplierID,s.supplierName as 'Supplier Name',s.supplierDetails as 'Supplier Details',s.address as 'Address' FROM supplier_items s_i LEFT JOIN supplier s ON s.supplierID = s_i.supplierID LEFT JOIN supplier_items supit ON s.supplierID = supit.supplierID AND s_i.supply_itemsID=supit.supply_itemsID WHERE supit.active=0 AND s_i.supply_itemsID = " + lblsupply_itemsID.Text;
             MySqlCommand comm = new MySqlCommand(query, myConn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
             DataTable dt = new DataTable();

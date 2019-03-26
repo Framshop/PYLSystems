@@ -155,10 +155,10 @@ namespace PYLsystems
             else {
                 int checkExist=0;
                 int i;
-                frameName = frameInvGrid.Rows[curRowIndex].Cells[0].Value.ToString();
-                Dimension = frameInvGrid.Rows[curRowIndex].Cells[1].Value.ToString();
-                unitPrice = Double.Parse(frameInvGrid.Rows[curRowIndex].Cells[2].Value.ToString());
-                frameItemID = Int32.Parse(frameInvGrid.Rows[curRowIndex].Cells[4].Value.ToString());
+                frameName = frameInvGrid.Rows[curRowIndex].Cells["Frame"].Value.ToString();
+                Dimension = frameInvGrid.Rows[curRowIndex].Cells["Dimension"].Value.ToString();
+                unitPrice = Double.Parse(frameInvGrid.Rows[curRowIndex].Cells["Unit Price"].Value.ToString());
+                frameItemID = Int32.Parse(frameInvGrid.Rows[curRowIndex].Cells["frameItemID"].Value.ToString());
                 for (i = 0; i < addSalesPForm.frameItemsList.Count; i++) {
                     if (addSalesPForm.frameItemsList[i].frameItemID==frameItemID) {
                         checkExist = 1;
@@ -204,10 +204,10 @@ namespace PYLsystems
                 return;
             }
             else {
-                String frameName = frameInvGrid.Rows[curRowIndex].Cells[0].Value.ToString();
-                String Dimension = frameInvGrid.Rows[curRowIndex].Cells[1].Value.ToString();
-                int unitPrice = Int32.Parse(frameInvGrid.Rows[curRowIndex].Cells[2].Value.ToString());
-                int frameItemID = Int32.Parse(frameInvGrid.Rows[curRowIndex].Cells[4].Value.ToString());
+                String frameName = frameInvGrid.Rows[curRowIndex].Cells["Frame"].Value.ToString();
+                String Dimension = frameInvGrid.Rows[curRowIndex].Cells["Dimension"].Value.ToString();
+                int unitPrice = Int32.Parse(frameInvGrid.Rows[curRowIndex].Cells["Unit Price"].Value.ToString());
+                int frameItemID = Int32.Parse(frameInvGrid.Rows[curRowIndex].Cells["frameItemID"].Value.ToString());
                 addSalesPForm.frameItemsList[selectedAddSRowIndex].frameName = frameName;
                 addSalesPForm.frameItemsList[selectedAddSRowIndex].dimension = Dimension;
                 addSalesPForm.frameItemsList[selectedAddSRowIndex].unitPrice = unitPrice;

@@ -34,7 +34,8 @@ namespace PYLsystems
             frmLogin.ShowDialog();
             Global.empId = employeeId.ToString();
             frmInventoryHomePage inventoryHomePage = new frmInventoryHomePage();
-            //MessageBox.Show(employeeId.ToString()+" "+employeeStatus.ToString());
+            //MessageBox.Show(employeeId.ToString() + " " + employeeStatus.ToString());
+
             if (employeeStatus == 1) {
                 salesOrderBtn.Enabled = true;
                 salesOrderBtn.Visible = true;
@@ -50,6 +51,7 @@ namespace PYLsystems
                 salesOrderBtn.Enabled = true;
                 salesOrderBtn.Visible = true;
                 jOrderBtn.Visible = true;
+                jOrderBtn.Enabled = true;
                 inventoryBtn.Enabled = true;
                 inventoryBtn.Visible = true;
                 empManBtn.Enabled = true;
@@ -70,8 +72,10 @@ namespace PYLsystems
             {
                 jOrderBtn.Enabled = false;
                 jOrderBtn.Text = "Not Applicable";
-                inventoryHomePage.btnSupplies.Enabled = false;
-                inventoryHomePage.btnSupplies.Text = "Not Applicable";
+                inventoryBtn.Visible = true;
+                inventoryBtn.Enabled = true;
+                //inventoryHomePage.btnSupplies.Enabled = false;
+                //inventoryHomePage.btnSupplies.Text = "Not Applicable";
                 //inventoryHomePage.btnSupplyStockIn.Enabled = false;
                 //inventoryHomePage.btnSupplyStockIn.Text = "Not Applicable";
                 //inventoryHomePage.btnCustomerAccount.Enabled = false;
