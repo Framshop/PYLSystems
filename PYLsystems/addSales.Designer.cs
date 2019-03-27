@@ -67,11 +67,12 @@
             this.tableLayoutPanel1.Controls.Add(this.AddSalesGB, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1055, 745);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 64.76015F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.23985F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(814, 542);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -82,12 +83,13 @@
             this.tableLayoutPanel2.Controls.Add(this.btnsGB, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.TotalGB, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 524);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 352);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 218F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1049, 218);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 142F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(810, 188);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // btnsGB
@@ -96,9 +98,11 @@
             this.btnsGB.Controls.Add(this.cancelBtn);
             this.btnsGB.Controls.Add(this.receiptTextBox);
             this.btnsGB.Controls.Add(this.confirmBtn);
-            this.btnsGB.Location = new System.Drawing.Point(3, 3);
+            this.btnsGB.Location = new System.Drawing.Point(2, 2);
+            this.btnsGB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnsGB.Name = "btnsGB";
-            this.btnsGB.Size = new System.Drawing.Size(366, 141);
+            this.btnsGB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnsGB.Size = new System.Drawing.Size(284, 137);
             this.btnsGB.TabIndex = 0;
             this.btnsGB.TabStop = false;
             // 
@@ -106,18 +110,22 @@
             // 
             this.receiptLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.receiptLabel.AutoSize = true;
-            this.receiptLabel.Location = new System.Drawing.Point(46, 25);
+            this.receiptLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.receiptLabel.Location = new System.Drawing.Point(24, 15);
+            this.receiptLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.receiptLabel.Name = "receiptLabel";
-            this.receiptLabel.Size = new System.Drawing.Size(96, 20);
+            this.receiptLabel.Size = new System.Drawing.Size(86, 17);
             this.receiptLabel.TabIndex = 23;
             this.receiptLabel.Text = "Receipt No.:";
             // 
             // cancelBtn
             // 
             this.cancelBtn.BackColor = System.Drawing.Color.PaleGreen;
-            this.cancelBtn.Location = new System.Drawing.Point(40, 78);
+            this.cancelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelBtn.Location = new System.Drawing.Point(27, 68);
+            this.cancelBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(130, 37);
+            this.cancelBtn.Size = new System.Drawing.Size(97, 31);
             this.cancelBtn.TabIndex = 2;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = false;
@@ -126,18 +134,21 @@
             // receiptTextBox
             // 
             this.receiptTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.receiptTextBox.Location = new System.Drawing.Point(161, 22);
+            this.receiptTextBox.Location = new System.Drawing.Point(114, 16);
+            this.receiptTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.receiptTextBox.Name = "receiptTextBox";
             this.receiptTextBox.ReadOnly = true;
-            this.receiptTextBox.Size = new System.Drawing.Size(170, 26);
+            this.receiptTextBox.Size = new System.Drawing.Size(144, 20);
             this.receiptTextBox.TabIndex = 22;
             // 
             // confirmBtn
             // 
             this.confirmBtn.BackColor = System.Drawing.Color.PaleGreen;
-            this.confirmBtn.Location = new System.Drawing.Point(201, 78);
+            this.confirmBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmBtn.Location = new System.Drawing.Point(161, 68);
+            this.confirmBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.confirmBtn.Name = "confirmBtn";
-            this.confirmBtn.Size = new System.Drawing.Size(130, 37);
+            this.confirmBtn.Size = new System.Drawing.Size(97, 31);
             this.confirmBtn.TabIndex = 1;
             this.confirmBtn.Text = "Save";
             this.confirmBtn.UseVisualStyleBackColor = false;
@@ -159,9 +170,12 @@
             this.TotalGB.Controls.Add(this.rawTotalLabel);
             this.TotalGB.Controls.Add(this.rawTotalTextBox);
             this.TotalGB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TotalGB.Location = new System.Drawing.Point(375, 3);
+            this.TotalGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalGB.Location = new System.Drawing.Point(290, 2);
+            this.TotalGB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TotalGB.Name = "TotalGB";
-            this.TotalGB.Size = new System.Drawing.Size(671, 212);
+            this.TotalGB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TotalGB.Size = new System.Drawing.Size(518, 184);
             this.TotalGB.TabIndex = 1;
             this.TotalGB.TabStop = false;
             this.TotalGB.Text = "Total";
@@ -170,9 +184,11 @@
             // 
             this.changeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.changeLabel.AutoSize = true;
-            this.changeLabel.Location = new System.Drawing.Point(375, 153);
+            this.changeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changeLabel.Location = new System.Drawing.Point(291, 149);
+            this.changeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.changeLabel.Name = "changeLabel";
-            this.changeLabel.Size = new System.Drawing.Size(69, 20);
+            this.changeLabel.Size = new System.Drawing.Size(68, 17);
             this.changeLabel.TabIndex = 21;
             this.changeLabel.Text = "Change:";
             // 
@@ -180,18 +196,21 @@
             // 
             this.changeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.changeTextBox.BackColor = System.Drawing.SystemColors.Info;
-            this.changeTextBox.Location = new System.Drawing.Point(477, 153);
+            this.changeTextBox.Location = new System.Drawing.Point(368, 146);
+            this.changeTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.changeTextBox.Name = "changeTextBox";
             this.changeTextBox.ReadOnly = true;
-            this.changeTextBox.Size = new System.Drawing.Size(170, 26);
+            this.changeTextBox.Size = new System.Drawing.Size(136, 23);
             this.changeTextBox.TabIndex = 20;
             // 
             // deleteBtn
             // 
             this.deleteBtn.BackColor = System.Drawing.Color.PaleGreen;
-            this.deleteBtn.Location = new System.Drawing.Point(22, 89);
+            this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteBtn.Location = new System.Drawing.Point(15, 72);
+            this.deleteBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(130, 37);
+            this.deleteBtn.Size = new System.Drawing.Size(103, 34);
             this.deleteBtn.TabIndex = 19;
             this.deleteBtn.Text = "Delete Item";
             this.deleteBtn.UseVisualStyleBackColor = false;
@@ -200,9 +219,11 @@
             // editBtn
             // 
             this.editBtn.BackColor = System.Drawing.Color.PaleGreen;
-            this.editBtn.Location = new System.Drawing.Point(22, 36);
+            this.editBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editBtn.Location = new System.Drawing.Point(15, 23);
+            this.editBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.editBtn.Name = "editBtn";
-            this.editBtn.Size = new System.Drawing.Size(130, 37);
+            this.editBtn.Size = new System.Drawing.Size(103, 34);
             this.editBtn.TabIndex = 18;
             this.editBtn.Text = "Edit Item";
             this.editBtn.UseVisualStyleBackColor = false;
@@ -211,9 +232,11 @@
             // addItemBtn
             // 
             this.addItemBtn.BackColor = System.Drawing.Color.PaleGreen;
-            this.addItemBtn.Location = new System.Drawing.Point(158, 36);
+            this.addItemBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addItemBtn.Location = new System.Drawing.Point(141, 23);
+            this.addItemBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addItemBtn.Name = "addItemBtn";
-            this.addItemBtn.Size = new System.Drawing.Size(130, 37);
+            this.addItemBtn.Size = new System.Drawing.Size(103, 34);
             this.addItemBtn.TabIndex = 3;
             this.addItemBtn.Text = "Add Item";
             this.addItemBtn.UseVisualStyleBackColor = false;
@@ -223,18 +246,21 @@
             // 
             this.totalPaidLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.totalPaidLabel.AutoSize = true;
-            this.totalPaidLabel.Location = new System.Drawing.Point(375, 121);
+            this.totalPaidLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalPaidLabel.Location = new System.Drawing.Point(272, 120);
+            this.totalPaidLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.totalPaidLabel.Name = "totalPaidLabel";
-            this.totalPaidLabel.Size = new System.Drawing.Size(83, 20);
+            this.totalPaidLabel.Size = new System.Drawing.Size(87, 17);
             this.totalPaidLabel.TabIndex = 17;
             this.totalPaidLabel.Text = "Total Paid:";
             // 
             // totalPaidTextBox
             // 
             this.totalPaidTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.totalPaidTextBox.Location = new System.Drawing.Point(477, 121);
+            this.totalPaidTextBox.Location = new System.Drawing.Point(368, 117);
+            this.totalPaidTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.totalPaidTextBox.Name = "totalPaidTextBox";
-            this.totalPaidTextBox.Size = new System.Drawing.Size(170, 26);
+            this.totalPaidTextBox.Size = new System.Drawing.Size(136, 23);
             this.totalPaidTextBox.TabIndex = 16;
             this.totalPaidTextBox.TextChanged += new System.EventHandler(this.totalPaidTextBox_TextChanged);
             this.totalPaidTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.totalPaidTextBox_KeyPress);
@@ -243,37 +269,43 @@
             // 
             this.trueTotalLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trueTotalLabel.AutoSize = true;
-            this.trueTotalLabel.Location = new System.Drawing.Point(325, 89);
+            this.trueTotalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trueTotalLabel.Location = new System.Drawing.Point(261, 89);
+            this.trueTotalLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.trueTotalLabel.Name = "trueTotalLabel";
-            this.trueTotalLabel.Size = new System.Drawing.Size(133, 20);
+            this.trueTotalLabel.Size = new System.Drawing.Size(98, 17);
             this.trueTotalLabel.TabIndex = 15;
-            this.trueTotalLabel.Text = "Discounted Total:";
+            this.trueTotalLabel.Text = "Gross Total:";
             // 
             // trueTotalTextBox
             // 
             this.trueTotalTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trueTotalTextBox.Location = new System.Drawing.Point(477, 89);
+            this.trueTotalTextBox.Location = new System.Drawing.Point(368, 86);
+            this.trueTotalTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.trueTotalTextBox.Name = "trueTotalTextBox";
             this.trueTotalTextBox.ReadOnly = true;
-            this.trueTotalTextBox.Size = new System.Drawing.Size(170, 26);
+            this.trueTotalTextBox.Size = new System.Drawing.Size(136, 23);
             this.trueTotalTextBox.TabIndex = 14;
             // 
             // discountLabel
             // 
             this.discountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.discountLabel.AutoSize = true;
-            this.discountLabel.Location = new System.Drawing.Point(382, 57);
+            this.discountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.discountLabel.Location = new System.Drawing.Point(283, 52);
+            this.discountLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.discountLabel.Name = "discountLabel";
-            this.discountLabel.Size = new System.Drawing.Size(76, 20);
+            this.discountLabel.Size = new System.Drawing.Size(76, 17);
             this.discountLabel.TabIndex = 13;
             this.discountLabel.Text = "Discount:";
             // 
             // discountTextBox
             // 
             this.discountTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.discountTextBox.Location = new System.Drawing.Point(477, 57);
+            this.discountTextBox.Location = new System.Drawing.Point(368, 49);
+            this.discountTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.discountTextBox.Name = "discountTextBox";
-            this.discountTextBox.Size = new System.Drawing.Size(170, 26);
+            this.discountTextBox.Size = new System.Drawing.Size(136, 23);
             this.discountTextBox.TabIndex = 12;
             this.discountTextBox.TextChanged += new System.EventHandler(this.discountTextBox_TextChanged);
             this.discountTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.discountTextBox_KeyPress);
@@ -282,28 +314,34 @@
             // 
             this.rawTotalLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rawTotalLabel.AutoSize = true;
-            this.rawTotalLabel.Location = new System.Drawing.Point(410, 25);
+            this.rawTotalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rawTotalLabel.Location = new System.Drawing.Point(309, 19);
+            this.rawTotalLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.rawTotalLabel.Name = "rawTotalLabel";
-            this.rawTotalLabel.Size = new System.Drawing.Size(48, 20);
+            this.rawTotalLabel.Size = new System.Drawing.Size(50, 17);
             this.rawTotalLabel.TabIndex = 9;
             this.rawTotalLabel.Text = "Total:";
             // 
             // rawTotalTextBox
             // 
             this.rawTotalTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rawTotalTextBox.Location = new System.Drawing.Point(477, 25);
+            this.rawTotalTextBox.Location = new System.Drawing.Point(368, 16);
+            this.rawTotalTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rawTotalTextBox.Name = "rawTotalTextBox";
             this.rawTotalTextBox.ReadOnly = true;
-            this.rawTotalTextBox.Size = new System.Drawing.Size(170, 26);
+            this.rawTotalTextBox.Size = new System.Drawing.Size(136, 23);
             this.rawTotalTextBox.TabIndex = 8;
             // 
             // AddSalesGB
             // 
             this.AddSalesGB.Controls.Add(this.addSalesGrid);
             this.AddSalesGB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AddSalesGB.Location = new System.Drawing.Point(3, 3);
+            this.AddSalesGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddSalesGB.Location = new System.Drawing.Point(2, 2);
+            this.AddSalesGB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddSalesGB.Name = "AddSalesGB";
-            this.AddSalesGB.Size = new System.Drawing.Size(1049, 515);
+            this.AddSalesGB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddSalesGB.Size = new System.Drawing.Size(810, 346);
             this.AddSalesGB.TabIndex = 1;
             this.AddSalesGB.TabStop = false;
             this.AddSalesGB.Text = "New Sales Order";
@@ -312,27 +350,29 @@
             // 
             this.addSalesGrid.AllowUserToDeleteRows = false;
             this.addSalesGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.addSalesGrid.BackgroundColor = System.Drawing.Color.Honeydew;
             this.addSalesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.addSalesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addSalesGrid.Location = new System.Drawing.Point(3, 22);
+            this.addSalesGrid.Location = new System.Drawing.Point(2, 17);
+            this.addSalesGrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addSalesGrid.Name = "addSalesGrid";
             this.addSalesGrid.ReadOnly = true;
             this.addSalesGrid.RowHeadersVisible = false;
             this.addSalesGrid.RowTemplate.Height = 28;
             this.addSalesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.addSalesGrid.Size = new System.Drawing.Size(1043, 490);
+            this.addSalesGrid.Size = new System.Drawing.Size(806, 327);
             this.addSalesGrid.TabIndex = 0;
             this.addSalesGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.addSalesGrid_CellDoubleClick);
             // 
             // addSales
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1055, 745);
+            this.ClientSize = new System.Drawing.Size(814, 542);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "addSales";
-            this.Text = "AddSales";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.addSales_Load);
             this.tableLayoutPanel1.ResumeLayout(false);

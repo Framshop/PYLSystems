@@ -58,10 +58,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(221, 9);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(220, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 20);
+            this.label1.Size = new System.Drawing.Size(106, 24);
             this.label1.TabIndex = 9;
             this.label1.Text = "Archive List";
             // 
@@ -72,12 +72,12 @@
             this.dgEmpList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgEmpList.BackgroundColor = System.Drawing.Color.Honeydew;
             this.dgEmpList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgEmpList.Location = new System.Drawing.Point(12, 50);
+            this.dgEmpList.Location = new System.Drawing.Point(12, 48);
             this.dgEmpList.Name = "dgEmpList";
             this.dgEmpList.ReadOnly = true;
             this.dgEmpList.RowHeadersVisible = false;
             this.dgEmpList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgEmpList.Size = new System.Drawing.Size(495, 254);
+            this.dgEmpList.Size = new System.Drawing.Size(520, 306);
             this.dgEmpList.TabIndex = 8;
             this.dgEmpList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgEmpList_CellClick);
             // 
@@ -86,9 +86,10 @@
             this.btnSet.BackColor = System.Drawing.Color.PaleGreen;
             this.btnSet.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSet.Enabled = false;
-            this.btnSet.Location = new System.Drawing.Point(12, 319);
+            this.btnSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSet.Location = new System.Drawing.Point(12, 360);
             this.btnSet.Name = "btnSet";
-            this.btnSet.Size = new System.Drawing.Size(105, 29);
+            this.btnSet.Size = new System.Drawing.Size(159, 40);
             this.btnSet.TabIndex = 12;
             this.btnSet.Text = "Set as Employee";
             this.btnSet.UseVisualStyleBackColor = false;
@@ -98,9 +99,10 @@
             // 
             this.btnClose.BackColor = System.Drawing.Color.PaleGreen;
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.Location = new System.Drawing.Point(145, 319);
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(187, 360);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(105, 29);
+            this.btnClose.Size = new System.Drawing.Size(159, 40);
             this.btnClose.TabIndex = 13;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -122,7 +124,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(518, 372);
+            this.ClientSize = new System.Drawing.Size(544, 414);
             this.Controls.Add(this.emp_id);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSet);

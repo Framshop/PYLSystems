@@ -639,5 +639,10 @@ namespace PYLsystems
             viewTotalProfit viewTotalProfitWin = new viewTotalProfit(employeeStatus);
             viewTotalProfitWin.ShowDialog();
         }
+
+        private void filterGB_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
