@@ -67,31 +67,34 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.520167F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90.26426F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.285118F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.09529F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 98.13801F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.8762322F));
             this.tableLayoutPanel1.Controls.Add(this.GBButtons, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.83197F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.579779F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.02212F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.29099F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.836065F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1438, 976);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.32385F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.263823F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(913, 633);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // GBButtons
             // 
             this.GBButtons.Controls.Add(this.tableLayoutPanel3);
             this.GBButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GBButtons.Location = new System.Drawing.Point(67, 833);
+            this.GBButtons.Location = new System.Drawing.Point(11, 530);
+            this.GBButtons.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GBButtons.Name = "GBButtons";
-            this.GBButtons.Size = new System.Drawing.Size(1291, 90);
+            this.GBButtons.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GBButtons.Size = new System.Drawing.Size(891, 91);
             this.GBButtons.TabIndex = 2;
             this.GBButtons.TabStop = false;
             // 
@@ -105,17 +108,18 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel3.Controls.Add(this.btnGenerateReport, 4, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btnEditPayment, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnEditPayment, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnCreatePayroll, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnVoidCashAdv, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnCashAdv, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.closeBtn, 5, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 22);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 15);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1285, 65);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(887, 74);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // btnGenerateReport
@@ -124,9 +128,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGenerateReport.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnGenerateReport.Location = new System.Drawing.Point(859, 3);
+            this.btnGenerateReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateReport.Location = new System.Drawing.Point(590, 2);
+            this.btnGenerateReport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnGenerateReport.Name = "btnGenerateReport";
-            this.btnGenerateReport.Size = new System.Drawing.Size(208, 59);
+            this.btnGenerateReport.Size = new System.Drawing.Size(143, 70);
             this.btnGenerateReport.TabIndex = 8;
             this.btnGenerateReport.Text = "Print Report";
             this.btnGenerateReport.UseVisualStyleBackColor = false;
@@ -138,9 +144,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditPayment.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnEditPayment.Location = new System.Drawing.Point(3, 3);
+            this.btnEditPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditPayment.Location = new System.Drawing.Point(149, 2);
+            this.btnEditPayment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEditPayment.Name = "btnEditPayment";
-            this.btnEditPayment.Size = new System.Drawing.Size(208, 59);
+            this.btnEditPayment.Size = new System.Drawing.Size(143, 70);
             this.btnEditPayment.TabIndex = 7;
             this.btnEditPayment.Text = "Edit Payment";
             this.btnEditPayment.UseVisualStyleBackColor = false;
@@ -152,9 +160,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCreatePayroll.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnCreatePayroll.Location = new System.Drawing.Point(217, 3);
+            this.btnCreatePayroll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreatePayroll.Location = new System.Drawing.Point(2, 2);
+            this.btnCreatePayroll.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCreatePayroll.Name = "btnCreatePayroll";
-            this.btnCreatePayroll.Size = new System.Drawing.Size(208, 59);
+            this.btnCreatePayroll.Size = new System.Drawing.Size(143, 70);
             this.btnCreatePayroll.TabIndex = 4;
             this.btnCreatePayroll.Text = "Create Payroll";
             this.btnCreatePayroll.UseVisualStyleBackColor = false;
@@ -167,11 +177,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnVoidCashAdv.BackColor = System.Drawing.Color.PaleGreen;
             this.btnVoidCashAdv.Enabled = false;
-            this.btnVoidCashAdv.Location = new System.Drawing.Point(645, 3);
+            this.btnVoidCashAdv.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoidCashAdv.Location = new System.Drawing.Point(443, 2);
+            this.btnVoidCashAdv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnVoidCashAdv.Name = "btnVoidCashAdv";
-            this.btnVoidCashAdv.Size = new System.Drawing.Size(208, 59);
+            this.btnVoidCashAdv.Size = new System.Drawing.Size(143, 70);
             this.btnVoidCashAdv.TabIndex = 6;
-            this.btnVoidCashAdv.Text = "Void Cash Advance";
+            this.btnVoidCashAdv.Text = "Void C.A.";
             this.btnVoidCashAdv.UseVisualStyleBackColor = false;
             this.btnVoidCashAdv.Click += new System.EventHandler(this.btnVoidCashAdv_Click);
             // 
@@ -181,11 +193,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCashAdv.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnCashAdv.Location = new System.Drawing.Point(431, 3);
+            this.btnCashAdv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCashAdv.Location = new System.Drawing.Point(296, 2);
+            this.btnCashAdv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCashAdv.Name = "btnCashAdv";
-            this.btnCashAdv.Size = new System.Drawing.Size(208, 59);
+            this.btnCashAdv.Size = new System.Drawing.Size(143, 70);
             this.btnCashAdv.TabIndex = 5;
-            this.btnCashAdv.Text = "Create Cash Advance";
+            this.btnCashAdv.Text = "Create C.A";
             this.btnCashAdv.UseVisualStyleBackColor = false;
             this.btnCashAdv.Click += new System.EventHandler(this.btnCashAdv_Click);
             // 
@@ -194,9 +208,11 @@
             this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.closeBtn.BackColor = System.Drawing.Color.PaleGreen;
-            this.closeBtn.Location = new System.Drawing.Point(1086, 3);
+            this.closeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeBtn.Location = new System.Drawing.Point(754, 2);
+            this.closeBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(196, 59);
+            this.closeBtn.Size = new System.Drawing.Size(131, 70);
             this.closeBtn.TabIndex = 3;
             this.closeBtn.Text = "Close";
             this.closeBtn.UseVisualStyleBackColor = false;
@@ -210,20 +226,24 @@
             this.tableLayoutPanel2.Controls.Add(this.GBPayrollDet, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupBox1, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(67, 430);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(11, 273);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1291, 397);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(891, 253);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // GBPayrollDet
             // 
             this.GBPayrollDet.Controls.Add(this.datagridPayrollDet);
             this.GBPayrollDet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GBPayrollDet.Location = new System.Drawing.Point(3, 3);
+            this.GBPayrollDet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GBPayrollDet.Location = new System.Drawing.Point(2, 2);
+            this.GBPayrollDet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GBPayrollDet.Name = "GBPayrollDet";
-            this.GBPayrollDet.Size = new System.Drawing.Size(856, 391);
+            this.GBPayrollDet.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GBPayrollDet.Size = new System.Drawing.Size(590, 249);
             this.GBPayrollDet.TabIndex = 1;
             this.GBPayrollDet.TabStop = false;
             this.GBPayrollDet.Text = "Payroll Details";
@@ -234,15 +254,17 @@
             this.datagridPayrollDet.AllowUserToDeleteRows = false;
             this.datagridPayrollDet.AllowUserToResizeRows = false;
             this.datagridPayrollDet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.datagridPayrollDet.BackgroundColor = System.Drawing.Color.Honeydew;
             this.datagridPayrollDet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridPayrollDet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.datagridPayrollDet.Location = new System.Drawing.Point(3, 22);
+            this.datagridPayrollDet.Location = new System.Drawing.Point(2, 22);
+            this.datagridPayrollDet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.datagridPayrollDet.Name = "datagridPayrollDet";
             this.datagridPayrollDet.ReadOnly = true;
             this.datagridPayrollDet.RowHeadersVisible = false;
             this.datagridPayrollDet.RowTemplate.Height = 28;
             this.datagridPayrollDet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridPayrollDet.Size = new System.Drawing.Size(850, 366);
+            this.datagridPayrollDet.Size = new System.Drawing.Size(586, 225);
             this.datagridPayrollDet.TabIndex = 1;
             this.datagridPayrollDet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridPayrollDet_CellClick);
             // 
@@ -250,9 +272,12 @@
             // 
             this.groupBox1.Controls.Add(this.datagridCashAdv);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(865, 3);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(596, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(423, 391);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(293, 249);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Deductions";
@@ -263,15 +288,17 @@
             this.datagridCashAdv.AllowUserToDeleteRows = false;
             this.datagridCashAdv.AllowUserToResizeRows = false;
             this.datagridCashAdv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.datagridCashAdv.BackgroundColor = System.Drawing.Color.Honeydew;
             this.datagridCashAdv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridCashAdv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.datagridCashAdv.Location = new System.Drawing.Point(3, 22);
+            this.datagridCashAdv.Location = new System.Drawing.Point(2, 22);
+            this.datagridCashAdv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.datagridCashAdv.Name = "datagridCashAdv";
             this.datagridCashAdv.ReadOnly = true;
             this.datagridCashAdv.RowHeadersVisible = false;
             this.datagridCashAdv.RowTemplate.Height = 28;
             this.datagridCashAdv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridCashAdv.Size = new System.Drawing.Size(417, 366);
+            this.datagridCashAdv.Size = new System.Drawing.Size(289, 225);
             this.datagridCashAdv.TabIndex = 1;
             this.datagridCashAdv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridCashAdv_CellClick_ch);
             this.datagridCashAdv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridCashAdv_CellClick);
@@ -284,11 +311,12 @@
             this.tableLayoutPanel4.Controls.Add(this.GBSetPayrollDate, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.GBEmplist, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(67, 51);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(11, 11);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1291, 373);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(891, 258);
             this.tableLayoutPanel4.TabIndex = 4;
             // 
             // GBSetPayrollDate
@@ -298,9 +326,12 @@
             this.GBSetPayrollDate.Controls.Add(this.endDatePicker);
             this.GBSetPayrollDate.Controls.Add(this.startDatePicker);
             this.GBSetPayrollDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GBSetPayrollDate.Location = new System.Drawing.Point(3, 3);
+            this.GBSetPayrollDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GBSetPayrollDate.Location = new System.Drawing.Point(2, 2);
+            this.GBSetPayrollDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GBSetPayrollDate.Name = "GBSetPayrollDate";
-            this.GBSetPayrollDate.Size = new System.Drawing.Size(351, 367);
+            this.GBSetPayrollDate.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GBSetPayrollDate.Size = new System.Drawing.Size(243, 254);
             this.GBSetPayrollDate.TabIndex = 1;
             this.GBSetPayrollDate.TabStop = false;
             this.GBSetPayrollDate.Text = "Select Payroll Date";
@@ -311,9 +342,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.endLabel.AutoSize = true;
-            this.endLabel.Location = new System.Drawing.Point(28, 109);
+            this.endLabel.Location = new System.Drawing.Point(19, 135);
+            this.endLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.endLabel.Name = "endLabel";
-            this.endLabel.Size = new System.Drawing.Size(81, 20);
+            this.endLabel.Size = new System.Drawing.Size(84, 20);
             this.endLabel.TabIndex = 18;
             this.endLabel.Text = "End Date:";
             // 
@@ -323,9 +355,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.startLabel.AutoSize = true;
-            this.startLabel.Location = new System.Drawing.Point(28, 74);
+            this.startLabel.Location = new System.Drawing.Point(19, 48);
+            this.startLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.startLabel.Name = "startLabel";
-            this.startLabel.Size = new System.Drawing.Size(87, 20);
+            this.startLabel.Size = new System.Drawing.Size(91, 20);
             this.startLabel.TabIndex = 17;
             this.startLabel.Text = "Start Date:";
             // 
@@ -337,9 +370,10 @@
             this.endDatePicker.CustomFormat = "yyyy/MM/dd";
             this.endDatePicker.Enabled = false;
             this.endDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.endDatePicker.Location = new System.Drawing.Point(117, 104);
+            this.endDatePicker.Location = new System.Drawing.Point(23, 166);
+            this.endDatePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.endDatePicker.Name = "endDatePicker";
-            this.endDatePicker.Size = new System.Drawing.Size(212, 26);
+            this.endDatePicker.Size = new System.Drawing.Size(199, 27);
             this.endDatePicker.TabIndex = 16;
             this.endDatePicker.Value = new System.DateTime(2019, 1, 5, 0, 0, 0, 0);
             this.endDatePicker.ValueChanged += new System.EventHandler(this.endDatePicker_ValueChanged);
@@ -352,9 +386,10 @@
             this.startDatePicker.CustomFormat = "yyyy/MM/dd";
             this.startDatePicker.Enabled = false;
             this.startDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.startDatePicker.Location = new System.Drawing.Point(117, 69);
+            this.startDatePicker.Location = new System.Drawing.Point(23, 70);
+            this.startDatePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.startDatePicker.Name = "startDatePicker";
-            this.startDatePicker.Size = new System.Drawing.Size(212, 26);
+            this.startDatePicker.Size = new System.Drawing.Size(199, 27);
             this.startDatePicker.TabIndex = 15;
             this.startDatePicker.Value = new System.DateTime(2019, 1, 4, 0, 0, 0, 0);
             this.startDatePicker.ValueChanged += new System.EventHandler(this.startDatePicker_ValueChanged);
@@ -363,9 +398,12 @@
             // 
             this.GBEmplist.Controls.Add(this.datagridEmpList);
             this.GBEmplist.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GBEmplist.Location = new System.Drawing.Point(360, 3);
+            this.GBEmplist.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GBEmplist.Location = new System.Drawing.Point(249, 2);
+            this.GBEmplist.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GBEmplist.Name = "GBEmplist";
-            this.GBEmplist.Size = new System.Drawing.Size(928, 367);
+            this.GBEmplist.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GBEmplist.Size = new System.Drawing.Size(640, 254);
             this.GBEmplist.TabIndex = 0;
             this.GBEmplist.TabStop = false;
             this.GBEmplist.Text = "Employee List";
@@ -376,25 +414,29 @@
             this.datagridEmpList.AllowUserToDeleteRows = false;
             this.datagridEmpList.AllowUserToResizeRows = false;
             this.datagridEmpList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.datagridEmpList.BackgroundColor = System.Drawing.Color.Honeydew;
             this.datagridEmpList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridEmpList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.datagridEmpList.Location = new System.Drawing.Point(3, 22);
+            this.datagridEmpList.Location = new System.Drawing.Point(2, 24);
+            this.datagridEmpList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.datagridEmpList.Name = "datagridEmpList";
             this.datagridEmpList.ReadOnly = true;
             this.datagridEmpList.RowHeadersVisible = false;
             this.datagridEmpList.RowTemplate.Height = 28;
             this.datagridEmpList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridEmpList.Size = new System.Drawing.Size(922, 342);
+            this.datagridEmpList.Size = new System.Drawing.Size(636, 228);
             this.datagridEmpList.TabIndex = 0;
             this.datagridEmpList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridEmpList_CellClick);
             // 
             // frmPayrollListcs
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1438, 976);
+            this.ClientSize = new System.Drawing.Size(913, 633);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmPayrollListcs";
             this.Text = "frmPayrollList";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
