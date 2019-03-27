@@ -51,6 +51,7 @@
             this.txtCalculatedStockedQuantity = new System.Windows.Forms.TextBox();
             this.lblSupplyCategory = new System.Windows.Forms.Label();
             this.btnStockOutItem = new System.Windows.Forms.Button();
+            this.imgAll = new System.Windows.Forms.ImageList(this.components);
             this.btnClose = new System.Windows.Forms.Button();
             this.cboVolumeUnit = new System.Windows.Forms.ComboBox();
             this.txtBoxVolume = new System.Windows.Forms.TextBox();
@@ -74,7 +75,6 @@
             this.lblItemName = new System.Windows.Forms.Label();
             this.txtItemName = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.imgAll = new System.Windows.Forms.ImageList(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -94,7 +94,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -109,7 +109,7 @@
             this.tableLayoutPanel2.Controls.Add(this.groupBox3, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(10, 2);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.552795F));
@@ -127,7 +127,7 @@
             this.tableLayoutPanel3.Controls.Add(this.gpStockOutDamageSupplies, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 12);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -142,7 +142,7 @@
             this.tableLayoutPanel5.Controls.Add(this.groupBox5, 0, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(430, 2);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 29.44984F));
@@ -159,9 +159,9 @@
             this.gpStockOut.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gpStockOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gpStockOut.Location = new System.Drawing.Point(2, 2);
-            this.gpStockOut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpStockOut.Margin = new System.Windows.Forms.Padding(2);
             this.gpStockOut.Name = "gpStockOut";
-            this.gpStockOut.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpStockOut.Padding = new System.Windows.Forms.Padding(2);
             this.gpStockOut.Size = new System.Drawing.Size(429, 178);
             this.gpStockOut.TabIndex = 0;
             this.gpStockOut.TabStop = false;
@@ -205,7 +205,7 @@
             this.endDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.endDatePicker.Location = new System.Drawing.Point(153, 120);
-            this.endDatePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.endDatePicker.Margin = new System.Windows.Forms.Padding(2);
             this.endDatePicker.Name = "endDatePicker";
             this.endDatePicker.Size = new System.Drawing.Size(247, 29);
             this.endDatePicker.TabIndex = 20;
@@ -222,7 +222,7 @@
             this.startDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.startDatePicker.Location = new System.Drawing.Point(153, 62);
-            this.startDatePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.startDatePicker.Margin = new System.Windows.Forms.Padding(2);
             this.startDatePicker.Name = "startDatePicker";
             this.startDatePicker.Size = new System.Drawing.Size(247, 29);
             this.startDatePicker.TabIndex = 19;
@@ -235,9 +235,9 @@
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(2, 184);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox5.Size = new System.Drawing.Size(429, 432);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
@@ -249,12 +249,12 @@
             this.dgvStockOut.AllowUserToDeleteRows = false;
             this.dgvStockOut.AllowUserToResizeRows = false;
             this.dgvStockOut.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvStockOut.BackgroundColor = System.Drawing.Color.White;
+            this.dgvStockOut.BackgroundColor = System.Drawing.Color.Honeydew;
             this.dgvStockOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStockOut.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvStockOut.GridColor = System.Drawing.Color.White;
             this.dgvStockOut.Location = new System.Drawing.Point(2, 30);
-            this.dgvStockOut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvStockOut.Margin = new System.Windows.Forms.Padding(2);
             this.dgvStockOut.Name = "dgvStockOut";
             this.dgvStockOut.ReadOnly = true;
             this.dgvStockOut.RowHeadersVisible = false;
@@ -299,9 +299,9 @@
             this.gpStockOutDamageSupplies.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gpStockOutDamageSupplies.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gpStockOutDamageSupplies.Location = new System.Drawing.Point(2, 2);
-            this.gpStockOutDamageSupplies.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpStockOutDamageSupplies.Margin = new System.Windows.Forms.Padding(2);
             this.gpStockOutDamageSupplies.Name = "gpStockOutDamageSupplies";
-            this.gpStockOutDamageSupplies.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gpStockOutDamageSupplies.Padding = new System.Windows.Forms.Padding(2);
             this.gpStockOutDamageSupplies.Size = new System.Drawing.Size(424, 618);
             this.gpStockOutDamageSupplies.TabIndex = 1;
             this.gpStockOutDamageSupplies.TabStop = false;
@@ -312,7 +312,7 @@
             this.txtUnitMeasure.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUnitMeasure.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUnitMeasure.Location = new System.Drawing.Point(194, 126);
-            this.txtUnitMeasure.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUnitMeasure.Margin = new System.Windows.Forms.Padding(2);
             this.txtUnitMeasure.Name = "txtUnitMeasure";
             this.txtUnitMeasure.ReadOnly = true;
             this.txtUnitMeasure.Size = new System.Drawing.Size(222, 27);
@@ -333,7 +333,7 @@
             this.txtSupplyCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSupplyCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSupplyCategory.Location = new System.Drawing.Point(193, 64);
-            this.txtSupplyCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSupplyCategory.Margin = new System.Windows.Forms.Padding(2);
             this.txtSupplyCategory.Name = "txtSupplyCategory";
             this.txtSupplyCategory.ReadOnly = true;
             this.txtSupplyCategory.Size = new System.Drawing.Size(222, 27);
@@ -375,7 +375,7 @@
             this.txtCalculatedStockedQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCalculatedStockedQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCalculatedStockedQuantity.Location = new System.Drawing.Point(208, 399);
-            this.txtCalculatedStockedQuantity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCalculatedStockedQuantity.Margin = new System.Windows.Forms.Padding(2);
             this.txtCalculatedStockedQuantity.Name = "txtCalculatedStockedQuantity";
             this.txtCalculatedStockedQuantity.ReadOnly = true;
             this.txtCalculatedStockedQuantity.Size = new System.Drawing.Size(208, 27);
@@ -402,7 +402,7 @@
             this.btnStockOutItem.ImageIndex = 6;
             this.btnStockOutItem.ImageList = this.imgAll;
             this.btnStockOutItem.Location = new System.Drawing.Point(4, 506);
-            this.btnStockOutItem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStockOutItem.Margin = new System.Windows.Forms.Padding(2);
             this.btnStockOutItem.Name = "btnStockOutItem";
             this.btnStockOutItem.Size = new System.Drawing.Size(201, 53);
             this.btnStockOutItem.TabIndex = 58;
@@ -410,6 +410,18 @@
             this.btnStockOutItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnStockOutItem.UseVisualStyleBackColor = false;
             this.btnStockOutItem.Click += new System.EventHandler(this.btnStockOutItem_Click);
+            // 
+            // imgAll
+            // 
+            this.imgAll.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgAll.ImageStream")));
+            this.imgAll.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgAll.Images.SetKeyName(0, "iconfinder_068_Cancel_183197.png");
+            this.imgAll.Images.SetKeyName(1, "iconfinder_199_CircledPlus_183316.png");
+            this.imgAll.Images.SetKeyName(2, "iconfinder_ic_system_update_tv_48px_352158.png");
+            this.imgAll.Images.SetKeyName(3, "iconfinder_folder-open-archive-document-archives_3643772.png");
+            this.imgAll.Images.SetKeyName(4, "iconfinder_f-check_256_282474.png");
+            this.imgAll.Images.SetKeyName(5, "stock out.png");
+            this.imgAll.Images.SetKeyName(6, "iconfinder_sign-in_298868.png");
             // 
             // btnClose
             // 
@@ -422,7 +434,7 @@
             this.btnClose.ImageIndex = 0;
             this.btnClose.ImageList = this.imgAll;
             this.btnClose.Location = new System.Drawing.Point(219, 506);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(201, 53);
             this.btnClose.TabIndex = 57;
@@ -669,7 +681,7 @@
             this.txtTotalDamageCost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTotalDamageCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalDamageCost.Location = new System.Drawing.Point(208, 450);
-            this.txtTotalDamageCost.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTotalDamageCost.Margin = new System.Windows.Forms.Padding(2);
             this.txtTotalDamageCost.Name = "txtTotalDamageCost";
             this.txtTotalDamageCost.ReadOnly = true;
             this.txtTotalDamageCost.Size = new System.Drawing.Size(208, 27);
@@ -691,7 +703,7 @@
             this.txtItemName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtItemName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtItemName.Location = new System.Drawing.Point(193, 95);
-            this.txtItemName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtItemName.Margin = new System.Windows.Forms.Padding(2);
             this.txtItemName.Name = "txtItemName";
             this.txtItemName.ReadOnly = true;
             this.txtItemName.Size = new System.Drawing.Size(222, 27);
@@ -701,24 +713,12 @@
             // 
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(2, 2);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(865, 6);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
-            // 
-            // imgAll
-            // 
-            this.imgAll.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgAll.ImageStream")));
-            this.imgAll.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgAll.Images.SetKeyName(0, "iconfinder_068_Cancel_183197.png");
-            this.imgAll.Images.SetKeyName(1, "iconfinder_199_CircledPlus_183316.png");
-            this.imgAll.Images.SetKeyName(2, "iconfinder_ic_system_update_tv_48px_352158.png");
-            this.imgAll.Images.SetKeyName(3, "iconfinder_folder-open-archive-document-archives_3643772.png");
-            this.imgAll.Images.SetKeyName(4, "iconfinder_f-check_256_282474.png");
-            this.imgAll.Images.SetKeyName(5, "stock out.png");
-            this.imgAll.Images.SetKeyName(6, "iconfinder_sign-in_298868.png");
             // 
             // frmSupplyDamage
             // 
@@ -728,7 +728,7 @@
             this.ClientSize = new System.Drawing.Size(890, 648);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmSupplyDamage";
             this.Text = "Stock Out Damaged Supplies";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

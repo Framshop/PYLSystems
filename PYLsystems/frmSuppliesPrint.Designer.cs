@@ -63,7 +63,7 @@
             this.tableLayoutPanel1.Controls.Add(this.GBBrowser, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.88889F));
@@ -82,7 +82,7 @@
             this.tableLayoutPanel2.Controls.Add(this.gbPrintControl, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -95,9 +95,9 @@
             this.gbSelectSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbSelectSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbSelectSupplier.Location = new System.Drawing.Point(2, 2);
-            this.gbSelectSupplier.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbSelectSupplier.Margin = new System.Windows.Forms.Padding(2);
             this.gbSelectSupplier.Name = "gbSelectSupplier";
-            this.gbSelectSupplier.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbSelectSupplier.Padding = new System.Windows.Forms.Padding(2);
             this.gbSelectSupplier.Size = new System.Drawing.Size(353, 278);
             this.gbSelectSupplier.TabIndex = 0;
             this.gbSelectSupplier.TabStop = false;
@@ -109,12 +109,12 @@
             this.datagridSuppliersList.AllowUserToDeleteRows = false;
             this.datagridSuppliersList.AllowUserToResizeRows = false;
             this.datagridSuppliersList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.datagridSuppliersList.BackgroundColor = System.Drawing.Color.White;
+            this.datagridSuppliersList.BackgroundColor = System.Drawing.Color.Honeydew;
             this.datagridSuppliersList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridSuppliersList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.datagridSuppliersList.GridColor = System.Drawing.Color.White;
             this.datagridSuppliersList.Location = new System.Drawing.Point(2, 30);
-            this.datagridSuppliersList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.datagridSuppliersList.Margin = new System.Windows.Forms.Padding(2);
             this.datagridSuppliersList.Name = "datagridSuppliersList";
             this.datagridSuppliersList.ReadOnly = true;
             this.datagridSuppliersList.RowHeadersVisible = false;
@@ -133,9 +133,9 @@
             this.gbGenerateDates.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbGenerateDates.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbGenerateDates.Location = new System.Drawing.Point(359, 2);
-            this.gbGenerateDates.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbGenerateDates.Margin = new System.Windows.Forms.Padding(2);
             this.gbGenerateDates.Name = "gbGenerateDates";
-            this.gbGenerateDates.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbGenerateDates.Padding = new System.Windows.Forms.Padding(2);
             this.gbGenerateDates.Size = new System.Drawing.Size(353, 278);
             this.gbGenerateDates.TabIndex = 1;
             this.gbGenerateDates.TabStop = false;
@@ -148,10 +148,12 @@
             this.btnGenerate.BackColor = System.Drawing.Color.PaleGreen;
             this.btnGenerate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnGenerate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGenerate.Location = new System.Drawing.Point(17, 225);
-            this.btnGenerate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGenerate.ImageIndex = 0;
+            this.btnGenerate.ImageList = this.imgGenerate;
+            this.btnGenerate.Location = new System.Drawing.Point(23, 208);
+            this.btnGenerate.Margin = new System.Windows.Forms.Padding(2);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(236, 35);
+            this.btnGenerate.Size = new System.Drawing.Size(236, 49);
             this.btnGenerate.TabIndex = 30;
             this.btnGenerate.Text = "Generate";
             this.btnGenerate.UseVisualStyleBackColor = false;
@@ -165,7 +167,7 @@
             this.startDatePicker.CustomFormat = "yyyy/MM/dd";
             this.startDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.startDatePicker.Location = new System.Drawing.Point(17, 78);
-            this.startDatePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.startDatePicker.Margin = new System.Windows.Forms.Padding(2);
             this.startDatePicker.Name = "startDatePicker";
             this.startDatePicker.Size = new System.Drawing.Size(242, 35);
             this.startDatePicker.TabIndex = 19;
@@ -193,7 +195,7 @@
             this.endDatePicker.CustomFormat = "yyyy/MM/dd";
             this.endDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.endDatePicker.Location = new System.Drawing.Point(17, 146);
-            this.endDatePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.endDatePicker.Margin = new System.Windows.Forms.Padding(2);
             this.endDatePicker.Name = "endDatePicker";
             this.endDatePicker.Size = new System.Drawing.Size(242, 35);
             this.endDatePicker.TabIndex = 20;
@@ -218,9 +220,9 @@
             this.gbPrintControl.Controls.Add(this.btnPrintReport);
             this.gbPrintControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbPrintControl.Location = new System.Drawing.Point(716, 2);
-            this.gbPrintControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbPrintControl.Margin = new System.Windows.Forms.Padding(2);
             this.gbPrintControl.Name = "gbPrintControl";
-            this.gbPrintControl.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbPrintControl.Padding = new System.Windows.Forms.Padding(2);
             this.gbPrintControl.Size = new System.Drawing.Size(354, 278);
             this.gbPrintControl.TabIndex = 2;
             this.gbPrintControl.TabStop = false;
@@ -233,8 +235,10 @@
             this.btnPrintReport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPrintReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrintReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrintReport.ImageIndex = 0;
+            this.btnPrintReport.ImageList = this.imgPrint;
             this.btnPrintReport.Location = new System.Drawing.Point(73, 82);
-            this.btnPrintReport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPrintReport.Margin = new System.Windows.Forms.Padding(2);
             this.btnPrintReport.Name = "btnPrintReport";
             this.btnPrintReport.Size = new System.Drawing.Size(225, 103);
             this.btnPrintReport.TabIndex = 31;
@@ -248,9 +252,9 @@
             this.GBBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GBBrowser.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GBBrowser.Location = new System.Drawing.Point(2, 288);
-            this.GBBrowser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GBBrowser.Margin = new System.Windows.Forms.Padding(2);
             this.GBBrowser.Name = "GBBrowser";
-            this.GBBrowser.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GBBrowser.Padding = new System.Windows.Forms.Padding(2);
             this.GBBrowser.Size = new System.Drawing.Size(1072, 295);
             this.GBBrowser.TabIndex = 1;
             this.GBBrowser.TabStop = false;
@@ -260,7 +264,7 @@
             // 
             this.wBSuppliesStockInReport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wBSuppliesStockInReport.Location = new System.Drawing.Point(2, 30);
-            this.wBSuppliesStockInReport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.wBSuppliesStockInReport.Margin = new System.Windows.Forms.Padding(2);
             this.wBSuppliesStockInReport.MinimumSize = new System.Drawing.Size(13, 13);
             this.wBSuppliesStockInReport.Name = "wBSuppliesStockInReport";
             this.wBSuppliesStockInReport.Size = new System.Drawing.Size(1068, 263);
@@ -285,7 +289,7 @@
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1076, 585);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmSuppliesPrint";
             this.Text = "Stock In Report";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

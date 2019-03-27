@@ -271,7 +271,7 @@
             this.dgvSupplier.AllowUserToDeleteRows = false;
             this.dgvSupplier.AllowUserToResizeRows = false;
             this.dgvSupplier.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvSupplier.BackgroundColor = System.Drawing.Color.White;
+            this.dgvSupplier.BackgroundColor = System.Drawing.Color.Honeydew;
             this.dgvSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSupplier.GridColor = System.Drawing.Color.White;
@@ -484,7 +484,7 @@
             this.dgvStockIn.AllowUserToDeleteRows = false;
             this.dgvStockIn.AllowUserToResizeRows = false;
             this.dgvStockIn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvStockIn.BackgroundColor = System.Drawing.Color.White;
+            this.dgvStockIn.BackgroundColor = System.Drawing.Color.Honeydew;
             this.dgvStockIn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStockIn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvStockIn.GridColor = System.Drawing.Color.White;
