@@ -243,6 +243,7 @@ namespace PYLsystems
                         }
                         else
                         {
+                        MessageBox.Show(lsItem.SubItems[1].Text);
                  
                             myConn.Open();
                             MySqlDataAdapter myAd;
@@ -504,9 +505,14 @@ namespace PYLsystems
             supply_categoryID = dgvCategories.CurrentRow.Cells[0].Value.ToString();
           
                 myConn.Open();
-            string query = "SELECT s_i.supply_itemsID,s_t.supplyName as 'Supply Name',s_t.supplyDescription as 'Supply Description' FROM supplier s LEFT JOIN supplier_items s_i ON s_i.supplierID = s.supplierID LEFT JOIN supplier_category s_c ON s_c.supplierID = s.supplierID LEFT JOIN supply_items s_t ON s_t.supply_itemsID = s_i.supply_itemsID  WHERE s_i.active = 0 AND s.supplierID =" +  supplierID + " AND s_c.supply_categoryID =" + supply_categoryID;
-                MySqlCommand comm = new MySqlCommand(query, myConn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+            string query = "SELECT si.supply_itemsID,si.supplyName FROM supply_items AS si " +
+                "LEFT JOIN supplier_items AS supi ON si.supply_itemsID = supi.supply_itemsID " +
+                "LEFT JOIN supply_category AS sc ON si.supply_categoryID = sc.supply_categoryID " +
+                "WHERE supi.supplierID = @supplierID AND sc.supply_categoryID = @supplier_category;";
+                  MySqlCommand comm = new MySqlCommand(query, myConn);
+                comm.Parameters.AddWithValue("@supplierID",supplierID);
+            comm.Parameters.AddWithValue("@supplier_category",supply_categoryID);
+            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
                 dgvsupply_Items.DataSource = dt;
