@@ -232,7 +232,7 @@
             this.viewTotalProfitGrid.AllowUserToAddRows = false;
             this.viewTotalProfitGrid.AllowUserToDeleteRows = false;
             this.viewTotalProfitGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.viewTotalProfitGrid.BackgroundColor = System.Drawing.Color.White;
+            this.viewTotalProfitGrid.BackgroundColor = System.Drawing.Color.Honeydew;
             this.viewTotalProfitGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.viewTotalProfitGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewTotalProfitGrid.GridColor = System.Drawing.Color.White;

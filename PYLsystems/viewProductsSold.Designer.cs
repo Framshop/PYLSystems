@@ -267,7 +267,7 @@
             this.viewProductsSoldGrid.AllowUserToAddRows = false;
             this.viewProductsSoldGrid.AllowUserToDeleteRows = false;
             this.viewProductsSoldGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.viewProductsSoldGrid.BackgroundColor = System.Drawing.Color.White;
+            this.viewProductsSoldGrid.BackgroundColor = System.Drawing.Color.Honeydew;
             this.viewProductsSoldGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.viewProductsSoldGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewProductsSoldGrid.GridColor = System.Drawing.Color.White;

@@ -67,13 +67,13 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.gpButtons = new System.Windows.Forms.GroupBox();
             this.btnDamageItem = new System.Windows.Forms.Button();
+            this.imgAll = new System.Windows.Forms.ImageList(this.components);
             this.btnStockInSelectedItem = new System.Windows.Forms.Button();
             this.btnUpdateDetails = new System.Windows.Forms.Button();
             this.btnCreateItem = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.gpSupplyDetails = new System.Windows.Forms.GroupBox();
             this.dgSupplyItems = new System.Windows.Forms.DataGridView();
-            this.imgAll = new System.Windows.Forms.ImageList(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.gpWhole.SuspendLayout();
@@ -576,6 +576,18 @@
             this.btnDamageItem.UseVisualStyleBackColor = false;
             this.btnDamageItem.Click += new System.EventHandler(this.btnDamageItem_Click);
             // 
+            // imgAll
+            // 
+            this.imgAll.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgAll.ImageStream")));
+            this.imgAll.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgAll.Images.SetKeyName(0, "iconfinder_068_Cancel_183197.png");
+            this.imgAll.Images.SetKeyName(1, "iconfinder_199_CircledPlus_183316.png");
+            this.imgAll.Images.SetKeyName(2, "iconfinder_ic_system_update_tv_48px_352158.png");
+            this.imgAll.Images.SetKeyName(3, "iconfinder_folder-open-archive-document-archives_3643772.png");
+            this.imgAll.Images.SetKeyName(4, "iconfinder_f-check_256_282474.png");
+            this.imgAll.Images.SetKeyName(5, "stock out.png");
+            this.imgAll.Images.SetKeyName(6, "iconfinder_sign-in_298868.png");
+            // 
             // btnStockInSelectedItem
             // 
             this.btnStockInSelectedItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -675,7 +687,7 @@
             this.dgSupplyItems.AllowUserToDeleteRows = false;
             this.dgSupplyItems.AllowUserToResizeRows = false;
             this.dgSupplyItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgSupplyItems.BackgroundColor = System.Drawing.Color.White;
+            this.dgSupplyItems.BackgroundColor = System.Drawing.Color.Honeydew;
             this.dgSupplyItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSupplyItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSupplyItems.GridColor = System.Drawing.Color.White;
@@ -690,18 +702,6 @@
             this.dgSupplyItems.TabIndex = 29;
             this.dgSupplyItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSupplyItems_CellClick);
             this.dgSupplyItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSupplyItems_CellContentClick);
-            // 
-            // imgAll
-            // 
-            this.imgAll.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgAll.ImageStream")));
-            this.imgAll.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgAll.Images.SetKeyName(0, "iconfinder_068_Cancel_183197.png");
-            this.imgAll.Images.SetKeyName(1, "iconfinder_199_CircledPlus_183316.png");
-            this.imgAll.Images.SetKeyName(2, "iconfinder_ic_system_update_tv_48px_352158.png");
-            this.imgAll.Images.SetKeyName(3, "iconfinder_folder-open-archive-document-archives_3643772.png");
-            this.imgAll.Images.SetKeyName(4, "iconfinder_f-check_256_282474.png");
-            this.imgAll.Images.SetKeyName(5, "stock out.png");
-            this.imgAll.Images.SetKeyName(6, "iconfinder_sign-in_298868.png");
             // 
             // frmSupplyItems
             // 
