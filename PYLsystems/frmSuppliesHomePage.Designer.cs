@@ -46,9 +46,12 @@
             // 
             this.groupBox1.Controls.Add(this.tableLayoutPanel3);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(627, 645);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(692, 512);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Inventory Home Page";
@@ -61,11 +64,12 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.7117F));
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 22);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 30);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(621, 620);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(688, 480);
             this.tableLayoutPanel3.TabIndex = 6;
             // 
             // tableLayoutPanel4
@@ -74,13 +78,14 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(168, 3);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(185, 2);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(296, 614);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(330, 476);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // tableLayoutPanel5
@@ -92,7 +97,8 @@
             this.tableLayoutPanel5.Controls.Add(this.btnSupplyCateg, 0, 3);
             this.tableLayoutPanel5.Controls.Add(this.btnPrintReport, 0, 7);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 33);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(2, 25);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 9;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.999968F));
@@ -104,7 +110,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.999968F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.00304F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.997568F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(290, 546);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(326, 424);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // btnSupplyItemsList
@@ -113,10 +119,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSupplyItemsList.BackColor = System.Drawing.Color.PaleGreen;
             this.btnSupplyItemsList.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSupplyItemsList.Location = new System.Drawing.Point(4, 286);
-            this.btnSupplyItemsList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSupplyItemsList.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSupplyItemsList.Location = new System.Drawing.Point(3, 219);
             this.btnSupplyItemsList.Name = "btnSupplyItemsList";
-            this.btnSupplyItemsList.Size = new System.Drawing.Size(282, 99);
+            this.btnSupplyItemsList.Size = new System.Drawing.Size(320, 64);
             this.btnSupplyItemsList.TabIndex = 5;
             this.btnSupplyItemsList.Text = "Supply Items List";
             this.btnSupplyItemsList.UseVisualStyleBackColor = false;
@@ -128,10 +134,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSuppliers.BackColor = System.Drawing.Color.PaleGreen;
             this.btnSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSuppliers.Location = new System.Drawing.Point(4, 26);
-            this.btnSuppliers.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSuppliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuppliers.Location = new System.Drawing.Point(3, 19);
             this.btnSuppliers.Name = "btnSuppliers";
-            this.btnSuppliers.Size = new System.Drawing.Size(282, 99);
+            this.btnSuppliers.Size = new System.Drawing.Size(320, 64);
             this.btnSuppliers.TabIndex = 2;
             this.btnSuppliers.Text = "Suppliers";
             this.btnSuppliers.UseVisualStyleBackColor = false;
@@ -143,10 +149,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSupplyCateg.BackColor = System.Drawing.Color.PaleGreen;
             this.btnSupplyCateg.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSupplyCateg.Location = new System.Drawing.Point(4, 156);
-            this.btnSupplyCateg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSupplyCateg.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSupplyCateg.Location = new System.Drawing.Point(3, 119);
             this.btnSupplyCateg.Name = "btnSupplyCateg";
-            this.btnSupplyCateg.Size = new System.Drawing.Size(282, 99);
+            this.btnSupplyCateg.Size = new System.Drawing.Size(320, 64);
             this.btnSupplyCateg.TabIndex = 1;
             this.btnSupplyCateg.Text = "Supply Categories";
             this.btnSupplyCateg.UseVisualStyleBackColor = false;
@@ -158,10 +164,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrintReport.BackColor = System.Drawing.Color.PaleGreen;
             this.btnPrintReport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnPrintReport.Location = new System.Drawing.Point(4, 416);
-            this.btnPrintReport.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnPrintReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrintReport.Location = new System.Drawing.Point(3, 319);
             this.btnPrintReport.Name = "btnPrintReport";
-            this.btnPrintReport.Size = new System.Drawing.Size(282, 99);
+            this.btnPrintReport.Size = new System.Drawing.Size(320, 64);
             this.btnPrintReport.TabIndex = 6;
             this.btnPrintReport.Text = "Print Stock In Report";
             this.btnPrintReport.UseVisualStyleBackColor = false;
@@ -169,14 +175,14 @@
             // 
             // frmSuppliesHomePage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(627, 645);
+            this.ClientSize = new System.Drawing.Size(692, 512);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmSuppliesHomePage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmSuppliesHomePage";
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
