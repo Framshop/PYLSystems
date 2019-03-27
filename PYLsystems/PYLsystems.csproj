@@ -355,12 +355,6 @@
     <Compile Include="viewTotalProfit.designer.cs">
       <DependentUpon>viewTotalProfit.cs</DependentUpon>
     </Compile>
-    <Compile Include="___baseForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="___baseForm.Designer.cs">
-      <DependentUpon>___baseForm.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="addSales.resx">
       <DependentUpon>addSales.cs</DependentUpon>
     </EmbeddedResource>
@@ -525,9 +519,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="viewTotalProfit.resx">
       <DependentUpon>viewTotalProfit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="___baseForm.resx">
-      <DependentUpon>___baseForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

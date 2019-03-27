@@ -139,6 +139,10 @@ namespace PYLsystems
                 dgvCategories.DataSource = null;
                 validationUpdateSuppliers();
                 lvwItemSold.Clear();
+                for (int i = 0; i < lvwItemSold.Items.Count;i++)
+                {
+                    lvwItemSold.Items[i].Remove();
+                }
                 lvwItemSold.Columns.Add("lvwSupply_Items_ID");
                 lvwItemSold.Columns[0].Name = "lvwSupply_Items_ID";
                 lvwItemSold.Columns[0].Text = "lvwSupply_Items_ID";
@@ -286,14 +290,12 @@ namespace PYLsystems
                             MySqlDataAdapter myA;
                             DataTable my = new DataTable();
                             MySqlCommand myCm = new MySqlCommand("SELECT * FROM supplier_items WHERE supply_itemsID = " + lsItem.SubItems[0].Text + " AND supplierID = " + supplierID, myConn);
-                            myA = new MySqlDataAdapter(myCom);
+                            myA = new MySqlDataAdapter(myCm);
                             //ADD ----------
                             myConn.Close();
                             myConn.Open();
-                            MySqlDataReader myReade;
+
                             myA.Fill(my);
-                            //ADD
-                            myReade = myCm.ExecuteReader();
                             myConn.Close();
                             //Check if there is an existing category for that supplier
 
@@ -322,37 +324,13 @@ namespace PYLsystems
                 }
                 else
                 {
-                string myQuery = "UPDATE supplier SET supplierName = '" + txtSupplierName.Text + "', supplierDetails = '" + txtDetails.Text + "', contactDetails = '" + msktxtContactNumber.Text + "', address = '" + txtAddress.Text + "' WHERE supplierID = " + supplierID;
-                MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
-                MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
-                DataTable myDt = new DataTable();
-                myAdp.Fill(myDt);
                 MessageBox.Show("Update Successful");
             }
             //lvwItemSold.Clear();
             ListViewItem item = new ListViewItem();
-            for (int index = 0; index < max; index++)
-            {
+           
 
-             
-                    try
-                    {
-                        //4 
-                        lvwItemSold.Items.Remove(lvwItemSold.Items[index]);
-                        lvwItemSold.Items[index].SubItems.Remove(item.SubItems[index]);
-                        lvwItemSold.Items[index].SubItems.Remove(item.SubItems[index]);
-                        lvwItemSold.Items[index].SubItems.Remove(item.SubItems[index]);
-                        lvwItemSold.Items[index].SubItems.Remove(item.SubItems[index]);
-                        lvwItemSold.Items[index].SubItems.Remove(item.SubItems[index]);
-                        lvwItemSold.Items[index].SubItems.Remove(item.SubItems[index]);
-
-         
-                    }
-                    catch { }
-                }
-
-
-                //Should get Category ID, Supplier ID, Supply Items ID, Category Name, Supply Name
+            //Should get Category ID, Supplier ID, Supply Items ID, Category Name, Supply Name
 
             RefreshDatabase();
             btnUpdate.Enabled = false;
@@ -363,6 +341,27 @@ namespace PYLsystems
             supplierID = "";
             dgvCategories.DataSource = null;
             validationUpdateSuppliers();
+            lvwItemSold.Clear();
+            for (int i = 0; i < lvwItemSold.Items.Count; i++)
+            {
+                lvwItemSold.Items[i].Remove();
+            }
+            lvwItemSold.Columns.Add("lvwSupply_Items_ID");
+            lvwItemSold.Columns[0].Name = "lvwSupply_Items_ID";
+            lvwItemSold.Columns[0].Text = "lvwSupply_Items_ID";
+            lvwItemSold.Columns[0].Width = 0;
+            lvwItemSold.Columns.Add("lvwSupply_Category_ID");
+            lvwItemSold.Columns[1].Name = "lvwSupply_Category_ID";
+            lvwItemSold.Columns[1].Text = "lvwSupply_Category_ID";
+            lvwItemSold.Columns.Add("lvwCategoryName");
+            lvwItemSold.Columns[1].Width = 0;
+            lvwItemSold.Columns[2].Name = "lvwCategoryName";
+            lvwItemSold.Columns[2].Text = "Category Name";
+            lvwItemSold.Columns[2].Width = 150;
+            lvwItemSold.Columns.Add("lvwSupplyName");
+            lvwItemSold.Columns[3].Name = "lvwSupplyName";
+            lvwItemSold.Columns[3].Text = "Supply Name";
+            lvwItemSold.Columns[3].Width = 150;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
