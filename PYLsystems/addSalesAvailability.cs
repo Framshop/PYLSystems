@@ -139,6 +139,11 @@ namespace PYLsystems
             int quantityOfItem;
             int curRowIndex = frameInvGrid.SelectedRows[0].Index;
             //int firstRowIndex = frameInvGrid.SelectedRows.Count - 1;
+            if (frameInvGrid.Rows.Count < 0)
+            {
+                MessageBox.Show("No Items to add.");
+                return;
+            }
             quantityOfItem = Int32.Parse(frameInvGrid.Rows[curRowIndex].Cells[3].Value.ToString());
             quantity = Int32.Parse(quantityTextBox.Text.ToString());
             //Validation
