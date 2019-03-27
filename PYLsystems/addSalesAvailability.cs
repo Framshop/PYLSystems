@@ -139,6 +139,11 @@ namespace PYLsystems
             int quantityOfItem;
             int curRowIndex = frameInvGrid.SelectedRows[0].Index;
             //int firstRowIndex = frameInvGrid.SelectedRows.Count - 1;
+            if (frameInvGrid.Rows.Count < 0)
+            {
+                MessageBox.Show("No Items to add.");
+                return;
+            }
             quantityOfItem = Int32.Parse(frameInvGrid.Rows[curRowIndex].Cells[3].Value.ToString());
             quantity = Int32.Parse(quantityTextBox.Text.ToString());
             //Validation
@@ -175,8 +180,20 @@ namespace PYLsystems
                         addSalesPForm.frameItemsList[i].quantity += quantity;
                     }
                 }
-                else { 
-                    addSalesPForm.frameItemsList.Add(new frame_ItemsforList(frameName, Dimension, unitPrice, frameItemID, quantity));
+                else {
+                    int currRowIndex = frameInvGrid.SelectedRows[0].Index;
+                    int quantityChecker = Int32.Parse(frameInvGrid.Rows[currRowIndex].Cells["Quantity Left"].Value.ToString());
+                    int quantityTyped = Int32.Parse(quantityTextBox.Text);
+                    if ((quantityChecker-quantityTyped)<0)
+                    {
+                        MessageBox.Show("Quantity exceeds Quantity Left");
+                        return;
+                    }
+                    else
+                    {
+                        addSalesPForm.frameItemsList.Add(new frame_ItemsforList(frameName, Dimension, unitPrice, frameItemID, quantity));
+                    }
+                    
                 }
                 //MessageBox.Show(addSalesPForm.frameItemsList[0].frameName + " " + addSalesPForm.frameItemsList[0].dimension + " " + addSalesPForm.frameItemsList[0].unitPrice + " " + addSalesPForm.frameItemsList[0].frameItemID);
                 addSalesPForm.addSales_Refresher();
