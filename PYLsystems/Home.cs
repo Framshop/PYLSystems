@@ -107,5 +107,12 @@ namespace PYLsystems
             frmEmployeeMgt empMgt = new frmEmployeeMgt(this.employeeId);
             empMgt.ShowDialog();
         }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            LoginForm login = new LoginForm();
+            login.ShowDialog();
+            this.Close();
+        }
     }
 }
