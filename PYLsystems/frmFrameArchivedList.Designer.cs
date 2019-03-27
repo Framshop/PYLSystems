@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -55,10 +54,11 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(844, 908);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(601, 503);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -67,39 +67,43 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(45, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(32, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(753, 902);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.603206F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 96.79359F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.803607F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(536, 499);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 13F));
             this.tableLayoutPanel3.Controls.Add(this.groupBox1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.groupBox2, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.groupBox3, 0, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 48);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 9);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.447205F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 73.54037F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.13665F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(747, 805);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.92887F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.58996F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.69038F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(532, 478);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // groupBox1
             // 
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Location = new System.Drawing.Point(2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(741, 61);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(528, 9);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -107,9 +111,12 @@
             // 
             this.groupBox2.Controls.Add(this.datagridArchivedFrames);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(3, 70);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(2, 15);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(741, 585);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Size = new System.Drawing.Size(528, 385);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Archived Frame List";
@@ -120,23 +127,17 @@
             this.datagridArchivedFrames.AllowUserToDeleteRows = false;
             this.datagridArchivedFrames.AllowUserToResizeRows = false;
             this.datagridArchivedFrames.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.datagridArchivedFrames.BackgroundColor = System.Drawing.Color.Honeydew;
             this.datagridArchivedFrames.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.datagridArchivedFrames.DefaultCellStyle = dataGridViewCellStyle1;
             this.datagridArchivedFrames.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.datagridArchivedFrames.Location = new System.Drawing.Point(3, 22);
+            this.datagridArchivedFrames.Location = new System.Drawing.Point(2, 21);
+            this.datagridArchivedFrames.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.datagridArchivedFrames.Name = "datagridArchivedFrames";
             this.datagridArchivedFrames.ReadOnly = true;
             this.datagridArchivedFrames.RowHeadersVisible = false;
             this.datagridArchivedFrames.RowTemplate.Height = 28;
             this.datagridArchivedFrames.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridArchivedFrames.Size = new System.Drawing.Size(735, 560);
+            this.datagridArchivedFrames.Size = new System.Drawing.Size(524, 362);
             this.datagridArchivedFrames.TabIndex = 4;
             // 
             // groupBox3
@@ -144,9 +145,11 @@
             this.groupBox3.Controls.Add(this.btnClose);
             this.groupBox3.Controls.Add(this.btnRestore);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(3, 661);
+            this.groupBox3.Location = new System.Drawing.Point(2, 404);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(741, 141);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Size = new System.Drawing.Size(528, 72);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             // 
@@ -154,9 +157,11 @@
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnClose.Location = new System.Drawing.Point(399, 66);
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(273, 17);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(319, 37);
+            this.btnClose.Size = new System.Drawing.Size(213, 50);
             this.btnClose.TabIndex = 13;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -166,9 +171,11 @@
             // 
             this.btnRestore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRestore.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnRestore.Location = new System.Drawing.Point(38, 66);
+            this.btnRestore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRestore.Location = new System.Drawing.Point(37, 17);
+            this.btnRestore.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRestore.Name = "btnRestore";
-            this.btnRestore.Size = new System.Drawing.Size(319, 37);
+            this.btnRestore.Size = new System.Drawing.Size(213, 50);
             this.btnRestore.TabIndex = 12;
             this.btnRestore.Text = "Restore Frame Item";
             this.btnRestore.UseVisualStyleBackColor = false;
@@ -176,13 +183,13 @@
             // 
             // frmFrameArchivedList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(844, 908);
+            this.ClientSize = new System.Drawing.Size(601, 503);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmFrameArchivedList";
-            this.Text = "frmFrameArchivedList";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmFrameArchivedList_Load);
             this.tableLayoutPanel1.ResumeLayout(false);

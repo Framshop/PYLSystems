@@ -475,5 +475,10 @@ namespace PYLsystems
             getTimeInOutTextBox();
             enableTimeInOutBtn();
         }
+
+        private void infoGB_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

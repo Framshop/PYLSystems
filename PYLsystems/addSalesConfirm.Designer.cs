@@ -36,9 +36,11 @@
             // backBtn
             // 
             this.backBtn.BackColor = System.Drawing.Color.PaleGreen;
-            this.backBtn.Location = new System.Drawing.Point(263, 161);
+            this.backBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backBtn.Location = new System.Drawing.Point(164, 96);
+            this.backBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.backBtn.Name = "backBtn";
-            this.backBtn.Size = new System.Drawing.Size(130, 37);
+            this.backBtn.Size = new System.Drawing.Size(110, 38);
             this.backBtn.TabIndex = 6;
             this.backBtn.Text = "Back";
             this.backBtn.UseVisualStyleBackColor = false;
@@ -47,9 +49,11 @@
             // confirmBtn
             // 
             this.confirmBtn.BackColor = System.Drawing.Color.PaleGreen;
-            this.confirmBtn.Location = new System.Drawing.Point(51, 161);
+            this.confirmBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmBtn.Location = new System.Drawing.Point(23, 96);
+            this.confirmBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.confirmBtn.Name = "confirmBtn";
-            this.confirmBtn.Size = new System.Drawing.Size(130, 37);
+            this.confirmBtn.Size = new System.Drawing.Size(110, 38);
             this.confirmBtn.TabIndex = 5;
             this.confirmBtn.Text = "Confirm";
             this.confirmBtn.UseVisualStyleBackColor = false;
@@ -58,26 +62,28 @@
             // cancelTextLabel
             // 
             this.cancelTextLabel.AutoSize = true;
-            this.cancelTextLabel.Location = new System.Drawing.Point(135, 90);
+            this.cancelTextLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelTextLabel.Location = new System.Drawing.Point(39, 40);
+            this.cancelTextLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.cancelTextLabel.Name = "cancelTextLabel";
-            this.cancelTextLabel.Size = new System.Drawing.Size(161, 20);
+            this.cancelTextLabel.Size = new System.Drawing.Size(223, 26);
             this.cancelTextLabel.TabIndex = 4;
             this.cancelTextLabel.Text = "Confirm Sales Order?";
             this.cancelTextLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // addSalesConfirm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(446, 264);
+            this.ClientSize = new System.Drawing.Size(297, 172);
             this.ControlBox = false;
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.confirmBtn);
             this.Controls.Add(this.cancelTextLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "addSalesConfirm";
-            this.Text = "addSalesConfirm";
             this.ResumeLayout(false);
             this.PerformLayout();
 

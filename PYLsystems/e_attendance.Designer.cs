@@ -75,10 +75,11 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1441, 806);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(903, 476);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -90,14 +91,15 @@
             this.tableLayoutPanel2.Controls.Add(this.infoGB, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.othersGB, 0, 3);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(478, 800);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.38983F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.35593F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.66949F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.16102F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(299, 472);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // dateSelectionGB
@@ -109,9 +111,12 @@
             this.dateSelectionGB.Controls.Add(this.startDatePicker);
             this.dateSelectionGB.Controls.Add(this.empNameTextBox);
             this.dateSelectionGB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateSelectionGB.Location = new System.Drawing.Point(3, 3);
+            this.dateSelectionGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateSelectionGB.Location = new System.Drawing.Point(2, 2);
+            this.dateSelectionGB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateSelectionGB.Name = "dateSelectionGB";
-            this.dateSelectionGB.Size = new System.Drawing.Size(472, 194);
+            this.dateSelectionGB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateSelectionGB.Size = new System.Drawing.Size(295, 130);
             this.dateSelectionGB.TabIndex = 1;
             this.dateSelectionGB.TabStop = false;
             this.dateSelectionGB.Text = "Information";
@@ -122,9 +127,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.endLabel.AutoSize = true;
-            this.endLabel.Location = new System.Drawing.Point(14, 125);
+            this.endLabel.Location = new System.Drawing.Point(7, 96);
+            this.endLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.endLabel.Name = "endLabel";
-            this.endLabel.Size = new System.Drawing.Size(81, 20);
+            this.endLabel.Size = new System.Drawing.Size(71, 17);
             this.endLabel.TabIndex = 14;
             this.endLabel.Text = "End Date:";
             // 
@@ -134,9 +140,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.startLabel.AutoSize = true;
-            this.startLabel.Location = new System.Drawing.Point(14, 90);
+            this.startLabel.Location = new System.Drawing.Point(2, 65);
+            this.startLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.startLabel.Name = "startLabel";
-            this.startLabel.Size = new System.Drawing.Size(87, 20);
+            this.startLabel.Size = new System.Drawing.Size(76, 17);
             this.startLabel.TabIndex = 13;
             this.startLabel.Text = "Start Date:";
             // 
@@ -147,9 +154,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.endDatePicker.CustomFormat = "yyyy/MM/dd";
             this.endDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.endDatePicker.Location = new System.Drawing.Point(103, 120);
+            this.endDatePicker.Location = new System.Drawing.Point(84, 91);
+            this.endDatePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.endDatePicker.Name = "endDatePicker";
-            this.endDatePicker.Size = new System.Drawing.Size(350, 26);
+            this.endDatePicker.Size = new System.Drawing.Size(200, 23);
             this.endDatePicker.TabIndex = 7;
             this.endDatePicker.Value = new System.DateTime(2019, 1, 5, 0, 0, 0, 0);
             this.endDatePicker.ValueChanged += new System.EventHandler(this.endDatePicker_ValueChanged);
@@ -160,9 +168,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.empNameLabel.AutoSize = true;
-            this.empNameLabel.Location = new System.Drawing.Point(14, 42);
+            this.empNameLabel.Location = new System.Drawing.Point(9, 27);
+            this.empNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.empNameLabel.Name = "empNameLabel";
-            this.empNameLabel.Size = new System.Drawing.Size(83, 20);
+            this.empNameLabel.Size = new System.Drawing.Size(74, 17);
             this.empNameLabel.TabIndex = 12;
             this.empNameLabel.Text = "Employee:";
             // 
@@ -173,9 +182,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.startDatePicker.CustomFormat = "yyyy/MM/dd";
             this.startDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.startDatePicker.Location = new System.Drawing.Point(103, 85);
+            this.startDatePicker.Location = new System.Drawing.Point(84, 60);
+            this.startDatePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.startDatePicker.Name = "startDatePicker";
-            this.startDatePicker.Size = new System.Drawing.Size(350, 26);
+            this.startDatePicker.Size = new System.Drawing.Size(200, 23);
             this.startDatePicker.TabIndex = 6;
             this.startDatePicker.Value = new System.DateTime(2019, 1, 4, 0, 0, 0, 0);
             this.startDatePicker.ValueChanged += new System.EventHandler(this.startDatePicker_ValueChanged);
@@ -185,10 +195,11 @@
             this.empNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.empNameTextBox.Location = new System.Drawing.Point(103, 39);
+            this.empNameTextBox.Location = new System.Drawing.Point(84, 25);
+            this.empNameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.empNameTextBox.Name = "empNameTextBox";
             this.empNameTextBox.ReadOnly = true;
-            this.empNameTextBox.Size = new System.Drawing.Size(350, 26);
+            this.empNameTextBox.Size = new System.Drawing.Size(200, 23);
             this.empNameTextBox.TabIndex = 8;
             // 
             // timeInOutGB
@@ -196,9 +207,11 @@
             this.timeInOutGB.Controls.Add(this.timeInBtn);
             this.timeInOutGB.Controls.Add(this.timeOutBtn);
             this.timeInOutGB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.timeInOutGB.Location = new System.Drawing.Point(3, 403);
+            this.timeInOutGB.Location = new System.Drawing.Point(2, 284);
+            this.timeInOutGB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.timeInOutGB.Name = "timeInOutGB";
-            this.timeInOutGB.Size = new System.Drawing.Size(472, 194);
+            this.timeInOutGB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.timeInOutGB.Size = new System.Drawing.Size(295, 103);
             this.timeInOutGB.TabIndex = 2;
             this.timeInOutGB.TabStop = false;
             // 
@@ -208,9 +221,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.timeInBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.timeInBtn.Enabled = false;
-            this.timeInBtn.Location = new System.Drawing.Point(72, 45);
+            this.timeInBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeInBtn.Location = new System.Drawing.Point(48, 17);
+            this.timeInBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.timeInBtn.Name = "timeInBtn";
-            this.timeInBtn.Size = new System.Drawing.Size(310, 37);
+            this.timeInBtn.Size = new System.Drawing.Size(196, 31);
             this.timeInBtn.TabIndex = 3;
             this.timeInBtn.Text = "Time In";
             this.timeInBtn.UseVisualStyleBackColor = false;
@@ -222,9 +237,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.timeOutBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.timeOutBtn.Enabled = false;
-            this.timeOutBtn.Location = new System.Drawing.Point(72, 105);
+            this.timeOutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeOutBtn.Location = new System.Drawing.Point(48, 56);
+            this.timeOutBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.timeOutBtn.Name = "timeOutBtn";
-            this.timeOutBtn.Size = new System.Drawing.Size(310, 37);
+            this.timeOutBtn.Size = new System.Drawing.Size(196, 31);
             this.timeOutBtn.TabIndex = 4;
             this.timeOutBtn.Text = "Time Out";
             this.timeOutBtn.UseVisualStyleBackColor = false;
@@ -239,12 +256,16 @@
             this.infoGB.Controls.Add(this.dateTodayLabel);
             this.infoGB.Controls.Add(this.dateNowTextBox);
             this.infoGB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.infoGB.Location = new System.Drawing.Point(3, 203);
+            this.infoGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infoGB.Location = new System.Drawing.Point(2, 136);
+            this.infoGB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.infoGB.Name = "infoGB";
-            this.infoGB.Size = new System.Drawing.Size(472, 194);
+            this.infoGB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.infoGB.Size = new System.Drawing.Size(295, 144);
             this.infoGB.TabIndex = 0;
             this.infoGB.TabStop = false;
             this.infoGB.Text = "Attendance Today";
+            this.infoGB.Enter += new System.EventHandler(this.infoGB_Enter);
             // 
             // timeOutLabel
             // 
@@ -252,9 +273,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.timeOutLabel.AutoSize = true;
-            this.timeOutLabel.Location = new System.Drawing.Point(2, 135);
+            this.timeOutLabel.Location = new System.Drawing.Point(15, 101);
+            this.timeOutLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.timeOutLabel.Name = "timeOutLabel";
-            this.timeOutLabel.Size = new System.Drawing.Size(77, 20);
+            this.timeOutLabel.Size = new System.Drawing.Size(70, 17);
             this.timeOutLabel.TabIndex = 17;
             this.timeOutLabel.Text = "Time Out:";
             // 
@@ -263,10 +285,11 @@
             this.timeOutTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.timeOutTextBox.Location = new System.Drawing.Point(103, 132);
+            this.timeOutTextBox.Location = new System.Drawing.Point(99, 98);
+            this.timeOutTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.timeOutTextBox.Name = "timeOutTextBox";
             this.timeOutTextBox.ReadOnly = true;
-            this.timeOutTextBox.Size = new System.Drawing.Size(350, 26);
+            this.timeOutTextBox.Size = new System.Drawing.Size(191, 23);
             this.timeOutTextBox.TabIndex = 16;
             // 
             // timeInLabel
@@ -275,9 +298,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.timeInLabel.AutoSize = true;
-            this.timeInLabel.Location = new System.Drawing.Point(2, 89);
+            this.timeInLabel.Location = new System.Drawing.Point(31, 71);
+            this.timeInLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.timeInLabel.Name = "timeInLabel";
-            this.timeInLabel.Size = new System.Drawing.Size(65, 20);
+            this.timeInLabel.Size = new System.Drawing.Size(58, 17);
             this.timeInLabel.TabIndex = 15;
             this.timeInLabel.Text = "Time In:";
             // 
@@ -286,10 +310,11 @@
             this.timeInTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.timeInTextBox.Location = new System.Drawing.Point(103, 86);
+            this.timeInTextBox.Location = new System.Drawing.Point(99, 68);
+            this.timeInTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.timeInTextBox.Name = "timeInTextBox";
             this.timeInTextBox.ReadOnly = true;
-            this.timeInTextBox.Size = new System.Drawing.Size(350, 26);
+            this.timeInTextBox.Size = new System.Drawing.Size(191, 23);
             this.timeInTextBox.TabIndex = 14;
             // 
             // dateTodayLabel
@@ -298,9 +323,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTodayLabel.AutoSize = true;
-            this.dateTodayLabel.Location = new System.Drawing.Point(2, 47);
+            this.dateTodayLabel.Location = new System.Drawing.Point(7, 43);
+            this.dateTodayLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dateTodayLabel.Name = "dateTodayLabel";
-            this.dateTodayLabel.Size = new System.Drawing.Size(95, 20);
+            this.dateTodayLabel.Size = new System.Drawing.Size(86, 17);
             this.dateTodayLabel.TabIndex = 13;
             this.dateTodayLabel.Text = "Date Today:";
             // 
@@ -309,19 +335,22 @@
             this.dateNowTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateNowTextBox.Location = new System.Drawing.Point(103, 44);
+            this.dateNowTextBox.Location = new System.Drawing.Point(99, 41);
+            this.dateNowTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateNowTextBox.Name = "dateNowTextBox";
             this.dateNowTextBox.ReadOnly = true;
-            this.dateNowTextBox.Size = new System.Drawing.Size(350, 26);
+            this.dateNowTextBox.Size = new System.Drawing.Size(191, 23);
             this.dateNowTextBox.TabIndex = 7;
             // 
             // othersGB
             // 
             this.othersGB.Controls.Add(this.closeBtn);
             this.othersGB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.othersGB.Location = new System.Drawing.Point(3, 603);
+            this.othersGB.Location = new System.Drawing.Point(2, 391);
+            this.othersGB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.othersGB.Name = "othersGB";
-            this.othersGB.Size = new System.Drawing.Size(472, 194);
+            this.othersGB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.othersGB.Size = new System.Drawing.Size(295, 79);
             this.othersGB.TabIndex = 3;
             this.othersGB.TabStop = false;
             // 
@@ -330,9 +359,11 @@
             this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.closeBtn.BackColor = System.Drawing.Color.PaleGreen;
-            this.closeBtn.Location = new System.Drawing.Point(72, 99);
+            this.closeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeBtn.Location = new System.Drawing.Point(48, 28);
+            this.closeBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(310, 37);
+            this.closeBtn.Size = new System.Drawing.Size(187, 35);
             this.closeBtn.TabIndex = 5;
             this.closeBtn.Text = "Close";
             this.closeBtn.UseVisualStyleBackColor = false;
@@ -345,21 +376,25 @@
             this.tableLayoutPanel3.Controls.Add(this.attendanceDatesGB, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.groupBox1, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(487, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(305, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.75F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.25F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(951, 800);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.74577F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.25424F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(596, 472);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // attendanceDatesGB
             // 
             this.attendanceDatesGB.Controls.Add(this.attendanceGridView);
             this.attendanceDatesGB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.attendanceDatesGB.Location = new System.Drawing.Point(3, 3);
+            this.attendanceDatesGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.attendanceDatesGB.Location = new System.Drawing.Point(2, 2);
+            this.attendanceDatesGB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.attendanceDatesGB.Name = "attendanceDatesGB";
-            this.attendanceDatesGB.Size = new System.Drawing.Size(945, 704);
+            this.attendanceDatesGB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.attendanceDatesGB.Size = new System.Drawing.Size(592, 396);
             this.attendanceDatesGB.TabIndex = 1;
             this.attendanceDatesGB.TabStop = false;
             this.attendanceDatesGB.Text = "Attendance Dates";
@@ -370,24 +405,29 @@
             this.attendanceGridView.AllowUserToDeleteRows = false;
             this.attendanceGridView.AllowUserToResizeRows = false;
             this.attendanceGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.attendanceGridView.BackgroundColor = System.Drawing.Color.Honeydew;
             this.attendanceGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.attendanceGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.attendanceGridView.Location = new System.Drawing.Point(3, 22);
+            this.attendanceGridView.GridColor = System.Drawing.Color.Honeydew;
+            this.attendanceGridView.Location = new System.Drawing.Point(2, 18);
+            this.attendanceGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.attendanceGridView.Name = "attendanceGridView";
             this.attendanceGridView.ReadOnly = true;
             this.attendanceGridView.RowHeadersVisible = false;
             this.attendanceGridView.RowTemplate.Height = 28;
             this.attendanceGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.attendanceGridView.Size = new System.Drawing.Size(939, 679);
+            this.attendanceGridView.Size = new System.Drawing.Size(588, 376);
             this.attendanceGridView.TabIndex = 2;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnEdit);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 713);
+            this.groupBox1.Location = new System.Drawing.Point(2, 402);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(945, 84);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(592, 68);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
@@ -396,9 +436,11 @@
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEdit.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnEdit.Location = new System.Drawing.Point(26, 25);
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Location = new System.Drawing.Point(17, 16);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(310, 37);
+            this.btnEdit.Size = new System.Drawing.Size(169, 36);
             this.btnEdit.TabIndex = 6;
             this.btnEdit.Text = "Edit Attendance";
             this.btnEdit.UseVisualStyleBackColor = false;
@@ -406,13 +448,13 @@
             // 
             // e_attendance
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1441, 806);
+            this.ClientSize = new System.Drawing.Size(903, 476);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "e_attendance";
-            this.Text = "Attendance";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.e_attendance_Load);
             this.tableLayoutPanel1.ResumeLayout(false);

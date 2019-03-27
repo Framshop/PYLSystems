@@ -35,22 +35,24 @@
             // btnEmpList
             // 
             this.btnEmpList.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnEmpList.Location = new System.Drawing.Point(217, 79);
-            this.btnEmpList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnEmpList.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmpList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEmpList.ImageIndex = 0;
+            this.btnEmpList.Location = new System.Drawing.Point(12, 12);
             this.btnEmpList.Name = "btnEmpList";
-            this.btnEmpList.Size = new System.Drawing.Size(188, 80);
+            this.btnEmpList.Size = new System.Drawing.Size(371, 105);
             this.btnEmpList.TabIndex = 0;
-            this.btnEmpList.Text = "EmployeeList";
+            this.btnEmpList.Text = "Employee List";
             this.btnEmpList.UseVisualStyleBackColor = false;
             this.btnEmpList.Click += new System.EventHandler(this.btnEmpList_Click);
             // 
             // payrollBtn
             // 
             this.payrollBtn.BackColor = System.Drawing.Color.PaleGreen;
-            this.payrollBtn.Location = new System.Drawing.Point(217, 210);
-            this.payrollBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.payrollBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.payrollBtn.Location = new System.Drawing.Point(12, 127);
             this.payrollBtn.Name = "payrollBtn";
-            this.payrollBtn.Size = new System.Drawing.Size(188, 80);
+            this.payrollBtn.Size = new System.Drawing.Size(371, 93);
             this.payrollBtn.TabIndex = 1;
             this.payrollBtn.Text = "Payroll";
             this.payrollBtn.UseVisualStyleBackColor = false;
@@ -58,17 +60,15 @@
             // 
             // frmEmployeeMgt
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(627, 371);
+            this.ClientSize = new System.Drawing.Size(395, 232);
             this.Controls.Add(this.payrollBtn);
             this.Controls.Add(this.btnEmpList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmEmployeeMgt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Employee Management";
             this.Load += new System.EventHandler(this.frmEmployeeMgt_Load);
             this.ResumeLayout(false);
 

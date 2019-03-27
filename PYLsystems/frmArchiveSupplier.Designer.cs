@@ -45,13 +45,13 @@
             this.dgArchiveSupplier.AllowUserToDeleteRows = false;
             this.dgArchiveSupplier.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgArchiveSupplier.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgArchiveSupplier.BackgroundColor = System.Drawing.Color.Honeydew;
             this.dgArchiveSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgArchiveSupplier.Location = new System.Drawing.Point(9, 29);
-            this.dgArchiveSupplier.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgArchiveSupplier.Location = new System.Drawing.Point(6, 19);
             this.dgArchiveSupplier.Name = "dgArchiveSupplier";
             this.dgArchiveSupplier.ReadOnly = true;
             this.dgArchiveSupplier.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgArchiveSupplier.Size = new System.Drawing.Size(956, 451);
+            this.dgArchiveSupplier.Size = new System.Drawing.Size(649, 293);
             this.dgArchiveSupplier.TabIndex = 0;
             this.dgArchiveSupplier.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgArchiveSupplier_CellClick);
             // 
@@ -59,10 +59,10 @@
             // 
             this.btnReturn.BackColor = System.Drawing.Color.PaleGreen;
             this.btnReturn.Enabled = false;
-            this.btnReturn.Location = new System.Drawing.Point(27, 545);
-            this.btnReturn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReturn.Location = new System.Drawing.Point(0, 352);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(190, 37);
+            this.btnReturn.Size = new System.Drawing.Size(193, 39);
             this.btnReturn.TabIndex = 1;
             this.btnReturn.Text = "Return to Supplier List";
             this.btnReturn.UseVisualStyleBackColor = false;
@@ -71,10 +71,10 @@
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnClose.Location = new System.Drawing.Point(226, 545);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(211, 352);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(126, 37);
+            this.btnClose.Size = new System.Drawing.Size(121, 39);
             this.btnClose.TabIndex = 2;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -82,51 +82,48 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(696, 8);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtSearch.Location = new System.Drawing.Point(458, 12);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(284, 26);
+            this.txtSearch.Size = new System.Drawing.Size(191, 20);
             this.txtSearch.TabIndex = 3;
             this.txtSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(626, 12);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(393, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 20);
+            this.label1.Size = new System.Drawing.Size(59, 17);
             this.label1.TabIndex = 4;
             this.label1.Text = "Search";
             // 
             // supplierID
             // 
             this.supplierID.AutoSize = true;
-            this.supplierID.Location = new System.Drawing.Point(1376, 352);
-            this.supplierID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.supplierID.Location = new System.Drawing.Point(917, 229);
             this.supplierID.Name = "supplierID";
-            this.supplierID.Size = new System.Drawing.Size(51, 20);
+            this.supplierID.Size = new System.Drawing.Size(35, 13);
             this.supplierID.TabIndex = 5;
             this.supplierID.Text = "label2";
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgArchiveSupplier);
-            this.groupBox1.Location = new System.Drawing.Point(18, 48);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(-6, 29);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(974, 488);
+            this.groupBox1.Size = new System.Drawing.Size(661, 317);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Archived Supplier List";
             // 
             // frmArchiveSupplier
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1002, 595);
+            this.ClientSize = new System.Drawing.Size(663, 403);
             this.Controls.Add(this.supplierID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSearch);
@@ -134,7 +131,6 @@
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmArchiveSupplier";
