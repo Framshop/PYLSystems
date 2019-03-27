@@ -50,8 +50,6 @@ namespace PYLsystems
             //If supplier does not exist insert supplier
             if (myD.Rows.Count == 0)
             {
-                //count total supplier in list view
-                int max = lvwItemSold.Items.Count;
                 myConn.Open();
                 //INSERT INTO jOrder_Details(jOrd_Num,supply_itemsID,size,unit_measure,quantity,price) VALUES (" + jOrdID + "," + lsItem.SubItems[0].Text + "," + lsItem.SubItems[3].Text + ",'" + lsItem.SubItems[4].Text + "'," + lsItem.SubItems[5].Text + "," + lsItem.SubItems[6].Text + ");"
                 string quer = "INSERT INTO supplier(supplierName,supplierDetails,contactDetails,address,active) VALUES('" + txtSupplierName.Text + "','" + txtDetails.Text + "','" + msktxtContactNumber.Text + "','" + txtAddress.Text + "',0)";
@@ -61,50 +59,39 @@ namespace PYLsystems
                 ap.Fill(d);
                 myConn.Close();
 
-
-                if (max > 0)
+                string supplierID_passer = "0";
+                myConn.Open();
+                string myQuer = "SELECT max(supplierID) as 'supplierID' FROM supplier";
+                MySqlCommand my1 = new MySqlCommand(myQuer, myConn);
+                MySqlDataAdapter my2 = new MySqlDataAdapter(my1);
+                myConn.Close();
+                myConn.Open();
+                MySqlDataReader myReader1;
+                try
                 {
-              
-
-                    foreach (ListViewItem lsItem in lvwItemSold.Items)
+                    myReader1 = my1.ExecuteReader();
+                    while (myReader1.Read())
                     {
+                        supplierID_passer = myReader1.GetString(0);
 
-                        if (lsItem.SubItems[0].Text == "" || lsItem.SubItems[1].Text == "")
-                        {
-                            // Do not insert entry that are empty
-                        }
-                        else
-                        {
-                            string supplierID_passer = "0";
-                            myConn.Open();
-                            string myQuer = "SELECT max(supplierID) as 'supplierID' FROM supplier";
-                            MySqlCommand my1 = new MySqlCommand(myQuer, myConn);
-                            MySqlDataAdapter my2 = new MySqlDataAdapter(my1);
-                            myConn.Close();
-                            myConn.Open();
-                            MySqlDataReader myReader1;
-                            try
-                            {
-                                myReader1 = my1.ExecuteReader();
-                                while (myReader1.Read())
-                                {
-                                    supplierID_passer = myReader1.GetString(0);
+                    }
+                    myConn.Close();
+                }
+                catch { }
+                myConn.Close();
+
+
+                foreach (ListViewItem lsItem in lvwItemSold.Items)
+                    {                 
                           
-                                }
-                                myConn.Close();
-                            }
-                            catch { }
 
-
-                           
-                            myConn.Close();
                             myConn.Open();
                                 MySqlCommand myCo = new MySqlCommand("SELECT * FROM supplier_category WHERE supply_categoryID = " + lsItem.SubItems[1].Text + " AND supplierID = " + supplierID_passer, myConn);
                                 myAd = new MySqlDataAdapter(myCo);
                              DataTable my = new DataTable();
                                 //ADD ----------
                                 MySqlDataReader myReade;
-                                myAd.Fill(myD);
+                                myAd.Fill(my);
 
                                 //ADD
                                 myReade = myCo.ExecuteReader();
@@ -112,10 +99,9 @@ namespace PYLsystems
                             
                             //Check if there is an existing category for that supplier
 
-                            if (myD.Rows.Count == 0)
+                            if (my.Rows.Count == 0)
                             {
                                 myConn.Close();
-
                                 myConn.Open();
                                 //INSERT INTO jOrder_Details(jOrd_Num,supply_itemsID,size,unit_measure,quantity,price) VALUES (" + jOrdID + "," + lsItem.SubItems[0].Text + "," + lsItem.SubItems[3].Text + ",'" + lsItem.SubItems[4].Text + "'," + lsItem.SubItems[5].Text + "," + lsItem.SubItems[6].Text + ");"
                                 string query = "INSERT INTO supplier_category(supplierID,supply_categoryID) VALUES(" + supplierID_passer + "," + lsItem.SubItems[1].Text + ")";
@@ -125,66 +111,24 @@ namespace PYLsystems
                                 adp.Fill(dt);
                                 myConn.Close();
 
-                                myConn.Open();
-                                //INSERT INTO jOrder_Details(jOrd_Num,supply_itemsID,size,unit_measure,quantity,price) VALUES (" + jOrdID + "," + lsItem.SubItems[0].Text + "," + lsItem.SubItems[3].Text + ",'" + lsItem.SubItems[4].Text + "'," + lsItem.SubItems[5].Text + "," + lsItem.SubItems[6].Text + ");"
-                                string quer1 = "INSERT INTO supplier_items(supplierID,supply_itemsID,active) VALUES(" + supplierID_passer + "," + lsItem.SubItems[0].Text + ",0)";
-                                MySqlCommand com1 = new MySqlCommand(quer1, myConn);
-                                MySqlDataAdapter ap1 = new MySqlDataAdapter(com1);
-                                DataTable d1 = new DataTable();
-                                ap1.Fill(d1);
-                                myConn.Close();
+                             
                             }
-                            else
-                            {
-
-                                MySqlDataAdapter myA;
-                            
-                                MySqlCommand myCm = new MySqlCommand("SELECT * FROM supplier_items WHERE supply_itemsID = " + lsItem.SubItems[0].Text + " AND supplierID = " + supplierID, myConn);
-                                myA = new MySqlDataAdapter(myCom);
-                                //ADD ----------
-                                myConn.Close();
-                                myConn.Open();
-                                MySqlDataReader myRead;
-                         
-                                //ADD
-                                myRead = myCm.ExecuteReader();
-                                myConn.Close();
-                                //Check if there is an existing category for that supplier
-
-                                if (my.Rows.Count == 0)
-                                {
-                                    myConn.Open();
-                                    //INSERT INTO jOrder_Details(jOrd_Num,supply_itemsID,size,unit_measure,quantity,price) VALUES (" + jOrdID + "," + lsItem.SubItems[0].Text + "," + lsItem.SubItems[3].Text + ",'" + lsItem.SubItems[4].Text + "'," + lsItem.SubItems[5].Text + "," + lsItem.SubItems[6].Text + ");"
-                                    string quer2 = "INSERT INTO supplier_items(supplierID,supply_itemsID,active) VALUES(" + supplierID_passer + "," + lsItem.SubItems[0].Text + ",0)";
-                                    MySqlCommand com2 = new MySqlCommand(quer2, myConn);
-                                    MySqlDataAdapter ap2 = new MySqlDataAdapter(com2);
-                                    DataTable d2 = new DataTable();
-                                    ap2.Fill(d2);
-                                    myConn.Close();
-                                    MessageBox.Show("x");
-                                }
-                                else
-                                {
-                                    // DISREGARD the existing one which will not be inserted
-                                }
-                            }
-
-                        }
-                    }
-                    MessageBox.Show("Insert Successful");
-
-
                 }
-                else
+
+                foreach (ListViewItem lsItem in lvwItemSold.Items)
                 {
-                    string myQuery = "UPDATE supplier SET supplierName = '" + txtSupplierName.Text + "', supplierDetails = '" + txtDetails.Text + "', contactDetails = '" + msktxtContactNumber.Text + "', address = '" + txtAddress.Text + "' WHERE supplierID = " + supplierID;
-                    MySqlCommand myComm = new MySqlCommand(myQuery, myConn);
-                    MySqlDataAdapter myAdp = new MySqlDataAdapter(myComm);
-                    DataTable myDt = new DataTable();
-                    myAdp.Fill(myDt);
-                    MessageBox.Show("Update Successful");
+                 
+                        MessageBox.Show(lsItem.SubItems[0].Text);
+                        myConn.Open();
+                        //INSERT INTO jOrder_Details(jOrd_Num,supply_itemsID,size,unit_measure,quantity,price) VALUES (" + jOrdID + "," + lsItem.SubItems[0].Text + "," + lsItem.SubItems[3].Text + ",'" + lsItem.SubItems[4].Text + "'," + lsItem.SubItems[5].Text + "," + lsItem.SubItems[6].Text + ");"
+                        string quer1 = "INSERT INTO supplier_items(supplierID,supply_itemsID,active) VALUES(" + supplierID_passer + "," + lsItem.SubItems[0].Text + ",0)";
+                        MySqlCommand com1 = new MySqlCommand(quer1, myConn);
+                        MySqlDataAdapter ap1 = new MySqlDataAdapter(com1);
+                        DataTable d1 = new DataTable();
+                        ap1.Fill(d1);
+                        myConn.Close();
+                    
                 }
-             
                 RefreshDatabase();
                 btnUpdate.Enabled = false;
                 txtSupplierName.Text = "";
@@ -194,35 +138,31 @@ namespace PYLsystems
                 supplierID = "";
                 dgvCategories.DataSource = null;
                 validationUpdateSuppliers();
-                 ListViewItem item1 = new ListViewItem();
-                for (int index = 0; index < max; index++)
-                {
+                lvwItemSold.Clear();
+                lvwItemSold.Columns.Add("lvwSupply_Items_ID");
+                lvwItemSold.Columns[0].Name = "lvwSupply_Items_ID";
+                lvwItemSold.Columns[0].Text = "lvwSupply_Items_ID";
+                lvwItemSold.Columns[0].Width = 0;
+                lvwItemSold.Columns.Add("lvwSupply_Category_ID");
+                lvwItemSold.Columns[1].Name = "lvwSupply_Category_ID";
+                lvwItemSold.Columns[1].Text = "lvwSupply_Category_ID";
+                lvwItemSold.Columns.Add("lvwCategoryName");
+                lvwItemSold.Columns[1].Width = 0;
+                lvwItemSold.Columns[2].Name = "lvwCategoryName";
+                lvwItemSold.Columns[2].Text = "Category Name";
+                lvwItemSold.Columns[2].Width = 150;
+                lvwItemSold.Columns.Add("lvwSupplyName");
+                lvwItemSold.Columns[3].Name = "lvwSupplyName";
+                lvwItemSold.Columns[3].Text = "Supply Name";
+                lvwItemSold.Columns[3].Width = 150;
 
 
-                    try
-                    {
-                        //4 
-                        lvwItemSold.Items.Remove(lvwItemSold.Items[index]);
-                        lvwItemSold.Items[index].SubItems.Remove(item1.SubItems[index]);
-                        lvwItemSold.Items[index].SubItems.Remove(item1.SubItems[index]);
-                        lvwItemSold.Items[index].SubItems.Remove(item1.SubItems[index]);
-                        lvwItemSold.Items[index].SubItems.Remove(item1.SubItems[index]);
-                        lvwItemSold.Items[index].SubItems.Remove(item1.SubItems[index]);
-                        lvwItemSold.Items[index].SubItems.Remove(item1.SubItems[index]);
-
-
-                    }
-                    catch { }
-                }
             }
             //If supplier exist prompt this message
             else
             {
                 MessageBox.Show("Supplier " + txtSupplierName.Text + " already exist");
             }
-            ListViewItem item = new ListViewItem();
-         
-
         }
 
         public void RefreshDatabase()
@@ -366,7 +306,7 @@ namespace PYLsystems
                                 DataTable d = new DataTable();
                                 ap.Fill(d);
                                 myConn.Close();
-                                MessageBox.Show("x");
+
                             }
                             else
                             {
@@ -564,8 +504,7 @@ namespace PYLsystems
             supply_categoryID = dgvCategories.CurrentRow.Cells[0].Value.ToString();
           
                 myConn.Open();
-                string query = "SELECT s_i.supply_itemsID,s_t.supplyName as 'Supply Name',s_t.supplyDescription as 'Supply Description' FROM supplier s LEFT JOIN supplier_items s_i ON s_i.supplierID = s.supplierID LEFT JOIN supplier_category s_c ON s_c.supplierID = s.supplierID LEFT JOIN supply_items s_t ON s_t.supply_itemsID = s_i.supply_itemsID  WHERE s_i.active = 0 AND s.supplierID =" + supplierID + " AND s_c.supply_categoryID =" + supply_categoryID;
-;
+            string query = "SELECT s_i.supply_itemsID,s_t.supplyName as 'Supply Name',s_t.supplyDescription as 'Supply Description' FROM supplier s LEFT JOIN supplier_items s_i ON s_i.supplierID = s.supplierID LEFT JOIN supplier_category s_c ON s_c.supplierID = s.supplierID LEFT JOIN supply_items s_t ON s_t.supply_itemsID = s_i.supply_itemsID  WHERE s_i.active = 0 AND s.supplierID =" +  supplierID + " AND s_c.supply_categoryID =" + supply_categoryID;
                 MySqlCommand comm = new MySqlCommand(query, myConn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
