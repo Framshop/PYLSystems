@@ -149,24 +149,6 @@
     <Compile Include="frmCustomerPayment.Designer.cs">
       <DependentUpon>frmCustomerPayment.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDamageItems.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmDamageItems.Designer.cs">
-      <DependentUpon>frmDamageItems.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmDamageMaterials.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmDamageMaterials.Designer.cs">
-      <DependentUpon>frmDamageMaterials.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmdamage_materials_update.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmdamage_materials_update.Designer.cs">
-      <DependentUpon>frmdamage_materials_update.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmFrameAddSuppliesUsed.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -293,24 +275,6 @@
     <Compile Include="frmPrintPayroll.Designer.cs">
       <DependentUpon>frmPrintPayroll.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmRemainingSupplyFrames.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmRemainingSupplyFrames.Designer.cs">
-      <DependentUpon>frmRemainingSupplyFrames.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmsales_materials_update.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmsales_materials_update.Designer.cs">
-      <DependentUpon>frmsales_materials_update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmSetWorkDetails.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSetWorkDetails.Designer.cs">
-      <DependentUpon>frmSetWorkDetails.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmStockInSupplyEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -365,12 +329,6 @@
     <Compile Include="frmWorkDescription.Designer.cs">
       <DependentUpon>frmWorkDescription.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmWorkDetails.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmWorkDetails.Designer.cs">
-      <DependentUpon>frmWorkDetails.cs</DependentUpon>
-    </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -383,20 +341,8 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="materials_stockin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="materials_stockin.Designer.cs">
-      <DependentUpon>materials_stockin.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sales_materials.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="sales_materials.Designer.cs">
-      <DependentUpon>sales_materials.cs</DependentUpon>
-    </Compile>
     <Compile Include="viewProductsSold.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -463,9 +409,6 @@
     <EmbeddedResource Include="frmCustomerPayment.resx">
       <DependentUpon>frmCustomerPayment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDamageItems.resx">
-      <DependentUpon>frmDamageItems.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmFrameAddSuppliesUsed.resx">
       <DependentUpon>frmFrameAddSuppliesUsed.cs</DependentUpon>
     </EmbeddedResource>
@@ -529,12 +472,6 @@
     <EmbeddedResource Include="frmPrintPayroll.resx">
       <DependentUpon>frmPrintPayroll.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRemainingSupplyFrames.resx">
-      <DependentUpon>frmRemainingSupplyFrames.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSetWorkDetails.resx">
-      <DependentUpon>frmSetWorkDetails.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmStockInSupplyEdit.resx">
       <DependentUpon>frmStockInSupplyEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -558,9 +495,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewEmployee.resx">
       <DependentUpon>frmViewEmployee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmWorkDetails.resx">
-      <DependentUpon>frmWorkDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
